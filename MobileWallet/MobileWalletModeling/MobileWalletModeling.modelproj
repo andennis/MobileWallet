@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{a9694c76-82c1-4bed-9a5c-fa2c8549139c}</ProjectGuid>
+    <ArchitectureToolsVersion>2.0.0.0</ArchitectureToolsVersion>
+    <Name>MobileWalletModeling</Name>
+    <RootNamespace>MobileWalletModeling</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" Condition="'$(VSToolsPath)' != ''" />
+  <ItemGroup>
+    <Content Include="FileStorage.Entities.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="FileStorage.Entities.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>FileStorage.Entities.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="FileStorage.Services.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="FileStorage.Services.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>FileStorage.Services.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Main.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Main.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Main.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="ModelDefinition\FileStoragePackage.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\PassProcessingWebPackage.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\PassRedemptionWebPackage.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\ThirdPartySystemPackage.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\PassManagerWebPackage.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\PassDistributionWebPackage.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\PassManagerPackage.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\PassNotificationPackage.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ModelDefinition\PassContainerPackage.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Pass.Container.Entities.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Pass.Container.Entities.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Pass.Container.Entities.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Pass.Container.Services.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Pass.Container.Services.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Pass.Container.Services.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Pass.Notification.Entities.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Pass.Notification.Entities.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Pass.Notification.Entities.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Pass.Notification.Services.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Pass.Notification.Services.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Pass.Notification.Services.classdiagram</DependentUpon>
+    </Content>
+    <Folder Include="ModelDefinition\" />
+    <Content Include="ModelDefinition\PassModeling.uml">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+</Project>

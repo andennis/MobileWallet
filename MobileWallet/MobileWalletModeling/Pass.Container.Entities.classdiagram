@@ -1,0 +1,338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="37424e87-0f3e-4682-95da-1a3b03249531" name="Pass.Container.Entities" linkedPackageId="fd556ddf-3216-4410-b5d2-e9fc37bd6e1a" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="955e340f-5557-450e-8433-ed26bdba68d7" name="PassTemplate" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="2871f6c0-aa1f-417a-bcc1-b966ca97f2cb" />
+        <targetEnds>
+          <association Id="5b40e1c6-220a-4f4e-9033-197f07caae33" isDerived="false" sourceEndRoleName="Pass" targetEndRoleName="PassField" isLeaf="false" isAbstract="false">
+            <classMoniker Id="1772ec95-255b-4e8f-bde2-a8b68eb2b4ba" LastKnownName="PassField" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="450a419d-3bab-4c38-aa40-fb1d070b2fa8" name="Pass" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="0914aa39-2d24-4cdf-aad3-70e01ed2d174" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8b1e4bd4-bdc4-4742-ac6f-82eb541c9433" name="PassField" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <lowerValueInternal>
+                    <literalString Id="ab7049a4-7ac7-46f0-8abe-6513c16ecda0" name="Lower" value="*">
+                      <elementDefinition Id="05727cf2-5348-4080-80f8-46c639b059d3" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="3ad659aa-4475-48eb-8199-72c0941fb53b" name="Upper" value="*">
+                      <elementDefinition Id="e12a48a3-7b3f-4754-a957-a7a9ec502a2a" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="dbbaefa9-260b-4eba-be2f-66a92e3089f2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="00f65239-d9fc-4647-b85a-21c28aea66c7" />
+          </association>
+          <association Id="90968222-d2fe-40db-b7fb-7c4cbc0c46c2" isDerived="false" sourceEndRoleName="Pass" targetEndRoleName="ClientPass" isLeaf="false" isAbstract="false">
+            <classMoniker Id="081ba4b3-c83c-49a4-ba3f-dd5fbb128ded" LastKnownName="ClientPass" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b87ad655-97e9-4e3c-9658-89f8a499c718" name="Pass" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="ab0bf6ec-08a3-4eff-8667-6666578ac33c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a82454bc-be5b-4b0d-a0f7-ec7bd2636031" name="ClientPass" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <lowerValueInternal>
+                    <literalString Id="10641cf2-b22e-4ecd-9518-f4f54e81e608" name="Lower" value="*">
+                      <elementDefinition Id="78bdcedf-5cda-4c6a-8e50-f36026317e16" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="bcdeab38-2ff9-481d-bed5-588703ec3505" name="Upper" value="*">
+                      <elementDefinition Id="9b7d9139-0aa4-42f4-8661-0da7f929d1d6" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="08660441-dec8-4967-9ae7-76c5fa113283" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="7b8a4bc6-2a5b-416e-9b2d-bf0d6bcc4cfd" />
+          </association>
+          <association Id="78cbb402-6680-4b29-8165-ea6c4ba5e8d4" isDerived="false" sourceEndRoleName="Pass" targetEndRoleName="NativePassBase" isLeaf="false" isAbstract="false">
+            <classMoniker Id="ee38a76c-79af-4eab-96c3-4a6229647fca" LastKnownName="NativePassBase" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="dcdefd26-c847-423c-8bbd-7d3ec9a34c90" name="Pass" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="40ce2cc1-7f59-4514-ba47-8344eee63348" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="85621991-cea4-4592-9817-20c95c44d2ad" name="NativePassBase" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <lowerValueInternal>
+                    <literalString Id="5621a4dc-b2aa-4796-815d-bd840eeb9ab3" name="Lower" value="*">
+                      <elementDefinition Id="86b2d98a-b235-4e38-ad25-35be5c4a6e93" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="5310ed0a-6bb7-40d2-9be5-de2c2f294366" name="Upper" value="*">
+                      <elementDefinition Id="72f7b25c-0aef-4954-b6f2-fe83cd3f5171" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="2eadc61c-02aa-4734-a8bc-a7e8ed689620" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="4480157d-0945-41ca-96cd-5913db744260" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="89045f88-5066-4146-85d9-c78fd4c1ea59" name="Name" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="aafab837-a692-4a14-a2f0-63edfe5bb4ab" />
+          </property>
+          <property Id="e7cee629-bb15-4f75-8353-8d86e31de08d" name="TemplatePackageId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="c9de2960-2b48-4e35-b8ca-b65c6b0c0f29" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="081ba4b3-c83c-49a4-ba3f-dd5fbb128ded" name="ClientPass" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="f150d342-3120-4ead-8f72-7922f2c616db" />
+        <targetEnds>
+          <association Id="c12c7156-33d6-49f4-ab1d-672a9f7c46a6" isDerived="false" sourceEndRoleName="ClientPass" targetEndRoleName="PassFieldValue" isLeaf="false" isAbstract="false">
+            <classMoniker Id="7fde4234-2174-40d9-84f2-2bbb619cf471" LastKnownName="PassFieldValue" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="6403daae-35ba-4d6e-9a2f-486b1c7a5519" name="ClientPass" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="6f0b0ec3-1354-4ea5-a386-ddbb2dd730cb" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3289c272-206d-4590-a629-4b85f0e8db9f" name="PassFieldValue" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <lowerValueInternal>
+                    <literalString Id="5efad6a4-7e0e-4667-bb39-15ad59b19853" name="Lower" value="*">
+                      <elementDefinition Id="4f8934b4-ad2f-485e-a9b5-c45b4eee7bb7" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="b57f2999-0cd1-4387-92b1-086d1367371b" name="Upper" value="*">
+                      <elementDefinition Id="19893d7e-efe3-4d43-9908-12c248690a82" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="a6194cee-87c7-46da-8cd8-4ab5b4adf217" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="b994be99-ed7f-470d-a063-64519f85a71f" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="bf9a8405-db87-46ff-8ff0-24d89f5d4ff7" name="SerialNumber" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="db534073-a33b-4e85-9b36-2db1e623c1bd" />
+          </property>
+          <property Id="7112284d-39f9-46d9-b5cf-f9e9e0805a0b" name="AuthToken" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="f24187c7-d4e4-4473-8de9-4e6379a16764" />
+          </property>
+          <property Id="c8464c9a-ec5f-42e7-a951-1f17353319c7" name="UpdateDate" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="3f4c3a61-5b0c-4d30-b9fa-70cd203ae3c9" />
+          </property>
+          <property Id="577e92a7-9245-49a0-93e8-b1deaecfb8bf" name="ExpirationDate" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="7d8fa58e-fc3a-4f43-bf7e-2b8a848d1b39" />
+          </property>
+          <property Id="9085e1da-2aab-45e7-b8b1-c552f8903d4b" name="Status" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="c03194d0-0aaa-4996-9e8f-7ea3c3323630" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="1772ec95-255b-4e8f-bde2-a8b68eb2b4ba" name="PassField" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="c6be7d12-6827-42f2-833f-8c25f0459f18" />
+        <ownedAttributesInternal>
+          <property Id="c281a37f-c603-4bcc-ba94-32f56493c8ac" name="Name" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="998c5a8d-9d79-420c-8230-1a9b865787e8" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="7fde4234-2174-40d9-84f2-2bbb619cf471" name="PassFieldValue" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="802c7aa6-2faa-4adb-9ed6-31a13319da32" />
+        <targetEnds>
+          <association Id="46ea4aa2-137d-426a-9541-683582904a1b" isDerived="false" sourceEndRoleName="PassFieldValue" targetEndRoleName="PassField" isLeaf="false" isAbstract="false">
+            <classMoniker Id="1772ec95-255b-4e8f-bde2-a8b68eb2b4ba" LastKnownName="PassField" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9eb87c4a-8541-4e74-9438-23dfa8953950" name="PassFieldValue" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="0972778f-f3db-4660-b468-2de858346ff8" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5ff64d73-ef6a-49ed-9748-174dcc4892a0" name="PassField" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="0442d132-86f6-4cd5-81c3-3b8067c29f60" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="0f60adc9-5d73-4823-a3f8-7d31bef6ce4d" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="05c849e9-a073-4d45-96f5-8ee4dd516272" name="Value" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="a1d868d8-8107-448d-8d6d-a518fccb9b28" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="1aff59ce-14a2-4ed4-ba8f-6b89273b3dd3" name="ClientDeviceRegistration" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="94448a0b-b237-43cb-a04f-a02230b2b6ba" />
+        <targetEnds>
+          <association Id="c7595f1b-2841-46c0-8a23-b32a570f5c4c" isDerived="false" sourceEndRoleName="ClientDeviceRegistration" targetEndRoleName="ClientPass" isLeaf="false" isAbstract="false">
+            <classMoniker Id="081ba4b3-c83c-49a4-ba3f-dd5fbb128ded" LastKnownName="ClientPass" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="6c4488b9-8807-4af5-97bf-fcb5d7586114" name="ClientDeviceRegistration" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="3a598623-4fb2-4bee-8199-ea77e0f63a23" name="Lower" value="*">
+                      <elementDefinition Id="8c1975a4-8170-4e2f-940a-aaaf5fe78ee9" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="62fd044e-1d1b-476d-93cf-78c34ce0907c" name="Upper" value="*">
+                      <elementDefinition Id="42da0c6d-bab3-4ce3-8877-4720e0d23682" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="f2cd1876-6b83-41ad-b4be-8c65290d7372" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="32ce9865-2ce4-4c53-87dc-90c24a82d590" name="ClientPass" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="f53b253d-49cb-4e60-9700-19c64bbdd9ae" name="Lower" value="1">
+                      <elementDefinition Id="ff13c2e8-dde2-4271-a439-744511524dce" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="4d474508-6b99-4b0f-927a-32f6c4aa4b83" name="Upper" value="1">
+                      <elementDefinition Id="65830a8f-6e95-4b2c-baa5-1900f5aa973f" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="91cba98c-e5e2-4e70-a97f-1467784b08df" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c33b3673-5c30-4736-bcad-294ba9d84308" />
+          </association>
+          <association Id="da5afeff-95af-482a-9d29-6e2533b7cb6d" isDerived="false" sourceEndRoleName="ClientDeviceRegistration" targetEndRoleName="ClientDeviceBase" isLeaf="false" isAbstract="false">
+            <classMoniker Id="92f76802-b82d-46dd-a271-6c95a81391d7" LastKnownName="ClientDeviceBase" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0203731c-5cd2-4f93-bce5-a4fe50bb1e2a" name="ClientDeviceRegistration" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="2f16a306-3e2b-48c1-9829-00b4bbc52961" name="Lower" value="*">
+                      <elementDefinition Id="6b9fced4-43b2-4887-bbf6-dd6f0623eb5b" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="cf8c6548-4c4d-4ff8-a082-689cac189886" name="Upper" value="*">
+                      <elementDefinition Id="075ea5a7-9409-4997-8589-9f9cc5d19cbd" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="ed1d3b15-85d2-4b39-a27b-304099dfa411" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9873b6cd-b03e-4e01-8ce4-b202f0a8905e" name="ClientDeviceBase" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="27f36f73-5251-44d1-8529-db2e5dc25de1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="49001d0a-24e6-46a7-8138-544ab5382a18" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="363dead3-96cd-406b-8200-18f17fc2588e" name="Status" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="31a1e01c-e77e-4b8c-9a0d-143e2a397950" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="92f76802-b82d-46dd-a271-6c95a81391d7" name="ClientDeviceBase" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="af83e8fe-54d1-4d1c-8740-2f3fda8e7cfd" />
+        <ownedAttributesInternal>
+          <property Id="aab1aee1-5905-4bab-834d-c01f1c743574" name="DeviceId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="febdf95a-c949-4a47-a519-9c33aca713f3" />
+          </property>
+          <property Id="5b61fc8b-8202-4f6e-b545-abffcd607a1b" name="DeviceType" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="5bc46652-07ac-4ef2-bdaf-5ae6d5a1380c" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="9d9b83b4-7aea-4dfb-bc7c-d04a60d847ea" name="ClientDeviceApple" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="a675e13d-9743-4c46-b827-28b7d6bb582d" />
+        <generalsInternal>
+          <generalization Id="9285adec-c10d-499b-8e69-bcd2b1434cdc" isSubstitutable="false">
+            <classMoniker Id="92f76802-b82d-46dd-a271-6c95a81391d7" LastKnownName="ClientDeviceBase" />
+            <elementDefinition Id="22c23ebf-0ba2-48d1-9a2a-76f660637136" />
+          </generalization>
+        </generalsInternal>
+        <ownedAttributesInternal>
+          <property Id="7ad555a2-f69a-4d27-8680-1c8b2c6bd44c" name="PushToken" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="05cc2574-50ac-43ce-bf9d-ebbbfb11203a" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="ee38a76c-79af-4eab-96c3-4a6229647fca" name="NativePassBase" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="a321f487-36aa-4ae0-84e6-e5cc4375fdd1" />
+        <ownedAttributesInternal>
+          <property Id="e4cbd2bb-f3e0-4a50-816d-c7735b1f6c5d" name="PackageId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="54745f44-4554-4261-af7a-75e8065be07e" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="844308fb-2c41-4f77-ba2c-d7846f45239a" name="NativePassApple" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="917819fd-3473-4ee6-93da-976b501e43ef" />
+        <generalsInternal>
+          <generalization Id="254ae439-bf19-49db-a556-1437c691fbea" isSubstitutable="false">
+            <classMoniker Id="ee38a76c-79af-4eab-96c3-4a6229647fca" LastKnownName="NativePassBase" />
+            <elementDefinition Id="f465e86b-d09f-4c13-af00-f2995fe1c823" />
+          </generalization>
+        </generalsInternal>
+        <ownedAttributesInternal>
+          <property Id="f94330ad-fa11-49bd-b64b-3dac56f0058e" name="PassTypeId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="9e32ea64-2c1a-45c4-bae9-86855a5a601a" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="fd556ddf-3216-4410-b5d2-e9fc37bd6e1a" name="MobileWalletModeling">
+    <elementDefinition Id="a53e0939-3e57-42d8-a1d6-852d3d589578" />
+    <profileInstances>
+      <packageHasProfileInstances Id="fe3bf38f-b52a-4ea0-9182-bbc9ff17e711">
+        <profileInstance Id="6974e7a1-7101-4ada-8f1b-c087b856d345" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="539e43f6-860c-4653-91a3-746e9f36f344">
+        <profileInstance Id="8a9f87cd-bb12-4083-9a07-e9fe0f456dad" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="fdd61523-ad69-4362-85fb-1b2d23b447c5">
+        <profileInstance Id="2a2068e5-5445-443f-9163-e36073316e1b" name="TextTemplateBindings">
+          <elementDefinition Id="06d93c75-9f7e-465a-a217-2c5fb68015af" />
+        </profileInstance>
+        <elementDefinition Id="1764e76e-4606-4e41-927d-7dee20e9c500" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</logicalClassDesignerModel>

@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="986182e0-12a5-4779-a191-759a8cd23bee" name="Pass.Notification.Services" linkedPackageId="48c2c777-06b5-4d5b-ab4b-81a0f65d9e7a" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="78b93720-b979-4b87-9d35-9c17d97b5248" name="PushNotificationService" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="9de234f6-5b84-4995-b01a-cecadec71a56" />
+        <suppliersInternal>
+          <interfaceRealization Id="8b1ee1ff-1078-4e8e-bc9a-50d415edba47">
+            <interfaceMoniker Id="c4a3fb8f-d272-4c8d-9b11-11733043aefe" LastKnownName="IPushNotificationService" />
+            <elementDefinition Id="6fa479a9-ef0b-461e-8478-05c328395d7d" />
+          </interfaceRealization>
+          <dependency Id="01358464-9374-4a7e-ad62-ccaf5d5ae86e">
+            <interfaceMoniker Id="a1c932fd-b2fb-4a8a-a96b-774ad0a9cb67" LastKnownName="PushNotificationRepository" />
+            <elementDefinition Id="6aaea4b2-f13c-41e9-aa45-300ebd1482b3" />
+          </dependency>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation Id="9eaa8aa9-24d5-4603-8bc9-1686463424da" name="PushNotifications" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="bf07e38a-f902-4696-87d5-22643a3775ef" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="ac5e4b28-3375-4d26-9bf1-39be4ecd12e4" name="ClientPassIds" direction="In" isUnique="false">
+                  <elementDefinition Id="6b5856b1-5ede-48f9-97a3-8ca3b3a9a04c" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="c4a3fb8f-d272-4c8d-9b11-11733043aefe" name="IPushNotificationService" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f5dc44b2-592c-4032-9c59-6677e3a44718" />
+        <ownedOperations>
+          <operation Id="9259da8f-1fab-4ddb-ba7e-9fd2e082db72" name="PushNotifications" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="2f3f7d6f-0882-4acf-a407-1d9d6b8fb7aa" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="a2633628-a878-452f-a145-942efb1153ec" name="ClientPassIds" direction="In" isUnique="false">
+                  <elementDefinition Id="eae21ecc-ec6a-416a-b730-a4ee34aa69dd" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperations>
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="a1c932fd-b2fb-4a8a-a96b-774ad0a9cb67" name="PushNotificationRepository" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8d929679-6d97-4023-a29a-0314e297dba3" />
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="48c2c777-06b5-4d5b-ab4b-81a0f65d9e7a" name="MobileWalletModeling">
+    <elementDefinition Id="a53e0939-3e57-42d8-a1d6-852d3d589578" />
+    <profileInstances>
+      <packageHasProfileInstances Id="9460938a-9178-4472-8eb4-9bdd88ab6044">
+        <profileInstance Id="d2e9c628-8e97-4083-a3f3-c1f17198b354" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="5048de6b-4b17-4a62-820e-9e755d85c5ef">
+        <profileInstance Id="dee5d56e-6d4a-4eed-9a46-8028a7e8ae7d" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="12b88c08-4b07-49ad-9f6d-e143b6bb5f47">
+        <profileInstance Id="86e063d9-badc-495e-ba95-99eeb0dd1fc2" name="TextTemplateBindings">
+          <elementDefinition Id="06d93c75-9f7e-465a-a217-2c5fb68015af" />
+        </profileInstance>
+        <elementDefinition Id="1764e76e-4606-4e41-927d-7dee20e9c500" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</logicalClassDesignerModel>

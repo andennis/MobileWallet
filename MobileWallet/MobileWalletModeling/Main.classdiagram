@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="01a65276-9f7e-4364-a459-b86c5cca83a3" name="Main" linkedPackageId="6717a387-27d8-4958-b0d3-094d01f7e82c" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <packagedElements>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="0a88ff71-faaf-44bb-8cf1-d3375f1d9222" name="Pass.Container">
+        <elementDefinition Id="30622e7a-96f1-41b7-83af-6de6f2c37861" />
+        <suppliersInternal>
+          <dependency Id="33304d3b-2479-4e12-af72-4b6643a464a5">
+            <packageMoniker Id="5e9d0a14-b1b9-41a2-9d0f-4c7fa789da4b" LastKnownName="FileStorage" />
+            <elementDefinition Id="03391160-31da-444a-9b1b-2ac8fdec0ae8" />
+          </dependency>
+        </suppliersInternal>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="5e9d0a14-b1b9-41a2-9d0f-4c7fa789da4b" name="FileStorage">
+        <elementDefinition Id="884e21c8-6329-4b60-906e-e07c8e62093c" />
+      </package>
+    </logicalClassDesignerModelHasPackages>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="4266df7f-14ae-48ef-925a-737c9274afd6" name="Pass.Manager">
+        <elementDefinition Id="e4e81fff-227b-4bf3-a1ca-821448ae421b" />
+        <suppliersInternal>
+          <dependency Id="c4560c32-5c23-4f2b-94e4-d67b93c6cc74">
+            <packageMoniker Id="0a88ff71-faaf-44bb-8cf1-d3375f1d9222" LastKnownName="Pass.Container" />
+            <elementDefinition Id="8cca14e6-49e6-446e-8a58-9fbacb2a97fe" />
+          </dependency>
+          <dependency Id="e925afd3-fe5c-40de-918c-c1abb4fe8c02">
+            <packageMoniker Id="5e9d0a14-b1b9-41a2-9d0f-4c7fa789da4b" LastKnownName="FileStorage" />
+            <elementDefinition Id="19d8f88a-2a9c-42a4-abed-1cda40ccbce6" />
+          </dependency>
+          <dependency Id="f202ad1e-406a-4561-b3c3-fd76a88056fd">
+            <packageMoniker Id="3a6f184d-c669-4787-b4a5-4465563ced93" LastKnownName="Pass.Notification" />
+            <elementDefinition Id="8b43e3cf-e8bc-48bc-a71b-b9a064325448" />
+          </dependency>
+        </suppliersInternal>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="3a6f184d-c669-4787-b4a5-4465563ced93" name="Pass.Notification">
+        <elementDefinition Id="61292964-823b-4a28-b536-ef6f4ee576ab" />
+      </package>
+    </logicalClassDesignerModelHasPackages>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="3fbdad7d-6fc5-4115-b8a3-f14515d4f15d" name="ThirdPartySystem">
+        <elementDefinition Id="c9b1f6b5-8711-4cc0-bb13-1b4b3333c801" />
+        <suppliersInternal>
+          <dependency Id="3ac9b097-e8e4-4896-ae22-1be3d2a61cc0">
+            <packageMoniker Id="4266df7f-14ae-48ef-925a-737c9274afd6" LastKnownName="Pass.Manager" />
+            <elementDefinition Id="bbafe532-0822-4793-900d-113d3b01f426" />
+          </dependency>
+        </suppliersInternal>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="b0a4d141-697d-4421-bea1-3856d55d8ad7" name="Pass.Manager.Web">
+        <elementDefinition Id="302edcbf-ad92-4a35-a941-604c870459db" />
+        <suppliersInternal>
+          <dependency Id="229fac18-52c5-46f8-9d20-dda19f9f0d14">
+            <packageMoniker Id="4266df7f-14ae-48ef-925a-737c9274afd6" LastKnownName="Pass.Manager" />
+            <elementDefinition Id="7c0117f4-9ef6-4d1f-8f57-cb4e5c88da14" />
+          </dependency>
+        </suppliersInternal>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="49146655-c160-436f-9554-8669230ad3f7" name="Pass.Distribution.Web">
+        <elementDefinition Id="902b90e0-4a71-48b2-86d2-253b9d2086cf" />
+        <suppliersInternal>
+          <dependency Id="7e2686bb-5cff-44d2-9a9d-ca65a3615058">
+            <packageMoniker Id="0a88ff71-faaf-44bb-8cf1-d3375f1d9222" LastKnownName="Pass.Container" />
+            <elementDefinition Id="3b0f3e12-fc95-4144-928c-476576b5d778" />
+          </dependency>
+        </suppliersInternal>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="f5d6c7ee-5f6e-4493-a1bc-5287670c024d" name="Pass.Redemption.Web">
+        <elementDefinition Id="a36c065d-5954-49c4-80a8-a71fa62ebb75" />
+        <suppliersInternal>
+          <dependency Id="cb632e2d-5dce-423b-835e-9852662b94e3">
+            <packageMoniker Id="4266df7f-14ae-48ef-925a-737c9274afd6" LastKnownName="Pass.Manager" />
+            <elementDefinition Id="fe1d5d00-6348-402c-beff-c5d198cec016" />
+          </dependency>
+        </suppliersInternal>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="b941e6fe-43e1-4732-b844-1a791b1f7dd0" name="Pass.Processing.Web">
+        <elementDefinition Id="7956bbdb-d105-4adc-be24-3657fe3cdf98" />
+        <suppliersInternal>
+          <dependency Id="a809b03b-fb64-4952-9010-2b769d51b125">
+            <packageMoniker Id="0a88ff71-faaf-44bb-8cf1-d3375f1d9222" LastKnownName="Pass.Container" />
+            <elementDefinition Id="da93ec83-b696-4c06-80af-572f0ddaf39a" />
+          </dependency>
+        </suppliersInternal>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+  </packagedElements>
+  <package Id="6717a387-27d8-4958-b0d3-094d01f7e82c" name="MobileWalletModeling">
+    <elementDefinition Id="a53e0939-3e57-42d8-a1d6-852d3d589578" />
+    <profileInstances>
+      <packageHasProfileInstances Id="938dc459-da70-418b-85eb-7f4b4e4a8988">
+        <profileInstance Id="7d13b894-0eae-46b8-a3f6-51a0a56a7bac" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="65bd04a2-5b06-46f9-89ad-137a98784d7c">
+        <profileInstance Id="cfd96ebe-4539-45fe-b8bb-282a13db3bce" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="d33ec49a-2cb6-48bf-b926-1b7bf8e4de38">
+        <profileInstance Id="e8281775-c05b-4f7c-b476-0b01a1220513" name="TextTemplateBindings">
+          <elementDefinition Id="06d93c75-9f7e-465a-a217-2c5fb68015af" />
+        </profileInstance>
+        <elementDefinition Id="1764e76e-4606-4e41-927d-7dee20e9c500" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</logicalClassDesignerModel>

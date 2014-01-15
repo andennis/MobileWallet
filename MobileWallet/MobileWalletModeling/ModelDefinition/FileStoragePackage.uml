@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="884e21c8-6329-4b60-906e-e07c8e62093c"
+  name="FileStorage" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="46ff7eeb-3e65-4921-8f0a-b811dc9cb5b0"
+        name="ItemInfo"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="0b14eef2-07b3-4b2a-8df2-25897905cd8c"
+            isDerived="false"
+            sourceEndRoleName="FolderInfo"
+            targetEndRoleName="FolderInfo"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="46ff7eeb-3e65-4921-8f0a-b811dc9cb5b0"
+              LastKnownName="ItemInfo"
+              LastKnownLocation="FileStoragePackage.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="038afd81-72cd-4c9b-adc3-bdddec7c92e8"
+                  name="FolderInfo"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="bcec84ef-d5a8-4bbb-aace-0c6fa7438d83"
+                  name="FolderInfo"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="86c14442-82cc-4904-b7dc-f645fc97cce2"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="3049cea9-bdcd-49ae-b076-c8094edc8c66"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="07501267-b9ef-4b57-940f-5448bb9ba6e0"
+            name="Name"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="1d11898e-48fb-48f1-ae60-ad306b625f84"
+        name="FileInfo"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="767bac58-722e-497c-a9a3-0f0199d233e3"
+            isSubstitutable="false">
+            <classMoniker
+              Id="46ff7eeb-3e65-4921-8f0a-b811dc9cb5b0"
+              LastKnownName="ItemInfo"
+              LastKnownLocation="FileStoragePackage.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="6f3b5e68-c60f-441e-8ac5-04b3339e0496"
+            name="OriginalName"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="bf94aa0f-b7a0-4be6-818a-a6d2150d0be3"
+        name="IFileStorageService"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedOperations>
+          <operation
+            Id="ff679c1f-68f7-4838-ba14-76ccb6be6113"
+            name="PutFile"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="81e5f6a2-6e84-4c65-a0ac-afe74b5008e1"
+            name="GetFileInfo"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="f53dd391-4048-4cea-97b1-d60cdb2f42e1"
+            name="PutFolder"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="54ffdb54-b928-4ccc-bd36-e6881c49a83c"
+            name="GetFolderInfo"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperations>
+      </Interface>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

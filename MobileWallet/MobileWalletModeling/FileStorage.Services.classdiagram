@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="c7b974f1-61ed-4da6-92b7-fa573c5cbc12" name="FileStorage.Services" linkedPackageId="2014c4d4-cf8c-4792-beac-24cb172bf0dc" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="092379fe-07dc-4310-87cb-a0704071c219" name="IFileStorageService" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="bf94aa0f-b7a0-4be6-818a-a6d2150d0be3" />
+        <ownedOperations>
+          <operation Id="9d4515ca-edc4-4a0c-877b-95879bf59ab8" name="PutFile" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="ff679c1f-68f7-4838-ba14-76ccb6be6113" />
+          </operation>
+          <operation Id="f5f73c6a-0644-4ab5-b271-4303a63928e3" name="GetFileInfo" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="81e5f6a2-6e84-4c65-a0ac-afe74b5008e1" />
+          </operation>
+          <operation Id="1eb6766b-32de-4280-8208-5b1633b5ddaa" name="PutFolder" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="f53dd391-4048-4cea-97b1-d60cdb2f42e1" />
+          </operation>
+          <operation Id="aafcd4bb-19f1-4caa-b226-d27913c8902d" name="GetFolderInfo" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="54ffdb54-b928-4ccc-bd36-e6881c49a83c" />
+          </operation>
+        </ownedOperations>
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="2014c4d4-cf8c-4792-beac-24cb172bf0dc" name="MobileWalletModeling">
+    <elementDefinition Id="a53e0939-3e57-42d8-a1d6-852d3d589578" />
+    <profileInstances>
+      <packageHasProfileInstances Id="2b4ad566-8f73-4529-9ccc-9921945cc347">
+        <profileInstance Id="7368a928-cccb-414d-bb9d-0c1985a1734a" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="17563504-4012-4130-a6f2-050ebfea2425">
+        <profileInstance Id="544af55b-54ea-4036-8b03-e6a7a2a3dc63" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="d0ff37a3-e67d-4c7b-ada0-f68eb25163de">
+        <profileInstance Id="9c522df7-c5ab-4f0b-900c-4386606d6b0d" name="TextTemplateBindings">
+          <elementDefinition Id="06d93c75-9f7e-465a-a217-2c5fb68015af" />
+        </profileInstance>
+        <elementDefinition Id="1764e76e-4606-4e41-927d-7dee20e9c500" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</logicalClassDesignerModel>

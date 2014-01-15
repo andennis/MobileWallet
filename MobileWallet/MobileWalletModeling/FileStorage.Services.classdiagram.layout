@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="FileStorsge.Services">
+  <logicalClassDesignerModelMoniker Id="c7b974f1-61ed-4da6-92b7-fa573c5cbc12" />
+  <nestedChildShapes>
+    <interfaceShape Id="9865f7ae-8be4-4d40-a05b-0896302d5cd6" absoluteBounds="4.5, 1.75, 2.375, 1.5429687152306237" hideQualifiedName="false" increaseHeight="0" customColor="207, 223, 191">
+      <interfaceMoniker Id="092379fe-07dc-4310-87cb-a0704071c219" LastKnownName="IFileStorageService" />
+      <nestedChildShapes>
+        <AttributeElementListCompartment Id="2da8579b-1027-480c-9e8a-3c73f9b5ac03" absoluteBounds="4.515, 2.14, 2.3449999999999998, 0.2011718675494194" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <OperationElementListCompartment Id="3ef3a5aa-a2b1-4a5c-8c30-3c6f11e985e4" absoluteBounds="4.515, 2.3511718675494193, 2.3449999999999998, 0.84179684768120444" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </interfaceShape>
+  </nestedChildShapes>
+</logicalClassDesignerDiagram>

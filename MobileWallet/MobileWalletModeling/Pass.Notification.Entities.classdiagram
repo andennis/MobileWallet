@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="6427c78e-866d-4cc2-9547-a22f627034d5" name="Pass.Notification.Entities" linkedPackageId="f89bdda3-3e8f-41cf-908d-9c3529246afc" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="f17a2f67-6a5b-4673-bb82-4b04e8806c15" name="PassNotificationQueueBase" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="a54d9c5b-c5a6-47fe-82b8-7b5ca1c33db3" />
+        <ownedAttributesInternal>
+          <property Id="6dd0a130-0d92-47cb-ab2a-297a72c8a950" name="DeviceId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="b3605b38-e310-4a39-9735-cfb08c5eb415" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="901028b7-f2e2-4fbb-8a0f-d506320e7ef6" name="PassNotificationQueueApple" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="8ea83810-7c95-46f5-ae6a-184b1d4a847f" />
+        <generalsInternal>
+          <generalization Id="00434aa5-1afc-46ef-b54c-d58c380dc650" isSubstitutable="false">
+            <classMoniker Id="f17a2f67-6a5b-4673-bb82-4b04e8806c15" LastKnownName="PassNotificationQueueBase" />
+            <elementDefinition Id="e4e8541a-cdaf-47eb-b1a6-b30ca9fb618c" />
+          </generalization>
+        </generalsInternal>
+        <ownedAttributesInternal>
+          <property Id="dc6191e9-fdb5-4f11-b2a5-e9721de9066c" name="PushToken" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="a4397c4e-739c-40ff-a92f-4ca11349b574" />
+          </property>
+          <property Id="e4865132-9de8-4ebf-8e6c-78ee43f51c43" name="PassTypeId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="b05c2d67-1677-4123-bec8-4ce2831bb657" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="f89bdda3-3e8f-41cf-908d-9c3529246afc" name="MobileWalletModeling">
+    <elementDefinition Id="a53e0939-3e57-42d8-a1d6-852d3d589578" />
+    <profileInstances>
+      <packageHasProfileInstances Id="c5725135-9f3b-4ced-b22e-fa824350cb60">
+        <profileInstance Id="f96b89a5-d94f-4f35-b9c8-30ace0635ea8" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="d9b595b5-842c-4318-9e73-e7c1f99d080f">
+        <profileInstance Id="cad945b1-15b5-4096-bc39-c6478b784502" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="d28c153d-9250-4d1f-b9a4-4ac13e8d1d04">
+        <profileInstance Id="f92aeada-e55a-4d9e-bebc-86bd0228899b" name="TextTemplateBindings">
+          <elementDefinition Id="06d93c75-9f7e-465a-a217-2c5fb68015af" />
+        </profileInstance>
+        <elementDefinition Id="1764e76e-4606-4e41-927d-7dee20e9c500" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</logicalClassDesignerModel>

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Pass.Notification.Services">
+  <logicalClassDesignerModelMoniker Id="986182e0-12a5-4779-a191-759a8cd23bee" />
+  <nestedChildShapes>
+    <classShape Id="57bd3ee0-ec28-4adb-aa9c-6c329938798e" absoluteBounds="4.75, 3, 2.875, 1.0624999801317845" hideQualifiedName="false" increaseHeight="0" customColor="181, 193, 223">
+      <classMoniker Id="78b93720-b979-4b87-9d35-9c17d97b5248" LastKnownName="PushNotificationService" />
+      <nestedChildShapes>
+        <AttributeElementListCompartment Id="f76e03ef-42ac-47fa-8321-b615901daaa2" absoluteBounds="4.765, 3.39, 2.8449999999999998, 0.2011718675494194" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <OperationElementListCompartment Id="85031faf-922a-4486-8741-7d00e563e5f5" absoluteBounds="4.765, 3.6011718675494193, 2.8449999999999998, 0.36132811258236563" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <interfaceShape Id="5488af83-6cef-403a-a758-e4cc1ca4b812" absoluteBounds="4.625, 0.875, 3, 1.0624999801317849" hideQualifiedName="false" increaseHeight="0" customColor="207, 223, 191">
+      <interfaceMoniker Id="c4a3fb8f-d272-4c8d-9b11-11733043aefe" LastKnownName="IPushNotificationService" />
+      <nestedChildShapes>
+        <AttributeElementListCompartment Id="6788f9b8-3fb5-4528-928e-00b693d6a97c" absoluteBounds="4.64, 1.2650000000000001, 2.9699999999999998, 0.2011718675494194" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <OperationElementListCompartment Id="633d2876-b132-4ce6-a70b-521fffb5524c" absoluteBounds="4.64, 1.4761718675494193, 2.9699999999999998, 0.36132811258236563" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </interfaceShape>
+    <realizationConnector edgePoints="[(6.1875 : 3); (6.1875 : 2.31249998013178); (6.125 : 2.31249998013178); (6.125 : 1.93749998013178)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110" showAsLollipop="false">
+      <interfaceRealizationMoniker Id="8b1ee1ff-1078-4e8e-bc9a-50d415edba47" />
+      <relativeChildShapes />
+      <nodes>
+        <classShapeMoniker Id="57bd3ee0-ec28-4adb-aa9c-6c329938798e" />
+        <interfaceShapeMoniker Id="5488af83-6cef-403a-a758-e4cc1ca4b812" />
+      </nodes>
+    </realizationConnector>
+    <interfaceShape Id="a202b317-7c17-47ef-8df8-231fb85fe78f" absoluteBounds="4.75, 4.875, 3.25, 0.90234373509883881" hideQualifiedName="false" increaseHeight="0" customColor="207, 223, 191">
+      <interfaceMoniker Id="a1c932fd-b2fb-4a8a-a96b-774ad0a9cb67" LastKnownName="PushNotificationRepository" />
+      <nestedChildShapes>
+        <AttributeElementListCompartment Id="93569196-aba0-4667-8128-fc0a346197ac" absoluteBounds="4.765, 5.265, 3.2199999999999998, 0.2011718675494194" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <OperationElementListCompartment Id="c3c068d3-ccb9-4f29-a490-7ff72acf2b67" absoluteBounds="4.765, 5.47617186754942, 3.2199999999999998, 0.2011718675494194" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </interfaceShape>
+    <dependencyConnector edgePoints="[(6.1875 : 4.06249998013178); (6.1875 : 4.875)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black">
+      <dependencyMoniker Id="01358464-9374-4a7e-ad62-ccaf5d5ae86e" />
+      <relativeChildShapes />
+      <nodes>
+        <classShapeMoniker Id="57bd3ee0-ec28-4adb-aa9c-6c329938798e" />
+        <interfaceShapeMoniker Id="a202b317-7c17-47ef-8df8-231fb85fe78f" />
+      </nodes>
+    </dependencyConnector>
+  </nestedChildShapes>
+</logicalClassDesignerDiagram>

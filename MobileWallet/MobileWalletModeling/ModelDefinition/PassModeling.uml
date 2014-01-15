@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="a53e0939-3e57-42d8-a1d6-852d3d589578"
+  name="MobileWalletModeling" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <ownedCommentsInternal>
+    <comment
+      Id="45c81ae8-df02-4345-85cd-58da5af46515">
+      <body>Process web requests to download pass package by provided link</body>
+      <annotatedElements>
+        <classMoniker
+          Id="fa091969-8ae4-418b-b492-22d9935f6114"
+          LastKnownName="PassContainerController"
+          LastKnownLocation="PassContainerPackage.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="29a0b32a-e8ec-4bd1-a0fa-c45f6584b138">
+      <body>Process web requests from Apple devices and APNS</body>
+      <annotatedElements>
+        <classMoniker
+          Id="8c95dbbc-c870-4d45-925f-3b9ce49764d9"
+          LastKnownName="ApplePassController"
+          LastKnownLocation="PassContainerPackage.uml" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="1764e76e-4606-4e41-927d-7dee20e9c500">
+      <profileInstance
+        Id="06d93c75-9f7e-465a-a217-2c5fb68015af"
+        name="TextTemplateBindings" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="30622e7a-96f1-41b7-83af-6de6f2c37861"
+        LastKnownName="Pass.Container"
+        LastKnownLocation="PassContainerPackage.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="884e21c8-6329-4b60-906e-e07c8e62093c"
+        LastKnownName="FileStorage"
+        LastKnownLocation="FileStoragePackage.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="e4e81fff-227b-4bf3-a1ca-821448ae421b"
+        LastKnownName="Pass.Manager"
+        LastKnownLocation="PassManagerPackage.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="61292964-823b-4a28-b536-ef6f4ee576ab"
+        LastKnownName="Pass.Notification"
+        LastKnownLocation="PassNotificationPackage.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="c9b1f6b5-8711-4cc0-bb13-1b4b3333c801"
+        LastKnownName="ThirdPartySystem"
+        LastKnownLocation="ThirdPartySystemPackage.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="302edcbf-ad92-4a35-a941-604c870459db"
+        LastKnownName="Pass.Manager.Web"
+        LastKnownLocation="PassManagerWebPackage.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="902b90e0-4a71-48b2-86d2-253b9d2086cf"
+        LastKnownName="Pass.Distribution.Web"
+        LastKnownLocation="PassDistributionWebPackage.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="a36c065d-5954-49c4-80a8-a71fa62ebb75"
+        LastKnownName="Pass.Redemption.Web"
+        LastKnownLocation="PassRedemptionWebPackage.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="7956bbdb-d105-4adc-be24-3657fe3cdf98"
+        LastKnownName="Pass.Processing.Web"
+        LastKnownLocation="Package_0034.uml" />
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>
