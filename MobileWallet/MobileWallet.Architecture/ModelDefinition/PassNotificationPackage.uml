@@ -87,7 +87,7 @@
     <packageHasNamedElement>
       <class
         Id="a54d9c5b-c5a6-47fe-82b8-7b5ca1c33db3"
-        name="PassNotificationQueueBase"
+        name="PassNotificationBase"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
@@ -109,7 +109,7 @@
     <packageHasNamedElement>
       <class
         Id="8ea83810-7c95-46f5-ae6a-184b1d4a847f"
-        name="PassNotificationQueueApple"
+        name="PassNotificationApple"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
@@ -119,7 +119,7 @@
             isSubstitutable="false">
             <classMoniker
               Id="a54d9c5b-c5a6-47fe-82b8-7b5ca1c33db3"
-              LastKnownName="PassNotificationQueueBase"
+              LastKnownName="PassNotificationBase"
               LastKnownLocation="PassNotificationPackage.uml" />
           </generalization>
         </generalsInternal>

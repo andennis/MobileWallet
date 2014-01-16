@@ -32,7 +32,7 @@
             <elementDefinition Id="00f65239-d9fc-4647-b85a-21c28aea66c7" />
           </association>
           <association Id="90968222-d2fe-40db-b7fb-7c4cbc0c46c2" isDerived="false" sourceEndRoleName="Pass" targetEndRoleName="ClientPass" isLeaf="false" isAbstract="false">
-            <classMoniker Id="081ba4b3-c83c-49a4-ba3f-dd5fbb128ded" LastKnownName="ClientPass" />
+            <classMoniker Id="081ba4b3-c83c-49a4-ba3f-dd5fbb128ded" LastKnownName="Pass" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="b87ad655-97e9-4e3c-9658-89f8a499c718" name="Pass" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
@@ -95,7 +95,7 @@
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="081ba4b3-c83c-49a4-ba3f-dd5fbb128ded" name="ClientPass" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="081ba4b3-c83c-49a4-ba3f-dd5fbb128ded" name="Pass" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="f150d342-3120-4ead-8f72-7922f2c616db" />
         <targetEnds>
           <association Id="c12c7156-33d6-49f4-ab1d-672a9f7c46a6" isDerived="false" sourceEndRoleName="ClientPass" targetEndRoleName="PassFieldValue" isLeaf="false" isAbstract="false">
@@ -187,7 +187,7 @@
         <elementDefinition Id="94448a0b-b237-43cb-a04f-a02230b2b6ba" />
         <targetEnds>
           <association Id="c7595f1b-2841-46c0-8a23-b32a570f5c4c" isDerived="false" sourceEndRoleName="ClientDeviceRegistration" targetEndRoleName="ClientPass" isLeaf="false" isAbstract="false">
-            <classMoniker Id="081ba4b3-c83c-49a4-ba3f-dd5fbb128ded" LastKnownName="ClientPass" />
+            <classMoniker Id="081ba4b3-c83c-49a4-ba3f-dd5fbb128ded" LastKnownName="Pass" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="6c4488b9-8807-4af5-97bf-fcb5d7586114" name="ClientDeviceRegistration" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">

@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{a9694c76-82c1-4bed-9a5c-fa2c8549139c}</ProjectGuid>
     <ArchitectureToolsVersion>2.0.0.0</ArchitectureToolsVersion>
-    <Name>MobileWalletModeling</Name>
+    <Name>MobileWallet.Architecture</Name>
     <RootNamespace>MobileWalletModeling</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

@@ -142,13 +142,13 @@
             <elementDefinition Id="0ccc2f6d-8efc-4765-8754-741dc517077a" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="3d4cea57-7a92-4de7-8cf2-55c82d16e36f" name="ClientPassIds" direction="In" isUnique="false">
-                  <elementDefinition Id="cfec1bee-459b-43b9-b3f6-6f5a29bab431" />
+                <parameter Id="dd61d0db-5b3e-4c7a-b9d2-fbf52d610c76" name="PassIds" direction="In" isUnique="false">
+                  <elementDefinition Id="362b623c-f099-4741-b316-caa2d17243b6" />
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="48358880-86bc-4628-8de7-5f6101782198" name="PassFieldValues" direction="In">
-                  <elementDefinition Id="57bd0141-3709-41e8-b163-47275743b35d" />
+                <parameter Id="149f66c5-0455-4ac6-be9f-afad22073101" name="PassFieldValues)(" direction="In" isUnique="false">
+                  <elementDefinition Id="d725ba7e-e9c3-4099-8023-c22c54b7a119" />
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -197,13 +197,13 @@
             <elementDefinition Id="577ff9a2-eec1-4dc6-a813-17d354928282" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="d97f9828-a196-4857-982e-3ca4de0077ab" name="ClientPassId" direction="In">
-                  <elementDefinition Id="199addaf-daa4-4443-8895-03bca9fc6939" />
+                <parameter Id="b2f376b2-431a-4727-94aa-29333cf71604" name="PassId" direction="In" isUnique="false">
+                  <elementDefinition Id="ee037601-23a7-47f3-bc05-08a6c9647f8a" />
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="6b0357ad-7952-4b02-a655-d94eb172b3d2" name="DeviceType" direction="In">
-                  <elementDefinition Id="2ec043d2-8a92-490c-abc1-2e0f4764139d" />
+                <parameter Id="dd738482-fa6b-48b0-8ae9-d40ed7be6409" name="DeviceType" direction="In" isUnique="false">
+                  <elementDefinition Id="8fbfd5e0-120d-4d35-b09c-33d1bdbbebb8" />
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -248,13 +248,13 @@
             <elementDefinition Id="63728b5a-1ceb-411a-8ab1-33035e553cfe" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="d5adb055-721a-48e0-a751-605c066f1f41" name="ClientPassIds" direction="In" isUnique="false">
-                  <elementDefinition Id="7075693b-7f23-42a1-91f6-439f8dd35032" />
+                <parameter Id="00e9cf97-118b-4f07-8d7b-dc961dc9c2dc" name="PassIds" direction="In" isUnique="false">
+                  <elementDefinition Id="3a697574-ec05-4726-9157-56dca0f56b8e" />
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="5ab41523-4fb9-4389-8cb3-7fc04bd8f372" name="PassFields" direction="In">
-                  <elementDefinition Id="97826845-4b80-44f5-9219-571546daa817" />
+                <parameter Id="15ab368e-84b0-482c-9f37-fe51ae69cc5a" name="PassFieldValues)(" direction="In" isUnique="false">
+                  <elementDefinition Id="7c6e47d4-b695-41fa-928b-d22b5d3428cf" />
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>

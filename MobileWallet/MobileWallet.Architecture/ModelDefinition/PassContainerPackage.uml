@@ -140,16 +140,17 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="7075693b-7f23-42a1-91f6-439f8dd35032"
-                  name="ClientPassIds"
+                  Id="3a697574-ec05-4726-9157-56dca0f56b8e"
+                  name="PassIds"
                   direction="In"
                   isUnique="false" />
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="97826845-4b80-44f5-9219-571546daa817"
-                  name="PassFields"
-                  direction="In" />
+                  Id="7c6e47d4-b695-41fa-928b-d22b5d3428cf"
+                  name="PassFieldValues)("
+                  direction="In"
+                  isUnique="false" />
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
@@ -316,16 +317,17 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="cfec1bee-459b-43b9-b3f6-6f5a29bab431"
-                  name="ClientPassIds"
+                  Id="362b623c-f099-4741-b316-caa2d17243b6"
+                  name="PassIds"
                   direction="In"
                   isUnique="false" />
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="57bd0141-3709-41e8-b163-47275743b35d"
-                  name="PassFieldValues"
-                  direction="In" />
+                  Id="d725ba7e-e9c3-4099-8023-c22c54b7a119"
+                  name="PassFieldValues)("
+                  direction="In"
+                  isUnique="false" />
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
@@ -406,15 +408,17 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="199addaf-daa4-4443-8895-03bca9fc6939"
-                  name="ClientPassId"
-                  direction="In" />
+                  Id="ee037601-23a7-47f3-bc05-08a6c9647f8a"
+                  name="PassId"
+                  direction="In"
+                  isUnique="false" />
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="2ec043d2-8a92-490c-abc1-2e0f4764139d"
+                  Id="8fbfd5e0-120d-4d35-b09c-33d1bdbbebb8"
                   name="DeviceType"
-                  direction="In" />
+                  direction="In"
+                  isUnique="false" />
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
@@ -615,7 +619,7 @@
             isAbstract="false">
             <classMoniker
               Id="f150d342-3120-4ead-8f72-7922f2c616db"
-              LastKnownName="ClientPass"
+              LastKnownName="Pass"
               LastKnownLocation="PassContainerPackage.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -740,7 +744,7 @@
     <packageHasNamedElement>
       <class
         Id="f150d342-3120-4ead-8f72-7922f2c616db"
-        name="ClientPass"
+        name="Pass"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
@@ -874,7 +878,7 @@
             isAbstract="false">
             <classMoniker
               Id="f150d342-3120-4ead-8f72-7922f2c616db"
-              LastKnownName="ClientPass"
+              LastKnownName="Pass"
               LastKnownLocation="PassContainerPackage.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -1196,7 +1200,7 @@
             isSubstitutable="false">
             <classMoniker
               Id="f150d342-3120-4ead-8f72-7922f2c616db"
-              LastKnownName="ClientPass"
+              LastKnownName="Pass"
               LastKnownLocation="PassContainerPackage.uml" />
           </generalization>
         </generalsInternal>

@@ -99,7 +99,7 @@
         <OperationElementListCompartment Id="7f1e493c-ece4-425b-b489-c55bf826bb69" absoluteBounds="1.89, 1.8511718675494193, 2.8449999999999998, 0.521484357615312" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <dependencyConnector edgePoints="[(3.3125 : 2.47265622516473); (3.3125 : 3.625)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black">
+    <dependencyConnector edgePoints="[(3.3125 : 2.47265622516473); (3.3125 : 3.625)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="Black">
       <dependencyMoniker Id="7ad03777-49d0-490f-8062-d65876a5815f" />
       <relativeChildShapes />
       <nodes>
@@ -114,7 +114,7 @@
         <OperationElementListCompartment Id="a41a9248-d7c8-413e-99c9-087bc6117895" absoluteBounds="9.64, 1.8511718675494193, 2.5949999999999998, 0.84179684768120444" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <dependencyConnector edgePoints="[(10.875 : 2.79296871523062); (10.875 : 3.75)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black">
+    <dependencyConnector edgePoints="[(10.875 : 2.79296871523062); (10.875 : 3.75)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="Black">
       <dependencyMoniker Id="5f5cbe71-cae8-47e3-be69-7cbee1e32812" />
       <relativeChildShapes />
       <nodes>
@@ -151,7 +151,7 @@
         <OperationElementListCompartment Id="79761d4d-aa16-4c45-b668-379003da8873" absoluteBounds="6.015, 3.6011718675494193, 2.5949999999999998, 0.521484357615312" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <dependencyConnector edgePoints="[(6 : 3.92382811258237); (4.875 : 3.92382811258237)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black">
+    <dependencyConnector edgePoints="[(6 : 3.92382811258237); (4.875 : 3.92382811258237)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="Black">
       <dependencyMoniker Id="f09991d9-cf66-4095-957e-7f3786d52408" />
       <relativeChildShapes />
       <nodes>

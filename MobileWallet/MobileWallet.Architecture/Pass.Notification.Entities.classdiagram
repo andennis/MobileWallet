@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="6427c78e-866d-4cc2-9547-a22f627034d5" name="Pass.Notification.Entities" linkedPackageId="f89bdda3-3e8f-41cf-908d-9c3529246afc" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="6427c78e-866d-4cc2-9547-a22f627034d5" name="Pass.Notification.Entities" linkedPackageId="f89bdda3-3e8f-41cf-908d-9c3529246afc" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
-      <class Id="f17a2f67-6a5b-4673-bb82-4b04e8806c15" name="PassNotificationQueueBase" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="f17a2f67-6a5b-4673-bb82-4b04e8806c15" name="PassNotificationBase" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="a54d9c5b-c5a6-47fe-82b8-7b5ca1c33db3" />
         <ownedAttributesInternal>
           <property Id="6dd0a130-0d92-47cb-ab2a-297a72c8a950" name="DeviceId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
@@ -12,11 +12,11 @@
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="901028b7-f2e2-4fbb-8a0f-d506320e7ef6" name="PassNotificationQueueApple" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="901028b7-f2e2-4fbb-8a0f-d506320e7ef6" name="PassNotificationApple" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="8ea83810-7c95-46f5-ae6a-184b1d4a847f" />
         <generalsInternal>
           <generalization Id="00434aa5-1afc-46ef-b54c-d58c380dc650" isSubstitutable="false">
-            <classMoniker Id="f17a2f67-6a5b-4673-bb82-4b04e8806c15" LastKnownName="PassNotificationQueueBase" />
+            <classMoniker Id="f17a2f67-6a5b-4673-bb82-4b04e8806c15" LastKnownName="PassNotificationBase" />
             <elementDefinition Id="e4e8541a-cdaf-47eb-b1a6-b30ca9fb618c" />
           </generalization>
         </generalsInternal>
