@@ -20,5 +20,10 @@ namespace FileStorage.BL
         {
             throw new NotImplementedException();
         }
+
+        public void DeleteItem(int itemId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
