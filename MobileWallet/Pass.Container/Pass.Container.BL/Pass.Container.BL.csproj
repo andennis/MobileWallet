@@ -40,7 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppleDevicePassService.cs" />
+    <Compile Include="ApplePassController.cs" />
+    <Compile Include="PassContainerController.cs" />
     <Compile Include="PassContainerService.cs" />
+    <Compile Include="PassLinkGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

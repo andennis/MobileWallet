@@ -5,6 +5,7 @@ namespace Pass.Container.Core.Entities
     {
         public int PassFieldValueId { get; set; }
         public string Value { get; set; }
-        public Core.Entities.Pass Pass { get; set; }
+        public Pass Pass { get; set; }
+        public PassField PassField { get; set; }
     }
 }

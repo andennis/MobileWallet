@@ -39,12 +39,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppleDevicePassService.cs" />
+    <Compile Include="Entities\DeviceApple.cs" />
+    <Compile Include="Entities\DeviceBase.cs" />
+    <Compile Include="Entities\DeviceRegistration.cs" />
+    <Compile Include="Entities\Enums\DeviceRegistrationStatus.cs" />
+    <Compile Include="Entities\Enums\DeviceType.cs" />
+    <Compile Include="Entities\NativePassApple.cs" />
+    <Compile Include="Entities\NativePassBase.cs" />
     <Compile Include="Entities\Pass.cs" />
+    <Compile Include="Entities\PassField.cs" />
     <Compile Include="Entities\PassFieldValue.cs" />
+    <Compile Include="Entities\Enums\PassStatus.cs" />
+    <Compile Include="Entities\PassTemplate.cs" />
     <Compile Include="IAppleDevicePassService.cs" />
+    <Compile Include="IPassContainerRepository.cs" />
     <Compile Include="IPassContainerService.cs" />
-    <Compile Include="PassContainerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
