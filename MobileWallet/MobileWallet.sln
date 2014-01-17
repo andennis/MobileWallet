@@ -45,6 +45,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frameworks", "Frameworks", "{9743B833-AC83-4D94-9CE4-219137B9C9E2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository", "Repository", "{380C838C-DDA1-45E1-B45D-56C686CF097E}"
+	ProjectSection(SolutionItems) = preProject
+		SourceInfo.txt = SourceInfo.txt
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Frameworks\Repository\Repository.csproj", "{6E682A14-C872-4813-B620-76E108DEA683}"
 EndProject
