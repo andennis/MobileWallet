@@ -1,6 +1,5 @@
 ﻿using System;
 using FileStorage.Core;
-using FileStorage.Core.Entities;
 
 namespace FileStorage.BL
 {
@@ -11,17 +10,37 @@ namespace FileStorage.BL
             throw new NotImplementedException();
         }
 
+        public int PutFile(System.IO.Stream stream)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetFilePath(int itemId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public System.IO.Stream GetFile(int itemId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteFile(int itemId)
+        {
+            throw new NotImplementedException();
+        }
+
         public int PutFolder(string folderPath)
         {
             throw new NotImplementedException();
         }
 
-        public ItemInfo GetItem(int itemId)
+        public string GetFolderPath(int itemId)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteItem(int itemId)
+        public void DeleteFolder(int itemId)
         {
             throw new NotImplementedException();
         }

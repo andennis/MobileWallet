@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
 using FileStorage.Core.Entities;
 
 namespace FileStorage.Repository.EF
@@ -15,20 +10,22 @@ namespace FileStorage.Repository.EF
         public FileStorageDbContext(string nameOrConnectionString)
             :base(nameOrConnectionString)
         {
-            Database.SetInitializer<FileStorageDbContext>(null);
+            //Database.SetInitializer<FileStorageDbContext>(null);
         }
 
-        public DbSet<ItemInfo> Items { get; set; }
-        public DbSet<FileInfo> Files { get; set; }
+        public DbSet<FolderItem> Items { get; set; }
+        public DbSet<FileItem> Files { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ItemInfo>().ToTable("Item", DbScheme);
-            modelBuilder.Entity<ItemInfo>().Property(x => x.Name).IsRequired().HasMaxLength(400);
-            modelBuilder.Entity<ItemInfo>().HasOptional(x => x.ParentItem).WithMany(x => x.ChildItems).Map(x => x.MapKey("ParentId"));
+            modelBuilder.Entity<FolderItem>().ToTable("FolderItem", DbScheme);
+            modelBuilder.Entity<FolderItem>().Property(x => x.Name).IsRequired().HasMaxLength(400);
+            modelBuilder.Entity<FolderItem>().HasOptional(x => x.Parent).WithMany(x => x.ChildFolders).Map(x => x.MapKey("ParentId"));
 
-            modelBuilder.Entity<FileInfo>().ToTable("File", DbScheme);
-            modelBuilder.Entity<FileInfo>().Property(x => x.OriginalName).IsRequired().HasMaxLength(400);
+            modelBuilder.Entity<FileItem>().ToTable("FileItem", DbScheme);
+            modelBuilder.Entity<FileItem>().Property(x => x.Name).IsRequired().HasMaxLength(400);
+            modelBuilder.Entity<FileItem>().Property(x => x.OriginalName).IsRequired().HasMaxLength(400);
+            modelBuilder.Entity<FileItem>().HasRequired(x => x.Parent).WithMany(x => x.ChildFiles).Map(x => x.MapKey("ParentId"));
 
             base.OnModelCreating(modelBuilder);
         }

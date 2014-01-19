@@ -7,7 +7,7 @@
     <packageHasNamedElement>
       <class
         Id="46ff7eeb-3e65-4921-8f0a-b811dc9cb5b0"
-        name="ItemInfo"
+        name="FolderItem"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
@@ -21,7 +21,7 @@
             isAbstract="false">
             <classMoniker
               Id="46ff7eeb-3e65-4921-8f0a-b811dc9cb5b0"
-              LastKnownName="ItemInfo"
+              LastKnownName="FolderItem"
               LastKnownLocation="FileStoragePackage.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -64,6 +64,45 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="1a1ae208-7901-4aa6-946b-448d0f909ccb"
+            isDerived="false"
+            sourceEndRoleName="FolderItem"
+            targetEndRoleName="FileItem"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="1d11898e-48fb-48f1-ae60-ad306b625f84"
+              LastKnownName="FileItem"
+              LastKnownLocation="FileStoragePackage.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="af1d9719-7aa1-400e-b4aa-1c17a67da22d"
+                  name="FolderItem"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6182951a-8cd9-4d03-aca7-e914f82e5bd2"
+                  name="FileItem"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
         <ownedAttributesInternal>
           <property
@@ -83,20 +122,10 @@
     <packageHasNamedElement>
       <class
         Id="1d11898e-48fb-48f1-ae60-ad306b625f84"
-        name="FileInfo"
+        name="FileItem"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
-        <generalsInternal>
-          <generalization
-            Id="767bac58-722e-497c-a9a3-0f0199d233e3"
-            isSubstitutable="false">
-            <classMoniker
-              Id="46ff7eeb-3e65-4921-8f0a-b811dc9cb5b0"
-              LastKnownName="ItemInfo"
-              LastKnownLocation="FileStoragePackage.uml" />
-          </generalization>
-        </generalsInternal>
         <ownedAttributesInternal>
           <property
             Id="6f3b5e68-c60f-441e-8ac5-04b3339e0496"

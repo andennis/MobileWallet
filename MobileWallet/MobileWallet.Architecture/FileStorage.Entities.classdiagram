@@ -2,11 +2,11 @@
 <logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="a7e17e8d-f81a-4100-9958-5eea45d56371" name="FileStorage.Entities" linkedPackageId="f57cfcec-9bb7-48ef-8654-a20eed6156e7" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
-      <class Id="b970e8af-9783-4adb-96ee-c320b2f403b4" name="ItemInfo" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="b970e8af-9783-4adb-96ee-c320b2f403b4" name="FolderItem" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="46ff7eeb-3e65-4921-8f0a-b811dc9cb5b0" />
         <targetEnds>
           <association Id="e5dd8661-6305-4c3c-838f-dd787bfdedf8" isDerived="false" sourceEndRoleName="FolderInfo" targetEndRoleName="FolderInfo" isLeaf="false" isAbstract="false">
-            <classMoniker Id="b970e8af-9783-4adb-96ee-c320b2f403b4" LastKnownName="ItemInfo" />
+            <classMoniker Id="b970e8af-9783-4adb-96ee-c320b2f403b4" LastKnownName="FolderItem" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="aad18cd7-4022-4776-a255-7e8f955e0b6b" name="FolderInfo" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
@@ -31,6 +31,22 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="0b14eef2-07b3-4b2a-8df2-25897905cd8c" />
           </association>
+          <association Id="2d3c6f61-b58c-4ee5-b74f-84e1bc72ae92" isDerived="false" sourceEndRoleName="FolderItem" targetEndRoleName="FileItem" isLeaf="false" isAbstract="false">
+            <classMoniker Id="4fcbdceb-10af-4260-8e42-fcfdd83cb590" LastKnownName="FileItem" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f5e346e4-9769-4254-a774-47cdc8e84f30" name="FolderItem" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="af1d9719-7aa1-400e-b4aa-1c17a67da22d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="806f8815-0ad5-43f8-86de-b6e138cbc81d" name="FileItem" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="6182951a-8cd9-4d03-aca7-e914f82e5bd2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="1a1ae208-7901-4aa6-946b-448d0f909ccb" />
+          </association>
         </targetEnds>
         <ownedAttributesInternal>
           <property Id="049c0a00-b4ee-4969-bbd5-2f3207160571" name="Name" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
@@ -40,14 +56,8 @@
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="4fcbdceb-10af-4260-8e42-fcfdd83cb590" name="FileInfo" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="4fcbdceb-10af-4260-8e42-fcfdd83cb590" name="FileItem" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="1d11898e-48fb-48f1-ae60-ad306b625f84" />
-        <generalsInternal>
-          <generalization Id="7750ecd5-8e78-40b1-8c4c-e0d05d53cc74" isSubstitutable="false">
-            <classMoniker Id="b970e8af-9783-4adb-96ee-c320b2f403b4" LastKnownName="ItemInfo" />
-            <elementDefinition Id="767bac58-722e-497c-a9a3-0f0199d233e3" />
-          </generalization>
-        </generalsInternal>
         <ownedAttributesInternal>
           <property Id="1913956a-d4c7-44ae-beab-960d2a8a59d6" name="OriginalName" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="6f3b5e68-c60f-441e-8ac5-04b3339e0496" />

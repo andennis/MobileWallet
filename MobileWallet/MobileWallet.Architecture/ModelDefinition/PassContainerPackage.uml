@@ -1021,17 +1021,6 @@
             isDerivedUnion="false"
             aggregation="None"
             isComposite="false" />
-          <property
-            Id="5bc46652-07ac-4ef2-bdaf-5ae6d5a1380c"
-            name="DeviceType"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false" />
         </ownedAttributesInternal>
       </class>
     </packageHasNamedElement>

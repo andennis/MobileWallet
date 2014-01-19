@@ -263,9 +263,6 @@
           <property Id="aab1aee1-5905-4bab-834d-c01f1c743574" name="DeviceId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="febdf95a-c949-4a47-a519-9c33aca713f3" />
           </property>
-          <property Id="5b61fc8b-8202-4f6e-b545-abffcd607a1b" name="DeviceType" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="5bc46652-07ac-4ef2-bdaf-5ae6d5a1380c" />
-          </property>
         </ownedAttributesInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
