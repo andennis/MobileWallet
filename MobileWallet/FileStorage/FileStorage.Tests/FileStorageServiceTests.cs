@@ -11,13 +11,5 @@ namespace FileStorage.Tests
     [TestFixture]
     public class FileStorageServiceTests
     {
-        [Test]
-        public void Test1()
-        {
-            using (var v = new FileStorageDbContext("MobileWalletConnection"))
-            {
-                var v2 = v.Files.ToList();
-            }
-        }
     }
 }

@@ -19,10 +19,14 @@ namespace FileStorage.Repository.EF
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<FolderItem>().ToTable("FolderItem", DbScheme);
+            modelBuilder.Entity<FolderItem>().HasKey(x => x.ItemId);
+            modelBuilder.Entity<FolderItem>().Property(x => x.ItemId).HasColumnName("FolderItemId");
             modelBuilder.Entity<FolderItem>().Property(x => x.Name).IsRequired().HasMaxLength(400);
             modelBuilder.Entity<FolderItem>().HasOptional(x => x.Parent).WithMany(x => x.ChildFolders).Map(x => x.MapKey("ParentId"));
 
             modelBuilder.Entity<FileItem>().ToTable("FileItem", DbScheme);
+            modelBuilder.Entity<FileItem>().HasKey(x => x.ItemId);
+            modelBuilder.Entity<FileItem>().Property(x => x.ItemId).HasColumnName("FileItemId");
             modelBuilder.Entity<FileItem>().Property(x => x.Name).IsRequired().HasMaxLength(400);
             modelBuilder.Entity<FileItem>().Property(x => x.OriginalName).IsRequired().HasMaxLength(400);
             modelBuilder.Entity<FileItem>().HasRequired(x => x.Parent).WithMany(x => x.ChildFiles).Map(x => x.MapKey("ParentId"));

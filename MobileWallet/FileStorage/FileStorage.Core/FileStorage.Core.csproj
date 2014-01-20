@@ -39,8 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\BaseStorageItem.cs" />
     <Compile Include="Entities\FileItem.cs" />
     <Compile Include="Entities\FolderItem.cs" />
+    <Compile Include="Entities\ItemStatus.cs" />
+    <Compile Include="IFileStorageRepository.cs" />
     <Compile Include="IFileStorageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -13,5 +13,7 @@ namespace FileStorage.Core
         int PutFolder(string folderPath);
         string GetFolderPath(int itemId);
         void DeleteFolder(int itemId);
+
+        void PurgeDeletedItems();
     }
 }

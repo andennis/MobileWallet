@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using FileStorage.Core;
 
 namespace FileStorage.BL
@@ -10,7 +11,7 @@ namespace FileStorage.BL
             throw new NotImplementedException();
         }
 
-        public int PutFile(System.IO.Stream stream)
+        public int PutFile(Stream stream)
         {
             throw new NotImplementedException();
         }
@@ -20,7 +21,7 @@ namespace FileStorage.BL
             throw new NotImplementedException();
         }
 
-        public System.IO.Stream GetFile(int itemId)
+        public Stream GetFile(int itemId)
         {
             throw new NotImplementedException();
         }
@@ -41,6 +42,11 @@ namespace FileStorage.BL
         }
 
         public void DeleteFolder(int itemId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PurgeDeletedItems()
         {
             throw new NotImplementedException();
         }
