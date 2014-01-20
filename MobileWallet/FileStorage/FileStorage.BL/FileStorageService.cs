@@ -4,8 +4,15 @@ using FileStorage.Core;
 
 namespace FileStorage.BL
 {
-    public class FileStorageService : IFileStorageService
+    public sealed class FileStorageService : IFileStorageService
     {
+        private readonly IFileStorageConfig _config;
+
+        public FileStorageService(IFileStorageConfig config)
+        {
+            _config = config;
+        }
+
         public int PutFile(string filePath)
         {
             throw new NotImplementedException();

@@ -1,7 +1,7 @@
 ﻿
 namespace FileStorage.Core.Entities
 {
-    public class FileItem : BaseStorageItem
+    public sealed class FileItem : BaseStorageItem
     {
         //public int FileItemId { get; set; }
         //public string Name { get; set; }
