@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using FileStorage.Core.Entities;
 using NUnit.Framework;
+using Common.Repository.EF;
 
 namespace FileStorage.Repository.EF.Tests
 {

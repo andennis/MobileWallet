@@ -11,7 +11,7 @@ namespace FileStorage.BL
             throw new NotImplementedException();
         }
 
-        public int PutFile(Stream stream)
+        public int PutFile(Stream fileStream)
         {
             throw new NotImplementedException();
         }

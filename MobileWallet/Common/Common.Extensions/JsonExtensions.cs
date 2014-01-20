@@ -4,12 +4,14 @@ namespace Common.Extensions
 {
     public static class JsonExtensions
     {
+        private readonly static JsonSerializerSettings _serializerSettings = new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore };
+
         public static string ObjectToJson(this object obj)
         {
             if (obj == null)
                 return "{}";
 
-            return JsonConvert.SerializeObject(obj);
+            return JsonConvert.SerializeObject(obj, _serializerSettings);
         }
 
         public static TResult JsonToObject<TResult>(this string json)

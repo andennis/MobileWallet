@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{85EF284A-230F-49C8-BB02-93454CF77CAC}</ProjectGuid>
+    <ProjectGuid>{A3510B3E-A41A-4451-90B0-AEDED053D91F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FileStorage.Repository.EF.Tests</RootNamespace>
-    <AssemblyName>FileStorage.Repository.EF.Tests</AssemblyName>
+    <RootNamespace>Common.Extensions.Tests</RootNamespace>
+    <AssemblyName>Common.Extensions.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,7 +22,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,20 +30,13 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework">
+    <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -54,29 +45,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RepositoryTests.cs" />
+    <Compile Include="JsonExtensionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\Common.Repository.EF\Common.Repository.EF.csproj">
-      <Project>{925ec36b-df88-4cde-bc59-fe03c0173cae}</Project>
-      <Name>Common.Repository.EF</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\Common.Repository\Common.Repository.csproj">
-      <Project>{f36371d6-812f-49f5-9e9b-043265660647}</Project>
-      <Name>Common.Repository</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FileStorage.Core\FileStorage.Core.csproj">
-      <Project>{06ebd357-60dc-4bd9-ad9b-0a736dcc2203}</Project>
-      <Name>FileStorage.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FileStorage.Repository.EF\FileStorage.Repository.EF.csproj">
-      <Project>{2378c604-fff4-44f9-9934-bb17013c27fb}</Project>
-      <Name>FileStorage.Repository.EF</Name>
+    <ProjectReference Include="..\Common.Extensions\Common.Extensions.csproj">
+      <Project>{1628e173-1be9-4dfc-bcbe-93334de8ee46}</Project>
+      <Name>Common.Extensions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -5,7 +5,7 @@ namespace FileStorage.Core
     public interface IFileStorageService
     {
         int PutFile(string filePath);
-        int PutFile(Stream stream);
+        int PutFile(Stream fileStream);
         string GetFilePath(int itemId);
         Stream GetFile(int itemId);
         void DeleteFile(int itemId);

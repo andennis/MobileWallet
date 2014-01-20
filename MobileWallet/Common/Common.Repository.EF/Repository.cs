@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using Common.Repository;
 
-namespace FileStorage.Repository.EF
+namespace Common.Repository.EF
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         private readonly DbSet<TEntity> _dbSet;
-        private readonly FileStorageDbContext _dbContext;
+        private readonly DbContext _dbContext;
 
-        public Repository(FileStorageDbContext dbContext)
+        public Repository(DbContext dbContext)
         {
             _dbContext = dbContext;
             _dbSet = dbContext.Set<TEntity>();

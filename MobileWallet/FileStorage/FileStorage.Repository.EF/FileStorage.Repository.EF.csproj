@@ -51,14 +51,16 @@
     <Compile Include="FileStorageDbContext.cs" />
     <Compile Include="MigrationsContextFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository.cs" />
-    <Compile Include="RepositoryQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.Repository.EF\Common.Repository.EF.csproj">
+      <Project>{925ec36b-df88-4cde-bc59-fe03c0173cae}</Project>
+      <Name>Common.Repository.EF</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Common\Common.Repository\Common.Repository.csproj">
       <Project>{f36371d6-812f-49f5-9e9b-043265660647}</Project>
       <Name>Common.Repository</Name>

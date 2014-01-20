@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
-using Common.Repository;
 
-namespace FileStorage.Repository.EF
+namespace Common.Repository.EF
 {
     public sealed class RepositoryQuery<TEntity> : IRepositoryQuery<TEntity> where TEntity : class
     {
