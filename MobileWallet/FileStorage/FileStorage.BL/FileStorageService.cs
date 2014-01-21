@@ -1,16 +1,35 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.IO;
+using System.Linq;
 using FileStorage.Core;
+using FileStorage.Core.Entities;
 
 namespace FileStorage.BL
 {
-    public sealed class FileStorageService : IFileStorageService
+    public class FileStorageService : IFileStorageService
     {
+        private const string DbScheme = "fs";
         private readonly IFileStorageConfig _config;
+        private readonly IFileStorageRepository _fsRepository;
 
-        public FileStorageService(IFileStorageConfig config)
+        public FileStorageService(IFileStorageConfig config, IFileStorageRepository fsRepository)
         {
             _config = config;
+            _fsRepository = fsRepository;
+        }
+
+        private void InitFileStorage()
+        {
+            FolderItem fi = _fsRepository.Query().Filter(x => x.Parent == null).Get().FirstOrDefault();
+            if (fi == null)
+                _fsRepository.Insert(new FolderItem(){});
+        }
+
+        private FolderItem CreateFolderHierarchy(int folderLevel)
+        {
+            return null;
+            //GetFreeFolder(folderLevel, )
         }
 
         public int PutFile(string filePath)
@@ -58,9 +77,11 @@ namespace FileStorage.BL
             throw new NotImplementedException();
         }
 
-        private string GenerateItemName()
+        private FolderItem GetFreeFolder(int itemLevel, int maxItemsNumber)
         {
-            return Guid.NewGuid().ToString();
+            return _fsRepository.SqlQuery(DbScheme + ".GetFreeFolder @ItemLevel, @MaxItemsNumber",
+                                          new SqlParameter("ItemLevel", itemLevel), 
+                                          new SqlParameter("MaxItemsNumber", maxItemsNumber)).FirstOrDefault();
         }
     }
 }

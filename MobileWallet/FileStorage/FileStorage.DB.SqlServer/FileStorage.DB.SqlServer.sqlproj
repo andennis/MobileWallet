@@ -63,10 +63,12 @@
     <Folder Include="fs\" />
     <Folder Include="fs\Tables\" />
     <Folder Include="Security\" />
+    <Folder Include="fs\Stored Procedures\" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="fs\Tables\FileItem.sql" />
     <Build Include="fs\Tables\FolderItem.sql" />
     <Build Include="Security\fs.sql" />
+    <Build Include="fs\Stored Procedures\GetFreeFolder.sql" />
+    <Build Include="fs\Tables\StorageItem.sql" />
   </ItemGroup>
 </Project>

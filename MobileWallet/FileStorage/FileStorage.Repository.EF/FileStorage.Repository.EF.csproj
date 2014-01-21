@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileStorageDbContext.cs" />
+    <Compile Include="FileStorageRepository.cs" />
     <Compile Include="MigrationsContextFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

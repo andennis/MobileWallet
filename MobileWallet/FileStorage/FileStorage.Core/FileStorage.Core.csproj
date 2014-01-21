@@ -41,14 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\BaseStorageItem.cs" />
-    <Compile Include="Entities\FileItem.cs" />
+    <Compile Include="Entities\StorageItem.cs" />
     <Compile Include="Entities\FolderItem.cs" />
     <Compile Include="Entities\ItemStatus.cs" />
+    <Compile Include="Entities\StorageItemType.cs" />
     <Compile Include="IFileStorageConfig.cs" />
     <Compile Include="IFileStorageRepository.cs" />
     <Compile Include="IFileStorageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.Repository\Common.Repository.csproj">
+      <Project>{f36371d6-812f-49f5-9e9b-043265660647}</Project>
+      <Name>Common.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

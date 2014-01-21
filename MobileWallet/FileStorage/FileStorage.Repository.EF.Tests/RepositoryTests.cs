@@ -17,10 +17,10 @@ namespace FileStorage.Repository.EF.Tests
             using (var dbContext = new FileStorageDbContext("MobileWalletConnection"))
             {
                 var folderRep = new Repository<FolderItem>(dbContext);
-                var fi = new FolderItem() {Name = "F1", Status = ItemStatus.Active, CreatedDate = DateTime.Now, UpdatedDate = DateTime.Now};
-                folderRep.Insert(fi);
+                //var fi = new FolderItem() {Name = "F1", Status = ItemStatus.Active, CreatedDate = DateTime.Now, UpdatedDate = DateTime.Now};
+                //folderRep.Insert(fi);
                 dbContext.SaveChanges();
-                var v2 = folderRep.Find(fi.ItemId);
+                //var v2 = folderRep.Find(fi.ItemId);
             }
         }
 
@@ -29,7 +29,8 @@ namespace FileStorage.Repository.EF.Tests
         {
             using (var dbContext = new FileStorageDbContext("MobileWalletConnection"))
             {
-                int? v = dbContext.GetFreeFolder(2, 3);
+                dbContext.FolderItems.ToList();
+                //int? v = dbContext.GetFreeFolder(3, 3);
             }
         }
     }

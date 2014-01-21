@@ -4,24 +4,27 @@
 -- Description:	
 -- =============================================
 CREATE PROCEDURE [fs].[GetFreeFolder] 
-	@Level INT,
+	@ItemLevel INT,
 	@MaxItemsNumber INT
 AS
 BEGIN
-	;WITH folders(FolderItemId, ParentId, Name, [level]) AS
+    DECLARE @FolderItemId INT = NULL;
+
+	;WITH folders(FolderItemId, ParentId, ItemLevel) AS
 	(
-		SELECT FolderItemId, ParentId, Name, 1 AS [level]
-		FROM fs.FolderItem where ParentId is null
-		UNION all
-		SELECT f2.FolderItemId, f2.ParentId, f2.Name, f1.[level] + 1 
+		SELECT FolderItemId, ParentId, 1 AS ItemLevel
+		FROM fs.FolderItem WHERE ParentId IS NULL
+		UNION ALL
+		SELECT f2.FolderItemId, f2.ParentId, f1.ItemLevel + 1 
 		FROM folders f1
 		INNER JOIN fs.FolderItem f2 on f1.FolderItemId = f2.ParentId
 	)
-	SELECT TOP 1 ParentId/*, COUNT(*) AS Number*/ FROM folders 
-    WHERE [level] = @Level
-	GROUP BY ParentId
+	SELECT TOP 1 @FolderItemId = si.ParentId FROM folders f
+    INNER JOIN fs.StorageItem si ON si.ParentId = f.FolderItemId
+    WHERE f.ItemLevel = @ItemLevel
+	GROUP BY si.ParentId
 	HAVING COUNT(*) < @MaxItemsNumber
 	ORDER BY COUNT(*)
 
-
+    SELECT * FROM FolderItem WHERE FolderItemId = @FolderItemId
 END
