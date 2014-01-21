@@ -21,12 +21,12 @@ namespace FileStorage.BL
                 return -1;
             }
         }
-        public int ItemsNumber
+        public int MaxItemsNumber
         {
             get
             {
                 int n;
-                if (int.TryParse(GetValue("ItemsNumber"), out n))
+                if (int.TryParse(GetValue("MaxItemsNumber"), out n))
                     return n;
 
                 return -1;

@@ -4,12 +4,14 @@
     [FileSize]     INT            NOT NULL,
     [Name]         NVARCHAR (400) NOT NULL,
     [Status]       INT            NOT NULL,
-    [ParentId]     INT            NOT NULL,
     [CreatedDate]  DATETIME       NOT NULL,
     [UpdatedDate]  DATETIME       NOT NULL,
+    [ParentId]     INT            NOT NULL,
     CONSTRAINT [PK_fs.FileItem] PRIMARY KEY CLUSTERED ([FileItemId] ASC),
     CONSTRAINT [FK_fs.FileItem_fs.FolderItem_ParentId] FOREIGN KEY ([ParentId]) REFERENCES [fs].[FolderItem] ([FolderItemId]) ON DELETE CASCADE
 );
+
+
 
 
 

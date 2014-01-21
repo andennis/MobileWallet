@@ -23,5 +23,14 @@ namespace FileStorage.Repository.EF.Tests
                 var v2 = folderRep.Find(fi.ItemId);
             }
         }
+
+        [Test]
+        public void GetFreeFolderTest()
+        {
+            using (var dbContext = new FileStorageDbContext("MobileWalletConnection"))
+            {
+                int? v = dbContext.GetFreeFolder(2, 3);
+            }
+        }
     }
 }

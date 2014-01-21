@@ -3,7 +3,7 @@
     public interface IFileStorageConfig
     {
         int StorageDeep { get; }
-        int ItemsNumber { get; }
+        int MaxItemsNumber { get; }
         string StoragePath { get; }
     }
 }

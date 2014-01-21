@@ -57,5 +57,10 @@ namespace FileStorage.BL
         {
             throw new NotImplementedException();
         }
+
+        private string GenerateItemName()
+        {
+            return Guid.NewGuid().ToString();
+        }
     }
 }
