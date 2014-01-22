@@ -56,6 +56,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Configuration", "Com
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileStorage.BL.Tests", "FileStorage\FileStorage.BL.Tests\FileStorage.BL.Tests.csproj", "{DAEF4D0D-C211-4DCD-9EB5-9736C66ADF61}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pass.Manager", "Pass.Manager", "{BFCA7B7D-8D87-4586-AF73-F88BCE8EC611}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pass.Manager.Core", "Pass.Manager\Pass.Manager.Core\Pass.Manager.Core.csproj", "{DC28CC0D-F87E-4D65-8812-3BAF31C9C359}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -230,6 +234,14 @@ Global
 		{DAEF4D0D-C211-4DCD-9EB5-9736C66ADF61}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DAEF4D0D-C211-4DCD-9EB5-9736C66ADF61}.Release|X64.ActiveCfg = Release|Any CPU
 		{DAEF4D0D-C211-4DCD-9EB5-9736C66ADF61}.Release|x86.ActiveCfg = Release|Any CPU
+		{DC28CC0D-F87E-4D65-8812-3BAF31C9C359}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC28CC0D-F87E-4D65-8812-3BAF31C9C359}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC28CC0D-F87E-4D65-8812-3BAF31C9C359}.Debug|X64.ActiveCfg = Debug|Any CPU
+		{DC28CC0D-F87E-4D65-8812-3BAF31C9C359}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DC28CC0D-F87E-4D65-8812-3BAF31C9C359}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC28CC0D-F87E-4D65-8812-3BAF31C9C359}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC28CC0D-F87E-4D65-8812-3BAF31C9C359}.Release|X64.ActiveCfg = Release|Any CPU
+		{DC28CC0D-F87E-4D65-8812-3BAF31C9C359}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -255,5 +267,6 @@ Global
 		{DFABDFCC-3B69-434A-BD2A-6838CD7608A8} = {185AC291-63C8-48A7-B14C-288547273DA3}
 		{380C838C-DDA1-45E1-B45D-56C686CF097E} = {9743B833-AC83-4D94-9CE4-219137B9C9E2}
 		{6E682A14-C872-4813-B620-76E108DEA683} = {380C838C-DDA1-45E1-B45D-56C686CF097E}
+		{DC28CC0D-F87E-4D65-8812-3BAF31C9C359} = {BFCA7B7D-8D87-4586-AF73-F88BCE8EC611}
 	EndGlobalSection
 EndGlobal
