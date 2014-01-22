@@ -21,15 +21,6 @@ namespace FileStorage.BL
 
         private void InitFileStorage()
         {
-            FolderItem fi = _fsRepository.Query().Filter(x => x.Parent == null).Get().FirstOrDefault();
-            if (fi == null)
-                _fsRepository.Insert(new FolderItem(){});
-        }
-
-        private FolderItem CreateFolderHierarchy(int folderLevel)
-        {
-            return null;
-            //GetFreeFolder(folderLevel, )
         }
 
         public int PutFile(string filePath)
@@ -77,10 +68,19 @@ namespace FileStorage.BL
             throw new NotImplementedException();
         }
 
-        private FolderItem GetFreeFolder(int itemLevel, int maxItemsNumber)
+        private FolderItem GetFreeFolder(int folderLevel)
         {
-            return _fsRepository.SqlQuery(DbScheme + ".GetFreeFolder @ItemLevel, @MaxItemsNumber",
-                                          new SqlParameter("ItemLevel", itemLevel), 
+            FolderItem fi = GetFreeFolder(folderLevel, _config.MaxItemsNumber);
+            if (fi != null)
+                return fi;
+
+            return null;
+        }
+
+        private FolderItem GetFreeFolder(int folderLevel, int maxItemsNumber)
+        {
+            return _fsRepository.SqlQuery(DbScheme + ".GetFreeFolder @FolderLevel, @MaxItemsNumber",
+                                          new SqlParameter("FolderLevel", folderLevel), 
                                           new SqlParameter("MaxItemsNumber", maxItemsNumber)).FirstOrDefault();
         }
     }

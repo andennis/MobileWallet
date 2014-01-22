@@ -64,6 +64,7 @@
     <Folder Include="fs\Tables\" />
     <Folder Include="Security\" />
     <Folder Include="fs\Stored Procedures\" />
+    <Folder Include="Scripts" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="fs\Tables\FolderItem.sql" />
