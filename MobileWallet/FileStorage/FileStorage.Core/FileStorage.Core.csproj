@@ -45,6 +45,7 @@
     <Compile Include="Entities\FolderItem.cs" />
     <Compile Include="Entities\ItemStatus.cs" />
     <Compile Include="Entities\StorageItemType.cs" />
+    <Compile Include="FileStorageException.cs" />
     <Compile Include="IFileStorageConfig.cs" />
     <Compile Include="IFileStorageRepository.cs" />
     <Compile Include="IFileStorageService.cs" />

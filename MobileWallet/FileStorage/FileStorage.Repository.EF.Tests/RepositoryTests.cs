@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using FileStorage.Core.Entities;
@@ -29,7 +30,13 @@ namespace FileStorage.Repository.EF.Tests
         {
             using (var dbContext = new FileStorageDbContext("MobileWalletConnection"))
             {
-                dbContext.FolderItems.ToList();
+                //dbContext.FolderItems.ToList();
+                var folder = dbContext.FolderItems.First(x => x.FolderItemId == 8);
+                dbContext.Entry(folder).Reference(x => x.Parent).Load();
+                var n =  dbContext.Entry(folder).Collection(x => x.ChildFolders).Query().Count();
+                //v.ChildFolders = new Collection<FolderItem>();
+                //v.ChildFolders.Add(new FolderItem(){Parent = v, Name = "123"});
+                //dbContext.SaveChanges();
                 //int? v = dbContext.GetFreeFolder(3, 3);
             }
         }

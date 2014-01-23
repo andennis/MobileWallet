@@ -10,6 +10,7 @@ namespace FileStorage.BL
     public class FileStorageService : IFileStorageService
     {
         private const string DbScheme = "fs";
+        private const string FolderItemPrefix = "FI";
         private readonly IFileStorageConfig _config;
         private readonly IFileStorageRepository _fsRepository;
 
@@ -72,9 +73,32 @@ namespace FileStorage.BL
         {
             FolderItem fi = GetFreeFolder(folderLevel, _config.MaxItemsNumber);
             if (fi != null)
-                return fi;
+            {
+                if (folderLevel == _config.StorageDeep)
+                    return fi;
+                /*
+                fi.ChildFoldersCount += 1;
+                var newFolder = new FolderItem()
+                         {
+                             Parent = fi,
+                             Name = FolderItemPrefix + fi.ChildFoldersCount,
+                         };
+                */
+                _fsRepository.Insert(fi);
+            }
 
-            return null;
+            fi = GetFreeFolder(--folderLevel);
+            if (fi == null)
+            {
+                //if (folderLevel == 1)
+
+                
+            }
+            
+            if (fi == null)
+                throw new FileStorageException(string.Format("File storage is full with deep {0}. Increase the storage deep parameter in configuration"));
+
+            return fi;
         }
 
         private FolderItem GetFreeFolder(int folderLevel, int maxItemsNumber)
@@ -82,6 +106,11 @@ namespace FileStorage.BL
             return _fsRepository.SqlQuery(DbScheme + ".GetFreeFolder @FolderLevel, @MaxItemsNumber",
                                           new SqlParameter("FolderLevel", folderLevel), 
                                           new SqlParameter("MaxItemsNumber", maxItemsNumber)).FirstOrDefault();
+        }
+
+        private int GetItemsNumber(int folderLevel)
+        {
+            return 0;
         }
     }
 }
