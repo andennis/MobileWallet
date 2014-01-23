@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="884e21c8-6329-4b60-906e-e07c8e62093c"
   name="FileStorage" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -73,7 +73,7 @@
             isAbstract="false">
             <classMoniker
               Id="1d11898e-48fb-48f1-ae60-ad306b625f84"
-              LastKnownName="FileItem"
+              LastKnownName="StorageItem"
               LastKnownLocation="FileStoragePackage.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -115,20 +115,177 @@
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
-            isComposite="false" />
+            isComposite="false">
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="PassModeling.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="9c42a184-bac3-4cc7-be24-d22da29ae570"
+            name="FolderItemId"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                LastKnownName="Integer"
+                LastKnownLocation="PassModeling.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="e10a522a-7c90-48d5-8d6d-c8770c978528"
+            name="Parent"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="46ff7eeb-3e65-4921-8f0a-b811dc9cb5b0"
+                LastKnownName="FolderItem"
+                LastKnownLocation="FileStoragePackage.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="c7fdcf86-1f6f-4d57-bbff-bc5d38cd1b9f"
+            name="ChildFolders"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <lowerValueInternal>
+              <literalString
+                Id="df3aa289-9c69-4366-b7e0-882265917dde"
+                name="Lower"
+                value="*" />
+            </lowerValueInternal>
+            <upperValueInternal>
+              <literalString
+                Id="f33caa5a-ea14-4d5a-8777-456c28fe186f"
+                name="Upper"
+                value="*" />
+            </upperValueInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="46ff7eeb-3e65-4921-8f0a-b811dc9cb5b0"
+                LastKnownName="FolderItem"
+                LastKnownLocation="FileStoragePackage.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="d3ef58fd-3a72-43f2-bbe5-cdbd1a8b06a1"
+            name="ChildStorageItems"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <lowerValueInternal>
+              <literalString
+                Id="b91c05a9-6277-40b4-b1e1-4e68dab693ff"
+                name="Lower"
+                value="*" />
+            </lowerValueInternal>
+            <upperValueInternal>
+              <literalString
+                Id="3b423010-d8e2-44f1-8b78-30810fe4827b"
+                name="Upper"
+                value="*" />
+            </upperValueInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="1d11898e-48fb-48f1-ae60-ad306b625f84"
+                LastKnownName="StorageItem"
+                LastKnownLocation="FileStoragePackage.uml" />
+            </type_NamedElement>
+          </property>
         </ownedAttributesInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <class
         Id="1d11898e-48fb-48f1-ae60-ad306b625f84"
-        name="FileItem"
+        name="StorageItem"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
         <ownedAttributesInternal>
           <property
             Id="6f3b5e68-c60f-441e-8ac5-04b3339e0496"
+            name="StorageItemId"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                LastKnownName="Integer"
+                LastKnownLocation="PassModeling.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="efd40510-631c-44b2-93d4-22b107dc5915"
+            name="Name"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="PassModeling.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="ce7f08ea-9082-41b3-9447-87ef40a4a083"
+            name="Parent"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="46ff7eeb-3e65-4921-8f0a-b811dc9cb5b0"
+                LastKnownName="FolderItem"
+                LastKnownLocation="FileStoragePackage.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="1fe3b001-b373-492d-93f1-7eeba8997b16"
             name="OriginalName"
             isLeaf="false"
             isStatic="false"
@@ -137,7 +294,68 @@
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
-            isComposite="false" />
+            isComposite="false">
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="PassModeling.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="f61d5216-3824-4862-b7d2-06b6d00bec98"
+            name="Size"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                LastKnownName="Integer"
+                LastKnownLocation="PassModeling.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="ce19a90e-4e7f-4805-95c3-2bcb9c28e71e"
+            name="Status"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <enumerationMoniker
+                Id="1560270a-8234-44fa-b400-cf0384280d2d"
+                LastKnownName="ItemStatus"
+                LastKnownLocation="FileStoragePackage.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="ea300a3b-3033-40ce-a92d-82249768aac7"
+            name="ItemType"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <enumerationMoniker
+                Id="8c641f9c-5e61-432d-b1f5-4241e64a1b73"
+                LastKnownName="StorageItemType"
+                LastKnownLocation="FileStoragePackage.uml" />
+            </type_NamedElement>
+          </property>
         </ownedAttributesInternal>
       </class>
     </packageHasNamedElement>
@@ -182,6 +400,38 @@
             isQuery="false" />
         </ownedOperations>
       </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <enumeration
+        Id="1560270a-8234-44fa-b400-cf0384280d2d"
+        name="ItemStatus"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedLiterals>
+          <enumerationLiteral
+            Id="305d8988-42f5-43e4-b026-631c1bf0275b"
+            name="Active" />
+          <enumerationLiteral
+            Id="ecdd1f7a-2d8e-400d-91af-155e8d363791"
+            name="Deleted" />
+        </ownedLiterals>
+      </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <enumeration
+        Id="8c641f9c-5e61-432d-b1f5-4241e64a1b73"
+        name="StorageItemType"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedLiterals>
+          <enumerationLiteral
+            Id="c3deb432-a7d8-4eb4-8f07-b5208279a900"
+            name="Folder" />
+          <enumerationLiteral
+            Id="46618337-18af-4055-bb07-ba1eefb59e79"
+            name="File" />
+        </ownedLiterals>
+      </enumeration>
     </packageHasNamedElement>
   </packagedElements>
 </package>

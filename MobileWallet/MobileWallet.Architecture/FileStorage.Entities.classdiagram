@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="a7e17e8d-f81a-4100-9958-5eea45d56371" name="FileStorage.Entities" linkedPackageId="f57cfcec-9bb7-48ef-8654-a20eed6156e7" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="a7e17e8d-f81a-4100-9958-5eea45d56371" name="FileStorage.Entities" linkedPackageId="f57cfcec-9bb7-48ef-8654-a20eed6156e7" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <class Id="b970e8af-9783-4adb-96ee-c320b2f403b4" name="FolderItem" isAbstract="false" isLeaf="false" isActiveClass="false">
@@ -32,7 +32,7 @@
             <elementDefinition Id="0b14eef2-07b3-4b2a-8df2-25897905cd8c" />
           </association>
           <association Id="2d3c6f61-b58c-4ee5-b74f-84e1bc72ae92" isDerived="false" sourceEndRoleName="FolderItem" targetEndRoleName="FileItem" isLeaf="false" isAbstract="false">
-            <classMoniker Id="4fcbdceb-10af-4260-8e42-fcfdd83cb590" LastKnownName="FileItem" />
+            <classMoniker Id="4fcbdceb-10af-4260-8e42-fcfdd83cb590" LastKnownName="StorageItem" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="f5e346e4-9769-4254-a774-47cdc8e84f30" name="FolderItem" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
@@ -51,20 +51,192 @@
         <ownedAttributesInternal>
           <property Id="049c0a00-b4ee-4969-bbd5-2f3207160571" name="Name" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="07501267-b9ef-4b57-940f-5448bb9ba6e0" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="390f09c1-b024-4572-9e03-40ccf52fbfab" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+          <property Id="81577917-c07d-483f-8cda-2f6a8c53aa2e" name="FolderItemId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="9c42a184-bac3-4cc7-be24-d22da29ae570" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="016de328-dc9d-41de-a086-cdf36339dcaf" LastKnownName="Integer" />
+            </type_NamedElement>
+          </property>
+          <property Id="b740b872-9e24-4f0d-98e3-72deeb72a7a6" name="Parent" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="e10a522a-7c90-48d5-8d6d-c8770c978528" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="6c75919a-8f4b-467d-9185-486f9e149a85" LastKnownName="FolderItem" />
+            </type_NamedElement>
+          </property>
+          <property Id="9022c405-fec0-4657-a691-53b7e5c6da43" name="ChildFolders" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <lowerValueInternal>
+              <literalString Id="ad204096-f19d-4b9e-a213-d4869f48ff58" name="Lower" value="*">
+                <elementDefinition Id="df3aa289-9c69-4366-b7e0-882265917dde" />
+              </literalString>
+            </lowerValueInternal>
+            <upperValueInternal>
+              <literalString Id="a143f87e-f6f9-4246-b43e-ce2e449ac8a0" name="Upper" value="*">
+                <elementDefinition Id="f33caa5a-ea14-4d5a-8777-456c28fe186f" />
+              </literalString>
+            </upperValueInternal>
+            <elementDefinition Id="c7fdcf86-1f6f-4d57-bbff-bc5d38cd1b9f" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="e9801fd2-2ed3-411a-b53d-5371ad100f1e" LastKnownName="FolderItem" />
+            </type_NamedElement>
+          </property>
+          <property Id="21d79c46-e871-40f3-b33b-28542288fc2f" name="ChildStorageItems" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <lowerValueInternal>
+              <literalString Id="b16a16be-6270-466d-b9df-b6700ed16fae" name="Lower" value="*">
+                <elementDefinition Id="b91c05a9-6277-40b4-b1e1-4e68dab693ff" />
+              </literalString>
+            </lowerValueInternal>
+            <upperValueInternal>
+              <literalString Id="adf15021-c744-40be-8b14-afa6c1525e3f" name="Upper" value="*">
+                <elementDefinition Id="3b423010-d8e2-44f1-8b78-30810fe4827b" />
+              </literalString>
+            </upperValueInternal>
+            <elementDefinition Id="d3ef58fd-3a72-43f2-bbe5-cdbd1a8b06a1" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="2e759386-3e6a-4ad2-8183-f99246dd9102" LastKnownName="StorageItem" />
+            </type_NamedElement>
           </property>
         </ownedAttributesInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="4fcbdceb-10af-4260-8e42-fcfdd83cb590" name="FileItem" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="4fcbdceb-10af-4260-8e42-fcfdd83cb590" name="StorageItem" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="1d11898e-48fb-48f1-ae60-ad306b625f84" />
         <ownedAttributesInternal>
-          <property Id="1913956a-d4c7-44ae-beab-960d2a8a59d6" name="OriginalName" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+          <property Id="1913956a-d4c7-44ae-beab-960d2a8a59d6" name="StorageItemId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="6f3b5e68-c60f-441e-8ac5-04b3339e0496" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="a6207e0a-699a-4082-97e3-6f5a1798d95e" LastKnownName="Integer" />
+            </type_NamedElement>
+          </property>
+          <property Id="28e85a1d-6596-40c9-872f-a540a19fe55d" name="Name" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="efd40510-631c-44b2-93d4-22b107dc5915" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="8d5ff8e8-9b44-49c2-93d2-886d4c0dc709" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+          <property Id="31585d3f-6694-4f8a-b5f0-5d3307dc3ac8" name="Parent" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="ce7f08ea-9082-41b3-9447-87ef40a4a083" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="9c0efe1e-5eae-4188-931d-af4a2c901ff4" LastKnownName="FolderItem" />
+            </type_NamedElement>
+          </property>
+          <property Id="6f8bee3c-87aa-4de4-a05b-11c9e6b95240" name="OriginalName" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="1fe3b001-b373-492d-93f1-7eeba8997b16" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="36c2c702-a1e8-40c6-8bd3-3f6a10c1659c" LastKnownName="String" />
+            </type_NamedElement>
+          </property>
+          <property Id="b885b010-3184-433d-84fa-e6ee0e5170cb" name="Size" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="f61d5216-3824-4862-b7d2-06b6d00bec98" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="da45d596-4f9a-4516-9cc8-b3f816031b31" LastKnownName="Integer" />
+            </type_NamedElement>
+          </property>
+          <property Id="abb5f6e4-cf03-4cfc-a28e-c8c48050282f" name="Status" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="ce19a90e-4e7f-4805-95c3-2bcb9c28e71e" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="08aeb3c1-972c-4f4e-9572-12cf781754eb" LastKnownName="ItemStatus" />
+            </type_NamedElement>
+          </property>
+          <property Id="6f49ebce-ecaf-4a42-9624-96c0f12edda8" name="ItemType" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="ea300a3b-3033-40ce-a92d-82249768aac7" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="4c53135f-6626-4696-abd5-2cedf537c717" LastKnownName="StorageItemType" />
+            </type_NamedElement>
           </property>
         </ownedAttributesInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="a6207e0a-699a-4082-97e3-6f5a1798d95e" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
+        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="8d5ff8e8-9b44-49c2-93d2-886d4c0dc709" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="9c0efe1e-5eae-4188-931d-af4a2c901ff4" name="FolderItem" isAbstract="false" isLeaf="false" cachedFullName="MobileWalletModeling::FileStorage::FolderItem">
+        <elementDefinition Id="46ff7eeb-3e65-4921-8f0a-b811dc9cb5b0" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="36c2c702-a1e8-40c6-8bd3-3f6a10c1659c" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="da45d596-4f9a-4516-9cc8-b3f816031b31" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
+        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <enumeration Id="1455a489-f08e-4429-855f-e6e9129961fb" name="ItemStatus" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1560270a-8234-44fa-b400-cf0384280d2d" />
+        <ownedLiterals>
+          <enumerationLiteral Id="95df6ce5-5f36-45f1-9fff-406798f76a98" name="Active">
+            <elementDefinition Id="305d8988-42f5-43e4-b026-631c1bf0275b" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="87616205-37f9-4c48-9d66-81241f6793e2" name="Deleted">
+            <elementDefinition Id="ecdd1f7a-2d8e-400d-91af-155e8d363791" />
+          </enumerationLiteral>
+        </ownedLiterals>
+      </enumeration>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <enumeration Id="46988269-1b31-4b1d-9377-45060a06f4cc" name="StorageItemType" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8c641f9c-5e61-432d-b1f5-4241e64a1b73" />
+        <ownedLiterals>
+          <enumerationLiteral Id="19fa3e68-34d8-484f-8834-93ff11463b35" name="Folder">
+            <elementDefinition Id="c3deb432-a7d8-4eb4-8f07-b5208279a900" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="4bc74660-fa84-4012-8c63-8dcd3d7f602a" name="File">
+            <elementDefinition Id="46618337-18af-4055-bb07-ba1eefb59e79" />
+          </enumerationLiteral>
+        </ownedLiterals>
+      </enumeration>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="08aeb3c1-972c-4f4e-9572-12cf781754eb" name="ItemStatus" isAbstract="false" isLeaf="false" cachedFullName="MobileWalletModeling::ItemStatus">
+        <elementDefinition Id="1560270a-8234-44fa-b400-cf0384280d2d" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="4c53135f-6626-4696-abd5-2cedf537c717" name="StorageItemType" isAbstract="false" isLeaf="false" cachedFullName="MobileWalletModeling::FileStorage::StorageItemType">
+        <elementDefinition Id="8c641f9c-5e61-432d-b1f5-4241e64a1b73" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="016de328-dc9d-41de-a086-cdf36339dcaf" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
+        <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="390f09c1-b024-4572-9e03-40ccf52fbfab" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="6c75919a-8f4b-467d-9185-486f9e149a85" name="FolderItem" isAbstract="false" isLeaf="false" cachedFullName="MobileWalletModeling::FileStorage::FolderItem">
+        <elementDefinition Id="46ff7eeb-3e65-4921-8f0a-b811dc9cb5b0" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="e9801fd2-2ed3-411a-b53d-5371ad100f1e" name="FolderItem" isAbstract="false" isLeaf="false" cachedFullName="MobileWalletModeling::FileStorage::FolderItem">
+        <elementDefinition Id="46ff7eeb-3e65-4921-8f0a-b811dc9cb5b0" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="2e759386-3e6a-4ad2-8183-f99246dd9102" name="StorageItem" isAbstract="false" isLeaf="false" cachedFullName="MobileWalletModeling::FileStorage::StorageItem">
+        <elementDefinition Id="1d11898e-48fb-48f1-ae60-ad306b625f84" />
+      </referencedType>
+    </packageHasNamedElement>
   </packagedElements>
   <package Id="f57cfcec-9bb7-48ef-8654-a20eed6156e7" name="MobileWalletModeling">
     <elementDefinition Id="a53e0939-3e57-42d8-a1d6-852d3d589578" />

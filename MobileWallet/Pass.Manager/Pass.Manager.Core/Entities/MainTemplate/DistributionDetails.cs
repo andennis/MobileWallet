@@ -16,22 +16,22 @@ namespace Pass.Manager.Core.Entities.MainTemplate
         public int? LimitPassPerUser { get; set; }
 
         [JsonProperty(PropertyName = "allPassesAsExpired")]
-        public bool AllPassesAsExpired { get; set; }
+        public bool AllPassesAsExpired { get; set; }//??
 
-        [JsonProperty(PropertyName = "autoExpirePassesAfter", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime AutoExpirePassesAfter { get; set; }
+        [JsonProperty(PropertyName = "expirationDate", NullValueHandling = NullValueHandling.Ignore)]
+        public DateTime ExpirationDate { get; set; }
 
         [JsonProperty(PropertyName = "quantityRestriction", NullValueHandling = NullValueHandling.Ignore)]
         public int? QuantityRestriction { get; set; }
 
         [JsonProperty(PropertyName = "dateRestriction", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime? DateRestriction { get; set; }
+        public DateTime? DateRestriction { get; set; }//??
 
         [JsonProperty(PropertyName = "passwordToIssue", NullValueHandling = NullValueHandling.Ignore)]
-        public string PasswordToIssue { get; set; }
+        public string PasswordToIssue { get; set; }//??
 
         [JsonProperty(PropertyName = "passwordToUpdate", NullValueHandling = NullValueHandling.Ignore)]
-        public string PasswordToUpdate { get; set; }
+        public string PasswordToUpdate { get; set; }//??
     }
 
     public enum PassLinkType
