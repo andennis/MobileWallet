@@ -1,6 +1,6 @@
-﻿IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[fs].[GetFreeFolder]') AND type in (N'P', N'PC'))
-DROP PROCEDURE [fs].[GetFreeFolder]
-GO
+﻿--IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[fs].[GetFreeFolder]') AND type in (N'P', N'PC'))
+--DROP PROCEDURE [fs].[GetFreeFolder]
+--GO
 
 -- =============================================
 -- Author:		Denis Andreev
