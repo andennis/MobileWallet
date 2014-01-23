@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
@@ -18,15 +19,23 @@ namespace FileStorage.BL
         {
             _config = config;
             _fsRepository = fsRepository;
+
+            InitFileStorage();
         }
 
         private void InitFileStorage()
         {
+            if (!_fsRepository.Query().Get().Any())
+            {
+                _fsRepository.Insert(new FolderItem(){Name = "\\"});
+                _fsRepository.SaveChanges();
+            }
         }
 
         public int PutFile(string filePath)
         {
-            throw new NotImplementedException();
+            FolderItem fi = GetFreeFolder(_config.StorageDeep);
+            return 0;
         }
 
         public int PutFile(Stream fileStream)
@@ -69,36 +78,27 @@ namespace FileStorage.BL
             throw new NotImplementedException();
         }
 
-        private FolderItem GetFreeFolder(int folderLevel)
+        protected FolderItem GetFreeFolder(int folderLevel)
         {
-            FolderItem fi = GetFreeFolder(folderLevel, _config.MaxItemsNumber);
-            if (fi != null)
+            FolderItem parentFolder = GetFreeFolder(folderLevel, _config.MaxItemsNumber);
+            if (parentFolder == null)
             {
-                if (folderLevel == _config.StorageDeep)
-                    return fi;
-                /*
-                fi.ChildFoldersCount += 1;
-                var newFolder = new FolderItem()
-                         {
-                             Parent = fi,
-                             Name = FolderItemPrefix + fi.ChildFoldersCount,
-                         };
-                */
-                _fsRepository.Insert(fi);
+                if (folderLevel == 0)
+                    throw new FileStorageException(string.Format("File storage is full. Increase the parameters storage deep or max items number in configuration"));
+
+                parentFolder = GetFreeFolder(folderLevel - 1);
             }
 
-            fi = GetFreeFolder(--folderLevel);
-            if (fi == null)
-            {
-                //if (folderLevel == 1)
+            if (folderLevel == _config.StorageDeep)
+                return parentFolder;
 
+            var newFolder = GenerateNewFolder(parentFolder);
+            parentFolder.ChildFolders = new Collection<FolderItem>(){newFolder};
+            parentFolder.ChildFoldersCount += 1;
                 
-            }
-            
-            if (fi == null)
-                throw new FileStorageException(string.Format("File storage is full with deep {0}. Increase the storage deep parameter in configuration"));
-
-            return fi;
+            _fsRepository.Update(parentFolder);
+            _fsRepository.SaveChanges();
+            return parentFolder.ChildFolders.First();
         }
 
         private FolderItem GetFreeFolder(int folderLevel, int maxItemsNumber)
@@ -108,9 +108,19 @@ namespace FileStorage.BL
                                           new SqlParameter("MaxItemsNumber", maxItemsNumber)).FirstOrDefault();
         }
 
-        private int GetItemsNumber(int folderLevel)
+        private FolderItem GenerateNewFolder(FolderItem parentFolder)
         {
-            return 0;
+            if (parentFolder == null)
+                return new FolderItem()
+                    {
+                        Name = FolderItemPrefix + "1"
+                    };
+
+            return new FolderItem()
+                    {
+                        Parent = parentFolder,
+                        Name = FolderItemPrefix + parentFolder.ChildFoldersCount + 1
+                    };
         }
     }
 }

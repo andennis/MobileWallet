@@ -31,12 +31,14 @@ namespace FileStorage.Repository.EF.Tests
             using (var dbContext = new FileStorageDbContext("MobileWalletConnection"))
             {
                 //dbContext.FolderItems.ToList();
-                var folder = dbContext.FolderItems.First(x => x.FolderItemId == 8);
-                dbContext.Entry(folder).Reference(x => x.Parent).Load();
-                var n =  dbContext.Entry(folder).Collection(x => x.ChildFolders).Query().Count();
-                //v.ChildFolders = new Collection<FolderItem>();
-                //v.ChildFolders.Add(new FolderItem(){Parent = v, Name = "123"});
-                //dbContext.SaveChanges();
+                //return;
+
+                var folder = dbContext.FolderItems.First(x => x.FolderItemId == 16);
+                //dbContext.Entry(folder).Reference(x => x.Parent).Load();
+                //var n =  dbContext.Entry(folder).Collection(x => x.ChildFolders).Query().Count();
+                folder.ChildFolders = new Collection<FolderItem>();
+                folder.ChildFolders.Add(new FolderItem() { Parent = folder, Name = "123" });
+                dbContext.SaveChanges();
                 //int? v = dbContext.GetFreeFolder(3, 3);
             }
         }

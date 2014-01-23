@@ -90,5 +90,10 @@ namespace Common.Repository.EF
             }
             return query;
         }
+
+        public void SaveChanges()
+        {
+            _dbContext.SaveChanges();
+        }
     }
 }

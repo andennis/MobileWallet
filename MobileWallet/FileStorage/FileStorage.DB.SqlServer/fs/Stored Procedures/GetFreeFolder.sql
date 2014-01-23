@@ -1,6 +1,6 @@
-﻿--IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[fs].[GetFreeFolder]') AND type in (N'P', N'PC'))
---DROP PROCEDURE [fs].[GetFreeFolder]
---GO
+﻿IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[fs].[GetFreeFolder]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [fs].[GetFreeFolder]
+GO
 
 -- =============================================
 -- Author:		Denis Andreev
@@ -16,7 +16,7 @@ BEGIN
 
 	;WITH folders(FolderItemId, ParentId, FolderLevel) AS
 	(
-		SELECT FolderItemId, ParentId, 1 AS FolderLevel
+		SELECT FolderItemId, ParentId, 0 AS FolderLevel
 		FROM fs.FolderItem WHERE ParentId IS NULL
 		UNION ALL
 		SELECT f2.FolderItemId, f2.ParentId, f1.FolderLevel + 1 
@@ -39,6 +39,6 @@ BEGIN
     HAVING SUM(t.Number) < @MaxItemsNumber
     ORDER BY SUM(t.Number)
 
-    SELECT FolderItemId, ParentId, Name
+    SELECT FolderItemId, ParentId, Name, ChildFoldersCount
     FROM fs.FolderItem WHERE FolderItemId = @FolderItemId
 END

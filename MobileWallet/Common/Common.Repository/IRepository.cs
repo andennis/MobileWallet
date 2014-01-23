@@ -12,5 +12,7 @@ namespace Common.Repository
         TEntity Find(params object[] keyValues);
         IRepositoryQuery<TEntity> Query();
         IQueryable<TEntity> SqlQuery(string query, params object[] parameters);
+
+        void SaveChanges();
     }
 }
