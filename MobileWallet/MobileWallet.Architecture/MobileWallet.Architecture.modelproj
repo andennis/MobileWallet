@@ -46,6 +46,9 @@
     <Content Include="ModelDefinition\FileStoragePackage.uml">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="ModelDefinition\Package_1058.uml">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="ModelDefinition\PassProcessingWebPackage.uml">
       <SubType>Content</SubType>
     </Content>

@@ -11,7 +11,7 @@ namespace Pass.Container.Core.Entities
     {
         public int NativePassTemplateId { get; set; }
         public int PackageId { get; set; }
-        public PassTemplate PassTemplate { get; set; }
+        public PassTemplateContainer PassTemplate { get; set; }
         public PassTemplateType PassTemplateType { get; set; }
     }
 }

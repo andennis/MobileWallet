@@ -10,7 +10,7 @@
       <annotatedElements>
         <classMoniker
           Id="fa091969-8ae4-418b-b492-22d9935f6114"
-          LastKnownName="PassContainerController"
+          LastKnownName="PassDistributionController"
           LastKnownLocation="PassContainerPackage.uml" />
       </annotatedElements>
     </comment>
@@ -20,7 +20,17 @@
       <annotatedElements>
         <classMoniker
           Id="8c95dbbc-c870-4d45-925f-3b9ce49764d9"
-          LastKnownName="ApplePassController"
+          LastKnownName="AppleDevicePassProcessingController"
+          LastKnownLocation="PassContainerPackage.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="2edac5ac-3358-4a65-aa20-a98f5265710c">
+      <body>Process templates from PassManager</body>
+      <annotatedElements>
+        <interfaceMoniker
+          Id="379bf228-012d-4aac-b760-0606251b3b80"
+          LastKnownName="IPassTemplateService"
           LastKnownLocation="PassContainerPackage.uml" />
       </annotatedElements>
     </comment>
@@ -99,6 +109,19 @@
         Id="7956bbdb-d105-4adc-be24-3657fe3cdf98"
         LastKnownName="Pass.Processing.Web"
         LastKnownLocation="PassProcessingWebPackage.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="875cb96c-90f4-4c28-9a77-04bc12b9526d"
+        LastKnownName="Package1"
+        LastKnownLocation="Package_1058.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="02204973-f4f3-472d-99c9-bc0a01bf0ac2"
+        name="IPassTemplateRepository"
+        isAbstract="false"
+        isLeaf="false" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

@@ -101,7 +101,7 @@
     <packageHasNamedElement>
       <class
         Id="ce141a54-1528-47d5-a12b-b125cc938c43"
-        name="PassContainerService"
+        name="PassDistributionService"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
@@ -110,7 +110,7 @@
             Id="3beebce1-3f58-4f3d-b7aa-df2dbdb10c9b">
             <interfaceMoniker
               Id="939f0582-e1f9-4664-a425-86de153d00ec"
-              LastKnownName="IPassContainerService"
+              LastKnownName="IPassDistributionService"
               LastKnownLocation="PassContainerPackage.uml" />
           </interfaceRealization>
           <dependency
@@ -130,116 +130,100 @@
         </suppliersInternal>
         <ownedOperationsInternal>
           <operation
-            Id="63728b5a-1ceb-411a-8ab1-33035e553cfe"
-            name="UpdatePassFields"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="3a697574-ec05-4726-9157-56dca0f56b8e"
-                  name="PassIds"
-                  direction="In"
-                  isUnique="false" />
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="7c6e47d4-b695-41fa-928b-d22b5d3428cf"
-                  name="PassFieldValues)("
-                  direction="In"
-                  isUnique="false" />
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation
-            Id="cda43e3b-c216-42de-ba27-599638a78916"
-            name="CreatePassTemplate"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="bcbe9151-4df9-490e-a4d7-3dd8c882a65e"
-                  name="PassTemplateId"
-                  direction="In"
-                  isUnique="false" />
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation
-            Id="066eeb86-ff7e-49b2-bc03-97c4b46dd5d0"
-            name="UpdatePassView"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="66e97061-1fdf-4647-99ff-326cf1ee4888"
-                  name="PassTemplateId"
-                  direction="In" />
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="8301561d-dce5-4b13-9aa4-a548758fc0a2"
-                  name="TemplatePackageId"
-                  direction="In" />
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation
-            Id="8c876e59-36fa-4b1d-add1-90637354f2fe"
+            Id="1b78feae-db90-4218-9fa9-1445c80cfe61"
             name="CreateClientPass"
             isLeaf="false"
             isStatic="false"
-            isAbstract="false"
+            isAbstract="true"
             concurrency="Sequential"
             isQuery="false">
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="86c388cb-8ef5-445b-91ac-70d0cf39cb25"
+                  Id="8e4b2311-2c89-4cd2-8b50-a934bfe3a11e"
+                  name="PassTemplateId"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c174b475-e359-4cf8-a922-ed74eab9618f"
+                  name="PassFieldValues"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="48bfec88-5581-4c33-916c-a278b8eb467a"
+            name="GetClientPassPackage"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="07e3f391-d402-44bc-bd4d-67ddd5feee41"
                   name="PassId"
                   direction="In"
                   isUnique="false" />
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="9f7b3dbc-54e9-4d66-9ab5-6ed702e73bb1"
-                  name="PassFields"
+                  Id="1761068e-631c-4ca7-b6cc-14f4ab8b1fae"
+                  name="DeviceType"
                   direction="In"
                   isUnique="false" />
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
           <operation
-            Id="a3996a03-84d2-42e8-8f6e-bcd851e91d25"
+            Id="7243f7b6-7872-44a9-8473-6c0b28ed8e96"
             name="GetPassPackage"
             isLeaf="false"
             isStatic="false"
-            isAbstract="false"
+            isAbstract="true"
             concurrency="Sequential"
             isQuery="false">
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="d6956f53-6b3b-4011-9475-bd82c6d8634d"
-                  name="ClientPassId"
+                  Id="576fc16a-d111-45e6-be5f-4ddc3f25087f"
+                  name="PassTemplateId"
                   direction="In"
                   isUnique="false" />
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="873d86cc-b809-4107-81f6-2546c68cdb68"
+                  Id="2464f39b-8a49-4018-9582-6d1e71b7a0c5"
                   name="DeviceType"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="18a946eb-c42f-4f14-8c82-5b919eb79526"
+            name="UpdatePassFields"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="81e32acd-9a5d-4e2d-8540-5e4f2e87f82d"
+                  name="PassIds"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="36ea63f2-c7f4-44a1-b1ad-d4ffc481784e"
+                  name="PassFieldValues)("
                   direction="In"
                   isUnique="false" />
               </operationHasOwnedParameters>
@@ -251,7 +235,7 @@
     <packageHasNamedElement>
       <Interface
         Id="939f0582-e1f9-4664-a425-86de153d00ec"
-        name="IPassContainerService"
+        name="IPassDistributionService"
         isAbstract="false"
         isLeaf="false">
         <appliedStereotypesInternal>
@@ -328,47 +312,6 @@
                   name="PassFieldValues)("
                   direction="In"
                   isUnique="false" />
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation
-            Id="f9bff3e0-83c7-4bbf-92a1-178d5a146c65"
-            name="CreatePassTemplate"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="true"
-            concurrency="Sequential"
-            isQuery="false">
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="a5284427-ef97-4984-8e8a-911e0328a793"
-                  name="TemplatePackage"
-                  direction="In"
-                  isUnique="false" />
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation
-            Id="90354308-22fd-4f29-9efe-73daa72a6168"
-            name="UpdatePassView"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="true"
-            concurrency="Sequential"
-            isQuery="false">
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="1f2aca2f-fd62-4a3f-8f75-a65c35762f26"
-                  name="PassTemplateId"
-                  direction="In" />
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="416f4169-0358-4425-8c1c-5e8d6e97d825"
-                  name="TemplatePackageId"
-                  direction="In" />
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
@@ -460,7 +403,7 @@
     <packageHasNamedElement>
       <Interface
         Id="0011cd7d-47e4-4709-8c0b-9fc6f641ccdd"
-        name="IAppleDevicePassService"
+        name="IAppleDevicePassProcessingService"
         isAbstract="false"
         isLeaf="false">
         <appliedStereotypesInternal>
@@ -553,7 +496,7 @@
     <packageHasNamedElement>
       <class
         Id="2871f6c0-aa1f-417a-bcc1-b966ca97f2cb"
-        name="PassTemplate"
+        name="PassTemplateContainer"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
@@ -787,7 +730,7 @@
           </property>
           <property
             Id="fa53a89e-da07-4e8b-93cc-f9418ca059d2"
-            name="PassTemplateId"
+            name="PassTemplateContainerId"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -1208,7 +1151,7 @@
     <packageHasNamedElement>
       <class
         Id="a43116b0-4ace-415d-b843-f44a04c81df0"
-        name="AppleDevicePassService"
+        name="AppleDevicePassProcessingService"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
@@ -1217,7 +1160,7 @@
             Id="2b1728e0-68d8-4434-b40e-92d70d4463a1">
             <interfaceMoniker
               Id="0011cd7d-47e4-4709-8c0b-9fc6f641ccdd"
-              LastKnownName="IAppleDevicePassService"
+              LastKnownName="IAppleDevicePassProcessingService"
               LastKnownLocation="PassContainerPackage.uml" />
           </interfaceRealization>
           <dependency
@@ -1338,7 +1281,7 @@
             <type_NamedElement>
               <classMoniker
                 Id="2871f6c0-aa1f-417a-bcc1-b966ca97f2cb"
-                LastKnownName="PassTemplate"
+                LastKnownName="PassTemplateContainer"
                 LastKnownLocation="PassContainerPackage.uml" />
             </type_NamedElement>
           </property>
@@ -1410,7 +1353,7 @@
     <packageHasNamedElement>
       <class
         Id="8c95dbbc-c870-4d45-925f-3b9ce49764d9"
-        name="ApplePassController"
+        name="AppleDevicePassProcessingController"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
@@ -1419,7 +1362,7 @@
             Id="76e58a0d-1c72-4b85-9549-e32b56403158">
             <interfaceMoniker
               Id="0011cd7d-47e4-4709-8c0b-9fc6f641ccdd"
-              LastKnownName="IAppleDevicePassService"
+              LastKnownName="IAppleDevicePassProcessingService"
               LastKnownLocation="PassContainerPackage.uml" />
           </dependency>
         </suppliersInternal>
@@ -1462,7 +1405,7 @@
     <packageHasNamedElement>
       <class
         Id="fa091969-8ae4-418b-b492-22d9935f6114"
-        name="PassContainerController"
+        name="PassDistributionController"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
@@ -1471,7 +1414,7 @@
             Id="a0d45b7d-438e-44d4-b2bb-3e5572d91703">
             <interfaceMoniker
               Id="939f0582-e1f9-4664-a425-86de153d00ec"
-              LastKnownName="IPassContainerService"
+              LastKnownName="IPassDistributionService"
               LastKnownLocation="PassContainerPackage.uml" />
           </dependency>
         </suppliersInternal>
@@ -1539,7 +1482,7 @@
             Id="ad3e4327-8c46-46d2-9358-60642956d4df">
             <interfaceMoniker
               Id="939f0582-e1f9-4664-a425-86de153d00ec"
-              LastKnownName="IPassContainerService"
+              LastKnownName="IPassDistributionService"
               LastKnownLocation="PassContainerPackage.uml" />
           </dependency>
         </suppliersInternal>
@@ -1620,7 +1563,7 @@
             <type_NamedElement>
               <classMoniker
                 Id="2871f6c0-aa1f-417a-bcc1-b966ca97f2cb"
-                LastKnownName="PassTemplate"
+                LastKnownName="PassTemplateContainer"
                 LastKnownLocation="PassContainerPackage.uml" />
             </type_NamedElement>
           </property>
@@ -1668,6 +1611,428 @@
             name="AppleTemplate" />
         </ownedLiterals>
       </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="379bf228-012d-4aac-b760-0606251b3b80"
+        name="IPassTemplateService"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedOperations>
+          <operation
+            Id="40dba8d2-8db5-458c-9ff6-fb983f72a1f4"
+            name="CreatePassTemlate"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f5161ff3-e570-43c6-97e9-8858ab623e5d"
+                  name="TemplateName"
+                  direction="In" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="360afe9d-41b4-4c25-b384-0020de904653"
+                  name="NativePassTemplates"
+                  direction="In">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="63930a6c-3d9b-439f-a996-e33ad915f055"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="8ed81732-68ee-4c22-a804-101adf92ca87"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="5a9634e5-56d1-4df3-8923-52fdff917388"
+                  name="PassFields"
+                  direction="In">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="a53886cf-00e2-476a-9f24-a7eb864170cb"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="c4ffd8dc-a5aa-472b-8d9a-3b36e3c15f47"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c53a0548-6659-4daa-a19f-b98ff0704ebb"
+                  direction="Return">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="PassModeling.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="42e255de-34bb-45b0-b60b-5ca4688733eb"
+            name="UpdatePassTemplate"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="38141924-6f5f-4e87-ab81-cdfa776e83ca"
+                  name="PassTemplateContainerId"
+                  direction="In" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="59af3d4e-1b28-45e3-8733-d586932ca849"
+                  name="NativePassTemplates"
+                  direction="In">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="6c562625-a7db-4ac6-8e33-ddc2601d8852"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="552b4690-6c5f-4d8a-8e7f-2a01b1486b9b"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="72ce11cf-c24f-48f0-ba63-36c5c0bd687f"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="PassModeling.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="b3a532c7-49b9-41c5-8e9e-71ab356fceee"
+                  name="PassFields"
+                  direction="In">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="a91485d9-5261-489b-aca4-723a2f13c8a1"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="2c52cbc0-c149-4452-af53-393503de8d14"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="6286648c-dc66-4fed-8919-9288b071e478"
+            name="DeletePassTemplate"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="13db86fa-b78f-466c-a1c1-b170e307815e"
+                  name="PassTemplateContainerId"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="6131ab18-ba32-4f9a-a221-8c03e08ba37c"
+            name="GetNativePassTemplates"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c5792980-0d7e-4d92-9785-596ff7c62d12"
+                  name="PassTemplateContainerId"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="35222eaf-d68f-4cda-a892-dffe21cbcd39"
+            name="GetPassFields"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="e596f51b-2aa5-4e08-89f0-40617e3f6802"
+                  name="PassTemplateContainerId"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperations>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="d76f181c-9d95-492b-b481-555437f72b4c"
+        name="PassTemplateService"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="51ac5da6-b1e7-4cfe-80e4-5465827bb666">
+            <interfaceMoniker
+              Id="379bf228-012d-4aac-b760-0606251b3b80"
+              LastKnownName="IPassTemplateService"
+              LastKnownLocation="PassContainerPackage.uml" />
+          </interfaceRealization>
+          <dependency
+            Id="a29243ed-6a21-4dc8-bdf1-bda508f076ff">
+            <interfaceMoniker
+              Id="bf94aa0f-b7a0-4be6-818a-a6d2150d0be3"
+              LastKnownName="IFileStorageService"
+              LastKnownLocation="FileStoragePackage.uml" />
+          </dependency>
+          <dependency
+            Id="ecdc1585-7655-474a-b5be-ed7304fbb373">
+            <interfaceMoniker
+              Id="02204973-f4f3-472d-99c9-bc0a01bf0ac2"
+              LastKnownName="IPassTemplateRepository"
+              LastKnownLocation="PassModeling.uml" />
+          </dependency>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="79b27f58-458e-4e8e-a897-e24243d62bae"
+            name="CreatePassTemlate"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="8a066ff8-e610-44d3-b69a-39be4a593c4a"
+                  name="TemplateName"
+                  direction="In" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="74b836f0-d43b-4be3-9fdd-d0495721c275"
+                  name="NativePassTemplates"
+                  direction="In">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="793d00b1-91cb-459a-b428-19f5ecaa7411"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="10dd66dd-97cd-4ffa-92f9-93891ab7f348"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="4b5baceb-ee97-4983-b75a-a70d8551521a"
+                  name="PassFields"
+                  direction="In">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="748a4b88-0b56-4654-a1d5-1d6f1b90d72b"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="00626808-98a9-41a0-818e-e54c1fc5520a"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="79a84f17-c380-4b7f-8530-b038d592f078"
+                  direction="Return">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="PassModeling.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="e0393f3f-f4bf-4dc4-9e54-8d85474ca3ee"
+            name="DeletePassTemplate"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ce526c6a-462c-45e7-954c-cee051e8e982"
+                  name="PassTemplateContainerId"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="e1505ad2-3027-464f-868d-6cf5651bff5e"
+            name="GetNativePassTemplates"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="82f27b23-a32e-491d-987a-82b3a253c63c"
+                  name="PassTemplateContainerId"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="dadd063f-dab4-42c5-9468-ec5ebfcddc59"
+            name="GetPassFields"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="b4ba3154-586c-417f-9524-61622a644256"
+                  name="PassTemplateContainerId"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="46fc14e3-a6b4-43d9-9fad-e84a19be959e"
+            name="UpdatePassTemplate"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="0cf3e566-dcbc-4f76-8b3b-57d496d41451"
+                  name="PassTemplateContainerId"
+                  direction="In" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="51b3a710-c556-472b-986f-cde202aac84c"
+                  name="NativePassTemplates"
+                  direction="In">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="d9eaf014-896d-4b7c-8a1f-e34cc902e7d6"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="91c0464e-e965-41c6-afa7-49260bc9f92c"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="79100489-1cc2-4464-bc06-a30611f4ac9f"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
+                      LastKnownName="Integer"
+                      LastKnownLocation="PassModeling.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="4dfe587e-526d-4ec7-b196-a016f35fef83"
+                  name="PassFields"
+                  direction="In">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="65f2ec88-edb3-47b6-a4b4-34641fc5530d"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="c475fccf-fd68-4435-8297-5ba6e6b8be09"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
     </packageHasNamedElement>
   </packagedElements>
 </package>

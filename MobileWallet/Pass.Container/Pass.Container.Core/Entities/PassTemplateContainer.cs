@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Pass.Container.Core.Entities
 {
-    public class PassTemplate
+    public class PassTemplateContainer
     {
-        public int PassTemplateId { get; set; }
+        public int PassTemplateContainerId { get; set; }
         public string Name { get; set; }
         public ICollection<Pass> Passes { get; set; }
         public ICollection<PassField> PassFields { get; set; }
