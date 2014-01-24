@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Pass.Container.Core;
+using Pass.Container.Core.Entities;
 
 namespace Pass.Container.BL
 {

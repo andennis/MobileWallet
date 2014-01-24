@@ -84,6 +84,20 @@
       <SubType>Content</SubType>
       <DependentUpon>Pass.Container.Services.classdiagram</DependentUpon>
     </Content>
+    <Content Include="Pass.Manager.Entities.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Pass.Manager.Entities.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Pass.Manager.Entities.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Pass.Manager.Services.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Pass.Manager.Services.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Pass.Manager.Services.classdiagram</DependentUpon>
+    </Content>
     <Content Include="Pass.Notification.Entities.classdiagram">
       <SubType>Content</SubType>
     </Content>

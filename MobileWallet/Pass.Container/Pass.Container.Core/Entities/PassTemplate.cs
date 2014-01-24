@@ -10,9 +10,8 @@ namespace Pass.Container.Core.Entities
     {
         public int PassTemplateId { get; set; }
         public string Name { get; set; }
-        public int TemplatePackageId { get; set; }
         public ICollection<Pass> Passes { get; set; }
         public ICollection<PassField> PassFields { get; set; }
-        public ICollection<NativePassBase> NativePassBaseCollection { get; set; }
+        public ICollection<INativePassTemplate> NativePassTemplates  { get; set; }
     }
 }

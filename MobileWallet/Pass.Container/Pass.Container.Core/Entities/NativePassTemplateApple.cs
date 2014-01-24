@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Pass.Container.Core.Entities
 {
-    public class NativePassApple : NativePassBase
+    public class NativePassTemplateApple : NativePassTemplateBase
     {
-        public int NativePassAppleId { get; set; }
         public int PassTypeId { get; set; }
     }
 }
