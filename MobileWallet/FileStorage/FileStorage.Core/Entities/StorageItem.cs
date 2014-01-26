@@ -7,7 +7,7 @@ namespace FileStorage.Core.Entities
         public string Name { get; set; }
         public FolderItem Parent { get; set; }
         public string OriginalName { get; set; }
-        public int Size { get; set; }
+        public long Size { get; set; }
         public ItemStatus Status { get; set; }
         public StorageItemType ItemType { get; set; }
     }

@@ -1,6 +1,8 @@
-﻿namespace FileStorage.Core
+﻿using Common.Repository;
+
+namespace FileStorage.Core
 {
-    public interface IFileStorageConfig
+    public interface IFileStorageConfig : IDbConfig
     {
         int StorageDeep { get; }
         int MaxItemsNumber { get; }

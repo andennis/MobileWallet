@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Common.Repository;
 using FileStorage.Core;
 using FileStorage.Core.Entities;
 using Common.Repository.EF;
@@ -11,19 +9,30 @@ namespace FileStorage.Repository.EF
 {
     public sealed class FileStorageRepository : Repository<FolderItem>, IFileStorageRepository
     {
-        //private const string DbScheme = "fs";
         //private readonly FileStorageDbContext _dbContext;
 
-        public FileStorageRepository(FileStorageDbContext dbContext)
-            :base(dbContext)
+        public FileStorageRepository(IDbSession dbSession)
+            : base((FileStorageDbContext)dbSession.DbContext)
         {
         }
 
-        /*
-        public FolderItem GetFreeFolder(int itemLevel, int maxItemsNumber)
+        public FolderItem GetFreeFolderItem(int folderLevel, int maxItemsNumber)
         {
-            return ((FileStorageDbContext) _dbContext).GetFreeFolder(itemLevel, maxItemsNumber);
+            return SqlQuery(FileStorageDbContext.DbScheme + ".GetFreeFolder @FolderLevel, @MaxItemsNumber",
+                                          new SqlParameter("FolderLevel", folderLevel),
+                                          new SqlParameter("MaxItemsNumber", maxItemsNumber)).FirstOrDefault();
         }
-        */
+
+        public string GetFolderItemPath(int folderItemId)
+        {
+            return SqlQueryScalar<string>(FileStorageDbContext.DbScheme + ".GetFolderPath @FolderItemId",
+                                          new SqlParameter("FolderItemId", folderItemId));
+        }
+
+        public string GetStorageItemPath(int storageItemId)
+        {
+            return SqlQueryScalar<string>(FileStorageDbContext.DbScheme + ".GetStorageItemPath @StorageItemId",
+                                          new SqlParameter("StorageItemId", storageItemId));
+        }
     }
 }

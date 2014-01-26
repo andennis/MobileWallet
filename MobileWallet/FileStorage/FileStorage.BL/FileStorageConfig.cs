@@ -36,5 +36,9 @@ namespace FileStorage.BL
         {
             get { return GetValue("StoragePath"); }
         }
+        public string ConnectionString
+        {
+            get { return GetValue("ConnectionStringName"); }
+        }
     }
 }

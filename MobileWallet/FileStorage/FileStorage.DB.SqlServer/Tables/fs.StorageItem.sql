@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [fs].[StorageItem] (
     [StorageItemId] INT            IDENTITY (1, 1) NOT NULL,
     [Name]          NVARCHAR (400) NOT NULL,
-    [OriginalName]  NVARCHAR (400) NOT NULL,
-    [Size]          INT            NOT NULL,
+    [OriginalName]  NVARCHAR (400) NULL,
+    [Size]          BIGINT         NULL,
     [Status]        INT            NOT NULL,
     [ItemType]      INT            NOT NULL,
     [ParentId]      INT            NOT NULL,

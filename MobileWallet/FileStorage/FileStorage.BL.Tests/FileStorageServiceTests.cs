@@ -11,15 +11,7 @@ namespace FileStorage.BL.Tests
     [TestFixture]
     public class FileStorageServiceTests
     {
-        private IFileStorageConfig _fsConfig;
-
-        private class FileStorageServiceTest : FileStorageService
-        {
-            public FileStorageServiceTest(IFileStorageConfig config, IFileStorageRepository fsRepository) 
-                :base(config, fsRepository)
-            {
-            }
-        }
+        private readonly IFileStorageConfig _fsConfig;
 
         public FileStorageServiceTests()
         {
@@ -29,15 +21,34 @@ namespace FileStorage.BL.Tests
         [Test]
         public void PutFileTest()
         {
-            using (var dbContext = new FileStorageDbContext("MobileWalletConnection"))
+            using (var dbSession = new FileStorageDbSession(_fsConfig))
             {
-                var fsService = new FileStorageServiceTest(new FileStorageConfig(), new FileStorageRepository(dbContext));
-                fsService.PutFile("");
-                fsService.PutFile("");
-                fsService.PutFile("");
-                fsService.PutFile("");
+                var fsService = new FileStorageService(_fsConfig, new FileStorageUnitOfWork(dbSession));
+                fsService.PutFile("Data\\TextFile1.txt");
+                fsService.PutFile("Data\\TextFile1.txt");
+                fsService.PutFile("Data\\TextFile1.txt");
             }
             
+        }
+
+        [Test]
+        public void PutFolderTest()
+        {
+            using (var dbSession = new FileStorageDbSession(_fsConfig))
+            {
+                var fsService = new FileStorageService(_fsConfig, new FileStorageUnitOfWork(dbSession));
+                fsService.PutFolder("Data", false);
+            }
+        }
+
+        [Test]
+        public void GetFilePathTest()
+        {
+            using (var dbSession = new FileStorageDbSession(_fsConfig))
+            {
+                var fsService = new FileStorageService(_fsConfig, new FileStorageUnitOfWork(dbSession));
+                string path = fsService.GetStorageItemPath(1);
+            }
         }
     }
 }

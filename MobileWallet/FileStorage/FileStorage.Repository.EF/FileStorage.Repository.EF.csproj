@@ -48,8 +48,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileStorageDbSession.cs" />
     <Compile Include="FileStorageDbContext.cs" />
     <Compile Include="FileStorageRepository.cs" />
+    <Compile Include="FileStorageUnitOfWork.cs" />
     <Compile Include="MigrationsContextFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -58,6 +60,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.Configuration\Common.Configuration.csproj">
+      <Project>{dfabdfcc-3b69-434a-bd2a-6838cd7608a8}</Project>
+      <Name>Common.Configuration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Common\Common.Repository.EF\Common.Repository.EF.csproj">
       <Project>{925ec36b-df88-4cde-bc59-fe03c0173cae}</Project>
       <Name>Common.Repository.EF</Name>

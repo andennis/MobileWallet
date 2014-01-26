@@ -9,6 +9,6 @@ namespace FileStorage.Core.Entities
         public int ChildFoldersCount{ get; set; }
         public FolderItem Parent { get; set; }
         public ICollection<FolderItem> ChildFolders { get; set; }
-        public ICollection<StorageItem> ChildStorageItems { get; set; }
+        public virtual ICollection<StorageItem> ChildStorageItems { get; set; }
     }
 }

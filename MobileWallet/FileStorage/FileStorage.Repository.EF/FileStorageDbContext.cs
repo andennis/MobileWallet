@@ -1,14 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.SqlClient;
-using System.Linq;
+﻿using System.Data.Entity;
 using FileStorage.Core.Entities;
 
 namespace FileStorage.Repository.EF
 {
     public class FileStorageDbContext : DbContext
     {
-        private const string DbScheme = "fs";
+        public const string DbScheme = "fs";
 
         public FileStorageDbContext(string nameOrConnectionString)
             :base(nameOrConnectionString)
@@ -20,7 +17,7 @@ namespace FileStorage.Repository.EF
         public DbSet<FolderItem> FolderItems { get; set; }
         public DbSet<StorageItem> StorageItems { get; set; }
 
-        /*
+        /*       
         public FolderItem GetFreeFolder(int itemLevel, int maxItemsNumber)
         {
             return this.Database.SqlQuery<FolderItem>(DbScheme + ".[GetFreeFolder] @ItemLevel, @MaxItemsNumber",
@@ -39,7 +36,8 @@ namespace FileStorage.Repository.EF
             modelBuilder.Entity<StorageItem>().HasRequired(x => x.Parent).WithMany(x => x.ChildStorageItems).Map(x => x.MapKey("ParentId"));
             //modelBuilder.Entity<StorageItem>().HasRequired(x => x.Parent).WithMany().Map(x => x.MapKey("ParentId"));
             modelBuilder.Entity<StorageItem>().Property(x => x.Name).IsRequired().HasMaxLength(400);
-            modelBuilder.Entity<StorageItem>().Property(x => x.OriginalName).IsRequired().HasMaxLength(400);
+            modelBuilder.Entity<StorageItem>().Property(x => x.OriginalName).IsOptional().HasMaxLength(400);
+            modelBuilder.Entity<StorageItem>().Property(x => x.Size).IsOptional();
 
             base.OnModelCreating(modelBuilder);
         }

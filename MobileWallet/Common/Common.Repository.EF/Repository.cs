@@ -9,7 +9,7 @@ namespace Common.Repository.EF
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         private readonly DbSet<TEntity> _dbSet;
-        protected readonly DbContext _dbContext;
+        private readonly DbContext _dbContext;
 
         public Repository(DbContext dbContext)
         {
@@ -21,12 +21,20 @@ namespace Common.Repository.EF
         {
             return _dbSet.Find(keyValues);
         }
-
         public virtual IQueryable<TEntity> SqlQuery(string query, params object[] parameters)
         {
             return _dbSet.SqlQuery(query, parameters).AsQueryable();
         }
+        public virtual T SqlQueryScalar<T>(string query, params object[] parameters)
+        {
+             return _dbContext.Database.SqlQuery<T>(query, parameters).FirstOrDefault();
+        }
 
+        public virtual void Insert(TEntity entity)
+        {
+            _dbSet.Attach(entity);
+            _dbContext.Entry(entity).State = EntityState.Added;
+        }
         public virtual void Update(TEntity entity)
         {
             _dbSet.Attach(entity);
@@ -38,18 +46,11 @@ namespace Common.Repository.EF
             var entity = _dbSet.Find(id);
             Delete(entity);
         }
-
         public virtual void Delete(TEntity entity)
         {
             _dbSet.Attach(entity);
             _dbContext.Entry(entity).State = EntityState.Deleted;
             _dbSet.Remove(entity);
-        }
-
-        public virtual void Insert(TEntity entity)
-        {
-            _dbSet.Attach(entity);
-            _dbContext.Entry(entity).State = EntityState.Added;
         }
 
         public virtual IRepositoryQuery<TEntity> Query()
@@ -90,10 +91,11 @@ namespace Common.Repository.EF
             }
             return query;
         }
-
+        /*
         public void SaveChanges()
         {
             _dbContext.SaveChanges();
         }
+        */
     }
 }
