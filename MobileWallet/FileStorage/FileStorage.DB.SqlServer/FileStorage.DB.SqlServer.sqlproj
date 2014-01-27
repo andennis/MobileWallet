@@ -66,6 +66,7 @@
     <Folder Include="Tables\" />
     <Folder Include="Stored Procedures\" />
     <Folder Include="Security\" />
+    <Folder Include="Scripts" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\fs.FolderItem.sql" />
@@ -75,5 +76,6 @@
     <Build Include="Stored Procedures\fs.GetFolderPath.sql" />
     <Build Include="Stored Procedures\fs.GetStorageItemPath.sql" />
     <Build Include="Security\fs.sql" />
+    <Build Include="Scripts\GenerateTestData.sql" />
   </ItemGroup>
 </Project>

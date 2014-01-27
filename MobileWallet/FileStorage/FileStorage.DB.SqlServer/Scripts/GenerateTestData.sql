@@ -1,3 +1,4 @@
+/*
 DELETE FROM fs.StorageItem
 DELETE FROM fs.FolderItem
 
@@ -42,3 +43,4 @@ VALUES (N'File211_2', N'File211_2', 0, 0, 0, @ParentId)
 INSERT INTO fs.StorageItem (Name, OriginalName, Size, [Status], ItemType, ParentId)
 VALUES (N'File211_3', N'File211_3', 0, 0, 0, @ParentId) 
 GO
+*/
