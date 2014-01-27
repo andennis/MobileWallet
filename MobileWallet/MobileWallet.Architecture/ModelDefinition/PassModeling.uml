@@ -1,26 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner"
   dslVersion="1.0.0.0"
   Id="a53e0939-3e57-42d8-a1d6-852d3d589578"
   name="MobileWalletModeling" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
   <ownedCommentsInternal>
     <comment
       Id="45c81ae8-df02-4345-85cd-58da5af46515">
-      <body>Process web requests to download pass package by provided link</body>
+      <body>Process requests from Pass.Distribution.Web</body>
       <annotatedElements>
         <classMoniker
           Id="fa091969-8ae4-418b-b492-22d9935f6114"
           LastKnownName="PassDistributionController"
           LastKnownLocation="PassContainerPackage.uml" />
+        <interfaceMoniker
+          Id="939f0582-e1f9-4664-a425-86de153d00ec"
+          LastKnownName="IPassDistributionService"
+          LastKnownLocation="PassContainerPackage.uml" />
       </annotatedElements>
     </comment>
     <comment
       Id="29a0b32a-e8ec-4bd1-a0fa-c45f6584b138">
-      <body>Process web requests from Apple devices and APNS</body>
+      <body>Process requests from Pass.Processing.Web</body>
       <annotatedElements>
-        <classMoniker
-          Id="8c95dbbc-c870-4d45-925f-3b9ce49764d9"
-          LastKnownName="AppleDevicePassProcessingController"
+        <interfaceMoniker
+          Id="0011cd7d-47e4-4709-8c0b-9fc6f641ccdd"
+          LastKnownName="IAppleDevicePassProcessingService"
           LastKnownLocation="PassContainerPackage.uml" />
       </annotatedElements>
     </comment>
@@ -53,6 +57,36 @@
     <comment
       Id="42b626c4-29a1-47cc-8c82-ff25365811b8">
       <body>FileStorage</body>
+    </comment>
+    <comment
+      Id="d307245d-80e4-4343-9be9-2b5f7bd2da97">
+      <body>Process web requests from Apple devices and APNS</body>
+      <annotatedElements>
+        <classMoniker
+          Id="ee9c76aa-289e-4767-9e5a-5ce5ed2e62a5"
+          LastKnownName="AppleDevicePassProcessingController"
+          LastKnownLocation="PassProcessingWebPackage.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="74141a4d-a764-40af-bb6d-c95552f1827a">
+      <body>Use Pass.Container AppleDevicePassProcessingService</body>
+      <annotatedElements>
+        <classMoniker
+          Id="ee9c76aa-289e-4767-9e5a-5ce5ed2e62a5"
+          LastKnownName="AppleDevicePassProcessingController"
+          LastKnownLocation="PassProcessingWebPackage.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="4c4e0e90-904e-49e7-9983-86231a6229a9">
+      <body>Process web requests to download pass package by provided link</body>
+      <annotatedElements>
+        <classMoniker
+          Id="3f4fc584-f967-4aa0-9ffc-bdd9f04639fa"
+          LastKnownName="PassDistributionController"
+          LastKnownLocation="PassDistributionWebPackage.uml" />
+      </annotatedElements>
     </comment>
   </ownedCommentsInternal>
   <profileInstances>
@@ -129,12 +163,6 @@
         Id="7956bbdb-d105-4adc-be24-3657fe3cdf98"
         LastKnownName="Pass.Processing.Web"
         LastKnownLocation="PassProcessingWebPackage.uml" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <packageMoniker
-        Id="875cb96c-90f4-4c28-9a77-04bc12b9526d"
-        LastKnownName="Package1"
-        LastKnownLocation="Package_1058.uml" />
     </packageHasNamedElement>
     <packageHasNamedElement>
       <activity
@@ -589,6 +617,16 @@
           </objectNode>
         </nodes>
       </activity>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="e9918360-67f1-41b9-b414-1c27a4ea50fd"
+        name="string" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="4d471b98-c041-4688-b8e1-084207375768"
+        name="String(" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

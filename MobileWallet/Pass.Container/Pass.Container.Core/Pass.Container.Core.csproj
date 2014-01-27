@@ -69,6 +69,7 @@
     <Compile Include="Entities\PassFieldValue.cs" />
     <Compile Include="Entities\Enums\PassStatus.cs" />
     <Compile Include="Entities\PassTemplateContainer.cs" />
+    <Compile Include="Entities\Template\Template.cs" />
     <Compile Include="IAppleDevicePassService.cs" />
     <Compile Include="IPassContainerRepository.cs" />
     <Compile Include="IPassContainerService.cs" />
