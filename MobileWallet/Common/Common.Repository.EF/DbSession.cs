@@ -3,7 +3,7 @@ using System.Data.Entity;
 
 namespace Common.Repository.EF
 {
-    public class DbSession : IDbSession, IDisposable
+    public class DbSession : IDbSession
     {
         protected readonly DbContext _dbContext;
 

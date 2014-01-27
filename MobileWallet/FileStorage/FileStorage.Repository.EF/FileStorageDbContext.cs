@@ -17,14 +17,6 @@ namespace FileStorage.Repository.EF
         public DbSet<FolderItem> FolderItems { get; set; }
         public DbSet<StorageItem> StorageItems { get; set; }
 
-        /*       
-        public FolderItem GetFreeFolder(int itemLevel, int maxItemsNumber)
-        {
-            return this.Database.SqlQuery<FolderItem>(DbScheme + ".[GetFreeFolder] @ItemLevel, @MaxItemsNumber",
-                new SqlParameter("ItemLevel", itemLevel), new SqlParameter("MaxItemsNumber", maxItemsNumber)).FirstOrDefault();
-        }
-        */
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<FolderItem>().ToTable("FolderItem", DbScheme);

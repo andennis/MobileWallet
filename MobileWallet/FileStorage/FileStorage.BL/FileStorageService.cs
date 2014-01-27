@@ -149,7 +149,7 @@ namespace FileStorage.BL
                 foreach (DirectoryInfo subdir in dirs)
                 {
                     string temppath = Path.Combine(destDirName, subdir.Name);
-                    DirectoryCopy(subdir.FullName, temppath, copySubDirs);
+                    DirectoryCopy(subdir.FullName, temppath, true);
                 }
             }
         }
@@ -195,7 +195,7 @@ namespace FileStorage.BL
             _fsUnitOfWork.FileStorageRepository.Update(parentFolder);
             _fsUnitOfWork.Save();
 
-            return parentFolder.ChildStorageItems.First().StorageItemId;
+            return newItem.StorageItemId;
         }
 
         private FolderItem GetOrCreateFreeFolder(int folderLevel)

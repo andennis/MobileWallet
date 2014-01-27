@@ -9,8 +9,6 @@ namespace FileStorage.Repository.EF
 {
     public sealed class FileStorageRepository : Repository<FolderItem>, IFileStorageRepository
     {
-        //private readonly FileStorageDbContext _dbContext;
-
         public FileStorageRepository(IDbSession dbSession)
             : base((FileStorageDbContext)dbSession.DbContext)
         {

@@ -4,7 +4,7 @@ using System.Data.Entity;
 
 namespace Common.Repository.EF
 {
-    public abstract class UnitOfWork : IUnitOfWork, IDisposable
+    public abstract class UnitOfWork : IUnitOfWork//, IDisposable
     {
         private readonly DbContext _dbContext;
         private readonly IDictionary<Type, object> _repositories = new Dictionary<Type, object>();
@@ -14,6 +14,7 @@ namespace Common.Repository.EF
             _dbContext = (DbContext)dbSession.DbContext;
         }
 
+        /*
         #region Dispose
         private bool _disposed;
         public void Dispose()
@@ -30,6 +31,7 @@ namespace Common.Repository.EF
             _disposed = true;
         }
         #endregion Constuctor/Dispose
+        */
 
         protected void AddRepository<TEntity>(IRepository<TEntity> repository) where TEntity : class
         {
