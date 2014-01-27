@@ -708,6 +708,58 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="faa66e94-4c95-4e16-a19d-66b12cf0949f"
+            isDerived="false"
+            sourceEndRoleName="PassTemplateContainer"
+            targetEndRoleName="NativePassTemplateBase"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="a321f487-36aa-4ae0-84e6-e5cc4375fdd1"
+              LastKnownName="NativePassTemplateBase"
+              LastKnownLocation="PassContainerPackage.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ed2bddc5-8074-4d64-92a9-cd7e298533d4"
+                  name="PassTemplateContainer"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4ee6f377-522b-4325-b904-dfa6159ea37a"
+                  name="NativePassTemplateBase"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="0b02bcd6-1d9d-42a5-88ed-201f7d92da34"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="d3f7302e-7778-4da1-848e-3ee85c3c348c"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
         <ownedAttributesInternal>
           <property

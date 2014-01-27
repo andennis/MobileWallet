@@ -7,7 +7,7 @@ using Pass.Container.Core.Entities.Enums;
 
 namespace Pass.Container.Core.Entities
 {
-    public class NativePassTemplateBase : INativePassTemplate
+    public class NativePassTemplateBase
     {
         public int NativePassTemplateId { get; set; }
         public int PackageId { get; set; }

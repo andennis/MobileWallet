@@ -62,7 +62,6 @@
     <Compile Include="Entities\Enums\DeviceRegistrationStatus.cs" />
     <Compile Include="Entities\Enums\DeviceType.cs" />
     <Compile Include="Entities\Enums\PassTemplateType.cs" />
-    <Compile Include="Entities\INativePassTemplate.cs" />
     <Compile Include="Entities\NativePassTemplateApple.cs" />
     <Compile Include="Entities\NativePassTemplateBase.cs" />
     <Compile Include="Entities\Pass.cs" />

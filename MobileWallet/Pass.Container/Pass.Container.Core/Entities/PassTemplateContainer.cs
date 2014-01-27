@@ -12,6 +12,6 @@ namespace Pass.Container.Core.Entities
         public string Name { get; set; }
         public ICollection<Pass> Passes { get; set; }
         public ICollection<PassField> PassFields { get; set; }
-        public ICollection<INativePassTemplate> NativePassTemplates  { get; set; }
+        public ICollection<NativePassTemplateBase> NativePassTemplates  { get; set; }
     }
 }
