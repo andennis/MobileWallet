@@ -115,6 +115,13 @@
       <SubType>Content</SubType>
       <DependentUpon>Pass.Notification.Services.classdiagram</DependentUpon>
     </Content>
+    <Content Include="TemplateProcessing.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="TemplateProcessing.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>TemplateProcessing.activitydiagram</DependentUpon>
+    </Content>
     <Folder Include="ModelDefinition\" />
     <Content Include="ModelDefinition\PassModeling.uml">
       <SubType>Content</SubType>

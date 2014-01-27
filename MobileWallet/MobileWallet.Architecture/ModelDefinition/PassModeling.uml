@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner"
   dslVersion="1.0.0.0"
   Id="a53e0939-3e57-42d8-a1d6-852d3d589578"
   name="MobileWalletModeling" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -33,6 +33,26 @@
           LastKnownName="IPassTemplateService"
           LastKnownLocation="PassContainerPackage.uml" />
       </annotatedElements>
+    </comment>
+    <comment
+      Id="b148a4f9-98cf-4dd7-ad44-6af4c71cb551">
+      <body>StorageItem</body>
+    </comment>
+    <comment
+      Id="7e1a2175-59d4-4ea8-a579-29dc8ae9f76b">
+      <body>Pass.Manager</body>
+    </comment>
+    <comment
+      Id="671b97ca-552d-4ddd-b64f-f6c1f3166cb4">
+      <body>Pass.Manager</body>
+    </comment>
+    <comment
+      Id="258aa6a1-b992-4a09-a224-120ea337c640">
+      <body>Pass.Container</body>
+    </comment>
+    <comment
+      Id="42b626c4-29a1-47cc-8c82-ff25365811b8">
+      <body>FileStorage</body>
     </comment>
   </ownedCommentsInternal>
   <profileInstances>
@@ -117,11 +137,458 @@
         LastKnownLocation="Package_1058.uml" />
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <Interface
-        Id="02204973-f4f3-472d-99c9-bc0a01bf0ac2"
-        name="IPassTemplateRepository"
+      <activity
+        Id="3390dbc3-84f4-4574-a0e5-68cc5fce6d1e"
+        name="TemplateProcessing"
         isAbstract="false"
-        isLeaf="false" />
+        isLeaf="false"
+        isActiveClass="false"
+        isReentrant="false"
+        isReadOnly="false"
+        isSingleExecution="false">
+        <nodes>
+          <initialNode
+            Id="8edff8f5-72d3-4dde-836e-590356f549b2"
+            name="Initial"
+            isLeaf="false">
+            <objectFlowTargets>
+              <objectFlow
+                Id="092d4a6d-265b-49b0-9aef-292914722d89"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <objectNodeMoniker
+                  Id="572637a5-a0c0-449d-a121-bfdab7464d4a"
+                  LastKnownName="MainTemplate"
+                  LastKnownLocation="PassModeling.uml" />
+              </objectFlow>
+            </objectFlowTargets>
+          </initialNode>
+          <opaqueAction
+            Id="be5253f1-e199-4684-be2b-b08b476b37f5"
+            name="Generate PassTemplate"
+            isLeaf="false">
+            <objectFlowTargets>
+              <objectFlow
+                Id="95f8bb56-0a50-4603-82ba-610e56f6af5f"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <objectNodeMoniker
+                  Id="24607252-3e47-4106-8ffc-8b7854782e8c"
+                  LastKnownName="PassTemplate"
+                  LastKnownLocation="PassModeling.uml" />
+              </objectFlow>
+            </objectFlowTargets>
+          </opaqueAction>
+          <objectNode
+            Id="24607252-3e47-4106-8ffc-8b7854782e8c"
+            name="PassTemplate"
+            isLeaf="false"
+            ordering="Unordered"
+            isControlType="false">
+            <objectFlowTargets>
+              <objectFlow
+                Id="c8160d30-6e69-4731-98d5-3d8b88ba7ce4"
+                guard="PassTemplate.json, aditional files"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <objectNodeMoniker
+                  Id="22fb1ea2-9335-4a92-a1d1-28616945b845"
+                  LastKnownName="TemporaryStorage"
+                  LastKnownLocation="PassModeling.uml" />
+              </objectFlow>
+            </objectFlowTargets>
+            <upperBound>
+              <literalInteger
+                Id="e280675d-aa32-41c5-876f-765af4d7d7d6"
+                name="2147483647"
+                value="2147483647" />
+            </upperBound>
+          </objectNode>
+          <objectNode
+            Id="572637a5-a0c0-449d-a121-bfdab7464d4a"
+            name="MainTemplate"
+            isLeaf="false"
+            ordering="Unordered"
+            isControlType="false">
+            <objectFlowTargets>
+              <objectFlow
+                Id="bc9ce743-0fe7-4ed9-b644-e48723e7f0b4"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <opaqueActionMoniker
+                  Id="c315f006-f885-4c01-8a41-b8e0d835b344"
+                  LastKnownName="Create PassTemplate"
+                  LastKnownLocation="PassModeling.uml" />
+              </objectFlow>
+            </objectFlowTargets>
+            <upperBound>
+              <literalInteger
+                Id="74249395-2be6-4b8a-8b61-f1c3871d537c"
+                name="2147483647"
+                value="2147483647" />
+            </upperBound>
+          </objectNode>
+          <opaqueAction
+            Id="54d135e4-f9c8-4bc8-b0f4-8f9ad329f2b0"
+            name="CreatePassTemplate"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="f6c4717b-13d3-4de4-9e31-37ebfe8a41ac"
+                guard="PassTemplatePath"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="5fe9ccc1-c5d5-4647-9d8b-b298a61d9bed"
+                  LastKnownName="PutFolder"
+                  LastKnownLocation="PassModeling.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="687e2189-93fa-444a-b7f3-2eaa9404bec5"
+                guard="StorageItemId"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="87046e40-7171-4800-9837-55c8a32881e5"
+                  LastKnownName="GetStorageItemPath"
+                  LastKnownLocation="PassModeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+            <objectFlowTargets>
+              <objectFlow
+                Id="0f047da6-6226-45ac-9379-40b0d72a4892"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <objectNodeMoniker
+                  Id="4135e869-a511-4113-9f03-5a55dc728b7b"
+                  LastKnownName="PassTemplate"
+                  LastKnownLocation="PassModeling.uml" />
+              </objectFlow>
+              <objectFlow
+                Id="0cc726a2-a58d-45ef-bf84-6d1e997d62ba"
+                guard="StorageItemId"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <objectNodeMoniker
+                  Id="c13d9210-298f-48fe-a7fc-3eebd5c67602"
+                  LastKnownName="PassTemplate"
+                  LastKnownLocation="PassModeling.uml" />
+              </objectFlow>
+            </objectFlowTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="5fe9ccc1-c5d5-4647-9d8b-b298a61d9bed"
+            name="PutFolder"
+            isLeaf="false">
+            <objectFlowTargets>
+              <objectFlow
+                Id="9d2b4f28-e19a-4faf-b70e-7f83fff35186"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <objectNodeMoniker
+                  Id="22fb1ea2-9335-4a92-a1d1-28616945b845"
+                  LastKnownName="TemporaryStorage"
+                  LastKnownLocation="PassModeling.uml" />
+              </objectFlow>
+              <objectFlow
+                Id="58d5161a-3029-4e36-9971-ce9472ba8e93"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <objectNodeMoniker
+                  Id="d6565489-e0da-4415-be38-95f3dfbb11e9"
+                  LastKnownName="PassTemplate"
+                  LastKnownLocation="PassModeling.uml" />
+              </objectFlow>
+            </objectFlowTargets>
+          </opaqueAction>
+          <objectNode
+            Id="22fb1ea2-9335-4a92-a1d1-28616945b845"
+            name="TemporaryStorage"
+            isLeaf="false"
+            ordering="Unordered"
+            isControlType="false">
+            <upperBound>
+              <literalInteger
+                Id="fdcf0b88-8c28-4d84-806e-61c4357c3494"
+                name="2147483647"
+                value="2147483647" />
+            </upperBound>
+          </objectNode>
+          <opaqueAction
+            Id="c315f006-f885-4c01-8a41-b8e0d835b344"
+            name="Create PassTemplate"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="65132ac6-0aa3-401f-869c-059ca295335c"
+                guard="PassTemplatePath"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="54d135e4-f9c8-4bc8-b0f4-8f9ad329f2b0"
+                  LastKnownName="CreatePassTemplate"
+                  LastKnownLocation="PassModeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+            <objectFlowTargets>
+              <objectFlow
+                Id="b1d70b8c-fd4b-4fde-95ba-4880012044ca"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <objectNodeMoniker
+                  Id="ba60b289-a98e-4b83-bb0b-bc6fddc3d766"
+                  LastKnownName="MainTemplate"
+                  LastKnownLocation="PassModeling.uml" />
+              </objectFlow>
+            </objectFlowTargets>
+          </opaqueAction>
+          <objectNode
+            Id="ba60b289-a98e-4b83-bb0b-bc6fddc3d766"
+            name="MainTemplate"
+            isLeaf="false"
+            ordering="Unordered"
+            isControlType="false">
+            <objectFlowTargets>
+              <objectFlow
+                Id="775782b0-628e-4683-ba52-bba05ca5f721"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <opaqueActionMoniker
+                  Id="be5253f1-e199-4684-be2b-b08b476b37f5"
+                  LastKnownName="Generate PassTemplate"
+                  LastKnownLocation="PassModeling.uml" />
+              </objectFlow>
+            </objectFlowTargets>
+            <upperBound>
+              <literalInteger
+                Id="221f092e-4d6a-4a5b-a1d2-9528ae7fb0d9"
+                name="2147483647"
+                value="2147483647" />
+            </upperBound>
+          </objectNode>
+          <opaqueAction
+            Id="87046e40-7171-4800-9837-55c8a32881e5"
+            name="GetStorageItemPath"
+            isLeaf="false">
+            <objectFlowTargets>
+              <objectFlow
+                Id="bea838a7-ea2b-40b3-8f85-a4e0d9bf198d"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <objectNodeMoniker
+                  Id="d6565489-e0da-4415-be38-95f3dfbb11e9"
+                  LastKnownName="PassTemplate"
+                  LastKnownLocation="PassModeling.uml" />
+              </objectFlow>
+            </objectFlowTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="7e62319e-c40f-4908-a7c2-2e8100667446"
+            name="Validate PassTemplate"
+            isLeaf="false" />
+          <opaqueAction
+            Id="38851f18-1d95-49a1-b0a3-1504c22930ee"
+            name="Generate Native PassTemplates"
+            isLeaf="false">
+            <objectFlowTargets>
+              <objectFlow
+                Id="2818f1c5-b9cd-417c-a170-d0c4f3899dcd"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <objectNodeMoniker
+                  Id="512709ec-0217-4757-bd85-6400d3d1b620"
+                  LastKnownName="ApplePassTemplate"
+                  LastKnownLocation="PassModeling.uml" />
+              </objectFlow>
+              <objectFlow
+                Id="e0af2546-bd12-4744-9e83-73e12d1e6890"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <objectNodeMoniker
+                  Id="679c22b2-b9bc-4796-ab1b-7978311d4935"
+                  LastKnownName="GooglePassTemplate"
+                  LastKnownLocation="PassModeling.uml" />
+              </objectFlow>
+            </objectFlowTargets>
+          </opaqueAction>
+          <objectNode
+            Id="4135e869-a511-4113-9f03-5a55dc728b7b"
+            name="PassTemplate"
+            isLeaf="false"
+            ordering="Unordered"
+            isControlType="false">
+            <objectFlowTargets>
+              <objectFlow
+                Id="64c99394-3aad-4d88-94e8-0c0646656010"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <opaqueActionMoniker
+                  Id="7e62319e-c40f-4908-a7c2-2e8100667446"
+                  LastKnownName="Validate PassTemplate"
+                  LastKnownLocation="PassModeling.uml" />
+              </objectFlow>
+            </objectFlowTargets>
+            <upperBound>
+              <literalInteger
+                Id="cd294e1b-809d-4e35-ad6c-848b98abd1d2"
+                name="2147483647"
+                value="2147483647" />
+            </upperBound>
+          </objectNode>
+          <objectNode
+            Id="c13d9210-298f-48fe-a7fc-3eebd5c67602"
+            name="PassTemplate"
+            isLeaf="false"
+            ordering="Unordered"
+            isControlType="false">
+            <objectFlowTargets>
+              <objectFlow
+                Id="dfed71d9-7c04-49d6-8e2f-371481a2a210"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <opaqueActionMoniker
+                  Id="38851f18-1d95-49a1-b0a3-1504c22930ee"
+                  LastKnownName="Generate Native PassTemplates"
+                  LastKnownLocation="PassModeling.uml" />
+              </objectFlow>
+            </objectFlowTargets>
+            <upperBound>
+              <literalInteger
+                Id="7ac2b6eb-75da-40cc-b9c6-396d79c27b0f"
+                name="2147483647"
+                value="2147483647" />
+            </upperBound>
+          </objectNode>
+          <objectNode
+            Id="512709ec-0217-4757-bd85-6400d3d1b620"
+            name="ApplePassTemplate"
+            isLeaf="false"
+            ordering="Unordered"
+            isControlType="false">
+            <objectFlowTargets>
+              <objectFlow
+                Id="010a2991-ae06-4079-af17-5e02bd4ce54e"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <opaqueActionMoniker
+                  Id="90afbd4a-7082-4c3c-a31c-650ab99ee7e7"
+                  LastKnownName="PutFile"
+                  LastKnownLocation="PassModeling.uml" />
+              </objectFlow>
+            </objectFlowTargets>
+            <upperBound>
+              <literalInteger
+                Id="5f87a841-a652-4124-a486-1ce94bb6dbe5"
+                name="2147483647"
+                value="2147483647" />
+            </upperBound>
+          </objectNode>
+          <objectNode
+            Id="679c22b2-b9bc-4796-ab1b-7978311d4935"
+            name="GooglePassTemplate"
+            isLeaf="false"
+            ordering="Unordered"
+            isControlType="false">
+            <objectFlowTargets>
+              <objectFlow
+                Id="66e39d34-8ff8-4a7a-a019-dd5868bc2111"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <opaqueActionMoniker
+                  Id="90afbd4a-7082-4c3c-a31c-650ab99ee7e7"
+                  LastKnownName="PutFile"
+                  LastKnownLocation="PassModeling.uml" />
+              </objectFlow>
+            </objectFlowTargets>
+            <upperBound>
+              <literalInteger
+                Id="836731b7-aaa9-4fe7-aa70-85097dd7ea37"
+                name="2147483647"
+                value="2147483647" />
+            </upperBound>
+          </objectNode>
+          <opaqueAction
+            Id="90afbd4a-7082-4c3c-a31c-650ab99ee7e7"
+            name="PutFile"
+            isLeaf="false">
+            <objectFlowTargets>
+              <objectFlow
+                Id="b503ee4c-682a-40e2-9e10-2230eea30597"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <objectNodeMoniker
+                  Id="9ac7cf70-cf65-4813-b414-62324d152f28"
+                  LastKnownName="ApplePassTemplate"
+                  LastKnownLocation="PassModeling.uml" />
+              </objectFlow>
+              <objectFlow
+                Id="376b44fa-dda7-425e-b388-26e5cb9fbf44"
+                isLeaf="false"
+                isMulticast="false"
+                isMultireceive="false">
+                <objectNodeMoniker
+                  Id="92855690-08ae-47e0-8ac2-bb9ee2941da5"
+                  LastKnownName="GooglePassTemplate"
+                  LastKnownLocation="PassModeling.uml" />
+              </objectFlow>
+            </objectFlowTargets>
+          </opaqueAction>
+          <objectNode
+            Id="d6565489-e0da-4415-be38-95f3dfbb11e9"
+            name="PassTemplate"
+            isLeaf="false"
+            ordering="Unordered"
+            isControlType="false">
+            <upperBound>
+              <literalInteger
+                Id="154671e7-0d3d-4c9a-b6e8-78dfbec9a585"
+                name="2147483647"
+                value="2147483647" />
+            </upperBound>
+          </objectNode>
+          <objectNode
+            Id="9ac7cf70-cf65-4813-b414-62324d152f28"
+            name="ApplePassTemplate"
+            isLeaf="false"
+            ordering="Unordered"
+            isControlType="false">
+            <upperBound>
+              <literalInteger
+                Id="3ac24cd5-dcb6-4b96-a78c-73ca79b8746b"
+                name="2147483647"
+                value="2147483647" />
+            </upperBound>
+          </objectNode>
+          <objectNode
+            Id="92855690-08ae-47e0-8ac2-bb9ee2941da5"
+            name="GooglePassTemplate"
+            isLeaf="false"
+            ordering="Unordered"
+            isControlType="false">
+            <upperBound>
+              <literalInteger
+                Id="9af15edb-fa4f-41ca-85cb-137c93959734"
+                name="2147483647"
+                value="2147483647" />
+            </upperBound>
+          </objectNode>
+        </nodes>
+      </activity>
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

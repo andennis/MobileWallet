@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner"
   dslVersion="1.0.0.0"
   Id="30622e7a-96f1-41b7-83af-6de6f2c37861"
   name="Pass.Container" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -102,7 +102,7 @@
       <class
         Id="ce141a54-1528-47d5-a12b-b125cc938c43"
         name="PassDistributionService"
-        isAbstract="false"
+        isAbstract="true"
         isLeaf="false"
         isActiveClass="false">
         <suppliersInternal>
@@ -1368,32 +1368,40 @@
         </suppliersInternal>
         <ownedOperationsInternal>
           <operation
-            Id="fd145c80-95c2-4474-97ca-2697b172d978"
-            name="Registration"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false" />
-          <operation
-            Id="26f4f2e6-33f8-4a3f-a9bd-59244feaecf3"
-            name="Unregistration"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false" />
-          <operation
             Id="38538c25-7f05-4c42-87e1-94e7b7cfa5fc"
-            name="GetChangedPasses"
+            name="RegisterDevice"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
             concurrency="Sequential"
             isQuery="false" />
           <operation
-            Id="df888b5e-49e5-45d0-8962-43707a9bf0a0"
+            Id="3291bad7-c858-4a9e-8cee-122e4500d6ef"
+            name="UnregisterDevice"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="ed0dea37-4525-4e4a-b826-7b3b6b1e6090"
+            name="GetSerialNumbersOfPasses"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="5384f1c1-431a-4612-8921-b5963e650dea"
             name="GetPass"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="f546da42-5fab-44f8-86d0-33e1bc532c0d"
+            name="Log"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -1815,7 +1823,7 @@
       <class
         Id="d76f181c-9d95-492b-b481-555437f72b4c"
         name="PassTemplateService"
-        isAbstract="false"
+        isAbstract="true"
         isLeaf="false"
         isActiveClass="false">
         <suppliersInternal>
@@ -1838,7 +1846,7 @@
             <interfaceMoniker
               Id="02204973-f4f3-472d-99c9-bc0a01bf0ac2"
               LastKnownName="IPassTemplateRepository"
-              LastKnownLocation="PassModeling.uml" />
+              LastKnownLocation="PassContainerPackage.uml" />
           </dependency>
         </suppliersInternal>
         <ownedOperationsInternal>
@@ -2033,6 +2041,13 @@
           </operation>
         </ownedOperationsInternal>
       </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="02204973-f4f3-472d-99c9-bc0a01bf0ac2"
+        name="IPassTemplateRepository"
+        isAbstract="false"
+        isLeaf="false" />
     </packageHasNamedElement>
   </packagedElements>
 </package>

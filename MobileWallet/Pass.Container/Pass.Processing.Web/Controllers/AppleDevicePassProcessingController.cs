@@ -11,7 +11,7 @@ using Pass.Processing.Web.Models;
 namespace Pass.Processing.Web.Controllers
 {
     [RoutePrefix("v1")]
-    public class PassbookController : ApiController
+    public class AppleDevicePassProcessingController : ApiController
     {
         [HttpPost]
         [Route("devices/{deviceLibraryIdentifier}/registrations/{passTypeIdentifier}/{serialNumber}")]
