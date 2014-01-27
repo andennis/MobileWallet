@@ -42,12 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppleDevicePassService.cs" />
-    <Compile Include="ApplePassController.cs" />
+    <Compile Include="AppleDevicePassProcessingService.cs" />
     <Compile Include="Helpers\PassGeneratorHelper.cs" />
-    <Compile Include="PassContainerController.cs" />
-    <Compile Include="PassContainerService.cs" />
-    <Compile Include="PassLinkGenerator.cs" />
+    <Compile Include="PassDistributionService.cs" />
+    <Compile Include="PassTemplateService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
