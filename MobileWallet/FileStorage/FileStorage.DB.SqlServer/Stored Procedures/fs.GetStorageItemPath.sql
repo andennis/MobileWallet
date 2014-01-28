@@ -15,8 +15,8 @@ BEGIN
 	(
 		SELECT fi.FolderItemId, fi.ParentId, CAST(fi.Name + '\' + si.Name AS NVARCHAR(MAX)) AS FilePath
 		FROM fs.FolderItem fi
-        INNER JOIN fs.StorageItem si ON si.ParentId = fi.FolderItemId
-        WHERE si.StorageItemId = @StorageItemId
+        INNER JOIN fs.StorageItem si ON si.ParentId = fi.FolderItemId AND si.[Status] = 1/*Active*/
+        WHERE si.StorageItemId = @StorageItemId 
 		UNION ALL
 		SELECT f2.FolderItemId, f2.ParentId, f2.Name + '\' + f1.FilePath
 		FROM folders f1

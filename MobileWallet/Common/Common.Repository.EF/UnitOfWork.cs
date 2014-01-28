@@ -11,6 +11,12 @@ namespace Common.Repository.EF
 
         protected UnitOfWork(IDbSession dbSession)
         {
+            if (dbSession == null)
+                throw new ArgumentNullException("dbSession");
+
+            if (dbSession.DbContext == null)
+                throw new ArgumentException("dbSession.DbContext should not be null");
+
             _dbContext = (DbContext)dbSession.DbContext;
         }
 

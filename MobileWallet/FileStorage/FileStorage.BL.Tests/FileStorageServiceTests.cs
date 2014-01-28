@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
+using Common.Repository;
 using FileStorage.Core;
 using FileStorage.Repository.EF;
 using NUnit.Framework;
@@ -17,7 +16,6 @@ namespace FileStorage.BL.Tests
         private const string TestFolderPath = @"Data\F1";
 
         private readonly IFileStorageConfig _fsConfig;
-        //private readonly IFileStorageUnitOfWork _fsUnitOfWork;
 
         public FileStorageServiceTests()
         {
@@ -35,7 +33,7 @@ namespace FileStorage.BL.Tests
         [Test]
         public void FillStorageWithFilesTest()
         {
-            using (var dbSession = new FileStorageDbSession(_fsConfig))
+            using (IDbSession dbSession = CreateDbSession())
             {
                 var fsService = new FileStorageService(_fsConfig, new FileStorageUnitOfWork(dbSession));
                 for (int i = 0; i < 16; i++)
@@ -50,7 +48,7 @@ namespace FileStorage.BL.Tests
         [Test]
         public void FillStorageWithFoldersTest()
         {
-            using (var dbSession = new FileStorageDbSession(_fsConfig))
+            using (IDbSession dbSession = CreateDbSession())
             {
                 var fsService = new FileStorageService(_fsConfig, new FileStorageUnitOfWork(dbSession));
                 for (int i = 0; i < 16; i++)
@@ -65,7 +63,7 @@ namespace FileStorage.BL.Tests
         [Test]
         public void FillStorageWithFoldersAndFilesTest()
         {
-            using (var dbSession = new FileStorageDbSession(_fsConfig))
+            using (IDbSession dbSession = CreateDbSession())
             {
                 var fsService = new FileStorageService(_fsConfig, new FileStorageUnitOfWork(dbSession));
                 for (int i = 0; i < 8; i++)
@@ -94,7 +92,7 @@ namespace FileStorage.BL.Tests
             string srcFilePath = Path.Combine(srcPath, "TextFile1.txt");
             File.Copy(TestFilePath, srcFilePath, true);
 
-            using (var dbSession = new FileStorageDbSession(_fsConfig))
+            using (IDbSession dbSession = CreateDbSession())
             {
                 var fsService = new FileStorageService(_fsConfig, new FileStorageUnitOfWork(dbSession));
                 int id = fsService.PutFolder(srcPath);
@@ -119,16 +117,18 @@ namespace FileStorage.BL.Tests
             string srcFilePath = Path.Combine(srcPath, "TextFile1.txt");
             File.Copy(TestFilePath, srcFilePath, true);
 
-            using (var dbSession = new FileStorageDbSession(_fsConfig))
+            using (IDbSession dbSession = CreateDbSession())
             {
                 var fsService = new FileStorageService(_fsConfig, new FileStorageUnitOfWork(dbSession));
                 int id = fsService.PutFolder(srcPath, true);
                 string dstPath = fsService.GetStorageItemPath(id);
                 Assert.IsNotNullOrEmpty(dstPath);
                 Assert.True(Directory.Exists(dstPath));
-                Assert.True(File.Exists(Path.Combine(dstPath, "TextFile1.txt")));
+                string dstFilePath = Path.Combine(dstPath, "TextFile1.txt");
+                Assert.True(File.Exists(dstFilePath));
 
                 Assert.False(Directory.Exists(srcPath));
+                Assert.True(File.Exists(dstFilePath));
             }
         }
 
@@ -138,7 +138,7 @@ namespace FileStorage.BL.Tests
             string srcFilePath = Path.Combine(TestFolderBase, "TextFile2.txt");
             File.Copy(TestFilePath, srcFilePath, true);
 
-            using (var dbSession = new FileStorageDbSession(_fsConfig))
+            using (IDbSession dbSession = CreateDbSession())
             {
                 var fsService = new FileStorageService(_fsConfig, new FileStorageUnitOfWork(dbSession));
                 int id = fsService.PutFile(srcFilePath);
@@ -155,7 +155,7 @@ namespace FileStorage.BL.Tests
             string srcFilePath = Path.Combine(TestFolderBase, "TextFile2.txt");
             File.Copy(TestFilePath, srcFilePath, true);
 
-            using (var dbSession = new FileStorageDbSession(_fsConfig))
+            using (IDbSession dbSession = CreateDbSession())
             {
                 var fsService = new FileStorageService(_fsConfig, new FileStorageUnitOfWork(dbSession));
                 int id = fsService.PutFile(srcFilePath, true);
@@ -169,11 +169,53 @@ namespace FileStorage.BL.Tests
         [Test]
         public void GetFilePathTest()
         {
-            using (var dbSession = new FileStorageDbSession(_fsConfig))
+            using (IDbSession dbSession = CreateDbSession())
             {
                 var fsService = new FileStorageService(_fsConfig, new FileStorageUnitOfWork(dbSession));
-                string path = fsService.GetStorageItemPath(1);
+                int id = fsService.PutFile(TestFilePath);
+                string path = fsService.GetStorageItemPath(id);
+                Assert.IsNotNullOrEmpty(path);
+                Assert.True(path.StartsWith(_fsConfig.StoragePath));
+                Assert.True(File.Exists(path));
+
+                id = fsService.PutFolder(TestFolderPath);
+                path = fsService.GetStorageItemPath(id);
+                Assert.IsNotNullOrEmpty(path);
+                Assert.True(path.StartsWith(_fsConfig.StoragePath));
+                Assert.True(Directory.Exists(path));
             }
+        }
+
+        [Test]
+        public void DeleteStorageItemTest()
+        {
+            using (IDbSession dbSession = CreateDbSession())
+            {
+                var fsService = new FileStorageService(_fsConfig, new FileStorageUnitOfWork(dbSession));
+
+                int id = fsService.PutFile(TestFilePath);
+                string path = fsService.GetStorageItemPath(id);
+                Assert.IsNotNullOrEmpty(path);
+                Assert.True(File.Exists(path));
+
+                fsService.DeleteStorageItem(id);
+                Assert.IsNull(fsService.GetStorageItemPath(id));
+                Assert.True(File.Exists(path));
+
+                Assert.DoesNotThrow(() => fsService.DeleteStorageItem(id));
+            }
+        }
+
+        //[Test]
+        public void PurgeDeletedItemsTests()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        private IDbSession CreateDbSession()
+        {
+            return new FileStorageDbSession(_fsConfig);
         }
 
         private void ClearFileStorageFolder()

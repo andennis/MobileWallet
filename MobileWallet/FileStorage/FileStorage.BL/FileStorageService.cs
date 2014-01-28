@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using Common.Repository;
 using FileStorage.Core;
 using FileStorage.Core.Entities;
 
@@ -165,7 +166,14 @@ namespace FileStorage.BL
 
         public void DeleteStorageItem(int itemId)
         {
-            throw new NotImplementedException();
+            IRepository<StorageItem> siRep = _fsUnitOfWork.GetRepository<StorageItem>();
+            StorageItem si = siRep.Find(itemId);
+            if (si == null)
+                return;
+
+            si.Status = ItemStatus.Deleted;
+            siRep.Update(si);
+            _fsUnitOfWork.Save();
         }
         public void PurgeDeletedItems()
         {

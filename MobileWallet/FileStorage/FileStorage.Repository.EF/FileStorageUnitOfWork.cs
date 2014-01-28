@@ -1,6 +1,8 @@
-﻿using Common.Repository;
+﻿using System.Data.Entity;
+using Common.Repository;
 using Common.Repository.EF;
 using FileStorage.Core;
+using FileStorage.Core.Entities;
 
 namespace FileStorage.Repository.EF
 {
@@ -13,6 +15,7 @@ namespace FileStorage.Repository.EF
             :base(dbSession)
         {
             _dbSession = dbSession;
+            AddRepository(new Repository<StorageItem>((DbContext)dbSession.DbContext));
         }
 
         public IFileStorageRepository FileStorageRepository
