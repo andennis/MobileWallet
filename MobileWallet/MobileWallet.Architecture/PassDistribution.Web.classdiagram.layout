@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="PassDistribution.Web">
+  <logicalClassDesignerModelMoniker Id="327549e0-fc10-47eb-ac5b-9fae4827ecab" />
+  <nestedChildShapes>
+    <classShape Id="eea783aa-e720-473d-881d-aeb729f7c334" absoluteBounds="0.5, 1.75, 3.625, 1.2226562251647315" hideQualifiedName="false" increaseHeight="0" customColor="181, 193, 223">
+      <classMoniker Id="fc75af62-dab9-42b6-a85a-2933ca7c0511" LastKnownName="PassDistributionController" />
+      <nestedChildShapes>
+        <AttributeElementListCompartment Id="7bdeff32-8ada-4b44-8a50-72744817a82a" absoluteBounds="0.515, 2.14, 3.5949999999999998, 0.2011718675494194" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <OperationElementListCompartment Id="0d105390-426d-40b2-a97d-786488ecc031" absoluteBounds="0.515, 2.3511718675494193, 3.5949999999999998, 0.521484357615312" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <commentShape Id="a14f2b87-768e-43fd-9d04-5ded70ecc7e9" absoluteBounds="1.25, 0.75, 1.625, 0.5" customColor="251, 247, 200">
+      <commentMoniker Id="5ab7dab8-5e19-46e8-8772-c418ea5aa75a" />
+      <relativeChildShapes />
+    </commentShape>
+    <commentConnector edgePoints="[(2.0625 : 1.25); (2.0625 : 1.75)]" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="217d6bd0-42ed-4e7f-ad2b-af3ef5142428" customColor="Black">
+      <relativeChildShapes />
+      <nodes>
+        <commentShapeMoniker Id="a14f2b87-768e-43fd-9d04-5ded70ecc7e9" />
+        <classShapeMoniker Id="eea783aa-e720-473d-881d-aeb729f7c334" />
+      </nodes>
+    </commentConnector>
+  </nestedChildShapes>
+</logicalClassDesignerDiagram>

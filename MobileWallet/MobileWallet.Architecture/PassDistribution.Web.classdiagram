@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" dslVersion="1.0.0.0" Id="327549e0-fc10-47eb-ac5b-9fae4827ecab" name="PassDistribution.Web" linkedPackageId="c54f36cc-fba6-4ee8-a597-ab97274c050d" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <ownedCommentsInternal>
+    <comment Id="5ab7dab8-5e19-46e8-8772-c418ea5aa75a">
+      <elementDefinition Id="4c4e0e90-904e-49e7-9983-86231a6229a9" />
+      <body>Process web requests to download pass package by provided link</body>
+      <annotatedElements>
+        <classMoniker Id="fc75af62-dab9-42b6-a85a-2933ca7c0511" LastKnownName="PassDistributionController" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="50ea214f-8a15-4e10-a2ee-716a42fca794">
+      <profileInstance Id="7a506951-4623-4a37-8468-5ffbf3a6ac10" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="2b6c7efb-c631-464d-bd42-1b159278feac">
+      <profileInstance Id="3696f733-0cf4-4a1b-86ec-6bcbfd3bc260" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="e18937fe-e754-4880-963e-edb8e1e2addd">
+      <profileInstance Id="d69da435-8fbd-4665-85ad-7f63456b73ff" name="TextTemplateBindings">
+        <elementDefinition Id="06d93c75-9f7e-465a-a217-2c5fb68015af" />
+      </profileInstance>
+      <elementDefinition Id="1764e76e-4606-4e41-927d-7dee20e9c500" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="fc75af62-dab9-42b6-a85a-2933ca7c0511" name="PassDistributionController" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="3f4fc584-f967-4aa0-9ffc-bdd9f04639fa" />
+        <ownedOperationsInternal>
+          <operation Id="63f223fe-9b23-4a24-9c29-f2912fcfb5e4" name="DownloadClientPass" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="d8297288-1e98-4f4d-9484-cd04037fe182" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="7b57582c-0774-4e0f-b263-c27331ace57a" name="PassToken" direction="In" isUnique="false">
+                  <elementDefinition Id="232f65ed-08d5-4ee4-ad5b-1c6a25a62bd5" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="f01ac492-de75-40b2-849a-3e50410bc7a7" name="DeviceType" direction="In" isUnique="false">
+                  <elementDefinition Id="a2b816a5-f3cd-4d3a-9ed9-59090327075e" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="624989b3-46d0-4a23-9a02-60d67036fdc1" name="DownloadPass" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="4654c4bf-2742-4be0-93e4-f9b006c0dcfe" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="dbd98f24-e8e5-485b-ae41-ae267c976cf9" name="PassToken" direction="In">
+                  <elementDefinition Id="096fdee7-4e37-4771-9657-726fe5efd4b4" />
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="35b87c40-c9b4-4d9c-9e1c-0301c2ee5331" name="DeviceType" direction="In">
+                  <elementDefinition Id="c2e042d9-e491-4bcd-ba40-f8e200db0f09" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="c54f36cc-fba6-4ee8-a597-ab97274c050d" name="MobileWalletModeling">
+    <elementDefinition Id="a53e0939-3e57-42d8-a1d6-852d3d589578" />
+  </package>
+</logicalClassDesignerModel>

@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" dslVersion="1.0.0.0" Id="d8b82a90-40c3-4477-96a9-aa2bf79a35c7" name="Pass.Processing.Web" linkedPackageId="bc34fc4d-bf44-4262-b663-4b53d1e40c70" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <ownedCommentsInternal>
+    <comment Id="a31b45c6-de3d-4fad-be02-9266958d2f87">
+      <elementDefinition Id="d307245d-80e4-4343-9be9-2b5f7bd2da97" />
+      <body>Process web requests from Apple devices and APNS</body>
+      <annotatedElements>
+        <classMoniker Id="84930fb7-31d5-4adb-b4bf-8decfb670dec" LastKnownName="AppleDevicePassProcessingController" />
+      </annotatedElements>
+    </comment>
+    <comment Id="0616ee46-eaa2-4cc7-99b7-1b9fb2ad7ad1">
+      <elementDefinition Id="74141a4d-a764-40af-bb6d-c95552f1827a" />
+      <body>Use Pass.Container AppleDevicePassProcessingService</body>
+      <annotatedElements>
+        <classMoniker Id="84930fb7-31d5-4adb-b4bf-8decfb670dec" LastKnownName="AppleDevicePassProcessingController" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="fdccc627-0436-425a-a208-e31a748ba195">
+      <profileInstance Id="68d10b4c-3b70-42cf-9968-3a106ddb67c7" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="19efa52c-8a1a-48b3-9fd8-63b3ff5ea05d">
+      <profileInstance Id="3234d993-afa0-4b6e-8b45-9e1efb747c31" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="1f8f54f7-6be1-4ef9-9a38-89828ad8587a">
+      <profileInstance Id="1b86503a-4fac-42e5-bd67-ed6bfef6db21" name="TextTemplateBindings">
+        <elementDefinition Id="06d93c75-9f7e-465a-a217-2c5fb68015af" />
+      </profileInstance>
+      <elementDefinition Id="1764e76e-4606-4e41-927d-7dee20e9c500" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <referencedType Id="33892438-e8da-4fc3-ae9d-2cd621762a9d" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="d0cfcecb-e1a9-4d0b-98e8-8bfb80e71ba9" name="String(" isAbstract="false" isLeaf="false" cachedFullName="String(">
+        <elementDefinition Id="4d471b98-c041-4688-b8e1-084207375768" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="84930fb7-31d5-4adb-b4bf-8decfb670dec" name="AppleDevicePassProcessingController" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="ee9c76aa-289e-4767-9e5a-5ce5ed2e62a5" />
+        <ownedOperationsInternal>
+          <operation Id="a07eccb5-5b72-46b3-911f-c34fa30b2a1a" name="UnregisterDevice" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="cd3acc2b-fa68-4272-97d8-2c8a911ea31c" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="2732b340-8cb6-4ce2-9168-21577c26cd54" name="deviceLibraryIdentifier" direction="In" isUnique="false">
+                  <elementDefinition Id="fd882d2f-93eb-4285-ae92-953674356130" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="33892438-e8da-4fc3-ae9d-2cd621762a9d" LastKnownName="String" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="b230c28a-39c1-4b77-816d-1164f7db1ea2" name="passTypeIdentifier" direction="In" isUnique="false">
+                  <elementDefinition Id="12d158c8-4ed3-455b-8da4-f3a195e87258" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="33892438-e8da-4fc3-ae9d-2cd621762a9d" LastKnownName="String" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="dc24e5bb-54b8-4bc4-beb3-7f553e5a2bee" name="serialNumber" direction="In" isUnique="false">
+                  <elementDefinition Id="86f0170c-3387-461b-8c7f-0beae50a7877" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="33892438-e8da-4fc3-ae9d-2cd621762a9d" LastKnownName="String" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="afa74cc0-a558-438f-af25-76f6f8bf41a7" name="pushTokenJson" direction="In" isUnique="false">
+                  <elementDefinition Id="7e82eb45-1380-4ba5-b8d0-83acc275a65a" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="33892438-e8da-4fc3-ae9d-2cd621762a9d" LastKnownName="String" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="6a31175d-321a-4f2f-bd9a-45d4ac4cd348" name="GetSerialNumbersOfPasses" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="e0a91a3c-33ca-4ab1-8cd5-ba7bde1ea99c" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="99182c4a-7e1b-4ca2-95c2-5b318ac9d73b" name="deviceLibraryIdentifier" direction="In" isUnique="false">
+                  <elementDefinition Id="3ae41155-3051-4f74-ba60-ab6d87ab837c" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="33892438-e8da-4fc3-ae9d-2cd621762a9d" LastKnownName="String" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="22efa7b7-d114-4922-acc5-d0eb200b637e" name="passTypeIdentifier" direction="In" isUnique="false">
+                  <elementDefinition Id="a255b7c6-00bc-4027-8da4-00f85546a19d" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="33892438-e8da-4fc3-ae9d-2cd621762a9d" LastKnownName="String" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="61dc4ada-bcda-44a1-a7fa-dd9d1c78c91c" name="passesUpdatedSince" direction="In" isUnique="false">
+                  <elementDefinition Id="8d181a73-49f8-4f11-ac17-afbdb16c3e22" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="d0cfcecb-e1a9-4d0b-98e8-8bfb80e71ba9" LastKnownName="String(" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="440b904c-749d-478e-8247-785d22eef71c" name="RegisterDevice" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="935909a8-2c0e-48a3-be1f-9a89ea8adce1" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="10007ca0-506e-49d7-98bd-c79ffc8019ca" name="deviceLibraryIdentifier" direction="In" isUnique="false">
+                  <elementDefinition Id="d88d87a3-ead1-4da0-94c1-74728397c0e2" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="33892438-e8da-4fc3-ae9d-2cd621762a9d" LastKnownName="String" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="e20634e5-1b7d-41ce-ad2f-8976ec6cf35a" name="passTypeIdentifier" direction="In" isUnique="false">
+                  <elementDefinition Id="046f23e6-6d08-4b9c-9fda-f028d81fdab4" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="33892438-e8da-4fc3-ae9d-2cd621762a9d" LastKnownName="String" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="f08ccb6a-601c-4901-93a6-498f97dc6d05" name="serialNumber" direction="In" isUnique="false">
+                  <elementDefinition Id="3a652913-8fbf-404b-8e6b-8d34c874fa61" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="33892438-e8da-4fc3-ae9d-2cd621762a9d" LastKnownName="String" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="98d9ef54-db34-4408-b45e-714905fa9b4b" name="pushTokenJson" direction="In" isUnique="false">
+                  <elementDefinition Id="ac65b567-7025-4d4a-9ff0-e2194ec867bb" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="33892438-e8da-4fc3-ae9d-2cd621762a9d" LastKnownName="String" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="b0fb4de1-7d55-41e6-9498-73d7db8c59b6" name="Log" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="6aa42b9d-22c9-4aa9-ac05-2a09d2d29b4d" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="57ceab56-818b-4bfd-b681-136c21f443c8" name="logMessage" direction="In" isUnique="false">
+                  <elementDefinition Id="98d49fb2-5a52-4cda-bdf8-f8a8f9e8d206" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="33892438-e8da-4fc3-ae9d-2cd621762a9d" LastKnownName="String" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="87b25675-4fd6-4e8b-8552-be542c9a48f0" name="GetPass" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="6af67efd-72fc-4225-9c33-c9909579285c" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="f4cf6136-475d-4855-b6a7-4b5afc8a9ae9" name="passTypeIdentifier" direction="In" isUnique="false">
+                  <elementDefinition Id="eaf57791-194c-4512-9c4a-91a9b5218f3e" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="33892438-e8da-4fc3-ae9d-2cd621762a9d" LastKnownName="String" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="695eccf3-934d-472c-9808-d302487f8468" name="serialNumber" direction="In" isUnique="false">
+                  <elementDefinition Id="aa61ac97-db52-41a7-b523-911740263acc" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="33892438-e8da-4fc3-ae9d-2cd621762a9d" LastKnownName="String" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="bc34fc4d-bf44-4262-b663-4b53d1e40c70" name="MobileWalletModeling">
+    <elementDefinition Id="a53e0939-3e57-42d8-a1d6-852d3d589578" />
+  </package>
+</logicalClassDesignerModel>
