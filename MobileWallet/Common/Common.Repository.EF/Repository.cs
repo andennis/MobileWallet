@@ -30,6 +30,11 @@ namespace Common.Repository.EF
              return _dbContext.Database.SqlQuery<T>(query, parameters).FirstOrDefault();
         }
 
+        public void ExecuteCommand(string commandText, params object[] parameters)
+        {
+            _dbContext.Database.ExecuteSqlCommand(commandText, parameters);
+        }
+
         public virtual void Insert(TEntity entity)
         {
             _dbSet.Attach(entity);
@@ -59,8 +64,7 @@ namespace Common.Repository.EF
             return repositoryGetFluentHelper;
         }
 
-        internal IQueryable<TEntity> Get(
-            Expression<Func<TEntity, bool>> filter = null,
+        internal IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             List<Expression<Func<TEntity, object>>> includeProperties = null,
             int? page = null,
@@ -69,19 +73,13 @@ namespace Common.Repository.EF
             IQueryable<TEntity> query = _dbSet;
 
             if (includeProperties != null)
-            {
                 includeProperties.ForEach(i => query = query.Include(i));
-            }
 
             if (filter != null)
-            {
                 query = query.Where(filter);
-            }
 
             if (orderBy != null)
-            {
                 query = orderBy(query);
-            }
 
             if (page != null && pageSize != null)
             {
@@ -91,11 +89,5 @@ namespace Common.Repository.EF
             }
             return query;
         }
-        /*
-        public void SaveChanges()
-        {
-            _dbContext.SaveChanges();
-        }
-        */
     }
 }

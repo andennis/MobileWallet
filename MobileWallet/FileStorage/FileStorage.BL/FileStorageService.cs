@@ -212,16 +212,16 @@ namespace FileStorage.BL
             if (folderLevel == _config.StorageDeep)
                 return parentFolder;
 
+            if (parentFolder.ChildFolders == null)
+                parentFolder.ChildFolders = new Collection<FolderItem>();
+
             parentFolder.ChildFoldersCount += 1;
-            string newFolderName = GenerateFolderName(parentFolder);
-            parentFolder.ChildFolders = new Collection<FolderItem>()
-                                            {
-                                                new FolderItem() {Name = newFolderName}
-                                            };
+            var newFolder = new FolderItem() {Name = GenerateFolderName(parentFolder)};
+            parentFolder.ChildFolders.Add(newFolder);
                 
             _fsUnitOfWork.FileStorageRepository.Update(parentFolder);
             _fsUnitOfWork.Save();
-            return parentFolder.ChildFolders.First();
+            return newFolder;
         }
 
         private string GenerateFolderName(FolderItem parentFolder)

@@ -8,5 +8,6 @@ namespace FileStorage.Core
         FolderItem GetFreeFolderItem(int folderLevel, int maxItemsNumber);
         string GetFolderItemPath(int folderItemId);
         string GetStorageItemPath(int storageItemId);
+        void ClearFileStorage();
     }
 }

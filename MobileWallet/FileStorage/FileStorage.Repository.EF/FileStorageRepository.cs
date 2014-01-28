@@ -1,5 +1,6 @@
 ﻿using System.Data.SqlClient;
 using System.Linq;
+using System.Transactions;
 using Common.Repository;
 using FileStorage.Core;
 using FileStorage.Core.Entities;
@@ -31,6 +32,16 @@ namespace FileStorage.Repository.EF
         {
             return SqlQueryScalar<string>(FileStorageDbContext.DbScheme + ".GetStorageItemPath @StorageItemId",
                                           new SqlParameter("StorageItemId", storageItemId));
+        }
+
+        public void ClearFileStorage()
+        {
+            using (var trn = new TransactionScope())
+            {
+                ExecuteCommand("DELETE FROM fs.StorageItem");
+                ExecuteCommand("DELETE FROM fs.FolderItem");
+                trn.Complete();
+            }
         }
     }
 }

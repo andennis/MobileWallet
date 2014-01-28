@@ -13,7 +13,6 @@ namespace Common.Repository
         IRepositoryQuery<TEntity> Query();
         IQueryable<TEntity> SqlQuery(string query, params object[] parameters);
         T SqlQueryScalar<T>(string query, params object[] parameters);
-
-        //void SaveChanges();
+        void ExecuteCommand(string commandText, params object[] parameters);
     }
 }
