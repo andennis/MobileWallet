@@ -10,7 +10,7 @@ namespace Pass.Container.Core.Entities
     {
         public int PassFieldId { get; set; }
         public string Name { get; set; }
-        public PassTemplateContainer Pass { get; set; }
+        public PassTemplateContainer PassTemplate { get; set; }
         public PassFieldValue PassFieldValue { get; set; }
     }
 }

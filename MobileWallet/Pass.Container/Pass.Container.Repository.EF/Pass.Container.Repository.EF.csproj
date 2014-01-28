@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\FileStorage\FileStorage.Repository.EF\bin\Debug\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,7 +42,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PassContainerDbContext.cs" />
+    <Compile Include="PassContainerDbSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.Repository.EF\Common.Repository.EF.csproj">
+      <Project>{925EC36B-DF88-4CDE-BC59-FE03C0173CAE}</Project>
+      <Name>Common.Repository.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Common.Repository\Common.Repository.csproj">
+      <Project>{F36371D6-812F-49F5-9E9B-043265660647}</Project>
+      <Name>Common.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pass.Container.Core\Pass.Container.Core.csproj">
+      <Project>{062e8da0-3ef1-4481-8fcf-cfeb54a39771}</Project>
+      <Name>Pass.Container.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

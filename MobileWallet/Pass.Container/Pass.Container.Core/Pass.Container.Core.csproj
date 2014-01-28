@@ -65,7 +65,7 @@
     <Compile Include="Entities\Enums\PassTemplateType.cs" />
     <Compile Include="Entities\NativePassTemplateApple.cs" />
     <Compile Include="Entities\NativePassTemplateBase.cs" />
-    <Compile Include="Entities\Pass.cs" />
+    <Compile Include="Entities\ClientPass.cs" />
     <Compile Include="Entities\PassField.cs" />
     <Compile Include="Entities\PassFieldValue.cs" />
     <Compile Include="Entities\Enums\PassStatus.cs" />
