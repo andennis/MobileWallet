@@ -53,7 +53,7 @@ namespace FileStorage.BL
                                 Status = ItemStatus.Active,
                                 ItemType = StorageItemType.File,
                                 OriginalName = Path.GetFileName(filePath),
-                                Size = new FileInfo(filePath).Length
+                                Size = new FileInfo(dstFilePath).Length
                             };
 
             return CreateStorageItem(parentFolder, newFileItem);
@@ -155,11 +155,12 @@ namespace FileStorage.BL
         }
         public string GetStorageItemPath(int itemId)
         {
-            string filePath = _fsUnitOfWork.FileStorageRepository.GetStorageItemPath(itemId);
-            if (filePath == null)
+            string path = _fsUnitOfWork.FileStorageRepository.GetStorageItemPath(itemId);
+            if (path == null)
                 return null;
 
-            return Path.Combine(_config.StoragePath, filePath);
+            path = GetPathWithoutRootFolder(path);
+            return Path.Combine(_config.StoragePath, path);
         }
 
         public void DeleteStorageItem(int itemId)
@@ -178,7 +179,7 @@ namespace FileStorage.BL
 
             //Create the folder path
             string folderPath = _fsUnitOfWork.FileStorageRepository.GetFolderItemPath(parentFolder.FolderItemId);
-            folderPath = folderPath.Substring(RootFolderName.Length + 1, folderPath.Length - RootFolderName.Length - 1);
+            folderPath = GetPathWithoutRootFolder(folderPath);
             string dstFolderPath = Path.Combine(_config.StoragePath, folderPath);
             if (!Directory.Exists(dstFolderPath))
                 Directory.CreateDirectory(dstFolderPath);
@@ -196,6 +197,11 @@ namespace FileStorage.BL
             _fsUnitOfWork.Save();
 
             return newItem.StorageItemId;
+        }
+
+        private string GetPathWithoutRootFolder(string folderPath)
+        {
+            return folderPath.Substring(RootFolderName.Length + 1, folderPath.Length - RootFolderName.Length - 1);
         }
 
         private FolderItem GetOrCreateFreeFolder(int folderLevel)
