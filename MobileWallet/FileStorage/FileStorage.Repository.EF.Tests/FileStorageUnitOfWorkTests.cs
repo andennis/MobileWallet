@@ -1,4 +1,5 @@
 ﻿using FileStorage.Core;
+using FileStorage.Core.Entities;
 using NUnit.Framework;
 
 namespace FileStorage.Repository.EF.Tests
@@ -12,6 +13,13 @@ namespace FileStorage.Repository.EF.Tests
             var unitOfWork = new FileStorageUnitOfWork(_dbSession);
             Assert.NotNull(unitOfWork.FileStorageRepository);
             Assert.IsInstanceOf<IFileStorageRepository>(unitOfWork.FileStorageRepository);
+        }
+
+        [Test]
+        public void GetRepositoryForStorageItemTest()
+        {
+            var unitOfWork = new FileStorageUnitOfWork(_dbSession);
+            Assert.IsNotNull(unitOfWork.GetRepository<StorageItem>());
         }
     }
 }

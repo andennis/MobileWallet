@@ -6,25 +6,29 @@ namespace FileStorage.Repository.EF.Tests
     [TestFixture]
     public class FileStorageRepositoryTests : RepositoryTestsBase
     {
+        private readonly IFileStorageRepository _fsRep;
+
+        public FileStorageRepositoryTests()
+        {
+            _fsRep = new FileStorageRepository(_dbSession);
+        }
+
         [Test]
         public void GetFreeFolderItemTest()
         {
-            IFileStorageRepository fsRep = new FileStorageRepository(_dbSession);
-            Assert.DoesNotThrow(() => fsRep.GetFreeFolderItem(3, 3)); 
+            Assert.DoesNotThrow(() => _fsRep.GetFreeFolderItem(3, 3)); 
         }
 
         [Test]
         public void GetFolderItemPathTest()
         {
-            IFileStorageRepository fsRep = new FileStorageRepository(_dbSession);
-            Assert.DoesNotThrow(() => fsRep.GetFolderItemPath(0)); 
+            Assert.DoesNotThrow(() => _fsRep.GetFolderItemPath(0)); 
         }
 
         [Test]
         public void GetStorageItemPathTest()
         {
-            IFileStorageRepository fsRep = new FileStorageRepository(_dbSession);
-            Assert.DoesNotThrow(() => fsRep.GetStorageItemPath(0)); 
+            Assert.DoesNotThrow(() => _fsRep.GetStorageItemPath(0)); 
         }
     }
 }
