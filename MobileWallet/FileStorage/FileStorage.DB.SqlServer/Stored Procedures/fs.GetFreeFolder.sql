@@ -42,8 +42,7 @@ BEGIN
     SELECT 
         FolderItemId, 
         ParentId, 
-        Name, 
-        ChildFoldersCount
+        Name
     FROM fs.FolderItem 
     WHERE FolderItemId = @FolderItemId
 END

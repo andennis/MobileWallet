@@ -10,7 +10,7 @@ namespace FileStorage.BL
 {
     public class FileStorageService : IFileStorageService
     {
-        private const string FolderItemPrefix = "FI";
+        //private const string FolderItemPrefix = "FI$";
         private const string RootFolderName = "FSRoot";
         private readonly IFileStorageConfig _config;
         private readonly IFileStorageUnitOfWork _fsUnitOfWork;
@@ -123,6 +123,32 @@ namespace FileStorage.BL
 
             return CreateStorageItem(parentFolder, newFileItem);
         }
+        public string GetStorageItemPath(int itemId)
+        {
+            string path = _fsUnitOfWork.FileStorageRepository.GetStorageItemPath(itemId);
+            if (path == null)
+                return null;
+
+            path = GetPathWithoutRootFolder(path);
+            return Path.Combine(_config.StoragePath, path);
+        }
+
+        public void DeleteStorageItem(int itemId)
+        {
+            IRepository<StorageItem> siRep = _fsUnitOfWork.GetRepository<StorageItem>();
+            StorageItem si = siRep.Find(itemId);
+            if (si == null)
+                return;
+
+            si.Status = ItemStatus.Deleted;
+            siRep.Update(si);
+            _fsUnitOfWork.Save();
+        }
+        public void PurgeDeletedItems()
+        {
+            throw new NotImplementedException();
+        }
+
         private static void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs)
         {
             // Get the subdirectories for the specified directory.
@@ -154,31 +180,6 @@ namespace FileStorage.BL
                 }
             }
         }
-        public string GetStorageItemPath(int itemId)
-        {
-            string path = _fsUnitOfWork.FileStorageRepository.GetStorageItemPath(itemId);
-            if (path == null)
-                return null;
-
-            path = GetPathWithoutRootFolder(path);
-            return Path.Combine(_config.StoragePath, path);
-        }
-
-        public void DeleteStorageItem(int itemId)
-        {
-            IRepository<StorageItem> siRep = _fsUnitOfWork.GetRepository<StorageItem>();
-            StorageItem si = siRep.Find(itemId);
-            if (si == null)
-                return;
-
-            si.Status = ItemStatus.Deleted;
-            siRep.Update(si);
-            _fsUnitOfWork.Save();
-        }
-        public void PurgeDeletedItems()
-        {
-            throw new NotImplementedException();
-        }
 
         private string GetNewStorageItemPath(out FolderItem parentFolder)
         {
@@ -192,6 +193,7 @@ namespace FileStorage.BL
             if (!Directory.Exists(dstFolderPath))
                 Directory.CreateDirectory(dstFolderPath);
 
+            //Generate file name as GUID
             string fileName = Guid.NewGuid().ToString();
             return Path.Combine(dstFolderPath, fileName);
         }
@@ -229,8 +231,23 @@ namespace FileStorage.BL
             if (parentFolder.ChildFolders == null)
                 parentFolder.ChildFolders = new Collection<FolderItem>();
 
-            parentFolder.ChildFoldersCount += 1;
-            var newFolder = new FolderItem() {Name = GenerateFolderName(parentFolder)};
+            /*
+            string newFolderName = GenerateFolderName();
+            bool isExist = _fsUnitOfWork.FileStorageRepository.Query()
+               .Filter(x => x.Parent.FolderItemId == parentFolder.FolderItemId && x.Name == newFolderName)
+               .Get().Any();
+            int n = 0;
+            while (isExist && n++ < 5)
+            {
+                newFolderName = GenerateFolderName();
+                isExist = _fsUnitOfWork.FileStorageRepository.Query()
+                   .Filter(x => x.Parent.FolderItemId == parentFolder.FolderItemId && x.Name == newFolderName)
+                   .Get().Any();
+            } 
+            if (isExist)
+                throw new FileStorageException("Unique folder name cannot be generated");
+            */
+            var newFolder = new FolderItem() {Name = GenerateFolderName()};
             parentFolder.ChildFolders.Add(newFolder);
                 
             _fsUnitOfWork.FileStorageRepository.Update(parentFolder);
@@ -238,9 +255,10 @@ namespace FileStorage.BL
             return newFolder;
         }
 
-        private string GenerateFolderName(FolderItem parentFolder)
+        private string GenerateFolderName()
         {
-            return FolderItemPrefix + parentFolder.ChildFoldersCount.ToString();
+            string name = Path.GetRandomFileName();
+            return /*FolderItemPrefix +*/ name.Remove(name.Length - 4, 1);
         }
     }
 }

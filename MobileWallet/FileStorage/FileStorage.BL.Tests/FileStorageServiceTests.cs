@@ -83,7 +83,7 @@ namespace FileStorage.BL.Tests
         }
 
         [Test]
-        public void PutFolderWithCopy()
+        public void PutFolderWithCopyTest()
         {
             string srcPath = Path.Combine(TestFolderBase, "F2");
             if (!Directory.Exists(srcPath))
@@ -108,7 +108,7 @@ namespace FileStorage.BL.Tests
         }
 
         [Test]
-        public void PutFolderWithMove()
+        public void PutFolderWithMoveTest()
         {
             string srcPath = Path.Combine(TestFolderBase, "F2");
             if (!Directory.Exists(srcPath))
@@ -133,7 +133,7 @@ namespace FileStorage.BL.Tests
         }
 
         [Test]
-        public void PutFileWithCopy()
+        public void PutFileWithCopyTest()
         {
             string srcFilePath = Path.Combine(TestFolderBase, "TextFile2.txt");
             File.Copy(TestFilePath, srcFilePath, true);
@@ -150,7 +150,7 @@ namespace FileStorage.BL.Tests
         }
 
         [Test]
-        public void PutFileWithMove()
+        public void PutFileWithMoveTest()
         {
             string srcFilePath = Path.Combine(TestFolderBase, "TextFile2.txt");
             File.Copy(TestFilePath, srcFilePath, true);
@@ -163,6 +163,21 @@ namespace FileStorage.BL.Tests
                 Assert.IsNotNullOrEmpty(dstFilePath);
                 Assert.True(File.Exists(dstFilePath));
                 Assert.False(File.Exists(srcFilePath));
+            }
+        }
+
+        [Test]
+        public void PutFileByStreamTest()
+        {
+            using (Stream fs = new FileStream(TestFilePath, FileMode.Open))
+            using (IDbSession dbSession = CreateDbSession())
+            {
+                var fsService = new FileStorageService(_fsConfig, new FileStorageUnitOfWork(dbSession));
+                int id = fsService.PutFile(fs);
+                Assert.Greater(id, 0);
+                string dstFilePath = fsService.GetStorageItemPath(id);
+                Assert.IsNotNullOrEmpty(dstFilePath);
+                Assert.True(File.Exists(dstFilePath));
             }
         }
 
@@ -211,7 +226,6 @@ namespace FileStorage.BL.Tests
         {
             throw new NotImplementedException();
         }
-
 
         private IDbSession CreateDbSession()
         {
