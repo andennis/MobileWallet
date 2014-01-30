@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="PassContainerDbContext.cs" />
     <Compile Include="PassContainerDbSession.cs" />
+    <Compile Include="PassContainerUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

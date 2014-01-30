@@ -44,14 +44,35 @@
   <ItemGroup>
     <Compile Include="AppleDevicePassProcessingService.cs" />
     <Compile Include="Helpers\PassGeneratorHelper.cs" />
+    <Compile Include="PassContainerConfig.cs" />
     <Compile Include="PassDistributionService.cs" />
     <Compile Include="PassTemplateService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.Configuration\Common.Configuration.csproj">
+      <Project>{DFABDFCC-3B69-434A-BD2A-6838CD7608A8}</Project>
+      <Name>Common.Configuration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Common\Common.Extensions\Common.Extensions.csproj">
       <Project>{1628E173-1BE9-4DFC-BCBE-93334DE8EE46}</Project>
       <Name>Common.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Common.Repository\Common.Repository.csproj">
+      <Project>{F36371D6-812F-49F5-9E9B-043265660647}</Project>
+      <Name>Common.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FileStorage\FileStorage.BL\FileStorage.BL.csproj">
+      <Project>{F067DA74-E48F-4DE7-85D4-1217BB3670E3}</Project>
+      <Name>FileStorage.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FileStorage\FileStorage.Core\FileStorage.Core.csproj">
+      <Project>{06EBD357-60DC-4BD9-AD9B-0A736DCC2203}</Project>
+      <Name>FileStorage.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FileStorage\FileStorage.Repository.EF\FileStorage.Repository.EF.csproj">
+      <Project>{2378C604-FFF4-44F9-9934-BB17013C27FB}</Project>
+      <Name>FileStorage.Repository.EF</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pass.Container.Core\Pass.Container.Core.csproj">
       <Project>{062e8da0-3ef1-4481-8fcf-cfeb54a39771}</Project>

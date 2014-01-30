@@ -78,7 +78,10 @@
     <Compile Include="Entities\Templates\PassTemplate\LanguageDetails.cs" />
     <Compile Include="Entities\Templates\PassTemplate\LocationDetails.cs" />
     <Compile Include="Entities\Templates\PassTemplate\PassTemplate.cs" />
+    <Compile Include="Exceptions\PassTemplateException.cs" />
     <Compile Include="IAppleDevicePassProcessingService.cs" />
+    <Compile Include="IPassContainerConfig.cs" />
+    <Compile Include="IPassContainerUnitOfWork.cs" />
     <Compile Include="IPassDistributionService.cs" />
     <Compile Include="IPassTemplateService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -90,6 +93,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\Templates\NativePassTemplates\GooglePassTemplate\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.Repository\Common.Repository.csproj">
+      <Project>{F36371D6-812F-49F5-9E9B-043265660647}</Project>
+      <Name>Common.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
