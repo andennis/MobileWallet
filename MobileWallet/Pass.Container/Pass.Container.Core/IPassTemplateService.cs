@@ -15,5 +15,6 @@ namespace Pass.Container.Core
         string GetNativePassTemplate(int passTemplateId, PassTemplateType passTemplateType);
         IList<PassField> GetPassFields(int passTemplateId);
         void UpdatePassTemlate(string passTemplatePath);
+        bool ValidatePassTemplate(string passTemplateFilePath);
     }
 }

@@ -80,6 +80,7 @@
     <Compile Include="Entities\Templates\PassTemplate\PassTemplate.cs" />
     <Compile Include="Exceptions\PassTemplateException.cs" />
     <Compile Include="IAppleDevicePassProcessingService.cs" />
+    <Compile Include="INativePassTemplateGenerator.cs" />
     <Compile Include="IPassContainerConfig.cs" />
     <Compile Include="IPassContainerUnitOfWork.cs" />
     <Compile Include="IPassDistributionService.cs" />
