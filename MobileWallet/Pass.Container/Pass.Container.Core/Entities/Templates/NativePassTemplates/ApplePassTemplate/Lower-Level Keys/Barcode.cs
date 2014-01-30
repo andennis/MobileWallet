@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace Pass.Container.Core.Entities.ApplePass.Lower_Level_Keys
+namespace Pass.Container.Core.Entities.Templates.NativePassTemplatess.Lower_Level_Keys
 {
     //Information about a pass’s barcode
     public class Barcode

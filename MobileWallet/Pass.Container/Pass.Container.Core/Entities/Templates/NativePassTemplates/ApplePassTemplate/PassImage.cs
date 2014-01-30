@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Pass.Container.Core.Entities.ApplePass
+﻿namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTemplate
 {
     public class PassImage
     {

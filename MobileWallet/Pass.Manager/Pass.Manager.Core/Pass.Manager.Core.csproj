@@ -44,15 +44,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\MainTemplate\BarcodeDetails.cs" />
-    <Compile Include="Entities\MainTemplate\BeaconDetails.cs" />
-    <Compile Include="Entities\MainTemplate\DistributionDetails.cs" />
-    <Compile Include="Entities\MainTemplate\FieldDetails.cs" />
-    <Compile Include="Entities\MainTemplate\IntegrationDetails.cs" />
-    <Compile Include="Entities\MainTemplate\LanguageDetails.cs" />
-    <Compile Include="Entities\MainTemplate\LocationDetails.cs" />
     <Compile Include="Entities\MainTemplate\MainTemplate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Pass.Container\Pass.Container.Core\Pass.Container.Core.csproj">
+      <Project>{062e8da0-3ef1-4481-8fcf-cfeb54a39771}</Project>
+      <Name>Pass.Container.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

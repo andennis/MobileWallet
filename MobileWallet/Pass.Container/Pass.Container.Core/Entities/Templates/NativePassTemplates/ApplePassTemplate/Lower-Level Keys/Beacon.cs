@@ -5,14 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace Pass.Manager.Core.Entities.MainTemplate
+namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.Lower_Level_Keys
 {
-    public class BeaconDetails
-    {
-        [JsonProperty(PropertyName = "name", NullValueHandling = NullValueHandling.Ignore)]
-        public string Name { get; set; }
-    }
-
     //Information about a location beacon
     public class Beacon
     {

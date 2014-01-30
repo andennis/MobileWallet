@@ -64,6 +64,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pass.Container.Repository.E
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Pass.Container.DB.SqlServer", "Pass.Container\Pass.Container.DB.SqlServer\Pass.Container.DB.SqlServer.sqlproj", "{680D1204-154B-4021-B719-9D1AEB23E254}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pass.Manager.Web", "Pass.Manager.Web", "{6E9A0A8A-1144-4CC2-90FE-8ABC9F6E94E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pass.Manager.Web", "Pass.Manager.Web\Pass.Manager.Web\Pass.Manager.Web.csproj", "{F039ACE9-AC51-4BC7-A90C-1F67E7047049}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -256,6 +260,14 @@ Global
 		{680D1204-154B-4021-B719-9D1AEB23E254}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{680D1204-154B-4021-B719-9D1AEB23E254}.Release|X64.ActiveCfg = Release|Any CPU
 		{680D1204-154B-4021-B719-9D1AEB23E254}.Release|x86.ActiveCfg = Release|Any CPU
+		{F039ACE9-AC51-4BC7-A90C-1F67E7047049}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F039ACE9-AC51-4BC7-A90C-1F67E7047049}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F039ACE9-AC51-4BC7-A90C-1F67E7047049}.Debug|X64.ActiveCfg = Debug|Any CPU
+		{F039ACE9-AC51-4BC7-A90C-1F67E7047049}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F039ACE9-AC51-4BC7-A90C-1F67E7047049}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F039ACE9-AC51-4BC7-A90C-1F67E7047049}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F039ACE9-AC51-4BC7-A90C-1F67E7047049}.Release|X64.ActiveCfg = Release|Any CPU
+		{F039ACE9-AC51-4BC7-A90C-1F67E7047049}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -283,5 +295,6 @@ Global
 		{6E682A14-C872-4813-B620-76E108DEA683} = {380C838C-DDA1-45E1-B45D-56C686CF097E}
 		{DC28CC0D-F87E-4D65-8812-3BAF31C9C359} = {BFCA7B7D-8D87-4586-AF73-F88BCE8EC611}
 		{50EB2907-B688-4C90-BE7D-61753452F7A9} = {AFA24890-A349-41D6-91EF-20AAF4B40AAD}
+		{F039ACE9-AC51-4BC7-A90C-1F67E7047049} = {6E9A0A8A-1144-4CC2-90FE-8ABC9F6E94E5}
 	EndGlobalSection
 EndGlobal

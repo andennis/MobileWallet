@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Pass.Container.Core.Entities.ApplePass.Field_Dictionary_Keys;
+using Pass.Container.Core.Entities.Templates.NativePassTemplates.Field_Dictionary_Keys;
 
-namespace Pass.Container.Core.Entities.ApplePass.Lower_Level_Keys
+namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.Lower_Level_Keys
 {
     //Keys that define the structure of the pass
     public class PassStructure

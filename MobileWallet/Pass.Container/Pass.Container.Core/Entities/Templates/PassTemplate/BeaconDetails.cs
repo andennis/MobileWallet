@@ -1,12 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace Pass.Container.Core.Entities.ApplePass.Lower_Level_Keys
+namespace Pass.Container.Core.Entities.Templates.PassTemplate
 {
+    public class BeaconDetails
+    {
+        [JsonProperty(PropertyName = "name", NullValueHandling = NullValueHandling.Ignore)]
+        public string Name { get; set; }
+    }
+
     //Information about a location beacon
     public class Beacon
     {

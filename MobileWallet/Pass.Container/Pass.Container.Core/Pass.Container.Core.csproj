@@ -50,13 +50,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\ApplePass\Field Dictionary Keys\Field.cs" />
-    <Compile Include="Entities\ApplePass\Lower-Level Keys\Barcode.cs" />
-    <Compile Include="Entities\ApplePass\Lower-Level Keys\Beacon.cs" />
-    <Compile Include="Entities\ApplePass\Lower-Level Keys\Location.cs" />
-    <Compile Include="Entities\ApplePass\Lower-Level Keys\PassStructure.cs" />
-    <Compile Include="Entities\ApplePass\Pass.cs" />
-    <Compile Include="Entities\ApplePass\PassImage.cs" />
+    <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Field Dictionary Keys\Field.cs" />
+    <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Lower-Level Keys\Barcode.cs" />
+    <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Lower-Level Keys\Beacon.cs" />
+    <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Lower-Level Keys\Location.cs" />
+    <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Lower-Level Keys\PassStructure.cs" />
+    <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Pass.cs" />
+    <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\PassImage.cs" />
     <Compile Include="Entities\DeviceApple.cs" />
     <Compile Include="Entities\DeviceBase.cs" />
     <Compile Include="Entities\DeviceRegistration.cs" />
@@ -70,7 +70,14 @@
     <Compile Include="Entities\PassFieldValue.cs" />
     <Compile Include="Entities\Enums\PassStatus.cs" />
     <Compile Include="Entities\PassTemplateContainer.cs" />
-    <Compile Include="Entities\Template\Template.cs" />
+    <Compile Include="Entities\Templates\PassTemplate\BarcodeDetails.cs" />
+    <Compile Include="Entities\Templates\PassTemplate\BeaconDetails.cs" />
+    <Compile Include="Entities\Templates\PassTemplate\DistributionDetails.cs" />
+    <Compile Include="Entities\Templates\PassTemplate\FieldDetails.cs" />
+    <Compile Include="Entities\Templates\PassTemplate\IntegrationDetails.cs" />
+    <Compile Include="Entities\Templates\PassTemplate\LanguageDetails.cs" />
+    <Compile Include="Entities\Templates\PassTemplate\LocationDetails.cs" />
+    <Compile Include="Entities\Templates\PassTemplate\PassTemplate.cs" />
     <Compile Include="IAppleDevicePassProcessingService.cs" />
     <Compile Include="IPassDistributionService.cs" />
     <Compile Include="IPassTemplateService.cs" />
@@ -80,6 +87,9 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\Templates\NativePassTemplates\GooglePassTemplate\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
