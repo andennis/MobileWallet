@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using FileStorage.BL;
 using FileStorage.Core;
-using FileStorage.Repository.EF;
 using Pass.Container.BL.NativePassTemplateGenerators;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities.Enums;
