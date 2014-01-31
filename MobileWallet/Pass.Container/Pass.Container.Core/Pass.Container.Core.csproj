@@ -62,11 +62,11 @@
     <Compile Include="Entities\Enums\PassTemplateType.cs" />
     <Compile Include="Entities\NativePassTemplateApple.cs" />
     <Compile Include="Entities\NativePassTemplateBase.cs" />
-    <Compile Include="Entities\ClientPass.cs" />
+    <Compile Include="Entities\Pass.cs" />
     <Compile Include="Entities\PassField.cs" />
     <Compile Include="Entities\PassFieldValue.cs" />
     <Compile Include="Entities\Enums\PassStatus.cs" />
-    <Compile Include="Entities\PassTemplateContainer.cs" />
+    <Compile Include="Entities\PassTemplate.cs" />
     <Compile Include="Entities\Templates\PassTemplate\BarcodeDetails.cs" />
     <Compile Include="Entities\Templates\PassTemplate\BeaconDetails.cs" />
     <Compile Include="Entities\Templates\PassTemplate\DistributionDetails.cs" />

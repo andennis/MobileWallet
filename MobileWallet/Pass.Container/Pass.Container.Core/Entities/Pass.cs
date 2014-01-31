@@ -11,7 +11,9 @@ namespace Pass.Container.Core.Entities
         public string SerialNumber { get; set; }
         public DateTime? ExpirationDate { get; set; }
         public PassStatus Status { get; set;}
+        public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
-        public ICollection<PassFieldValue> PassFieldValues { get; set; }
+        public PassTemplate Template { get; set; }
+        public ICollection<PassFieldValue> FieldValues { get; set; }
     }
 }

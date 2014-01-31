@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Pass.Container.Core.Entities;
+﻿using System.Data.Entity;
+using PassEntities = Pass.Container.Core.Entities;
 
 namespace Pass.Container.Repository.EF
 {
     public class PassContainerDbContext : DbContext
     {
-        public const string DbScheme = "pc";
+        public const string DbScheme = "pscn";
 
         public PassContainerDbContext(string nameOrConnectionString)
             :base(nameOrConnectionString)
@@ -19,37 +14,37 @@ namespace Pass.Container.Repository.EF
             //this.Configuration.LazyLoadingEnabled = false;
         }
 
-        public DbSet<ClientPass> ClientPasses { get; set; }
-        public DbSet<PassTemplateContainer> PassTemplates { get; set; }
-        public DbSet<PassField> PassFields { get; set; }
-        public DbSet<PassFieldValue> PassFieldValues { get; set; }
+        public DbSet<PassEntities.Pass> Passes { get; set; }
+        public DbSet<PassEntities.PassTemplate> PassTemplates { get; set; }
+        public DbSet<PassEntities.PassField> PassFields { get; set; }
+        public DbSet<PassEntities.PassFieldValue> PassFieldValues { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ClientPass>().ToTable("ClientPass", DbScheme);
-            modelBuilder.Entity<ClientPass>().HasKey(x => x.ClientPassId);
-            modelBuilder.Entity<ClientPass>().Property(x => x.AuthToken).IsRequired().HasMaxLength(400);
-            modelBuilder.Entity<ClientPass>().Property(x => x.ExpirationDate).IsOptional();
-            modelBuilder.Entity<ClientPass>().Property(x => x.SerialNumber).IsRequired().HasMaxLength(400);
-            modelBuilder.Entity<ClientPass>().Property(x => x.Status).IsRequired();
-            modelBuilder.Entity<ClientPass>().Property(x => x.UpdatedDate).IsRequired();
-            modelBuilder.Entity<ClientPass>().HasMany(x => x.PassFieldValues).WithRequired(x => x.ClientPass);
+            modelBuilder.Entity<PassEntities.Pass>().ToTable("Pass", DbScheme);
+            modelBuilder.Entity<PassEntities.Pass>().HasKey(x => x.PassId);
+            modelBuilder.Entity<PassEntities.Pass>().Property(x => x.AuthToken).IsRequired().HasMaxLength(400);
+            modelBuilder.Entity<PassEntities.Pass>().Property(x => x.ExpirationDate).IsOptional();
+            modelBuilder.Entity<PassEntities.Pass>().Property(x => x.SerialNumber).IsRequired().HasMaxLength(400);
+            modelBuilder.Entity<PassEntities.Pass>().Property(x => x.Status).IsRequired();
+            modelBuilder.Entity<PassEntities.Pass>().Property(x => x.UpdatedDate).IsRequired();
+            modelBuilder.Entity<PassEntities.Pass>().HasMany(x => x.FieldValues).WithRequired(x => x.Pass);
 
-            modelBuilder.Entity<PassTemplateContainer>().ToTable("PassTemplate", DbScheme);
-            modelBuilder.Entity<PassTemplateContainer>().HasKey(x => x.PassTemplateId);
-            modelBuilder.Entity<PassTemplateContainer>().Property(x => x.Name).IsRequired().HasMaxLength(400);
-            modelBuilder.Entity<PassTemplateContainer>().HasMany(x => x.PassFields).WithRequired(x => x.PassTemplate);
-            modelBuilder.Entity<PassTemplateContainer>().HasMany(x => x.Passes).WithRequired(x => x.PassTemplate);
-            modelBuilder.Entity<PassTemplateContainer>().HasMany(x => x.NativePassTemplates).WithRequired(x => x.PassTemplate);
+            modelBuilder.Entity<PassEntities.PassTemplate>().ToTable("PassTemplate", DbScheme);
+            modelBuilder.Entity<PassEntities.PassTemplate>().HasKey(x => x.PassTemplateId);
+            modelBuilder.Entity<PassEntities.PassTemplate>().Property(x => x.Name).IsRequired().HasMaxLength(400);
+            modelBuilder.Entity<PassEntities.PassTemplate>().HasMany(x => x.PassFields).WithRequired(x => x.Template);
+            modelBuilder.Entity<PassEntities.PassTemplate>().HasMany(x => x.Passes).WithRequired(x => x.Template);
+            modelBuilder.Entity<PassEntities.PassTemplate>().HasMany(x => x.NativeTemplates).WithRequired(x => x.Template);
 
-            modelBuilder.Entity<PassField>().ToTable("PassField", DbScheme);
-            modelBuilder.Entity<PassField>().HasKey(x => x.PassFieldId);
-            modelBuilder.Entity<PassField>().Property(x => x.Name).IsRequired().HasMaxLength(400);
+            modelBuilder.Entity<PassEntities.PassField>().ToTable("PassField", DbScheme);
+            modelBuilder.Entity<PassEntities.PassField>().HasKey(x => x.PassFieldId);
+            modelBuilder.Entity<PassEntities.PassField>().Property(x => x.Name).IsRequired().HasMaxLength(400);
 
-            modelBuilder.Entity<PassFieldValue>().ToTable("PassFieldValue", DbScheme);
-            modelBuilder.Entity<PassFieldValue>().HasKey(x => x.PassFieldValueId);
-            modelBuilder.Entity<PassFieldValue>().Property(x => x.Value).IsOptional().HasMaxLength(400);
-            modelBuilder.Entity<PassFieldValue>().HasRequired(x => x.PassField).WithOptional(x => x.PassFieldValue);
+            modelBuilder.Entity<PassEntities.PassFieldValue>().ToTable("PassFieldValue", DbScheme);
+            modelBuilder.Entity<PassEntities.PassFieldValue>().HasKey(x => x.PassFieldValueId);
+            modelBuilder.Entity<PassEntities.PassFieldValue>().Property(x => x.Value).IsOptional().HasMaxLength(400);
+            //modelBuilder.Entity<PassEntities.PassFieldValue>().HasRequired(x => x.PassField).WithOptional(x => x.FieldValue);
 
             base.OnModelCreating(modelBuilder);
         }

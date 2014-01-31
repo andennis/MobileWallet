@@ -11,7 +11,7 @@ namespace Pass.Container.Core.Entities
     {
         public int DeviceRegistrationId { get; set; }
         public DeviceRegistrationStatus Status { get; set; }
-        public ClientPass Pass { get; set; }
+        public Pass Pass { get; set; }
         public DeviceBase DeviceBase { get; set; }
     }
 }
