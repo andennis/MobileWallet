@@ -368,16 +368,6 @@
         <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
       </referencedType>
     </packageHasNamedElement>
-    <logicalClassDesignerModelHasTypes>
-      <enumeration Id="6d16f2c7-c463-4299-a42b-f927bc8da8b5" name="PassTemplateType" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="36a32706-c6a2-4aeb-b724-59c8c372a1eb" />
-        <ownedLiterals>
-          <enumerationLiteral Id="c886c08d-5368-4c1d-b8ff-9b0b20204fa2" name="AppleTemplate">
-            <elementDefinition Id="8bfa0801-e679-4df2-94f2-1a892574423c" />
-          </enumerationLiteral>
-        </ownedLiterals>
-      </enumeration>
-    </logicalClassDesignerModelHasTypes>
     <packageHasNamedElement>
       <referencedType Id="1f49147d-b82f-46f3-ad9e-ecbf7956c6f1" name="Integer" isAbstract="false" isLeaf="false" cachedFullName="Integer">
         <elementDefinition Id="220a3521-e091-4221-bae9-3ef9018e845c" />
