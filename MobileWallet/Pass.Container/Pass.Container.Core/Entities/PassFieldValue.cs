@@ -1,7 +1,9 @@
 ﻿
+using Common.Repository;
+
 namespace Pass.Container.Core.Entities
 {
-    public class PassFieldValue
+    public sealed class PassFieldValue : EntityVersionable
     {
         public int PassFieldValueId { get; set; }
         public string Value { get; set; }

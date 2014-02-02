@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\PassApple.cs" />
     <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Field Dictionary Keys\Field.cs" />
     <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Lower-Level Keys\Barcode.cs" />
     <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Lower-Level Keys\Beacon.cs" />
@@ -60,8 +61,8 @@
     <Compile Include="Entities\Enums\DeviceRegistrationStatus.cs" />
     <Compile Include="Entities\Enums\DeviceType.cs" />
     <Compile Include="Entities\Enums\PassTemplateType.cs" />
-    <Compile Include="Entities\NativePassTemplateApple.cs" />
-    <Compile Include="Entities\NativePassTemplateBase.cs" />
+    <Compile Include="Entities\PassTemplateApple.cs" />
+    <Compile Include="Entities\PassTemplateNative.cs" />
     <Compile Include="Entities\Pass.cs" />
     <Compile Include="Entities\PassField.cs" />
     <Compile Include="Entities\PassFieldValue.cs" />

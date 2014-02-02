@@ -6,10 +6,11 @@ namespace FileStorage.Repository.EF.Tests
     [TestFixture]
     public class FileStorageRepositoryTests : RepositoryTestsBase
     {
-        private readonly IFileStorageRepository _fsRep;
+        private IFileStorageRepository _fsRep;
 
-        public FileStorageRepositoryTests()
+        public override void InitEachTest()
         {
+            base.InitEachTest();
             _fsRep = new FileStorageRepository(_dbSession);
         }
 

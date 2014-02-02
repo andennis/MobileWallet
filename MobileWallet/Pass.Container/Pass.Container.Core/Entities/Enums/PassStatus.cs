@@ -2,7 +2,7 @@
 {
     public enum PassStatus
     {
-        Active = 0,
-        InActive = 1
+        Active = 1,
+        InActive = 2
     }
 }

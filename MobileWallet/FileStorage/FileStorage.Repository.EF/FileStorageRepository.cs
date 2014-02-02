@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Transactions;
 using Common.Repository;
@@ -11,7 +12,7 @@ namespace FileStorage.Repository.EF
     public sealed class FileStorageRepository : Repository<FolderItem>, IFileStorageRepository
     {
         public FileStorageRepository(IDbSession dbSession)
-            : base((FileStorageDbContext)dbSession.DbContext)
+            : base((DbContext)dbSession.DbContext)
         {
         }
 

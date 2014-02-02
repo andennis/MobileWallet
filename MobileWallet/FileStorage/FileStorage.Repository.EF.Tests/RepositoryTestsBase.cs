@@ -8,13 +8,13 @@ namespace FileStorage.Repository.EF.Tests
         protected IDbSession _dbSession;
 
         [SetUp]
-        public void InitAllTests()
+        public virtual void InitEachTest()
         {
             _dbSession = new FileStorageDbSession(TestHelper.DbConfig);
         }
 
         [TearDown]
-        public void FinalizeAllTests()
+        public virtual void FinalizeEachTest()
         {
             _dbSession.Dispose();
         }

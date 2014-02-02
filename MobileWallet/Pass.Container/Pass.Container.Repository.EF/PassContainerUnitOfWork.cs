@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Common.Repository;
 using Common.Repository.EF;
 using Pass.Container.Core;
+using Pass.Container.Core.Entities;
 
 namespace Pass.Container.Repository.EF
 {
@@ -18,7 +19,7 @@ namespace Pass.Container.Repository.EF
             :base(dbSession)
         {
             _dbSession = dbSession;
-            
+            AddRepository(new Repository<PassApple>((DbContext)_dbSession.DbContext));
         }
     }
 }

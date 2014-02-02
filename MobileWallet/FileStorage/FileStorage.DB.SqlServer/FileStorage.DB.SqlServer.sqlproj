@@ -77,5 +77,6 @@
     <Build Include="Stored Procedures\fs.GetStorageItemPath.sql" />
     <Build Include="Security\fs.sql" />
     <Build Include="Scripts\GenerateTestData.sql" />
+    <Build Include="Scripts\DbSchemeScript.sql" />
   </ItemGroup>
 </Project>

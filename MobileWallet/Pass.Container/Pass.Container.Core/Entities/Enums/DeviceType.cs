@@ -2,6 +2,6 @@
 {
     public enum DeviceType
     {
-        Apple = 0
+        Apple = 1
     }
 }
