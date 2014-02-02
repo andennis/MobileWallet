@@ -1,19 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System.Xml.Serialization;
+using Newtonsoft.Json;
 
 namespace Pass.Container.Core.Entities.Templates.PassTemplate
 {
     public class LanguageDetails
     {
-        [JsonProperty(PropertyName = "altitude", NullValueHandling = NullValueHandling.Ignore)]
-        public double? Altitude { get; set; }
-
-        [JsonProperty(PropertyName = "latitude", Required = Required.Always)]
-        public double Latitude { get; set; }
-
-        [JsonProperty(PropertyName = "longitude", Required = Required.Always)]
-        public double Longitude { get; set; }
-
-        [JsonProperty(PropertyName = "relevantText", NullValueHandling = NullValueHandling.Ignore)]
-        public string RelevantText { get; set; }
+       
     }
 }
