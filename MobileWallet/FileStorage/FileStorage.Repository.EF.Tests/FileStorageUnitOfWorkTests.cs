@@ -1,4 +1,5 @@
-﻿using FileStorage.Core;
+﻿using System;
+using FileStorage.Core;
 using FileStorage.Core.Entities;
 using NUnit.Framework;
 
@@ -7,6 +8,10 @@ namespace FileStorage.Repository.EF.Tests
     [TestFixture]
     public class FileStorageUnitOfWorkTests : RepositoryTestsBase
     {
+        private class MyEntity
+        {
+        }
+
         [Test]
         public void FileStorageRepositoryTest()
         {
@@ -16,10 +21,12 @@ namespace FileStorage.Repository.EF.Tests
         }
 
         [Test]
-        public void GetRepositoryForStorageItemTest()
+        public void GetRepositoryTest()
         {
             var unitOfWork = new FileStorageUnitOfWork(_dbSession);
             Assert.IsNotNull(unitOfWork.GetRepository<StorageItem>());
+            Assert.IsNotNull(unitOfWork.GetRepository<FolderItem>());
+            Assert.Throws<Exception>(() => unitOfWork.GetRepository<MyEntity>());
         }
     }
 }

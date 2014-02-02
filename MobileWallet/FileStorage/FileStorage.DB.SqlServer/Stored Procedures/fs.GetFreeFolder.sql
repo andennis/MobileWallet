@@ -39,10 +39,6 @@ BEGIN
     HAVING SUM(t.Number) < @MaxItemsNumber
     ORDER BY SUM(t.Number)
 
-    SELECT 
-        FolderItemId, 
-        ParentId, 
-        Name
-    FROM fs.FolderItem 
+    SELECT * FROM fs.FolderItem 
     WHERE FolderItemId = @FolderItemId
 END

@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
+using Common.Repository;
 
 namespace FileStorage.Core.Entities
 {
-    public class FolderItem
+    public class FolderItem : EntityVersionable
     {
         public int FolderItemId { get; set; }
         public string Name { get; set; }
         public FolderItem Parent { get; set; }
         public ICollection<FolderItem> ChildFolders { get; set; }
-        public virtual ICollection<StorageItem> ChildStorageItems { get; set; }
+        public ICollection<StorageItem> ChildStorageItems { get; set; }
     }
 }

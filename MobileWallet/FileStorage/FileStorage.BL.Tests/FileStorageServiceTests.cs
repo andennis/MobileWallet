@@ -221,7 +221,7 @@ namespace FileStorage.BL.Tests
             }
         }
 
-        //[Test]
+        [Ignore]
         public void PurgeDeletedItemsTests()
         {
             throw new NotImplementedException();

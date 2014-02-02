@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="c7b974f1-61ed-4da6-92b7-fa573c5cbc12" name="FileStorage.Services" linkedPackageId="2014c4d4-cf8c-4792-beac-24cb172bf0dc" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="c7b974f1-61ed-4da6-92b7-fa573c5cbc12" name="FileStorage.Services" linkedPackageId="2014c4d4-cf8c-4792-beac-24cb172bf0dc" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <Interface Id="092379fe-07dc-4310-87cb-a0704071c219" name="IFileStorageService" isAbstract="false" isLeaf="false">
@@ -8,13 +8,10 @@
           <operation Id="9d4515ca-edc4-4a0c-877b-95879bf59ab8" name="PutFile" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="ff679c1f-68f7-4838-ba14-76ccb6be6113" />
           </operation>
-          <operation Id="f5f73c6a-0644-4ab5-b271-4303a63928e3" name="GetFileInfo" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
-            <elementDefinition Id="81e5f6a2-6e84-4c65-a0ac-afe74b5008e1" />
-          </operation>
           <operation Id="1eb6766b-32de-4280-8208-5b1633b5ddaa" name="PutFolder" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="f53dd391-4048-4cea-97b1-d60cdb2f42e1" />
           </operation>
-          <operation Id="aafcd4bb-19f1-4caa-b226-d27913c8902d" name="GetFolderInfo" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+          <operation Id="aafcd4bb-19f1-4caa-b226-d27913c8902d" name="GetStorageItemPath" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="54ffdb54-b928-4ccc-bd36-e6881c49a83c" />
           </operation>
         </ownedOperations>

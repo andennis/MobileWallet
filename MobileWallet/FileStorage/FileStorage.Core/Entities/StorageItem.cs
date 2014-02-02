@@ -1,7 +1,9 @@
 ﻿
+using Common.Repository;
+
 namespace FileStorage.Core.Entities
 {
-    public sealed class StorageItem
+    public sealed class StorageItem : EntityVersionable
     {
         public int StorageItemId { get; set; }
         public string Name { get; set; }

@@ -6,10 +6,10 @@ using System.Linq;
 
 namespace Common.Repository.EF
 {
-    public class UnitOfWork : IUnitOfWork
+    public abstract class UnitOfWork : IUnitOfWork
     {
         private readonly DbContext _dbContext;
-        private readonly IDictionary<Type, object> _repositories = new Dictionary<Type, object>();
+        protected readonly IDictionary<Type, object> _repositories = new Dictionary<Type, object>();
 
         protected UnitOfWork(IDbSession dbSession)
         {
@@ -20,6 +20,8 @@ namespace Common.Repository.EF
 
             _dbContext = (DbContext)dbSession.DbContext;
         }
+
+        protected abstract HashSet<Type> AllowedRepositoryEntities { get; }
 
         #region Dispose
         private bool _disposed;
@@ -38,23 +40,20 @@ namespace Common.Repository.EF
         }
         #endregion
 
-        protected void AddRepository<TEntity>(IRepository<TEntity> repository) where TEntity : class
+        public virtual IRepository<TEntity> GetRepository<TEntity>() where TEntity : class, new()
         {
-            Type type = typeof(IRepository<TEntity>);
-            if (_repositories.ContainsKey(type))
-                throw new Exception(string.Format("Repository type '{0}' already exits", type.Name));
+            Type type = typeof(TEntity);
+            if (!AllowedRepositoryEntities.Contains(type))
+                throw new Exception(string.Format("Repository<{0}> has not been registered for the UnitOfType", type.Name));
 
-            _repositories.Add(type, repository);
-        }
-
-        public IRepository<TEntity> GetRepository<TEntity>() where TEntity : class
-        {
-            Type type = typeof(IRepository<TEntity>);
             object repository;
-            if (!_repositories.TryGetValue(type, out repository))
-                throw new Exception(string.Format("Repository type '{0}' does not exist", type.Name));
+            if (_repositories.TryGetValue(type, out repository))
+                return (IRepository<TEntity>)repository;
 
-            return (IRepository<TEntity>)repository;
+            var repositoryType = typeof(Repository<>);
+            _repositories.Add(type, Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), _dbContext));
+
+            return (IRepository<TEntity>)_repositories[type];
         }
 
         public void Save()
