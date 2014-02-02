@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="PassContainerDbSessionTests.cs" />
     <Compile Include="PassContainerRepositoryTests.cs" />
+    <Compile Include="PassContainerUnitOfWorkTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestHelper.cs" />
   </ItemGroup>

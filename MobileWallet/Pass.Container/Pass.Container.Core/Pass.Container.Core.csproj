@@ -55,10 +55,10 @@
     <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Lower-Level Keys\PassStructure.cs" />
     <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Pass.cs" />
     <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\PassImage.cs" />
-    <Compile Include="Entities\DeviceApple.cs" />
-    <Compile Include="Entities\DeviceBase.cs" />
-    <Compile Include="Entities\DeviceRegistration.cs" />
-    <Compile Include="Entities\Enums\DeviceRegistrationStatus.cs" />
+    <Compile Include="Entities\ClientDeviceApple.cs" />
+    <Compile Include="Entities\ClientDevice.cs" />
+    <Compile Include="Entities\Registration.cs" />
+    <Compile Include="Entities\Enums\RegistrationStatus.cs" />
     <Compile Include="Entities\Enums\DeviceType.cs" />
     <Compile Include="Entities\Enums\PassTemplateType.cs" />
     <Compile Include="Entities\PassTemplateApple.cs" />

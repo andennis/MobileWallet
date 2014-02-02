@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MigrationsContextFactory.cs" />
     <Compile Include="PassContainerDbContext.cs" />
     <Compile Include="PassContainerDbSession.cs" />
     <Compile Include="PassContainerUnitOfWork.cs" />

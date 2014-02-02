@@ -222,7 +222,7 @@
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="1aff59ce-14a2-4ed4-ba8f-6b89273b3dd3" name="ClientDeviceRegistration" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="1aff59ce-14a2-4ed4-ba8f-6b89273b3dd3" name="Registration" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="94448a0b-b237-43cb-a04f-a02230b2b6ba" />
         <targetEnds>
           <association Id="c7595f1b-2841-46c0-8a23-b32a570f5c4c" isDerived="false" sourceEndRoleName="ClientDeviceRegistration" targetEndRoleName="ClientPass" isLeaf="false" isAbstract="false">

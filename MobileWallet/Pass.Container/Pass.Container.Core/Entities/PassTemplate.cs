@@ -3,7 +3,7 @@ using Common.Repository;
 
 namespace Pass.Container.Core.Entities
 {
-    public class PassTemplate : EntityVersionable
+    public sealed class PassTemplate : EntityVersionable
     {
         public int PassTemplateId { get; set; }
         public string Name { get; set; }

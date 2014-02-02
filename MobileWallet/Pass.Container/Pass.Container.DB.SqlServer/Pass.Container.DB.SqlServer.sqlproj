@@ -70,5 +70,8 @@
     <Build Include="Tables\PassApple.sql" />
     <Build Include="Tables\PassTemplateApple.sql" />
     <Build Include="Security\pscn.sql" />
+    <Build Include="Tables\Registration.sql" />
+    <Build Include="Tables\ClientDeviceApple.sql" />
+    <Build Include="Tables\ClientDevice.sql" />
   </ItemGroup>
 </Project>

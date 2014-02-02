@@ -14,5 +14,6 @@ namespace Pass.Container.Core.Entities
         public PassStatus Status { get; set;}
         public PassTemplate Template { get; set; }
         public ICollection<PassFieldValue> FieldValues { get; set; }
+        public ICollection<Registration> PassRegistrations { get; set; }
     }
 }
