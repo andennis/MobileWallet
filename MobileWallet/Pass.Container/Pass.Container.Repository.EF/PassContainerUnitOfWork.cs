@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Common.Repository;
 using Common.Repository.EF;
 using Pass.Container.Core;
-using Pass.Container.Core.Entities;
+using PassEntities = Pass.Container.Core.Entities;
 
 namespace Pass.Container.Repository.EF
 {
@@ -18,11 +18,11 @@ namespace Pass.Container.Repository.EF
             //_dbSession = dbSession;
             _allowedRepositoryEntities = new HashSet<Type>()
                                              {
-                                                 typeof(PassApple),
-                                                 typeof(PassTemplate), 
-                                                 typeof(PassTemplateApple), 
-                                                 typeof(ClientDeviceApple), 
-                                                 typeof(Registration)
+                                                 typeof(PassEntities.Pass),
+                                                 typeof(PassEntities.PassTemplate), 
+                                                 typeof(PassEntities.PassTemplateApple), 
+                                                 typeof(PassEntities.ClientDeviceApple), 
+                                                 typeof(PassEntities.Registration)
                                              };
         }
 

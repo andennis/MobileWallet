@@ -322,22 +322,6 @@
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="844308fb-2c41-4f77-ba2c-d7846f45239a" name="PassApple" isAbstract="false" isLeaf="false" isActiveClass="false">
-        <elementDefinition Id="917819fd-3473-4ee6-93da-976b501e43ef" />
-        <generalsInternal>
-          <generalization Id="1fde029d-0c31-40b8-8612-35b9ac4b27db" isSubstitutable="false">
-            <classMoniker Id="081ba4b3-c83c-49a4-ba3f-dd5fbb128ded" LastKnownName="Pass" />
-            <elementDefinition Id="10cd5c48-f55c-4465-99bb-bdba6c7b636f" />
-          </generalization>
-        </generalsInternal>
-        <ownedAttributesInternal>
-          <property Id="f94330ad-fa11-49bd-b64b-3dac56f0058e" name="PassTypeId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="9e32ea64-2c1a-45c4-bae9-86855a5a601a" />
-          </property>
-        </ownedAttributesInternal>
-      </class>
-    </logicalClassDesignerModelHasTypes>
-    <logicalClassDesignerModelHasTypes>
       <class Id="8fa6b521-e01f-4bb5-baf9-d67b01b6c9c4" name="PassTemplateNative" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="c7fd8b4d-4e1d-46ea-a96c-bcc81f584eea" />
       </class>

@@ -9,11 +9,11 @@
 
 
 GO
-CREATE NONCLUSTERED INDEX [IX_PassId]
-    ON [pscn].[Registration]([PassId] ASC);
+CREATE NONCLUSTERED INDEX [IX_ClientDeviceId]
+    ON [pscn].[Registration]([ClientDeviceId] ASC);
 
 
 GO
-CREATE NONCLUSTERED INDEX [IX_ClientDeviceId]
-    ON [pscn].[Registration]([ClientDeviceId] ASC);
+CREATE NONCLUSTERED INDEX [IX_PassId]
+    ON [pscn].[Registration]([PassId] ASC);
 

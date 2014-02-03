@@ -34,9 +34,6 @@ namespace Pass.Container.Repository.EF
             modelBuilder.Entity<PassEntities.Pass>().Property(x => x.SerialNumber).IsRequired().HasMaxLength(400);
             modelBuilder.Entity<PassEntities.Pass>().Property(x => x.Version).IsConcurrencyToken();
 
-            modelBuilder.Entity<PassEntities.PassApple>().ToTable("PassApple", DbScheme);
-            modelBuilder.Entity<PassEntities.PassApple>().Property(x => x.PassTypeId).IsRequired().HasMaxLength(400);
-
             modelBuilder.Entity<PassEntities.PassField>().ToTable("PassField", DbScheme);
             modelBuilder.Entity<PassEntities.PassField>().HasRequired(x => x.Template).WithMany(x => x.PassFields).Map(x => x.MapKey("PassTemplateId"));
             modelBuilder.Entity<PassEntities.PassField>().Property(x => x.Name).IsRequired().HasMaxLength(400);

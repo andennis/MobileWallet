@@ -63,16 +63,15 @@
     <Folder Include="Security\" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Tables\PassFieldValue.sql" />
-    <Build Include="Tables\PassField.sql" />
-    <Build Include="Tables\PassTemplate.sql" />
-    <Build Include="Tables\PassTemplateNative.sql" />
-    <Build Include="Tables\Pass.sql" />
-    <Build Include="Tables\PassApple.sql" />
-    <Build Include="Tables\PassTemplateApple.sql" />
+    <Build Include="Tables\pscn.ClientDevice.sql" />
+    <Build Include="Tables\pscn.Registration.sql" />
+    <Build Include="Tables\pscn.Pass.sql" />
+    <Build Include="Tables\pscn.PassFieldValue.sql" />
+    <Build Include="Tables\pscn.PassField.sql" />
+    <Build Include="Tables\pscn.PassTemplate.sql" />
+    <Build Include="Tables\pscn.PassTemplateNative.sql" />
+    <Build Include="Tables\pscn.PassTemplateApple.sql" />
+    <Build Include="Tables\pscn.ClientDeviceApple.sql" />
     <Build Include="Security\pscn.sql" />
-    <Build Include="Tables\Registration.sql" />
-    <Build Include="Tables\ClientDeviceApple.sql" />
-    <Build Include="Tables\ClientDevice.sql" />
   </ItemGroup>
 </Project>

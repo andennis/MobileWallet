@@ -5,7 +5,7 @@ using Pass.Container.Core.Entities.Enums;
 
 namespace Pass.Container.Core.Entities
 {
-    public abstract class Pass : EntityVersionable
+    public class Pass : EntityVersionable
     {
         public int PassId { get; set; }
         public string AuthToken { get; set; }

@@ -8,7 +8,7 @@ namespace FileStorage.Repository.EF.Tests
     [TestFixture]
     public class FileStorageUnitOfWorkTests : RepositoryTestsBase
     {
-        private class MyEntity
+        private class UnknownEntity
         {
         }
 
@@ -26,7 +26,7 @@ namespace FileStorage.Repository.EF.Tests
             var unitOfWork = new FileStorageUnitOfWork(_dbSession);
             Assert.IsNotNull(unitOfWork.GetRepository<StorageItem>());
             Assert.IsNotNull(unitOfWork.GetRepository<FolderItem>());
-            Assert.Throws<Exception>(() => unitOfWork.GetRepository<MyEntity>());
+            Assert.Throws<Exception>(() => unitOfWork.GetRepository<UnknownEntity>());
         }
     }
 }
