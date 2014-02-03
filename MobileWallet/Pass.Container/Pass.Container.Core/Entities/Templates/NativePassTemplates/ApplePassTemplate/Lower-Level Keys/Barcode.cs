@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -14,7 +15,7 @@ namespace Pass.Container.Core.Entities.Templates.NativePassTemplatess.Lower_Leve
         public string AltText { get; set; }
 
         [JsonProperty(PropertyName = "format", Required = Required.Always)]
-        public string Format { get; set; }
+        public BarcodeType Format { get; set; }
 
         [JsonProperty(PropertyName = "message", Required = Required.Always)]
         public string Message { get; set; }
@@ -28,5 +29,15 @@ namespace Pass.Container.Core.Entities.Templates.NativePassTemplatess.Lower_Leve
         public string MessageEncoding { get; set; }
 
         // http://msdn.microsoft.com/en-us/library/system.text.encodinginfo.name.aspx
+    }
+
+    public enum BarcodeType
+    {
+        [EnumMember(Value = "PKBarcodeFormatPDF417")]
+        Pdf417Code = 0,
+        [EnumMember(Value = "PKBarcodeFormatAztec")]
+        AztecCode = 1,
+        [EnumMember(Value = "PKBarcodeFormatQR")]
+        QrCode = 2
     }
 }

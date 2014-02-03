@@ -9,7 +9,7 @@ namespace Pass.Container.Core.Entities.Templates.PassTemplate
         //IOS 7
         [XmlElement(ElementName = "maxDistance")]
         [JsonProperty(PropertyName = "maxDistance", NullValueHandling = NullValueHandling.Ignore)]
-        public int MaxDistance { get; set; }
+        public int? MaxDistance { get; set; }
 
         [XmlArray(ElementName = "locations")]
         [XmlArrayItem(ElementName = "location")]

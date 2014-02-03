@@ -20,7 +20,7 @@ namespace Pass.Container.Core.Entities.Templates.PassTemplate
 
         [XmlElement(ElementName = "expirationDate")]
         [JsonProperty(PropertyName = "expirationDate", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime ExpirationDate { get; set; }
+        public DateTime? ExpirationDate { get; set; }
 
         [XmlElement(ElementName = "quantityRestriction")]
         [JsonProperty(PropertyName = "quantityRestriction", NullValueHandling = NullValueHandling.Ignore)]

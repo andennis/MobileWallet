@@ -7,7 +7,7 @@ using Pass.Container.Core.Entities.Templates.NativePassTemplatess.Lower_Level_Ke
 
 namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTemplate
 {
-    public class Pass
+    public class ApplePassTemplate
     {
         //Information that is required for all passes
         #region Standard Keys 
@@ -112,7 +112,7 @@ namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTe
         #region Visual Appearance Keys
 
         [JsonProperty(PropertyName = "barcode", NullValueHandling = NullValueHandling.Ignore)]
-        public List<Barcode> Barcode { get; set; }
+        public Barcode Barcode { get; set; }
 
         [JsonProperty(PropertyName = "backgroundColor", NullValueHandling = NullValueHandling.Ignore)]
         public RgbColor BackgroundColor { get; set; }
@@ -151,7 +151,7 @@ namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTe
         #endregion
 
         //Set default value
-        public Pass()
+        public ApplePassTemplate()
         {
             this.FormatVersion = 1;
             this.Voided = false;

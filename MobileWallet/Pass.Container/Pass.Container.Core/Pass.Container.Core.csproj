@@ -53,7 +53,7 @@
     <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Lower-Level Keys\Beacon.cs" />
     <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Lower-Level Keys\Location.cs" />
     <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Lower-Level Keys\PassStructure.cs" />
-    <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Pass.cs" />
+    <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\ApplePassTemplate.cs" />
     <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\PassImage.cs" />
     <Compile Include="Entities\ClientDeviceApple.cs" />
     <Compile Include="Entities\ClientDevice.cs" />

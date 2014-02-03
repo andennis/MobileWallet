@@ -71,7 +71,7 @@ namespace Pass.Container.Core.Entities.Templates.PassTemplate
         //IOS 7
         //WARNING! Optional for event tickets and boarding passes; otherwise not allowed
         [XmlElement(ElementName = "groupingIdentifier")]
-        [JsonProperty(PropertyName = "groupingIdentifier", Required = Required.Always)]
+        [JsonProperty(PropertyName = "groupingIdentifier")]
         public string GroupingIdentifier { get; set; }
 
         [XmlElement(ElementName = "passTimezone")]
@@ -127,7 +127,7 @@ namespace Pass.Container.Core.Entities.Templates.PassTemplate
         #region Field Details
 
         [XmlElement(ElementName = "fieldDetails")]
-        [JsonProperty(PropertyName = "fieldDetails")]
+        [JsonProperty(PropertyName = "fieldDetails", Required = Required.Always)]
         public FieldDetails FieldDetails { get; set; }
 
         #endregion
