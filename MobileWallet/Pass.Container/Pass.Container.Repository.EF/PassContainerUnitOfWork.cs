@@ -9,16 +9,16 @@ namespace Pass.Container.Repository.EF
 {
     public class PassContainerUnitOfWork : UnitOfWork, IPassContainerUnitOfWork
     {
-        private readonly IDbSession _dbSession;
+        //private readonly IDbSession _dbSession;
         private readonly HashSet<Type> _allowedRepositoryEntities;
 
         public PassContainerUnitOfWork(IDbSession dbSession)
             :base(dbSession)
         {
-            _dbSession = dbSession;
+            //_dbSession = dbSession;
             _allowedRepositoryEntities = new HashSet<Type>()
                                              {
-                                                 typeof(PassApple), 
+                                                 typeof(PassApple),
                                                  typeof(PassTemplate), 
                                                  typeof(PassTemplateApple), 
                                                  typeof(ClientDeviceApple), 

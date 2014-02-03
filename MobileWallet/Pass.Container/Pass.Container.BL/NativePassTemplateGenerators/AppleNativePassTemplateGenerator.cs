@@ -168,12 +168,12 @@ namespace Pass.Container.BL.NativePassTemplateGenerators
 
         private string GetWebServiceUrl()
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException();//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         }
 
         private string GetAuthenticationToken()
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException();//!!!!!!!!!!!!!!!!!!!!!!!!
         }
 
         private string GetPassTypeIdentifier(PassType passType, string passCertificate)
@@ -183,7 +183,7 @@ namespace Pass.Container.BL.NativePassTemplateGenerators
 
         private string GetPassSerialNumber(PassSerialNumberType passSerialNumberType)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException();//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         }
 
         private string GetPassTeamIdentifier()
