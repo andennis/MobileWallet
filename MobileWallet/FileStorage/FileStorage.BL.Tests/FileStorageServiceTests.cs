@@ -182,6 +182,23 @@ namespace FileStorage.BL.Tests
         }
 
         [Test]
+        public void CreateStorageFolderTest()
+        {
+            using (IDbSession dbSession = CreateDbSession())
+            {
+                IFileStorageService fsService = new FileStorageService(_fsConfig, new FileStorageUnitOfWork(dbSession));
+                string folderPath1;
+                int id = fsService.CreateStorageFolder(out folderPath1);
+                Assert.Greater(id, 0);
+                Assert.IsNotNullOrEmpty(folderPath1);
+                string folderPath2 = fsService.GetStorageItemPath(id);
+                Assert.IsNotNullOrEmpty(folderPath2);
+                Assert.AreEqual(folderPath1, folderPath2);
+                Assert.True(Directory.Exists(folderPath1));
+            }
+        }
+
+        [Test]
         public void GetFilePathTest()
         {
             using (IDbSession dbSession = CreateDbSession())

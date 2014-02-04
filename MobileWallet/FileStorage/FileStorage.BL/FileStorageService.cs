@@ -48,7 +48,7 @@ namespace FileStorage.BL
                 File.Copy(filePath, dstFilePath);
 
             //Save new storage item (file) to database
-            var newFileItem = new StorageItem()
+            var newStorageItem = new StorageItem()
                             {
                                 Name = Path.GetFileName(dstFilePath),
                                 Status = ItemStatus.Active,
@@ -57,7 +57,7 @@ namespace FileStorage.BL
                                 Size = new FileInfo(dstFilePath).Length
                             };
 
-            return CreateStorageItem(parentFolder, newFileItem);
+            return CreateStorageItem(parentFolder, newStorageItem);
         }
         public int PutFile(Stream fileStream)
         {
@@ -85,7 +85,7 @@ namespace FileStorage.BL
             {
             }
 
-            var newFileItem = new StorageItem()
+            var newStorageItem = new StorageItem()
             {
                 Name = Path.GetFileName(dstFilePath),
                 Status = ItemStatus.Active,
@@ -94,12 +94,12 @@ namespace FileStorage.BL
                 Size = fileSize
             };
 
-            return CreateStorageItem(parentFolder, newFileItem);
+            return CreateStorageItem(parentFolder, newStorageItem);
         }
-        public int PutFolder(string folderPath, bool moveFolder = false)
+        public int PutFolder(string srcFolderPath, bool moveFolder = false)
         {
-            if (string.IsNullOrEmpty(folderPath))
-                throw new ArgumentNullException("folderPath");
+            if (string.IsNullOrEmpty(srcFolderPath))
+                throw new ArgumentNullException("srcFolderPath");
 
             //Get new file path
             FolderItem parentFolder;
@@ -107,12 +107,12 @@ namespace FileStorage.BL
 
             //Copy\move folder to specified location
             if (moveFolder)
-                Directory.Move(folderPath, dstPath);
+                Directory.Move(srcFolderPath, dstPath);
             else
-                DirectoryCopy(folderPath, dstPath, true);
+                DirectoryCopy(srcFolderPath, dstPath, true);
 
-            //Save new storage item (file) to database
-            var newFileItem = new StorageItem()
+            //Save new storage item (folder) to database
+            var newStorageItem = new StorageItem()
             {
                 Name = Path.GetFileName(dstPath),
                 Status = ItemStatus.Active,
@@ -121,16 +121,47 @@ namespace FileStorage.BL
                 //Size = fileSize
             };
 
-            return CreateStorageItem(parentFolder, newFileItem);
+            return CreateStorageItem(parentFolder, newStorageItem);
         }
         public string GetStorageItemPath(int itemId)
         {
             string path = _fsUnitOfWork.FileStorageRepository.GetStorageItemPath(itemId);
             if (path == null)
-                return null;
+                throw new FileStorageException(string.Format(""));
 
             path = GetPathWithoutRootFolder(path);
             return Path.Combine(_config.StoragePath, path);
+        }
+        public int CreateStorageFolder(out string folderPath)
+        {
+            //Get new file path
+            FolderItem parentFolder;
+            folderPath = GetNewStorageItemPath(out parentFolder);
+
+            Directory.CreateDirectory(folderPath);
+
+            //Save new storage item (folder) to database
+            var newFileItem = new StorageItem()
+            {
+                Name = Path.GetFileName(folderPath),
+                Status = ItemStatus.Active,
+                ItemType = StorageItemType.Folder,
+                //OriginalName = srcFileName,
+                //Size = fileSize
+            };
+
+            return CreateStorageItem(parentFolder, newFileItem);
+        }
+
+        public void CopyToStorageFolder(int itemId, string srcPath, string dstPath = "")
+        {
+            string dstStorageFolder = GetStorageItemPath(itemId);
+            dstPath = Path.Combine(dstStorageFolder, dstPath);
+            bool isDir = (File.GetAttributes(srcPath) & FileAttributes.Directory) == FileAttributes.Directory;
+            if (isDir)
+                DirectoryCopy(srcPath, dstPath, true);
+            else
+                File.Copy(srcPath, dstPath);
         }
 
         public void DeleteStorageItem(int itemId)
