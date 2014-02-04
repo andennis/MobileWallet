@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using FileStorage.Core;
 using FileStorage.Core.Entities;
 using FluentAssertions;
 using NUnit.Framework;
@@ -11,12 +10,9 @@ namespace FileStorage.Repository.EF.Tests
     [TestFixture]
     public class FileStorageRepositoryTests : RepositoryTestsBase
     {
-        private IFileStorageUnitOfWork _unitOfWork;
-
         public override void InitEachTest()
         {
             base.InitEachTest();
-            _unitOfWork = new FileStorageUnitOfWork(_dbSession);
             _unitOfWork.FileStorageRepository.ClearFileStorage();
         }
 

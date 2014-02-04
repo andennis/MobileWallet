@@ -15,18 +15,16 @@ namespace FileStorage.Repository.EF.Tests
         [Test]
         public void FileStorageRepositoryTest()
         {
-            var unitOfWork = new FileStorageUnitOfWork(_dbSession);
-            Assert.NotNull(unitOfWork.FileStorageRepository);
-            Assert.IsInstanceOf<IFileStorageRepository>(unitOfWork.FileStorageRepository);
+            Assert.NotNull(_unitOfWork.FileStorageRepository);
+            Assert.IsInstanceOf<IFileStorageRepository>(_unitOfWork.FileStorageRepository);
         }
 
         [Test]
         public void GetRepositoryTest()
         {
-            var unitOfWork = new FileStorageUnitOfWork(_dbSession);
-            Assert.IsNotNull(unitOfWork.GetRepository<StorageItem>());
-            Assert.IsNotNull(unitOfWork.GetRepository<FolderItem>());
-            Assert.Throws<Exception>(() => unitOfWork.GetRepository<UnknownEntity>());
+            Assert.IsNotNull(_unitOfWork.GetRepository<StorageItem>());
+            Assert.IsNotNull(_unitOfWork.GetRepository<FolderItem>());
+            Assert.Throws<Exception>(() => _unitOfWork.GetRepository<UnknownEntity>());
         }
     }
 }

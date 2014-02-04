@@ -16,9 +16,8 @@ namespace Pass.Container.Repository.EF.Tests
         public void PassCrudOperationsTest()
         {
             PassEntities.PassTemplate pt1 = null;
-            using (var dbSession = new PassContainerDbSession(TestHelper.DbConfig))
+            using (var unitOfWork = new PassContainerUnitOfWork(TestHelper.DbConfig))
             {
-                var unitOfWork = new PassContainerUnitOfWork(dbSession);
                 var repPassTemplate = unitOfWork.GetRepository<PassEntities.PassTemplate>();
                 var repAppleTemplate = unitOfWork.GetRepository<PassEntities.PassTemplateApple>();
                 pt1 = new PassEntities.PassTemplate()
@@ -46,9 +45,8 @@ namespace Pass.Container.Repository.EF.Tests
                 Assert.Greater(pt1.PassTemplateId, 0);
             //}
 
-            //using (var dbSession = new PassContainerDbSession(TestHelper.DbConfig))
+            //using (unitOfWork = new PassContainerUnitOfWork(dbSession))
             //{
-                unitOfWork = new PassContainerUnitOfWork(dbSession);
                 var rep = unitOfWork.GetRepository<PassEntities.PassTemplate>();
                 PassEntities.PassTemplate copyPt1 = rep.Find(pt1.PassTemplateId);
                 /*

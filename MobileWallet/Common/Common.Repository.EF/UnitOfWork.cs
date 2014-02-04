@@ -8,17 +8,15 @@ namespace Common.Repository.EF
 {
     public abstract class UnitOfWork : IUnitOfWork
     {
-        private readonly DbContext _dbContext;
+        protected readonly DbContext _dbContext;
         protected readonly IDictionary<Type, object> _repositories = new Dictionary<Type, object>();
 
-        protected UnitOfWork(IDbSession dbSession)
+        protected UnitOfWork(DbContext dbContext)
         {
-            if (dbSession == null)
-                throw new ArgumentNullException("dbSession");
-            if (dbSession.DbContext == null)
-                throw new ArgumentException("dbSession.DbContext should not be null");
+            if (dbContext == null)
+                throw new ArgumentNullException("dbContext");
 
-            _dbContext = (DbContext)dbSession.DbContext;
+            _dbContext = dbContext;
         }
 
         protected abstract HashSet<Type> AllowedRepositoryEntities { get; }

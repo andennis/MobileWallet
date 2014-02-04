@@ -1,22 +1,23 @@
 ﻿using Common.Repository;
+using FileStorage.Core;
 using NUnit.Framework;
 
 namespace FileStorage.Repository.EF.Tests
 {
     public class RepositoryTestsBase
     {
-        protected IDbSession _dbSession;
+        protected IFileStorageUnitOfWork _unitOfWork;
 
         [SetUp]
         public virtual void InitEachTest()
         {
-            _dbSession = new FileStorageDbSession(TestHelper.DbConfig);
+            _unitOfWork = new FileStorageUnitOfWork(TestHelper.DbConfig);
         }
 
         [TearDown]
         public virtual void FinalizeEachTest()
         {
-            _dbSession.Dispose();
+            _unitOfWork.Dispose();
         }
 
     }

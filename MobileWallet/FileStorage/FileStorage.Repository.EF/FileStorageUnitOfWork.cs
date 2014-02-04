@@ -9,14 +9,12 @@ namespace FileStorage.Repository.EF
 {
     public sealed class FileStorageUnitOfWork : UnitOfWork, IFileStorageUnitOfWork
     {
-        private readonly IDbSession _dbSession;
         private IFileStorageRepository _fileStorageRepository;
         private readonly HashSet<Type> _allowedRepositoryEntities;
 
-        public FileStorageUnitOfWork(IDbSession dbSession)
-            :base(dbSession)
+        public FileStorageUnitOfWork(IDbConfig dbConfig)
+            :base(new FileStorageDbContext(dbConfig.ConnectionString))
         {
-            _dbSession = dbSession;
             _allowedRepositoryEntities = new HashSet<Type>() {typeof (FolderItem), typeof(StorageItem)};
         }
 
@@ -40,7 +38,7 @@ namespace FileStorage.Repository.EF
         {
             get
             {
-                return _fileStorageRepository ?? (_fileStorageRepository = new FileStorageRepository(_dbSession));
+                return _fileStorageRepository ?? (_fileStorageRepository = new FileStorageRepository(_dbContext));
             }
         }
     }

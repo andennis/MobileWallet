@@ -46,7 +46,6 @@
   <ItemGroup>
     <Compile Include="EntityVersionable.cs" />
     <Compile Include="IDbConfig.cs" />
-    <Compile Include="IDbSession.cs" />
     <Compile Include="IEntityVersionable.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IRepositoryQuery.cs" />

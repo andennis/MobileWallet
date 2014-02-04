@@ -14,8 +14,7 @@ namespace Pass.Container.Repository.EF.Tests
         [Test]
         public void GetRepositoryTest()
         {
-            using (var dbSession = new PassContainerDbSession(TestHelper.DbConfig))
-            using (var unitOfWork = new PassContainerUnitOfWork(dbSession))
+            using (var unitOfWork = new PassContainerUnitOfWork(TestHelper.DbConfig))
             {
                 Assert.IsNotNull(unitOfWork.GetRepository<PassEntities.Pass>());
                 Assert.IsNotNull(unitOfWork.GetRepository<PassEntities.PassTemplate>());

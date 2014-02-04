@@ -57,7 +57,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileStorageDbSessionTests.cs" />
     <Compile Include="FileStorageRepositoryTests.cs" />
     <Compile Include="FileStorageUnitOfWorkTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

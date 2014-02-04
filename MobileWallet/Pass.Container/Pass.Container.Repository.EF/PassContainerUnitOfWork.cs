@@ -9,13 +9,11 @@ namespace Pass.Container.Repository.EF
 {
     public class PassContainerUnitOfWork : UnitOfWork, IPassContainerUnitOfWork
     {
-        //private readonly IDbSession _dbSession;
         private readonly HashSet<Type> _allowedRepositoryEntities;
 
-        public PassContainerUnitOfWork(IDbSession dbSession)
-            :base(dbSession)
+        public PassContainerUnitOfWork(IDbConfig dbConfig)
+            :base(new PassContainerDbContext(dbConfig.ConnectionString))
         {
-            //_dbSession = dbSession;
             _allowedRepositoryEntities = new HashSet<Type>()
                                              {
                                                  typeof(PassEntities.Pass),
