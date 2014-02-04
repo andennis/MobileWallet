@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.Field_Dictionary_Keys
+namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys
 {
     public class Field
     {

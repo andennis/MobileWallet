@@ -102,6 +102,10 @@ namespace Pass.Container.Core.Entities.Templates.PassTemplate
         [JsonProperty(PropertyName = "defaultValue", NullValueHandling = NullValueHandling.Ignore)]
         public string DefaultValue { get; set; }
 
+        [XmlElement(ElementName = "type")]
+        [JsonProperty(PropertyName = "type", Required = Required.Always)]
+        public DataType Type { get; set; }
+
         #endregion
 
         //Information about how a number should be displayed in a field
@@ -136,6 +140,26 @@ namespace Pass.Container.Core.Entities.Templates.PassTemplate
         public DateStyleType TimeStyle { get; set; }
 
         #endregion
+
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum DataType
+        {
+            [XmlEnum(Name = "text")]
+            [EnumMember(Value = "text")]
+            Text = 0,
+            [XmlEnum(Name = "number")]
+            [EnumMember(Value = "number")]
+            Number = 1,
+            [XmlEnum(Name = "currency")]
+            [EnumMember(Value = "currency")]
+            Currency = 2,
+            [XmlEnum(Name = "date")]
+            [EnumMember(Value = "date")]
+            Date = 3,
+            [XmlEnum(Name = "dateTime")]
+            [EnumMember(Value = "dateTime")]
+            DateTime = 3
+        }
 
         [JsonConverter(typeof(StringEnumConverter))]
         public enum DataDetector

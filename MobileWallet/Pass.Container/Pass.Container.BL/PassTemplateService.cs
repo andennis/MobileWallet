@@ -30,7 +30,7 @@ namespace Pass.Container.BL
 
             _passTemplateGenerators = new Dictionary<PassTemplateType, INativePassTemplateGenerator>
                 {
-                    {PassTemplateType.AppleTemplate, new AppleNativePassTemplateGenerator()}
+                    {PassTemplateType.AppleTemplate, new ApplePassTemplateGenerator()}
                 };
         }
 

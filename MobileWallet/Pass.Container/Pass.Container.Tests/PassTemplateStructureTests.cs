@@ -54,10 +54,11 @@ namespace Pass.Container.Tests
                     TemplateName = "Template name",
                     TemplateDescription = "Template description",
                     OrganizationName = "Organization name",
-                    PassType = PassType.Coupon,
+                    PassType = PassStyle.Coupon,
                     PassDescription = "Pass description",
                     PassSerialNumberType = PassSerialNumberType.AutoGgenerated,
                     PassCertificate = "pass.test.coupon",
+                    TeamIdentifier = "TeamIdentifier",
                     //Visual Appearance Keys
                     BackgroundColor = Color.Blue,
                     LabelTextColor = Color.Red,
@@ -174,7 +175,8 @@ namespace Pass.Container.Tests
                                                 IsRelative = true,
                                                 Key = "Key",
                                                 Label = "label",
-                                                Value = "value"
+                                                Value = "value",
+                                                Type = Field.DataType.Text
                                         },
                                         new Field
                                         {
@@ -193,7 +195,8 @@ namespace Pass.Container.Tests
                                                 IsRelative = true,
                                                 Key = "Key",
                                                 Label = "label",
-                                                Value = "value"
+                                                Value = "value",
+                                                Type = Field.DataType.Text
                                         }
                                 },
                             BackFields = new List<Field>
@@ -215,7 +218,8 @@ namespace Pass.Container.Tests
                                                 IsRelative = true,
                                                 Key = "Key",
                                                 Label = "label",
-                                                Value = "value"
+                                                Value = "value",
+                                                Type = Field.DataType.Text
                                         }
                                     },
                             HeaderFields = new List<Field>
@@ -237,7 +241,8 @@ namespace Pass.Container.Tests
                                                 IsRelative = true,
                                                 Key = "Key",
                                                 Label = "label",
-                                                Value = "value"
+                                                Value = "value",
+                                                Type = Field.DataType.Text
                                         }
                                         },
                             PrimaryFields = new List<Field>
@@ -259,7 +264,8 @@ namespace Pass.Container.Tests
                                                 IsRelative = true,
                                                 Key = "Key",
                                                 Label = "label",
-                                                Value = "value"
+                                                Value = "value",
+                                                Type = Field.DataType.Text
                                         }
                                             },
                             SecondaryFields = new List<Field>
@@ -280,7 +286,8 @@ namespace Pass.Container.Tests
                                                 IsRelative = true,
                                                 Key = "Key",
                                                 Label = "label",
-                                                Value = "value"
+                                                Value = "value",
+                                                Type = Field.DataType.Text
                                                     }
                                                 },
                             TransitType = Transit.Air

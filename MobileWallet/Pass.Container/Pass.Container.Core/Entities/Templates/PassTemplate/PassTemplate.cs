@@ -30,7 +30,7 @@ namespace Pass.Container.Core.Entities.Templates.PassTemplate
 
         [XmlElement(ElementName = "passType")]
         [JsonProperty(PropertyName = "passType", Required = Required.Always)]
-        public PassType PassType { get; set; }
+        public PassStyle PassType { get; set; }
 
         [XmlElement(ElementName = "passDescription")]
         [JsonProperty(PropertyName = "passDescription", Required = Required.Always)]
@@ -43,6 +43,10 @@ namespace Pass.Container.Core.Entities.Templates.PassTemplate
         [XmlElement(ElementName = "passCertificate")]
         [JsonProperty(PropertyName = "passCertificate", Required = Required.Always)]
         public string PassCertificate { get; set; }
+
+        [XmlElement(ElementName = "teamIdentifier")]
+        [JsonProperty(PropertyName = "teamIdentifier", Required = Required.Always)]
+        public string TeamIdentifier { get; set; }
 
         #endregion
 
@@ -180,7 +184,7 @@ namespace Pass.Container.Core.Entities.Templates.PassTemplate
         }
     }
 
-    public enum PassType
+    public enum PassStyle
     {
         [XmlEnum(Name = "boardingPass")]
         BoardingPass = 0,
