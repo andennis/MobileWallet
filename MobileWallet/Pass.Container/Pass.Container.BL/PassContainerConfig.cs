@@ -11,10 +11,13 @@ namespace Pass.Container.BL
 {
     public sealed class PassContainerConfig : AppConfigBase, IPassContainerConfig
     {
-
+        public string PassTemplateFolderName
+        {
+            get { return GetValue("PassTemplateFolderName"); }
+        }
         public string PassTemplateFileName
         {
-            get { return GetValue("StoragePath"); }
+            get { return GetValue("PassTemplateFileName"); }
         }
     }
 }

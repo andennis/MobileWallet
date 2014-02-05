@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pass.Notification.Core", "P
 EndProject
 Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "MobileWallet.Architecture", "MobileWallet.Architecture\MobileWallet.Architecture.modelproj", "{A9694C76-82C1-4BED-9A5C-FA2C8549139C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pass.Container.Tests", "Pass.Container\Pass.Container.Tests\Pass.Container.Tests.csproj", "{D313C0D5-D44A-47EC-9B0D-91C05BDEB494}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pass.Container.BL.Tests", "Pass.Container\Pass.Container.Tests\Pass.Container.BL.Tests.csproj", "{D313C0D5-D44A-47EC-9B0D-91C05BDEB494}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pass.Notification.Tests", "Pass.Notification\Pass.Notification.Tests\Pass.Notification.Tests.csproj", "{AAABEBD6-793A-4D24-B3FB-EB8CCE282E7E}"
 EndProject

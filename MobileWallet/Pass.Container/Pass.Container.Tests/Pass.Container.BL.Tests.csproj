@@ -7,8 +7,8 @@
     <ProjectGuid>{D313C0D5-D44A-47EC-9B0D-91C05BDEB494}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Pass.Container.Tests</RootNamespace>
-    <AssemblyName>Pass.Container.Tests</AssemblyName>
+    <RootNamespace>Pass.Container.BL.Tests</RootNamespace>
+    <AssemblyName>Pass.Container.BL.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
@@ -46,13 +46,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PassTemplateStructureTests.cs" />
+    <Compile Include="NativePassTemplateGeneratorsTests.cs" />
+    <Compile Include="PassTemplateTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common.Extensions\Common.Extensions.csproj">
       <Project>{1628E173-1BE9-4DFC-BCBE-93334DE8EE46}</Project>
       <Name>Common.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pass.Container.BL\Pass.Container.BL.csproj">
+      <Project>{C26E7AFB-A944-48E6-9688-44B791BD697E}</Project>
+      <Name>Pass.Container.BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pass.Container.Core\Pass.Container.Core.csproj">
       <Project>{062E8DA0-3EF1-4481-8FCF-CFEB54A39771}</Project>

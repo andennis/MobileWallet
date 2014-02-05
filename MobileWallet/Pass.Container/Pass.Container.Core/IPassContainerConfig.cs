@@ -8,6 +8,7 @@ namespace Pass.Container.Core
 {
     public interface IPassContainerConfig
     {
+        string PassTemplateFolderName { get; }
         string PassTemplateFileName { get;}
     }
 }

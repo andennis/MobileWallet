@@ -144,44 +144,6 @@ namespace Pass.Container.Core.Entities.Templates.PassTemplate
         //public LanguageDetails LanguageDetails { get; set; }
 
         //#endregion
-
-        public void SaveToXml(string filePath)
-        {
-            var xws = new XmlWriterSettings() { Indent = true, Encoding = Encoding.UTF8 };
-            var serializer = new XmlSerializer(this.GetType());
-            using (var xmlWriter = XmlWriter.Create(filePath, xws))
-            {
-                var ns = new XmlSerializerNamespaces();
-                ns.Add("", Namespace);
-                serializer.Serialize(xmlWriter, this, ns);
-            }
-        }
-
-        public PassTemplate LoadStreamXml(Stream fileStream)
-        {
-            var doc = new XmlDocument();
-            doc.Load(fileStream);
-
-            using (var read = new StringReader(doc.OuterXml))
-            using (var reader = new XmlTextReader(read))
-            {
-                var serializer = new XmlSerializer(this.GetType(), Namespace);
-                return (PassTemplate)serializer.Deserialize(reader);
-            }
-        }
-
-        public PassTemplate LoadFromXml(string fileName)
-        {
-            var doc = new XmlDocument();
-            doc.Load(fileName);
-
-            using (var read = new StringReader(doc.OuterXml))
-            using (var reader = new XmlTextReader(read))
-            {
-                var serializer = new XmlSerializer(this.GetType(), Namespace);
-                return (PassTemplate)serializer.Deserialize(reader);
-            }
-        }
     }
 
     public enum PassStyle
