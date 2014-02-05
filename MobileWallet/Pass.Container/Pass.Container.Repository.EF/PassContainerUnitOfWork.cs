@@ -17,8 +17,12 @@ namespace Pass.Container.Repository.EF
             _allowedRepositoryEntities = new HashSet<Type>()
                                              {
                                                  typeof(PassEntities.Pass),
+                                                 typeof(PassEntities.PassField),
+                                                 typeof(PassEntities.PassFieldValue),
                                                  typeof(PassEntities.PassTemplate), 
+                                                 typeof(PassEntities.PassTemplateNative),
                                                  typeof(PassEntities.PassTemplateApple), 
+                                                 typeof(PassEntities.ClientDevice), 
                                                  typeof(PassEntities.ClientDeviceApple), 
                                                  typeof(PassEntities.Registration)
                                              };

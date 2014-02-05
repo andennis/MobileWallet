@@ -17,6 +17,8 @@ namespace Pass.Container.Repository.EF.Tests
             using (var unitOfWork = new PassContainerUnitOfWork(TestHelper.DbConfig))
             {
                 Assert.IsNotNull(unitOfWork.GetRepository<PassEntities.Pass>());
+                Assert.IsNotNull(unitOfWork.GetRepository<PassEntities.PassField>());
+                Assert.IsNotNull(unitOfWork.GetRepository<PassEntities.PassFieldValue>());
                 Assert.IsNotNull(unitOfWork.GetRepository<PassEntities.PassTemplate>());
                 Assert.IsNotNull(unitOfWork.GetRepository<PassEntities.PassTemplateApple>());
                 Assert.IsNotNull(unitOfWork.GetRepository<PassEntities.ClientDeviceApple>());

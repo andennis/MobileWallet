@@ -6,7 +6,7 @@ namespace Pass.Container.Repository.EF
     {
         public PassContainerDbContext Create()
         {
-            return new PassContainerDbContext("MobileWalletConnection");
+            return new PassContainerDbContext("Data Source=localhost;Initial Catalog=MobileWallet;User ID=sa;Password=sa1");
         }
     }
 }
