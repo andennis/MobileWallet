@@ -53,8 +53,8 @@ namespace Pass.Container.BL.Tests
             generalTemplate.SaveToXml(path);
             Assert.IsTrue(File.Exists(path));
 
-            int passTemplateStorageItemId = _passTemplateService.CreatePassTemlate(_testPassTemplateDir);
-            Assert.Greater(0, passTemplateStorageItemId);
+            int passTemplateId = _passTemplateService.CreatePassTemlate(_testPassTemplateDir);
+            Assert.Greater(0, passTemplateId);
         }
     }
 }

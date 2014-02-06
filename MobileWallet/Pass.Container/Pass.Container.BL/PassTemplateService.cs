@@ -126,14 +126,19 @@ namespace Pass.Container.BL
             throw new NotImplementedException();
         }
 
-        public string GetNativePassTemplate(int passTemplateId, Core.Entities.Enums.PassTemplateType passTemplateType)
+        public string GetNativePassTemplate(int passTemplateId, PassTemplateType passTemplateType)
         {
             throw new NotImplementedException();
         }
 
-        public IList<Core.Entities.PassField> GetPassFields(int passTemplateId)
+        public IList<PassField> GetPassFields(int passTemplateId)
         {
-            throw new NotImplementedException();
+            PassTemplate passTemplate = _repPassTemplate.Find(passTemplateId);
+            if (passTemplate == null)
+                return null;
+
+            List<PassField> passFields = _repPassField.Query().Filter(x => x.Template == passTemplate).Get().ToList();
+            return passFields;
         }
 
         public void UpdatePassTemlate(string passTemplatePath)
