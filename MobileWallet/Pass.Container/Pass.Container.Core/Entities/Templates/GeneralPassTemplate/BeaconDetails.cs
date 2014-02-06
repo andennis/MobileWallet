@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
 
-namespace Pass.Container.Core.Entities.Templates.PassTemplate
+namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
 {
     public class BeaconDetails
     {

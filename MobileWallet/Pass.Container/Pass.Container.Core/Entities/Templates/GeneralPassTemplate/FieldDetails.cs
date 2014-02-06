@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace Pass.Container.Core.Entities.Templates.PassTemplate
+namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
 {
     public class FieldDetails
     {

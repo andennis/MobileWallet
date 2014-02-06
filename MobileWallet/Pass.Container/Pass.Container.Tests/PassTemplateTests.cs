@@ -4,7 +4,7 @@ using System.Drawing;
 using System.IO;
 using Common.Extensions;
 using NUnit.Framework;
-using Pass.Container.Core.Entities.Templates.PassTemplate;
+using Pass.Container.Core.Entities.Templates.GeneralPassTemplate;
 
 namespace Pass.Container.BL.Tests
 {
@@ -14,22 +14,22 @@ namespace Pass.Container.BL.Tests
         [Test]
         public void PassTemplateXmlSerializationTest()
         {
-            PassTemplate generalTemplate = TestHelper.GetPassTemplateObject();
+            GeneralPassTemplate generalTemplate = TestHelper.GetPassTemplateObject();
             string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Template.xml");
             if (File.Exists(path))
                 File.Delete(path);
             generalTemplate.SaveToXml(path);
             Assert.IsTrue(File.Exists(path));
 
-            PassTemplate template;
-            template = path.LoadFromXml<PassTemplate>();
+            GeneralPassTemplate template;
+            template = path.LoadFromXml<GeneralPassTemplate>();
             Assert.AreEqual(generalTemplate.TemplateName, template.TemplateName);
         }
 
         [Test]
         public void PassTemplateJsonSerializationTest()
         {
-            PassTemplate generalTemplate = TestHelper.GetPassTemplateObject();
+            GeneralPassTemplate generalTemplate = TestHelper.GetPassTemplateObject();
             string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Template.json");
             if (File.Exists(path))
                 File.Delete(path);
@@ -38,7 +38,7 @@ namespace Pass.Container.BL.Tests
             Assert.IsTrue(File.Exists(path));
 
             string jsonResult = File.ReadAllText(path);
-            PassTemplate template = jsonResult.JsonToObject<PassTemplate>();
+            GeneralPassTemplate template = jsonResult.JsonToObject<GeneralPassTemplate>();
             Assert.AreEqual(generalTemplate.TemplateName, template.TemplateName);
         }
     }

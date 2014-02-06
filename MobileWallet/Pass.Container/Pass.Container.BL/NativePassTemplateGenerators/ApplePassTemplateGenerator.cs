@@ -7,25 +7,26 @@ using System.Threading.Tasks;
 using Common.Extensions;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities.Enums;
+using Pass.Container.Core.Entities.Templates.GeneralPassTemplate;
 using Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTemplate;
 using Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Lower_Level_Keys;
 using Pass.Container.Core.Entities.Templates.NativePassTemplatess.ApplePassTemplate.Lower_Level_Keys;
-using Pass.Container.Core.Entities.Templates.PassTemplate;
-using BarcodeType = Pass.Container.Core.Entities.Templates.PassTemplate.BarcodeType;
-using Beacon = Pass.Container.Core.Entities.Templates.PassTemplate.Beacon;
-using Location = Pass.Container.Core.Entities.Templates.PassTemplate.Location;
+using BarcodeType = Pass.Container.Core.Entities.Templates.GeneralPassTemplate.BarcodeType;
+using Beacon = Pass.Container.Core.Entities.Templates.GeneralPassTemplate.Beacon;
+using Location = Pass.Container.Core.Entities.Templates.GeneralPassTemplate.Location;
 
 namespace Pass.Container.BL.NativePassTemplateGenerators
 {
     public class ApplePassTemplateGenerator : INativePassTemplateGenerator
     {
-        private const string PassTemplateFolderName = "PassTemplate";
+        private readonly IPassContainerConfig _pcConfig;
         private const string ApplePassTemplateFolderName = "ApplePassTemplate";
         private const string ApplePassTemplateFileName = "template.json";
         private static List<string> _applePassTemplateFiles;
 
-        public ApplePassTemplateGenerator()
+        public ApplePassTemplateGenerator(IPassContainerConfig config)
         {
+            _pcConfig = config;
             _applePassTemplateFiles = new List<string> { 
                 "logo.png", 
                 "icon.png", 
@@ -47,7 +48,7 @@ namespace Pass.Container.BL.NativePassTemplateGenerators
             get { return PassTemplateType.AppleTemplate; }
         }
 
-        public bool Generate(PassTemplate passTemplate, string storageItemPath)
+        public bool Generate(GeneralPassTemplate passTemplate, string storageItemPath)
         {
             //Create Apple pass template
             ApplePassTemplate applePassTemplate = CreateApplePassTemplate(passTemplate);
@@ -63,13 +64,13 @@ namespace Pass.Container.BL.NativePassTemplateGenerators
             File.WriteAllText(applePassTemplateFilePath, applePassTemplateJson);
 
             //Copy Apple pass template files into Apple pass template folder
-            IEnumerable<string> files = Directory.EnumerateFiles(Path.Combine(storageItemPath, PassTemplateFolderName));
+            IEnumerable<string> files = Directory.EnumerateFiles(Path.Combine(storageItemPath, _pcConfig.PassTemplateFolderName));
             foreach (var file in files)
             {
                 if (!_applePassTemplateFiles.Any(applePassTemplateFile => file.Contains(applePassTemplateFile)))
                     continue;
 
-                string filePath = file.Replace(PassTemplateFolderName, ApplePassTemplateFolderName);
+                string filePath = file.Replace(_pcConfig.PassTemplateFolderName, ApplePassTemplateFolderName);
                 if (File.Exists(filePath))
                     File.Delete(filePath);
                 File.Copy(file, filePath);
@@ -78,7 +79,7 @@ namespace Pass.Container.BL.NativePassTemplateGenerators
             return true;
         }
 
-        private ApplePassTemplate CreateApplePassTemplate(PassTemplate passTemplate)
+        private ApplePassTemplate CreateApplePassTemplate(GeneralPassTemplate passTemplate)
         {
             var applePassTemplate = new ApplePassTemplate();
             //Standard Keys
@@ -167,7 +168,7 @@ namespace Pass.Container.BL.NativePassTemplateGenerators
             }
 
             //Style Keys
-            switch (passTemplate.PassType)
+            switch (passTemplate.PassStyle)
             {
                 case PassStyle.BoardingPass:
                     PassStructure passStructure = GetPassStructure(passTemplate);
@@ -191,7 +192,7 @@ namespace Pass.Container.BL.NativePassTemplateGenerators
             return applePassTemplate;
         }
 
-        private PassStructure GetPassStructure(PassTemplate passTemplate)
+        private PassStructure GetPassStructure(GeneralPassTemplate passTemplate)
         {
             var passStructure = new PassStructure();
             if (passTemplate.FieldDetails.AuxiliaryFields != null)

@@ -4,21 +4,21 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Pass.Container.Core.Entities.Templates.PassTemplate;
+using Pass.Container.Core.Entities.Templates.GeneralPassTemplate;
 
 namespace Pass.Container.BL.Tests
 {
     public static class TestHelper
     {
-        public static PassTemplate GetPassTemplateObject()
+        public static GeneralPassTemplate GetPassTemplateObject()
         {
-            var template = new PassTemplate
+            var template = new GeneralPassTemplate
             {
                 //Standart keys
                 TemplateName = "Template name",
                 TemplateDescription = "Template description",
                 OrganizationName = "Organization name",
-                PassType = PassStyle.Coupon,
+                PassStyle = PassStyle.Coupon,
                 PassDescription = "Pass description",
                 PassSerialNumberType = PassSerialNumberType.AutoGgenerated,
                 PassCertificate = "pass.test.coupon",

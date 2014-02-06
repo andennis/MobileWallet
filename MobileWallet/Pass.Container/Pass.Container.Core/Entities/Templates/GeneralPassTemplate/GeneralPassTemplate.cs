@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Drawing;
-using System.IO;
-using System.Text;
-using System.Xml;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
 
-namespace Pass.Container.Core.Entities.Templates.PassTemplate
+namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
 {
     [Serializable]
     [XmlRoot(ElementName = "passTemplate", Namespace = "http://www.mobilewallet.com")]
-    public class PassTemplate
+    public class GeneralPassTemplate
     {
         private const string Namespace = "http://www.mobilewallet.com";
 
@@ -30,7 +27,7 @@ namespace Pass.Container.Core.Entities.Templates.PassTemplate
 
         [XmlElement(ElementName = "passType")]
         [JsonProperty(PropertyName = "passType", Required = Required.Always)]
-        public PassStyle PassType { get; set; }
+        public PassStyle PassStyle { get; set; }
 
         [XmlElement(ElementName = "passDescription")]
         [JsonProperty(PropertyName = "passDescription", Required = Required.Always)]
