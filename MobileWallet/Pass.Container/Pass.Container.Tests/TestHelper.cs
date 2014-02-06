@@ -1,15 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Common.Repository;
+using Pass.Container.Core;
 using Pass.Container.Core.Entities.Templates.GeneralPassTemplate;
 
 namespace Pass.Container.BL.Tests
 {
     public static class TestHelper
     {
+        public static IDbConfig DbConfig { get { return new TestDbConfig(); } }
+        public static IPassContainerConfig PassContainerConfig { get { return new TestPassContainerConfig(); } }
+
+        private class TestDbConfig : IDbConfig
+        {
+            public string ConnectionString
+            {
+                get { return "MobileWalletConnection"; }
+            }
+        }
+        private class TestPassContainerConfig : IPassContainerConfig
+        {
+            public string PassTemplateFolderName
+            {
+                get { return "PassTemplateFolderName"; }
+            }
+            public string PassTemplateFileName
+            {
+                get { return "PassTemplateFileName"; }
+            }
+        }
+
+        
+
         public static GeneralPassTemplate GetPassTemplateObject()
         {
             var template = new GeneralPassTemplate

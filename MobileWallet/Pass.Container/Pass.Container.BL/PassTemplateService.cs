@@ -61,7 +61,7 @@ namespace Pass.Container.BL
                 throw new PassTemplateException(string.Format("Pass template file was not found. File path: {0}", templateFilePath));
 
             //Validate pass template file
-            bool isValidTemplate = ValidatePassTemplate(templateFilePath);
+            bool isValidTemplate = ValidatePassTemplate(templateFilePath);// //TODO implement validate pass template
             if (!isValidTemplate)
                 throw new PassTemplateException(string.Format("Pass template file does not valid. File path: {0}", templateFilePath));
 
