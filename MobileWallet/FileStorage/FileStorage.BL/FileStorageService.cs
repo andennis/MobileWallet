@@ -10,7 +10,6 @@ namespace FileStorage.BL
 {
     public class FileStorageService : IFileStorageService
     {
-        //private const string FolderItemPrefix = "FI$";
         private const string RootFolderName = "FSRoot";
         private readonly IFileStorageConfig _config;
         private readonly IFileStorageUnitOfWork _fsUnitOfWork;
@@ -309,5 +308,12 @@ namespace FileStorage.BL
             string name = Path.GetRandomFileName();
             return /*FolderItemPrefix +*/ name.Remove(name.Length - 4, 1);
         }
+
+        #region IDisposable
+        public void Dispose()
+        {
+            _fsUnitOfWork.Dispose();
+        }
+        #endregion
     }
 }

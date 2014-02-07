@@ -1,8 +1,9 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace FileStorage.Core
 {
-    public interface IFileStorageService
+    public interface IFileStorageService : IDisposable
     {
         int PutFile(string filePath, bool moveFile = false);
         int PutFile(Stream fileStream);

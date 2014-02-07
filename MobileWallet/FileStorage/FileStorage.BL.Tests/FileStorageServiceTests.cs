@@ -16,11 +16,11 @@ namespace FileStorage.BL.Tests
         private const string TestFolderPath = @"Data\F1";
 
         private readonly IFileStorageConfig _fsConfig;
+        //private IFileStorageService _fsService;
 
         public FileStorageServiceTests()
         {
             _fsConfig = new FileStorageConfig();
-            //_fsUnitOfWork = new FileStorageUnitOfWork(dbSession)
         }
 
         [SetUp]
@@ -33,9 +33,8 @@ namespace FileStorage.BL.Tests
         [Test]
         public void FillStorageWithFilesTest()
         {
-            using (IFileStorageUnitOfWork unitOfWork = CreateUnitOfWork())
+            using (var fsService = Factory.FileStorage.Create())
             {
-                var fsService = new FileStorageService(_fsConfig, unitOfWork);
                 for (int i = 0; i < 16; i++)
                     Assert.Greater(fsService.PutFile(TestFilePath), 0);
 
@@ -48,9 +47,8 @@ namespace FileStorage.BL.Tests
         [Test]
         public void FillStorageWithFoldersTest()
         {
-            using (IFileStorageUnitOfWork unitOfWork = CreateUnitOfWork())
+            using (var fsService = Factory.FileStorage.Create())
             {
-                var fsService = new FileStorageService(_fsConfig, unitOfWork);
                 for (int i = 0; i < 16; i++)
                     Assert.Greater(fsService.PutFolder(TestFolderPath), 0);
 
@@ -63,9 +61,8 @@ namespace FileStorage.BL.Tests
         [Test]
         public void FillStorageWithFoldersAndFilesTest()
         {
-            using (IFileStorageUnitOfWork unitOfWork = CreateUnitOfWork())
+            using (var fsService = Factory.FileStorage.Create())
             {
-                var fsService = new FileStorageService(_fsConfig, unitOfWork);
                 for (int i = 0; i < 8; i++)
                 {
                     Assert.Greater(fsService.PutFolder(TestFolderPath), 0); 
@@ -92,9 +89,8 @@ namespace FileStorage.BL.Tests
             string srcFilePath = Path.Combine(srcPath, "TextFile1.txt");
             File.Copy(TestFilePath, srcFilePath, true);
 
-            using (IFileStorageUnitOfWork unitOfWork = CreateUnitOfWork())
+            using (var fsService = Factory.FileStorage.Create())
             {
-                var fsService = new FileStorageService(_fsConfig, unitOfWork);
                 int id = fsService.PutFolder(srcPath);
                 string dstPath = fsService.GetStorageItemPath(id);
                 Assert.IsNotNullOrEmpty(dstPath);
@@ -117,9 +113,8 @@ namespace FileStorage.BL.Tests
             string srcFilePath = Path.Combine(srcPath, "TextFile1.txt");
             File.Copy(TestFilePath, srcFilePath, true);
 
-            using (IFileStorageUnitOfWork unitOfWork = CreateUnitOfWork())
+            using (var fsService = Factory.FileStorage.Create())
             {
-                var fsService = new FileStorageService(_fsConfig, unitOfWork);
                 int id = fsService.PutFolder(srcPath, true);
                 string dstPath = fsService.GetStorageItemPath(id);
                 Assert.IsNotNullOrEmpty(dstPath);
@@ -138,9 +133,8 @@ namespace FileStorage.BL.Tests
             string srcFilePath = Path.Combine(TestFolderBase, "TextFile2.txt");
             File.Copy(TestFilePath, srcFilePath, true);
 
-            using (IFileStorageUnitOfWork unitOfWork = CreateUnitOfWork())
+            using (var fsService = Factory.FileStorage.Create())
             {
-                var fsService = new FileStorageService(_fsConfig, unitOfWork);
                 int id = fsService.PutFile(srcFilePath);
                 string dstFilePath = fsService.GetStorageItemPath(id);
                 Assert.IsNotNullOrEmpty(dstFilePath);
@@ -155,9 +149,8 @@ namespace FileStorage.BL.Tests
             string srcFilePath = Path.Combine(TestFolderBase, "TextFile2.txt");
             File.Copy(TestFilePath, srcFilePath, true);
 
-            using (IFileStorageUnitOfWork unitOfWork = CreateUnitOfWork())
+            using (var fsService = Factory.FileStorage.Create())
             {
-                var fsService = new FileStorageService(_fsConfig, unitOfWork);
                 int id = fsService.PutFile(srcFilePath, true);
                 string dstFilePath = fsService.GetStorageItemPath(id);
                 Assert.IsNotNullOrEmpty(dstFilePath);
@@ -170,9 +163,8 @@ namespace FileStorage.BL.Tests
         public void PutFileByStreamTest()
         {
             using (Stream fs = new FileStream(TestFilePath, FileMode.Open))
-            using (IFileStorageUnitOfWork unitOfWork = CreateUnitOfWork())
+            using (var fsService = Factory.FileStorage.Create())
             {
-                var fsService = new FileStorageService(_fsConfig, unitOfWork);
                 int id = fsService.PutFile(fs);
                 Assert.Greater(id, 0);
                 string dstFilePath = fsService.GetStorageItemPath(id);
@@ -184,9 +176,8 @@ namespace FileStorage.BL.Tests
         [Test]
         public void CreateStorageFolderTest()
         {
-            using (IFileStorageUnitOfWork unitOfWork = CreateUnitOfWork())
+            using (var fsService = Factory.FileStorage.Create())
             {
-                IFileStorageService fsService = new FileStorageService(_fsConfig, unitOfWork);
                 string folderPath1;
                 int id = fsService.CreateStorageFolder(out folderPath1);
                 Assert.Greater(id, 0);
@@ -201,9 +192,8 @@ namespace FileStorage.BL.Tests
         [Test]
         public void PutToStorageFolderWithCopyTest()
         {
-            using (IFileStorageUnitOfWork unitOfWork = CreateUnitOfWork())
+            using (var fsService = Factory.FileStorage.Create())
             {
-                IFileStorageService fsService = new FileStorageService(_fsConfig, unitOfWork);
                 string folderPath1;
                 int id = fsService.CreateStorageFolder(out folderPath1);
                 Assert.Greater(id, 0);
@@ -238,9 +228,8 @@ namespace FileStorage.BL.Tests
             string srcPath = Path.Combine(TestFolderBase, "F2");
             Directory.CreateDirectory(srcPath);
 
-            using (IFileStorageUnitOfWork unitOfWork = CreateUnitOfWork())
+            using (var fsService = Factory.FileStorage.Create())
             {
-                IFileStorageService fsService = new FileStorageService(_fsConfig, unitOfWork);
                 string folderPath1;
                 int id = fsService.CreateStorageFolder(out folderPath1);
                 Assert.Greater(id, 0);
@@ -286,9 +275,8 @@ namespace FileStorage.BL.Tests
         [Test]
         public void GetFilePathTest()
         {
-            using (IFileStorageUnitOfWork unitOfWork = CreateUnitOfWork())
+            using (var fsService = Factory.FileStorage.Create())
             {
-                var fsService = new FileStorageService(_fsConfig, unitOfWork);
                 int id = fsService.PutFile(TestFilePath);
                 string path = fsService.GetStorageItemPath(id);
                 Assert.IsNotNullOrEmpty(path);
@@ -306,10 +294,8 @@ namespace FileStorage.BL.Tests
         [Test]
         public void DeleteStorageItemTest()
         {
-            using (IFileStorageUnitOfWork unitOfWork = CreateUnitOfWork())
+            using (var fsService = Factory.FileStorage.Create())
             {
-                var fsService = new FileStorageService(_fsConfig, unitOfWork);
-
                 int id = fsService.PutFile(TestFilePath);
                 string path = fsService.GetStorageItemPath(id);
                 Assert.IsNotNullOrEmpty(path);
