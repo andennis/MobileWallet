@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using Common.Repository;
 
 namespace Pass.Container.Core.Entities
@@ -9,5 +10,6 @@ namespace Pass.Container.Core.Entities
         public int PassTemplateId { get; set; }
         public string Name { get; set; }
         public PassTemplate Template { get; set; }
+        public ICollection<PassFieldValue> FieldValues { get; set; }
     }
 }

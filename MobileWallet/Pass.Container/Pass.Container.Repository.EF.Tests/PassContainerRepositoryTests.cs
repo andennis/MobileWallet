@@ -29,7 +29,7 @@ namespace Pass.Container.Repository.EF.Tests
                 var repPass = unitOfWork.GetRepository<PassEntities.Pass>();
                 repPass.Insert(pass1);
 
-                var passField1 = new PassEntities.PassField() {Name = "PF1", Template = pt1};
+                var passField1 = new PassEntities.PassField() {Name = "PF1", PassTemplateId = pt1.PassTemplateId};
                 var repPassField = unitOfWork.GetRepository<PassEntities.PassField>();
                 repPassField.Insert(passField1);
 
