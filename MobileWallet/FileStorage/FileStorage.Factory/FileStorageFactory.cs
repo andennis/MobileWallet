@@ -5,23 +5,22 @@ using Microsoft.Practices.Unity.Configuration;
 
 namespace FileStorage.Factory
 {
-    public static class FileStorage
+    public static class FileStorageFactory
     {
         private static readonly IUnityContainer _iocContainer = new UnityContainer();
-
         
-        static FileStorage()
+        static FileStorageFactory()
         {
-            _iocContainer.LoadConfiguration();
+            _iocContainer.LoadConfiguration("FileStorage");
         }
-        
 
         public static IFileStorageService Create(IFileStorageConfig config = null)
         {
             if (config == null)
                 return _iocContainer.Resolve<IFileStorageService>();
 
-            return _iocContainer.Resolve<IFileStorageService>(new DependencyOverride<IFileStorageConfig>(config));
+            return _iocContainer.Resolve<IFileStorageService>(new DependencyOverride<IFileStorageConfig>(config), 
+                new DependencyOverride<IDbConfig>(config));
         }
     }
 }

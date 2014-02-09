@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Common.Configuration;
+﻿using Common.Configuration;
 using Pass.Container.Core;
-
 
 namespace Pass.Container.BL
 {
     public sealed class PassContainerConfig : AppConfigBase, IPassContainerConfig
     {
+        public PassContainerConfig()
+            : base("PassContainer")
+        {
+        }
+
+        #region IPassContainerConfig
         public string PassTemplateFolderName
         {
             get { return GetValue("PassTemplateFolderName"); }
@@ -19,5 +19,13 @@ namespace Pass.Container.BL
         {
             get { return GetValue("PassTemplateFileName"); }
         }
+        #endregion
+
+        #region IDbConfig
+        public string ConnectionString
+        {
+            get { return GetValue("ConnectionStringName"); }
+        }
+        #endregion
     }
 }

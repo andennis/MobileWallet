@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Common.Extensions;
 using Common.Repository;
-using FileStorage.BL;
 using FileStorage.Core;
 using Pass.Container.BL.NativePassTemplateGenerators;
 using Pass.Container.Core;
@@ -19,7 +16,7 @@ namespace Pass.Container.BL
 {
     public class PassTemplateService : IPassTemplateService
     {
-        private readonly IPassContainerConfig _pcConfig;
+        private readonly IPassTemplateConfig _ptConfig;
         private readonly IPassContainerUnitOfWork _pcUnitOfWork;
         private readonly IFileStorageService _fsService;
         //Repositories
@@ -30,9 +27,9 @@ namespace Pass.Container.BL
         //Native pass template generators
         private readonly IDictionary<PassTemplateType, INativePassTemplateGenerator> _passTemplateGenerators;
 
-        public PassTemplateService(IPassContainerConfig config, IPassContainerUnitOfWork pcUnitOfWork, IFileStorageService fsService)
+        public PassTemplateService(IPassTemplateConfig config, IPassContainerUnitOfWork pcUnitOfWork, IFileStorageService fsService)
         {
-            _pcConfig = config;
+            _ptConfig = config;
             _pcUnitOfWork = pcUnitOfWork;
             _fsService = fsService;
 
@@ -55,7 +52,7 @@ namespace Pass.Container.BL
             int templateStorageItemId = CreatePassTemplateFileStorageItem(passTemplatePath, out templateStorageItemPath);
 
             //Generate native pass templates
-            string passTemplateFilePath = Path.Combine(templateStorageItemPath, _pcConfig.PassTemplateFolderName, _pcConfig.PassTemplateFileName);
+            string passTemplateFilePath = Path.Combine(templateStorageItemPath, _ptConfig.PassTemplateFolderName, _ptConfig.PassTemplateFileName);
             var generalPassTemplate = passTemplateFilePath.LoadFromXml<GeneralPassTemplate>();
             foreach (var nativePassTemplateGenerator in _passTemplateGenerators)
             {
@@ -132,7 +129,7 @@ namespace Pass.Container.BL
             int templateStorageItemId = CreatePassTemplateFileStorageItem(passTemplatePath, out templateStorageItemPath);
 
             //Generate native pass templates
-            string passTemplateFilePath = Path.Combine(templateStorageItemPath, _pcConfig.PassTemplateFolderName, _pcConfig.PassTemplateFileName);
+            string passTemplateFilePath = Path.Combine(templateStorageItemPath, _ptConfig.PassTemplateFolderName, _ptConfig.PassTemplateFileName);
             var generalPassTemplate = passTemplateFilePath.LoadFromXml<GeneralPassTemplate>();
             foreach (var nativePassTemplateGenerator in _passTemplateGenerators)
             {
@@ -194,7 +191,7 @@ namespace Pass.Container.BL
             if (!Directory.Exists(passTemplatePath))
                 throw new ArgumentException("Directory does not exist.");
 
-            string templateFilePath = Path.Combine(passTemplatePath, _pcConfig.PassTemplateFileName);
+            string templateFilePath = Path.Combine(passTemplatePath, _ptConfig.PassTemplateFileName);
             if (!File.Exists(templateFilePath))
                 throw new PassTemplateException(string.Format("Pass template file was not found. File path: {0}", templateFilePath));
 
@@ -208,7 +205,7 @@ namespace Pass.Container.BL
 
             //Put all pass template files in FileStorage
             int templateStorageItemId = _fsService.CreateStorageFolder(out templateStorageItemPath);
-            _fsService.PutToStorageFolder(templateStorageItemId, passTemplatePath, _pcConfig.PassTemplateFolderName, true);
+            _fsService.PutToStorageFolder(templateStorageItemId, passTemplatePath, _ptConfig.PassTemplateFolderName, true);
 
             return templateStorageItemId;
         }
@@ -235,5 +232,12 @@ namespace Pass.Container.BL
                 select field.Key);
         }
 
+
+        #region IDisposable
+        public void Dispose()
+        {
+            _pcUnitOfWork.Dispose();
+        }
+        #endregion
     }
 }

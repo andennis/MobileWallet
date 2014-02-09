@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using Common.Repository;
 
 namespace Pass.Container.Core
 {
-    public interface IPassContainerConfig
+    public interface IPassContainerConfig : IPassTemplateConfig, IDbConfig
     {
-        string PassTemplateFolderName { get; }
-        string PassTemplateFileName { get;}
     }
 }

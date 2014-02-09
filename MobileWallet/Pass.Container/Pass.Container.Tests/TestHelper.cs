@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using Common.Repository;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities.Templates.GeneralPassTemplate;
 
@@ -9,16 +8,8 @@ namespace Pass.Container.BL.Tests
 {
     public static class TestHelper
     {
-        public static IDbConfig DbConfig { get { return new TestDbConfig(); } }
         public static IPassContainerConfig PassContainerConfig { get { return new TestPassContainerConfig(); } }
 
-        private class TestDbConfig : IDbConfig
-        {
-            public string ConnectionString
-            {
-                get { return "MobileWalletConnection"; }
-            }
-        }
         private class TestPassContainerConfig : IPassContainerConfig
         {
             public string PassTemplateFolderName
@@ -29,9 +20,11 @@ namespace Pass.Container.BL.Tests
             {
                 get { return "PassTemplateFileName"; }
             }
+            public string ConnectionString
+            {
+                get { return "MobileWalletConnection"; }
+            }
         }
-
-        
 
         public static GeneralPassTemplate GetPassTemplateObject()
         {

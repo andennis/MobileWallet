@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Common.Extensions;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities.Enums;
@@ -19,14 +16,14 @@ namespace Pass.Container.BL.NativePassTemplateGenerators
 {
     public class ApplePassTemplateGenerator : INativePassTemplateGenerator
     {
-        private readonly IPassContainerConfig _pcConfig;
+        private readonly IPassTemplateConfig _ptConfig;
         private const string ApplePassTemplateFolderName = "ApplePassTemplate";
         private const string ApplePassTemplateFileName = "template.json";
         private static List<string> _applePassTemplateFiles;
 
-        public ApplePassTemplateGenerator(IPassContainerConfig config)
+        public ApplePassTemplateGenerator(IPassTemplateConfig config)
         {
-            _pcConfig = config;
+            _ptConfig = config;
             _applePassTemplateFiles = new List<string> { 
                 "logo.png", 
                 "icon.png", 
@@ -64,13 +61,13 @@ namespace Pass.Container.BL.NativePassTemplateGenerators
             File.WriteAllText(applePassTemplateFilePath, applePassTemplateJson);
 
             //Copy Apple pass template files into Apple pass template folder
-            IEnumerable<string> files = Directory.EnumerateFiles(Path.Combine(storageItemPath, _pcConfig.PassTemplateFolderName));
+            IEnumerable<string> files = Directory.EnumerateFiles(Path.Combine(storageItemPath, _ptConfig.PassTemplateFolderName));
             foreach (var file in files)
             {
                 if (!_applePassTemplateFiles.Any(applePassTemplateFile => file.Contains(applePassTemplateFile)))
                     continue;
 
-                string filePath = file.Replace(_pcConfig.PassTemplateFolderName, ApplePassTemplateFolderName);
+                string filePath = file.Replace(_ptConfig.PassTemplateFolderName, ApplePassTemplateFolderName);
                 if (File.Exists(filePath))
                     File.Delete(filePath);
                 File.Copy(file, filePath);

@@ -4,15 +4,25 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using Common.Extensions;
+using FileStorage.BL;
 using NUnit.Framework;
+using Pass.Container.Core;
 using Pass.Container.Core.Entities;
 using Pass.Container.Core.Entities.Templates.GeneralPassTemplate;
+using Pass.Container.Factory;
 
 namespace Pass.Container.BL.Tests
 {
     [TestFixture]
     public class PassTemplateServiceTests : BlTestsBase
     {
+        private readonly IPassContainerConfig _ptConfig;
+
+        public PassTemplateServiceTests()
+        {
+            _ptConfig = new PassContainerConfig();
+        }
+
         [Test]
         public void PassTemplateXmlSerializationTest()
         {
@@ -72,6 +82,15 @@ namespace Pass.Container.BL.Tests
             _passTemplateService.UpdatePassTemlate(passTemplateId, _testPassTemplateDir);
         }
 
+        [Test]
+        public void TempTest1()
+        {
+            using (IPassTemplateService ptService = GetPassTemplateService())
+            {
+                
+            }
+        }
+
         private void PreparePassTemplateSource()
         {
             //Prepare pass template source
@@ -87,6 +106,10 @@ namespace Pass.Container.BL.Tests
                 File.Delete(path);
             generalTemplate.SaveToXml(path);
             Assert.IsTrue(File.Exists(path));
+        }
+        private IPassTemplateService GetPassTemplateService()
+        {
+            return PassContainerFactory.Create(_ptConfig, new FileStorageConfig());
         }
     }
 }

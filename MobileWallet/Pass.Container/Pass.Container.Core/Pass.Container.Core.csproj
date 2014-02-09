@@ -80,6 +80,7 @@
     <Compile Include="IPassContainerConfig.cs" />
     <Compile Include="IPassContainerUnitOfWork.cs" />
     <Compile Include="IPassDistributionService.cs" />
+    <Compile Include="IPassTemplateConfig.cs" />
     <Compile Include="IPassTemplateService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

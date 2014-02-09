@@ -20,7 +20,7 @@ namespace Pass.Container.BL.Tests
         [SetUp]
         public virtual void InitEachTest()
         {
-            _pcUnitOfWork = new PassContainerUnitOfWork(TestHelper.DbConfig);
+            _pcUnitOfWork = new PassContainerUnitOfWork(TestHelper.PassContainerConfig);
             IFileStorageConfig fsConfig = new FileStorageConfig();
             _fsUnitOfWork = new FileStorageUnitOfWork(fsConfig);
             _fsService = new FileStorageService(fsConfig, _fsUnitOfWork);
