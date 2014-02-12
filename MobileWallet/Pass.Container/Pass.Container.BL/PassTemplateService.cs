@@ -64,17 +64,17 @@ namespace Pass.Container.BL
 
             //Save nessesary information into DB
             var passTemplate = new PassTemplate { Name = generalPassTemplate.TemplateName, PackageId = templateStorageItemId };
-            var passTemplateApple = new PassTemplateApple { Template = passTemplate };
+            var passTemplateApple = new PassTemplateApple { PassTemplateId = passTemplate.PassTemplateId, PassTypeId = ""};
             foreach (var dynamicFieldName in dynamicFields)
             {
-                _repPassField.Insert(new PassField { Name = dynamicFieldName, Template = passTemplate});
+                _repPassField.Insert(new PassField { Name = dynamicFieldName, Template = passTemplate });
             }
             _repPassTemplate.Insert(passTemplate);
             _repPassTemplateApple.Insert(passTemplateApple);
             _pcUnitOfWork.Save();
 
             //Get pass template id
-            PassTemplate template = _repPassTemplate.Find(passTemplate);
+            PassTemplate template = _repPassTemplate.Find(passTemplate.PassTemplateId);
             if (template == null)
                 throw new PassTemplateException("Pass template creation failed.");
             int passTemplateId = template.PassTemplateId;
@@ -180,7 +180,9 @@ namespace Pass.Container.BL
 
         public bool ValidatePassTemplate(string passTemplateFilePath)
         {
-            throw new NotImplementedException();
+            //TODO Pass template validation
+            //check different key in field
+            return true;
         }
 
         private int CreatePassTemplateFileStorageItem(string passTemplatePath, out string templateStorageItemPath)
@@ -205,8 +207,11 @@ namespace Pass.Container.BL
 
             //Put all pass template files in FileStorage
             int templateStorageItemId = _fsService.CreateStorageFolder(out templateStorageItemPath);
-            _fsService.PutToStorageFolder(templateStorageItemId, passTemplatePath, _ptConfig.PassTemplateFolderName, true);
-
+            var templatefiles = Directory.GetFiles(passTemplatePath);
+            foreach (var file in templatefiles)
+            {
+                _fsService.PutToStorageFolder(templateStorageItemId, file, _ptConfig.PassTemplateFolderName, true);
+            }
             return templateStorageItemId;
         }
         private List<string> GetDynamicFields(GeneralPassTemplate generalPassTemplate)

@@ -59,7 +59,7 @@ namespace Pass.Container.BL.Tests
         {
             PreparePassTemplateSource();
             int passTemplateId = _passTemplateService.CreatePassTemlate(_testPassTemplateDir);
-            Assert.Greater(0, passTemplateId);
+            Assert.Greater(passTemplateId, 0);
         }
 
         [Test]
@@ -101,7 +101,7 @@ namespace Pass.Container.BL.Tests
                     Value = "TestDynamicFieldValue",
                     Type = Field.DataType.Text
                 });
-            string path = Path.Combine(_testPassTemplateDir, "Template.xml");
+            string path = Path.Combine(_testPassTemplateDir, TestHelper.PassContainerConfig.PassTemplateFileName);
             if (File.Exists(path))
                 File.Delete(path);
             generalTemplate.SaveToXml(path);

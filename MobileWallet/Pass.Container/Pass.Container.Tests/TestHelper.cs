@@ -8,23 +8,23 @@ namespace Pass.Container.BL.Tests
 {
     public static class TestHelper
     {
-        public static IPassContainerConfig PassContainerConfig { get { return new TestPassContainerConfig(); } }
+        public static IPassContainerConfig PassContainerConfig { get { return new PassContainerConfig(); } }
 
-        private class TestPassContainerConfig : IPassContainerConfig
-        {
-            public string PassTemplateFolderName
-            {
-                get { return "PassTemplateFolderName"; }
-            }
-            public string PassTemplateFileName
-            {
-                get { return "PassTemplateFileName"; }
-            }
-            public string ConnectionString
-            {
-                get { return "MobileWalletConnection"; }
-            }
-        }
+        //private class TestPassContainerConfig : IPassContainerConfig
+        //{
+        //    public string PassTemplateFolderName
+        //    {
+        //        get { return "PassTemplateFolderName"; }
+        //    }
+        //    public string PassTemplateFileName
+        //    {
+        //        get { return "PassTemplateFileName"; }
+        //    }
+        //    public string ConnectionString
+        //    {
+        //        get { return "MobileWalletConnection"; }
+        //    }
+        //}
 
         public static GeneralPassTemplate GetPassTemplateObject()
         {
@@ -153,7 +153,7 @@ namespace Pass.Container.BL.Tests
                                                 IgnoresTimeZone = true,
                                                 IsDynamic = true,
                                                 IsRelative = true,
-                                                Key = "Key",
+                                                Key = "Key1",
                                                 Label = "label",
                                                 Value = "value",
                                                 Type = Field.DataType.Text
@@ -173,7 +173,7 @@ namespace Pass.Container.BL.Tests
                                                 IgnoresTimeZone = true,
                                                 IsDynamic = true,
                                                 IsRelative = true,
-                                                Key = "Key",
+                                                Key = "Key2",
                                                 Label = "label",
                                                 Value = "value",
                                                 Type = Field.DataType.Text
@@ -196,7 +196,7 @@ namespace Pass.Container.BL.Tests
                                                 IgnoresTimeZone = true,
                                                 IsDynamic = true,
                                                 IsRelative = true,
-                                                Key = "Key",
+                                                Key = "Key3",
                                                 Label = "label",
                                                 Value = "value",
                                                 Type = Field.DataType.Text
@@ -219,7 +219,7 @@ namespace Pass.Container.BL.Tests
                                                 IgnoresTimeZone = true,
                                                 IsDynamic = true,
                                                 IsRelative = true,
-                                                Key = "Key",
+                                                Key = "Key4",
                                                 Label = "label",
                                                 Value = "value",
                                                 Type = Field.DataType.Text
@@ -242,7 +242,7 @@ namespace Pass.Container.BL.Tests
                                                 IgnoresTimeZone = true,
                                                 IsDynamic = true,
                                                 IsRelative = true,
-                                                Key = "Key",
+                                                Key = "Key5",
                                                 Label = "label",
                                                 Value = "value",
                                                 Type = Field.DataType.Text
@@ -264,7 +264,7 @@ namespace Pass.Container.BL.Tests
                                                 IgnoresTimeZone = true,
                                                 IsDynamic = true,
                                                 IsRelative = true,
-                                                Key = "Key",
+                                                Key = "Key6",
                                                 Label = "label",
                                                 Value = "value",
                                                 Type = Field.DataType.Text

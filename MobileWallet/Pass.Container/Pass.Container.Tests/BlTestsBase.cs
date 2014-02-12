@@ -28,7 +28,7 @@ namespace Pass.Container.BL.Tests
 
             _testPassTemplateDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestPassTemplate");
             if (Directory.Exists(_testPassTemplateDir))
-                Directory.Delete(_testPassTemplateDir);
+                Directory.Delete(_testPassTemplateDir, true);
             Directory.CreateDirectory(_testPassTemplateDir);
         }
 
