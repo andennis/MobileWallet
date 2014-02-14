@@ -20,10 +20,10 @@ namespace Pass.Container.BL
         private readonly IPassContainerUnitOfWork _pcUnitOfWork;
         private readonly IFileStorageService _fsService;
         //Repositories
-        readonly IRepository<PassTemplate> _repPassTemplate;
-        IRepository<PassTemplateNative> _repTemplateNative;
-        readonly IRepository<PassTemplateApple> _repPassTemplateApple;
-        readonly IRepository<PassField> _repPassField;
+        private readonly IRepository<PassTemplate> _repPassTemplate;
+        private readonly IRepository<PassTemplateNative> _repTemplateNative;
+        private readonly IRepository<PassTemplateApple> _repPassTemplateApple;
+        private readonly IRepository<PassField> _repPassField;
         //Native pass template generators
         private readonly IDictionary<PassTemplateType, INativePassTemplateGenerator> _passTemplateGenerators;
 
@@ -88,12 +88,23 @@ namespace Pass.Container.BL
             PassTemplate passTemplate = _repPassTemplate.Find(passTemplateId);
             if (passTemplate == null)
                 return;
-
+           
             // Set pass template storage item as deleted
             _fsService.DeleteStorageItem(passTemplate.PackageId);
             
             //Delete pass template from DB
+            IQueryable<PassTemplateApple> passTemplatesApple = _repPassTemplateApple.Query().Filter(x => x.PassTemplateId == passTemplateId).Get();
+            IQueryable<PassField> passFields = _repPassField.Query().Filter(x => x.PassTemplateId == passTemplateId).Get();
+            foreach (var passTemplateApple in passTemplatesApple)
+            {
+                _repTemplateNative.Delete(passTemplateApple);
+            }
+            foreach (var passField in passFields)
+            {
+                _repPassField.Delete(passField);
+            }
             _repPassTemplate.Delete(passTemplate);
+            _pcUnitOfWork.Save();
         }
 
         public string GetNativePassTemplate(int passTemplateId, PassTemplateType passTemplateType)

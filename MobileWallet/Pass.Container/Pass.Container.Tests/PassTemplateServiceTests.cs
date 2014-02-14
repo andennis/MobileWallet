@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using Common.Extensions;
+using Common.Repository;
 using FileStorage.BL;
 using NUnit.Framework;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
 using Pass.Container.Core.Entities.Templates.GeneralPassTemplate;
 using Pass.Container.Factory;
+using Pass.Container.Repository.EF;
 
 namespace Pass.Container.BL.Tests
 {
@@ -17,10 +20,21 @@ namespace Pass.Container.BL.Tests
     public class PassTemplateServiceTests : BlTestsBase
     {
         private readonly IPassContainerConfig _ptConfig;
+        //Repositories
+        private readonly IRepository<PassTemplate> _repPassTemplate;
+        private readonly IRepository<PassTemplateNative> _repTemplateNative;
+        private readonly IRepository<PassTemplateApple> _repPassTemplateApple;
+        private readonly IRepository<PassField> _repPassField;
 
-        public PassTemplateServiceTests()
+        public PassTemplateServiceTests():base()
         {
             _ptConfig = new PassContainerConfig();
+            _pcUnitOfWork = new PassContainerUnitOfWork(TestHelper.PassContainerConfig);
+            //Repositories
+            _repPassTemplate = _pcUnitOfWork.GetRepository<PassTemplate>();
+            _repTemplateNative = _pcUnitOfWork.GetRepository<PassTemplateNative>();
+            _repPassTemplateApple = _pcUnitOfWork.GetRepository<PassTemplateApple>();
+            _repPassField = _pcUnitOfWork.GetRepository<PassField>();
         }
 
         [Test]
@@ -57,9 +71,35 @@ namespace Pass.Container.BL.Tests
         [Test]
         public void CreatePassTemplateTest()
         {
-            PreparePassTemplateSource();
+            GeneralPassTemplate generalPassTemplate = PreparePassTemplateSource();
             int passTemplateId = _passTemplateService.CreatePassTemlate(_testPassTemplateDir);
             Assert.Greater(passTemplateId, 0);
+
+            //Check pass template DB record
+            PassTemplate passTemplate = _repPassTemplate.Find(passTemplateId);
+            Assert.IsNotNull(passTemplate);
+            Assert.AreEqual(1, passTemplate.Version);
+            Assert.AreEqual(generalPassTemplate.TemplateName, passTemplate.Name);
+            
+            //Check native pass template
+            IQueryable<PassTemplateApple> passTemplatesApple = _repPassTemplateApple.Query().Filter(x => x.PassTemplateId == passTemplateId).Get();
+            Assert.Greater(passTemplatesApple.Count(), 0);
+            Assert.AreEqual(1, passTemplatesApple.Count());
+
+            //Check pass dynamic fields
+            IQueryable<PassField> passFields = _repPassField.Query().Filter(x => x.PassTemplateId == passTemplateId).Get();
+            Assert.Greater(passFields.Count(), 0);
+
+            //Check file storage
+            int packageId = passTemplate.PackageId;
+            string storageItemPath = _fsService.GetStorageItemPath(packageId);
+            Assert.IsNotNull(storageItemPath);
+            string[] directories = Directory.GetDirectories(storageItemPath);
+            Assert.AreEqual(2, directories.Count());
+            foreach (string dir in directories)
+            {
+                Assert.IsTrue(Directory.GetFiles(dir).Any(x => (Path.GetExtension(x) == ".json") || (Path.GetExtension(x) == ".xml")));
+            }
         }
 
         [Test]
@@ -67,7 +107,7 @@ namespace Pass.Container.BL.Tests
         {
             PreparePassTemplateSource();
             int passTemplateId = _passTemplateService.CreatePassTemlate(_testPassTemplateDir);
-            Assert.Greater(0, passTemplateId);
+            Assert.Greater(passTemplateId, 0);
             IList<PassField> passFields = _passTemplateService.GetPassFields(passTemplateId);
             Assert.IsNotNull(passFields);
             Assert.IsTrue(passFields.Select(x => x.Name).Contains("TestDynamicField"));
@@ -76,22 +116,79 @@ namespace Pass.Container.BL.Tests
         [Test]
         public void UpdatePassTemplateTest()
         {
-            PreparePassTemplateSource();
+            GeneralPassTemplate generalPassTemplate = PreparePassTemplateSource();
             int passTemplateId = _passTemplateService.CreatePassTemlate(_testPassTemplateDir);
-            Assert.Greater(0, passTemplateId);
+            Assert.Greater(passTemplateId, 0);
+            PreparePassTemplateSource();
+            Thread.Sleep(3000);
             _passTemplateService.UpdatePassTemlate(passTemplateId, _testPassTemplateDir);
-        }
 
-        [Test]
-        public void TempTest1()
-        {
-            using (IPassTemplateService ptService = GetPassTemplateService())
+            //Check pass template DB record
+            PassTemplate passTemplate = _repPassTemplate.Find(passTemplateId);
+            Assert.IsNotNull(passTemplate);
+            Assert.AreEqual(2, passTemplate.Version);
+            Assert.AreEqual(generalPassTemplate.TemplateName, passTemplate.Name);
+
+            //Check native pass template
+            IQueryable<PassTemplateApple> passTemplatesApple = _repPassTemplateApple.Query().Filter(x => x.PassTemplateId == passTemplateId).Get();
+            Assert.Greater(passTemplatesApple.Count(), 0);
+            Assert.AreEqual(1, passTemplatesApple.Count());
+
+            //Check pass dynamic fields
+            IQueryable<PassField> passFields = _repPassField.Query().Filter(x => x.PassTemplateId == passTemplateId).Get();
+            Assert.Greater(passFields.Count(), 0);
+
+            //Check file storage
+            int packageId = passTemplate.PackageId;
+            string storageItemPath = _fsService.GetStorageItemPath(packageId);
+            Assert.IsNotNull(storageItemPath);
+            string[] directories = Directory.GetDirectories(storageItemPath);
+            Assert.AreEqual(2, directories.Count());
+            foreach (string dir in directories)
             {
-                
+                Assert.IsTrue(Directory.GetFiles(dir).Any(x => (Path.GetExtension(x) == ".json") || (Path.GetExtension(x) == ".xml")));
             }
         }
 
-        private void PreparePassTemplateSource()
+        [Test]
+        public void DeletePassTemplateTest()
+        {
+            PreparePassTemplateSource();
+            int passTemplateId = _passTemplateService.CreatePassTemlate(_testPassTemplateDir);
+            Assert.Greater(passTemplateId, 0);
+
+            PassTemplate passTemplate = _repPassTemplate.Find(passTemplateId);
+            Assert.IsNotNull(passTemplate);
+            //Check file storage
+            int packageId = passTemplate.PackageId;
+            string storageItemPath = _fsService.GetStorageItemPath(packageId);
+            Assert.IsNotNull(storageItemPath);
+            string[] directories = Directory.GetDirectories(storageItemPath);
+            Assert.AreEqual(2, directories.Count());
+            foreach (string dir in directories)
+            {
+                Assert.IsTrue(Directory.GetFiles(dir).Any(x => (Path.GetExtension(x) == ".json") || (Path.GetExtension(x) == ".xml")));
+            }
+            
+            _passTemplateService.DeletePassTemplate(passTemplateId);
+
+            IQueryable<PassTemplate> passTemplates = _repPassTemplate.Query().Filter(x => x.PassTemplateId == passTemplateId).Get();
+            Assert.AreEqual(0, passTemplates.Count());
+
+            //Check file storage
+            directories = Directory.GetDirectories(storageItemPath);
+            Assert.AreEqual(2, directories.Count());
+            foreach (string dir in directories)
+            {
+                Assert.IsTrue(Directory.GetFiles(dir).Any(x => (Path.GetExtension(x) == ".json") || (Path.GetExtension(x) == ".xml")));
+            }
+            //Check file storage item as Deleted
+            packageId = passTemplate.PackageId;
+            storageItemPath = _fsService.GetStorageItemPath(packageId);
+            Assert.IsNull(storageItemPath);
+        }
+
+        private GeneralPassTemplate PreparePassTemplateSource()
         {
             //Prepare pass template source
             GeneralPassTemplate generalTemplate = TestHelper.GetPassTemplateObject();
@@ -99,13 +196,16 @@ namespace Pass.Container.BL.Tests
                 {
                     Key = "TestDynamicField",
                     Value = "TestDynamicFieldValue",
-                    Type = Field.DataType.Text
+                    Type = Field.DataType.Text,
+                    IsDynamic = true
                 });
             string path = Path.Combine(_testPassTemplateDir, TestHelper.PassContainerConfig.PassTemplateFileName);
             if (File.Exists(path))
                 File.Delete(path);
             generalTemplate.SaveToXml(path);
             Assert.IsTrue(File.Exists(path));
+
+            return generalTemplate;
         }
         private IPassTemplateService GetPassTemplateService()
         {
