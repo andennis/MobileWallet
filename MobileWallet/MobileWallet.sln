@@ -68,6 +68,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileStorage.Factory", "File
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pass.Container.Factory", "Pass.Container\Pass.Container.Factory\Pass.Container.Factory.csproj", "{F9C5C89E-9B30-41E4-8FE4-D8675DBEAC26}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pass.Distribution.Web", "Pass.Distribution.Web\Pass.Distribution.Web.csproj", "{4625BAEC-0C53-4ECA-B92C-3C120280FAAC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -284,6 +286,14 @@ Global
 		{F9C5C89E-9B30-41E4-8FE4-D8675DBEAC26}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F9C5C89E-9B30-41E4-8FE4-D8675DBEAC26}.Release|X64.ActiveCfg = Release|Any CPU
 		{F9C5C89E-9B30-41E4-8FE4-D8675DBEAC26}.Release|x86.ActiveCfg = Release|Any CPU
+		{4625BAEC-0C53-4ECA-B92C-3C120280FAAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4625BAEC-0C53-4ECA-B92C-3C120280FAAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4625BAEC-0C53-4ECA-B92C-3C120280FAAC}.Debug|X64.ActiveCfg = Debug|Any CPU
+		{4625BAEC-0C53-4ECA-B92C-3C120280FAAC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4625BAEC-0C53-4ECA-B92C-3C120280FAAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4625BAEC-0C53-4ECA-B92C-3C120280FAAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4625BAEC-0C53-4ECA-B92C-3C120280FAAC}.Release|X64.ActiveCfg = Release|Any CPU
+		{4625BAEC-0C53-4ECA-B92C-3C120280FAAC}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

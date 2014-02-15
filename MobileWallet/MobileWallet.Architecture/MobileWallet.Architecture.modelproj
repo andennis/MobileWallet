@@ -119,12 +119,12 @@
       <SubType>Content</SubType>
       <DependentUpon>Pass.Processing.Web.classdiagram</DependentUpon>
     </Content>
-    <Content Include="PassDistribution.Web.classdiagram">
+    <Content Include="Pass.Distribution.Web.classdiagram">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="PassDistribution.Web.classdiagram.layout">
+    <Content Include="Pass.Distribution.Web.classdiagram.layout">
       <SubType>Content</SubType>
-      <DependentUpon>PassDistribution.Web.classdiagram</DependentUpon>
+      <DependentUpon>Pass.Distribution.Web.classdiagram</DependentUpon>
     </Content>
     <Content Include="TemplateProcessing.activitydiagram">
       <SubType>Content</SubType>

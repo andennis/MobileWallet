@@ -8,10 +8,6 @@
       Id="45c81ae8-df02-4345-85cd-58da5af46515">
       <body>Process requests from Pass.Distribution.Web</body>
       <annotatedElements>
-        <classMoniker
-          Id="fa091969-8ae4-418b-b492-22d9935f6114"
-          LastKnownName="PassDistributionController"
-          LastKnownLocation="PassContainerPackage.uml" />
         <interfaceMoniker
           Id="939f0582-e1f9-4664-a425-86de153d00ec"
           LastKnownName="IPassDistributionService"
@@ -627,46 +623,6 @@
       <undefinedType
         Id="4d471b98-c041-4688-b8e1-084207375768"
         name="String(" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <class
-        Id="c7fd8b4d-4e1d-46ea-a96c-bcc81f584eea"
-        name="PassTemplateNative"
-        isAbstract="false"
-        isLeaf="false"
-        isActiveClass="false" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <class
-        Id="99bb5dd9-9803-4902-a2e9-44562eee880c"
-        name="PassTemplateApple"
-        isAbstract="false"
-        isLeaf="false"
-        isActiveClass="false">
-        <generalsInternal>
-          <generalization
-            Id="20403e51-cddf-4bef-b204-3a92e78fdca9"
-            isSubstitutable="false">
-            <classMoniker
-              Id="c7fd8b4d-4e1d-46ea-a96c-bcc81f584eea"
-              LastKnownName="PassTemplateNative"
-              LastKnownLocation="PassModeling.uml" />
-          </generalization>
-        </generalsInternal>
-        <ownedAttributesInternal>
-          <property
-            Id="32c7ba9e-cb96-4964-90f7-ecc021ceef12"
-            name="PassTypeId"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false" />
-        </ownedAttributesInternal>
-      </class>
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
