@@ -63,7 +63,7 @@ namespace Pass.Container.BL
             IEnumerable<string> dynamicFields = GetDynamicFields(generalPassTemplate);
 
             //Save nessesary information into DB
-            var passTemplate = new PassTemplate { Name = generalPassTemplate.TemplateName, PackageId = templateStorageItemId };
+            var passTemplate = new PassTemplate { Name = generalPassTemplate.TemplateName, PackageId = templateStorageItemId, Status = TemplateStatus.Active };
             var passTemplateApple = new PassTemplateApple { PassTemplateId = passTemplate.PassTemplateId, PassTypeId = ""};
             foreach (var dynamicFieldName in dynamicFields)
             {
@@ -89,21 +89,9 @@ namespace Pass.Container.BL
             if (passTemplate == null)
                 return;
            
-            // Set pass template storage item as deleted
-            _fsService.DeleteStorageItem(passTemplate.PackageId);
-            
-            //Delete pass template from DB
-            IQueryable<PassTemplateApple> passTemplatesApple = _repPassTemplateApple.Query().Filter(x => x.PassTemplateId == passTemplateId).Get();
-            IQueryable<PassField> passFields = _repPassField.Query().Filter(x => x.PassTemplateId == passTemplateId).Get();
-            foreach (var passTemplateApple in passTemplatesApple)
-            {
-                _repTemplateNative.Delete(passTemplateApple);
-            }
-            foreach (var passField in passFields)
-            {
-                _repPassField.Delete(passField);
-            }
-            _repPassTemplate.Delete(passTemplate);
+            // Set pass template as inActive
+            passTemplate.Status = TemplateStatus.Deleted;
+            _repPassTemplate.Update(passTemplate);
             _pcUnitOfWork.Save();
         }
 

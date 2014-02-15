@@ -10,6 +10,7 @@ using FileStorage.BL;
 using NUnit.Framework;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
+using Pass.Container.Core.Entities.Enums;
 using Pass.Container.Core.Entities.Templates.GeneralPassTemplate;
 using Pass.Container.Factory;
 using Pass.Container.Repository.EF;
@@ -80,6 +81,7 @@ namespace Pass.Container.BL.Tests
             Assert.IsNotNull(passTemplate);
             Assert.AreEqual(1, passTemplate.Version);
             Assert.AreEqual(generalPassTemplate.TemplateName, passTemplate.Name);
+            Assert.AreEqual(TemplateStatus.Active, passTemplate.Status);
             
             //Check native pass template
             IQueryable<PassTemplateApple> passTemplatesApple = _repPassTemplateApple.Query().Filter(x => x.PassTemplateId == passTemplateId).Get();
@@ -159,6 +161,8 @@ namespace Pass.Container.BL.Tests
 
             PassTemplate passTemplate = _repPassTemplate.Find(passTemplateId);
             Assert.IsNotNull(passTemplate);
+            Assert.AreEqual(TemplateStatus.Active, passTemplate.Status);
+
             //Check file storage
             int packageId = passTemplate.PackageId;
             string storageItemPath = _fsService.GetStorageItemPath(packageId);
@@ -171,9 +175,10 @@ namespace Pass.Container.BL.Tests
             }
             
             _passTemplateService.DeletePassTemplate(passTemplateId);
-
-            IQueryable<PassTemplate> passTemplates = _repPassTemplate.Query().Filter(x => x.PassTemplateId == passTemplateId).Get();
-            Assert.AreEqual(0, passTemplates.Count());
+            
+            //PassTemplate passTemplateAfterDelete = _repPassTemplate.Find(passTemplateId);
+            //Assert.IsNotNull(passTemplateAfterDelete);
+            //Assert.AreEqual(TemplateStatus.InActive, passTemplateAfterDelete.Status);
 
             //Check file storage
             directories = Directory.GetDirectories(storageItemPath);
@@ -182,10 +187,10 @@ namespace Pass.Container.BL.Tests
             {
                 Assert.IsTrue(Directory.GetFiles(dir).Any(x => (Path.GetExtension(x) == ".json") || (Path.GetExtension(x) == ".xml")));
             }
-            //Check file storage item as Deleted
-            packageId = passTemplate.PackageId;
-            storageItemPath = _fsService.GetStorageItemPath(packageId);
-            Assert.IsNull(storageItemPath);
+            ////Check file storage item as Deleted
+            //packageId = passTemplate.PackageId;
+            //storageItemPath = _fsService.GetStorageItemPath(packageId);
+            //Assert.IsNull(storageItemPath);
         }
 
         private GeneralPassTemplate PreparePassTemplateSource()

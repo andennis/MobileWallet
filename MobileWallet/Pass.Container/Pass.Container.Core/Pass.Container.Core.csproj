@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Enums\TemplateStatus.cs" />
     <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Field Dictionary Keys\Field.cs" />
     <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Lower-Level Keys\Barcode.cs" />
     <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Lower-Level Keys\Beacon.cs" />

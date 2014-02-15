@@ -16,7 +16,7 @@ namespace Pass.Container.Repository.EF.Tests
             {
                 var repPassTemplate = unitOfWork.GetRepository<PassEntities.PassTemplate>();
                 var repTemplateNative = unitOfWork.GetRepository<PassEntities.PassTemplateNative>();
-                var pt1 = new PassEntities.PassTemplate() { Name = "PT1", PackageId = 1 };
+                var pt1 = new PassEntities.PassTemplate() { Name = "PT1", PackageId = 1, Status = TemplateStatus.Active};
 
                 var ptApple1 = new PassEntities.PassTemplateApple() {PassTypeId = "PTID1", Template = pt1};
                 repPassTemplate.Insert(pt1);
@@ -138,7 +138,7 @@ namespace Pass.Container.Repository.EF.Tests
                 Assert.AreEqual(cd1.DeviceId, cd2.DeviceId);
 
                 var repPassTemplate = unitOfWork.GetRepository<PassEntities.PassTemplate>();
-                var pt1 = new PassEntities.PassTemplate() { Name = "PT1", PackageId = 1 };
+                var pt1 = new PassEntities.PassTemplate() { Name = "PT1", PackageId = 1, Status = TemplateStatus.Active };
                 repPassTemplate.Insert(pt1);
                 unitOfWork.Save();
 
