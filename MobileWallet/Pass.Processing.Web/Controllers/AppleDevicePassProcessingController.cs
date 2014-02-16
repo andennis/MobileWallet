@@ -6,6 +6,10 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using Common.Extensions;
+using Pass.Container.BL;
+using Pass.Container.Core;
+using Pass.Container.Core.Entities.Enums;
+using Pass.Container.Repository.EF;
 using Pass.Processing.Web.Models;
 
 namespace Pass.Processing.Web.Controllers
@@ -17,7 +21,7 @@ namespace Pass.Processing.Web.Controllers
         [Route("devices/{deviceLibraryIdentifier}/registrations/{passTypeIdentifier}/{serialNumber}")]
         public HttpResponseMessage RegisterDevice(string deviceLibraryIdentifier, string passTypeIdentifier, string serialNumber, [FromBody]string pushTokenJson)
         {
-            HttpResponseMessage response;
+            HttpResponseMessage response = null;
             try
             {
                 string authHeader = HttpContext.Current.Request.Headers["Authorization"];
@@ -29,16 +33,30 @@ namespace Pass.Processing.Web.Controllers
                     string authToken = authHeader.Replace("ApplePass ", String.Empty);
                     var pushToken = pushTokenJson.JsonToObject<DevicePushToken>();
 
-                    //TODO Call method with params: deviceLibraryIdentifier, passTypeIdentifier, serialNumber, pushToken, authToken
+                    var status = PassProcessingStatus.Succeed;
+                    //PassProcessingStatus status;
+                    //IAppleDevicePassProcessingService passProcessingService = new AppleDevicePassProcessingService();
+                    //passProcessingService.RegisterDevice(deviceLibraryIdentifier, passTypeIdentifier, serialNumber, pushToken.PushToken, authToken, out status);
 
                     //If the serial number is already registered for this device, return HTTP status 200.
-                    response = Request.CreateResponse(HttpStatusCode.OK);
+                    if (status == PassProcessingStatus.AlreadyDone)
+                        response = Request.CreateResponse(HttpStatusCode.OK);
 
                     //If registration succeeds, return HTTP status 201
-                    response = Request.CreateResponse(HttpStatusCode.Created);
+                    if (status == PassProcessingStatus.Succeed)
+                        response = Request.CreateResponse(HttpStatusCode.Created);
+
+                    if (status == PassProcessingStatus.Unauthorized)
+                        response = Request.CreateResponse(HttpStatusCode.Unauthorized);
+
+                    if (status == PassProcessingStatus.NotFound)
+                        response = Request.CreateResponse(HttpStatusCode.NotFound);
+
+                    if (status == PassProcessingStatus.Error)
+                        response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Device were not registered.");
                 }
-                //If the request is not authorized, return HTTP status 401
-                response = Request.CreateResponse(HttpStatusCode.Unauthorized);
+                else//If the request is not authorized, return HTTP status 401
+                    response = Request.CreateResponse(HttpStatusCode.Unauthorized);
             }
             catch
             {
@@ -52,7 +70,7 @@ namespace Pass.Processing.Web.Controllers
         [Route("devices/{deviceLibraryIdentifier}/registrations/{passTypeIdentifier}/{serialNumber}")]
         public HttpResponseMessage UnregisterDevice(string deviceLibraryIdentifier, string passTypeIdentifier, string serialNumber, [FromBody]string pushTokenJson)
         {
-            HttpResponseMessage response;
+            HttpResponseMessage response = null;
             try
             {
                 string authHeader = HttpContext.Current.Request.Headers["Authorization"];
@@ -64,13 +82,26 @@ namespace Pass.Processing.Web.Controllers
                     string authToken = authHeader.Replace("ApplePass ", String.Empty);
                     var pushToken = pushTokenJson.JsonToObject<DevicePushToken>();
 
-                    //TODO Call method with params: deviceLibraryIdentifier, passTypeIdentifier, serialNumber, authToken
+                    var status = PassProcessingStatus.Succeed;
+                    //PassProcessingStatus status;
+                    //IAppleDevicePassProcessingService passProcessingService = new AppleDevicePassProcessingService();
+                    //passProcessingService.UnregisterDevice(deviceLibraryIdentifier, passTypeIdentifier, serialNumber, pushToken.PushToken, authToken, out status);
 
                     //If the device is unregistered, return HTTP status 200.
-                    response = Request.CreateResponse(HttpStatusCode.OK);
+                    if (status == PassProcessingStatus.Succeed)
+                        response = Request.CreateResponse(HttpStatusCode.OK);
+
+                    if (status == PassProcessingStatus.Unauthorized)
+                        response = Request.CreateResponse(HttpStatusCode.Unauthorized);
+
+                    if (status == PassProcessingStatus.NotFound)
+                        response = Request.CreateResponse(HttpStatusCode.NotFound);
+
+                    if (status == PassProcessingStatus.Error)
+                        response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Device were not unregistered.");
                 }
-                //If the request is not authorized, return HTTP status 401
-                response = Request.CreateResponse(HttpStatusCode.Unauthorized);
+                else//If the request is not authorized, return HTTP status 401
+                    response = Request.CreateResponse(HttpStatusCode.Unauthorized);
             }
             catch
             {
@@ -85,7 +116,7 @@ namespace Pass.Processing.Web.Controllers
         [Route("devices/{deviceLibraryIdentifier}/registrations/{passTypeIdentifier}")]
         public HttpResponseMessage GetSerialNumbersOfPasses(string deviceLibraryIdentifier, string passTypeIdentifier, string passesUpdatedSince = null)
         {
-            HttpResponseMessage response;
+            HttpResponseMessage response = null;
             try
             {
                 //If the passesUpdatedSince parameter is present, return only the passes that have been updated since
@@ -93,7 +124,11 @@ namespace Pass.Processing.Web.Controllers
                 DateTime passesUpdatedSinceTime;
                 DateTime.TryParse(passesUpdatedSince, out passesUpdatedSinceTime);
 
-                //TODO Call method with params: deviceLibraryIdentifier, passTypeIdentifier, passesUpdatedSinceTime
+                var status = PassProcessingStatus.Succeed;
+                //PassProcessingStatus status;
+                //IAppleDevicePassProcessingService passProcessingService = new AppleDevicePassProcessingService();
+                var lastUpdated = new DateTime();
+                //IList<string> passSerialNumbers = passProcessingService.GetSerialNumbersOfPasses(deviceLibraryIdentifier, passTypeIdentifier, ref lastUpdated, out status, passesUpdatedSinceTime);
                 //Return:
                 //{ 
                     //“serialNumbers” : [ <serialNo.>, <serialNo.>, ... ],
@@ -101,15 +136,31 @@ namespace Pass.Processing.Web.Controllers
                 //}
 
                 //If there are matching passes, return HTTP status 200 with a JSON dictionary
-                response = Request.CreateResponse(HttpStatusCode.OK, new object());
+                if (status == PassProcessingStatus.Succeed)
+                {
+                    var obj = new 
+                        {
+                            //serialNumbers = String.Join(", ", passSerialNumbers.ToArray()),
+                            lastUpdated = lastUpdated
+                        };
+                    response = Request.CreateResponse(HttpStatusCode.OK, obj);
+                }
 
                 //If there are no matching passes, return HTTP status 204.
-                response = Request.CreateResponse(HttpStatusCode.NoContent);
+
+                if (status == PassProcessingStatus.NoContent)
+                    response = Request.CreateResponse(HttpStatusCode.NoContent);
+
+                if (status == PassProcessingStatus.NotFound)
+                    response = Request.CreateResponse(HttpStatusCode.NotFound);
+
+                if (status == PassProcessingStatus.Error)
+                    response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Server error.");
             }
             catch
             {
                 //Otherwise, return the appropriate standard HTTP status
-                response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Device were not registered.");
+                response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Server Error.");
             }
             return response;
         }
@@ -129,26 +180,37 @@ namespace Pass.Processing.Web.Controllers
                 {
                     string authToken = authHeader.Replace("ApplePass ", String.Empty);
 
-                    //TODO Call method with params:  passTypeIdentifier, serialNumber
+                    var status = PassProcessingStatus.Succeed;
+                    //PassProcessingStatus status;
+                    //IAppleDevicePassProcessingService passProcessingService = new AppleDevicePassProcessingService();
+                    ////TODO GET PASS STREAM
+                    //passProcessingService.GetPass(passTypeIdentifier, serialNumber, authToken, out status);
 
                     //Support standard HTTP caching on this endpoint: check for the If-Modified-Since header and return HTTP
                     //status code 304 if the pass has not changed.
                     string ifModifiedSinceHeader = HttpContext.Current.Request.Headers["If-Modified-Since"];
                     response = Request.CreateResponse(HttpStatusCode.NotModified);
 
-                    //If the serial number is already registered for this device, return HTTP status 200.
-                    response = Request.CreateResponse(HttpStatusCode.OK);
+                    //If request is authorized, return HTTP status 200 with a payload of the pass data.
+                    if (status == PassProcessingStatus.Succeed)
+                        response = Request.CreateResponse(HttpStatusCode.OK);
 
-                    //If registration succeeds, return HTTP status 201
-                    response = Request.CreateResponse(HttpStatusCode.Created);
+                    if (status == PassProcessingStatus.Unauthorized)
+                        response = Request.CreateResponse(HttpStatusCode.Unauthorized);
+
+                    if (status == PassProcessingStatus.NotFound)
+                        response = Request.CreateResponse(HttpStatusCode.NotFound);
+
+                    if (status == PassProcessingStatus.Error)
+                        response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Server Error.");
                 }
-                //If the request is not authorized, return HTTP status 401
-                response = Request.CreateResponse(HttpStatusCode.Unauthorized);
+                else//If the request is not authorized, return HTTP status 401
+                    response = Request.CreateResponse(HttpStatusCode.Unauthorized);
             }
             catch
             {
                 //Otherwise, return the appropriate standard HTTP status
-                response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Device were not registered.");
+                response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Server Error");
             }
             return response;
         }
@@ -157,17 +219,16 @@ namespace Pass.Processing.Web.Controllers
         [Route("log")]
         public HttpResponseMessage Log([FromBody]string logMessage)
         {
-            HttpResponseMessage response;
             try
             {
-                response = Request.CreateResponse(HttpStatusCode.OK);
+                //IAppleDevicePassProcessingService passProcessingService = new AppleDevicePassProcessingService();
+                //passProcessingService.Log(logMessage);
             }
-            catch
+            catch (Exception)
             {
-                //Otherwise, return the appropriate standard HTTP status
-                response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Device were not registered.");
+                //Todo write to log
             }
-            return response;
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
     }
 }

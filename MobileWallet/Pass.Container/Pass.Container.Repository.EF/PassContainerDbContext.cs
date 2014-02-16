@@ -39,6 +39,7 @@ namespace Pass.Container.Repository.EF
                 .Map(x => x.MapKey("PassTemplateId")).WillCascadeOnDelete(false);
             modelBuilder.Entity<PassEntities.Pass>().Property(x => x.AuthToken).IsRequired().HasMaxLength(400);
             modelBuilder.Entity<PassEntities.Pass>().Property(x => x.SerialNumber).IsRequired().HasMaxLength(400);
+            modelBuilder.Entity<PassEntities.Pass>().Property(x => x.PassTypeIdentifier).IsRequired().HasMaxLength(400);
             modelBuilder.Entity<PassEntities.Pass>().Property(x => x.Version).IsConcurrencyToken();
 
             modelBuilder.Entity<PassEntities.PassFieldValue>().ToTable("PassFieldValue", DbScheme);

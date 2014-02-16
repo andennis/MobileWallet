@@ -130,6 +130,9 @@
           <property Id="b5310c50-a2cb-42d5-8655-b9233692d45c" name="Name" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="50e4283e-0264-4484-a593-6c1424cc7889" />
           </property>
+          <property Id="09db7813-8282-417f-8856-f8232bf9b003" name="Status" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="b8c9d615-1bf4-43d2-b68a-be2e96008605" />
+          </property>
         </ownedAttributesInternal>
       </class>
     </logicalClassDesignerModelHasTypes>

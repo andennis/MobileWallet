@@ -46,9 +46,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -142,6 +142,18 @@
     <ProjectReference Include="..\Common\Common.Extensions\Common.Extensions.csproj">
       <Project>{1628E173-1BE9-4DFC-BCBE-93334DE8EE46}</Project>
       <Name>Common.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pass.Container\Pass.Container.BL\Pass.Container.BL.csproj">
+      <Project>{c26e7afb-a944-48e6-9688-44b791bd697e}</Project>
+      <Name>Pass.Container.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pass.Container\Pass.Container.Core\Pass.Container.Core.csproj">
+      <Project>{062E8DA0-3EF1-4481-8FCF-CFEB54A39771}</Project>
+      <Name>Pass.Container.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pass.Container\Pass.Container.Repository.EF\Pass.Container.Repository.EF.csproj">
+      <Project>{3FFD32FB-90AA-4BBC-BA28-8431915B78B1}</Project>
+      <Name>Pass.Container.Repository.EF</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

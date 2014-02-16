@@ -10,6 +10,7 @@ namespace Pass.Container.Core.Entities
         public int PassId { get; set; }
         public string AuthToken { get; set; }
         public string SerialNumber { get; set; }
+        public string PassTypeIdentifier { get; set; }
         public DateTime? ExpirationDate { get; set; }
         public PassStatus Status { get; set;}
         public PassTemplate Template { get; set; }

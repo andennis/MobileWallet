@@ -2,6 +2,7 @@
     [PassId]         INT            IDENTITY (1, 1) NOT NULL,
     [AuthToken]      NVARCHAR (400) NOT NULL,
     [SerialNumber]   NVARCHAR (400) NOT NULL,
+	[PassTypeIdentifier]   NVARCHAR (400) NOT NULL,
     [ExpirationDate] DATETIME       NULL,
     [Status]         INT            NOT NULL,
     [Version]        INT            NOT NULL,
