@@ -27,5 +27,13 @@ namespace Pass.Container.BL
             get { return GetValue("ConnectionStringName"); }
         }
         #endregion
+
+        #region IPassDistributionConfig
+        public string SecurityKey
+        {
+            get { return GetValue("SecurityKey"); }
+        }
+        #endregion
+
     }
 }

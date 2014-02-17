@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C26E7AFB-A944-48E6-9688-44B791BD697E}</ProjectGuid>
+    <ProjectGuid>{008C5B41-01F9-4CA3-BF84-A45B3E405779}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Pass.Container.BL</RootNamespace>
-    <AssemblyName>Pass.Container.BL</AssemblyName>
+    <RootNamespace>Common.Utils.Tests</RootNamespace>
+    <AssemblyName>Common.Utils.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
@@ -32,13 +32,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net">
-      <HintPath>..\..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,49 +44,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppleDevicePassProcessingService.cs" />
-    <Compile Include="Helpers\PassGeneratorHelper.cs" />
-    <Compile Include="NativePassTemplateGenerators\ApplePassTemplateGenerator.cs" />
-    <Compile Include="PassContainerConfig.cs" />
-    <Compile Include="PassDistributionService.cs" />
-    <Compile Include="PassTemplateService.cs" />
+    <Compile Include="CryptoTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Common\Common.Configuration\Common.Configuration.csproj">
-      <Project>{DFABDFCC-3B69-434A-BD2A-6838CD7608A8}</Project>
-      <Name>Common.Configuration</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\Common.Extensions\Common.Extensions.csproj">
-      <Project>{1628E173-1BE9-4DFC-BCBE-93334DE8EE46}</Project>
-      <Name>Common.Extensions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\Common.Repository\Common.Repository.csproj">
-      <Project>{F36371D6-812F-49F5-9E9B-043265660647}</Project>
-      <Name>Common.Repository</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\Common.Utils\Common.Utils.csproj">
-      <Project>{f1cad860-50fc-456c-96cd-1332cc48d03f}</Project>
-      <Name>Common.Utils</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\FileStorage\FileStorage.BL\FileStorage.BL.csproj">
-      <Project>{F067DA74-E48F-4DE7-85D4-1217BB3670E3}</Project>
-      <Name>FileStorage.BL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\FileStorage\FileStorage.Core\FileStorage.Core.csproj">
-      <Project>{06EBD357-60DC-4BD9-AD9B-0A736DCC2203}</Project>
-      <Name>FileStorage.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pass.Container.Core\Pass.Container.Core.csproj">
-      <Project>{062e8da0-3ef1-4481-8fcf-cfeb54a39771}</Project>
-      <Name>Pass.Container.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common.Utils\Common.Utils.csproj">
+      <Project>{f1cad860-50fc-456c-96cd-1332cc48d03f}</Project>
+      <Name>Common.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

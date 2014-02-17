@@ -81,6 +81,7 @@
     <Compile Include="INativePassTemplateGenerator.cs" />
     <Compile Include="IPassContainerConfig.cs" />
     <Compile Include="IPassContainerUnitOfWork.cs" />
+    <Compile Include="IPassDistributionConfig.cs" />
     <Compile Include="IPassDistributionService.cs" />
     <Compile Include="IPassTemplateConfig.cs" />
     <Compile Include="IPassTemplateService.cs" />

@@ -10,6 +10,9 @@ namespace Pass.Container.Core
 		void GetClientPassPackage(int passId, DeviceType deviceType);
         void GetPassPackage(int passTemplateId, DeviceType deviceType);
         void UpdatePassFields(int passId, IList<PassFieldValue> passFieldValues);
+
+        string GetPassToken(int passId);
+        string GetPassTemplateToken(int passTempleteId);
 	}
 }
 
