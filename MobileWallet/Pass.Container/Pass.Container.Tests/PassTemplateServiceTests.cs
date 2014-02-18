@@ -20,7 +20,6 @@ namespace Pass.Container.BL.Tests
     [TestFixture]
     public class PassTemplateServiceTests : BlTestsBase
     {
-        private readonly IPassContainerConfig _ptConfig;
         //Repositories
         private readonly IRepository<PassTemplate> _repPassTemplate;
         private readonly IRepository<PassTemplateNative> _repTemplateNative;
@@ -29,7 +28,6 @@ namespace Pass.Container.BL.Tests
 
         public PassTemplateServiceTests():base()
         {
-            _ptConfig = new PassContainerConfig();
             _pcUnitOfWork = new PassContainerUnitOfWork(TestHelper.PassContainerConfig);
             //Repositories
             _repPassTemplate = _pcUnitOfWork.GetRepository<PassTemplate>();
@@ -212,9 +210,10 @@ namespace Pass.Container.BL.Tests
 
             return generalTemplate;
         }
+
         private IPassTemplateService GetPassTemplateService()
         {
-            return PassContainerFactory.Create(_ptConfig, new FileStorageConfig());
+            return PassContainerFactory.CreateTemplateService(new PassContainerConfig(), new FileStorageConfig());
         }
     }
 }

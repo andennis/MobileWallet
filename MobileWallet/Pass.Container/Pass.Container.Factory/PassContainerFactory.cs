@@ -16,11 +16,18 @@ namespace Pass.Container.Factory
             _iocContainer.LoadConfiguration("PassContainer");
         }
 
-        public static IPassTemplateService Create(IPassTemplateConfig ptConfig, IFileStorageConfig fsConfig)
+        public static IPassTemplateService CreateTemplateService(IPassContainerConfig ptConfig, IFileStorageConfig fsConfig)
         {
             return _iocContainer.Resolve<IPassTemplateService>(new DependencyOverride<IPassTemplateConfig>(ptConfig),
                 new DependencyOverride<IDbConfig>(ptConfig),
                 new DependencyOverride<IFileStorageConfig>(fsConfig));
         }
+
+        public static IPassDistributionService CreateDistributionService(IPassContainerConfig pdConfig)
+        {
+            return _iocContainer.Resolve<IPassDistributionService>(new DependencyOverride<IPassDistributionConfig>(pdConfig),
+                new DependencyOverride<IDbConfig>(pdConfig));
+        }
+
     }
 }

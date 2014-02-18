@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Common.Extensions;
 using Common.Utils;
+using Newtonsoft.Json;
 using Pass.Container.Core;
+using Pass.Container.Core.Entities;
 
 namespace Pass.Container.BL
 {
@@ -12,10 +15,12 @@ namespace Pass.Container.BL
     {
         private const string SecurityVector = "nh2!0hg#vbPu&QSd";
         private readonly IPassDistributionConfig _config;
+        private readonly IPassContainerUnitOfWork _pcUnitOfWork;
 
-        public PassDistributionService(IPassDistributionConfig config)
+        public PassDistributionService(IPassDistributionConfig config, IPassContainerUnitOfWork pcUnitOfWork)
         {
             _config = config;
+            _pcUnitOfWork = pcUnitOfWork;
         }
 
         public void CreateClientPass(int passTemplateId, IList<Core.Entities.PassFieldValue> passFieldValues)
@@ -41,14 +46,36 @@ namespace Pass.Container.BL
 
         public string GetPassToken(int passId)
         {
-            string tokenInfo = string.Format("PS_ID={0}", passId);
-            return Crypto.EncryptString(tokenInfo, _config.SecurityKey, SecurityVector);
+            var pti = new PassTokenInfo() {PassId = passId.ToString()};
+            return EncryptString(pti.ObjectToJson());
         }
 
         public string GetPassTemplateToken(int passTempleteId)
         {
-            string tokenInfo = string.Format("PST_ID={0}", passTempleteId);
-            return Crypto.EncryptString(tokenInfo, _config.SecurityKey, SecurityVector);
+            var pti = new PassTokenInfo() { PassTemplateId = passTempleteId.ToString() };
+            return EncryptString(pti.ObjectToJson());
         }
+
+        public PassTokenInfo GetPassTokenInfo(string passToken)
+        {
+            string decrypted = DecryptString(passToken);
+            return decrypted.JsonToObject<PassTokenInfo>();
+        }
+
+        private string EncryptString(string textToEncrypt)
+        {
+            return Crypto.EncryptString(textToEncrypt, _config.SecurityKey, SecurityVector);
+        }
+        private string DecryptString(string textToDecrypt)
+        {
+            return Crypto.DecryptString(textToDecrypt, _config.SecurityKey, SecurityVector);
+        }
+
+        #region IDisposable
+        public void Dispose()
+        {
+            _pcUnitOfWork.Dispose();
+        }
+        #endregion
     }
 }

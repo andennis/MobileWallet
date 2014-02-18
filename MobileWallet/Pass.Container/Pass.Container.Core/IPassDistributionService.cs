@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Pass.Container.Core.Entities;
 using Pass.Container.Core.Entities.Enums;
 
 namespace Pass.Container.Core
 {
-    public interface IPassDistributionService 
+    public interface IPassDistributionService : IDisposable
 	{
         void CreateClientPass(int passTemplateId, IList<PassFieldValue> passFieldValues);
 		void GetClientPassPackage(int passId, DeviceType deviceType);
@@ -13,6 +14,7 @@ namespace Pass.Container.Core
 
         string GetPassToken(int passId);
         string GetPassTemplateToken(int passTempleteId);
+        PassTokenInfo GetPassTokenInfo(string passToken);
 	}
 }
 
