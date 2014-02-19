@@ -6,6 +6,9 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using Common.Extensions;
+using FileStorage.BL;
+using FileStorage.Core;
+using FileStorage.Repository.EF;
 using Pass.Container.BL;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities.Enums;
@@ -17,6 +20,18 @@ namespace Pass.Processing.Web.Controllers
     [RoutePrefix("v1")]
     public class AppleDevicePassProcessingController : ApiController
     {
+        private readonly IPassContainerUnitOfWork _pcUnitOfWork;
+        private readonly IFileStorageService _fsService;
+
+        public AppleDevicePassProcessingController()
+        {
+            var passTemplateConfig = new PassContainerConfig();
+            _pcUnitOfWork = new PassContainerUnitOfWork(passTemplateConfig);
+            var fsConfig = new FileStorageConfig();
+            var fsUnitOfWork = new FileStorageUnitOfWork(fsConfig);
+            _fsService = new FileStorageService(fsConfig, fsUnitOfWork);
+        }
+
         [HttpPost]
         [Route("devices/{deviceLibraryIdentifier}/registrations/{passTypeIdentifier}/{serialNumber}")]
         public HttpResponseMessage RegisterDevice(string deviceLibraryIdentifier, string passTypeIdentifier, string serialNumber, [FromBody]string pushTokenJson)
@@ -33,10 +48,9 @@ namespace Pass.Processing.Web.Controllers
                     string authToken = authHeader.Replace("ApplePass ", String.Empty);
                     var pushToken = pushTokenJson.JsonToObject<DevicePushToken>();
 
-                    var status = PassProcessingStatus.Succeed;
-                    //PassProcessingStatus status;
-                    //IAppleDevicePassProcessingService passProcessingService = new AppleDevicePassProcessingService();
-                    //passProcessingService.RegisterDevice(deviceLibraryIdentifier, passTypeIdentifier, serialNumber, pushToken.PushToken, authToken, out status);
+                    PassProcessingStatus status;
+                    IAppleDevicePassProcessingService passProcessingService = new AppleDevicePassProcessingService(_pcUnitOfWork, _fsService);
+                    passProcessingService.RegisterDevice(deviceLibraryIdentifier, passTypeIdentifier, serialNumber, pushToken.PushToken, authToken, out status);
 
                     //If the serial number is already registered for this device, return HTTP status 200.
                     if (status == PassProcessingStatus.AlreadyDone)
@@ -82,10 +96,9 @@ namespace Pass.Processing.Web.Controllers
                     string authToken = authHeader.Replace("ApplePass ", String.Empty);
                     var pushToken = pushTokenJson.JsonToObject<DevicePushToken>();
 
-                    var status = PassProcessingStatus.Succeed;
-                    //PassProcessingStatus status;
-                    //IAppleDevicePassProcessingService passProcessingService = new AppleDevicePassProcessingService();
-                    //passProcessingService.UnregisterDevice(deviceLibraryIdentifier, passTypeIdentifier, serialNumber, pushToken.PushToken, authToken, out status);
+                    PassProcessingStatus status;
+                    IAppleDevicePassProcessingService passProcessingService = new AppleDevicePassProcessingService(_pcUnitOfWork, _fsService);
+                    passProcessingService.UnregisterDevice(deviceLibraryIdentifier, passTypeIdentifier, serialNumber, pushToken.PushToken, authToken, out status);
 
                     //If the device is unregistered, return HTTP status 200.
                     if (status == PassProcessingStatus.Succeed)
@@ -124,11 +137,10 @@ namespace Pass.Processing.Web.Controllers
                 DateTime passesUpdatedSinceTime;
                 DateTime.TryParse(passesUpdatedSince, out passesUpdatedSinceTime);
 
-                var status = PassProcessingStatus.Succeed;
-                //PassProcessingStatus status;
-                //IAppleDevicePassProcessingService passProcessingService = new AppleDevicePassProcessingService();
+                PassProcessingStatus status;
+                IAppleDevicePassProcessingService passProcessingService = new AppleDevicePassProcessingService(_pcUnitOfWork, _fsService);
                 var lastUpdated = new DateTime();
-                //IList<string> passSerialNumbers = passProcessingService.GetSerialNumbersOfPasses(deviceLibraryIdentifier, passTypeIdentifier, ref lastUpdated, out status, passesUpdatedSinceTime);
+                IList<string> passSerialNumbers = passProcessingService.GetSerialNumbersOfPasses(deviceLibraryIdentifier, passTypeIdentifier, ref lastUpdated, out status, passesUpdatedSinceTime);
                 //Return:
                 //{ 
                     //“serialNumbers” : [ <serialNo.>, <serialNo.>, ... ],
@@ -180,11 +192,10 @@ namespace Pass.Processing.Web.Controllers
                 {
                     string authToken = authHeader.Replace("ApplePass ", String.Empty);
 
-                    var status = PassProcessingStatus.Succeed;
-                    //PassProcessingStatus status;
-                    //IAppleDevicePassProcessingService passProcessingService = new AppleDevicePassProcessingService();
+                    PassProcessingStatus status;
+                    IAppleDevicePassProcessingService passProcessingService = new AppleDevicePassProcessingService(_pcUnitOfWork, _fsService);
                     ////TODO GET PASS STREAM
-                    //passProcessingService.GetPass(passTypeIdentifier, serialNumber, authToken, out status);
+                    passProcessingService.GetPass(passTypeIdentifier, serialNumber, authToken, out status);
 
                     //Support standard HTTP caching on this endpoint: check for the If-Modified-Since header and return HTTP
                     //status code 304 if the pass has not changed.
@@ -221,8 +232,8 @@ namespace Pass.Processing.Web.Controllers
         {
             try
             {
-                //IAppleDevicePassProcessingService passProcessingService = new AppleDevicePassProcessingService();
-                //passProcessingService.Log(logMessage);
+                IAppleDevicePassProcessingService passProcessingService = new AppleDevicePassProcessingService(_pcUnitOfWork, _fsService);
+                passProcessingService.Log(logMessage);
             }
             catch (Exception)
             {

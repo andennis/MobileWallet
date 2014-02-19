@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppleDevicePassProcessingServiceTests.cs" />
     <Compile Include="NativePassTemplateGeneratorsTests.cs" />
     <Compile Include="BlTestsBase.cs" />
     <Compile Include="PassContainerConfigTests.cs" />

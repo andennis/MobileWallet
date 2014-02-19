@@ -14,7 +14,6 @@ namespace Pass.Container.BL
 {
     public class AppleDevicePassProcessingService : IAppleDevicePassProcessingService
     {
-        private readonly IPassTemplateConfig _ptConfig;
         private readonly IPassContainerUnitOfWork _pcUnitOfWork;
         private readonly IFileStorageService _fsService;
         //Repositories
@@ -26,9 +25,8 @@ namespace Pass.Container.BL
         private readonly IRepository<Registration> _repRegistration;
         private readonly IRepository<ClientDeviceApple> _repClientDeviceApple;
 
-        public AppleDevicePassProcessingService(IPassTemplateConfig config, IPassContainerUnitOfWork pcUnitOfWork, IFileStorageService fsService)
+        public AppleDevicePassProcessingService(IPassContainerUnitOfWork pcUnitOfWork, IFileStorageService fsService)
         {
-            _ptConfig = config;
             _pcUnitOfWork = pcUnitOfWork;
             _fsService = fsService;
 
