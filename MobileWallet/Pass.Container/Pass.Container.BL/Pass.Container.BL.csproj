@@ -51,7 +51,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppleDevicePassProcessingService.cs" />
-    <Compile Include="Helpers\PassGeneratorHelper.cs" />
+    <Compile Include="Helpers\ApplePassGeneratorHelper.cs" />
+    <Compile Include="NativePassGenerators\ApplePassGenerator.cs" />
     <Compile Include="NativePassTemplateGenerators\ApplePassTemplateGenerator.cs" />
     <Compile Include="PassContainerConfig.cs" />
     <Compile Include="PassDistributionService.cs" />

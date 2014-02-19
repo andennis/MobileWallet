@@ -9,13 +9,8 @@ using Common.Extensions;
 
 namespace Pass.Container.BL.Helpers
 {
-    public class PassGeneratorHelper
+    public class ApplePassGeneratorHelper
     {
-        public List<string> GetListPossibleFileNames()
-        {
-            return new List<string> { "background.png", "footer.png", "icon.png", "logo.png", "strip.png", "thumbnail.png" };
-        } 
-
         public string GenerateHashOfFile(string filePath)
         {
             if (!File.Exists(filePath))
