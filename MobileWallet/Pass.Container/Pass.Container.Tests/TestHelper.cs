@@ -1,30 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
+using Common.Extensions;
+using FileStorage.BL;
+using FileStorage.Core;
+using FileStorage.Repository.EF;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities.Templates.GeneralPassTemplate;
+using Pass.Container.Repository.EF;
 
 namespace Pass.Container.BL.Tests
 {
     public static class TestHelper
     {
         public static IPassContainerConfig PassContainerConfig { get { return new PassContainerConfig(); } }
+        public static IPassContainerUnitOfWork PassContainerUnitOfWork { get { return new PassContainerUnitOfWork(new PassContainerConfig()); } }
+        public static IFileStorageUnitOfWork FileStorageUnitOfWork { get { return new FileStorageUnitOfWork(new FileStorageConfig()); } }
 
-        //private class TestPassContainerConfig : IPassContainerConfig
-        //{
-        //    public string PassTemplateFolderName
-        //    {
-        //        get { return "PassTemplateFolderName"; }
-        //    }
-        //    public string PassTemplateFileName
-        //    {
-        //        get { return "PassTemplateFileName"; }
-        //    }
-        //    public string ConnectionString
-        //    {
-        //        get { return "MobileWalletConnection"; }
-        //    }
-        //}
+        public static GeneralPassTemplate PreparePassTemplateSource(string testPassTemplateDir, string passTemplateFileName)
+        {
+            //Prepare pass template source
+            GeneralPassTemplate generalTemplate = TestHelper.GetPassTemplateObject();
+            generalTemplate.FieldDetails.AuxiliaryFields.Add(new Field
+            {
+                Key = "TestDynamicField",
+                Value = "TestDynamicFieldValue",
+                Type = Field.DataType.Text,
+                IsDynamic = true
+            });
+            string path = Path.Combine(testPassTemplateDir, passTemplateFileName);
+            if (File.Exists(path))
+                File.Delete(path);
+            generalTemplate.SaveToXml(path);
+
+            return generalTemplate;
+        }
 
         public static GeneralPassTemplate GetPassTemplateObject()
         {

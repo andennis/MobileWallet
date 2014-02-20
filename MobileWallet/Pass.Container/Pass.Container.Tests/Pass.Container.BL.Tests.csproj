@@ -55,7 +55,6 @@
   <ItemGroup>
     <Compile Include="AppleDevicePassProcessingServiceTests.cs" />
     <Compile Include="NativePassTemplateGeneratorsTests.cs" />
-    <Compile Include="BlTestsBase.cs" />
     <Compile Include="PassContainerConfigTests.cs" />
     <Compile Include="PassDistributionServiceTests.cs" />
     <Compile Include="PassTemplateServiceTests.cs" />
@@ -86,6 +85,10 @@
     <ProjectReference Include="..\..\FileStorage\FileStorage.Core\FileStorage.Core.csproj">
       <Project>{06EBD357-60DC-4BD9-AD9B-0A736DCC2203}</Project>
       <Name>FileStorage.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FileStorage\FileStorage.Factory\FileStorage.Factory.csproj">
+      <Project>{690C70A1-EC80-47EB-A707-FC9B09597102}</Project>
+      <Name>FileStorage.Factory</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\FileStorage\FileStorage.Repository.EF\FileStorage.Repository.EF.csproj">
       <Project>{2378C604-FFF4-44F9-9934-BB17013C27FB}</Project>
