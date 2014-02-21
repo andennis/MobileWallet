@@ -269,5 +269,12 @@ namespace Pass.Container.BL
             //TODO generate Pass
         }
 
+        #region IDisposable
+        public void Dispose()
+        {
+            _pcUnitOfWork.Dispose();
+        }
+        #endregion
+
     }
 }

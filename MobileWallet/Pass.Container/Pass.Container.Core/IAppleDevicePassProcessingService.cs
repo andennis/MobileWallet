@@ -7,7 +7,7 @@ using Pass.Container.Core.Entities.Enums;
 
 namespace Pass.Container.Core
 {
-    public interface IAppleDevicePassProcessingService
+    public interface IAppleDevicePassProcessingService : IDisposable
     {
         void RegisterDevice(string deviceLibraryIdentifier, string passTypeIdentifier, string serialNumber, string pushToken, string authToken, out PassProcessingStatus status);
         void UnregisterDevice(string deviceLibraryIdentifier, string passTypeIdentifier, string serialNumber, string pushToken, string authToken, out PassProcessingStatus status);
