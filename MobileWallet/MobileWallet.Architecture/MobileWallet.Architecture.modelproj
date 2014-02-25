@@ -36,6 +36,13 @@
       <SubType>Content</SubType>
       <DependentUpon>FileStorage.Services.classdiagram</DependentUpon>
     </Content>
+    <Content Include="ObtainingTemplateFiles.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ObtainingTemplateFiles.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>ObtainingTemplateFiles.activitydiagram</DependentUpon>
+    </Content>
     <Content Include="Main.classdiagram">
       <SubType>Content</SubType>
     </Content>

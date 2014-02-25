@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" dslVersion="1.0.0.0" Id="27d1326f-72fe-4c67-a267-2004f56e2c80" name="ObtainingTemplateFiles" linkedPackageId="868ef899-dd80-47f9-9b66-3688637b1eaf" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="10a2df92-6ac7-4e94-b91c-09c459d5e009">
+      <profileInstance Id="84885fea-af9d-47f1-85a4-d972b913c466" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="0dff70cb-3383-4ee5-9cda-c63a196e95be">
+      <profileInstance Id="fa0b5fd1-16c5-4b5c-9548-4649f2b3441c" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="39b227e9-089f-4e6a-a539-a6704094f023">
+      <profileInstance Id="85ccbc94-f52d-4be4-a75b-ffe776eff179" name="TextTemplateBindings">
+        <elementDefinition Id="06d93c75-9f7e-465a-a217-2c5fb68015af" />
+      </profileInstance>
+      <elementDefinition Id="1764e76e-4606-4e41-927d-7dee20e9c500" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <activityRootModelHasActivity>
+      <activity Id="053a80fd-c493-41ef-a649-66142e6579bf" name="ObtainingTemplateFiles" isAbstract="false" isLeaf="false" isActiveClass="false" isReentrant="false" isReadOnly="false" isSingleExecution="false">
+        <elementDefinition Id="2d59270e-6b71-4fbe-a140-6e0add6601ff" />
+        <nodes>
+          <opaqueAction Id="62d2edef-ac21-4031-b16f-05ec4945a5a5" name="Get the file" isLeaf="false">
+            <elementDefinition Id="55a3896b-a013-48ea-8887-86947a2eb475" />
+            <flowNodeTargets>
+              <controlFlow Id="8c10a9b7-8ac5-4620-8eb9-198cf0babbc7" guard="Is in cache?" isLeaf="false">
+                <decisionNodeMoniker Id="9a4e10f2-8d12-41e6-bc07-cce48a10500c" LastKnownName="Decision1" />
+                <elementDefinition Id="189dbd5d-f715-4dae-84d8-471d22c06275" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode Id="9a4e10f2-8d12-41e6-bc07-cce48a10500c" name="Decision1" isLeaf="false">
+            <elementDefinition Id="bf437e55-86c3-4b88-9856-40c3a4b7201d" />
+            <flowNodeTargets>
+              <controlFlow Id="f62bf450-8024-44c8-90b5-fada6e095585" guard="Yes" isLeaf="false">
+                <opaqueActionMoniker Id="21994b92-c4ef-4a2f-9866-3c441e313e23" LastKnownName="Get checksum from file storage  " />
+                <elementDefinition Id="e1795fff-7faa-4a82-8210-5dc901fdc62c" />
+              </controlFlow>
+              <controlFlow Id="1179f862-ac71-426e-957d-4cbc72a6a2a8" guard="No" isLeaf="false">
+                <opaqueActionMoniker Id="c54f4270-5a6b-4483-8a17-cda5fbcd0905" LastKnownName="Download new version of file into cache" />
+                <elementDefinition Id="261b97a3-e6b6-4eab-a389-fa52596bcd1c" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction Id="21994b92-c4ef-4a2f-9866-3c441e313e23" name="Get checksum from file storage  " isLeaf="false">
+            <elementDefinition Id="ce028c9a-83d1-446c-a793-f444fbe2cff0" />
+            <flowNodeTargets>
+              <controlFlow Id="a2a9495a-f178-4abe-8899-37246d60b6cb" isLeaf="false">
+                <opaqueActionMoniker Id="c3dddddb-1a90-45ec-9764-d6264b2ca847" LastKnownName="Compare with checksum from cache " />
+                <elementDefinition Id="aebee0f4-b0b4-4b29-abbc-2cdfbe76083a" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="c3dddddb-1a90-45ec-9764-d6264b2ca847" name="Compare with checksum from cache " isLeaf="false">
+            <elementDefinition Id="f8016174-c97a-45ff-9e36-3ff3df8b9f71" />
+            <flowNodeTargets>
+              <controlFlow Id="16fac662-1ac3-4706-b431-3b58dbdf1a62" guard="Are checksum equal?" isLeaf="false">
+                <decisionNodeMoniker Id="8860cdeb-8b80-43b1-b17e-1120f59f369b" LastKnownName="Decision11" />
+                <elementDefinition Id="42cfa19e-fb8a-4060-b44d-b40ab8b824f1" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode Id="8860cdeb-8b80-43b1-b17e-1120f59f369b" name="Decision11" isLeaf="false">
+            <elementDefinition Id="edceb9d1-13b0-4dbf-a943-06a40a2cac5b" />
+            <flowNodeTargets>
+              <controlFlow Id="dc66cce6-cf4b-4549-8c97-1039a917ed3c" guard="Yes" isLeaf="false">
+                <opaqueActionMoniker Id="0f3188fd-68ea-4ac9-afe3-dca04c6e8765" LastKnownName="Return file from cache" />
+                <elementDefinition Id="7df0bc50-69c6-471d-bad9-9348d148a516" />
+              </controlFlow>
+              <controlFlow Id="1c2740b7-4b03-490a-aa09-cf7404d9ea5a" guard="No" isLeaf="false">
+                <opaqueActionMoniker Id="c54f4270-5a6b-4483-8a17-cda5fbcd0905" LastKnownName="Download new version of file into cache" />
+                <elementDefinition Id="1b4a8cf1-4cd9-460f-a02c-b8d540d7c7aa" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction Id="0f3188fd-68ea-4ac9-afe3-dca04c6e8765" name="Return file from cache" isLeaf="false">
+            <elementDefinition Id="d3fb089f-0d47-42a1-99d9-f06c0d65f11d" />
+            <flowNodeTargets>
+              <controlFlow Id="252aab1a-141f-440a-bca3-4afab56c6da6" isLeaf="false">
+                <activityFinalNodeMoniker Id="79afe603-822c-40ec-b1ac-3a054649a4b1" LastKnownName="ActivityFinal1" />
+                <elementDefinition Id="8fe1c22f-f1fc-4b9d-8c1e-5405d78c3cc6" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="c54f4270-5a6b-4483-8a17-cda5fbcd0905" name="Download new version of file into cache" isLeaf="false">
+            <elementDefinition Id="ed05f308-31f6-4d2e-9d1d-9175c6aedcc4" />
+            <flowNodeTargets>
+              <controlFlow Id="bbe8b765-b31e-4539-b5d6-5b13d25235f4" isLeaf="false">
+                <opaqueActionMoniker Id="7171dbe7-9d6b-4471-83f6-99ab7a640822" LastKnownName="Update checksum" />
+                <elementDefinition Id="1396339b-0e93-468b-8457-f134b51253ab" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="7171dbe7-9d6b-4471-83f6-99ab7a640822" name="Update checksum" isLeaf="false">
+            <elementDefinition Id="5f8cc52a-0538-4d29-acac-5eb7627c6584" />
+            <flowNodeTargets>
+              <controlFlow Id="d531a98d-10a7-4f7b-b977-9bb5cff3acb8" isLeaf="false">
+                <opaqueActionMoniker Id="0f3188fd-68ea-4ac9-afe3-dca04c6e8765" LastKnownName="Return file from cache" />
+                <elementDefinition Id="fb3b3256-7004-4e8f-a7f3-4200338da651" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <activityFinalNode Id="79afe603-822c-40ec-b1ac-3a054649a4b1" name="ActivityFinal1" isLeaf="false">
+            <elementDefinition Id="865d583f-d761-4c33-b14c-971d1d5f174a" />
+          </activityFinalNode>
+          <initialNode Id="e1bfee57-b148-439b-b03c-e11041b82cf0" name="Initial1" isLeaf="false">
+            <elementDefinition Id="2f013ab8-a155-4896-9c92-7b9a83a2ed66" />
+            <flowNodeTargets>
+              <controlFlow Id="41c3a836-2679-4ec6-91d1-e969e0eb0a5d" isLeaf="false">
+                <opaqueActionMoniker Id="62d2edef-ac21-4031-b16f-05ec4945a5a5" LastKnownName="Get the file" />
+                <elementDefinition Id="bce96642-4956-4599-947a-f823b87bec39" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+        </nodes>
+      </activity>
+    </activityRootModelHasActivity>
+  </packagedElements>
+  <package Id="868ef899-dd80-47f9-9b66-3688637b1eaf" name="MobileWalletModeling">
+    <elementDefinition Id="a53e0939-3e57-42d8-a1d6-852d3d589578" />
+  </package>
+</activityRootModel>

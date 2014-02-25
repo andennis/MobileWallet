@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
   dslVersion="1.0.0.0"
   Id="a53e0939-3e57-42d8-a1d6-852d3d589578"
   name="MobileWalletModeling" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -623,6 +623,181 @@
       <undefinedType
         Id="4d471b98-c041-4688-b8e1-084207375768"
         name="String(" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <activity
+        Id="2d59270e-6b71-4fbe-a140-6e0add6601ff"
+        name="ObtainingTemplateFiles"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false"
+        isReentrant="false"
+        isReadOnly="false"
+        isSingleExecution="false">
+        <nodes>
+          <opaqueAction
+            Id="55a3896b-a013-48ea-8887-86947a2eb475"
+            name="Get the file"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="189dbd5d-f715-4dae-84d8-471d22c06275"
+                guard="Is in cache?"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="bf437e55-86c3-4b88-9856-40c3a4b7201d"
+                  LastKnownName="Decision1"
+                  LastKnownLocation="PassModeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode
+            Id="bf437e55-86c3-4b88-9856-40c3a4b7201d"
+            name="Decision1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="e1795fff-7faa-4a82-8210-5dc901fdc62c"
+                guard="Yes"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="ce028c9a-83d1-446c-a793-f444fbe2cff0"
+                  LastKnownName="Get checksum from file storage  "
+                  LastKnownLocation="PassModeling.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="261b97a3-e6b6-4eab-a389-fa52596bcd1c"
+                guard="No"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="ed05f308-31f6-4d2e-9d1d-9175c6aedcc4"
+                  LastKnownName="Download new version of file into cache"
+                  LastKnownLocation="PassModeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction
+            Id="ce028c9a-83d1-446c-a793-f444fbe2cff0"
+            name="Get checksum from file storage  "
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="aebee0f4-b0b4-4b29-abbc-2cdfbe76083a"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="f8016174-c97a-45ff-9e36-3ff3df8b9f71"
+                  LastKnownName="Compare with checksum from cache "
+                  LastKnownLocation="PassModeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="f8016174-c97a-45ff-9e36-3ff3df8b9f71"
+            name="Compare with checksum from cache "
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="42cfa19e-fb8a-4060-b44d-b40ab8b824f1"
+                guard="Are checksum equal?"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="edceb9d1-13b0-4dbf-a943-06a40a2cac5b"
+                  LastKnownName="Decision11"
+                  LastKnownLocation="PassModeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode
+            Id="edceb9d1-13b0-4dbf-a943-06a40a2cac5b"
+            name="Decision11"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="7df0bc50-69c6-471d-bad9-9348d148a516"
+                guard="Yes"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="d3fb089f-0d47-42a1-99d9-f06c0d65f11d"
+                  LastKnownName="Return file from cache"
+                  LastKnownLocation="PassModeling.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="1b4a8cf1-4cd9-460f-a02c-b8d540d7c7aa"
+                guard="No"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="ed05f308-31f6-4d2e-9d1d-9175c6aedcc4"
+                  LastKnownName="Download new version of file into cache"
+                  LastKnownLocation="PassModeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction
+            Id="d3fb089f-0d47-42a1-99d9-f06c0d65f11d"
+            name="Return file from cache"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="8fe1c22f-f1fc-4b9d-8c1e-5405d78c3cc6"
+                isLeaf="false">
+                <activityFinalNodeMoniker
+                  Id="865d583f-d761-4c33-b14c-971d1d5f174a"
+                  LastKnownName="ActivityFinal1"
+                  LastKnownLocation="PassModeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="ed05f308-31f6-4d2e-9d1d-9175c6aedcc4"
+            name="Download new version of file into cache"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="1396339b-0e93-468b-8457-f134b51253ab"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="5f8cc52a-0538-4d29-acac-5eb7627c6584"
+                  LastKnownName="Update checksum"
+                  LastKnownLocation="PassModeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="5f8cc52a-0538-4d29-acac-5eb7627c6584"
+            name="Update checksum"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="fb3b3256-7004-4e8f-a7f3-4200338da651"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="d3fb089f-0d47-42a1-99d9-f06c0d65f11d"
+                  LastKnownName="Return file from cache"
+                  LastKnownLocation="PassModeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <activityFinalNode
+            Id="865d583f-d761-4c33-b14c-971d1d5f174a"
+            name="ActivityFinal1"
+            isLeaf="false" />
+          <initialNode
+            Id="2f013ab8-a155-4896-9c92-7b9a83a2ed66"
+            name="Initial1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="bce96642-4956-4599-947a-f823b87bec39"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="55a3896b-a013-48ea-8887-86947a2eb475"
+                  LastKnownName="Get the file"
+                  LastKnownLocation="PassModeling.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+        </nodes>
+      </activity>
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
