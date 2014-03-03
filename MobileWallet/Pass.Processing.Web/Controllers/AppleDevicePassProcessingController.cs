@@ -213,6 +213,12 @@ namespace Pass.Processing.Web.Controllers
                 }
                 else//If the request is not authorized, return HTTP status 401
                     response = Request.CreateResponse(HttpStatusCode.Unauthorized);
+
+                //var stream = new FileStream(path, FileMode.Open);
+                //result.Content = new StreamContent(stream);
+                //result.Content.Headers.ContentType =
+                //    new MediaTypeHeaderValue("application/octet-stream");
+                //return result;
             }
             catch
             {

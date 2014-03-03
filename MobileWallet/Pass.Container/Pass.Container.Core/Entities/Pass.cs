@@ -13,6 +13,7 @@ namespace Pass.Container.Core.Entities
         public string PassTypeIdentifier { get; set; }
         public DateTime? ExpirationDate { get; set; }
         public PassStatus Status { get; set;}
+        public int PassTemplateId { get; set; }
         public PassTemplate Template { get; set; }
         public ICollection<PassFieldValue> FieldValues { get; set; }
         public ICollection<Registration> PassRegistrations { get; set; }

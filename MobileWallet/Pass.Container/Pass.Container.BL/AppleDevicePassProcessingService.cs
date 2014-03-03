@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Common.Repository;
 using FileStorage.Core;
+using Pass.Container.BL.NativePassGenerators;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
 using Pass.Container.Core.Entities.Enums;
@@ -21,6 +22,7 @@ namespace Pass.Container.BL
         private readonly IRepository<PassTemplateNative> _repTemplateNative;
         private readonly IRepository<PassTemplateApple> _repPassTemplateApple;
         private readonly IRepository<PassField> _repPassField;
+        private readonly IRepository<PassFieldValue> _repPassFieldValue;
         private readonly IRepository<Core.Entities.Pass> _repPass;
         private readonly IRepository<Registration> _repRegistration;
         private readonly IRepository<ClientDeviceApple> _repClientDeviceApple;
@@ -35,6 +37,7 @@ namespace Pass.Container.BL
             _repTemplateNative = _pcUnitOfWork.GetRepository<PassTemplateNative>();
             _repPassTemplateApple = _pcUnitOfWork.GetRepository<PassTemplateApple>();
             _repPassField = _pcUnitOfWork.GetRepository<PassField>();
+            _repPassFieldValue = _pcUnitOfWork.GetRepository<PassFieldValue>(); 
             _repPass = _pcUnitOfWork.GetRepository<Core.Entities.Pass>();
             _repRegistration = _pcUnitOfWork.GetRepository<Registration>();
             _repClientDeviceApple = _pcUnitOfWork.GetRepository<ClientDeviceApple>();
@@ -266,7 +269,8 @@ namespace Pass.Container.BL
 
         private void GetPass(Core.Entities.Pass pass)
         {
-            //TODO generate Pass
+           var passGenerator = new ApplePassGenerator(_pcUnitOfWork, _fsService, pass);
+           passGenerator.GeneratePass();
         }
 
         #region IDisposable
