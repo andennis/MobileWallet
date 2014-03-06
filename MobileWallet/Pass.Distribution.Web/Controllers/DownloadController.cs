@@ -4,11 +4,23 @@ using System.Linq;
 using System.Net.Mime;
 using System.Web;
 using System.Web.Mvc;
+using Pass.Container.Core;
+using Pass.Container.Core.Entities;
+using Pass.Container.Core.Entities.Enums;
 
 namespace Pass.Distribution.Web.Controllers
 {
     public class DownloadController : Controller
     {
+        private readonly IPassDistributionService _passDistService;
+
+        /*
+        public DownloadController(IPassDistributionService passDistService)
+        {
+            _passDistService = passDistService;
+        }
+        */
+
         //
         // GET: /PassDistribution/
         public FileResult Download(string id)
@@ -20,9 +32,27 @@ namespace Pass.Distribution.Web.Controllers
 
         public FileResult DownloadPass(string passToken)
         {
-            //TODO temp code just for test
+            PassTokenInfo ptInfo = _passDistService.GetPassTokenInfo(passToken);
+            DeviceType clientType = GetClientType();
+            //_passDistService.GetPassPackage();
             string path = HttpContext.Server.MapPath("~/App_Data/Test1.pkpass");
             return File(path, "application/vnd.apple.pkpass");
+        }
+
+        public ContentResult ClientType()
+        {
+            var v = Request.Browser;
+            return Content(Request.Browser.Browser);
+        }
+
+        private DeviceType GetClientType()
+        {
+            if (Request.Browser.IsMobileDevice)
+            {
+                if (Request.Browser.MobileDeviceManufacturer == "Apple")
+                    return DeviceType.Apple;
+            }
+            return DeviceType.Browser;
         }
 	}
 }

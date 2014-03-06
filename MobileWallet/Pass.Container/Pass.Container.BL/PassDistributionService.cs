@@ -8,6 +8,7 @@ using Common.Utils;
 using Newtonsoft.Json;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
+using Pass.Container.Core.Entities.Enums;
 
 namespace Pass.Container.BL
 {
@@ -23,22 +24,22 @@ namespace Pass.Container.BL
             _pcUnitOfWork = pcUnitOfWork;
         }
 
-        public void CreateClientPass(int passTemplateId, IList<Core.Entities.PassFieldValue> passFieldValues)
+        public void CreateClientPass(int passTemplateId, IList<PassFieldValue> passFieldValues)
         {
             throw new NotImplementedException();
         }
 
-        public void GetClientPassPackage(int passId, Core.Entities.Enums.DeviceType deviceType)
+        public void GetClientPassPackage(int passId, DeviceType deviceType)
         {
             throw new NotImplementedException();
         }
 
-        public void GetPassPackage(int passTemplateId, Core.Entities.Enums.DeviceType deviceType)
+        public void GetPassPackage(int passTemplateId, DeviceType deviceType)
         {
             throw new NotImplementedException();
         }
 
-        public void UpdatePassFields(int passId, IList<Core.Entities.PassFieldValue> passFieldValues)
+        public void UpdatePassFields(int passId, IList<PassFieldValue> passFieldValues)
         {
             throw new NotImplementedException();
         }
@@ -46,13 +47,13 @@ namespace Pass.Container.BL
 
         public string GetPassToken(int passId)
         {
-            var pti = new PassTokenInfo() {PassId = passId.ToString()};
+            var pti = new PassTokenInfo() {PassId = passId};
             return EncryptString(pti.ObjectToJson());
         }
 
         public string GetPassTemplateToken(int passTempleteId)
         {
-            var pti = new PassTokenInfo() { PassTemplateId = passTempleteId.ToString() };
+            var pti = new PassTokenInfo() { PassTemplateId = passTempleteId };
             return EncryptString(pti.ObjectToJson());
         }
 

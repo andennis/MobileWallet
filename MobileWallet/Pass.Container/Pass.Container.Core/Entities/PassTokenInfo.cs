@@ -5,9 +5,9 @@ namespace Pass.Container.Core.Entities
     public class PassTokenInfo
     {
         [JsonProperty(PropertyName = "psId")]
-        public string PassId { get; set; }
+        public int? PassId { get; set; }
 
         [JsonProperty(PropertyName = "pstId")]
-        public string PassTemplateId { get; set; }
+        public int? PassTemplateId { get; set; }
     }
 }

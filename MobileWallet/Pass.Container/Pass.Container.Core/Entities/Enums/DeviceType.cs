@@ -3,6 +3,7 @@
     //TODO It can be removed
     public enum DeviceType
     {
-        Apple = 1
+        Browser = 1,
+        Apple = 2
     }
 }

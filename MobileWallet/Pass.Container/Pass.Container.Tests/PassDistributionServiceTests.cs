@@ -18,7 +18,7 @@ namespace Pass.Container.BL.Tests
 
                 PassTokenInfo pti = distService.GetPassTokenInfo(token);
                 Assert.NotNull(pti);
-                Assert.AreEqual("121", pti.PassId);
+                Assert.AreEqual(121, pti.PassId);
                 Assert.IsNull(pti.PassTemplateId);
             }
         }
@@ -33,7 +33,7 @@ namespace Pass.Container.BL.Tests
 
                 PassTokenInfo pti = distService.GetPassTokenInfo(token);
                 Assert.NotNull(pti);
-                Assert.AreEqual("125", pti.PassTemplateId);
+                Assert.AreEqual(125, pti.PassTemplateId);
                 Assert.IsNull(pti.PassId);
             }
         }

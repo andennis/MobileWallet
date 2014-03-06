@@ -17,4 +17,3 @@ namespace Pass.Container.Core
         PassTokenInfo GetPassTokenInfo(string passToken);
 	}
 }
-
