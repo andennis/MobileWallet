@@ -95,7 +95,7 @@ namespace Pass.Container.BL.Tests
 
             using (var distributionService = GetDistributionService())
             {
-                distributionService.CreateClientPass(passTemplateId, fieldValues);
+                distributionService.CreatePassByTemplate(passTemplateId, fieldValues);
             }
         }
 

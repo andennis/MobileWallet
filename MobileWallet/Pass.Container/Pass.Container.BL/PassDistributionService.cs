@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,17 +25,16 @@ namespace Pass.Container.BL
             _pcUnitOfWork = pcUnitOfWork;
         }
 
-        public void CreateClientPass(int passTemplateId, IList<PassFieldValue> passFieldValues)
+        public int CreatePassByTemplate(int passTemplateId, IList<PassFieldValue> passFieldValues)
         {
             throw new NotImplementedException();
         }
 
-        public void GetClientPassPackage(int passId, DeviceType deviceType)
+        public Stream GetPassPackage(int passId, DeviceType deviceType)
         {
             throw new NotImplementedException();
         }
-
-        public void GetPassPackage(int passTemplateId, DeviceType deviceType)
+        public Stream GetPassPackageByTemplate(int passTemplateId, DeviceType deviceType)
         {
             throw new NotImplementedException();
         }
@@ -50,7 +50,6 @@ namespace Pass.Container.BL
             var pti = new PassTokenInfo() {PassId = passId};
             return EncryptString(pti.ObjectToJson());
         }
-
         public string GetPassTemplateToken(int passTempleteId)
         {
             var pti = new PassTokenInfo() { PassTemplateId = passTempleteId };

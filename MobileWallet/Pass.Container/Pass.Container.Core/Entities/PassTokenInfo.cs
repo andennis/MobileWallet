@@ -7,7 +7,7 @@ namespace Pass.Container.Core.Entities
         [JsonProperty(PropertyName = "psId")]
         public int? PassId { get; set; }
 
-        [JsonProperty(PropertyName = "pstId")]
+        [JsonProperty(PropertyName = "tmId")]
         public int? PassTemplateId { get; set; }
     }
 }

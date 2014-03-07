@@ -45,7 +45,22 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.Unity, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.3.0.1304.1\lib\Net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.3.0.1304.1\lib\Net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
@@ -126,6 +141,9 @@
     </Reference>
     <Reference Include="System.Net.Http.WebRequest">
     </Reference>
+    <Reference Include="Unity.Mvc5">
+      <HintPath>..\packages\Unity.Mvc5.1.1\lib\net45\Unity.Mvc5.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -135,6 +153,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\DownloadController.cs" />
     <Compile Include="Global.asax.cs">
@@ -248,9 +267,29 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FileStorage\FileStorage.BL\FileStorage.BL.csproj">
+      <Project>{f067da74-e48f-4de7-85d4-1217bb3670e3}</Project>
+      <Name>FileStorage.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileStorage\FileStorage.Core\FileStorage.Core.csproj">
+      <Project>{06ebd357-60dc-4bd9-ad9b-0a736dcc2203}</Project>
+      <Name>FileStorage.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileStorage\FileStorage.Repository.EF\FileStorage.Repository.EF.csproj">
+      <Project>{2378c604-fff4-44f9-9934-bb17013c27fb}</Project>
+      <Name>FileStorage.Repository.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pass.Container\Pass.Container.BL\Pass.Container.BL.csproj">
+      <Project>{c26e7afb-a944-48e6-9688-44b791bd697e}</Project>
+      <Name>Pass.Container.BL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pass.Container\Pass.Container.Core\Pass.Container.Core.csproj">
       <Project>{062e8da0-3ef1-4481-8fcf-cfeb54a39771}</Project>
       <Name>Pass.Container.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pass.Container\Pass.Container.Repository.EF\Pass.Container.Repository.EF.csproj">
+      <Project>{3ffd32fb-90aa-4bbc-ba28-8431915b78b1}</Project>
+      <Name>Pass.Container.Repository.EF</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

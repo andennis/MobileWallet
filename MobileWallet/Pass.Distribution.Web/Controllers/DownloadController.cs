@@ -14,12 +14,10 @@ namespace Pass.Distribution.Web.Controllers
     {
         private readonly IPassDistributionService _passDistService;
 
-        /*
         public DownloadController(IPassDistributionService passDistService)
         {
             _passDistService = passDistService;
         }
-        */
 
         //
         // GET: /PassDistribution/
@@ -32,8 +30,8 @@ namespace Pass.Distribution.Web.Controllers
 
         public FileResult DownloadPass(string passToken)
         {
-            PassTokenInfo ptInfo = _passDistService.GetPassTokenInfo(passToken);
-            DeviceType clientType = GetClientType();
+            //PassTokenInfo ptInfo = _passDistService.GetPassTokenInfo(passToken);
+            //DeviceType clientType = GetClientType();
             //_passDistService.GetPassPackage();
             string path = HttpContext.Server.MapPath("~/App_Data/Test1.pkpass");
             return File(path, "application/vnd.apple.pkpass");
@@ -49,7 +47,7 @@ namespace Pass.Distribution.Web.Controllers
         {
             if (Request.Browser.IsMobileDevice)
             {
-                if (Request.Browser.MobileDeviceManufacturer == "Apple")
+                if (Request.Browser.MobileDeviceManufacturer == "Apple" && Request.Browser.MobileDeviceModel == "IPhone")
                     return DeviceType.Apple;
             }
             return DeviceType.Browser;
