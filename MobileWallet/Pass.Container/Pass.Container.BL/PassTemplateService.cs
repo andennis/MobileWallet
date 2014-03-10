@@ -21,11 +21,10 @@ namespace Pass.Container.BL
         private readonly IFileStorageService _fsService;
         //Repositories
         private readonly IRepository<PassTemplate> _repPassTemplate;
-        private readonly IRepository<PassTemplateNative> _repTemplateNative;
         private readonly IRepository<PassTemplateApple> _repPassTemplateApple;
         private readonly IRepository<PassField> _repPassField;
         //Native pass template generators
-        private readonly IDictionary<PassTemplateType, INativePassTemplateGenerator> _passTemplateGenerators;
+        private readonly IDictionary<ClientType, INativePassTemplateGenerator> _passTemplateGenerators;
 
         public PassTemplateService(IPassTemplateConfig config, IPassContainerUnitOfWork pcUnitOfWork, IFileStorageService fsService)
         {
@@ -35,13 +34,12 @@ namespace Pass.Container.BL
 
             //Repositories
             _repPassTemplate = _pcUnitOfWork.GetRepository<PassTemplate>();
-            _repTemplateNative = _pcUnitOfWork.GetRepository<PassTemplateNative>();
             _repPassTemplateApple = _pcUnitOfWork.GetRepository<PassTemplateApple>();
             _repPassField = _pcUnitOfWork.GetRepository<PassField>();
 
-            _passTemplateGenerators = new Dictionary<PassTemplateType, INativePassTemplateGenerator>
+            _passTemplateGenerators = new Dictionary<ClientType, INativePassTemplateGenerator>
                 {
-                    {PassTemplateType.AppleTemplate, new ApplePassTemplateGenerator(config)}
+                    {ClientType.Apple, new ApplePassTemplateGenerator(config)}
                 };
         }
 
@@ -81,8 +79,6 @@ namespace Pass.Container.BL
 
             return passTemplateId;
         }
-
-        
         public void DeletePassTemplate(int passTemplateId)
         {
             PassTemplate passTemplate = _repPassTemplate.Find(passTemplateId);
@@ -95,7 +91,7 @@ namespace Pass.Container.BL
             _pcUnitOfWork.Save();
         }
 
-        public string GetNativePassTemplate(int passTemplateId, PassTemplateType passTemplateType)
+        public string GetNativePassTemplate(int passTemplateId, ClientType clientType)
         {
             //PassTemplate passTemplate = _repPassTemplate.Find(passTemplateId);
             //switch (passTemplateType)
@@ -176,7 +172,6 @@ namespace Pass.Container.BL
             _pcUnitOfWork.Save();
         }
 
-
         public bool ValidatePassTemplate(string passTemplateFilePath)
         {
             //TODO Pass template validation
@@ -235,7 +230,6 @@ namespace Pass.Container.BL
                 where (field.IsDynamicLabel || field.IsDynamicValue)
                 select field.Key);
         }
-
 
         #region IDisposable
         public void Dispose()

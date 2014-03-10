@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Mime;
 using System.Web;
@@ -7,6 +8,7 @@ using System.Web.Mvc;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
 using Pass.Container.Core.Entities.Enums;
+using Pass.Container.Core.Exceptions;
 
 namespace Pass.Distribution.Web.Controllers
 {
@@ -19,8 +21,6 @@ namespace Pass.Distribution.Web.Controllers
             _passDistService = passDistService;
         }
 
-        //
-        // GET: /PassDistribution/
         public FileResult Download(string id)
         {
             //TODO temp code just for test
@@ -30,27 +30,35 @@ namespace Pass.Distribution.Web.Controllers
 
         public FileResult DownloadPass(string passToken)
         {
-            //PassTokenInfo ptInfo = _passDistService.GetPassTokenInfo(passToken);
-            //DeviceType clientType = GetClientType();
-            //_passDistService.GetPassPackage();
-            string path = HttpContext.Server.MapPath("~/App_Data/Test1.pkpass");
-            return File(path, "application/vnd.apple.pkpass");
+            Stream pkgStream = GetPassPackage(passToken);
+            //string path = HttpContext.Server.MapPath("~/App_Data/Test1.pkpass");
+            return File(pkgStream, "application/vnd.apple.pkpass");
         }
 
-        public ContentResult ClientType()
+        private Stream GetPassPackage(string passToken)
         {
-            var v = Request.Browser;
-            return Content(Request.Browser.Browser);
+            PassTokenInfo ptInfo = _passDistService.GetPassTokenInfo(passToken);
+            if (!ptInfo.PassTemplateId.HasValue && !ptInfo.PassId.HasValue)
+                throw new PassDistributionException("Pass token is not valid: " + passToken);
+
+            ClientType clientType = GetClientType();
+
+            return ptInfo.PassTemplateId.HasValue 
+                ? _passDistService.GetPassPackageByTemplate(ptInfo.PassTemplateId.Value, clientType)
+                : _passDistService.GetPassPackage(ptInfo.PassId.Value, clientType);
         }
 
-        private DeviceType GetClientType()
+        private ClientType GetClientType()
         {
             if (Request.Browser.IsMobileDevice)
             {
                 if (Request.Browser.MobileDeviceManufacturer == "Apple" && Request.Browser.MobileDeviceModel == "IPhone")
-                    return DeviceType.Apple;
+                    return ClientType.Apple;
+
+                throw new PassDistributionException(string.Format("The client '{0}' - '{1}' is not supported", 
+                    Request.Browser.MobileDeviceManufacturer, Request.Browser.MobileDeviceModel));
             }
-            return DeviceType.Browser;
+            return ClientType.Browser;
         }
 	}
 }

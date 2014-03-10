@@ -40,9 +40,9 @@ namespace Pass.Container.BL.NativePassTemplateGenerators
             };
         }
 
-        public PassTemplateType PassTemplateType
+        public ClientType ClientType
         {
-            get { return PassTemplateType.AppleTemplate; }
+            get { return ClientType.Apple; }
         }
 
         public bool Generate(GeneralPassTemplate passTemplate, string storageItemPath)

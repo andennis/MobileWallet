@@ -8,9 +8,9 @@ namespace Pass.Container.Core
 {
     public interface IPassDistributionService : IDisposable
 	{
-        int CreatePassByTemplate(int passTemplateId, IList<PassFieldValue> passFieldValues);
-		Stream GetPassPackage(int passId, DeviceType deviceType);
-        Stream GetPassPackageByTemplate(int passTemplateId, DeviceType deviceType);
+        int CreatePass(int passTemplateId, IList<PassFieldValue> passFieldValues);
+		Stream GetPassPackage(int passId, ClientType deviceType);
+        Stream GetPassPackageByTemplate(int passTemplateId, ClientType deviceType);
         void UpdatePassFields(int passId, IList<PassFieldValue> passFieldValues);
 
         string GetPassToken(int passId);

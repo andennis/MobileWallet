@@ -38,8 +38,8 @@ namespace FileStorage.Repository.EF
         {
             using (var trn = new TransactionScope())
             {
-                ExecuteCommand("DELETE FROM fs.StorageItem");
-                ExecuteCommand("DELETE FROM fs.FolderItem");
+                ExecuteCommand(string.Format("DELETE FROM {0}.StorageItem", FileStorageDbContext.DbScheme));
+                ExecuteCommand(string.Format("DELETE FROM {0}.FolderItem", FileStorageDbContext.DbScheme));
                 trn.Complete();
             }
         }

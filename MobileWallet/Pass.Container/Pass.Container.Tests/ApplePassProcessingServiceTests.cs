@@ -19,7 +19,7 @@ using Pass.Container.Repository.EF;
 namespace Pass.Container.BL.Tests
 {
     [TestFixture]
-    public class AppleDevicePassProcessingServiceTests
+    public class ApplePassProcessingServiceTests
     {
         private IPassContainerUnitOfWork _pcUnitOfWork;
         private readonly string _testPassTemplateDir;
@@ -36,7 +36,7 @@ namespace Pass.Container.BL.Tests
         private string _pushToken;
         private string _authToken;
 
-        public AppleDevicePassProcessingServiceTests()
+        public ApplePassProcessingServiceTests()
         {
             _pcUnitOfWork = TestHelper.PassContainerUnitOfWork;
             _testPassTemplateDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestPassTemplate");
@@ -95,7 +95,7 @@ namespace Pass.Container.BL.Tests
 
             using (var distributionService = GetDistributionService())
             {
-                distributionService.CreatePassByTemplate(passTemplateId, fieldValues);
+                distributionService.CreatePass(passTemplateId, fieldValues);
             }
         }
 
@@ -109,7 +109,7 @@ namespace Pass.Container.BL.Tests
             return PassContainerFactory.CreateDistributionService(new PassContainerConfig());
         }
 
-        private IAppleDevicePassProcessingService GetAppleDevicePassProcessingService()
+        private IApplePassProcessingService GetAppleDevicePassProcessingService()
         {
             return PassContainerFactory.CreateAppleDevicePassProcessingService(new PassContainerConfig(), new FileStorageConfig());
         }

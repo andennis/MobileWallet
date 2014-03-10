@@ -21,9 +21,9 @@ namespace Pass.Container.BL.NativePassGenerators
             _generatorHelper = new ApplePassGeneratorHelper();
         }
 
-        public PassTemplateType PassTemplateType
+        public ClientType ClientType
         {
-            get { return PassTemplateType.AppleTemplate; }
+            get { return ClientType.Apple; }
         }
 
         public string GeneratePass()

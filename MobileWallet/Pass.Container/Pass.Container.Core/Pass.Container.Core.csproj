@@ -60,8 +60,7 @@
     <Compile Include="Entities\ClientDevice.cs" />
     <Compile Include="Entities\Registration.cs" />
     <Compile Include="Entities\Enums\RegistrationStatus.cs" />
-    <Compile Include="Entities\Enums\DeviceType.cs" />
-    <Compile Include="Entities\Enums\PassTemplateType.cs" />
+    <Compile Include="Entities\Enums\ClientType.cs" />
     <Compile Include="Entities\PassTemplateApple.cs" />
     <Compile Include="Entities\PassTemplateNative.cs" />
     <Compile Include="Entities\Pass.cs" />
@@ -77,10 +76,12 @@
     <Compile Include="Entities\Templates\GeneralPassTemplate\LanguageDetails.cs" />
     <Compile Include="Entities\Templates\GeneralPassTemplate\LocationDetails.cs" />
     <Compile Include="Entities\Templates\GeneralPassTemplate\GeneralPassTemplate.cs" />
+    <Compile Include="Exceptions\PassDistributionException.cs" />
     <Compile Include="Exceptions\PassTemplateException.cs" />
-    <Compile Include="IAppleDevicePassProcessingService.cs" />
+    <Compile Include="IApplePassProcessingService.cs" />
     <Compile Include="INativePassTemplateGenerator.cs" />
     <Compile Include="IPassContainerConfig.cs" />
+    <Compile Include="IPassContainerService.cs" />
     <Compile Include="IPassContainerUnitOfWork.cs" />
     <Compile Include="IPassDistributionConfig.cs" />
     <Compile Include="IPassDistributionService.cs" />

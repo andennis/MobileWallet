@@ -390,6 +390,38 @@
             isAbstract="true"
             concurrency="Sequential"
             isQuery="false" />
+          <operation
+            Id="0b2aaf57-2441-4402-b2dc-7e66bc57604b"
+            name="CreateStorageFolder"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="c83e99fe-3b90-458f-96b8-50a1d9ea1918"
+            name="PutToStorageFolder"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="535b5d4e-428f-42b3-aaa4-26bc663bb1e1"
+            name="DeleteStorageItem"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="bfdc2ea0-f7b6-4af9-a336-ff887c36ef55"
+            name="PurgeDeletedItems"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
         </ownedOperations>
       </Interface>
     </packageHasNamedElement>

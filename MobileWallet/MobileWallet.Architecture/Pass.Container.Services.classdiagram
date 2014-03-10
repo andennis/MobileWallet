@@ -12,7 +12,7 @@
       <elementDefinition Id="29a0b32a-e8ec-4bd1-a0fa-c45f6584b138" />
       <body>Process requests from Pass.Processing.Web</body>
       <annotatedElements>
-        <interfaceMoniker Id="6949cef2-b568-460d-8157-5111ba845338" LastKnownName="IAppleDevicePassProcessingService" />
+        <interfaceMoniker Id="6949cef2-b568-460d-8157-5111ba845338" LastKnownName="IApplePassProcessingService" />
       </annotatedElements>
     </comment>
     <comment Id="5c38271e-6bda-4f8b-8d1d-25edb0c39e42">
@@ -25,7 +25,7 @@
   </ownedCommentsInternal>
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
-      <Interface Id="6949cef2-b568-460d-8157-5111ba845338" name="IAppleDevicePassProcessingService" isAbstract="false" isLeaf="false">
+      <Interface Id="6949cef2-b568-460d-8157-5111ba845338" name="IApplePassProcessingService" isAbstract="false" isLeaf="false">
         <appliedStereotypesInternal>
           <stereotypeInstance Id="6e31e356-0f33-49c0-9207-4ba078c0a54b" name="TextTemplateBindings" profile="TextTemplateBindings">
             <elementDefinition Id="ea0e201a-9d23-46f5-a9d9-5cc911afae03" />
@@ -315,17 +315,17 @@
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
-          <operation Id="4cd3b34f-12b3-46aa-af8d-644480d4ea04" name="GetPassTemplatePackage" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+          <operation Id="4cd3b34f-12b3-46aa-af8d-644480d4ea04" name="GetPassPackageByTemplate" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="62a909d8-5da1-4576-bcca-398d882f6710" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="3c961eae-fcfa-405d-b2ac-1d4aa5044a8d" name="PassTemplateId" direction="In" isUnique="false">
-                  <elementDefinition Id="ff2e0dce-f849-400d-a424-8b621e815623" />
+                <parameter Id="cf8a3b17-1041-427e-8961-7e4f03b787ed" name="PassTemplateId" direction="In" isUnique="false">
+                  <elementDefinition Id="c265436e-f573-43b2-b8fe-989076e177bc" />
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="331856be-2836-4d3d-980a-9484a1c37fcf" name="DeviceType" direction="In" isUnique="false">
-                  <elementDefinition Id="b2bafe31-b2b4-414a-9559-193d23b24408" />
+                <parameter Id="d8410bef-a766-423e-b680-c86be8a41195" name="DeviceType" direction="In" isUnique="false">
+                  <elementDefinition Id="2bb7d5cc-2232-4128-bcab-3e9375b65d27" />
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
@@ -337,10 +337,6 @@
       <class Id="d1896fe3-72d4-47d0-aa7f-4cb669566568" name="PassDistributionService" isAbstract="true" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="ce141a54-1528-47d5-a12b-b125cc938c43" />
         <suppliersInternal>
-          <dependency Id="896f7bf8-393b-4e29-a421-4e30d75657b0">
-            <interfaceMoniker Id="a2e451de-d815-4399-8dfd-91730b5c6336" LastKnownName="IPassContainerRepository" />
-            <elementDefinition Id="44e75c06-e6d8-4391-b409-d0849481d4da" />
-          </dependency>
           <dependency Id="5b38e0d6-8bd8-4b95-9da1-a6afb5c61efb">
             <interfaceMoniker Id="22512b95-5f51-4708-8011-a76de26c5941" LastKnownName="IFileStorageService" />
             <elementDefinition Id="871dcbc7-c8eb-498c-9ed4-549830142bc2" />
@@ -396,7 +392,7 @@
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
-          <operation Id="7b1d3d97-ef04-4d14-b213-6a5c98ce738b" name="GetPassTemplatePackage" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+          <operation Id="7b1d3d97-ef04-4d14-b213-6a5c98ce738b" name="GetPassPackageByTemplate" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="004049a0-e6c3-476f-ac7f-82a00db70fb2" />
             <ownedParameters>
               <operationHasOwnedParameters>
@@ -415,17 +411,13 @@
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="da08c7dd-737e-4dbc-8618-01e2ea2797f7" name="AppleDevicePassProcessingService" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="da08c7dd-737e-4dbc-8618-01e2ea2797f7" name="ApplePassProcessingService" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="a43116b0-4ace-415d-b843-f44a04c81df0" />
         <suppliersInternal>
           <interfaceRealization Id="8a74729d-b611-4c09-adb7-a1128dc5e17b">
-            <interfaceMoniker Id="6949cef2-b568-460d-8157-5111ba845338" LastKnownName="IAppleDevicePassProcessingService" />
+            <interfaceMoniker Id="6949cef2-b568-460d-8157-5111ba845338" LastKnownName="IApplePassProcessingService" />
             <elementDefinition Id="2b1728e0-68d8-4434-b40e-92d70d4463a1" />
           </interfaceRealization>
-          <dependency Id="7d41beaf-076f-405a-98cf-b6feffc5dca8">
-            <interfaceMoniker Id="a2e451de-d815-4399-8dfd-91730b5c6336" LastKnownName="IPassContainerRepository" />
-            <elementDefinition Id="9237b2f5-85d4-482c-a5cf-9cc703c30464" />
-          </dependency>
           <dependency Id="439a2e73-afaf-4db5-b56f-c4418970a1f4">
             <interfaceMoniker Id="22512b95-5f51-4708-8011-a76de26c5941" LastKnownName="IFileStorageService" />
             <elementDefinition Id="af4899f0-8811-4349-813a-61cc6ee8243b" />
@@ -573,11 +565,6 @@
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <Interface Id="a2e451de-d815-4399-8dfd-91730b5c6336" name="IPassContainerRepository" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="21e2b5ae-70ef-44dc-a468-e8f0191add23" />
-      </Interface>
-    </logicalClassDesignerModelHasTypes>
-    <logicalClassDesignerModelHasTypes>
       <Interface Id="22512b95-5f51-4708-8011-a76de26c5941" name="IFileStorageService" isAbstract="false" isLeaf="false">
         <elementDefinition Id="bf94aa0f-b7a0-4be6-818a-a6d2150d0be3" />
         <ownedOperations>
@@ -589,6 +576,18 @@
           </operation>
           <operation Id="f98d31ca-5bbc-435a-a7b9-388c0737b15a" name="GetStorageItemPath" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="54ffdb54-b928-4ccc-bd36-e6881c49a83c" />
+          </operation>
+          <operation Id="4809146f-69bc-4a91-992b-0800b974947c" name="CreateStorageFolder" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="0b2aaf57-2441-4402-b2dc-7e66bc57604b" />
+          </operation>
+          <operation Id="6e3df738-37c5-40c1-8a25-84c88a885169" name="PutToStorageFolder" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="c83e99fe-3b90-458f-96b8-50a1d9ea1918" />
+          </operation>
+          <operation Id="063f03bf-9e42-438e-b8bf-6c9db4346ce6" name="DeleteStorageItem" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="535b5d4e-428f-42b3-aaa4-26bc663bb1e1" />
+          </operation>
+          <operation Id="49ff12cb-fce5-4bcc-b1d9-e226c2a0959f" name="PurgeDeletedItems" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="bfdc2ea0-f7b6-4af9-a336-ff887c36ef55" />
           </operation>
         </ownedOperations>
       </Interface>
@@ -681,10 +680,6 @@
             <interfaceMoniker Id="22512b95-5f51-4708-8011-a76de26c5941" LastKnownName="IFileStorageService" />
             <elementDefinition Id="a29243ed-6a21-4dc8-bdf1-bda508f076ff" />
           </dependency>
-          <dependency Id="4c5d1c87-10ee-40fa-b6c7-814b8846e43f">
-            <interfaceMoniker Id="77dad71d-8b0f-46f3-aabd-6f8e8a798814" LastKnownName="IPassTemplateRepository" />
-            <elementDefinition Id="ecdc1585-7655-474a-b5be-ed7304fbb373" />
-          </dependency>
         </suppliersInternal>
         <ownedOperationsInternal>
           <operation Id="8cd5ab4f-ffe1-4004-8144-68476d025234" name="CreatePassTemlate" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
@@ -754,11 +749,6 @@
         </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
-    <logicalClassDesignerModelHasTypes>
-      <Interface Id="77dad71d-8b0f-46f3-aabd-6f8e8a798814" name="IPassTemplateRepository" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="02204973-f4f3-472d-99c9-bc0a01bf0ac2" />
-      </Interface>
-    </logicalClassDesignerModelHasTypes>
     <packageHasNamedElement>
       <referencedType Id="78a4ca4d-10de-4d3f-baa8-1c9770ad75f2" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
         <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
@@ -784,6 +774,19 @@
         <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
       </referencedType>
     </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="cb25aa00-c39f-46c8-9f83-c71d4042bd9e" name="IPassContainerService" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="6af47d6d-6e31-40a8-8e84-909719f06e2c" />
+        <ownedOperations>
+          <operation Id="0dc1d05b-7488-4345-9291-6fb74291606a" name="CreatePass" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="628ad5a5-4468-45e0-9d32-6bb06c681cf6" />
+          </operation>
+          <operation Id="58d5da18-bbbd-4448-997c-40692abb1b07" name="UpdatePassFields" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="aae791f4-5572-483d-a7ac-6367501e29a0" />
+          </operation>
+        </ownedOperations>
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
   </packagedElements>
   <package Id="f8c85451-201a-49d6-b9e5-b75b24283364" name="MobileWalletModeling">
     <elementDefinition Id="a53e0939-3e57-42d8-a1d6-852d3d589578" />

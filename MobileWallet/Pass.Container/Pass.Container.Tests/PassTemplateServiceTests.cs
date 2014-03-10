@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -15,7 +14,6 @@ using Pass.Container.Core.Entities;
 using Pass.Container.Core.Entities.Enums;
 using Pass.Container.Core.Entities.Templates.GeneralPassTemplate;
 using Pass.Container.Factory;
-using Pass.Container.Repository.EF;
 
 namespace Pass.Container.BL.Tests
 {
@@ -33,7 +31,6 @@ namespace Pass.Container.BL.Tests
         private IRepository<PassField> _repPassField;
 
         public PassTemplateServiceTests()
-            : base()
         {
             _testPassTemplateDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestPassTemplate");
             _passTemplateFileName = TestHelper.PassContainerConfig.PassTemplateFileName;
@@ -257,7 +254,6 @@ namespace Pass.Container.BL.Tests
         {
             return PassContainerFactory.CreateTemplateService(new PassContainerConfig(), new FileStorageConfig());
         }
-
         private IFileStorageService GetFileStorageService()
         {
             return FileStorageFactory.Create(new FileStorageConfig());

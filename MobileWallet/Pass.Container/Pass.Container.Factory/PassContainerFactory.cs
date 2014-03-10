@@ -31,9 +31,14 @@ namespace Pass.Container.Factory
                 new DependencyOverride<IDbConfig>(pdConfig));
         }
 
-        public static IAppleDevicePassProcessingService CreateAppleDevicePassProcessingService(IPassContainerConfig ptConfig, IFileStorageConfig fsConfig)
+        public static IPassContainerService CreateContainerService(IDbConfig pdConfig)
         {
-            return _iocContainer.Resolve<IAppleDevicePassProcessingService>(
+            return _iocContainer.Resolve<IPassContainerService>(new DependencyOverride<IDbConfig>(pdConfig));
+        }
+
+        public static IApplePassProcessingService CreateAppleDevicePassProcessingService(IPassContainerConfig ptConfig, IFileStorageConfig fsConfig)
+        {
+            return _iocContainer.Resolve<IApplePassProcessingService>(
                 new DependencyOverride<IDbConfig>(ptConfig),
                 new DependencyOverride<IFileStorageConfig>(fsConfig));
         }

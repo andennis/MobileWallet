@@ -14,6 +14,18 @@
           <operation Id="aafcd4bb-19f1-4caa-b226-d27913c8902d" name="GetStorageItemPath" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="54ffdb54-b928-4ccc-bd36-e6881c49a83c" />
           </operation>
+          <operation Id="a8df6bb9-ab8c-48fc-9143-5e3ce6720e14" name="CreateStorageFolder" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="0b2aaf57-2441-4402-b2dc-7e66bc57604b" />
+          </operation>
+          <operation Id="ac796c79-490b-495c-92e2-36b3d52b0d6f" name="PutToStorageFolder" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="c83e99fe-3b90-458f-96b8-50a1d9ea1918" />
+          </operation>
+          <operation Id="654f14f5-2ed3-4ab9-b622-13a895021bb2" name="DeleteStorageItem" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="535b5d4e-428f-42b3-aaa4-26bc663bb1e1" />
+          </operation>
+          <operation Id="c23670e0-82e9-44b2-9454-805a2b78a789" name="PurgeDeletedItems" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="bfdc2ea0-f7b6-4af9-a336-ff887c36ef55" />
+          </operation>
         </ownedOperations>
       </Interface>
     </logicalClassDesignerModelHasTypes>

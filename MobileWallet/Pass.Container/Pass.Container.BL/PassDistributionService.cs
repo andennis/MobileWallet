@@ -16,6 +16,7 @@ namespace Pass.Container.BL
     public class PassDistributionService : IPassDistributionService
     {
         private const string SecurityVector = "nh2!0hg#vbPu&QSd";
+
         private readonly IPassDistributionConfig _config;
         private readonly IPassContainerUnitOfWork _pcUnitOfWork;
 
@@ -25,16 +26,16 @@ namespace Pass.Container.BL
             _pcUnitOfWork = pcUnitOfWork;
         }
 
-        public int CreatePassByTemplate(int passTemplateId, IList<PassFieldValue> passFieldValues)
+        public int CreatePass(int passTemplateId, IList<PassFieldValue> passFieldValues)
         {
             throw new NotImplementedException();
         }
 
-        public Stream GetPassPackage(int passId, DeviceType deviceType)
+        public Stream GetPassPackage(int passId, ClientType deviceType)
         {
             throw new NotImplementedException();
         }
-        public Stream GetPassPackageByTemplate(int passTemplateId, DeviceType deviceType)
+        public Stream GetPassPackageByTemplate(int passTemplateId, ClientType deviceType)
         {
             throw new NotImplementedException();
         }
@@ -43,7 +44,6 @@ namespace Pass.Container.BL
         {
             throw new NotImplementedException();
         }
-
 
         public string GetPassToken(int passId)
         {

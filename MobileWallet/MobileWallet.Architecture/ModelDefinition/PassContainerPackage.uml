@@ -114,13 +114,6 @@
               LastKnownLocation="PassContainerPackage.uml" />
           </interfaceRealization>
           <dependency
-            Id="44e75c06-e6d8-4391-b409-d0849481d4da">
-            <interfaceMoniker
-              Id="21e2b5ae-70ef-44dc-a468-e8f0191add23"
-              LastKnownName="IPassContainerRepository"
-              LastKnownLocation="PassContainerPackage.uml" />
-          </dependency>
-          <dependency
             Id="871dcbc7-c8eb-498c-9ed4-549830142bc2">
             <interfaceMoniker
               Id="bf94aa0f-b7a0-4be6-818a-a6d2150d0be3"
@@ -206,7 +199,7 @@
           </operation>
           <operation
             Id="004049a0-e6c3-476f-ac7f-82a00db70fb2"
-            name="GetPassTemplatePackage"
+            name="GetPassPackageByTemplate"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -367,7 +360,7 @@
           </operation>
           <operation
             Id="62a909d8-5da1-4576-bcca-398d882f6710"
-            name="GetPassTemplatePackage"
+            name="GetPassPackageByTemplate"
             isLeaf="false"
             isStatic="false"
             isAbstract="true"
@@ -376,14 +369,14 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="ff2e0dce-f849-400d-a424-8b621e815623"
+                  Id="c265436e-f573-43b2-b8fe-989076e177bc"
                   name="PassTemplateId"
                   direction="In"
                   isUnique="false" />
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="b2bafe31-b2b4-414a-9559-193d23b24408"
+                  Id="2bb7d5cc-2232-4128-bcab-3e9375b65d27"
                   name="DeviceType"
                   direction="In"
                   isUnique="false" />
@@ -395,15 +388,8 @@
     </packageHasNamedElement>
     <packageHasNamedElement>
       <Interface
-        Id="21e2b5ae-70ef-44dc-a468-e8f0191add23"
-        name="IPassContainerRepository"
-        isAbstract="false"
-        isLeaf="false" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <Interface
         Id="0011cd7d-47e4-4709-8c0b-9fc6f641ccdd"
-        name="IAppleDevicePassProcessingService"
+        name="IApplePassProcessingService"
         isAbstract="false"
         isLeaf="false">
         <appliedStereotypesInternal>
@@ -1206,7 +1192,7 @@
             isAbstract="false">
             <classMoniker
               Id="af83e8fe-54d1-4d1c-8740-2f3fda8e7cfd"
-              LastKnownName="ClientDeviceBase"
+              LastKnownName="ClientDevice"
               LastKnownLocation="PassContainerPackage.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -1268,7 +1254,7 @@
     <packageHasNamedElement>
       <class
         Id="af83e8fe-54d1-4d1c-8740-2f3fda8e7cfd"
-        name="ClientDeviceBase"
+        name="ClientDevice"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
@@ -1300,7 +1286,7 @@
             isSubstitutable="false">
             <classMoniker
               Id="af83e8fe-54d1-4d1c-8740-2f3fda8e7cfd"
-              LastKnownName="ClientDeviceBase"
+              LastKnownName="ClientDevice"
               LastKnownLocation="PassContainerPackage.uml" />
           </generalization>
         </generalsInternal>
@@ -1322,7 +1308,7 @@
     <packageHasNamedElement>
       <class
         Id="a43116b0-4ace-415d-b843-f44a04c81df0"
-        name="AppleDevicePassProcessingService"
+        name="ApplePassProcessingService"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
@@ -1331,16 +1317,9 @@
             Id="2b1728e0-68d8-4434-b40e-92d70d4463a1">
             <interfaceMoniker
               Id="0011cd7d-47e4-4709-8c0b-9fc6f641ccdd"
-              LastKnownName="IAppleDevicePassProcessingService"
+              LastKnownName="IApplePassProcessingService"
               LastKnownLocation="PassContainerPackage.uml" />
           </interfaceRealization>
-          <dependency
-            Id="9237b2f5-85d4-482c-a5cf-9cc703c30464">
-            <interfaceMoniker
-              Id="21e2b5ae-70ef-44dc-a468-e8f0191add23"
-              LastKnownName="IPassContainerRepository"
-              LastKnownLocation="PassContainerPackage.uml" />
-          </dependency>
           <dependency
             Id="af4899f0-8811-4349-813a-61cc6ee8243b">
             <interfaceMoniker
@@ -1829,13 +1808,6 @@
               LastKnownName="IFileStorageService"
               LastKnownLocation="FileStoragePackage.uml" />
           </dependency>
-          <dependency
-            Id="ecdc1585-7655-474a-b5be-ed7304fbb373">
-            <interfaceMoniker
-              Id="02204973-f4f3-472d-99c9-bc0a01bf0ac2"
-              LastKnownName="IPassTemplateRepository"
-              LastKnownLocation="PassContainerPackage.uml" />
-          </dependency>
         </suppliersInternal>
         <ownedOperationsInternal>
           <operation
@@ -1958,13 +1930,6 @@
           </operation>
         </ownedOperationsInternal>
       </class>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <Interface
-        Id="02204973-f4f3-472d-99c9-bc0a01bf0ac2"
-        name="IPassTemplateRepository"
-        isAbstract="false"
-        isLeaf="false" />
     </packageHasNamedElement>
     <packageHasNamedElement>
       <class

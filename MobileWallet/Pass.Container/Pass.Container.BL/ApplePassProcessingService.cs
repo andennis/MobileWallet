@@ -1,19 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Common.Repository;
 using FileStorage.Core;
 using Pass.Container.BL.NativePassGenerators;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
 using Pass.Container.Core.Entities.Enums;
-using Pass = Pass.Container.Core.Entities.Pass;
 
 namespace Pass.Container.BL
 {
-    public class AppleDevicePassProcessingService : IAppleDevicePassProcessingService
+    public class ApplePassProcessingService : IApplePassProcessingService
     {
         private readonly IPassContainerUnitOfWork _pcUnitOfWork;
         private readonly IFileStorageService _fsService;
@@ -27,7 +24,7 @@ namespace Pass.Container.BL
         private readonly IRepository<Registration> _repRegistration;
         private readonly IRepository<ClientDeviceApple> _repClientDeviceApple;
 
-        public AppleDevicePassProcessingService(IPassContainerUnitOfWork pcUnitOfWork, IFileStorageService fsService)
+        public ApplePassProcessingService(IPassContainerUnitOfWork pcUnitOfWork, IFileStorageService fsService)
         {
             _pcUnitOfWork = pcUnitOfWork;
             _fsService = fsService;
@@ -246,7 +243,6 @@ namespace Pass.Container.BL
             //Todo generate pass
             GetPass(pass);
             status = PassProcessingStatus.Succeed;
-            return;
         }
 
         public void Log(string logMessage)

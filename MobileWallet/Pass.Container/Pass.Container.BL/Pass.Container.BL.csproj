@@ -51,13 +51,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppleDevicePassProcessingService.cs" />
+    <Compile Include="ApplePassProcessingService.cs" />
     <Compile Include="Caching\FileCacheStore.cs" />
     <Compile Include="Helpers\ApplePassGeneratorHelper.cs" />
     <Compile Include="NativePassGenerators\ApplePassGenerator.cs" />
     <Compile Include="NativePassGenerators\BasePassGenerator.cs" />
     <Compile Include="NativePassTemplateGenerators\ApplePassTemplateGenerator.cs" />
     <Compile Include="PassContainerConfig.cs" />
+    <Compile Include="PassContainerService.cs" />
     <Compile Include="PassDistributionService.cs" />
     <Compile Include="Caching\PassTemplateCacheStore.cs" />
     <Compile Include="PassTemplateService.cs" />

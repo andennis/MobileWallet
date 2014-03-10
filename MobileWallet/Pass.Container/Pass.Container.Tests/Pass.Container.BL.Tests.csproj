@@ -53,9 +53,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppleDevicePassProcessingServiceTests.cs" />
+    <Compile Include="ApplePassProcessingServiceTests.cs" />
     <Compile Include="NativePassTemplateGeneratorsTests.cs" />
     <Compile Include="PassContainerConfigTests.cs" />
+    <Compile Include="PassContainerServiceTests.cs" />
     <Compile Include="PassDistributionServiceTests.cs" />
     <Compile Include="PassTemplateServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -112,7 +113,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

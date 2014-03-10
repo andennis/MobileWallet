@@ -35,7 +35,7 @@ namespace Pass.Processing.Web.Controllers
                     var pushToken = pushTokenJson.JsonToObject<DevicePushToken>();
 
                     PassProcessingStatus status;
-                    using (IAppleDevicePassProcessingService passProcessingService = GetAppleDevicePassProcessingService())
+                    using (IApplePassProcessingService passProcessingService = GetAppleDevicePassProcessingService())
                     {
                         passProcessingService.RegisterDevice(deviceLibraryIdentifier, passTypeIdentifier, serialNumber, pushToken.PushToken, authToken, out status);
                     }
@@ -86,7 +86,7 @@ namespace Pass.Processing.Web.Controllers
                     var pushToken = pushTokenJson.JsonToObject<DevicePushToken>();
 
                     PassProcessingStatus status;
-                    using (IAppleDevicePassProcessingService passProcessingService = GetAppleDevicePassProcessingService())
+                    using (IApplePassProcessingService passProcessingService = GetAppleDevicePassProcessingService())
                     {
                         passProcessingService.UnregisterDevice(deviceLibraryIdentifier, passTypeIdentifier, serialNumber, pushToken.PushToken, authToken, out status);
                     }
@@ -131,7 +131,7 @@ namespace Pass.Processing.Web.Controllers
                 PassProcessingStatus status;
                 var lastUpdated = new DateTime();
                 IList<string> passSerialNumbers;
-                using (IAppleDevicePassProcessingService passProcessingService = GetAppleDevicePassProcessingService())
+                using (IApplePassProcessingService passProcessingService = GetAppleDevicePassProcessingService())
                 {
                    passSerialNumbers = passProcessingService.GetSerialNumbersOfPasses(deviceLibraryIdentifier, passTypeIdentifier, ref lastUpdated, out status, passesUpdatedSinceTime);
                 }
@@ -187,7 +187,7 @@ namespace Pass.Processing.Web.Controllers
                     string authToken = authHeader.Replace("ApplePass ", String.Empty);
 
                     PassProcessingStatus status;
-                    using (IAppleDevicePassProcessingService passProcessingService = GetAppleDevicePassProcessingService())
+                    using (IApplePassProcessingService passProcessingService = GetAppleDevicePassProcessingService())
                     {
                         ////TODO GET PASS STREAM
                         passProcessingService.GetPass(passTypeIdentifier, serialNumber, authToken, out status);
@@ -234,7 +234,7 @@ namespace Pass.Processing.Web.Controllers
         {
             try
             {
-                using (IAppleDevicePassProcessingService passProcessingService = GetAppleDevicePassProcessingService())
+                using (IApplePassProcessingService passProcessingService = GetAppleDevicePassProcessingService())
                 {
                     passProcessingService.Log(logMessage);
                 }
@@ -246,7 +246,7 @@ namespace Pass.Processing.Web.Controllers
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
-        private IAppleDevicePassProcessingService GetAppleDevicePassProcessingService()
+        private IApplePassProcessingService GetAppleDevicePassProcessingService()
         {
             return PassContainerFactory.CreateAppleDevicePassProcessingService(new PassContainerConfig(), new FileStorageConfig());
         }

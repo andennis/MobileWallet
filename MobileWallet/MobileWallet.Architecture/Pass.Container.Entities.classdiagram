@@ -265,7 +265,7 @@
             <elementDefinition Id="c33b3673-5c30-4736-bcad-294ba9d84308" />
           </association>
           <association Id="da5afeff-95af-482a-9d29-6e2533b7cb6d" isDerived="false" sourceEndRoleName="ClientDeviceRegistration" targetEndRoleName="ClientDeviceBase" isLeaf="false" isAbstract="false">
-            <classMoniker Id="92f76802-b82d-46dd-a271-6c95a81391d7" LastKnownName="ClientDeviceBase" />
+            <classMoniker Id="92f76802-b82d-46dd-a271-6c95a81391d7" LastKnownName="ClientDevice" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="0203731c-5cd2-4f93-bce5-a4fe50bb1e2a" name="ClientDeviceRegistration" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
@@ -299,7 +299,7 @@
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="92f76802-b82d-46dd-a271-6c95a81391d7" name="ClientDeviceBase" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="92f76802-b82d-46dd-a271-6c95a81391d7" name="ClientDevice" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="af83e8fe-54d1-4d1c-8740-2f3fda8e7cfd" />
         <ownedAttributesInternal>
           <property Id="aab1aee1-5905-4bab-834d-c01f1c743574" name="DeviceId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
@@ -313,7 +313,7 @@
         <elementDefinition Id="a675e13d-9743-4c46-b827-28b7d6bb582d" />
         <generalsInternal>
           <generalization Id="9285adec-c10d-499b-8e69-bcd2b1434cdc" isSubstitutable="false">
-            <classMoniker Id="92f76802-b82d-46dd-a271-6c95a81391d7" LastKnownName="ClientDeviceBase" />
+            <classMoniker Id="92f76802-b82d-46dd-a271-6c95a81391d7" LastKnownName="ClientDevice" />
             <elementDefinition Id="22c23ebf-0ba2-48d1-9a2a-76f660637136" />
           </generalization>
         </generalsInternal>
