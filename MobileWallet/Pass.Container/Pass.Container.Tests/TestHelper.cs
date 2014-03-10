@@ -27,7 +27,7 @@ namespace Pass.Container.BL.Tests
                 Key = "TestDynamicField",
                 Value = "TestDynamicFieldValue",
                 Type = Field.DataType.Text,
-                IsDynamic = true
+                IsDynamicValue = true
             });
             string path = Path.Combine(testPassTemplateDir, passTemplateFileName);
             if (File.Exists(path))
@@ -162,7 +162,7 @@ namespace Pass.Container.BL.Tests
                                                 DateStyle = Field.DateStyleType.Long,
                                                 DefaultValue = "DefaultValue",
                                                 IgnoresTimeZone = true,
-                                                IsDynamic = true,
+                                                IsDynamicValue = true,
                                                 IsRelative = true,
                                                 Key = "Key1",
                                                 Label = "label",
@@ -182,7 +182,7 @@ namespace Pass.Container.BL.Tests
                                                 DateStyle = Field.DateStyleType.Long,
                                                 DefaultValue = "DefaultValue",
                                                 IgnoresTimeZone = true,
-                                                IsDynamic = true,
+                                                IsDynamicValue = true,
                                                 IsRelative = true,
                                                 Key = "Key2",
                                                 Label = "label",
@@ -205,7 +205,7 @@ namespace Pass.Container.BL.Tests
                                                 DateStyle = Field.DateStyleType.Long,
                                                 DefaultValue = "DefaultValue",
                                                 IgnoresTimeZone = true,
-                                                IsDynamic = true,
+                                                IsDynamicValue = true,
                                                 IsRelative = true,
                                                 Key = "Key3",
                                                 Label = "label",
@@ -228,7 +228,7 @@ namespace Pass.Container.BL.Tests
                                                 DateStyle = Field.DateStyleType.Long,
                                                 DefaultValue = "DefaultValue",
                                                 IgnoresTimeZone = true,
-                                                IsDynamic = true,
+                                                IsDynamicValue = true,
                                                 IsRelative = true,
                                                 Key = "Key4",
                                                 Label = "label",
@@ -251,7 +251,7 @@ namespace Pass.Container.BL.Tests
                                                 DateStyle = Field.DateStyleType.Long,
                                                 DefaultValue = "DefaultValue",
                                                 IgnoresTimeZone = true,
-                                                IsDynamic = true,
+                                                IsDynamicValue = true,
                                                 IsRelative = true,
                                                 Key = "Key5",
                                                 Label = "label",
@@ -273,7 +273,7 @@ namespace Pass.Container.BL.Tests
                                                 DateStyle = Field.DateStyleType.Long,
                                                 DefaultValue = "DefaultValue",
                                                 IgnoresTimeZone = true,
-                                                IsDynamic = true,
+                                                IsDynamicValue = true,
                                                 IsRelative = true,
                                                 Key = "Key6",
                                                 Label = "label",

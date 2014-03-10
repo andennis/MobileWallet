@@ -1,5 +1,6 @@
 ﻿CREATE TABLE [pscn].[PassFieldValue] (
     [PassFieldValueId] INT            IDENTITY (1, 1) NOT NULL,
+	[Label]            NVARCHAR (400) NULL,
     [Value]            NVARCHAR (400) NULL,
     [Version]          INT            NOT NULL,
     [CreatedDate]      DATETIME       NOT NULL,
