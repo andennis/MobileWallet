@@ -6,11 +6,8 @@ using Pass.Container.Core;
 using Pass.Container.Core.Entities.Enums;
 using Pass.Container.Core.Entities.Templates.GeneralPassTemplate;
 using Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTemplate;
+using Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys;
 using Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Lower_Level_Keys;
-using Pass.Container.Core.Entities.Templates.NativePassTemplatess.ApplePassTemplate.Lower_Level_Keys;
-using BarcodeType = Pass.Container.Core.Entities.Templates.GeneralPassTemplate.BarcodeType;
-using Beacon = Pass.Container.Core.Entities.Templates.GeneralPassTemplate.Beacon;
-using Location = Pass.Container.Core.Entities.Templates.GeneralPassTemplate.Location;
 
 namespace Pass.Container.BL.NativePassTemplateGenerators
 {
@@ -96,8 +93,9 @@ namespace Pass.Container.BL.NativePassTemplateGenerators
                 applePassTemplate.SuppressStripShine = passTemplate.SuppressStripShine;
             if (passTemplate.GroupingIdentifier != null)
                 applePassTemplate.GroupingIdentifier = passTemplate.GroupingIdentifier;
+
             //1.Barcode Dictionary
-            if (passTemplate.BarcodeDetails != null && passTemplate.BarcodeDetails.BarcodeType != BarcodeType.DoNotDisplay)
+            if (passTemplate.BarcodeDetails != null && passTemplate.BarcodeDetails.BarcodeType != GeneralBarcodeType.DoNotDisplay)
             {
                 var barcode = new Barcode
                                   {
@@ -109,7 +107,6 @@ namespace Pass.Container.BL.NativePassTemplateGenerators
                     barcode.AltText = passTemplate.BarcodeDetails.TextToDisplay;
                 applePassTemplate.Barcode = barcode;
             }
-
 
             //Associated App Keys
             //Companion App Keys
@@ -132,10 +129,10 @@ namespace Pass.Container.BL.NativePassTemplateGenerators
             //1.Beacon Dictionary
             if (passTemplate.BeaconDetails != null)
             {
-                var beacons = new List<Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Lower_Level_Keys.Beacon>();
-                foreach (Beacon beacon in passTemplate.BeaconDetails.Beacons)
+                var beacons = new List<Beacon>();
+                foreach (GeneralBeacon beacon in passTemplate.BeaconDetails.Beacons)
                 {
-                    var appleBeacon = new Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Lower_Level_Keys.Beacon { ProximityUuid = beacon.ProximityUuid };
+                    var appleBeacon = new Beacon { ProximityUuid = beacon.ProximityUuid };
                     if (beacon.Major != null)
                         appleBeacon.Major = beacon.Major;
                     if (beacon.Minor != null)
@@ -149,10 +146,10 @@ namespace Pass.Container.BL.NativePassTemplateGenerators
             //2.Location Dictionary
             if (passTemplate.LocationDetails != null)
             {
-                var locations = new List<Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Lower_Level_Keys.Location>();
-                foreach (Location location in passTemplate.LocationDetails.Locations)
+                var locations = new List<Location>();
+                foreach (GeneralLocation location in passTemplate.LocationDetails.Locations)
                 {
-                    var appleLocation = new Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Lower_Level_Keys.Location() { Latitude = location.Latitude, Longitude = location.Longitude };
+                    var appleLocation = new Location() { Latitude = location.Latitude, Longitude = location.Longitude };
                     if (location.Altitude != null)
                         appleLocation.Altitude = location.Altitude;
                     if (!string.IsNullOrEmpty(location.RelevantText))
@@ -194,40 +191,35 @@ namespace Pass.Container.BL.NativePassTemplateGenerators
             var passStructure = new PassStructure();
             if (passTemplate.FieldDetails.AuxiliaryFields != null)
             {
-                List<Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field> auxiliaryFields = 
-                    passTemplate.FieldDetails.AuxiliaryFields.Select(GetAppleField).ToList();
+                List<Field> auxiliaryFields = passTemplate.FieldDetails.AuxiliaryFields.Select(GetAppleField).ToList();
                 passStructure.AuxiliaryFields = auxiliaryFields;
             }
             if (passTemplate.FieldDetails.BackFields != null)
             {
-                List<Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field> backFields =
-                    passTemplate.FieldDetails.BackFields.Select(GetAppleField).ToList();
+                List<Field> backFields = passTemplate.FieldDetails.BackFields.Select(GetAppleField).ToList();
                 passStructure.BackFields = backFields;
             }
             if (passTemplate.FieldDetails.HeaderFields != null)
             {
-                List<Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field> headerFields =
-                    passTemplate.FieldDetails.HeaderFields.Select(GetAppleField).ToList();
+                List<Field> headerFields = passTemplate.FieldDetails.HeaderFields.Select(GetAppleField).ToList();
                 passStructure.HeaderFields = headerFields;
             }
             if (passTemplate.FieldDetails.PrimaryFields != null)
             {
-                List<Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field> primaryFields =
-                    passTemplate.FieldDetails.PrimaryFields.Select(GetAppleField).ToList();
+                List<Field> primaryFields = passTemplate.FieldDetails.PrimaryFields.Select(GetAppleField).ToList();
                 passStructure.PrimaryFields = primaryFields;
             }
             if (passTemplate.FieldDetails.SecondaryFields != null)
             {
-                List<Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field> secondaryFields =
-                    passTemplate.FieldDetails.SecondaryFields.Select(GetAppleField).ToList();
+                List<Field> secondaryFields = passTemplate.FieldDetails.SecondaryFields.Select(GetAppleField).ToList();
                 passStructure.SecondaryFields = secondaryFields;
             }
             return passStructure;
         }
 
-        private Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field GetAppleField(Field templatefield)
+        private Field GetAppleField(GeneralField templatefield)
         {
-            var field = new Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field();
+            var field = new Field();
             //TODO need validation AttributedValue
             if (!string.IsNullOrEmpty(templatefield.AttributedValue))
                 field.AttributedValue = templatefield.AttributedValue;
@@ -238,26 +230,26 @@ namespace Pass.Container.BL.NativePassTemplateGenerators
                 field.DataDetectorTypes = GetAppleDataDetectorTypes(templatefield.DataDetectorTypes);
             field.Key = templatefield.Key;
             if (templatefield.IsDynamicLabel)
-                field.Label = "$$" + templatefield.Key + "$$";
+                field.Label = "Label$$" + templatefield.Key + "$$";
             else
                 if (!string.IsNullOrEmpty(templatefield.Label))
                     field.Label = templatefield.Label;
             if (templatefield.IsDynamicValue)
-                field.Value = "$$" + templatefield.Key + "$$";
+                field.Value = "Value$$" + templatefield.Key + "$$";
             else
                 field.Value = templatefield.Value;
             field.TextAlignment = GetAppleTextAlligment(templatefield.TextAlignment);
 
-            if (templatefield.Type == Field.DataType.Number)
+            if (templatefield.Type == GeneralField.DataType.Number)
                 field.NumberStyle = GetAppleNumberStyle(templatefield.NumberStyle);
-            if (templatefield.Type == Field.DataType.Currency)
+            if (templatefield.Type == GeneralField.DataType.Currency)
                 field.CurrencyCode = templatefield.CurrencyCode;
-            if (templatefield.Type == Field.DataType.Date)
+            if (templatefield.Type == GeneralField.DataType.Date)
             {
                 field.DateStyle = GetAppleDateStyle(templatefield.DateStyle);
                 field.IsRelative = templatefield.IsRelative;
             }
-            if (templatefield.Type == Field.DataType.DateTime)
+            if (templatefield.Type == GeneralField.DataType.DateTime)
             {
                 field.TimeStyle = GetAppleDateStyle(templatefield.TimeStyle);
                 field.IsRelative = templatefield.IsRelative;
@@ -283,89 +275,89 @@ namespace Pass.Container.BL.NativePassTemplateGenerators
             }
             return PassStructure.Transit.PkTransitTypeAir;
         }
-        private Core.Entities.Templates.NativePassTemplatess.ApplePassTemplate.Lower_Level_Keys.BarcodeType GetAppleBarcodeType(BarcodeType barcodeType)
+        private BarcodeType GetAppleBarcodeType(GeneralBarcodeType barcodeType)
         {
             switch (barcodeType)
             {
-                case BarcodeType.Pdf417Code:
-                    return Core.Entities.Templates.NativePassTemplatess.ApplePassTemplate.Lower_Level_Keys.BarcodeType.Pdf417Code;
-                case BarcodeType.AztecCode:
-                    return Core.Entities.Templates.NativePassTemplatess.ApplePassTemplate.Lower_Level_Keys.BarcodeType.AztecCode;
-                case BarcodeType.QrCode:
-                    return Core.Entities.Templates.NativePassTemplatess.ApplePassTemplate.Lower_Level_Keys.BarcodeType.QrCode;
+                case GeneralBarcodeType.Pdf417Code:
+                    return BarcodeType.Pdf417Code;
+                case GeneralBarcodeType.AztecCode:
+                    return BarcodeType.AztecCode;
+                case GeneralBarcodeType.QrCode:
+                    return BarcodeType.QrCode;
             }
-            return Core.Entities.Templates.NativePassTemplatess.ApplePassTemplate.Lower_Level_Keys.BarcodeType.Pdf417Code;
+            return BarcodeType.Pdf417Code;
         }
 
-        private Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field.TextAlignmentType GetAppleTextAlligment(Field.TextAlignmentType textAlignmentType)
+        private Field.TextAlignmentType GetAppleTextAlligment(GeneralField.TextAlignmentType textAlignmentType)
         {
             switch (textAlignmentType)
             {
-                case Field.TextAlignmentType.Center:
-                    return Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field.TextAlignmentType.PkTextAlignmentCenter;
-                case Field.TextAlignmentType.Left:
-                    return Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field.TextAlignmentType.PkTextAlignmentLeft;
-                case Field.TextAlignmentType.Right:
-                    return Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field.TextAlignmentType.PkTextAlignmentRight;
-                case Field.TextAlignmentType.Natural:
-                    return Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field.TextAlignmentType.PkTextAlignmentNatural;
+                case GeneralField.TextAlignmentType.Center:
+                    return Field.TextAlignmentType.PkTextAlignmentCenter;
+                case GeneralField.TextAlignmentType.Left:
+                    return Field.TextAlignmentType.PkTextAlignmentLeft;
+                case GeneralField.TextAlignmentType.Right:
+                    return Field.TextAlignmentType.PkTextAlignmentRight;
+                case GeneralField.TextAlignmentType.Natural:
+                    return Field.TextAlignmentType.PkTextAlignmentNatural;
             }
-            return Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field.TextAlignmentType.PkTextAlignmentLeft;
+            return Field.TextAlignmentType.PkTextAlignmentLeft;
         }
 
-        private Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field.NumberStyleType GetAppleNumberStyle(Field.NumberStyleType numberStyleType)
+        private Field.NumberStyleType GetAppleNumberStyle(GeneralField.NumberStyleType numberStyleType)
         {
             switch (numberStyleType)
             {
-                case Field.NumberStyleType.Decimal:
-                    return Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field.NumberStyleType.PkNumberStyleDecimal;
-                case Field.NumberStyleType.Percent:
-                    return Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field.NumberStyleType.PkNumberStylePercent;
-                case Field.NumberStyleType.Scientific:
-                    return Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field.NumberStyleType.PkNumberStyleScientific;
-                case Field.NumberStyleType.SpellOut:
-                    return Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field.NumberStyleType.PkNumberStyleSpellOut;
+                case GeneralField.NumberStyleType.Decimal:
+                    return Field.NumberStyleType.PkNumberStyleDecimal;
+                case GeneralField.NumberStyleType.Percent:
+                    return Field.NumberStyleType.PkNumberStylePercent;
+                case GeneralField.NumberStyleType.Scientific:
+                    return Field.NumberStyleType.PkNumberStyleScientific;
+                case GeneralField.NumberStyleType.SpellOut:
+                    return Field.NumberStyleType.PkNumberStyleSpellOut;
             }
-            return Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field.NumberStyleType.PkNumberStyleDecimal;
+            return Field.NumberStyleType.PkNumberStyleDecimal;
         }
 
-        private Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field.DateStyleType GetAppleDateStyle(Field.DateStyleType dateStyleType)
+        private Field.DateStyleType GetAppleDateStyle(GeneralField.DateStyleType dateStyleType)
         {
             switch (dateStyleType)
             {
-                case Field.DateStyleType.Full:
-                    return Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field.DateStyleType.PkDateStyleFull;
-                case Field.DateStyleType.Long:
-                    return Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field.DateStyleType.PkDateStyleLong;
-                case Field.DateStyleType.Medium:
-                    return Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field.DateStyleType.PkDateStyleMedium;
-                case Field.DateStyleType.None:
-                    return Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field.DateStyleType.PkDateStyleNone;
-                case Field.DateStyleType.Short:
-                    return Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field.DateStyleType.PkDateStyleShort;
+                case GeneralField.DateStyleType.Full:
+                    return Field.DateStyleType.PkDateStyleFull;
+                case GeneralField.DateStyleType.Long:
+                    return Field.DateStyleType.PkDateStyleLong;
+                case GeneralField.DateStyleType.Medium:
+                    return Field.DateStyleType.PkDateStyleMedium;
+                case GeneralField.DateStyleType.None:
+                    return Field.DateStyleType.PkDateStyleNone;
+                case GeneralField.DateStyleType.Short:
+                    return Field.DateStyleType.PkDateStyleShort;
             }
-            return Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field.DateStyleType.PkDateStyleNone;
+            return Field.DateStyleType.PkDateStyleNone;
         }
 
-        private List<Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field.DataDetector> GetAppleDataDetectorTypes(IEnumerable<Field.DataDetector> dataDetectors)
+        private List<Field.DataDetector> GetAppleDataDetectorTypes(IEnumerable<GeneralField.DataDetector> dataDetectors)
         {
             var appleDataDetectors =
-                new List<Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field.DataDetector>();
+                new List<Field.DataDetector>();
             foreach (var dataDetector in dataDetectors)
             {
                 switch (dataDetector)
                 {
-                    case Field.DataDetector.Address:
-                        appleDataDetectors.Add(Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field.DataDetector.PkDataDetectorTypeAddress);
+                    case GeneralField.DataDetector.Address:
+                        appleDataDetectors.Add(Field.DataDetector.PkDataDetectorTypeAddress);
                         break;
-                    case Field.DataDetector.CalendarEvent:
-                        appleDataDetectors.Add(Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field.DataDetector.PkDataDetectorTypeCalendarEvent);
+                    case GeneralField.DataDetector.CalendarEvent:
+                        appleDataDetectors.Add(Field.DataDetector.PkDataDetectorTypeCalendarEvent);
                         break;
-                    case Field.DataDetector.Link:
-                        appleDataDetectors.Add(Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field.DataDetector.PkDataDetectorTypeLink);
+                    case GeneralField.DataDetector.Link:
+                        appleDataDetectors.Add(Field.DataDetector.PkDataDetectorTypeLink);
                         break;
-                    case Field.DataDetector.PhoneNumber:
-                        appleDataDetectors.Add(Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys.Field.DataDetector.PkDataDetectorTypePhoneNumber);
+                    case GeneralField.DataDetector.PhoneNumber:
+                        appleDataDetectors.Add(Field.DataDetector.PkDataDetectorTypePhoneNumber);
                         break;
                 }
             }

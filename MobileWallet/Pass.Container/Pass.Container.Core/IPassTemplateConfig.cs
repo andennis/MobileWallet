@@ -4,5 +4,6 @@
     {
         string PassTemplateFolderName { get; }
         string PassTemplateFileName { get; }
+        string PassGeneratorTempFolderPath { get; }
     }
 }

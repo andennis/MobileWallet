@@ -11,27 +11,27 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
         [XmlArray(ElementName = "auxiliaryFields")]
         [XmlArrayItem(ElementName = "field")]
         [JsonProperty(PropertyName = "auxiliaryFields", NullValueHandling = NullValueHandling.Ignore)]
-        public List<Field> AuxiliaryFields { get; set; }
+        public List<GeneralField> AuxiliaryFields { get; set; }
 
         [XmlArray(ElementName = "backFields")]
         [XmlArrayItem(ElementName = "field")]
         [JsonProperty(PropertyName = "backFields", NullValueHandling = NullValueHandling.Ignore)]
-        public List<Field> BackFields { get; set; }
+        public List<GeneralField> BackFields { get; set; }
 
         [XmlArray(ElementName = "headerFields")]
         [XmlArrayItem(ElementName = "field")]
         [JsonProperty(PropertyName = "headerFields", NullValueHandling = NullValueHandling.Ignore)]
-        public List<Field> HeaderFields { get; set; }
+        public List<GeneralField> HeaderFields { get; set; }
 
         [XmlArray(ElementName = "primaryFields")]
         [XmlArrayItem(ElementName = "field")]
         [JsonProperty(PropertyName = "primaryFields", NullValueHandling = NullValueHandling.Ignore)]
-        public List<Field> PrimaryFields { get; set; }
+        public List<GeneralField> PrimaryFields { get; set; }
 
         [XmlArray(ElementName = "secondaryFields")]
         [XmlArrayItem(ElementName = "field")]
         [JsonProperty(PropertyName = "secondaryFields", NullValueHandling = NullValueHandling.Ignore)]
-        public List<Field> SecondaryFields { get; set; }
+        public List<GeneralField> SecondaryFields { get; set; }
 
         //WARNING! Required for boarding passes; otherwise not allowed.
         [XmlElement(ElementName = "transitType")]
@@ -59,7 +59,7 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
         Train = 4
     }
 
-    public class Field
+    public class GeneralField
     {
         //Information about a field
         #region Standard Field Dictionary Keys

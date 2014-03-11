@@ -50,11 +50,11 @@
     <Compile Include="Entities\Enums\PassProcessingStatus.cs" />
     <Compile Include="Entities\Enums\TemplateStatus.cs" />
     <Compile Include="Entities\PassTokenInfo.cs" />
-    <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Field Dictionary Keys\Field.cs" />
-    <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Lower-Level Keys\Barcode.cs" />
-    <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Lower-Level Keys\Beacon.cs" />
-    <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Lower-Level Keys\Location.cs" />
-    <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Lower-Level Keys\PassStructure.cs" />
+    <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Field_Dictionary_Keys\Field.cs" />
+    <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Lower_Level_Keys\Barcode.cs" />
+    <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Lower_Level_Keys\Beacon.cs" />
+    <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Lower_Level_Keys\Location.cs" />
+    <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Lower_Level_Keys\PassStructure.cs" />
     <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\ApplePassTemplate.cs" />
     <Compile Include="Entities\ClientDeviceApple.cs" />
     <Compile Include="Entities\ClientDevice.cs" />
@@ -77,6 +77,7 @@
     <Compile Include="Entities\Templates\GeneralPassTemplate\LocationDetails.cs" />
     <Compile Include="Entities\Templates\GeneralPassTemplate\GeneralPassTemplate.cs" />
     <Compile Include="Exceptions\PassDistributionException.cs" />
+    <Compile Include="Exceptions\PassGenerationException.cs" />
     <Compile Include="Exceptions\PassTemplateException.cs" />
     <Compile Include="IApplePassProcessingService.cs" />
     <Compile Include="INativePassTemplateGenerator.cs" />

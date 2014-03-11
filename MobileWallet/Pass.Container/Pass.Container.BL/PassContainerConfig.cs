@@ -19,6 +19,10 @@ namespace Pass.Container.BL
         {
             get { return GetValue("PassTemplateFileName"); }
         }
+        public string PassGeneratorTempFolderPath
+        {
+            get { return GetValue("PassGeneratorTempFolderPath"); }
+        }
         #endregion
 
         #region IDbConfig

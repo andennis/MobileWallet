@@ -10,11 +10,11 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
         [XmlArray(ElementName = "beacons")]
         [XmlArrayItem(ElementName = "beacon")]
         [JsonProperty(PropertyName = "beacons", NullValueHandling = NullValueHandling.Ignore)]
-        public List<Beacon> Beacons { get; set; }
+        public List<GeneralBeacon> Beacons { get; set; }
     }
 
     //Information about a location beacon
-    public class Beacon
+    public class GeneralBeacon
     {
         [XmlElement(ElementName = "name")]
         [JsonProperty(PropertyName = "name", NullValueHandling = NullValueHandling.Ignore)]

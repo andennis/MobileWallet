@@ -14,6 +14,7 @@ namespace Pass.Container.BL
     {
         private readonly IPassContainerUnitOfWork _pcUnitOfWork;
         private readonly IFileStorageService _fsService;
+        private readonly IPassContainerConfig _config;
         //Repositories
         private readonly IRepository<PassTemplate> _repPassTemplate;
         private readonly IRepository<PassTemplateNative> _repTemplateNative;
@@ -24,10 +25,11 @@ namespace Pass.Container.BL
         private readonly IRepository<Registration> _repRegistration;
         private readonly IRepository<ClientDeviceApple> _repClientDeviceApple;
 
-        public ApplePassProcessingService(IPassContainerUnitOfWork pcUnitOfWork, IFileStorageService fsService)
+        public ApplePassProcessingService(IPassContainerConfig config, IPassContainerUnitOfWork pcUnitOfWork, IFileStorageService fsService)
         {
             _pcUnitOfWork = pcUnitOfWork;
             _fsService = fsService;
+            _config = config;
 
             //Repositories
             _repPassTemplate = _pcUnitOfWork.GetRepository<PassTemplate>();
@@ -265,7 +267,7 @@ namespace Pass.Container.BL
 
         private void GetPass(Core.Entities.Pass pass)
         {
-           var passGenerator = new ApplePassGenerator(_pcUnitOfWork, _fsService, pass);
+            var passGenerator = new ApplePassGenerator(_config, _pcUnitOfWork, _fsService, pass);
            passGenerator.GeneratePass();
         }
 

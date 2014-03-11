@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
-namespace Pass.Container.Core.Entities.Templates.NativePassTemplatess.ApplePassTemplate.Lower_Level_Keys
+namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Lower_Level_Keys
 {
     //Information about a pass’s barcode
     public class Barcode

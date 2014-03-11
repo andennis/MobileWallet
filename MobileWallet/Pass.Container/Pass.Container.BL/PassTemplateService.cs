@@ -223,7 +223,7 @@ namespace Pass.Container.BL
             GetDynamicFields(generalPassTemplate.FieldDetails.SecondaryFields, ref dynamicFields);
             return dynamicFields;
         }
-        private void GetDynamicFields(IEnumerable<Field> fields, ref List<string> dynamicFields)
+        private void GetDynamicFields(IEnumerable<GeneralField> fields, ref List<string> dynamicFields)
         {
             dynamicFields.AddRange(
                 from field in fields

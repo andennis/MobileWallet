@@ -21,12 +21,12 @@ namespace Pass.Container.BL.Tests
         public static GeneralPassTemplate PreparePassTemplateSource(string testPassTemplateDir, string passTemplateFileName)
         {
             //Prepare pass template source
-            GeneralPassTemplate generalTemplate = TestHelper.GetPassTemplateObject();
-            generalTemplate.FieldDetails.AuxiliaryFields.Add(new Field
+            GeneralPassTemplate generalTemplate = GetPassTemplateObject();
+            generalTemplate.FieldDetails.AuxiliaryFields.Add(new GeneralField
             {
                 Key = "TestDynamicField",
                 Value = "TestDynamicFieldValue",
-                Type = Field.DataType.Text,
+                Type = GeneralField.DataType.Text,
                 IsDynamicValue = true
             });
             string path = Path.Combine(testPassTemplateDir, passTemplateFileName);
@@ -79,16 +79,16 @@ namespace Pass.Container.BL.Tests
                 //Location Details
                 LocationDetails = new LocationDetails
                 {
-                    Locations = new List<Location>
+                    Locations = new List<GeneralLocation>
                                 {
-                                    new Location
+                                    new GeneralLocation
                                         {
                                             Altitude = 1,
                                             Latitude = 2,
                                             Longitude = 3,
                                             RelevantText = "Relevant text"
                                         },
-                                        new Location
+                                        new GeneralLocation
                                         {
                                             Altitude = 1,
                                             Latitude = 2,
@@ -101,9 +101,9 @@ namespace Pass.Container.BL.Tests
                 //Beacon Details
                 BeaconDetails = new BeaconDetails
                 {
-                    Beacons = new List<Beacon>
+                    Beacons = new List<GeneralBeacon>
                                {
-                                   new Beacon
+                                   new GeneralBeacon
                                        {
                                            Name = "Beacon name",
                                            Major = 1,
@@ -111,7 +111,7 @@ namespace Pass.Container.BL.Tests
                                            ProximityUuid = "ProximityUuid",
                                            RelevantText = "Relevant text"
                                        },
-                                       new Beacon
+                                       new GeneralBeacon
                                        {
                                            Name = "Beacon name",
                                            Major = 1,
@@ -137,7 +137,7 @@ namespace Pass.Container.BL.Tests
                 BarcodeDetails = new BarcodeDetails
                 {
                     AlternativeText = AlternativeText.DisplayTheBarcodeContent,
-                    BarcodeType = BarcodeType.AztecCode,
+                    BarcodeType = GeneralBarcodeType.AztecCode,
                     EncodedMessage = EncodedMessage.EncodeThePassUniqueId,
                     EncodingFormat = "Encoding.UTF8",
                     TextToDisplay = "Text to display",
@@ -147,132 +147,132 @@ namespace Pass.Container.BL.Tests
                 //Field Details
                 FieldDetails = new FieldDetails
                 {
-                    AuxiliaryFields = new List<Field>
+                    AuxiliaryFields = new List<GeneralField>
                                 {
-                                    new Field
+                                    new GeneralField
                                         {
                                             AttributedValue = "AttributedValue",
                                             ChangeMessage = "ChangeMessage",
                                             CurrencyCode = "CurrencyCode",
-                                            DataDetectorTypes = new List<Field.DataDetector>
+                                            DataDetectorTypes = new List<GeneralField.DataDetector>
                                                 {
-                                                    Field.DataDetector.Address,
-                                                    Field.DataDetector.Link
+                                                    GeneralField.DataDetector.Address,
+                                                    GeneralField.DataDetector.Link
                                                 },
-                                                DateStyle = Field.DateStyleType.Long,
+                                                DateStyle = GeneralField.DateStyleType.Long,
                                                 IgnoresTimeZone = true,
                                                 IsDynamicValue = true,
                                                 IsRelative = true,
                                                 Key = "Key1",
                                                 Label = "label",
                                                 Value = "value",
-                                                Type = Field.DataType.Text
+                                                Type = GeneralField.DataType.Text
                                         },
-                                        new Field
+                                        new GeneralField
                                         {
                                             AttributedValue = "AttributedValue",
                                             ChangeMessage = "ChangeMessage",
                                             CurrencyCode = "CurrencyCode",
-                                            DataDetectorTypes = new List<Field.DataDetector>
+                                            DataDetectorTypes = new List<GeneralField.DataDetector>
                                                 {
-                                                    Field.DataDetector.Address,
-                                                    Field.DataDetector.Link
+                                                    GeneralField.DataDetector.Address,
+                                                    GeneralField.DataDetector.Link
                                                 },
-                                                DateStyle = Field.DateStyleType.Long,
+                                                DateStyle = GeneralField.DateStyleType.Long,
                                                 IgnoresTimeZone = true,
                                                 IsDynamicValue = true,
                                                 IsRelative = true,
                                                 Key = "Key2",
                                                 Label = "label",
                                                 Value = "value",
-                                                Type = Field.DataType.Text
+                                                Type = GeneralField.DataType.Text
                                         }
                                 },
-                    BackFields = new List<Field>
+                    BackFields = new List<GeneralField>
                                     {
-                                        new Field
+                                        new GeneralField
                                         {
                                             AttributedValue = "AttributedValue",
                                             ChangeMessage = "ChangeMessage",
                                             CurrencyCode = "CurrencyCode",
-                                            DataDetectorTypes = new List<Field.DataDetector>
+                                            DataDetectorTypes = new List<GeneralField.DataDetector>
                                                 {
-                                                    Field.DataDetector.Address,
-                                                    Field.DataDetector.Link
+                                                    GeneralField.DataDetector.Address,
+                                                    GeneralField.DataDetector.Link
                                                 },
-                                                DateStyle = Field.DateStyleType.Long,
+                                                DateStyle = GeneralField.DateStyleType.Long,
                                                 IgnoresTimeZone = true,
                                                 IsDynamicValue = true,
                                                 IsRelative = true,
                                                 Key = "Key3",
                                                 Label = "label",
                                                 Value = "value",
-                                                Type = Field.DataType.Text
+                                                Type = GeneralField.DataType.Text
                                         }
                                     },
-                    HeaderFields = new List<Field>
+                    HeaderFields = new List<GeneralField>
                                         {
-                                            new Field
+                                            new GeneralField
                                         {
                                             AttributedValue = "AttributedValue",
                                             ChangeMessage = "ChangeMessage",
                                             CurrencyCode = "CurrencyCode",
-                                            DataDetectorTypes = new List<Field.DataDetector>
+                                            DataDetectorTypes = new List<GeneralField.DataDetector>
                                                 {
-                                                    Field.DataDetector.Address,
-                                                    Field.DataDetector.Link
+                                                    GeneralField.DataDetector.Address,
+                                                    GeneralField.DataDetector.Link
                                                 },
-                                                DateStyle = Field.DateStyleType.Long,
+                                                DateStyle = GeneralField.DateStyleType.Long,
                                                 IgnoresTimeZone = true,
                                                 IsDynamicValue = true,
                                                 IsRelative = true,
                                                 Key = "Key4",
                                                 Label = "label",
                                                 Value = "value",
-                                                Type = Field.DataType.Text
+                                                Type = GeneralField.DataType.Text
                                         }
                                         },
-                    PrimaryFields = new List<Field>
+                    PrimaryFields = new List<GeneralField>
                                             {
-                                                new Field
+                                                new GeneralField
                                         {
                                             AttributedValue = "AttributedValue",
                                             ChangeMessage = "ChangeMessage",
                                             CurrencyCode = "CurrencyCode",
-                                            DataDetectorTypes = new List<Field.DataDetector>
+                                            DataDetectorTypes = new List<GeneralField.DataDetector>
                                                 {
-                                                    Field.DataDetector.Address,
-                                                    Field.DataDetector.Link
+                                                    GeneralField.DataDetector.Address,
+                                                    GeneralField.DataDetector.Link
                                                 },
-                                                DateStyle = Field.DateStyleType.Long,
+                                                DateStyle = GeneralField.DateStyleType.Long,
                                                 IgnoresTimeZone = true,
                                                 IsDynamicValue = true,
                                                 IsRelative = true,
                                                 Key = "Key5",
                                                 Label = "label",
                                                 Value = "value",
-                                                Type = Field.DataType.Text
+                                                Type = GeneralField.DataType.Text
                                         }
                                             },
-                    SecondaryFields = new List<Field>
+                    SecondaryFields = new List<GeneralField>
                                                 {
-                                                    new Field{
+                                                    new GeneralField{
                                             AttributedValue = "AttributedValue",
                                             ChangeMessage = "ChangeMessage",
                                             CurrencyCode = "CurrencyCode",
-                                            DataDetectorTypes = new List<Field.DataDetector>
+                                            DataDetectorTypes = new List<GeneralField.DataDetector>
                                                 {
-                                                    Field.DataDetector.Address,
-                                                    Field.DataDetector.Link
+                                                    GeneralField.DataDetector.Address,
+                                                    GeneralField.DataDetector.Link
                                                 },
-                                                DateStyle = Field.DateStyleType.Long,
+                                                DateStyle = GeneralField.DateStyleType.Long,
                                                 IgnoresTimeZone = true,
                                                 IsDynamicValue = true,
                                                 IsRelative = true,
                                                 Key = "Key6",
                                                 Label = "label",
                                                 Value = "value",
-                                                Type = Field.DataType.Text
+                                                Type = GeneralField.DataType.Text
                                                     }
                                                 },
                     TransitType = Transit.Air

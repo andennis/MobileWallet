@@ -14,10 +14,10 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
         [XmlArray(ElementName = "locations")]
         [XmlArrayItem(ElementName = "location")]
         [JsonProperty(PropertyName = "locations", NullValueHandling = NullValueHandling.Ignore)]
-        public List<Location> Locations { get; set; }
+        public List<GeneralLocation> Locations { get; set; }
     }
 
-    public class Location
+    public class GeneralLocation
     {
         [XmlElement(ElementName = "altitude")]
         [JsonProperty(PropertyName = "altitude", NullValueHandling = NullValueHandling.Ignore)]

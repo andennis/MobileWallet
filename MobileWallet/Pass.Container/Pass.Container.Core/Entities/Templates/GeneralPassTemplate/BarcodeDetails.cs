@@ -7,7 +7,7 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
     {
         [XmlElement(ElementName = "barcodeType")]
         [JsonProperty(PropertyName = "barcodeType", Required = Required.Always)]
-        public BarcodeType BarcodeType { get; set; }
+        public GeneralBarcodeType BarcodeType { get; set; }
 
         [XmlElement(ElementName = "encodedMessage")]
         [JsonProperty(PropertyName = "encodedMessage", Required = Required.Always)]
@@ -30,7 +30,7 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
         public string EncodingFormat { get; set; }
     }
 
-    public enum BarcodeType
+    public enum GeneralBarcodeType
     {
         [XmlEnum(Name = "pdf417Code")]
         Pdf417Code = 0,

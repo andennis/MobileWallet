@@ -39,6 +39,7 @@ namespace Pass.Container.Factory
         public static IApplePassProcessingService CreateAppleDevicePassProcessingService(IPassContainerConfig ptConfig, IFileStorageConfig fsConfig)
         {
             return _iocContainer.Resolve<IApplePassProcessingService>(
+                new DependencyOverride<IPassContainerConfig>(ptConfig),
                 new DependencyOverride<IDbConfig>(ptConfig),
                 new DependencyOverride<IFileStorageConfig>(fsConfig));
         }
