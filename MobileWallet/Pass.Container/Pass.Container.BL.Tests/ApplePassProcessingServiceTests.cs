@@ -21,20 +21,22 @@ namespace Pass.Container.BL.Tests
     [TestFixture]
     public class ApplePassProcessingServiceTests
     {
-        private IPassContainerUnitOfWork _pcUnitOfWork;
+        private readonly IPassContainerUnitOfWork _pcUnitOfWork;
         private readonly string _testPassTemplateDir;
         private readonly string _passTemplateFileName;
 
         //Repositories
-        private IRepository<PassTemplate> _repPassTemplate;
-        private IRepository<PassTemplateApple> _repPassTemplateApple;
-        private IRepository<PassField> _repPassField;
+        //private IRepository<PassTemplate> _repPassTemplate;
+        //private IRepository<PassTemplateApple> _repPassTemplateApple;
+        private readonly IRepository<PassField> _repPassField;
 
+        /*
         private string _deviceLibraryIdentifier;
         private string _passTypeIdentifier;
         private string _serialNumber;
         private string _pushToken;
         private string _authToken;
+        */
 
         public ApplePassProcessingServiceTests()
         {
@@ -43,8 +45,8 @@ namespace Pass.Container.BL.Tests
             _passTemplateFileName = TestHelper.PassContainerConfig.PassTemplateFileName;
 
             //Repositories
-            _repPassTemplate = _pcUnitOfWork.GetRepository<PassTemplate>();
-            _repPassTemplateApple = _pcUnitOfWork.GetRepository<PassTemplateApple>();
+            //_repPassTemplate = _pcUnitOfWork.GetRepository<PassTemplate>();
+            //_repPassTemplateApple = _pcUnitOfWork.GetRepository<PassTemplateApple>();
             _repPassField = _pcUnitOfWork.GetRepository<PassField>();
         }
 

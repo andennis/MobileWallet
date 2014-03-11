@@ -40,12 +40,14 @@ namespace Pass.Container.BL.Tests
         public virtual void InitEachTest()
         {
             _pcUnitOfWork = TestHelper.PassContainerUnitOfWork;
+
             //Repositories
             _repPassTemplate = _pcUnitOfWork.GetRepository<PassTemplate>();
             _repPassTemplateApple = _pcUnitOfWork.GetRepository<PassTemplateApple>();
             _repPassField = _pcUnitOfWork.GetRepository<PassField>();
             if (Directory.Exists(_testPassTemplateDir))
                 Directory.Delete(_testPassTemplateDir, true);
+
             Directory.CreateDirectory(_testPassTemplateDir);
         }
 
@@ -98,6 +100,7 @@ namespace Pass.Container.BL.Tests
                 passTemplateId = passTemplateService.CreatePassTemlate(_testPassTemplateDir);
                 Assert.Greater(passTemplateId, 0);
             }
+
             //Check pass template DB record
             PassTemplate passTemplate = _repPassTemplate.Find(passTemplateId);
             Assert.IsNotNull(passTemplate);

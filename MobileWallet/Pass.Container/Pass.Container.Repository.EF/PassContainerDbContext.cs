@@ -35,8 +35,7 @@ namespace Pass.Container.Repository.EF
             modelBuilder.Entity<PassEntities.PassField>().Property(x => x.Version).IsConcurrencyToken();
 
             modelBuilder.Entity<PassEntities.Pass>().ToTable("Pass", DbScheme);
-            modelBuilder.Entity<PassEntities.Pass>().HasRequired(x => x.Template).WithMany(x => x.Passes)
-                .Map(x => x.MapKey("PassTemplateId")).WillCascadeOnDelete(false);
+            modelBuilder.Entity<PassEntities.Pass>().HasRequired(x => x.Template).WithMany(x => x.Passes).HasForeignKey(x => x.PassTemplateId).WillCascadeOnDelete(false);
             modelBuilder.Entity<PassEntities.Pass>().Property(x => x.AuthToken).IsRequired().HasMaxLength(400);
             modelBuilder.Entity<PassEntities.Pass>().Property(x => x.SerialNumber).IsRequired().HasMaxLength(400);
             modelBuilder.Entity<PassEntities.Pass>().Property(x => x.PassTypeIdentifier).IsRequired().HasMaxLength(400);
@@ -45,8 +44,8 @@ namespace Pass.Container.Repository.EF
             modelBuilder.Entity<PassEntities.PassFieldValue>().ToTable("PassFieldValue", DbScheme);
             modelBuilder.Entity<PassEntities.PassFieldValue>().HasRequired(x => x.Pass).WithMany(x => x.FieldValues).HasForeignKey(x => x.PassId);
             modelBuilder.Entity<PassEntities.PassFieldValue>().HasRequired(x => x.PassField).WithMany(x => x.FieldValues).HasForeignKey(x => x.PassFieldId).WillCascadeOnDelete(false);
-            modelBuilder.Entity<PassEntities.PassFieldValue>().Property(x => x.Label).IsOptional().HasMaxLength(400);
-            modelBuilder.Entity<PassEntities.PassFieldValue>().Property(x => x.Value).IsOptional().HasMaxLength(400);
+            modelBuilder.Entity<PassEntities.PassFieldValue>().Property(x => x.Label).HasMaxLength(400);
+            modelBuilder.Entity<PassEntities.PassFieldValue>().Property(x => x.Value).HasMaxLength(400);
             modelBuilder.Entity<PassEntities.PassFieldValue>().Property(x => x.Version).IsConcurrencyToken();
 
             modelBuilder.Entity<PassEntities.PassTemplateNative>().ToTable("PassTemplateNative", DbScheme);

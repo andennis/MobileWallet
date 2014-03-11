@@ -42,7 +42,7 @@ namespace Pass.Container.BL.NativePassTemplateGenerators
             get { return ClientType.Apple; }
         }
 
-        public bool Generate(GeneralPassTemplate passTemplate, string storageItemPath)
+        public void Generate(GeneralPassTemplate passTemplate, string storageItemPath)
         {
             //Create Apple pass template
             ApplePassTemplate applePassTemplate = CreateApplePassTemplate(passTemplate);
@@ -52,9 +52,11 @@ namespace Pass.Container.BL.NativePassTemplateGenerators
             string applePassTemplateFolderPath = Path.Combine(storageItemPath, ApplePassTemplateFolderName);
             if (!Directory.Exists(applePassTemplateFolderPath))
                 Directory.CreateDirectory(applePassTemplateFolderPath);
+
             string applePassTemplateFilePath = Path.Combine(applePassTemplateFolderPath, ApplePassTemplateFileName);
             if (File.Exists(applePassTemplateFilePath))
                 File.Delete(applePassTemplateFilePath);
+
             File.WriteAllText(applePassTemplateFilePath, applePassTemplateJson);
 
             //Copy Apple pass template files into Apple pass template folder
@@ -67,10 +69,9 @@ namespace Pass.Container.BL.NativePassTemplateGenerators
                 string filePath = file.Replace(_ptConfig.PassTemplateFolderName, ApplePassTemplateFolderName);
                 if (File.Exists(filePath))
                     File.Delete(filePath);
+
                 File.Copy(file, filePath);
             }
-
-            return true;
         }
 
         private ApplePassTemplate CreateApplePassTemplate(GeneralPassTemplate passTemplate)

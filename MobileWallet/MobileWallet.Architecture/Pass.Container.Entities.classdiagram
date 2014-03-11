@@ -221,6 +221,9 @@
           <property Id="05c849e9-a073-4d45-96f5-8ee4dd516272" name="Value" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="a1d868d8-8107-448d-8d6d-a518fccb9b28" />
           </property>
+          <property Id="71b7636e-f950-4f4c-8f53-640bc9dbafe4" name="Label" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="62dbecd8-9bd8-4c6c-b8ef-6ff3e11a32b3" />
+          </property>
         </ownedAttributesInternal>
       </class>
     </logicalClassDesignerModelHasTypes>

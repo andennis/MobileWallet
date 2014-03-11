@@ -6,6 +6,6 @@ namespace Pass.Container.Core
     public interface INativePassTemplateGenerator
     {
         ClientType ClientType { get; }
-        bool Generate(GeneralPassTemplate passTemplate, string storageItemPath);
+        void Generate(GeneralPassTemplate passTemplate, string storageItemPath);
     }
 }

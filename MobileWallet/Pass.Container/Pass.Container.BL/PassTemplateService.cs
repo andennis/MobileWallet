@@ -65,19 +65,13 @@ namespace Pass.Container.BL
             var passTemplateApple = new PassTemplateApple { PassTemplateId = passTemplate.PassTemplateId, PassTypeId = ""};
             foreach (var dynamicFieldName in dynamicFields)
             {
-                _repPassField.Insert(new PassField { Name = dynamicFieldName, Template = passTemplate });
+                _repPassField.Insert(new PassField { Name = dynamicFieldName, PassTemplateId = passTemplate.PassTemplateId });
             }
             _repPassTemplate.Insert(passTemplate);
             _repPassTemplateApple.Insert(passTemplateApple);
             _pcUnitOfWork.Save();
 
-            //Get pass template id
-            PassTemplate template = _repPassTemplate.Find(passTemplate.PassTemplateId);
-            if (template == null)
-                throw new PassTemplateException("Pass template creation failed.");
-            int passTemplateId = template.PassTemplateId;
-
-            return passTemplateId;
+            return passTemplate.PassTemplateId;
         }
         public void DeletePassTemplate(int passTemplateId)
         {

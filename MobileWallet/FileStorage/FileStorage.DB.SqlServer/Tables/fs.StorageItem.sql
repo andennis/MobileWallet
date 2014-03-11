@@ -5,10 +5,15 @@
     [Size]          BIGINT         NULL,
     [Status]        INT            NOT NULL,
     [ItemType]      INT            NOT NULL,
+    [Version]       INT            NOT NULL,
+    [CreatedDate]   DATETIME       NOT NULL,
+    [UpdatedDate]   DATETIME       NOT NULL,
     [ParentId]      INT            NOT NULL,
     CONSTRAINT [PK_fs.StorageItem] PRIMARY KEY CLUSTERED ([StorageItemId] ASC),
     CONSTRAINT [FK_fs.StorageItem_fs.FolderItem_ParentId] FOREIGN KEY ([ParentId]) REFERENCES [fs].[FolderItem] ([FolderItemId]) ON DELETE CASCADE
 );
+
+
 
 
 GO
