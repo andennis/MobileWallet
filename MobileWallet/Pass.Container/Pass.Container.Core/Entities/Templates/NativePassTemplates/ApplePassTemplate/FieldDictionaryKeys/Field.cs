@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys
+namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.FieldDictionaryKeys
 {
     public class Field
     {

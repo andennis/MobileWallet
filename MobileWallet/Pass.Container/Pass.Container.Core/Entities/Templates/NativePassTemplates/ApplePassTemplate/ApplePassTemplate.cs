@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using Newtonsoft.Json;
-using Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Lower_Level_Keys;
+using Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.LowerLevelKeys;
 
 namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTemplate
 {

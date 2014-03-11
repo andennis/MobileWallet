@@ -6,8 +6,8 @@ using Pass.Container.Core;
 using Pass.Container.Core.Entities.Enums;
 using Pass.Container.Core.Entities.Templates.GeneralPassTemplate;
 using Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTemplate;
-using Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Field_Dictionary_Keys;
-using Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Lower_Level_Keys;
+using Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.FieldDictionaryKeys;
+using Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.LowerLevelKeys;
 
 namespace Pass.Container.BL.NativePassTemplateGenerators
 {

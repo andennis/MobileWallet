@@ -50,11 +50,11 @@
     <Compile Include="Entities\Enums\PassProcessingStatus.cs" />
     <Compile Include="Entities\Enums\TemplateStatus.cs" />
     <Compile Include="Entities\PassTokenInfo.cs" />
-    <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Field_Dictionary_Keys\Field.cs" />
-    <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Lower_Level_Keys\Barcode.cs" />
-    <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Lower_Level_Keys\Beacon.cs" />
-    <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Lower_Level_Keys\Location.cs" />
-    <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\Lower_Level_Keys\PassStructure.cs" />
+    <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\FieldDictionaryKeys\Field.cs" />
+    <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\LowerLevelKeys\Barcode.cs" />
+    <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\LowerLevelKeys\Beacon.cs" />
+    <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\LowerLevelKeys\Location.cs" />
+    <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\LowerLevelKeys\PassStructure.cs" />
     <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\ApplePassTemplate.cs" />
     <Compile Include="Entities\ClientDeviceApple.cs" />
     <Compile Include="Entities\ClientDevice.cs" />

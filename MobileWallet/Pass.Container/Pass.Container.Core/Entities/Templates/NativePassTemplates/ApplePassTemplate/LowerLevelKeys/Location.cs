@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.Lower_Level_Keys
+namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.LowerLevelKeys
 {
     //Information about a location
     public class Location
