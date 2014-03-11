@@ -14,6 +14,7 @@ namespace Pass.Container.BL.NativePassGenerators
     public class ApplePassGenerator : BasePassGenerator
     {
         private ApplePassGeneratorHelper _generatorHelper;
+        private const string ApplePassTemplateFolderName = "ApplePassTemplate";
 
         public ApplePassGenerator(IPassContainerUnitOfWork pcUnitOfWork, IFileStorageService fsService, Core.Entities.Pass pass)
             :base(pcUnitOfWork, fsService, pass)
@@ -33,6 +34,8 @@ namespace Pass.Container.BL.NativePassGenerators
 
             if (storageItemPath == null)
                 return null;
+
+
             return null;
         }
     }

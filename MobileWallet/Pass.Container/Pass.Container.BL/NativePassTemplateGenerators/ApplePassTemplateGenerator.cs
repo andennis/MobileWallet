@@ -237,9 +237,15 @@ namespace Pass.Container.BL.NativePassTemplateGenerators
             if (templatefield.DataDetectorTypes != null)
                 field.DataDetectorTypes = GetAppleDataDetectorTypes(templatefield.DataDetectorTypes);
             field.Key = templatefield.Key;
-            if (!string.IsNullOrEmpty(templatefield.Label))
-                field.Label = templatefield.Label;
-            field.Value = templatefield.Value;
+            if (templatefield.IsDynamicLabel)
+                field.Label = "$$" + templatefield.Key + "$$";
+            else
+                if (!string.IsNullOrEmpty(templatefield.Label))
+                    field.Label = templatefield.Label;
+            if (templatefield.IsDynamicValue)
+                field.Value = "$$" + templatefield.Key + "$$";
+            else
+                field.Value = templatefield.Value;
             field.TextAlignment = GetAppleTextAlligment(templatefield.TextAlignment);
 
             if (templatefield.Type == Field.DataType.Number)

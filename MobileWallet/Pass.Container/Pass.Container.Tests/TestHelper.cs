@@ -160,7 +160,6 @@ namespace Pass.Container.BL.Tests
                                                     Field.DataDetector.Link
                                                 },
                                                 DateStyle = Field.DateStyleType.Long,
-                                                DefaultValue = "DefaultValue",
                                                 IgnoresTimeZone = true,
                                                 IsDynamicValue = true,
                                                 IsRelative = true,
@@ -180,7 +179,6 @@ namespace Pass.Container.BL.Tests
                                                     Field.DataDetector.Link
                                                 },
                                                 DateStyle = Field.DateStyleType.Long,
-                                                DefaultValue = "DefaultValue",
                                                 IgnoresTimeZone = true,
                                                 IsDynamicValue = true,
                                                 IsRelative = true,
@@ -203,7 +201,6 @@ namespace Pass.Container.BL.Tests
                                                     Field.DataDetector.Link
                                                 },
                                                 DateStyle = Field.DateStyleType.Long,
-                                                DefaultValue = "DefaultValue",
                                                 IgnoresTimeZone = true,
                                                 IsDynamicValue = true,
                                                 IsRelative = true,
@@ -226,7 +223,6 @@ namespace Pass.Container.BL.Tests
                                                     Field.DataDetector.Link
                                                 },
                                                 DateStyle = Field.DateStyleType.Long,
-                                                DefaultValue = "DefaultValue",
                                                 IgnoresTimeZone = true,
                                                 IsDynamicValue = true,
                                                 IsRelative = true,
@@ -249,7 +245,6 @@ namespace Pass.Container.BL.Tests
                                                     Field.DataDetector.Link
                                                 },
                                                 DateStyle = Field.DateStyleType.Long,
-                                                DefaultValue = "DefaultValue",
                                                 IgnoresTimeZone = true,
                                                 IsDynamicValue = true,
                                                 IsRelative = true,
@@ -271,7 +266,6 @@ namespace Pass.Container.BL.Tests
                                                     Field.DataDetector.Link
                                                 },
                                                 DateStyle = Field.DateStyleType.Long,
-                                                DefaultValue = "DefaultValue",
                                                 IgnoresTimeZone = true,
                                                 IsDynamicValue = true,
                                                 IsRelative = true,

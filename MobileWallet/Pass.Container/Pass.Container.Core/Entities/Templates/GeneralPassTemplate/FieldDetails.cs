@@ -90,10 +90,6 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
         [JsonProperty(PropertyName = "isDynamicLabel", NullValueHandling = NullValueHandling.Ignore)]
         public bool IsDynamicLabel { get; set; }
 
-        [XmlElement(ElementName = "defaultLabel")]
-        [JsonProperty(PropertyName = "defaultLabel", NullValueHandling = NullValueHandling.Ignore)]
-        public string DefaultLabel { get; set; }
-
         [XmlElement(ElementName = "value")]
         [JsonProperty(PropertyName = "value", Required = Required.Always)]
         public string Value { get; set; }
@@ -101,10 +97,6 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
         [XmlElement(ElementName = "isDynamicValue")]
         [JsonProperty(PropertyName = "isDynamicValue", NullValueHandling = NullValueHandling.Ignore)]
         public bool IsDynamicValue { get; set; }
-
-        [XmlElement(ElementName = "defaultValue")]
-        [JsonProperty(PropertyName = "defaultValue", NullValueHandling = NullValueHandling.Ignore)]
-        public string DefaultValue { get; set; }
 
         [XmlElement(ElementName = "textAlignment")]
         [JsonProperty(PropertyName = "textAlignment", NullValueHandling = NullValueHandling.Ignore)]
