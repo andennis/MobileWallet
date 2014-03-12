@@ -104,20 +104,17 @@ namespace Pass.Container.BL.Tests
             //Check pass template DB record
             PassTemplate passTemplate = _repPassTemplate.Find(passTemplateId);
             Assert.IsNotNull(passTemplate);
-            Assert.AreEqual(1, passTemplate.Version);
             Assert.AreEqual(generalPassTemplate.TemplateName, passTemplate.Name);
             Assert.AreEqual(TemplateStatus.Active, passTemplate.Status);
 
             //Check native pass template
             IQueryable<PassTemplateApple> passTemplatesApple =
                 _repPassTemplateApple.Query().Filter(x => x.PassTemplateId == passTemplateId).Get();
-            Assert.Greater(passTemplatesApple.Count(), 0);
             Assert.AreEqual(1, passTemplatesApple.Count());
 
             //Check pass dynamic fields
-            IQueryable<PassField> passFields =
-                _repPassField.Query().Filter(x => x.PassTemplateId == passTemplateId).Get();
-            Assert.Greater(passFields.Count(), 0);
+            IQueryable<PassField> passFields = _repPassField.Query().Filter(x => x.PassTemplateId == passTemplateId).Get();
+            CollectionAssert.IsNotEmpty(passFields);
 
             //Check file storage
             string storageItemPath;

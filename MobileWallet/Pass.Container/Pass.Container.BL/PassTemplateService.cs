@@ -200,24 +200,25 @@ namespace Pass.Container.BL
             {
                 _fsService.PutToStorageFolder(templateStorageItemId, file, _ptConfig.PassTemplateFolderName, true);
             }
+
             return templateStorageItemId;
         }
         private List<string> GetDynamicFields(GeneralPassTemplate generalPassTemplate)
         {
             var dynamicFields = new List<string>();
             //Get dynamic fields from AuxiliaryFields
-            GetDynamicFields(generalPassTemplate.FieldDetails.AuxiliaryFields, ref dynamicFields);
+            GetDynamicFields(generalPassTemplate.FieldDetails.AuxiliaryFields, dynamicFields);
             //Get dynamic fields from BackFields
-            GetDynamicFields(generalPassTemplate.FieldDetails.BackFields, ref dynamicFields);
+            GetDynamicFields(generalPassTemplate.FieldDetails.BackFields, dynamicFields);
             //Get dynamic fields from HeaderFields
-            GetDynamicFields(generalPassTemplate.FieldDetails.HeaderFields, ref dynamicFields);
+            GetDynamicFields(generalPassTemplate.FieldDetails.HeaderFields, dynamicFields);
             //Get dynamic fields from PrimaryFields
-            GetDynamicFields(generalPassTemplate.FieldDetails.PrimaryFields, ref dynamicFields);
+            GetDynamicFields(generalPassTemplate.FieldDetails.PrimaryFields, dynamicFields);
             //Get dynamic fields from SecondaryFields
-            GetDynamicFields(generalPassTemplate.FieldDetails.SecondaryFields, ref dynamicFields);
+            GetDynamicFields(generalPassTemplate.FieldDetails.SecondaryFields, dynamicFields);
             return dynamicFields;
         }
-        private void GetDynamicFields(IEnumerable<GeneralField> fields, ref List<string> dynamicFields)
+        private void GetDynamicFields(IEnumerable<GeneralField> fields, List<string> dynamicFields)
         {
             dynamicFields.AddRange(
                 from field in fields

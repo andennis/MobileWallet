@@ -79,6 +79,10 @@
       <Project>{F36371D6-812F-49F5-9E9B-043265660647}</Project>
       <Name>Common.Repository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\FileStorage\FileStorage.BL.Tests\FileStorage.BL.Tests.csproj">
+      <Project>{daef4d0d-c211-4dcd-9eb5-9736c66adf61}</Project>
+      <Name>FileStorage.BL.Tests</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\FileStorage\FileStorage.BL\FileStorage.BL.csproj">
       <Project>{F067DA74-E48F-4DE7-85D4-1217BB3670E3}</Project>
       <Name>FileStorage.BL</Name>

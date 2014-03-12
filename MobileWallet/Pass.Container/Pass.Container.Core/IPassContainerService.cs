@@ -6,7 +6,7 @@ namespace Pass.Container.Core
 {
     public interface IPassContainerService : IDisposable
     {
-        int CreatePass(int passTemplateId, IEnumerable<PassFieldValue> passFieldValues);
-        void UpdatePassFields(int passId, IEnumerable<PassFieldValue> passFieldValues);
+        int CreatePass(int passTemplateId, IList<PassFieldValue> passFieldValues, DateTime? expDate = null);
+        void UpdatePassFields(int passId, IList<PassFieldValue> passFieldValues);
     }
 }

@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using FileStorage.Core;
-using FileStorage.Repository.EF;
 using NUnit.Framework;
 
 namespace FileStorage.BL.Tests
@@ -24,8 +23,7 @@ namespace FileStorage.BL.Tests
         [SetUp]
         public void InitEachTest()
         {
-            ClearFileStorageFolder();
-            ClearFileStorageDb();
+            FsTestHelper.ClearFileStorage(_fsConfig);
         }
 
         [Test]
@@ -316,24 +314,6 @@ namespace FileStorage.BL.Tests
         private IFileStorageService GetFileStorageService()
         {
             return Factory.FileStorageFactory.Create(_fsConfig);
-        }
-
-        private void ClearFileStorageFolder()
-        {
-            string[] dirs = Directory.GetDirectories(_fsConfig.StoragePath);
-            foreach (string dir in dirs)
-                Directory.Delete(dir, true);
-
-            string[] files = Directory.GetFiles(_fsConfig.StoragePath);
-            foreach (string file in files)
-                File.Delete(file);
-        }
-        private void ClearFileStorageDb()
-        {
-            using (IFileStorageUnitOfWork unitOfWork = new FileStorageUnitOfWork(_fsConfig))
-            {
-                unitOfWork.FileStorageRepository.ClearFileStorage();
-            }
         }
 
         private int GetFolderCount(string path)

@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using Common.Extensions;
 using FileStorage.BL;
+using FileStorage.BL.Tests;
 using FileStorage.Core;
 using FileStorage.Repository.EF;
 using Pass.Container.Core;
@@ -23,17 +24,18 @@ namespace Pass.Container.BL.Tests
             //Prepare pass template source
             GeneralPassTemplate generalTemplate = GetPassTemplateObject();
             generalTemplate.FieldDetails.AuxiliaryFields.Add(new GeneralField
-            {
-                Key = "TestDynamicField",
-                Value = "TestDynamicFieldValue",
-                Type = GeneralField.DataType.Text,
-                IsDynamicValue = true
-            });
+                    {
+                        Key = "TestDynamicField",
+                        Value = "TestDynamicFieldValue",
+                        Type = GeneralField.DataType.Text,
+                        IsDynamicValue = true
+                    });
+
             string path = Path.Combine(testPassTemplateDir, passTemplateFileName);
             if (File.Exists(path))
                 File.Delete(path);
-            generalTemplate.SaveToXml(path);
 
+            generalTemplate.SaveToXml(path);
             return generalTemplate;
         }
 
@@ -279,6 +281,11 @@ namespace Pass.Container.BL.Tests
                 }
             };
             return template;
+        }
+
+        public static void ClearFileStorage(IFileStorageConfig fsConfig)
+        {
+            FsTestHelper.ClearFileStorage(fsConfig);
         }
     }
 }
