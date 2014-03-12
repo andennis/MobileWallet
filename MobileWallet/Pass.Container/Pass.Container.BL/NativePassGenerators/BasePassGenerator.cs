@@ -32,12 +32,13 @@ namespace Pass.Container.BL.NativePassGenerators
             _repPassFieldValue = _pcUnitOfWork.GetRepository<PassFieldValue>();
         }
 
-        public string GetStorageItemPath()
+        public string GetStorageItemPath(ref DateTime lastUpdateDateTime)
         {
             string storageItemPath = null;
             PassTemplate passTemplate = _repPassTemplate.Query().Filter(x => x.PassTemplateId == _pass.PassTemplateId).Get().FirstOrDefault();
             if (passTemplate != null)
             {
+                lastUpdateDateTime = passTemplate.UpdatedDate;
                 storageItemPath = _fsService.GetStorageItemPath(passTemplate.PackageId);
             }
             return storageItemPath;

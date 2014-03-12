@@ -96,5 +96,13 @@ namespace Pass.Container.BL.Helpers
             signedCms.ComputeSignature(signer);
             return signedCms.Encode();
         }
+
+        public void SignPassFiles(string dirPath, X509Certificate2 certificate)
+        {
+            string manifestJson = GetManifestJson(dirPath);
+            GenerateManifestFile(dirPath, manifestJson);
+            byte[] signatureBytes = SignByCertificate(manifestJson, certificate);
+            File.WriteAllBytes(Path.Combine(dirPath, "signature"), signatureBytes);
+        }
     }
 }
