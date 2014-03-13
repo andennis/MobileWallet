@@ -252,7 +252,7 @@ namespace Pass.Processing.Web.Controllers
 
         private IApplePassProcessingService GetAppleDevicePassProcessingService()
         {
-            return PassContainerFactory.CreateAppleDevicePassProcessingService(new PassContainerConfig(), new FileStorageConfig());
+            return PassContainerFactory.CreateApplePassProcessingService(new PassContainerConfig(), new FileStorageConfig());
         }
     }
 }

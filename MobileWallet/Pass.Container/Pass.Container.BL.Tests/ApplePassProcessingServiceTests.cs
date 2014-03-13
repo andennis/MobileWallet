@@ -113,7 +113,7 @@ namespace Pass.Container.BL.Tests
 
         private IApplePassProcessingService GetAppleDevicePassProcessingService()
         {
-            return PassContainerFactory.CreateAppleDevicePassProcessingService(new PassContainerConfig(), new FileStorageConfig());
+            return PassContainerFactory.CreateApplePassProcessingService(new PassContainerConfig(), new FileStorageConfig());
         }
 
         private IFileStorageService GetFileStorageService()

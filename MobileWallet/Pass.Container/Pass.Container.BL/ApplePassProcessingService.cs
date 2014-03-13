@@ -5,7 +5,6 @@ using Common.Repository;
 using FileStorage.Core;
 using Pass.Container.BL.NativePassGenerators;
 using Pass.Container.Core;
-using Pass.Container.Core.Entities;
 using Pass.Container.Core.Entities.Enums;
 using Pass.Container.Repository.Core;
 using Pass.Container.Repository.Core.Entities;
@@ -22,7 +21,7 @@ namespace Pass.Container.BL
         private readonly IRepository<PassTemplate> _repPassTemplate;
         private readonly IRepository<PassTemplateNative> _repTemplateNative;
         private readonly IRepository<PassTemplateApple> _repPassTemplateApple;
-        private readonly IRepository<PassFieldInfo> _repPassField;
+        private readonly IRepository<PassField> _repPassField;
         private readonly IRepository<PassFieldValue> _repPassFieldValue;
         private readonly IRepository<RepEntities.Pass> _repPass;
         private readonly IRepository<Registration> _repRegistration;
@@ -38,7 +37,7 @@ namespace Pass.Container.BL
             _repPassTemplate = _pcUnitOfWork.GetRepository<PassTemplate>();
             _repTemplateNative = _pcUnitOfWork.GetRepository<PassTemplateNative>();
             _repPassTemplateApple = _pcUnitOfWork.GetRepository<PassTemplateApple>();
-            _repPassField = _pcUnitOfWork.GetRepository<PassFieldInfo>();
+            _repPassField = _pcUnitOfWork.GetRepository<PassField>();
             _repPassFieldValue = _pcUnitOfWork.GetRepository<PassFieldValue>();
             _repPass = _pcUnitOfWork.GetRepository<RepEntities.Pass>();
             _repRegistration = _pcUnitOfWork.GetRepository<Registration>();
