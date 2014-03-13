@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Http;
 using Common.Extensions;
@@ -187,10 +189,10 @@ namespace Pass.Processing.Web.Controllers
                     string authToken = authHeader.Replace("ApplePass ", String.Empty);
 
                     PassProcessingStatus status;
+                    string pkpassFilePath = null;
                     using (IApplePassProcessingService passProcessingService = GetAppleDevicePassProcessingService())
                     {
-                        ////TODO GET PASS STREAM
-                        passProcessingService.GetPass(passTypeIdentifier, serialNumber, authToken, out status);
+                        pkpassFilePath = passProcessingService.GetPass(passTypeIdentifier, serialNumber, authToken, out status);
                     }
 
                     //Support standard HTTP caching on this endpoint: check for the If-Modified-Since header and return HTTP
@@ -200,7 +202,15 @@ namespace Pass.Processing.Web.Controllers
 
                     //If request is authorized, return HTTP status 200 with a payload of the pass data.
                     if (status == PassProcessingStatus.Succeed)
+                    {
                         response = Request.CreateResponse(HttpStatusCode.OK);
+                        if (pkpassFilePath != null)
+                        {
+                            var stream = new FileStream(pkpassFilePath, FileMode.Open);
+                            response.Content = new StreamContent(stream);
+                            response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+                        }
+                    }
 
                     if (status == PassProcessingStatus.Unauthorized)
                         response = Request.CreateResponse(HttpStatusCode.Unauthorized);
@@ -213,12 +223,6 @@ namespace Pass.Processing.Web.Controllers
                 }
                 else//If the request is not authorized, return HTTP status 401
                     response = Request.CreateResponse(HttpStatusCode.Unauthorized);
-
-                //var stream = new FileStream(path, FileMode.Open);
-                //result.Content = new StreamContent(stream);
-                //result.Content.Headers.ContentType =
-                //    new MediaTypeHeaderValue("application/octet-stream");
-                //return result;
             }
             catch
             {

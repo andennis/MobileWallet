@@ -220,14 +220,14 @@ namespace Pass.Container.BL
             return updatedPasses;
         }
 
-        public void GetPass(string passTypeIdentifier, string serialNumber, string authToken, out PassProcessingStatus status)
+        public string GetPass(string passTypeIdentifier, string serialNumber, string authToken, out PassProcessingStatus status)
         {
             //Authenticate
             bool isAuthenticate = Authenticate(authToken);
             if (!isAuthenticate)
             {
                 status = PassProcessingStatus.Unauthorized;
-                return;
+                return null;
             }
 
             //Find pass
@@ -239,12 +239,14 @@ namespace Pass.Container.BL
             if (pass == null)
             {
                 status = PassProcessingStatus.NotFound;
-                return;
+                return null;
             }
 
-            //Todo generate pass
-            GetPass(pass);
+            var passGenerator = new ApplePassGenerator(_config, _pcUnitOfWork, _fsService, pass);
+            string pkpassFilePath = passGenerator.GeneratePass();
+
             status = PassProcessingStatus.Succeed;
+            return pkpassFilePath;
         }
 
         public void Log(string logMessage)
@@ -264,13 +266,7 @@ namespace Pass.Container.BL
                 return false;
             return true;
         }
-
-        private void GetPass(Core.Entities.Pass pass)
-        {
-            var passGenerator = new ApplePassGenerator(_config, _pcUnitOfWork, _fsService, pass);
-           passGenerator.GeneratePass();
-        }
-
+       
         #region IDisposable
         public void Dispose()
         {

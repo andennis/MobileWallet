@@ -9,7 +9,7 @@ namespace Pass.Container.Core
         void RegisterDevice(string deviceLibraryIdentifier, string passTypeIdentifier, string serialNumber, string pushToken, string authToken, out PassProcessingStatus status);
         void UnregisterDevice(string deviceLibraryIdentifier, string passTypeIdentifier, string serialNumber, string pushToken, string authToken, out PassProcessingStatus status);
         IList<string> GetSerialNumbersOfPasses(string deviceLibraryIdentifier, string passTypeIdentifier, ref DateTime lastUpdated, out PassProcessingStatus status, DateTime? passesUpdatedSince = null);
-        void GetPass(string passTypeIdentifier, string serialNumber, string authToken, out PassProcessingStatus status);
+        string GetPass(string passTypeIdentifier, string serialNumber, string authToken, out PassProcessingStatus status);
         void Log(string logMessage);
     }
 }

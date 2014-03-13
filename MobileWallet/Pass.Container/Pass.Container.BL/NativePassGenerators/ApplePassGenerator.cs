@@ -23,8 +23,8 @@ namespace Pass.Container.BL.NativePassGenerators
         private const string ApplePassTempFolderName = "Apple";
         private const string ApplePassTemplateJson = "pass.json";
         private readonly IPassContainerConfig _config;
-        private Core.Entities.Pass _pass;
-        private ApplePassGeneratorHelper _generatorHelper;
+        private readonly Core.Entities.Pass _pass;
+        private readonly ApplePassGeneratorHelper _generatorHelper;
 
         public ApplePassGenerator(IPassContainerConfig config, IPassContainerUnitOfWork pcUnitOfWork, IFileStorageService fsService, Core.Entities.Pass pass)
             :base(pcUnitOfWork, fsService, pass)
