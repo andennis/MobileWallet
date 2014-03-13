@@ -1,8 +1,7 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Common.Repository;
 
-namespace Pass.Container.Core.Entities
+namespace Pass.Container.Repository.Core.Entities
 {
     public sealed class PassField : EntityVersionable
     {

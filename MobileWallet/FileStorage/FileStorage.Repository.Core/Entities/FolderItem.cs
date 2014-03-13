@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Common.Repository;
 
-namespace FileStorage.Core.Entities
+namespace FileStorage.Repository.Core.Entities
 {
     public class FolderItem : EntityVersionable
     {

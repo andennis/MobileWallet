@@ -1,7 +1,7 @@
 ﻿using Common.Repository;
-using FileStorage.Core.Entities;
+using FileStorage.Repository.Core.Entities;
 
-namespace FileStorage.Core
+namespace FileStorage.Repository.Core
 {
     public interface IFileStorageRepository : IRepository<FolderItem>
     {

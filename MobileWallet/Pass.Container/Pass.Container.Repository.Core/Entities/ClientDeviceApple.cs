@@ -1,5 +1,4 @@
-﻿
-namespace Pass.Container.Core.Entities
+﻿namespace Pass.Container.Repository.Core.Entities
 {
     public class ClientDeviceApple : ClientDevice
     {

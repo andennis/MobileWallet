@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using FileStorage.Core;
+using FileStorage.Repository.Core;
 using FileStorage.Repository.EF;
 
 namespace FileStorage.BL.Tests

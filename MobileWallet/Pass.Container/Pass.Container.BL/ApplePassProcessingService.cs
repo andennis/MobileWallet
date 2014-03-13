@@ -7,6 +7,9 @@ using Pass.Container.BL.NativePassGenerators;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
 using Pass.Container.Core.Entities.Enums;
+using Pass.Container.Repository.Core;
+using Pass.Container.Repository.Core.Entities;
+using RepEntities = Pass.Container.Repository.Core.Entities;
 
 namespace Pass.Container.BL
 {
@@ -19,9 +22,9 @@ namespace Pass.Container.BL
         private readonly IRepository<PassTemplate> _repPassTemplate;
         private readonly IRepository<PassTemplateNative> _repTemplateNative;
         private readonly IRepository<PassTemplateApple> _repPassTemplateApple;
-        private readonly IRepository<PassField> _repPassField;
+        private readonly IRepository<PassFieldInfo> _repPassField;
         private readonly IRepository<PassFieldValue> _repPassFieldValue;
-        private readonly IRepository<Core.Entities.Pass> _repPass;
+        private readonly IRepository<RepEntities.Pass> _repPass;
         private readonly IRepository<Registration> _repRegistration;
         private readonly IRepository<ClientDeviceApple> _repClientDeviceApple;
 
@@ -35,9 +38,9 @@ namespace Pass.Container.BL
             _repPassTemplate = _pcUnitOfWork.GetRepository<PassTemplate>();
             _repTemplateNative = _pcUnitOfWork.GetRepository<PassTemplateNative>();
             _repPassTemplateApple = _pcUnitOfWork.GetRepository<PassTemplateApple>();
-            _repPassField = _pcUnitOfWork.GetRepository<PassField>();
-            _repPassFieldValue = _pcUnitOfWork.GetRepository<PassFieldValue>(); 
-            _repPass = _pcUnitOfWork.GetRepository<Core.Entities.Pass>();
+            _repPassField = _pcUnitOfWork.GetRepository<PassFieldInfo>();
+            _repPassFieldValue = _pcUnitOfWork.GetRepository<PassFieldValue>();
+            _repPass = _pcUnitOfWork.GetRepository<RepEntities.Pass>();
             _repRegistration = _pcUnitOfWork.GetRepository<Registration>();
             _repClientDeviceApple = _pcUnitOfWork.GetRepository<ClientDeviceApple>();
         }
@@ -53,7 +56,7 @@ namespace Pass.Container.BL
             }
 
             //Find pass
-            Core.Entities.Pass pass = _repPass.Query()
+            RepEntities.Pass pass = _repPass.Query()
                 .Filter(x => x.SerialNumber == serialNumber && x.AuthToken == authToken && x.PassTypeIdentifier == passTypeIdentifier)
                 .Include(x => x.PassRegistrations)
                 .Get()
@@ -86,7 +89,7 @@ namespace Pass.Container.BL
                         {
                             ClientDeviceId = device.ClientDeviceId,
                             PassId = pass.PassId,
-                            Status = RegistrationStatus.Active
+                            Status = EntityStatus.Active
                         };
                     device.PassRegistrations.Add(registration);
                     _repClientDeviceApple.Update(device);
@@ -107,7 +110,7 @@ namespace Pass.Container.BL
             {
                 ClientDeviceId = clientDeviceApple.ClientDeviceId,
                 PassId = pass.PassId,
-                Status = RegistrationStatus.Active
+                Status = EntityStatus.Active
             };
             clientDeviceApple.PassRegistrations.Add(registrationPass);
             _repClientDeviceApple.Insert(clientDeviceApple);
@@ -126,7 +129,7 @@ namespace Pass.Container.BL
             }
 
             //Find pass
-            Core.Entities.Pass pass = _repPass.Query()
+            RepEntities.Pass pass = _repPass.Query()
                 .Filter(x => x.SerialNumber == serialNumber && x.AuthToken == authToken && x.PassTypeIdentifier == passTypeIdentifier)
                 .Include(x => x.PassRegistrations)
                 .Get()
@@ -189,7 +192,7 @@ namespace Pass.Container.BL
             }
 
             IEnumerable<int> passIdsOfDevice = device.PassRegistrations.Select(x => x.PassId);
-            IQueryable<Core.Entities.Pass> passesOfDevice = _repPass.Query()
+            IQueryable<RepEntities.Pass> passesOfDevice = _repPass.Query()
                                                                     .Filter(x => passIdsOfDevice.Contains(x.PassId) && x.PassTypeIdentifier == passTypeIdentifier)
                                                                     .Get();
             if (!passIdsOfDevice.Any())
@@ -200,7 +203,7 @@ namespace Pass.Container.BL
 
             var lastUpdatedTime = new DateTime();
             var updatedPasses = new List<string>();
-            foreach (Core.Entities.Pass pass in passesOfDevice)
+            foreach (RepEntities.Pass pass in passesOfDevice)
             {
                 if (passesUpdatedSince == null || pass.UpdatedDate > passesUpdatedSince)
                 {
@@ -231,7 +234,7 @@ namespace Pass.Container.BL
             }
 
             //Find pass
-            Core.Entities.Pass pass = _repPass.Query()
+            RepEntities.Pass pass = _repPass.Query()
                 .Filter(x => x.SerialNumber == serialNumber && x.PassTypeIdentifier == passTypeIdentifier)
                 .Get()
                 .FirstOrDefault();

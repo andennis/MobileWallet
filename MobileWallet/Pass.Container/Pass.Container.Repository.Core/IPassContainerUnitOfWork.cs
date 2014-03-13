@@ -1,6 +1,6 @@
 ﻿using Common.Repository;
 
-namespace Pass.Container.Core
+namespace Pass.Container.Repository.Core
 {
     public interface IPassContainerUnitOfWork : IUnitOfWork
     {

@@ -1,6 +1,6 @@
 ﻿using System;
-using FileStorage.Core;
-using FileStorage.Core.Entities;
+using FileStorage.Repository.Core;
+using FileStorage.Repository.Core.Entities;
 using NUnit.Framework;
 
 namespace FileStorage.Repository.EF.Tests

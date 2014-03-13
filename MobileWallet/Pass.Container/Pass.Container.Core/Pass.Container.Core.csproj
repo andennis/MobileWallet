@@ -40,15 +40,11 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Enums\PassProcessingStatus.cs" />
-    <Compile Include="Entities\Enums\TemplateStatus.cs" />
+    <Compile Include="Entities\PassFieldInfo.cs" />
     <Compile Include="Entities\PassTokenInfo.cs" />
     <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\FieldDictionaryKeys\Field.cs" />
     <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\LowerLevelKeys\Barcode.cs" />
@@ -56,18 +52,7 @@
     <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\LowerLevelKeys\Location.cs" />
     <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\LowerLevelKeys\PassStructure.cs" />
     <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\ApplePassTemplate.cs" />
-    <Compile Include="Entities\ClientDeviceApple.cs" />
-    <Compile Include="Entities\ClientDevice.cs" />
-    <Compile Include="Entities\Registration.cs" />
-    <Compile Include="Entities\Enums\RegistrationStatus.cs" />
     <Compile Include="Entities\Enums\ClientType.cs" />
-    <Compile Include="Entities\PassTemplateApple.cs" />
-    <Compile Include="Entities\PassTemplateNative.cs" />
-    <Compile Include="Entities\Pass.cs" />
-    <Compile Include="Entities\PassField.cs" />
-    <Compile Include="Entities\PassFieldValue.cs" />
-    <Compile Include="Entities\Enums\PassStatus.cs" />
-    <Compile Include="Entities\PassTemplate.cs" />
     <Compile Include="Entities\Templates\GeneralPassTemplate\BarcodeDetails.cs" />
     <Compile Include="Entities\Templates\GeneralPassTemplate\BeaconDetails.cs" />
     <Compile Include="Entities\Templates\GeneralPassTemplate\DistributionDetails.cs" />
@@ -83,7 +68,6 @@
     <Compile Include="INativePassTemplateGenerator.cs" />
     <Compile Include="IPassContainerConfig.cs" />
     <Compile Include="IPassContainerService.cs" />
-    <Compile Include="IPassContainerUnitOfWork.cs" />
     <Compile Include="IPassDistributionConfig.cs" />
     <Compile Include="IPassDistributionService.cs" />
     <Compile Include="IPassTemplateConfig.cs" />

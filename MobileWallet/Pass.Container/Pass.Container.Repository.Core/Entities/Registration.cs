@@ -1,6 +1,6 @@
-﻿using Pass.Container.Core.Entities.Enums;
+﻿using Common.Repository;
 
-namespace Pass.Container.Core.Entities
+namespace Pass.Container.Repository.Core.Entities
 {
     public class Registration
     {
@@ -8,6 +8,6 @@ namespace Pass.Container.Core.Entities
         public int ClientDeviceId { get; set; }
         public Pass Pass { get; set; }
         public ClientDevice ClientDevice { get; set; }
-        public RegistrationStatus Status { get; set; }
+        public EntityStatus Status { get; set; }
     }
 }

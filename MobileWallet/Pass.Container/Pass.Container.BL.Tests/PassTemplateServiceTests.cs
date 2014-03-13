@@ -11,9 +11,10 @@ using FileStorage.Factory;
 using NUnit.Framework;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
-using Pass.Container.Core.Entities.Enums;
 using Pass.Container.Core.Entities.Templates.GeneralPassTemplate;
 using Pass.Container.Factory;
+using Pass.Container.Repository.Core;
+using Pass.Container.Repository.Core.Entities;
 
 namespace Pass.Container.BL.Tests
 {
@@ -105,7 +106,7 @@ namespace Pass.Container.BL.Tests
             PassTemplate passTemplate = _repPassTemplate.Find(passTemplateId);
             Assert.IsNotNull(passTemplate);
             Assert.AreEqual(generalPassTemplate.TemplateName, passTemplate.Name);
-            Assert.AreEqual(TemplateStatus.Active, passTemplate.Status);
+            Assert.AreEqual(EntityStatus.Active, passTemplate.Status);
 
             //Check native pass template
             IQueryable<PassTemplateApple> passTemplatesApple =
@@ -140,7 +141,7 @@ namespace Pass.Container.BL.Tests
                 TestHelper.PreparePassTemplateSource(_testPassTemplateDir, _passTemplateFileName);
                 int passTemplateId = passTemplateService.CreatePassTemlate(_testPassTemplateDir);
                 Assert.Greater(passTemplateId, 0);
-                IList<PassField> passFields = passTemplateService.GetPassFields(passTemplateId);
+                IList<PassFieldInfo> passFields = passTemplateService.GetPassFields(passTemplateId);
                 Assert.IsNotNull(passFields);
                 Assert.IsTrue(passFields.Select(x => x.Name).Contains("TestDynamicField"));
             }
@@ -207,7 +208,7 @@ namespace Pass.Container.BL.Tests
 
             PassTemplate passTemplate = _repPassTemplate.Find(passTemplateId);
             Assert.IsNotNull(passTemplate);
-            Assert.AreEqual(TemplateStatus.Active, passTemplate.Status);
+            Assert.AreEqual(EntityStatus.Active, passTemplate.Status);
 
             //Check file storage
             string storageItemPath;

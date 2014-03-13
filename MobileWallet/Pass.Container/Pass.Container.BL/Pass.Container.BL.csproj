@@ -32,13 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net">
-      <HintPath>..\..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -81,10 +74,6 @@
       <Project>{f1cad860-50fc-456c-96cd-1332cc48d03f}</Project>
       <Name>Common.Utils</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\FileStorage\FileStorage.BL\FileStorage.BL.csproj">
-      <Project>{F067DA74-E48F-4DE7-85D4-1217BB3670E3}</Project>
-      <Name>FileStorage.BL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\FileStorage\FileStorage.Core\FileStorage.Core.csproj">
       <Project>{06EBD357-60DC-4BD9-AD9B-0A736DCC2203}</Project>
       <Name>FileStorage.Core</Name>
@@ -93,9 +82,10 @@
       <Project>{062e8da0-3ef1-4481-8fcf-cfeb54a39771}</Project>
       <Name>Pass.Container.Core</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\Pass.Container.Repository.Core\Pass.Container.Repository.Core.csproj">
+      <Project>{9e9bcf53-d0d8-40e5-a3b1-35d9564d8ccd}</Project>
+      <Name>Pass.Container.Repository.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

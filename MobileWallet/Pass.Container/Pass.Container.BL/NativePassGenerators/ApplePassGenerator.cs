@@ -5,14 +5,15 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using Common.Utils;
 using FileStorage.Core;
 using Pass.Container.BL.Helpers;
 using Pass.Container.Core;
-using Pass.Container.Core.Entities;
 using Pass.Container.Core.Entities.Enums;
 using Pass.Container.Core.Exceptions;
+using Pass.Container.Repository.Core;
+using Pass.Container.Repository.Core.Entities;
+using RepEntities = Pass.Container.Repository.Core.Entities;
 
 namespace Pass.Container.BL.NativePassGenerators
 {
@@ -23,10 +24,10 @@ namespace Pass.Container.BL.NativePassGenerators
         private const string ApplePassTempFolderName = "Apple";
         private const string ApplePassTemplateJson = "pass.json";
         private readonly IPassContainerConfig _config;
-        private readonly Core.Entities.Pass _pass;
+        private readonly RepEntities.Pass _pass;
         private readonly ApplePassGeneratorHelper _generatorHelper;
 
-        public ApplePassGenerator(IPassContainerConfig config, IPassContainerUnitOfWork pcUnitOfWork, IFileStorageService fsService, Core.Entities.Pass pass)
+        public ApplePassGenerator(IPassContainerConfig config, IPassContainerUnitOfWork pcUnitOfWork, IFileStorageService fsService, RepEntities.Pass pass)
             :base(pcUnitOfWork, fsService, pass)
         {
             _config = config;

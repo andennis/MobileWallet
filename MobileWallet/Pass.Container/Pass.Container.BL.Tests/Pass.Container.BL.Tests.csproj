@@ -95,6 +95,10 @@
       <Project>{690C70A1-EC80-47EB-A707-FC9B09597102}</Project>
       <Name>FileStorage.Factory</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\FileStorage\FileStorage.Repository.Core\FileStorage.Repository.Core.csproj">
+      <Project>{cefdb101-184e-4484-9cf8-9616d68ae52a}</Project>
+      <Name>FileStorage.Repository.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\FileStorage\FileStorage.Repository.EF\FileStorage.Repository.EF.csproj">
       <Project>{2378C604-FFF4-44F9-9934-BB17013C27FB}</Project>
       <Name>FileStorage.Repository.EF</Name>
@@ -110,6 +114,10 @@
     <ProjectReference Include="..\Pass.Container.Factory\Pass.Container.Factory.csproj">
       <Project>{f9c5c89e-9b30-41e4-8fe4-d8675dbeac26}</Project>
       <Name>Pass.Container.Factory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pass.Container.Repository.Core\Pass.Container.Repository.Core.csproj">
+      <Project>{9e9bcf53-d0d8-40e5-a3b1-35d9564d8ccd}</Project>
+      <Name>Pass.Container.Repository.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pass.Container.Repository.EF\Pass.Container.Repository.EF.csproj">
       <Project>{3FFD32FB-90AA-4BBC-BA28-8431915B78B1}</Project>

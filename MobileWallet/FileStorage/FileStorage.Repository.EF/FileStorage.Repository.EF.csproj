@@ -74,9 +74,9 @@
       <Project>{f36371d6-812f-49f5-9e9b-043265660647}</Project>
       <Name>Common.Repository</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FileStorage.Core\FileStorage.Core.csproj">
-      <Project>{06ebd357-60dc-4bd9-ad9b-0a736dcc2203}</Project>
-      <Name>FileStorage.Core</Name>
+    <ProjectReference Include="..\FileStorage.Repository.Core\FileStorage.Repository.Core.csproj">
+      <Project>{cefdb101-184e-4484-9cf8-9616d68ae52a}</Project>
+      <Name>FileStorage.Repository.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

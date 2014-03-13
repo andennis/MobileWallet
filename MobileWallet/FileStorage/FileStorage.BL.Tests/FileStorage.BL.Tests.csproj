@@ -90,6 +90,10 @@
       <Project>{690c70a1-ec80-47eb-a707-fc9b09597102}</Project>
       <Name>FileStorage.Factory</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FileStorage.Repository.Core\FileStorage.Repository.Core.csproj">
+      <Project>{cefdb101-184e-4484-9cf8-9616d68ae52a}</Project>
+      <Name>FileStorage.Repository.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FileStorage.Repository.EF\FileStorage.Repository.EF.csproj">
       <Project>{2378c604-fff4-44f9-9934-bb17013c27fb}</Project>
       <Name>FileStorage.Repository.EF</Name>

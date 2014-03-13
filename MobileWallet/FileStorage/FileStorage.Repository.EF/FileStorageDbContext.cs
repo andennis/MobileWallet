@@ -1,5 +1,5 @@
 ﻿using System.Data.Entity;
-using FileStorage.Core.Entities;
+using FileStorage.Repository.Core.Entities;
 
 namespace FileStorage.Repository.EF
 {

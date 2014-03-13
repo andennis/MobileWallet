@@ -1,5 +1,4 @@
-﻿using Common.Repository;
-using FileStorage.Core;
+﻿using FileStorage.Repository.Core;
 using NUnit.Framework;
 
 namespace FileStorage.Repository.EF.Tests

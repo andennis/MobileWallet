@@ -43,31 +43,17 @@
       <HintPath>..\..\packages\Unity.3.0.1304.1\lib\Net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileStorageFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\Common.Configuration\Common.Configuration.csproj">
-      <Project>{dfabdfcc-3b69-434a-bd2a-6838cd7608a8}</Project>
-      <Name>Common.Configuration</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Common\Common.Repository\Common.Repository.csproj">
       <Project>{F36371D6-812F-49F5-9E9B-043265660647}</Project>
       <Name>Common.Repository</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FileStorage.BL\FileStorage.BL.csproj">
-      <Project>{f067da74-e48f-4de7-85d4-1217bb3670e3}</Project>
-      <Name>FileStorage.BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\FileStorage.Core\FileStorage.Core.csproj">
       <Project>{06ebd357-60dc-4bd9-ad9b-0a736dcc2203}</Project>

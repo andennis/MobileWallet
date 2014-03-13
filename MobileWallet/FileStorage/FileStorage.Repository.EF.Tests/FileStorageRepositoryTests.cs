@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using FileStorage.Core.Entities;
+using FileStorage.Repository.Core.Entities;
 using FluentAssertions;
 using NUnit.Framework;
 

@@ -4,7 +4,8 @@ using System.IO;
 using System.Linq;
 using Common.Repository;
 using FileStorage.Core;
-using FileStorage.Core.Entities;
+using FileStorage.Repository.Core;
+using FileStorage.Repository.Core.Entities;
 
 namespace FileStorage.BL
 {

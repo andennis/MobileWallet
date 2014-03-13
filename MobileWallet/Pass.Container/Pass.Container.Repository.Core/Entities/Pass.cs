@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Common.Repository;
-using Pass.Container.Core.Entities.Enums;
 
-namespace Pass.Container.Core.Entities
+namespace Pass.Container.Repository.Core.Entities
 {
     public class Pass : EntityVersionable
     {
@@ -12,7 +11,7 @@ namespace Pass.Container.Core.Entities
         public string SerialNumber { get; set; }
         public string PassTypeIdentifier { get; set; }
         public DateTime? ExpirationDate { get; set; }
-        public PassStatus Status { get; set;}
+        public EntityStatus Status { get; set;}
         public int PassTemplateId { get; set; }
         public PassTemplate Template { get; set; }
         public ICollection<PassFieldValue> FieldValues { get; set; }

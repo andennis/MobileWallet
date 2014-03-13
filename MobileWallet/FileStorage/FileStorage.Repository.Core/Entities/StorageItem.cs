@@ -1,7 +1,6 @@
-﻿
-using Common.Repository;
+﻿using Common.Repository;
 
-namespace FileStorage.Core.Entities
+namespace FileStorage.Repository.Core.Entities
 {
     public sealed class StorageItem : EntityVersionable
     {

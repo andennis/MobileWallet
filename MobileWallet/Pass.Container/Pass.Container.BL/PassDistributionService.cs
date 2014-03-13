@@ -6,10 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Common.Extensions;
 using Common.Utils;
-using Newtonsoft.Json;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
 using Pass.Container.Core.Entities.Enums;
+using Pass.Container.Repository.Core;
 
 namespace Pass.Container.BL
 {
@@ -26,7 +26,7 @@ namespace Pass.Container.BL
             _pcUnitOfWork = pcUnitOfWork;
         }
 
-        public int CreatePass(int passTemplateId, IList<PassFieldValue> passFieldValues)
+        public int CreatePass(int passTemplateId, IList<PassFieldInfo> passFieldValues)
         {
             throw new NotImplementedException();
         }
@@ -40,7 +40,7 @@ namespace Pass.Container.BL
             throw new NotImplementedException();
         }
 
-        public void UpdatePassFields(int passId, IList<PassFieldValue> passFieldValues)
+        public void UpdatePassFields(int passId, IList<PassFieldInfo> passFieldValues)
         {
             throw new NotImplementedException();
         }

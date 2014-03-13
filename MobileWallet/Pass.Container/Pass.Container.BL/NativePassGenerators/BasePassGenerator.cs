@@ -5,14 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Common.Repository;
 using FileStorage.Core;
-using Pass.Container.Core;
-using Pass.Container.Core.Entities;
+using Pass.Container.Repository.Core;
+using Pass.Container.Repository.Core.Entities;
+using RepEntities = Pass.Container.Repository.Core.Entities;
 
 namespace Pass.Container.BL.NativePassGenerators
 {
     public class BasePassGenerator
     {
-        private readonly Core.Entities.Pass _pass;
+        private readonly RepEntities.Pass _pass;
         private readonly IPassContainerUnitOfWork _pcUnitOfWork;
         private readonly IFileStorageService _fsService;
         //Repositories
@@ -20,7 +21,7 @@ namespace Pass.Container.BL.NativePassGenerators
         private readonly IRepository<PassField> _repPassField;
         private readonly IRepository<PassFieldValue> _repPassFieldValue;
 
-        public BasePassGenerator(IPassContainerUnitOfWork pcUnitOfWork, IFileStorageService fsService, Core.Entities.Pass pass)
+        public BasePassGenerator(IPassContainerUnitOfWork pcUnitOfWork, IFileStorageService fsService, RepEntities.Pass pass)
         {
             _pass = pass;
             _pcUnitOfWork = pcUnitOfWork;

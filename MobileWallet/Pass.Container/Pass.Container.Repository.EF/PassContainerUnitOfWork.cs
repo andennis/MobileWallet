@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using Common.Repository;
 using Common.Repository.EF;
-using Pass.Container.Core;
-using Pass.Container.Core.Entities;
+using Pass.Container.Repository.Core;
+using Pass.Container.Repository.Core.Entities;
 
 namespace Pass.Container.Repository.EF
 {

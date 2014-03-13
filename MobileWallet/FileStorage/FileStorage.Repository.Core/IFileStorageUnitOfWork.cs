@@ -1,6 +1,6 @@
 ﻿using Common.Repository;
 
-namespace FileStorage.Core
+namespace FileStorage.Repository.Core
 {
     public interface IFileStorageUnitOfWork : IUnitOfWork
     {

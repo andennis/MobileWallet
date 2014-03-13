@@ -7,10 +7,11 @@ using Common.Repository;
 using FileStorage.Core;
 using Pass.Container.BL.NativePassTemplateGenerators;
 using Pass.Container.Core;
-using Pass.Container.Core.Entities;
 using Pass.Container.Core.Entities.Enums;
 using Pass.Container.Core.Entities.Templates.GeneralPassTemplate;
 using Pass.Container.Core.Exceptions;
+using Pass.Container.Repository.Core;
+using Pass.Container.Repository.Core.Entities;
 
 namespace Pass.Container.BL
 {
@@ -61,7 +62,7 @@ namespace Pass.Container.BL
             IEnumerable<string> dynamicFields = GetDynamicFields(generalPassTemplate);
 
             //Save nessesary information into DB
-            var passTemplate = new PassTemplate { Name = generalPassTemplate.TemplateName, PackageId = templateStorageItemId, Status = TemplateStatus.Active };
+            var passTemplate = new PassTemplate { Name = generalPassTemplate.TemplateName, PackageId = templateStorageItemId, Status = EntityStatus.Active };
             var passTemplateApple = new PassTemplateApple { PassTemplateId = passTemplate.PassTemplateId, PassTypeId = ""};
             foreach (var dynamicFieldName in dynamicFields)
             {
@@ -80,7 +81,7 @@ namespace Pass.Container.BL
                 return;
            
             // Set pass template as inActive
-            passTemplate.Status = TemplateStatus.Deleted;
+            passTemplate.Status = EntityStatus.Deleted;
             _repPassTemplate.Update(passTemplate);
             _pcUnitOfWork.Save();
         }
@@ -98,11 +99,12 @@ namespace Pass.Container.BL
             throw new NotImplementedException();
         }
 
-        public IList<PassField> GetPassFields(int passTemplateId)
+        public IList<Core.Entities.PassFieldInfo> GetPassFields(int passTemplateId)
         {
-            List<PassField> passFields = _repPassField.Query()
-                                                       .Filter(x => x.PassTemplateId == passTemplateId)
-                                                       .Get().ToList();
+            IList<Core.Entities.PassFieldInfo> passFields = _repPassField.Query()
+                .Filter(x => x.PassTemplateId == passTemplateId).Get()
+                .Select(x => new Core.Entities.PassFieldInfo(){PassFieldId = x.PassFieldId, Name = x.Name})
+                .ToList();
 
             return passFields;
         }

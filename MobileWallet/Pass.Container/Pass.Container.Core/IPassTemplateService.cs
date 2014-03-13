@@ -10,7 +10,7 @@ namespace Pass.Container.Core
         int CreatePassTemlate(string passTemplatePath);
         void DeletePassTemplate(int passTemplateId);
         string GetNativePassTemplate(int passTemplateId, ClientType clientType);
-        IList<PassField> GetPassFields(int passTemplateId);
+        IList<PassFieldInfo> GetPassFields(int passTemplateId);
         void UpdatePassTemlate(int passTemplateId, string passTemplatePath);
         bool ValidatePassTemplate(string passTemplateFilePath);
     }

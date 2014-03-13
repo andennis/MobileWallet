@@ -6,9 +6,11 @@ using Common.Extensions;
 using FileStorage.BL;
 using FileStorage.BL.Tests;
 using FileStorage.Core;
+using FileStorage.Repository.Core;
 using FileStorage.Repository.EF;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities.Templates.GeneralPassTemplate;
+using Pass.Container.Repository.Core;
 using Pass.Container.Repository.EF;
 
 namespace Pass.Container.BL.Tests

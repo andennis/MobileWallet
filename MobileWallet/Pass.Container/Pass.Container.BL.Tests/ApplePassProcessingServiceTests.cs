@@ -11,10 +11,9 @@ using FileStorage.Factory;
 using NUnit.Framework;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
-using Pass.Container.Core.Entities.Enums;
-using Pass.Container.Core.Entities.Templates.GeneralPassTemplate;
 using Pass.Container.Factory;
-using Pass.Container.Repository.EF;
+using Pass.Container.Repository.Core;
+using Pass.Container.Repository.Core.Entities;
 
 namespace Pass.Container.BL.Tests
 {
@@ -90,9 +89,10 @@ namespace Pass.Container.BL.Tests
             }
 
             IQueryable<PassField> passFields = _repPassField.Query().Filter(x => x.PassTemplateId == passTemplateId).Get();
-            IList<PassFieldValue> fieldValues = passFields.Select(passField => new PassFieldValue{
-                                                                                       PassFieldId = passField.PassFieldId, 
-                                                                                       Value = passField.PassFieldId + "_Value"
+            IList<PassFieldInfo> fieldValues = passFields.Select(x => new PassFieldInfo{
+                                                                                       PassFieldId = x.PassFieldId, 
+                                                                                       Name = x.Name,
+                                                                                       Value = x.PassFieldId + "_Value"
                                                                                    }).ToList();
 
             using (var distributionService = GetDistributionService())

@@ -1,4 +1,4 @@
-﻿namespace FileStorage.Core.Entities
+﻿namespace FileStorage.Repository.Core.Entities
 {
     public enum StorageItemType
     {

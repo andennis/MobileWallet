@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using Common.Repository;
 using Common.Repository.EF;
-using FileStorage.Core;
-using FileStorage.Core.Entities;
+using FileStorage.Repository.Core;
+using FileStorage.Repository.Core.Entities;
 
 namespace FileStorage.Repository.EF
 {

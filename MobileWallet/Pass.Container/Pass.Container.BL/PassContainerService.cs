@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 using Common.Repository;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
-using Pass.Container.Core.Entities.Enums;
-using CoreEntities = Pass.Container.Core.Entities;
+using Pass.Container.Repository.Core;
+using RepEntities = Pass.Container.Repository.Core.Entities;
+
 
 namespace Pass.Container.BL
 {
@@ -20,34 +21,36 @@ namespace Pass.Container.BL
             _pcUnitOfWork = pcUnitOfWork;
         }
 
-        public int CreatePass(int passTemplateId, IList<PassFieldValue> passFieldValues, DateTime? expDate = null)
+        public int CreatePass(int passTemplateId, IList<PassFieldInfo> passFieldValues, DateTime? expDate = null)
         {
-            IRepository<PassFieldValue> repPassFieldVal = _pcUnitOfWork.GetRepository<PassFieldValue>();
+            IRepository<RepEntities.PassFieldValue> repPassFieldVal = _pcUnitOfWork.GetRepository<RepEntities.PassFieldValue>();
             //IRepository<PassTemplate> repPassTemplate = _pcUnitOfWork.GetRepository<PassTemplate>();
-            IRepository<CoreEntities.Pass> repPass = _pcUnitOfWork.GetRepository<CoreEntities.Pass>();
+            IRepository<RepEntities.Pass> repPass = _pcUnitOfWork.GetRepository<RepEntities.Pass>();
 
-            var pass = new CoreEntities.Pass()
+            var pass = new RepEntities.Pass()
                            {
                                PassTemplateId = passTemplateId,
                                SerialNumber = GenerateSerialNumber(),
                                PassTypeIdentifier = string.Empty,
                                AuthToken = GenerateAuthToken(),
-                               Status = PassStatus.Active,
+                               Status = EntityStatus.Active,
                                ExpirationDate = expDate
                            };
             repPass.Insert(pass);
 
-            foreach (PassFieldValue passFieldValue in passFieldValues)
+            /*
+            foreach (RepEntities.PassFieldValue passFieldValue in passFieldValues)
             {
                 passFieldValue.PassId = pass.PassId;
                 repPassFieldVal.Insert(passFieldValue);
             }
+            */
 
             _pcUnitOfWork.Save();
             return pass.PassId;
         }
 
-        public void UpdatePassFields(int passId, IList<PassFieldValue> passFieldValues)
+        public void UpdatePassFields(int passId, IList<PassFieldInfo> passFieldValues)
         {
             throw new NotImplementedException();
         }
