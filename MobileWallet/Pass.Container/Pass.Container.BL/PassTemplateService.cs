@@ -7,6 +7,7 @@ using Common.Repository;
 using FileStorage.Core;
 using Pass.Container.BL.NativePassTemplateGenerators;
 using Pass.Container.Core;
+using Pass.Container.Core.Entities;
 using Pass.Container.Core.Entities.Enums;
 using Pass.Container.Core.Entities.Templates.GeneralPassTemplate;
 using Pass.Container.Core.Exceptions;
@@ -99,11 +100,11 @@ namespace Pass.Container.BL
             throw new NotImplementedException();
         }
 
-        public IList<Core.Entities.PassFieldInfo> GetPassFields(int passTemplateId)
+        public IList<PassFieldInfo> GetPassFields(int passTemplateId)
         {
-            IList<Core.Entities.PassFieldInfo> passFields = _repPassField.Query()
+            IList<PassFieldInfo> passFields = _repPassField.Query()
                 .Filter(x => x.PassTemplateId == passTemplateId).Get()
-                .Select(x => new Core.Entities.PassFieldInfo(){PassFieldId = x.PassFieldId, Name = x.Name})
+                .Select(x => new PassFieldInfo(){PassFieldId = x.PassFieldId, Name = x.Name})
                 .ToList();
 
             return passFields;

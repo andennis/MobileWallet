@@ -40,6 +40,7 @@
     <Compile Include="Entities\ClientDeviceApple.cs" />
     <Compile Include="Entities\Pass.cs" />
     <Compile Include="Entities\PassField.cs" />
+    <Compile Include="Entities\PassFieldFormat.cs" />
     <Compile Include="Entities\PassFieldValue.cs" />
     <Compile Include="Entities\PassTemplate.cs" />
     <Compile Include="Entities\PassTemplateApple.cs" />
