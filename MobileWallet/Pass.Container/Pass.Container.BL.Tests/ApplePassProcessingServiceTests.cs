@@ -97,8 +97,9 @@ namespace Pass.Container.BL.Tests
 
             using (var distributionService = GetDistributionService())
             {
-                distributionService.CreatePass(passTemplateId, fieldValues);
+                //distributionService.CreatePass(passTemplateId, fieldValues);
             }
+            throw new NotImplementedException();
         }
 
         private IPassTemplateService GetPassTemplateService()

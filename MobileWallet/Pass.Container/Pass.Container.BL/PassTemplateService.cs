@@ -102,6 +102,7 @@ namespace Pass.Container.BL
 
         public IList<PassFieldInfo> GetPassFields(int passTemplateId)
         {
+            //TODO Value and Label should be provided along with field name
             IList<PassFieldInfo> passFields = _repPassField.Query()
                 .Filter(x => x.PassTemplateId == passTemplateId).Get()
                 .Select(x => new PassFieldInfo(){PassFieldId = x.PassFieldId, Name = x.Name})

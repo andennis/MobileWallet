@@ -26,21 +26,13 @@ namespace Pass.Container.BL
             _pcUnitOfWork = pcUnitOfWork;
         }
 
-        public int CreatePass(int passTemplateId, IList<PassFieldInfo> passFieldValues)
+        #region IPassDistributionService
+        public string GetPassPackage(PassTokenInfo passToken, ClientType deviceType, IList<PassFieldInfo> passFields)
         {
             throw new NotImplementedException();
         }
 
-        public Stream GetPassPackage(int passId, ClientType deviceType)
-        {
-            throw new NotImplementedException();
-        }
-        public Stream GetPassPackageByTemplate(int passTemplateId, ClientType deviceType)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdatePassFields(int passId, IList<PassFieldInfo> passFieldValues)
+        public IList<PassFieldInfo> GetPassDistributionFields(PassTokenInfo passToken)
         {
             throw new NotImplementedException();
         }
@@ -56,11 +48,12 @@ namespace Pass.Container.BL
             return EncryptString(pti.ObjectToJson());
         }
 
-        public PassTokenInfo GetPassTokenInfo(string passToken)
+        public PassTokenInfo DecryptPassToken(string passToken)
         {
             string decrypted = DecryptString(passToken);
             return decrypted.JsonToObject<PassTokenInfo>();
         }
+        #endregion
 
         private string EncryptString(string textToEncrypt)
         {
@@ -77,5 +70,6 @@ namespace Pass.Container.BL
             _pcUnitOfWork.Dispose();
         }
         #endregion
+
     }
 }

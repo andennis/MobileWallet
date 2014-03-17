@@ -1,4 +1,6 @@
 ﻿
+using Pass.Container.Repository.Core.Entities;
+
 namespace Pass.Container.Core.Entities
 {
     public class PassFieldInfo
@@ -7,5 +9,6 @@ namespace Pass.Container.Core.Entities
         public string Name { get; set; }
         public string Value { get; set; }
         public string Label { get; set; }
+        public PassFieldFormat Format { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace Pass.Container.BL.Tests
                 string token = distService.GetPassToken(121);
                 Assert.IsNotNullOrEmpty(token);
 
-                PassTokenInfo pti = distService.GetPassTokenInfo(token);
+                PassTokenInfo pti = distService.DecryptPassToken(token);
                 Assert.NotNull(pti);
                 Assert.AreEqual(121, pti.PassId);
                 Assert.IsNull(pti.PassTemplateId);
@@ -31,7 +31,7 @@ namespace Pass.Container.BL.Tests
                 string token = distService.GetPassTemplateToken(125);
                 Assert.IsNotNullOrEmpty(token);
 
-                PassTokenInfo pti = distService.GetPassTokenInfo(token);
+                PassTokenInfo pti = distService.DecryptPassToken(token);
                 Assert.NotNull(pti);
                 Assert.AreEqual(125, pti.PassTemplateId);
                 Assert.IsNull(pti.PassId);

@@ -30,14 +30,15 @@ namespace Pass.Distribution.Web.Controllers
 
         public FileResult DownloadPass(string passToken)
         {
-            Stream pkgStream = GetPassPackage(passToken);
-            //string path = HttpContext.Server.MapPath("~/App_Data/Test1.pkpass");
-            return File(pkgStream, "application/vnd.apple.pkpass");
+            //Stream pkgStream = GetPassPackage(passToken);
+            string path = HttpContext.Server.MapPath("~/App_Data/Test1.pkpass");
+            return File(path, "application/vnd.apple.pkpass");
         }
 
+        /*
         private Stream GetPassPackage(string passToken)
         {
-            PassTokenInfo ptInfo = _passDistService.GetPassTokenInfo(passToken);
+            PassTokenInfo ptInfo = _passDistService.DecryptPassToken(passToken);
             if (!ptInfo.PassTemplateId.HasValue && !ptInfo.PassId.HasValue)
                 throw new PassDistributionException("Pass token is not valid: " + passToken);
 
@@ -47,6 +48,7 @@ namespace Pass.Distribution.Web.Controllers
                 ? _passDistService.GetPassPackageByTemplate(ptInfo.PassTemplateId.Value, clientType)
                 : _passDistService.GetPassPackage(ptInfo.PassId.Value, clientType);
         }
+        */
 
         private ClientType GetClientType()
         {

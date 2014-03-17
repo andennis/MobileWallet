@@ -11,6 +11,9 @@ namespace Pass.Container.Repository.Core.Entities
         public string DefaultValue { get; set; }
         public string DefaultLabel { get; set; }
         public PassFieldFormat Format { get; set; }
+        public bool IsPassField { get; set; }
+        public bool IsDistributionField { get; set; }
+
         public PassTemplate Template { get; set; }
         public ICollection<PassFieldValue> FieldValues { get; set; }
     }

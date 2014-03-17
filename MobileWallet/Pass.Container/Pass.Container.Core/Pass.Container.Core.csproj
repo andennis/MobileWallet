@@ -82,6 +82,10 @@
       <Project>{F36371D6-812F-49F5-9E9B-043265660647}</Project>
       <Name>Common.Repository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Pass.Container.Repository.Core\Pass.Container.Repository.Core.csproj">
+      <Project>{9e9bcf53-d0d8-40e5-a3b1-35d9564d8ccd}</Project>
+      <Name>Pass.Container.Repository.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
