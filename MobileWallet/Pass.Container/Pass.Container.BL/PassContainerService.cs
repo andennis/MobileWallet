@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Common.Repository;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
 using Pass.Container.Repository.Core;
+using Pass.Container.Repository.Core.Entities;
 using RepEntities = Pass.Container.Repository.Core.Entities;
 
 
@@ -21,12 +20,13 @@ namespace Pass.Container.BL
             _pcUnitOfWork = pcUnitOfWork;
         }
 
-        public int CreatePass(int passTemplateId, IList<PassFieldInfo> passFieldValues, DateTime? expDate = null)
+        public int CreatePass(int passTemplateId, IList<PassFieldInfo> fieldValues, DateTime? expDate = null)
         {
-            IRepository<RepEntities.PassFieldValue> repPassFieldVal = _pcUnitOfWork.GetRepository<RepEntities.PassFieldValue>();
-            //IRepository<PassTemplate> repPassTemplate = _pcUnitOfWork.GetRepository<PassTemplate>();
+            IRepository<PassFieldValue> repPassFieldVal = _pcUnitOfWork.GetRepository<PassFieldValue>();
+            IRepository<PassField> repPassField = _pcUnitOfWork.GetRepository<PassField>();
             IRepository<RepEntities.Pass> repPass = _pcUnitOfWork.GetRepository<RepEntities.Pass>();
 
+            //Create Pass
             var pass = new RepEntities.Pass()
                            {
                                PassTemplateId = passTemplateId,
@@ -38,13 +38,38 @@ namespace Pass.Container.BL
                            };
             repPass.Insert(pass);
 
-            /*
-            foreach (RepEntities.PassFieldValue passFieldValue in passFieldValues)
+            //Create values for pass fields
+            IList<PassField> passFields = repPassField.Query().Filter(x => x.PassTemplateId == passTemplateId).Get().ToList();
+            foreach (PassField passField in passFields)
             {
-                passFieldValue.PassId = pass.PassId;
-                repPassFieldVal.Insert(passFieldValue);
+                PassFieldInfo fieldInfo = fieldValues.FirstOrDefault(x => x.PassFieldId == passField.PassFieldId);
+
+                PassFieldValue pfv;
+                if (fieldInfo == null)
+                {
+                    pfv = new PassFieldValue()
+                              {
+                                  PassId = pass.PassId,
+                                  PassFieldId = passField.PassFieldId,
+                                  Value = passField.DefaultValue,
+                                  Label = passField.DefaultLabel
+                              };
+                }
+                else
+                {
+                    pfv = EntityConverter.PassFieldInfoToFieldValue(fieldInfo);
+                    pfv.PassId = pass.PassId;
+                }
+
+                repPassFieldVal.Insert(pfv);
             }
-            */
+
+            foreach (PassFieldInfo fieldValue in fieldValues)
+            {
+                PassFieldValue pfv = EntityConverter.PassFieldInfoToFieldValue(fieldValue);
+                pfv.PassId = pass.PassId;
+                repPassFieldVal.Insert(pfv);
+            }
 
             _pcUnitOfWork.Save();
             return pass.PassId;
