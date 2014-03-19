@@ -84,6 +84,16 @@
           LastKnownLocation="PassDistributionWebPackage.uml" />
       </annotatedElements>
     </comment>
+    <comment
+      Id="1d36891a-3196-4789-adad-a8f254ee2a80">
+      <body>Distribution field can be associated with pass field by field name</body>
+      <annotatedElements>
+        <classMoniker
+          Id="ff480eac-deb7-42fa-a0dd-1045c2c1cfe8"
+          LastKnownName="DistributionField"
+          LastKnownLocation="PassModeling.uml" />
+      </annotatedElements>
+    </comment>
   </ownedCommentsInternal>
   <profileInstances>
     <packageHasProfileInstances
@@ -911,58 +921,6 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
-          <association
-            Id="f3fb78c5-13d2-4d08-888c-0a75fec912fa"
-            isDerived="false"
-            sourceEndRoleName="PassProject"
-            targetEndRoleName="Properties"
-            isLeaf="false"
-            isAbstract="false">
-            <classMoniker
-              Id="c488d43e-5636-4807-9f54-9ac64d6daf51"
-              LastKnownName="Properties"
-              LastKnownLocation="PassModeling.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="bd71b9df-2cef-4657-8c44-08cdf43d9fd7"
-                  name="PassProject"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="Composite"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="41602cd4-abbc-4341-a08d-59eae360860c"
-                  name="Properties"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="true">
-                  <lowerValueInternal>
-                    <literalString
-                      Id="3980654e-8246-4ede-84ac-b58a5b48faf1"
-                      name="Lower"
-                      value="*" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="5782b10a-bd51-4044-aba2-44d366511242"
-                      name="Upper"
-                      value="*" />
-                  </upperValueInternal>
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
         </targetEnds>
       </class>
     </packageHasNamedElement>
@@ -983,7 +941,7 @@
             isAbstract="false">
             <classMoniker
               Id="c488d43e-5636-4807-9f54-9ac64d6daf51"
-              LastKnownName="Properties"
+              LastKnownName="PassField"
               LastKnownLocation="PassModeling.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -995,7 +953,7 @@
                   isReadOnly="false"
                   isDerived="false"
                   isDerivedUnion="false"
-                  aggregation="Shared"
+                  aggregation="Composite"
                   isComposite="false"
                   isNavigableOwned="false">
                   <lowerValueInternal>
@@ -1022,7 +980,7 @@
                   isDerived="false"
                   isDerivedUnion="false"
                   aggregation="None"
-                  isComposite="false">
+                  isComposite="true">
                   <lowerValueInternal>
                     <literalString
                       Id="0712056c-3c3e-40e4-a1ef-952f52c9417a"
@@ -1051,54 +1009,41 @@
         isActiveClass="false">
         <targetEnds>
           <association
-            Id="9776f089-a865-4434-bad8-ed26d7e865f2"
+            Id="0f37e908-0c64-478b-8ab5-95a8975aa64b"
             isDerived="false"
             sourceEndRoleName="DistributionTemplate"
-            targetEndRoleName="Properties"
+            targetEndRoleName="DistributionField"
             isLeaf="false"
             isAbstract="false">
             <classMoniker
-              Id="c488d43e-5636-4807-9f54-9ac64d6daf51"
-              LastKnownName="Properties"
+              Id="ff480eac-deb7-42fa-a0dd-1045c2c1cfe8"
+              LastKnownName="DistributionField"
               LastKnownLocation="PassModeling.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="ca791a3e-f49e-4f88-bce0-4b02dd04cb7b"
+                  Id="cbe78dc4-82d7-4815-92d6-44b9f8011fae"
                   name="DistributionTemplate"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
                   isDerived="false"
                   isDerivedUnion="false"
-                  aggregation="Shared"
+                  aggregation="Composite"
                   isComposite="false"
                   isNavigableOwned="false" />
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="0a153ea7-9ee1-4b0b-a34e-452d3f59278a"
-                  name="Properties"
+                  Id="491308ac-9415-4767-985f-429152a0b449"
+                  name="DistributionField"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
                   isDerived="false"
                   isDerivedUnion="false"
                   aggregation="None"
-                  isComposite="false">
-                  <lowerValueInternal>
-                    <literalString
-                      Id="2bc457dc-ac2d-4962-90ca-b8f0ccd78f69"
-                      name="Lower"
-                      value="*" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="07f89bb0-bf05-46be-bb8a-d1dbef48a491"
-                      name="Upper"
-                      value="*" />
-                  </upperValueInternal>
-                </memberEnd>
+                  isComposite="true" />
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
@@ -1108,10 +1053,24 @@
     <packageHasNamedElement>
       <class
         Id="c488d43e-5636-4807-9f54-9ac64d6daf51"
-        name="Properties"
+        name="PassField"
         isAbstract="false"
         isLeaf="false"
-        isActiveClass="false" />
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="eb5d10d2-66c7-4799-9e65-ee620bd41580"
+            name="Name"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+      </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <class
@@ -1174,6 +1133,39 @@
             </relationshipOwnedElementsInternal>
           </association>
         </targetEnds>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="ff480eac-deb7-42fa-a0dd-1045c2c1cfe8"
+        name="DistributionField"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="7dc1f8ec-f1e6-45f9-9ced-21040ef08410"
+            name="Name"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="c2fa59ef-e144-4232-8847-c8c2f3b04a57"
+            name="Format"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
       </class>
     </packageHasNamedElement>
   </packagedElements>

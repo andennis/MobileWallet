@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="efcce335-7bdf-4ffb-a686-518ba4d52bfa" name="Pass.Manager.Entities" linkedPackageId="1d411afb-d027-4df1-b6ee-fc80cb6fa8a8" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <ownedCommentsInternal>
+    <comment Id="5dc93d1b-a2c2-46b4-a02d-05e2846081f7">
+      <elementDefinition Id="1d36891a-3196-4789-adad-a8f254ee2a80" />
+      <body>Distribution field can be associated with pass field by field name</body>
+      <annotatedElements>
+        <classMoniker Id="d9eecd2c-1a59-4ac9-959f-784923376bf6" LastKnownName="DistributionField" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <class Id="8a50de0e-19f9-4589-bf7d-005d1dd64f7e" name="PassProject" isAbstract="false" isLeaf="false" isActiveClass="false">
@@ -37,32 +46,6 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="b8448622-6f7e-44b3-bd8d-aa806deb9b7c" />
           </association>
-          <association Id="237e58e2-efe8-4ab0-918d-223f31da40d7" isDerived="false" sourceEndRoleName="PassProject" targetEndRoleName="Properties" isLeaf="false" isAbstract="false">
-            <classMoniker Id="85fa7bcb-dde1-4fe0-a747-7d23a7e65061" LastKnownName="Properties" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd Id="37c5108c-1055-4d65-832d-ad9e07930fd0" name="PassProject" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="bd71b9df-2cef-4657-8c44-08cdf43d9fd7" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd Id="6c3cd992-40f8-49ed-849b-8dd8d5570a33" name="Properties" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
-                  <lowerValueInternal>
-                    <literalString Id="fcb678f4-b2b9-42ad-9150-9115b87d289e" name="Lower" value="*">
-                      <elementDefinition Id="3980654e-8246-4ede-84ac-b58a5b48faf1" />
-                    </literalString>
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString Id="49dc6679-7e33-4d59-894f-205db732cf8e" name="Upper" value="*">
-                      <elementDefinition Id="5782b10a-bd51-4044-aba2-44d366511242" />
-                    </literalString>
-                  </upperValueInternal>
-                  <elementDefinition Id="41602cd4-abbc-4341-a08d-59eae360860c" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-            <elementDefinition Id="f3fb78c5-13d2-4d08-888c-0a75fec912fa" />
-          </association>
         </targetEnds>
       </class>
     </logicalClassDesignerModelHasTypes>
@@ -71,10 +54,10 @@
         <elementDefinition Id="f6780405-3ed3-4f22-b6da-a0edb9f7a95b" />
         <targetEnds>
           <association Id="db2ff0ac-336b-48cb-a20b-bae35f1f4a3b" isDerived="false" sourceEndRoleName="PassTemplate" targetEndRoleName="Properties" isLeaf="false" isAbstract="false">
-            <classMoniker Id="85fa7bcb-dde1-4fe0-a747-7d23a7e65061" LastKnownName="Properties" />
+            <classMoniker Id="85fa7bcb-dde1-4fe0-a747-7d23a7e65061" LastKnownName="PassField" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="f25a2d5e-aad6-4331-950d-f6ae00013d6e" name="PassTemplate" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                <memberEnd Id="f25a2d5e-aad6-4331-950d-f6ae00013d6e" name="PassTemplate" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
                   <lowerValueInternal>
                     <literalString Id="b6c4db10-413c-455b-a2c6-ade3c763ef05" name="Lower" value="1">
                       <elementDefinition Id="9538aab9-ce42-4702-b063-09c3993082b1" />
@@ -89,7 +72,7 @@
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="f3ddbd1c-9296-4c0f-ad1a-8abd0d61ad3d" name="Properties" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <memberEnd Id="f3ddbd1c-9296-4c0f-ad1a-8abd0d61ad3d" name="Properties" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
                   <lowerValueInternal>
                     <literalString Id="56ffb704-9b41-467e-a1e8-fc6a363f52b2" name="Lower" value="*">
                       <elementDefinition Id="0712056c-3c3e-40e4-a1ef-952f52c9417a" />
@@ -113,38 +96,33 @@
       <class Id="1c33f830-7354-4fd8-b7ad-3e288fc14149" name="DistributionTemplate" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="ae0efd61-4b4f-48bc-afd1-a51b99ee7632" />
         <targetEnds>
-          <association Id="52f8ab8e-a761-47a9-b422-8d72c99eab91" isDerived="false" sourceEndRoleName="DistributionTemplate" targetEndRoleName="Properties" isLeaf="false" isAbstract="false">
-            <classMoniker Id="85fa7bcb-dde1-4fe0-a747-7d23a7e65061" LastKnownName="Properties" />
+          <association Id="c3357d9b-d7ec-433d-a52e-2db5b893caea" isDerived="false" sourceEndRoleName="DistributionTemplate" targetEndRoleName="DistributionField" isLeaf="false" isAbstract="false">
+            <classMoniker Id="d9eecd2c-1a59-4ac9-959f-784923376bf6" LastKnownName="DistributionField" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="c46c2464-184f-41c2-a414-e630343942cf" name="DistributionTemplate" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="ca791a3e-f49e-4f88-bce0-4b02dd04cb7b" />
+                <memberEnd Id="2f4c0c0c-b19b-4dc2-a870-e600f5b02a2f" name="DistributionTemplate" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="cbe78dc4-82d7-4815-92d6-44b9f8011fae" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="4b56219f-7b68-4baf-80ce-c20c2c01f93e" name="Properties" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <lowerValueInternal>
-                    <literalString Id="9ba05ee0-3d96-4863-bdb5-527529af0865" name="Lower" value="*">
-                      <elementDefinition Id="2bc457dc-ac2d-4962-90ca-b8f0ccd78f69" />
-                    </literalString>
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString Id="d6976000-8c6d-4da0-97db-8243f53559cf" name="Upper" value="*">
-                      <elementDefinition Id="07f89bb0-bf05-46be-bb8a-d1dbef48a491" />
-                    </literalString>
-                  </upperValueInternal>
-                  <elementDefinition Id="0a153ea7-9ee1-4b0b-a34e-452d3f59278a" />
+                <memberEnd Id="de9a882c-fb6b-4335-baeb-c8908d78fa96" name="DistributionField" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="491308ac-9415-4767-985f-429152a0b449" />
                 </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
-            <elementDefinition Id="9776f089-a865-4434-bad8-ed26d7e865f2" />
+            <elementDefinition Id="0f37e908-0c64-478b-8ab5-95a8975aa64b" />
           </association>
         </targetEnds>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="85fa7bcb-dde1-4fe0-a747-7d23a7e65061" name="Properties" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="85fa7bcb-dde1-4fe0-a747-7d23a7e65061" name="PassField" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="c488d43e-5636-4807-9f54-9ac64d6daf51" />
+        <ownedAttributesInternal>
+          <property Id="72d87c5d-df71-4507-811c-3587ec3a65c9" name="Name" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="eb5d10d2-66c7-4799-9e65-ee620bd41580" />
+          </property>
+        </ownedAttributesInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
@@ -178,6 +156,19 @@
             <elementDefinition Id="d09086a1-290a-4f8c-9891-17e2b7e11af5" />
           </association>
         </targetEnds>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="d9eecd2c-1a59-4ac9-959f-784923376bf6" name="DistributionField" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="ff480eac-deb7-42fa-a0dd-1045c2c1cfe8" />
+        <ownedAttributesInternal>
+          <property Id="7886ff4e-ad87-48bd-b931-b509f131f2e0" name="Name" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="7dc1f8ec-f1e6-45f9-9ced-21040ef08410" />
+          </property>
+          <property Id="93f27776-aaa6-433b-8889-73c9d14de2ad" name="Format" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="c2fa59ef-e144-4232-8847-c8c2f3b04a57" />
+          </property>
+        </ownedAttributesInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
   </packagedElements>
