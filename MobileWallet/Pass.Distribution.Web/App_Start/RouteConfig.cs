@@ -15,8 +15,8 @@ namespace Pass.Distribution.Web
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Download", action = "Download" }
+                url: "{controller}/{action}/{token}",
+                defaults: new { controller = "Pass", action = "Index" }
             );
         }
     }

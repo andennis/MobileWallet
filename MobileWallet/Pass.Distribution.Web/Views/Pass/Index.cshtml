@@ -1,0 +1,43 @@
+﻿@using Pass.Container.Core.Entities
+@model Pass.Distribution.Web.Models.PassModel
+
+@{
+    ViewBag.Title = "PassView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Pass</h2>
+
+<div>
+    <h4>PassModel - @Model.PassToken </h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @foreach(PassFieldInfo fieldInfo in Model.PassFields)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => fieldInfo.Label)
+            </dt>
+
+            <dd>
+                @Html.EditorFor(model => fieldInfo.Value)
+            </dd>
+        }
+    </dl>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.EditorFor(model => model.Email)
+        </dd>
+
+    </dl>
+    
+    <a href="@Url.Action("DownloadPass", "Pass")">
+        <img src="@Url.Content("~/Content/images/Add_to_Passbook_Badge_120x40_US_UK.png")" />
+        
+    </a>
+</div>

@@ -9,18 +9,29 @@ using Pass.Container.Core;
 using Pass.Container.Core.Entities;
 using Pass.Container.Core.Entities.Enums;
 using Pass.Container.Core.Exceptions;
+using Pass.Distribution.Web.Models;
 
 namespace Pass.Distribution.Web.Controllers
 {
-    public class DownloadController : Controller
+    public class PassController : Controller
     {
         private readonly IPassDistributionService _passDistService;
 
-        public DownloadController(IPassDistributionService passDistService)
+        public PassController(IPassDistributionService passDistService)
         {
             _passDistService = passDistService;
         }
 
+        public ActionResult Index(string token)
+        {
+            //PassTokenInfo tokenInfo = _passDistService.DecryptPassToken(token);
+            var model = new PassModel()
+                            {
+                                PassToken = token,
+                                PassFields = new List<PassFieldInfo>(){new PassFieldInfo(){Label = "L1", Value = "V1"}}
+                            };
+            return View(model);
+        }
         public FileResult Download(string id)
         {
             //TODO temp code just for test
