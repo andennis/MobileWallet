@@ -28,7 +28,11 @@ namespace Pass.Distribution.Web.Controllers
             var model = new PassModel()
                             {
                                 PassToken = token,
-                                PassFields = new List<PassFieldInfo>(){new PassFieldInfo(){Label = "L1", Value = "V1"}}
+                                PassFields = new List<PassFieldInfo>()
+                                                 {
+                                                     new PassFieldInfo(){Label = "Text1", Value = "V1"},
+                                                     new PassFieldInfo(){Label = "Text2", Value = "V2"}
+                                                 }
                             };
             return View(model);
         }

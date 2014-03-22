@@ -6,38 +6,43 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Pass</h2>
 
-<div>
-    <h4>PassModel - @Model.PassToken </h4>
-    <hr />
-    <dl class="dl-horizontal">
-        @foreach(PassFieldInfo fieldInfo in Model.PassFields)
-        {
-            <dt>
-                @Html.DisplayNameFor(model => fieldInfo.Label)
-            </dt>
 
-            <dd>
-                @Html.EditorFor(model => fieldInfo.Value)
-            </dd>
-        }
-    </dl>
-
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.EditorFor(model => model.Email)
-        </dd>
-
-    </dl>
+<div class="content">
+    <div class="decoration"></div>
+    <div class="container-nobottom">
+        <p>Please enter your details to add this pass to your phone</p>    
+    </div>
     
-    <a href="@Url.Action("DownloadPass", "Pass")">
-        <img src="@Url.Content("~/Content/images/Add_to_Passbook_Badge_120x40_US_UK.png")" />
-        
-    </a>
+    <div>
+        <div class="container">
+            
+                @foreach(PassFieldInfo fieldInfo in Model.PassFields)
+                {
+                    <div class="formFieldWrap">
+                        @Html.LabelFor(model => fieldInfo.Label, new{@class = "field-title"})
+                        @Html.TextBoxFor(model => fieldInfo.Value, new { @class = "passField" })
+                    </div>
+                }
+            
+        </div>
+
+        <div class="decoration"></div>
+        <div class="container-nobottom">
+            <p>If you want to install this pass on multiple devices, or want to be able to reinstall it in the event of accidential deletion or loss, please enter a valid email address below</p>
+            <div class="formFieldWrap">
+                <label class="field-title">
+                    Pass Recovery Email Address:
+                </label>
+                @Html.TextBoxFor(model => model.Email, new { @class = "passField" })
+            </div>
+        </div>
+        <div>
+            <div style="text-align: center">
+                <a href="@Url.Action("DownloadPass", "Pass", new {token = 1})" >
+                    <img src="@Url.Content("~/Content/images/Add_to_Passbook_Badge_120x40_US_UK.png")" />
+                </a>
+            </div>
+        </div>
+    </div>
 </div>

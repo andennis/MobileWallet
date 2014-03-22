@@ -1,1 +1,70 @@
-﻿
+﻿/*
+*, *:after, *:before {
+    -moz-box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+*/
+
+body {
+    color: grey;
+}
+.decoration {
+    background-color: rgba(0, 0, 0, 0.15);
+    display: block;
+    height: 1px;
+    margin-bottom: 20px;
+}
+
+.container {
+    margin: 0 15px 20px;
+}
+
+.no-bottom {
+    margin-bottom: 0 !important;
+}
+
+.container-nobottom {
+    margin: 0 15px;
+}
+
+.content {
+    margin: auto;
+    max-width: 320px;
+}
+
+p {
+    font-size: 13px;
+    line-height: 18px;
+    margin-bottom: 20px;
+}
+
+dl.dl-vertical-align dd {
+    margin: 0; 
+    padding: 0 0 0.5em 0;
+ }
+
+.field-title {
+    font-size: 12px;
+    padding-bottom: 5px;
+    color: black;
+}
+
+.passField {
+    height: 30px;
+    margin-bottom: 10px;
+    min-width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: block;
+    font-size: 12px;
+    -moz-box-sizing: border-box;
+}
+
+.formFieldWrap {
+    margin-bottom: 15px
+}
+
+.passSubmit {
+    margin-left: 10%
+}

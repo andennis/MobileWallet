@@ -29,9 +29,9 @@ namespace Pass.Distribution.Web
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/site.css",
-                "~/Content/pass.css",
-                "~/Content/bootstrap.css",
-                "~/Content/bootstrap-theme.css"));
+                "~/Content/pass.css"
+                /*"~/Content/bootstrap.css",
+                "~/Content/bootstrap-theme.css"*/));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
