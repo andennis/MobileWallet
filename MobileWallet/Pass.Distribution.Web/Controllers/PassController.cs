@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -24,18 +25,70 @@ namespace Pass.Distribution.Web.Controllers
 
         public ActionResult Index(string token)
         {
+            ClientType clientType = GetClientType();
+            if (clientType == ClientType.Unknown)
+                return RedirectToAction("NotSupported");
+
             //PassTokenInfo tokenInfo = _passDistService.DecryptPassToken(token);
+            var passToken = new PassTokenInfo() {PassTemplateId = Convert.ToInt32(token)};
+            IList<PassFieldInfo> passFields = _passDistService.GetPassDistributionFields(passToken);
+
+            var model = new PassModel()
+            {
+                PassToken = token,
+                PassFields = passFields
+            };
+
+            return View(model);
+        }
+
+        public ActionResult Test(string token)
+        {
+            ClientType clientType = GetClientType();
+            if (clientType == ClientType.Unknown)
+                return RedirectToAction("NotSupported");
+
             var model = new PassModel()
                             {
                                 PassToken = token,
                                 PassFields = new List<PassFieldInfo>()
                                                  {
-                                                     new PassFieldInfo(){Label = "Text1", Value = "V1"},
-                                                     new PassFieldInfo(){Label = "Text2", Value = "V2"}
+                                                     new PassFieldInfo(){Label = "Label1", Value = "V1", Name = "F1"},
+                                                     new PassFieldInfo(){Label = "Label2", Value = "V2", Name = "F2"}
                                                  }
                             };
+            return View("Index", model);
+        }
+
+        public ActionResult NotSupported()
+        {
+            NotSupportedModel model = GetNotSupportedModel();
             return View(model);
         }
+
+        [HttpPost]
+        public ActionResult Update(string token, FormCollection formCollection)
+        {
+            SendLinkToEmail(formCollection["Email"]);
+            formCollection.Remove("Email");
+
+            var passFields = new List<PassFieldInfo>();
+            foreach (string formItem in formCollection)
+            {
+                string val = formCollection[formItem];
+                var passField = new PassFieldInfo()
+                                    {
+                                        Name = formItem,
+                                        Value = val
+                                    };
+                passFields.Add(passField);
+            }
+
+            //TODO update\create pass and generate pass package
+
+            return RedirectToAction("DownloadPass");
+        }
+
         public FileResult Download(string id)
         {
             //TODO temp code just for test
@@ -48,6 +101,11 @@ namespace Pass.Distribution.Web.Controllers
             //Stream pkgStream = GetPassPackage(passToken);
             string path = HttpContext.Server.MapPath("~/App_Data/Test1.pkpass");
             return File(path, "application/vnd.apple.pkpass");
+        }
+
+        private void SendLinkToEmail(string email)
+        {
+            
         }
 
         /*
@@ -72,10 +130,28 @@ namespace Pass.Distribution.Web.Controllers
                 if (Request.Browser.MobileDeviceManufacturer == "Apple" && Request.Browser.MobileDeviceModel == "IPhone")
                     return ClientType.Apple;
 
+                return ClientType.Unknown;
+                /*
                 throw new PassDistributionException(string.Format("The client '{0}' - '{1}' is not supported", 
                     Request.Browser.MobileDeviceManufacturer, Request.Browser.MobileDeviceModel));
+                */
             }
             return ClientType.Browser;
+        }
+        private NotSupportedModel GetNotSupportedModel()
+        {
+            if (Request.Browser.IsMobileDevice)
+                return new NotSupportedModel()
+                            {
+                                ClientManufacturer = Request.Browser.MobileDeviceManufacturer,
+                                ClientModel = Request.Browser.MobileDeviceModel
+                            };
+
+            return new NotSupportedModel()
+                        {
+                            ClientManufacturer = Request.Browser.Browser,
+                            ClientModel = Request.Browser.Type
+                        };
         }
 	}
 }

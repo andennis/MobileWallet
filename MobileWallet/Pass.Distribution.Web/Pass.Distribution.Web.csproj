@@ -159,6 +159,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\NotSupportedModel.cs" />
     <Compile Include="Models\PassModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -276,6 +277,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Pass\Index.cshtml" />
+    <Content Include="Views\Pass\NotSupported.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

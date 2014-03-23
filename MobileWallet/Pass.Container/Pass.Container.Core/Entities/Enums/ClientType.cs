@@ -2,6 +2,7 @@
 {
     public enum ClientType
     {
+        Unknown = 0,
         Browser = 1,
         Apple = 2
     }

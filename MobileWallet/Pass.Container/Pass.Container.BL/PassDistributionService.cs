@@ -5,11 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Common.Extensions;
+using Common.Repository;
 using Common.Utils;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
 using Pass.Container.Core.Entities.Enums;
 using Pass.Container.Repository.Core;
+using Pass.Container.Repository.Core.Entities;
 
 namespace Pass.Container.BL
 {
@@ -34,7 +36,35 @@ namespace Pass.Container.BL
 
         public IList<PassFieldInfo> GetPassDistributionFields(PassTokenInfo passToken)
         {
-            throw new NotImplementedException();
+            //Pass ID is specified
+            if (passToken.PassId.HasValue)
+            {
+                IRepository<PassFieldValue> repPassFieldVal = _pcUnitOfWork.GetRepository<PassFieldValue>();
+                return repPassFieldVal.Query()
+                    .Filter(x => x.PassId == passToken.PassId.Value)
+                    .Include(x => x.PassField)
+                    .Get()
+                    .Select(x => new PassFieldInfo()
+                                     {
+                                         PassFieldId = x.PassFieldId,
+                                         Name = x.PassField.Name,
+                                         Label = string.IsNullOrEmpty(x.Label) ? x.PassField.DefaultLabel : x.Label,
+                                         Value = string.IsNullOrEmpty(x.Value) ? x.PassField.DefaultValue : x.Value,
+                                     })
+                    .ToList();
+            }
+
+            //Pass template ID is specified
+            IRepository<PassField> repPassField = _pcUnitOfWork.GetRepository<PassField>();
+            return repPassField.Query().Filter(x => x.PassTemplateId == passToken.PassTemplateId).Get()
+                .Select(x => new PassFieldInfo()
+                            {
+                                PassFieldId = x.PassFieldId,
+                                Name = x.Name,
+                                Label = x.DefaultLabel ?? x.Name,
+                                Value = x.DefaultValue
+                            })
+                .ToList();
         }
 
         public string GetPassToken(int passId)

@@ -17,6 +17,7 @@ namespace Pass.Container.BL.Tests
     public class PassContainerServiceTests
     {
         private readonly FileStorageConfig _fsConfig;
+
         public PassContainerServiceTests()
         {
             _fsConfig = new FileStorageConfig();

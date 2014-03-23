@@ -58,7 +58,8 @@ dl.dl-vertical-align dd {
     padding-right: 10px;
     display: block;
     font-size: 12px;
-    -moz-box-sizing: border-box;
+    -moz-box-sizing: border-box;/*FireFox*/
+    -webkit-box-sizing: border-box;/*Safari*/
 }
 
 .formFieldWrap {
@@ -66,5 +67,10 @@ dl.dl-vertical-align dd {
 }
 
 .passSubmit {
-    margin-left: 10%
+    background: none repeat scroll 0 0 #47D256;
+    color: white;
+    min-height: 50px;
+    width: 85%;
+    border-radius: 5px;
+    font-size: 120%;
 }
