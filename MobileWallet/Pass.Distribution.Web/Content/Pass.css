@@ -73,4 +73,5 @@ dl.dl-vertical-align dd {
     width: 85%;
     border-radius: 5px;
     font-size: 120%;
+    border: 0;
 }
