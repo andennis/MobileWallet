@@ -17,10 +17,12 @@ namespace Pass.Distribution.Web.Controllers
     public class PassController : Controller
     {
         private readonly IPassDistributionService _passDistService;
+        private readonly IPassContainerService _passContainerService;
 
-        public PassController(IPassDistributionService passDistService)
+        public PassController(IPassDistributionService passDistService, IPassContainerService passContainerService)
         {
             _passDistService = passDistService;
+            _passContainerService = passContainerService;
         }
 
         public ActionResult Index(string token)
@@ -84,19 +86,22 @@ namespace Pass.Distribution.Web.Controllers
                 passFields.Add(passField);
             }
 
-            //TODO update\create pass and generate pass package
+            int passTempleteId = Convert.ToInt32(token);
+            int passId = _passContainerService.CreatePass(passTempleteId, passFields);
 
-            return RedirectToAction("DownloadPass");
+            return RedirectToAction("Download", new {token = passId});
         }
 
+        /*
         public FileResult Download(string id)
         {
             //TODO temp code just for test
             string path = HttpContext.Server.MapPath("~/App_Data/TextFile1.txt");
             return File(path, "text/plain");
         }
+        */
 
-        public FileResult DownloadPass(string passToken)
+        public FileResult Download(string token)
         {
             //Stream pkgStream = GetPassPackage(passToken);
             string path = HttpContext.Server.MapPath("~/App_Data/Test1.pkpass");

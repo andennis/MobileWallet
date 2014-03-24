@@ -42,7 +42,8 @@ namespace Pass.Container.BL
             IList<PassField> passFields = repPassField.Query().Filter(x => x.PassTemplateId == passTemplateId).Get().ToList();
             foreach (PassField passField in passFields)
             {
-                PassFieldInfo fieldInfo = fieldValues.FirstOrDefault(x => x.PassFieldId == passField.PassFieldId);
+                PassFieldInfo fieldInfo = fieldValues.FirstOrDefault(x => x.PassFieldId == passField.PassFieldId)
+                    ?? fieldValues.FirstOrDefault(x => x.Name == passField.Name);
 
                 PassFieldValue pfv;
                 if (fieldInfo == null)
@@ -59,17 +60,20 @@ namespace Pass.Container.BL
                 {
                     pfv = EntityConverter.PassFieldInfoToFieldValue(fieldInfo);
                     pfv.PassId = pass.PassId;
+                    pfv.PassFieldId = passField.PassFieldId;
                 }
 
                 repPassFieldVal.Insert(pfv);
             }
 
+            /*
             foreach (PassFieldInfo fieldValue in fieldValues)
             {
                 PassFieldValue pfv = EntityConverter.PassFieldInfoToFieldValue(fieldValue);
                 pfv.PassId = pass.PassId;
                 repPassFieldVal.Insert(pfv);
             }
+            */
 
             _pcUnitOfWork.Save();
             return pass.PassId;
