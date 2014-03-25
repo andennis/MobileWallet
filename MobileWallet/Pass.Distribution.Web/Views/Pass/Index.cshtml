@@ -14,16 +14,19 @@
         <p>Please enter your details to add this pass to your phone</p>    
     </div>
     
-    @using (Html.BeginForm("Update", "Pass", new{token = Model.PassToken}, FormMethod.Post))
+    @using (Html.BeginForm("Update", "Pass"))
     {
+        @Html.HiddenFor(x => x.PassToken);
+        
         if (Model.PassFields != null && Model.PassFields.Any())
         {
             <div class="container">
-                @foreach (PassFieldInfo fieldInfo in Model.PassFields)
+                @for (int i = 0; i < Model.PassFields.Count; i++)
                 {
                     <div class="formFieldWrap">
-                        @Html.Label(fieldInfo.Name, fieldInfo.Label, new {@class = "field-title"})
-                        @Html.TextBox(fieldInfo.Name, fieldInfo.Value, new {@class = "passField"})
+                        @Html.LabelFor(x => x.PassFields[i].Value, Model.PassFields[i].Label, new {@class = "field-title"})
+                        @Html.HiddenFor(x => x.PassFields[i].Name);
+                        @Html.TextBoxFor(x => x.PassFields[i].Value, new {@class = "passField"})
                     </div>
                 }
             </div>

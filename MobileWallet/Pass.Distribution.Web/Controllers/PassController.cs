@@ -69,29 +69,17 @@ namespace Pass.Distribution.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Update(string token, FormCollection formCollection)
+        public ActionResult Update(PassModel model)
         {
-            SendLinkToEmail(formCollection["Email"]);
-            formCollection.Remove("Email");
+            SendLinkToEmail(model.Email);
 
-            var passFields = new List<PassFieldInfo>();
-            foreach (string formItem in formCollection)
-            {
-                string val = formCollection[formItem];
-                var passField = new PassFieldInfo()
-                                    {
-                                        Name = formItem,
-                                        Value = val
-                                    };
-                passFields.Add(passField);
-            }
+            int passTempleteId = Convert.ToInt32(model.PassToken);
+            int passId = _passContainerService.CreatePass(passTempleteId, model.PassFields);
 
-            int passTempleteId = Convert.ToInt32(token);
-            int passId = _passContainerService.CreatePass(passTempleteId, passFields);
-
-            return RedirectToAction("Download", new {token = passId});
+            string token = _passDistService.GetPassToken(passId);
+            return RedirectToAction("Download", new { token });
         }
-
+        
         /*
         public FileResult Download(string id)
         {
