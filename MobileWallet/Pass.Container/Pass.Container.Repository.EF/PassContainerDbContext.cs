@@ -10,7 +10,7 @@ namespace Pass.Container.Repository.EF
         public PassContainerDbContext(string nameOrConnectionString)
             :base(nameOrConnectionString)
         {
-            //Database.SetInitializer<PassContainerDbContext>(null);
+            Database.SetInitializer<PassContainerDbContext>(null);
             //this.Configuration.LazyLoadingEnabled = false;
         }
 

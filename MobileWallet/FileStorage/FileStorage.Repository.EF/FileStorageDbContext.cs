@@ -10,7 +10,7 @@ namespace FileStorage.Repository.EF
         public FileStorageDbContext(string nameOrConnectionString)
             :base(nameOrConnectionString)
         {
-            //Database.SetInitializer<FileStorageDbContext>(null);
+            Database.SetInitializer<FileStorageDbContext>(null);
             //this.Configuration.LazyLoadingEnabled = false;
         }
 

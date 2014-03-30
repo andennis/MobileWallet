@@ -25,7 +25,7 @@
                 {
                     <div class="formFieldWrap">
                         @Html.LabelFor(x => x.PassFields[i].Value, Model.PassFields[i].Label, new {@class = "field-title"})
-                        @Html.HiddenFor(x => x.PassFields[i].Name);
+                        @Html.HiddenFor(x => x.PassFields[i].Name)
                         @Html.TextBoxFor(x => x.PassFields[i].Value, new {@class = "passField"})
                     </div>
                 }
