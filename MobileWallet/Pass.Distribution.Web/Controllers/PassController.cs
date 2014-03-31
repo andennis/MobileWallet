@@ -80,20 +80,11 @@ namespace Pass.Distribution.Web.Controllers
             return RedirectToAction("Download", new { token });
         }
         
-        /*
-        public FileResult Download(string id)
-        {
-            //TODO temp code just for test
-            string path = HttpContext.Server.MapPath("~/App_Data/TextFile1.txt");
-            return File(path, "text/plain");
-        }
-        */
-
         public FileResult Download(string token)
         {
             //Stream pkgStream = GetPassPackage(passToken);
             string path = HttpContext.Server.MapPath("~/App_Data/Test1.pkpass");
-            return File(path, "application/vnd.apple.pkpass");
+            return File(path, "application/vnd.apple.pkpass", "Test1.pkpass");
         }
 
         private void SendLinkToEmail(string email)
