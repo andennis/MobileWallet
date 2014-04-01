@@ -141,7 +141,7 @@ namespace Pass.Container.BL.Tests
                 TestHelper.PreparePassTemplateSource(_testPassTemplateDir, _passTemplateFileName);
                 int passTemplateId = passTemplateService.CreatePassTemlate(_testPassTemplateDir);
                 Assert.Greater(passTemplateId, 0);
-                IList<PassFieldInfo> passFields = passTemplateService.GetPassFields(passTemplateId);
+                IList<PassFieldInfo> passFields = passTemplateService.GetPassTemplateFields(passTemplateId);
                 Assert.IsNotNull(passFields);
                 Assert.IsTrue(passFields.Select(x => x.Name).Contains("TestDynamicField"));
             }

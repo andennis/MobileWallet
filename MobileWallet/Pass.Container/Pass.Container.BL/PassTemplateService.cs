@@ -100,15 +100,18 @@ namespace Pass.Container.BL
             throw new NotImplementedException();
         }
 
-        public IList<PassFieldInfo> GetPassFields(int passTemplateId)
+        public IList<PassFieldInfo> GetPassTemplateFields(int passTemplateId)
         {
-            //TODO Value and Label should be provided along with field name
-            IList<PassFieldInfo> passFields = _repPassField.Query()
+            return _repPassField.Query()
                 .Filter(x => x.PassTemplateId == passTemplateId).Get()
-                .Select(x => new PassFieldInfo(){PassFieldId = x.PassFieldId, Name = x.Name})
+                .Select(x => new PassFieldInfo()
+                                 {
+                                     PassFieldId = x.PassFieldId,
+                                     Name = x.Name,
+                                     Label = x.DefaultLabel ?? x.Name,
+                                     Value = x.DefaultValue
+                                 })
                 .ToList();
-
-            return passFields;
         }
 
         public void UpdatePassTemlate(int passTemplateId, string passTemplatePath)

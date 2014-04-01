@@ -47,7 +47,7 @@ namespace Pass.Container.BL.Tests
                 TestHelper.PreparePassTemplateSource(testPassTemplateDir, TestHelper.PassContainerConfig.PassTemplateFileName);
                 int passTemplateId = pts.CreatePassTemlate(testPassTemplateDir);
 
-                IList<PassFieldInfo> fields = pts.GetPassFields(passTemplateId);
+                IList<PassFieldInfo> fields = pts.GetPassTemplateFields(passTemplateId);
                 int passId = pcs.CreatePass(passTemplateId, fields);
                 Assert.Greater(passId, 0);
                 //TODO not finished

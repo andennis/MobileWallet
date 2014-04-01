@@ -5,13 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Common.Extensions;
-using Common.Repository;
 using Common.Utils;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
 using Pass.Container.Core.Entities.Enums;
-using Pass.Container.Repository.Core;
-using Pass.Container.Repository.Core.Entities;
+using Pass.Container.Core.Exceptions;
 
 namespace Pass.Container.BL
 {
@@ -20,51 +18,39 @@ namespace Pass.Container.BL
         private const string SecurityVector = "nh2!0hg#vbPu&QSd";
 
         private readonly IPassDistributionConfig _config;
-        private readonly IPassContainerUnitOfWork _pcUnitOfWork;
+        private readonly IPassContainerService _passContainerService;
+        //private readonly IPassContainerUnitOfWork _pcUnitOfWork;
+        private readonly IPassTemplateService _passTemplateService;
 
-        public PassDistributionService(IPassDistributionConfig config, IPassContainerUnitOfWork pcUnitOfWork)
+        public PassDistributionService(IPassDistributionConfig config, 
+            //IPassContainerUnitOfWork pcUnitOfWork, 
+            IPassContainerService passContainerService,
+            IPassTemplateService passTemplateService)
         {
             _config = config;
-            _pcUnitOfWork = pcUnitOfWork;
+            //_pcUnitOfWork = pcUnitOfWork;
+            _passContainerService = passContainerService;
+            _passTemplateService = passTemplateService;
         }
 
         #region IPassDistributionService
-        public string GetPassPackage(PassTokenInfo passToken, ClientType deviceType, IList<PassFieldInfo> passFields)
+        public string GetPassPackage(PassTokenInfo passToken, ClientType deviceType)
         {
             throw new NotImplementedException();
         }
 
-        public IList<PassFieldInfo> GetPassDistributionFields(PassTokenInfo passToken)
+        public IList<PassFieldInfo> GetPassFields(PassTokenInfo passToken)
         {
-            //Pass ID is specified
-            if (passToken.PassId.HasValue)
-            {
-                IRepository<PassFieldValue> repPassFieldVal = _pcUnitOfWork.GetRepository<PassFieldValue>();
-                return repPassFieldVal.Query()
-                    .Filter(x => x.PassId == passToken.PassId.Value)
-                    .Include(x => x.PassField)
-                    .Get()
-                    .Select(x => new PassFieldInfo()
-                                     {
-                                         PassFieldId = x.PassFieldId,
-                                         Name = x.PassField.Name,
-                                         Label = string.IsNullOrEmpty(x.Label) ? x.PassField.DefaultLabel : x.Label,
-                                         Value = string.IsNullOrEmpty(x.Value) ? x.PassField.DefaultValue : x.Value,
-                                     })
-                    .ToList();
-            }
+            if (passToken == null)
+                throw new ArgumentNullException("passToken");
 
-            //Pass template ID is specified
-            IRepository<PassField> repPassField = _pcUnitOfWork.GetRepository<PassField>();
-            return repPassField.Query().Filter(x => x.PassTemplateId == passToken.PassTemplateId).Get()
-                .Select(x => new PassFieldInfo()
-                            {
-                                PassFieldId = x.PassFieldId,
-                                Name = x.Name,
-                                Label = x.DefaultLabel ?? x.Name,
-                                Value = x.DefaultValue
-                            })
-                .ToList();
+            if (passToken.PassId.HasValue)
+                return _passContainerService.GetPassFields(passToken.PassId.Value);
+
+            if (!passToken.PassTemplateId.HasValue)
+                throw new PassDistributionException("PassTemplateId and PassId are undefined in token");
+
+            return _passTemplateService.GetPassTemplateFields(passToken.PassTemplateId.Value);
         }
 
         public string GetPassToken(int passId)
@@ -97,7 +83,7 @@ namespace Pass.Container.BL
         #region IDisposable
         public void Dispose()
         {
-            _pcUnitOfWork.Dispose();
+            //_pcUnitOfWork.Dispose();
         }
         #endregion
 

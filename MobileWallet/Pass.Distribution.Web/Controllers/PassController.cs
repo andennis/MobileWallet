@@ -33,7 +33,7 @@ namespace Pass.Distribution.Web.Controllers
 
             //PassTokenInfo tokenInfo = _passDistService.DecryptPassToken(token);
             var passToken = new PassTokenInfo() {PassTemplateId = Convert.ToInt32(token)};
-            IList<PassFieldInfo> passFields = _passDistService.GetPassDistributionFields(passToken);
+            IList<PassFieldInfo> passFields = _passDistService.GetPassFields(passToken);
 
             var model = new PassModel()
             {
@@ -83,6 +83,7 @@ namespace Pass.Distribution.Web.Controllers
         public FileResult Download(string token)
         {
             //Stream pkgStream = GetPassPackage(passToken);
+            //string path = HttpContext.Server.MapPath("~/../FS/4.pkpass");
             string path = HttpContext.Server.MapPath("~/App_Data/4.pkpass");
             return File(path, "application/vnd.apple.pkpass", "4.pkpass");
         }

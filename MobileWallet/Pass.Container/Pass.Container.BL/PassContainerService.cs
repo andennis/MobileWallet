@@ -79,6 +79,23 @@ namespace Pass.Container.BL
             return pass.PassId;
         }
 
+        public IList<PassFieldInfo> GetPassFields(int passId)
+        {
+            IRepository<PassFieldValue> repPassFieldVal = _pcUnitOfWork.GetRepository<PassFieldValue>();
+            return repPassFieldVal.Query()
+                .Filter(x => x.PassId == passId)
+                .Include(x => x.PassField)
+                .Get()
+                .Select(x => new PassFieldInfo()
+                {
+                    PassFieldId = x.PassFieldId,
+                    Name = x.PassField.Name,
+                    Label = string.IsNullOrEmpty(x.Label) ? x.PassField.DefaultLabel : x.Label,
+                    Value = string.IsNullOrEmpty(x.Value) ? x.PassField.DefaultValue : x.Value,
+                })
+                .ToList();
+        }
+
         public void UpdatePassFields(int passId, IList<PassFieldInfo> passFieldValues)
         {
             throw new NotImplementedException();
