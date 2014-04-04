@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FileStorage.BL;
 using FileStorage.Core;
 using FileStorage.Factory;
@@ -14,7 +11,7 @@ using Pass.Container.Core.Entities;
 using Pass.Container.Factory;
 using Pass.Container.Repository.EF;
 
-namespace Pass.Container.BL.Tests
+namespace Pass.Container.BL.Tests.NativePassGenerators
 {
     class NativePassGeneratorsTests
     {

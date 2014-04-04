@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection;
 using NUnit.Framework;
 using Pass.Container.BL.NativePassTemplateGenerators;
 
-namespace Pass.Container.BL.Tests
+namespace Pass.Container.BL.Tests.NativePassTemplateGenerators
 {
     [TestFixture]
     public class NativePassTemplateGeneratorsTests

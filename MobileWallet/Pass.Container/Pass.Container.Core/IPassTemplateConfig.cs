@@ -5,5 +5,6 @@
         string PassTemplateFolderName { get; }
         string PassTemplateFileName { get; }
         string PassGeneratorTempFolderPath { get; }
+        string ApplePassTemplateWebServerUrl { get; }
     }
 }

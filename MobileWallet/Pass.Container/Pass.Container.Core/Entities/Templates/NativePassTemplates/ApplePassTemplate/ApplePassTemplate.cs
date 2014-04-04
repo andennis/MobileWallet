@@ -113,11 +113,12 @@ namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTe
         [JsonProperty(PropertyName = "barcode", NullValueHandling = NullValueHandling.Ignore)]
         public Barcode Barcode { get; set; }
 
+        //Example: "backgroundColor" : "rgb(206, 140, 53)"
         [JsonProperty(PropertyName = "backgroundColor", NullValueHandling = NullValueHandling.Ignore)]
-        public RgbColor BackgroundColor { get; set; }
+        public string BackgroundColor { get; set; }
 
         [JsonProperty(PropertyName = "foregroundColor", NullValueHandling = NullValueHandling.Ignore)]
-        public RgbColor ForegroundColor { get; set; }
+        public string ForegroundColor { get; set; }
 
         //Available in iOS 7.0
         //WARNING! Optional for event tickets and boarding passes; otherwise not allowed
@@ -125,7 +126,7 @@ namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTe
         public string GroupingIdentifier { get; set; }
 
         [JsonProperty(PropertyName = "labelColor", NullValueHandling = NullValueHandling.Ignore)]
-        public RgbColor LabelColor { get; set; }
+        public string LabelColor { get; set; }
 
         [JsonProperty(PropertyName = "logoText", NullValueHandling = NullValueHandling.Ignore)]
         public string LogoText { get; set; }
@@ -155,21 +156,6 @@ namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTe
             this.FormatVersion = 1;
             this.Voided = false;
             this.IgnoresTimeZone = false;
-        }
-
-        //Transform color into view: "rgb(255, 255, 255)"
-        public class RgbColor
-        {
-            public Color _color;
-            public RgbColor(Color color)
-            {
-                _color = color;
-            }
-
-            public override string ToString()
-            {
-                return "rgb(" + _color.R + ", " + _color.G + ", " + _color.B + ")";
-            }
         }
     }
 }

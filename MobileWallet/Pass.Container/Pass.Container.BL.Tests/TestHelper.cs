@@ -52,28 +52,19 @@ namespace Pass.Container.BL.Tests
                 PassStyle = PassStyle.Coupon,
                 PassDescription = "Pass description",
                 PassSerialNumberType = PassSerialNumberType.AutoGgenerated,
-                PassTypeIdentifier = "pass.com.passlight.test",
+                PassTypeIdentifier = "pass.com.passlight.dev.test",
                 TeamIdentifier = "YHQB764QFA",
                 
                 //Visual Appearance Keys
                 BackgroundColor = Color.Blue,
                 LabelTextColor = Color.Red,
                 ValueTextColor = Color.CadetBlue,
-                SuppressStripShine = false,
                 //Others Keys
-                GroupingIdentifier = "Grouping identifier",
-                PassTimezone = null,
                 LogoText = "Logo text",
                 //Integration Details
                 IntegrationDetails = new IntegrationDetails
                 {
-                    AppOptions = new AppOptions
-                    {
-                        AppIdentifier = new List<int> { 1, 2 },
-                        AppLaunchUrl = "http://test.passtemplate.com",
-                        CustomJsonData = ""
-                    },
-                    CallbackNotifications = new CallbackNotifications
+                   CallbackNotifications = new CallbackNotifications
                     {
                         PassIssued = "passIssued@mail.com",
                         PassRegistered = "passRegistered@mail.com",
@@ -88,55 +79,11 @@ namespace Pass.Container.BL.Tests
                                 {
                                     new GeneralLocation
                                         {
-                                            Altitude = 1,
-                                            Latitude = 2,
-                                            Longitude = 3,
-                                            RelevantText = "Relevant text"
-                                        },
-                                        new GeneralLocation
-                                        {
-                                            Altitude = 1,
-                                            Latitude = 2,
-                                            Longitude = 3,
+                                            Latitude = 53.883980386469425,
+                                            Longitude = 27.59497405000002,
                                             RelevantText = "Relevant text"
                                         }
-                                },
-                    MaxDistance = 10
-                },
-                //Beacon Details
-                BeaconDetails = new BeaconDetails
-                {
-                    Beacons = new List<GeneralBeacon>
-                               {
-                                   new GeneralBeacon
-                                       {
-                                           Name = "Beacon name",
-                                           Major = 1,
-                                           Minor = 2,
-                                           ProximityUuid = "ProximityUuid",
-                                           RelevantText = "Relevant text"
-                                       },
-                                       new GeneralBeacon
-                                       {
-                                           Name = "Beacon name",
-                                           Major = 1,
-                                           Minor = 2,
-                                           ProximityUuid = "ProximityUuid",
-                                           RelevantText = "Relevant text"
-                                       }
-                               }
-                },
-                //Distribution Details
-                DistributionDetails = new DistributionDetails
-                {
-                    AllPassesAsExpired = true,
-                    DateRestriction = DateTime.Now,
-                    ExpirationDate = DateTime.Now,
-                    LimitPassPerUser = 15000,
-                    PassLinkType = PassLinkType.Public,
-                    PasswordToIssue = "PasswordToIssue",
-                    PasswordToUpdate = "PasswordToUpdate",
-                    QuantityRestriction = 100
+                                }
                 },
                 //Barcode Details
                 BarcodeDetails = new BarcodeDetails
@@ -165,7 +112,6 @@ namespace Pass.Container.BL.Tests
                                                     GeneralField.DataDetector.Link
                                                 },
                                                 DateStyle = GeneralField.DateStyleType.Long,
-                                                IgnoresTimeZone = true,
                                                 IsDynamicValue = true,
                                                 IsRelative = true,
                                                 Key = "Key1",
@@ -184,7 +130,6 @@ namespace Pass.Container.BL.Tests
                                                     GeneralField.DataDetector.Link
                                                 },
                                                 DateStyle = GeneralField.DateStyleType.Long,
-                                                IgnoresTimeZone = true,
                                                 IsDynamicValue = true,
                                                 IsRelative = true,
                                                 Key = "Key2",
@@ -279,8 +224,7 @@ namespace Pass.Container.BL.Tests
                                                 Value = "value",
                                                 Type = GeneralField.DataType.Text
                                                     }
-                                                },
-                    TransitType = Transit.Air
+                                                }
                 }
             };
             return template;

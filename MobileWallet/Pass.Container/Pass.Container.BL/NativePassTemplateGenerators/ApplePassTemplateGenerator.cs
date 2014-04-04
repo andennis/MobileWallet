@@ -78,7 +78,7 @@ namespace Pass.Container.BL.NativePassTemplateGenerators
         {
             var applePassTemplate = new ApplePassTemplate();
             //Standard Keys
-            applePassTemplate.WebServiceUrl = "http://kovganko-pc/Pass.Processing.Web";
+            applePassTemplate.WebServiceUrl = _ptConfig.ApplePassTemplateWebServerUrl;
             applePassTemplate.Description = passTemplate.PassDescription;
             applePassTemplate.FormatVersion = 1;
             applePassTemplate.OrganizationName = passTemplate.OrganizationName;
@@ -86,9 +86,9 @@ namespace Pass.Container.BL.NativePassTemplateGenerators
             applePassTemplate.TeamIdentifier = passTemplate.TeamIdentifier;
 
             //Visual Appearance Keys
-            applePassTemplate.BackgroundColor = new ApplePassTemplate.RgbColor(passTemplate.BackgroundColor);
-            applePassTemplate.ForegroundColor = new ApplePassTemplate.RgbColor(passTemplate.ValueTextColor);
-            applePassTemplate.LabelColor = new ApplePassTemplate.RgbColor(passTemplate.LabelTextColor);
+            applePassTemplate.BackgroundColor = "rgb(" + passTemplate.BackgroundColor.R + ", " + passTemplate.BackgroundColor.G + ", " + passTemplate.BackgroundColor.B + ")";
+            applePassTemplate.ForegroundColor = "rgb(" + passTemplate.ValueTextColor.R + ", " + passTemplate.ValueTextColor.G + ", " + passTemplate.ValueTextColor.B + ")";
+            applePassTemplate.LabelColor = "rgb(" + passTemplate.LabelTextColor.R + ", " + passTemplate.LabelTextColor.G + ", " + passTemplate.LabelTextColor.B + ")";
             if (!string.IsNullOrEmpty(passTemplate.LogoText))
                 applePassTemplate.LogoText = passTemplate.LogoText;
             if (passTemplate.SuppressStripShine != null)
