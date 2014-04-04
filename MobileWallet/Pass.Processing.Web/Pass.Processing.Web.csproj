@@ -15,7 +15,7 @@
     <AssemblyName>Pass.Processing.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -163,6 +163,10 @@
       <Project>{06EBD357-60DC-4BD9-AD9B-0A736DCC2203}</Project>
       <Name>FileStorage.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FileStorage\FileStorage.Repository.EF\FileStorage.Repository.EF.csproj">
+      <Project>{2378c604-fff4-44f9-9934-bb17013c27fb}</Project>
+      <Name>FileStorage.Repository.EF</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pass.Container\Pass.Container.BL\Pass.Container.BL.csproj">
       <Project>{C26E7AFB-A944-48E6-9688-44B791BD697E}</Project>
       <Name>Pass.Container.BL</Name>
@@ -174,6 +178,10 @@
     <ProjectReference Include="..\Pass.Container\Pass.Container.Factory\Pass.Container.Factory.csproj">
       <Project>{F9C5C89E-9B30-41E4-8FE4-D8675DBEAC26}</Project>
       <Name>Pass.Container.Factory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pass.Container\Pass.Container.Repository.EF\Pass.Container.Repository.EF.csproj">
+      <Project>{3ffd32fb-90aa-4bbc-ba28-8431915b78b1}</Project>
+      <Name>Pass.Container.Repository.EF</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
@@ -192,9 +200,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>36970</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:64444/</IISUrl>
+          <IISUrl>http://localhost/Pass.Processing.Web</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

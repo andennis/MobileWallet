@@ -15,7 +15,7 @@ namespace Pass.Container.BL.NativePassTemplateGenerators
     {
         private readonly IPassTemplateConfig _ptConfig;
         private const string ApplePassTemplateFolderName = "ApplePassTemplate";
-        private const string ApplePassTemplateFileName = "template.json";
+        private const string ApplePassTemplateFileName = "pass.json";
         private static List<string> _applePassTemplateFiles;
 
         public ApplePassTemplateGenerator(IPassTemplateConfig config)
@@ -78,10 +78,11 @@ namespace Pass.Container.BL.NativePassTemplateGenerators
         {
             var applePassTemplate = new ApplePassTemplate();
             //Standard Keys
+            applePassTemplate.WebServiceUrl = "http://kovganko-pc/Pass.Processing.Web";
             applePassTemplate.Description = passTemplate.PassDescription;
             applePassTemplate.FormatVersion = 1;
             applePassTemplate.OrganizationName = passTemplate.OrganizationName;
-            applePassTemplate.PassTypeIdentifier = passTemplate.PassCertificate;
+            applePassTemplate.PassTypeIdentifier = passTemplate.PassTypeIdentifier;
             applePassTemplate.TeamIdentifier = passTemplate.TeamIdentifier;
 
             //Visual Appearance Keys

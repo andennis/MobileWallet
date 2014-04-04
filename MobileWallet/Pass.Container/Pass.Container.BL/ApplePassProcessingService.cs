@@ -244,7 +244,7 @@ namespace Pass.Container.BL
                 return null;
             }
 
-            var passGenerator = new ApplePassGenerator(_config, _pcUnitOfWork, _fsService, pass);
+            var passGenerator = new ApplePassGenerator(_config, _pcUnitOfWork, _fsService, pass.PassId);
             string pkpassFilePath = passGenerator.GeneratePass();
 
             status = PassProcessingStatus.Succeed;

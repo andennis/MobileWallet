@@ -52,8 +52,9 @@ namespace Pass.Container.BL.Tests
                 PassStyle = PassStyle.Coupon,
                 PassDescription = "Pass description",
                 PassSerialNumberType = PassSerialNumberType.AutoGgenerated,
-                PassCertificate = "pass.test.coupon",
-                TeamIdentifier = "TeamIdentifier",
+                PassTypeIdentifier = "pass.com.passlight.test",
+                TeamIdentifier = "YHQB764QFA",
+                
                 //Visual Appearance Keys
                 BackgroundColor = Color.Blue,
                 LabelTextColor = Color.Red,
@@ -70,7 +71,7 @@ namespace Pass.Container.BL.Tests
                     {
                         AppIdentifier = new List<int> { 1, 2 },
                         AppLaunchUrl = "http://test.passtemplate.com",
-                        CustomJsonData = "Custom json data"
+                        CustomJsonData = ""
                     },
                     CallbackNotifications = new CallbackNotifications
                     {

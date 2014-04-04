@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
@@ -6,6 +9,8 @@ using System.Security.Cryptography.Pkcs;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using Common.Extensions;
+using Org.BouncyCastle.Cms;
+using Org.BouncyCastle.Security;
 
 namespace Pass.Container.BL.Helpers
 {
@@ -78,11 +83,22 @@ namespace Pass.Container.BL.Helpers
             return null;
         }
 
-        public X509Certificate2 GetCertificateFromFile(string cerPath)
+       public X509Certificate2 GetCertificateFromFile(string cerPath, string password)
         {
             if (!File.Exists(cerPath))
                 throw new FileNotFoundException("Certificate file was not found. File path: " + cerPath);
-            return new X509Certificate2(cerPath);
+
+            X509Certificate2 certificate;
+            if (password == null)
+            {
+                certificate = new X509Certificate2(cerPath);
+            }
+            else
+            {
+                X509KeyStorageFlags flags = X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.Exportable;
+                certificate = new X509Certificate2(cerPath, password, flags);
+            }
+            return certificate;
         }
 
         public byte[] SignByCertificate(string manifest, X509Certificate2 certificate)
@@ -104,5 +120,68 @@ namespace Pass.Container.BL.Helpers
             byte[] signatureBytes = SignByCertificate(manifestJson, certificate);
             File.WriteAllBytes(Path.Combine(dirPath, "signature"), signatureBytes);
         }
+
+
+        public void SignManigestFile(string certificateFilePath, string certificatePassword, string appleWwdrcaCertificateFilePath,  string dirPath)
+        {
+
+            string manifestJson = GetManifestJson(dirPath);
+            GenerateManifestFile(dirPath, manifestJson);
+            
+            
+            
+            Trace.TraceInformation("Signing the manifest file...");
+
+            X509Certificate2 card = GetCertificateFromFile(certificateFilePath, certificatePassword);
+
+            if (card == null)
+            {
+                throw new FileNotFoundException("Certificate could not be found.");
+            }
+
+            try
+            {
+                Org.BouncyCastle.X509.X509Certificate cert = DotNetUtilities.FromX509Certificate(card);
+                Org.BouncyCastle.Crypto.AsymmetricKeyParameter privateKey = DotNetUtilities.GetKeyPair(card.PrivateKey).Private;
+
+                Trace.TraceInformation("Fetching Apple Certificate for signing..");
+
+                X509Certificate2 appleCA = GetCertificateFromFile(appleWwdrcaCertificateFilePath, null);
+                Org.BouncyCastle.X509.X509Certificate appleCert = DotNetUtilities.FromX509Certificate(appleCA);
+
+                Trace.TraceInformation("Constructing the certificate chain..");
+
+                ArrayList intermediateCerts = new ArrayList();
+
+                intermediateCerts.Add(appleCert);
+                intermediateCerts.Add(cert);
+
+                Org.BouncyCastle.X509.Store.X509CollectionStoreParameters PP = new Org.BouncyCastle.X509.Store.X509CollectionStoreParameters(intermediateCerts);
+                Org.BouncyCastle.X509.Store.IX509Store st1 = Org.BouncyCastle.X509.Store.X509StoreFactory.Create("CERTIFICATE/COLLECTION", PP);
+
+                CmsSignedDataGenerator generator = new CmsSignedDataGenerator();
+
+                generator.AddSigner(privateKey, cert, CmsSignedDataGenerator.DigestSha1);
+                generator.AddCertificates(st1);
+
+                Trace.TraceInformation("Processing the signature..");
+
+                CmsProcessable content = new CmsProcessableByteArray(Encoding.ASCII.GetBytes(manifestJson));
+                CmsSignedData signedData = generator.Generate(content, false);
+                
+                byte[] signatureBytes = signedData.GetEncoded();
+                File.WriteAllBytes(Path.Combine(dirPath, "signature"), signatureBytes);
+
+                Trace.TraceInformation("The file has been successfully signed!");
+
+            }
+            catch (Exception exp)
+            {
+                Trace.TraceError("Failed to sign the manifest file: [{0}]", exp.Message);
+                
+            }
+        }
+
+
     }
 }
