@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="efcce335-7bdf-4ffb-a686-518ba4d52bfa" name="Pass.Manager.Entities" linkedPackageId="1d411afb-d027-4df1-b6ee-fc80cb6fa8a8" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" dslVersion="1.0.0.0" Id="efcce335-7bdf-4ffb-a686-518ba4d52bfa" name="Pass.Manager.Entities" linkedPackageId="1d411afb-d027-4df1-b6ee-fc80cb6fa8a8" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <ownedCommentsInternal>
     <comment Id="5dc93d1b-a2c2-46b4-a02d-05e2846081f7">
       <elementDefinition Id="1d36891a-3196-4789-adad-a8f254ee2a80" />
@@ -161,6 +161,24 @@
     <logicalClassDesignerModelHasTypes>
       <class Id="d9eecd2c-1a59-4ac9-959f-784923376bf6" name="DistributionField" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="ff480eac-deb7-42fa-a0dd-1045c2c1cfe8" />
+        <targetEnds>
+          <association Id="086165df-996a-4208-bc56-f8f3ceeed5c4" isDerived="false" sourceEndRoleName="DistributionField" targetEndRoleName="PassField" isLeaf="false" isAbstract="false">
+            <classMoniker Id="85fa7bcb-dde1-4fe0-a747-7d23a7e65061" LastKnownName="PassField" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3b5313c9-04a4-4663-a044-4af7b5b007ba" name="DistributionField" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="59dfc8cd-dec5-4e7e-8b52-6ed7d7e803cd" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3670b839-2b84-448a-80b0-f63602c77cd3" name="PassField" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="2e679a58-1081-49be-afae-feab1247e27c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="9f5151fc-93ae-4af9-8452-751e1bc6fc99" />
+          </association>
+        </targetEnds>
         <ownedAttributesInternal>
           <property Id="7886ff4e-ad87-48bd-b931-b509f131f2e0" name="Name" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="7dc1f8ec-f1e6-45f9-9ced-21040ef08410" />

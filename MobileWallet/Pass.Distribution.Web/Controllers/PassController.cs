@@ -84,8 +84,8 @@ namespace Pass.Distribution.Web.Controllers
         {
             //Stream pkgStream = GetPassPackage(passToken);
             //string path = HttpContext.Server.MapPath("~/../FS/4.pkpass");
-            string path = HttpContext.Server.MapPath("~/App_Data/4.pkpass");
-            return File(path, "application/vnd.apple.pkpass", "4.pkpass");
+            string path = HttpContext.Server.MapPath("~/App_Data/1.pkpass");
+            return File(path, "application/vnd.apple.pkpass", "1.pkpass");
         }
 
         private void SendLinkToEmail(string email)

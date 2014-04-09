@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="a53e0939-3e57-42d8-a1d6-852d3d589578"
   name="MobileWalletModeling" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -1142,6 +1142,47 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="9f5151fc-93ae-4af9-8452-751e1bc6fc99"
+            isDerived="false"
+            sourceEndRoleName="DistributionField"
+            targetEndRoleName="PassField"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="c488d43e-5636-4807-9f54-9ac64d6daf51"
+              LastKnownName="PassField"
+              LastKnownLocation="PassModeling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="59dfc8cd-dec5-4e7e-8b52-6ed7d7e803cd"
+                  name="DistributionField"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2e679a58-1081-49be-afae-feab1247e27c"
+                  name="PassField"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
         <ownedAttributesInternal>
           <property
             Id="7dc1f8ec-f1e6-45f9-9ced-21040ef08410"
@@ -1167,6 +1208,368 @@
             isComposite="false" />
         </ownedAttributesInternal>
       </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="6b348af6-eaa9-4a6f-b363-3b0457231c0e"
+        name="Pass Designer"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="a0c8dcd0-ea47-4fb2-9ea1-0d075e48a5c5"
+            isDerived="false"
+            sourceEndRoleName="Pass Editor"
+            targetEndRoleName="Create\Edit pass"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="14c6d244-b317-4269-9a5c-de8cde57a7a4"
+              LastKnownName="Build pass template"
+              LastKnownLocation="PassModeling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c54f064a-b2a1-4247-bd97-8d9a206fc0d5"
+                  name="Pass Editor"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1a7d5c30-a72c-419c-b2e7-62fd07e1b0fc"
+                  name="Create\Edit pass"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="9d65eb3b-902f-46fc-96c7-24a469f159d8"
+        name="Consumer"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="93d31778-b662-4ff9-8b61-7051b0631725"
+            isDerived="false"
+            sourceEndRoleName="Consumer"
+            targetEndRoleName="Read pass"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="b238b024-8442-4052-b25b-e7240aa831d3"
+              LastKnownName="Register\Unregister pass"
+              LastKnownLocation="PassModeling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1069b36b-dfce-49a0-b03f-0eb25a4f1912"
+                  name="Consumer"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9bfe1cb7-9ea1-4ac5-8e64-bbe00d2ba533"
+                  name="Read pass"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="8aa3bf82-15fc-499b-afe1-e08ece37eefa"
+            isDerived="false"
+            sourceEndRoleName="Consumer"
+            targetEndRoleName="Fill out pass info"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="fbdadb26-eec8-4055-a8b8-bc358b92455b"
+              LastKnownName="Fill out and post pass info"
+              LastKnownLocation="PassModeling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f312df4b-427f-4420-bb64-21f8aff9b3e3"
+                  name="Consumer"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a150393f-9e93-4b81-96ad-85dfe3c360f0"
+                  name="Fill out pass info"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="0c75ecd1-524d-402b-83dd-4aee1bde4ef9"
+            isDerived="false"
+            sourceEndRoleName="Consumer"
+            targetEndRoleName="Load pass"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="57f22ccf-8a3c-4da7-a7f7-ecd9dcbf6928"
+              LastKnownName="Load pass"
+              LastKnownLocation="PassModeling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f5774927-a938-4fcf-bfe3-b3308cd98e28"
+                  name="Consumer"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3b4cdeed-ae18-4e28-a237-8e6a7e8679e8"
+                  name="Load pass"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="b457bc08-c8fe-4492-b46a-56065685ca9b"
+        name="Editor"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="3ce4f18a-cb3c-412b-8c2a-c57ddfcc2459"
+            isDerived="false"
+            sourceEndRoleName="Manager"
+            targetEndRoleName="Update pass info"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="2517d63c-238c-469f-b6b4-a0094a1d0c84"
+              LastKnownName="Update pass info"
+              LastKnownLocation="PassModeling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7e98ca2a-d1b0-4b8c-88a7-64da98c455e9"
+                  name="Manager"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="896e2d2d-ef9f-49a5-9486-8a783a9c62a7"
+                  name="Update pass info"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="14c6d244-b317-4269-9a5c-de8cde57a7a4"
+        name="Build pass template"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="b238b024-8442-4052-b25b-e7240aa831d3"
+        name="Register\Unregister pass"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f1b93f2b-da73-42b7-bd16-183f83bbdf30"
+        name="Create pass"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="fbdadb26-eec8-4055-a8b8-bc358b92455b"
+        name="Fill out and post pass info"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="57f22ccf-8a3c-4da7-a7f7-ecd9dcbf6928"
+        name="Load pass"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="df069ece-bd2f-40d0-b242-3cbcfa9d3510"
+        name="Distribute pass"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="2517d63c-238c-469f-b6b4-a0094a1d0c84"
+        name="Update pass info"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="47ace40c-f1a1-4797-b3ad-dd1f7e13ebd0"
+        name="Manager"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="f28fd8a8-c15a-4cd6-befb-989c1f304219"
+            isDerived="false"
+            sourceEndRoleName="Manager"
+            targetEndRoleName="Create pass"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="f1b93f2b-da73-42b7-bd16-183f83bbdf30"
+              LastKnownName="Create pass"
+              LastKnownLocation="PassModeling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="207b0068-1dc9-49b7-b4c7-6cfdc5c4881a"
+                  name="Manager"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3ee4dd55-6af5-4158-b34b-d3bfc4d72138"
+                  name="Create pass"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="f33a44f6-68e9-4980-8fcd-29c9b238031f"
+            isDerived="false"
+            sourceEndRoleName="Manager"
+            targetEndRoleName="Distribute pass"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="df069ece-bd2f-40d0-b242-3cbcfa9d3510"
+              LastKnownName="Distribute pass"
+              LastKnownLocation="PassModeling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="894ce095-3e3c-49df-bce9-8a0245b85a3b"
+                  name="Manager"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="662decd7-0615-4492-aa66-81045946a677"
+                  name="Distribute pass"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

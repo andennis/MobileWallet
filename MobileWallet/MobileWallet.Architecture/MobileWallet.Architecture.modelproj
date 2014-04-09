@@ -105,6 +105,13 @@
       <SubType>Content</SubType>
       <DependentUpon>Pass.Manager.Services.classdiagram</DependentUpon>
     </Content>
+    <Content Include="Pass.Manager.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Pass.Manager.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Pass.Manager.usecasediagram</DependentUpon>
+    </Content>
     <Content Include="Pass.Notification.Entities.classdiagram">
       <SubType>Content</SubType>
     </Content>
