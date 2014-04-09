@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel"
   dslVersion="1.0.0.0"
   Id="a53e0939-3e57-42d8-a1d6-852d3d589578"
   name="MobileWalletModeling" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -1382,6 +1382,84 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="212b4407-d61c-4f16-a7e4-a1a40e97495f"
+            isDerived="false"
+            sourceEndRoleName="Consumer"
+            targetEndRoleName="Update pass"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="e59d9c35-0f19-450e-b39a-41d1de8786bb"
+              LastKnownName="Update pass"
+              LastKnownLocation="PassModeling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="cf6f892b-21e7-4688-8fb4-13926476a641"
+                  name="Consumer"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="223bc83c-c6ee-4887-bd02-6567d7443e83"
+                  name="Update pass"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="5b16121c-f310-4172-b773-36074e97cb32"
+            isDerived="false"
+            sourceEndRoleName="Consumer"
+            targetEndRoleName="Browse passes"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="c71621b8-3bfe-49c7-a14b-7da1440859c0"
+              LastKnownName="Browse passes"
+              LastKnownLocation="PassModeling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1ba142d0-a789-4c4a-9156-579c3ce25f3f"
+                  name="Consumer"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="052b830b-d314-4bea-9ec6-c6aab24f8c51"
+                  name="Browse passes"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
       </actor>
     </packageHasNamedElement>
@@ -1570,6 +1648,168 @@
           </association>
         </targetEnds>
       </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="e59d9c35-0f19-450e-b39a-41d1de8786bb"
+        name="Update pass"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="c71621b8-3bfe-49c7-a14b-7da1440859c0"
+        name="Browse passes"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="0d9aabf4-54f1-4d14-bfca-c32c8b313251"
+        name="Consumer"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="dfbdd805-ff0b-4cb9-b2a8-ec82cb753331"
+            isDerived="false"
+            sourceEndRoleName="Consumer"
+            targetEndRoleName="ClientDevice"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="af83e8fe-54d1-4d1c-8740-2f3fda8e7cfd"
+              LastKnownName="ClientDevice"
+              LastKnownLocation="PassContainerPackage.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="98d89ea3-982a-4498-97c6-3cb99faad347"
+                  name="Consumer"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Shared"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d79bf70f-0377-46f0-9aef-fb23cf0ed727"
+                  name="ClientDevice"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="33bedd28-66c7-4d35-bae7-dda455e6d27f"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="0066ad2b-7f95-43c3-b192-e800e6b1d977"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="3e5ecb4c-f66a-4a13-9895-8f3c1a928c84"
+            isDerived="false"
+            sourceEndRoleName="Consumer"
+            targetEndRoleName="ConsumerField"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="227d64c6-7a2a-4e8f-9455-849b3b2d21ec"
+              LastKnownName="ConsumerField"
+              LastKnownLocation="PassModeling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7e8ddd2b-cce1-4942-a52f-8929dcb423be"
+                  name="Consumer"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="30a0b9c1-1310-4a06-bb70-9afbcf48ca91"
+                  name="ConsumerField"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="d89f6c75-9feb-4d43-a988-c813dc66cb9b"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="39d0738b-2b4a-4733-87f7-2529d930938e"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="227d64c6-7a2a-4e8f-9455-849b3b2d21ec"
+        name="ConsumerField"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="b83ebd2a-b4bc-40f8-b1cf-f98eafa1722b"
+            name="Name"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="b8abc2fe-35b2-47d2-af11-bcf76ec7263c"
+            name="Value"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+      </class>
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

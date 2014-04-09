@@ -1,25 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" dslVersion="1.0.0.0" Id="e036b63b-e582-4cb6-b96f-6cd643ccb1f2" name="Pass.Manager" linkedPackageId="3954bef8-5318-4f58-a1d0-f3a4048a6a03" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
-  <profileInstances>
-    <packageHasProfileInstances Id="4cd0ce28-905d-4324-bdd5-cc15d35d7ed1">
-      <profileInstance Id="fc932912-4c66-481e-a3da-a0f055a90d9c" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="a6bb5640-2828-4626-be6c-06fbbd102d1b">
-      <profileInstance Id="55bf41ba-1653-4027-a716-468b0e520995" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="9722c7d0-1e0a-4f48-8495-6cfb14272710">
-      <profileInstance Id="c7a58e8e-742d-4d25-b440-ef0f0baf0c3c" name="TextTemplateBindings">
-        <elementDefinition Id="06d93c75-9f7e-465a-a217-2c5fb68015af" />
-      </profileInstance>
-      <elementDefinition Id="1764e76e-4606-4e41-927d-7dee20e9c500" />
-    </packageHasProfileInstances>
-  </profileInstances>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="e036b63b-e582-4cb6-b96f-6cd643ccb1f2" name="Pass.Manager" linkedPackageId="3954bef8-5318-4f58-a1d0-f3a4048a6a03" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
   <packagedElements>
     <useCaseModelRootHasTypes>
       <actor Id="2ce7eec8-ecd3-4f78-93b9-56863116fd1a" name="Pass Designer" isAbstract="false" isLeaf="false">
@@ -95,6 +75,38 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="0c75ecd1-524d-402b-83dd-4aee1bde4ef9" />
+          </association>
+          <association Id="c99be7d3-4a2c-4b53-81ee-9e7085fee8f4" isDerived="false" sourceEndRoleName="Consumer" targetEndRoleName="Update pass" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="b12df78a-0bb2-49ac-b8ad-47f8033e4432" LastKnownName="Update pass" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0a5d82e8-b00e-4c04-a2d8-abc3a78667ff" name="Consumer" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="cf6f892b-21e7-4688-8fb4-13926476a641" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5d6e8fe3-a41f-4f70-bd98-144cc766bf0b" name="Update pass" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="223bc83c-c6ee-4887-bd02-6567d7443e83" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="212b4407-d61c-4f16-a7e4-a1a40e97495f" />
+          </association>
+          <association Id="7695c22e-3e1d-4efc-97b7-945019a0a3de" isDerived="false" sourceEndRoleName="Consumer" targetEndRoleName="Browse passes" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="462fa73d-4429-4dbf-9900-16f6c08d7f38" LastKnownName="Browse passes" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d23840b7-5aec-461d-a9ad-9bbd3fdc4608" name="Consumer" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="1ba142d0-a789-4c4a-9156-579c3ce25f3f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d0671f55-e0ab-4e10-a65a-d8c81c6b2a16" name="Browse passes" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="052b830b-d314-4bea-9ec6-c6aab24f8c51" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="5b16121c-f310-4172-b773-36074e97cb32" />
           </association>
         </targetEnds>
       </actor>
@@ -196,8 +208,38 @@
         </targetEnds>
       </actor>
     </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="b12df78a-0bb2-49ac-b8ad-47f8033e4432" name="Update pass" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e59d9c35-0f19-450e-b39a-41d1de8786bb" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="462fa73d-4429-4dbf-9900-16f6c08d7f38" name="Browse passes" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c71621b8-3bfe-49c7-a14b-7da1440859c0" />
+      </useCase>
+    </useCaseModelRootHasTypes>
   </packagedElements>
   <package Id="3954bef8-5318-4f58-a1d0-f3a4048a6a03" name="MobileWalletModeling">
     <elementDefinition Id="a53e0939-3e57-42d8-a1d6-852d3d589578" />
+    <profileInstances>
+      <packageHasProfileInstances Id="4cd0ce28-905d-4324-bdd5-cc15d35d7ed1">
+        <profileInstance Id="fc932912-4c66-481e-a3da-a0f055a90d9c" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="a6bb5640-2828-4626-be6c-06fbbd102d1b">
+        <profileInstance Id="55bf41ba-1653-4027-a716-468b0e520995" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="9722c7d0-1e0a-4f48-8495-6cfb14272710">
+        <profileInstance Id="c7a58e8e-742d-4d25-b440-ef0f0baf0c3c" name="TextTemplateBindings">
+          <elementDefinition Id="06d93c75-9f7e-465a-a217-2c5fb68015af" />
+        </profileInstance>
+        <elementDefinition Id="1764e76e-4606-4e41-927d-7dee20e9c500" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </useCaseModelRoot>
