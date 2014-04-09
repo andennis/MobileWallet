@@ -21,8 +21,8 @@ namespace Pass.Container.BL.NativePassGenerators
     public class ApplePassGenerator : BasePassGenerator
     {
         private const string CertificatePassword = "Pass3";
-        private const string CertificateFilePath = @"e:\Wallet_SVN\MobileWallet\Documentation\Certificates\Passbook\pass.com.passlight.test\pass.p12";
-        private const string AppleWwdrcaCertificateFilePath = @"e:\Wallet_SVN\MobileWallet\Documentation\Certificates\Passbook\pass.com.passlight.test\AppleWWDRCA.cer";
+        private const string CertificateFilePath = @"e:\Wallet_SVN\MobileWallet\Documentation\Passbook\Certificates\pass.com.passlight.dev.test\pass.p12";
+        private const string AppleWwdrcaCertificateFilePath = @"e:\Wallet_SVN\MobileWallet\Documentation\Passbook\Certificates\pass.com.passlight.dev.test\AppleWWDRCA.cer";
         private const string ApplePassTemplateFolderName = "ApplePassTemplate";
         private const string ApplePassTempFolderName = "Apple";
         private const string ApplePassTemplateJson = "pass.json";
