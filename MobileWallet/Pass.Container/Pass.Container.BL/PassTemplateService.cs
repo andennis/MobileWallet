@@ -212,6 +212,9 @@ namespace Pass.Container.BL
         }
         private List<string> GetDynamicFields(GeneralPassTemplate generalPassTemplate)
         {
+            if (generalPassTemplate.FieldDetails == null)
+                return new List<string>();
+
             var dynamicFields = new List<string>();
             //Get dynamic fields from AuxiliaryFields
             GetDynamicFields(generalPassTemplate.FieldDetails.AuxiliaryFields, dynamicFields);

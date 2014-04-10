@@ -54,8 +54,8 @@ namespace Pass.Container.BL.Tests.NativePassGenerators
                                                                 fss,
                                                                 passId);
 
-                string pkpassFilePass = applePassGenerator.GeneratePass();
-                Assert.NotNull(pkpassFilePass);
+                string pkpassFilePath = applePassGenerator.GeneratePass();
+                Assert.NotNull(pkpassFilePath);
             }
         }
 

@@ -37,6 +37,10 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
         [JsonProperty(PropertyName = "passSerialNumberType", Required = Required.Always)]
         public PassSerialNumberType PassSerialNumberType { get; set; }
 
+        [XmlElement(ElementName = "providedSerialNumber")]
+        [JsonProperty(PropertyName = "providedSerialNumber")]
+        public string ProvidedSerialNumber { get; set; }
+
         [XmlElement(ElementName = "passTypeIdentifier")]
         [JsonProperty(PropertyName = "passTypeIdentifier", Required = Required.Always)]
         public string PassTypeIdentifier { get; set; }
@@ -49,17 +53,35 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
 
         #region Visual Appearance Keys
 
+        [XmlIgnore]
+        public Color BackgroundColor { get; set; }
         [XmlElement(ElementName = "backgroundColor")]
         [JsonProperty(PropertyName = "backgroundColor", Required = Required.Always)]
-        public Color BackgroundColor { get; set; }
+        public int BackgroundColorAsArgb
+        {
+            get { return BackgroundColor.ToArgb(); }
+            set { BackgroundColor = Color.FromArgb(value); }
+        }
 
+        [XmlIgnore]
+        public Color LabelTextColor { get; set; }
         [XmlElement(ElementName = "labelTextColor")]
         [JsonProperty(PropertyName = "labelTextColor", Required = Required.Always)]
-        public Color LabelTextColor { get; set; }
-
+        public int LabelTextColorAsArgb
+        {
+            get { return LabelTextColor.ToArgb(); }
+            set { LabelTextColor = Color.FromArgb(value); }
+        }
+        
+        [XmlIgnore]
+        public Color ValueTextColor { get; set; }
         [XmlElement(ElementName = "valueTextColor")]
         [JsonProperty(PropertyName = "valueTextColor", Required = Required.Always)]
-        public Color ValueTextColor { get; set; }
+        public int ValueTextColorAsArgb
+        {
+            get { return ValueTextColor.ToArgb(); }
+            set { ValueTextColor = Color.FromArgb(value); }
+        }
 
         [XmlElement(ElementName = "suppressStripShine")]
         [JsonProperty(PropertyName = "suppressStripShine", NullValueHandling = NullValueHandling.Ignore)]

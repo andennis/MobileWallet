@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Common.Extensions;
@@ -79,12 +80,14 @@ namespace Pass.Container.BL.NativePassTemplateGenerators
             var applePassTemplate = new ApplePassTemplate();
             //Standard Keys
             applePassTemplate.WebServiceUrl = _ptConfig.ApplePassTemplateWebServerUrl;
+            applePassTemplate.AuthenticationToken = GetAuthenticationToken(passTemplate);
             applePassTemplate.Description = passTemplate.PassDescription;
             applePassTemplate.FormatVersion = 1;
             applePassTemplate.OrganizationName = passTemplate.OrganizationName;
             applePassTemplate.PassTypeIdentifier = passTemplate.PassTypeIdentifier;
             applePassTemplate.TeamIdentifier = passTemplate.TeamIdentifier;
-
+            applePassTemplate.SerialNumber = GetSerialNumber(passTemplate);
+            
             //Visual Appearance Keys
             applePassTemplate.BackgroundColor = "rgb(" + passTemplate.BackgroundColor.R + ", " + passTemplate.BackgroundColor.G + ", " + passTemplate.BackgroundColor.B + ")";
             applePassTemplate.ForegroundColor = "rgb(" + passTemplate.ValueTextColor.R + ", " + passTemplate.ValueTextColor.G + ", " + passTemplate.ValueTextColor.B + ")";
@@ -188,9 +191,48 @@ namespace Pass.Container.BL.NativePassTemplateGenerators
             return applePassTemplate;
         }
 
+        //TODO GetAuthenticationToken
+        private string GetAuthenticationToken(GeneralPassTemplate passTemplate)
+        {
+            return "vxwxd7J8AlNNFPS85u0ewzFdc";
+        }
+
+        private string GetSerialNumber(GeneralPassTemplate passTemplate)
+        {
+            string serialNumber;
+            switch (passTemplate.PassSerialNumberType)
+            {
+                case PassSerialNumberType.AutoGgenerated:
+                    {
+                        serialNumber = "SerialNumber_SN_";
+                        break;
+                    }
+                case PassSerialNumberType.Provided:
+                    {
+                        serialNumber = passTemplate.ProvidedSerialNumber;
+                        break;
+                    }
+                case PassSerialNumberType.SameForEachPass:
+                    {
+                        serialNumber = Guid.NewGuid().ToString();
+                        break;
+                    }
+                default:
+                    {
+                        serialNumber = Guid.NewGuid().ToString();
+                        break;
+                    }
+            }
+            return serialNumber;
+        }
+
         private PassStructure GetPassStructure(GeneralPassTemplate passTemplate)
         {
             var passStructure = new PassStructure();
+
+            if (passTemplate.FieldDetails == null)
+                return passStructure;
+            
             if (passTemplate.FieldDetails.AuxiliaryFields != null)
             {
                 List<Field> auxiliaryFields = passTemplate.FieldDetails.AuxiliaryFields.Select(GetAppleField).ToList();

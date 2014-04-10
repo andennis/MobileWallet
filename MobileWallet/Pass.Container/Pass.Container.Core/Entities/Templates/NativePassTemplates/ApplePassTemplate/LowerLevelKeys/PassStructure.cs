@@ -26,7 +26,7 @@ namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTe
 
         //WARNING! Required for boarding passes; otherwise not allowed.
         [JsonProperty(PropertyName = "transitType", NullValueHandling = NullValueHandling.Ignore)]
-        public Transit TransitType { get; set; }
+        public Transit? TransitType { get; set; }
 
         [JsonConverter(typeof(StringEnumConverter))]
         public enum Transit

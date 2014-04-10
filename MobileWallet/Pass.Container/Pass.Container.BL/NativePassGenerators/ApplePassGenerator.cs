@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Text.RegularExpressions;
-using Common.Repository;
 using Common.Utils;
 using FileStorage.Core;
 using Pass.Container.BL.Helpers;
@@ -83,6 +79,13 @@ namespace Pass.Container.BL.NativePassGenerators
             if (!File.Exists(applePassJsonFilePath))
                 throw new PassGenerationException(String.Format("{0} file was not found. File path: {1}", ApplePassTemplateJson, applePassJsonFilePath));
             string passJsonText = File.ReadAllText(applePassJsonFilePath);
+
+            //Set serial number if SerialNumberType.AutoGgenerated
+            if (passJsonText.Contains("SerialNumber_SN_"))
+            {
+                string snRegExpression = @"SerialNumber_SN_";
+                passJsonText = Regex.Replace(passJsonText, snRegExpression, Guid.NewGuid().ToString());
+            }
 
             //Get dynamic fields
             Dictionary<PassField, PassFieldValue> dynamicFields = GetDynamicFields();
