@@ -5,7 +5,7 @@ using System.Linq;
 using Common.Extensions;
 using Common.Repository;
 using FileStorage.Core;
-using Pass.Container.BL.NativePassTemplateGenerators;
+using Pass.Container.BL.PassTemplateGenerators;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
 using Pass.Container.Core.Entities.Enums;
@@ -26,7 +26,7 @@ namespace Pass.Container.BL
         private readonly IRepository<PassTemplateApple> _repPassTemplateApple;
         private readonly IRepository<PassField> _repPassField;
         //Native pass template generators
-        private readonly IDictionary<ClientType, INativePassTemplateGenerator> _passTemplateGenerators;
+        private readonly IDictionary<ClientType, IPassTemplateGenerator> _passTemplateGenerators;
 
         public PassTemplateService(IPassTemplateConfig config, IPassContainerUnitOfWork pcUnitOfWork, IFileStorageService fsService)
         {
@@ -39,7 +39,7 @@ namespace Pass.Container.BL
             _repPassTemplateApple = _pcUnitOfWork.GetRepository<PassTemplateApple>();
             _repPassField = _pcUnitOfWork.GetRepository<PassField>();
 
-            _passTemplateGenerators = new Dictionary<ClientType, INativePassTemplateGenerator>
+            _passTemplateGenerators = new Dictionary<ClientType, IPassTemplateGenerator>
                 {
                     {ClientType.Apple, new ApplePassTemplateGenerator(config)}
                 };

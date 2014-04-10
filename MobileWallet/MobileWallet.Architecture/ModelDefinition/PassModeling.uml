@@ -1391,7 +1391,7 @@
             isAbstract="false">
             <useCaseMoniker
               Id="e59d9c35-0f19-450e-b39a-41d1de8786bb"
-              LastKnownName="Update pass"
+              LastKnownName="Refresh pass"
               LastKnownLocation="PassModeling.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -1652,7 +1652,7 @@
     <packageHasNamedElement>
       <useCase
         Id="e59d9c35-0f19-450e-b39a-41d1de8786bb"
-        name="Update pass"
+        name="Refresh pass"
         isAbstract="false"
         isLeaf="false" />
     </packageHasNamedElement>

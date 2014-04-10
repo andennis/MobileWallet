@@ -10,9 +10,9 @@ using Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTempla
 using Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.FieldDictionaryKeys;
 using Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.LowerLevelKeys;
 
-namespace Pass.Container.BL.NativePassTemplateGenerators
+namespace Pass.Container.BL.PassTemplateGenerators
 {
-    public class ApplePassTemplateGenerator : INativePassTemplateGenerator
+    public class ApplePassTemplateGenerator : IPassTemplateGenerator
     {
         private readonly IPassTemplateConfig _ptConfig;
         private const string ApplePassTemplateFolderName = "ApplePassTemplate";
@@ -38,6 +38,7 @@ namespace Pass.Container.BL.NativePassTemplateGenerators
             };
         }
 
+        #region IPassTemplateGenerator
         public ClientType ClientType
         {
             get { return ClientType.Apple; }
@@ -74,6 +75,7 @@ namespace Pass.Container.BL.NativePassTemplateGenerators
                 File.Copy(file, filePath);
             }
         }
+        #endregion
 
         private ApplePassTemplate CreateApplePassTemplate(GeneralPassTemplate passTemplate)
         {

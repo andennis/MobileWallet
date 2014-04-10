@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using NUnit.Framework;
-using Pass.Container.BL.NativePassTemplateGenerators;
+using Pass.Container.BL.PassTemplateGenerators;
 
 namespace Pass.Container.BL.Tests.NativePassTemplateGenerators
 {

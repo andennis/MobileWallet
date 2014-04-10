@@ -51,9 +51,9 @@
     <Compile Include="Caching\FileCacheStore.cs" />
     <Compile Include="EntityConverter.cs" />
     <Compile Include="Helpers\ApplePassGeneratorHelper.cs" />
-    <Compile Include="NativePassGenerators\ApplePassGenerator.cs" />
-    <Compile Include="NativePassGenerators\BasePassGenerator.cs" />
-    <Compile Include="NativePassTemplateGenerators\ApplePassTemplateGenerator.cs" />
+    <Compile Include="PassGenerators\ApplePassGenerator.cs" />
+    <Compile Include="PassGenerators\BasePassGenerator.cs" />
+    <Compile Include="PassTemplateGenerators\ApplePassTemplateGenerator.cs" />
     <Compile Include="PassContainerConfig.cs" />
     <Compile Include="PassContainerService.cs" />
     <Compile Include="PassDistributionService.cs" />

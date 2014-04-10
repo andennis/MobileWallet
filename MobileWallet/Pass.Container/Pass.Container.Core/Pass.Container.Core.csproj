@@ -65,7 +65,8 @@
     <Compile Include="Exceptions\PassGenerationException.cs" />
     <Compile Include="Exceptions\PassTemplateException.cs" />
     <Compile Include="IApplePassProcessingService.cs" />
-    <Compile Include="INativePassTemplateGenerator.cs" />
+    <Compile Include="IPassGenerator.cs" />
+    <Compile Include="IPassTemplateGenerator.cs" />
     <Compile Include="IPassContainerConfig.cs" />
     <Compile Include="IPassContainerService.cs" />
     <Compile Include="IPassDistributionConfig.cs" />

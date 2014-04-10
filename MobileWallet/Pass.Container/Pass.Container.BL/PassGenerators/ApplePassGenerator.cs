@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using Common.Utils;
 using FileStorage.Core;
 using Pass.Container.BL.Helpers;
 using Pass.Container.Core;
-using Pass.Container.Core.Entities.Enums;
 using Pass.Container.Core.Exceptions;
 using Pass.Container.Repository.Core;
 using Pass.Container.Repository.Core.Entities;
 using RepEntities = Pass.Container.Repository.Core.Entities;
 
-namespace Pass.Container.BL.NativePassGenerators
+namespace Pass.Container.BL.PassGenerators
 {
-    public class ApplePassGenerator : BasePassGenerator
+    public class ApplePassGenerator : BasePassGenerator, IPassGenerator
     {
         private const string CertificatePassword = "Pass3";
         private const string CertificateFilePath = @"e:\Wallet_SVN\MobileWallet\Documentation\Passbook\Certificates\pass.com.passlight.dev.test\pass.p12";
@@ -23,35 +23,31 @@ namespace Pass.Container.BL.NativePassGenerators
         private const string ApplePassTempFolderName = "Apple";
         private const string ApplePassTemplateJson = "pass.json";
         private readonly IPassContainerConfig _config;
-        private readonly ApplePassGeneratorHelper _generatorHelper;       
 
-        public ApplePassGenerator(IPassContainerConfig config, IPassContainerUnitOfWork pcUnitOfWork, IFileStorageService fsService, int passId)
-            :base(pcUnitOfWork, fsService, passId)
+        public ApplePassGenerator(IPassContainerConfig config, IPassContainerUnitOfWork pcUnitOfWork, IFileStorageService fsService)
+            :base(pcUnitOfWork, fsService)
         {
             _config = config;
-            _generatorHelper = new ApplePassGeneratorHelper();
         }
 
-        public ClientType ClientType
+        public string GeneratePass(int passId)
         {
-            get { return ClientType.Apple; }
-        }
+            RepEntities.Pass pass = GetPass(passId);
 
-        public string GeneratePass()
-        {
             //Get storage item path
-            var lastUpdateDateTime = new DateTime();
-            string storageItemPath = GetStorageItemPath(ref lastUpdateDateTime);
+            DateTime lastUpdateDateTime;
+            string storageItemPath = GetStorageItemPath(pass.PassTemplateId, out lastUpdateDateTime);
             if (storageItemPath == null)
                 throw new PassGenerationException("Apple pass template file storage item was not found.");
 
             //Copy files from FileStorage into temporary pass template folder (if not exist)
-            string templateTempFolderPath = Path.Combine(_config.PassGeneratorTempFolderPath, ApplePassTempFolderName, _pass.PassTemplateId.ToString());
+            string templateTempFolderPath = Path.Combine(_config.PassGeneratorTempFolderPath, ApplePassTempFolderName, pass.PassTemplateId.ToString());
             string lastUpdateTemplateFolder = Path.Combine(templateTempFolderPath, lastUpdateDateTime.ToString("dd-MM-yyyy h-mm-ss"));
             if (!Directory.Exists(lastUpdateTemplateFolder))
             {
                 if (Directory.Exists(templateTempFolderPath))
                     Directory.Delete(templateTempFolderPath, true);
+
                 Directory.CreateDirectory(lastUpdateTemplateFolder);
                 string[] files = Directory.GetFiles(Path.Combine(storageItemPath, ApplePassTemplateFolderName));
                 foreach (string sourceFileName in files)
@@ -63,7 +59,7 @@ namespace Pass.Container.BL.NativePassGenerators
             }
 
             //Copy files from temporary pass template folder into particular temporary pass folder
-            string passFolder = Path.Combine(lastUpdateTemplateFolder, _pass.PassId.ToString());
+            string passFolder = Path.Combine(lastUpdateTemplateFolder, pass.PassId.ToString());
             if (Directory.Exists(passFolder))
                 Directory.Delete(passFolder, true);
             Directory.CreateDirectory(passFolder);
@@ -88,7 +84,7 @@ namespace Pass.Container.BL.NativePassGenerators
             }
 
             //Get dynamic fields
-            Dictionary<PassField, PassFieldValue> dynamicFields = GetDynamicFields();
+            Dictionary<PassField, PassFieldValue> dynamicFields = GetDynamicFields(pass);
 
             //Replace dynamic labels and values
             foreach (KeyValuePair<PassField, PassFieldValue> passFieldValue in dynamicFields)
@@ -107,9 +103,7 @@ namespace Pass.Container.BL.NativePassGenerators
             }
             File.WriteAllText(applePassJsonFilePath, passJsonText);
 
-
-
-            _generatorHelper.SignManigestFile(CertificateFilePath, CertificatePassword, AppleWwdrcaCertificateFilePath, passFolder);
+            ApplePassGeneratorHelper.SignManigestFile(CertificateFilePath, CertificatePassword, AppleWwdrcaCertificateFilePath, passFolder);
 
             ////Get certificate for pass
             //X509Certificate2 certificate = _generatorHelper.GetCertificateFromFile(CertificateFilePath, CertificatePassword);
@@ -118,7 +112,7 @@ namespace Pass.Container.BL.NativePassGenerators
             //_generatorHelper.SignPassFiles(passFolder, certificate);
 
             //Generate pkpass file
-            string pkpassFilePath = Path.Combine(passFolder, _pass.SerialNumber + ".pkpass");
+            string pkpassFilePath = Path.Combine(passFolder, pass.SerialNumber + ".pkpass");
             Compress.CompressDirectory(passFolder, pkpassFilePath);
 
             return pkpassFilePath;

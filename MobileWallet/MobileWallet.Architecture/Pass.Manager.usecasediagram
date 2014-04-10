@@ -77,7 +77,7 @@
             <elementDefinition Id="0c75ecd1-524d-402b-83dd-4aee1bde4ef9" />
           </association>
           <association Id="c99be7d3-4a2c-4b53-81ee-9e7085fee8f4" isDerived="false" sourceEndRoleName="Consumer" targetEndRoleName="Update pass" isLeaf="false" isAbstract="false">
-            <useCaseMoniker Id="b12df78a-0bb2-49ac-b8ad-47f8033e4432" LastKnownName="Update pass" />
+            <useCaseMoniker Id="b12df78a-0bb2-49ac-b8ad-47f8033e4432" LastKnownName="Refresh pass" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="0a5d82e8-b00e-4c04-a2d8-abc3a78667ff" name="Consumer" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
@@ -209,7 +209,7 @@
       </actor>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
-      <useCase Id="b12df78a-0bb2-49ac-b8ad-47f8033e4432" name="Update pass" isAbstract="false" isLeaf="false">
+      <useCase Id="b12df78a-0bb2-49ac-b8ad-47f8033e4432" name="Refresh pass" isAbstract="false" isLeaf="false">
         <elementDefinition Id="e59d9c35-0f19-450e-b39a-41d1de8786bb" />
       </useCase>
     </useCaseModelRootHasTypes>

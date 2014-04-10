@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Common.Repository;
 using FileStorage.Core;
-using Pass.Container.BL.NativePassGenerators;
+using Pass.Container.BL.PassGenerators;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities.Enums;
 using Pass.Container.Repository.Core;
@@ -26,6 +26,7 @@ namespace Pass.Container.BL
         private readonly IRepository<RepEntities.Pass> _repPass;
         private readonly IRepository<Registration> _repRegistration;
         private readonly IRepository<ClientDeviceApple> _repClientDeviceApple;
+        private readonly ApplePassGenerator _passGenerator;
 
         public ApplePassProcessingService(IPassContainerConfig config, IPassContainerUnitOfWork pcUnitOfWork, IFileStorageService fsService)
         {
@@ -42,6 +43,8 @@ namespace Pass.Container.BL
             _repPass = _pcUnitOfWork.GetRepository<RepEntities.Pass>();
             _repRegistration = _pcUnitOfWork.GetRepository<Registration>();
             _repClientDeviceApple = _pcUnitOfWork.GetRepository<ClientDeviceApple>();
+
+            _passGenerator = new ApplePassGenerator(_config, _pcUnitOfWork, _fsService);
         }
 
         public void RegisterDevice(string deviceLibraryIdentifier, string passTypeIdentifier, string serialNumber, string pushToken, string authToken, out PassProcessingStatus status)
@@ -244,8 +247,7 @@ namespace Pass.Container.BL
                 return null;
             }
 
-            var passGenerator = new ApplePassGenerator(_config, _pcUnitOfWork, _fsService, pass.PassId);
-            string pkpassFilePath = passGenerator.GeneratePass();
+            string pkpassFilePath = _passGenerator.GeneratePass(pass.PassId);
 
             status = PassProcessingStatus.Succeed;
             return pkpassFilePath;

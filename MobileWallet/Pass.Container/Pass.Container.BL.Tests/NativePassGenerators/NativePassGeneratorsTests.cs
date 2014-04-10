@@ -5,7 +5,7 @@ using FileStorage.BL;
 using FileStorage.Core;
 using FileStorage.Factory;
 using NUnit.Framework;
-using Pass.Container.BL.NativePassGenerators;
+using Pass.Container.BL.PassGenerators;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
 using Pass.Container.Factory;
@@ -51,10 +51,9 @@ namespace Pass.Container.BL.Tests.NativePassGenerators
 
                 var applePassGenerator = new ApplePassGenerator(new PassContainerConfig(),
                                                                 new PassContainerUnitOfWork(new PassContainerConfig()),
-                                                                fss,
-                                                                passId);
+                                                                fss);
 
-                string pkpassFilePath = applePassGenerator.GeneratePass();
+                string pkpassFilePath = applePassGenerator.GeneratePass(passId);
                 Assert.NotNull(pkpassFilePath);
             }
         }

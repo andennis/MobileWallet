@@ -14,9 +14,9 @@ using Org.BouncyCastle.Security;
 
 namespace Pass.Container.BL.Helpers
 {
-    public class ApplePassGeneratorHelper
+    public static class ApplePassGeneratorHelper
     {
-        public string GenerateHashOfFile(string filePath)
+        public static string GenerateHashOfFile(string filePath)
         {
             if (!File.Exists(filePath))
                 throw new FileNotFoundException("File was not found. File path: " + filePath);
@@ -25,23 +25,21 @@ namespace Pass.Container.BL.Helpers
             return GenerateHash(fileData);
         }
 
-        private string GenerateHash(byte[] fileData)
+        private static string GenerateHash(byte[] fileData)
         {
-            string hashText = "";
-            string hexValue = "";
-
+            var hashText = new StringBuilder();
             byte[] hashData = SHA1.Create().ComputeHash(fileData); // SHA1 or MD5
 
             foreach (byte b in hashData)
             {
-                hexValue = b.ToString("X").ToLower(); // Lowercase for compatibility on case-sensitive systems
-                hashText += (hexValue.Length == 1 ? "0" : "") + hexValue;
+                string hexValue = b.ToString("X").ToLower(); // Lowercase for compatibility on case-sensitive systems
+                hashText.Append((hexValue.Length == 1 ? "0" : string.Empty) + hexValue);
             }
 
-            return hashText;
+            return hashText.ToString();
         }
 
-        public string GetManifestJson(string dirPath)
+        public static string GetManifestJson(string dirPath)
         {
             if (!Directory.Exists(dirPath))
                 throw new DirectoryNotFoundException("Directory was not found. Directory path: " + dirPath);
@@ -59,7 +57,7 @@ namespace Pass.Container.BL.Helpers
             return hashOfFiles.ObjectToJson();
         }
 
-        public void GenerateManifestFile(string dirPath, string manifestJson)
+        public static void GenerateManifestFile(string dirPath, string manifestJson)
         {
             if (!Directory.Exists(dirPath))
                 throw new DirectoryNotFoundException("Directory was not found. Directory path: " + dirPath);
@@ -67,7 +65,7 @@ namespace Pass.Container.BL.Helpers
             File.WriteAllText(Path.Combine(dirPath, "manifest.json"), manifestJson);
         }
 
-        public X509Certificate2 GetCertificate(string nameOfPassCertificate)
+        public static X509Certificate2 GetCertificate(string nameOfPassCertificate)
         {
             // Open the cert store on the Local Machine
             var store = new X509Store(StoreLocation.CurrentUser);
@@ -83,7 +81,7 @@ namespace Pass.Container.BL.Helpers
             return null;
         }
 
-       public X509Certificate2 GetCertificateFromFile(string cerPath, string password)
+        public static X509Certificate2 GetCertificateFromFile(string cerPath, string password)
         {
             if (!File.Exists(cerPath))
                 throw new FileNotFoundException("Certificate file was not found. File path: " + cerPath);
@@ -101,7 +99,7 @@ namespace Pass.Container.BL.Helpers
             return certificate;
         }
 
-        public byte[] SignByCertificate(string manifest, X509Certificate2 certificate)
+        public static byte[] SignByCertificate(string manifest, X509Certificate2 certificate)
         {
             byte[] manifestBytes = Encoding.ASCII.GetBytes(manifest);
 
@@ -113,7 +111,7 @@ namespace Pass.Container.BL.Helpers
             return signedCms.Encode();
         }
 
-        public void SignPassFiles(string dirPath, X509Certificate2 certificate)
+        public static void SignPassFiles(string dirPath, X509Certificate2 certificate)
         {
             string manifestJson = GetManifestJson(dirPath);
             GenerateManifestFile(dirPath, manifestJson);
@@ -121,14 +119,10 @@ namespace Pass.Container.BL.Helpers
             File.WriteAllBytes(Path.Combine(dirPath, "signature"), signatureBytes);
         }
 
-
-        public void SignManigestFile(string certificateFilePath, string certificatePassword, string appleWwdrcaCertificateFilePath,  string dirPath)
+        public static void SignManigestFile(string certificateFilePath, string certificatePassword, string appleWwdrcaCertificateFilePath,  string dirPath)
         {
-
             string manifestJson = GetManifestJson(dirPath);
             GenerateManifestFile(dirPath, manifestJson);
-            
-            
             
             Trace.TraceInformation("Signing the manifest file...");
 
@@ -151,15 +145,12 @@ namespace Pass.Container.BL.Helpers
 
                 Trace.TraceInformation("Constructing the certificate chain..");
 
-                ArrayList intermediateCerts = new ArrayList();
+                var intermediateCerts = new ArrayList() { appleCert, cert };
 
-                intermediateCerts.Add(appleCert);
-                intermediateCerts.Add(cert);
-
-                Org.BouncyCastle.X509.Store.X509CollectionStoreParameters PP = new Org.BouncyCastle.X509.Store.X509CollectionStoreParameters(intermediateCerts);
+                var PP = new Org.BouncyCastle.X509.Store.X509CollectionStoreParameters(intermediateCerts);
                 Org.BouncyCastle.X509.Store.IX509Store st1 = Org.BouncyCastle.X509.Store.X509StoreFactory.Create("CERTIFICATE/COLLECTION", PP);
 
-                CmsSignedDataGenerator generator = new CmsSignedDataGenerator();
+                var generator = new CmsSignedDataGenerator();
 
                 generator.AddSigner(privateKey, cert, CmsSignedDataGenerator.DigestSha1);
                 generator.AddCertificates(st1);
@@ -173,15 +164,12 @@ namespace Pass.Container.BL.Helpers
                 File.WriteAllBytes(Path.Combine(dirPath, "signature"), signatureBytes);
 
                 Trace.TraceInformation("The file has been successfully signed!");
-
             }
             catch (Exception exp)
             {
                 Trace.TraceError("Failed to sign the manifest file: [{0}]", exp.Message);
-                
             }
         }
-
 
     }
 }
