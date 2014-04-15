@@ -13,7 +13,7 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
         [JsonProperty(PropertyName = "encodedMessage", Required = Required.Always)]
         public EncodedMessage EncodedMessage { get; set; }
 
-        [XmlElement(ElementName = "textToEncode")]
+        [XmlElement(ElementName = "textToEncode", IsNullable = false)]
         [JsonProperty(PropertyName = "textToEncode", NullValueHandling = NullValueHandling.Ignore)]
         public string TextToEncode { get; set; }
 
@@ -21,7 +21,7 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
         [JsonProperty(PropertyName = "alternativeText", Required = Required.Always)]
         public AlternativeText AlternativeText { get; set; }
 
-        [XmlElement(ElementName = "textToDisplay")]
+        [XmlElement(ElementName = "textToDisplay", IsNullable = false)]
         [JsonProperty(PropertyName = "textToDisplay", NullValueHandling = NullValueHandling.Ignore)]
         public string TextToDisplay { get; set; }
 

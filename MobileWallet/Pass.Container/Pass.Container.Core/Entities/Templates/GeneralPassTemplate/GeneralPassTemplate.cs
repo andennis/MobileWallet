@@ -101,6 +101,10 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
         [JsonProperty(PropertyName = "passTimezone")]
         public TimeZone PassTimezone { get; set; }
 
+        [XmlElement(ElementName = "ignoresTimeZone")]
+        [JsonProperty(PropertyName = "ignoresTimeZone", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? IgnoresTimeZone { get; set; }
+
         [XmlElement(ElementName = "logoText")]
         [JsonProperty(PropertyName = "logoText", NullValueHandling = NullValueHandling.Ignore)]
         public string LogoText { get; set; }

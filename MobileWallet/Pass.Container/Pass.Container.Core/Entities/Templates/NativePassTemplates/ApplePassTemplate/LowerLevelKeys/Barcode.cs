@@ -1,5 +1,6 @@
 ﻿using System.Runtime.Serialization;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.LowerLevelKeys
 {
@@ -26,6 +27,7 @@ namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTe
         // http://msdn.microsoft.com/en-us/library/system.text.encodinginfo.name.aspx
     }
 
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum BarcodeType
     {
         [EnumMember(Value = "PKBarcodeFormatPDF417")]

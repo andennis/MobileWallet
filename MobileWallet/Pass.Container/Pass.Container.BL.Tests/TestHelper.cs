@@ -64,178 +64,155 @@ namespace Pass.Container.BL.Tests
                 //Others Keys
                 LogoText = "Logo text",
 
-
-
-
-                FieldDetails = null
-
-
-
                 //Integration Details
-                //IntegrationDetails = new IntegrationDetails
-                //{
-                //   CallbackNotifications = new CallbackNotifications
-                //    {
-                //        PassIssued = "passIssued@mail.com",
-                //        PassRegistered = "passRegistered@mail.com",
-                //        PassUnregistered = "passUnregistered@mail.com",
-                //        PassUpdated = "passUpdated@mail.com"
-                //    }
-                //},
-                ////Location Details
-                //LocationDetails = new LocationDetails
-                //{
-                //    Locations = new List<GeneralLocation>
-                //                {
-                //                    new GeneralLocation
-                //                        {
-                //                            Latitude = 53.883980386469425,
-                //                            Longitude = 27.59497405000002,
-                //                            RelevantText = "Relevant text"
-                //                        }
-                //                }
-                //},
-                ////Barcode Details
-                //BarcodeDetails = new BarcodeDetails
-                //{
-                //    AlternativeText = AlternativeText.DisplayTheBarcodeContent,
-                //    BarcodeType = GeneralBarcodeType.AztecCode,
-                //    EncodedMessage = EncodedMessage.EncodeThePassUniqueId,
-                //    EncodingFormat = "Encoding.UTF8",
-                //    TextToDisplay = "Text to display",
-                //    TextToEncode = "Text to encode"
+                IntegrationDetails = new IntegrationDetails
+                {
+                    CallbackNotifications = new CallbackNotifications
+                     {
+                         PassIssued = "passIssued@mail.com",
+                         PassRegistered = "passRegistered@mail.com",
+                         PassUnregistered = "passUnregistered@mail.com",
+                         PassUpdated = "passUpdated@mail.com"
+                     }
+                },
+                //Location Details
+                LocationDetails = new LocationDetails
+                {
+                    Locations = new List<GeneralLocation>
+                                {
+                                    new GeneralLocation
+                                        {
+                                            Latitude = 53.883980386469425,
+                                            Longitude = 27.59497405000002,
+                                            RelevantText = "Relevant text"
+                                        }
+                                }
+                },
+                //Barcode Details
+                BarcodeDetails = new BarcodeDetails
+                {
+                    AlternativeText = AlternativeText.DisplayTheBarcodeContent,
+                    BarcodeType = GeneralBarcodeType.Pdf417Code,
+                    EncodedMessage = EncodedMessage.EncodeThePassUniqueId,
+                    EncodingFormat = "UTF-8",
+                    TextToDisplay = "Text to display",
+                    TextToEncode = "Text to encode"
 
-                //},
-                ////Field Details
-                //FieldDetails = new FieldDetails
-                //{
-                //    AuxiliaryFields = new List<GeneralField>
-                //                {
-                //                    new GeneralField
-                //                        {
-                //                            AttributedValue = "AttributedValue",
-                //                            ChangeMessage = "ChangeMessage",
-                //                            CurrencyCode = "CurrencyCode",
-                //                            DataDetectorTypes = new List<GeneralField.DataDetector>
-                //                                {
-                //                                    GeneralField.DataDetector.Address,
-                //                                    GeneralField.DataDetector.Link
-                //                                },
-                //                                DateStyle = GeneralField.DateStyleType.Long,
-                //                                IsDynamicValue = true,
-                //                                IsRelative = true,
-                //                                Key = "Key1",
-                //                                Label = "label",
-                //                                Value = "value",
-                //                                Type = GeneralField.DataType.Text
-                //                        },
-                //                        new GeneralField
-                //                        {
-                //                            AttributedValue = "AttributedValue",
-                //                            ChangeMessage = "ChangeMessage",
-                //                            CurrencyCode = "CurrencyCode",
-                //                            DataDetectorTypes = new List<GeneralField.DataDetector>
-                //                                {
-                //                                    GeneralField.DataDetector.Address,
-                //                                    GeneralField.DataDetector.Link
-                //                                },
-                //                                DateStyle = GeneralField.DateStyleType.Long,
-                //                                IsDynamicValue = true,
-                //                                IsRelative = true,
-                //                                Key = "Key2",
-                //                                Label = "label",
-                //                                Value = "value",
-                //                                Type = GeneralField.DataType.Text
-                //                        }
-                //                },
-                //    BackFields = new List<GeneralField>
-                //                    {
-                //                        new GeneralField
-                //                        {
-                //                            AttributedValue = "AttributedValue",
-                //                            ChangeMessage = "ChangeMessage",
-                //                            CurrencyCode = "CurrencyCode",
-                //                            DataDetectorTypes = new List<GeneralField.DataDetector>
-                //                                {
-                //                                    GeneralField.DataDetector.Address,
-                //                                    GeneralField.DataDetector.Link
-                //                                },
-                //                                DateStyle = GeneralField.DateStyleType.Long,
-                //                                IgnoresTimeZone = true,
-                //                                IsDynamicValue = true,
-                //                                IsRelative = true,
-                //                                Key = "Key3",
-                //                                Label = "label",
-                //                                Value = "value",
-                //                                Type = GeneralField.DataType.Text
-                //                        }
-                //                    },
-                //    HeaderFields = new List<GeneralField>
-                //                        {
-                //                            new GeneralField
-                //                        {
-                //                            AttributedValue = "AttributedValue",
-                //                            ChangeMessage = "ChangeMessage",
-                //                            CurrencyCode = "CurrencyCode",
-                //                            DataDetectorTypes = new List<GeneralField.DataDetector>
-                //                                {
-                //                                    GeneralField.DataDetector.Address,
-                //                                    GeneralField.DataDetector.Link
-                //                                },
-                //                                DateStyle = GeneralField.DateStyleType.Long,
-                //                                IgnoresTimeZone = true,
-                //                                IsDynamicValue = true,
-                //                                IsRelative = true,
-                //                                Key = "Key4",
-                //                                Label = "label",
-                //                                Value = "value",
-                //                                Type = GeneralField.DataType.Text
-                //                        }
-                //                        },
-                //    PrimaryFields = new List<GeneralField>
-                //                            {
-                //                                new GeneralField
-                //                        {
-                //                            AttributedValue = "AttributedValue",
-                //                            ChangeMessage = "ChangeMessage",
-                //                            CurrencyCode = "CurrencyCode",
-                //                            DataDetectorTypes = new List<GeneralField.DataDetector>
-                //                                {
-                //                                    GeneralField.DataDetector.Address,
-                //                                    GeneralField.DataDetector.Link
-                //                                },
-                //                                DateStyle = GeneralField.DateStyleType.Long,
-                //                                IgnoresTimeZone = true,
-                //                                IsDynamicValue = true,
-                //                                IsRelative = true,
-                //                                Key = "Key5",
-                //                                Label = "label",
-                //                                Value = "value",
-                //                                Type = GeneralField.DataType.Text
-                //                        }
-                //                            },
-                //    SecondaryFields = new List<GeneralField>
-                //                                {
-                //                                    new GeneralField{
-                //                            AttributedValue = "AttributedValue",
-                //                            ChangeMessage = "ChangeMessage",
-                //                            CurrencyCode = "CurrencyCode",
-                //                            DataDetectorTypes = new List<GeneralField.DataDetector>
-                //                                {
-                //                                    GeneralField.DataDetector.Address,
-                //                                    GeneralField.DataDetector.Link
-                //                                },
-                //                                DateStyle = GeneralField.DateStyleType.Long,
-                //                                IgnoresTimeZone = true,
-                //                                IsDynamicValue = true,
-                //                                IsRelative = true,
-                //                                Key = "Key6",
-                //                                Label = "label",
-                //                                Value = "value",
-                //                                Type = GeneralField.DataType.Text
-                //                                    }
-                //                                }
-                //}
+                },
+                //Field Details
+                FieldDetails = new FieldDetails
+                {
+                    AuxiliaryFields = new List<GeneralField>
+                                {
+                                    new GeneralField
+                                        {
+                                            AttributedValue = "<a href = \"http://example.com/customers/123\"> Edit my profile </a>",
+                                            ChangeMessage = "Gate changed to %@.",
+                                            Key = "Key1",
+                                            Label = "label1",
+                                            Value = "value",
+                                            TextAlignment = GeneralField.TextAlignmentType.Right,
+                                            Type = GeneralField.DataType.Text
+                                        },
+                                        new GeneralField
+                                        {
+                                           ChangeMessage = "Gate changed to %@.",
+                                           //These keys are optional if the field’s value is a number; otherwise they are not allowed.
+                                            CurrencyCode = "USD",
+                                            Key = "Key2",
+                                            Label = "label2",
+                                            Value = "10",
+                                            Type = GeneralField.DataType.Currency
+                                        }
+                    //            },
+                    //BackFields = new List<GeneralField>
+                    //                {
+                    //                    new GeneralField
+                    //                    {
+                    //                        AttributedValue = "AttributedValue",
+                    //                        ChangeMessage = "ChangeMessage",
+                    //                        CurrencyCode = "CurrencyCode",
+                    //                        DataDetectorTypes = new List<GeneralField.DataDetector>
+                    //                            {
+                    //                                GeneralField.DataDetector.Address,
+                    //                                GeneralField.DataDetector.Link
+                    //                            },
+                    //                            DateStyle = GeneralField.DateStyleType.Long,
+                    //                            IgnoresTimeZone = true,
+                    //                            IsDynamicValue = true,
+                    //                            IsRelative = true,
+                    //                            Key = "Key3",
+                    //                            Label = "label",
+                    //                            Value = "value",
+                    //                            Type = GeneralField.DataType.Text
+                    //                    }
+                    //                },
+                    //HeaderFields = new List<GeneralField>
+                    //                    {
+                    //                        new GeneralField
+                    //                    {
+                    //                        AttributedValue = "AttributedValue",
+                    //                        ChangeMessage = "ChangeMessage",
+                    //                        CurrencyCode = "CurrencyCode",
+                    //                        DataDetectorTypes = new List<GeneralField.DataDetector>
+                    //                            {
+                    //                                GeneralField.DataDetector.Address,
+                    //                                GeneralField.DataDetector.Link
+                    //                            },
+                    //                            DateStyle = GeneralField.DateStyleType.Long,
+                    //                            IgnoresTimeZone = true,
+                    //                            IsDynamicValue = true,
+                    //                            IsRelative = true,
+                    //                            Key = "Key4",
+                    //                            Label = "label",
+                    //                            Value = "value",
+                    //                            Type = GeneralField.DataType.Text
+                    //                    }
+                    //                    },
+                    //PrimaryFields = new List<GeneralField>
+                    //                        {
+                    //                            new GeneralField
+                    //                    {
+                    //                        AttributedValue = "AttributedValue",
+                    //                        ChangeMessage = "ChangeMessage",
+                    //                        CurrencyCode = "CurrencyCode",
+                    //                        DataDetectorTypes = new List<GeneralField.DataDetector>
+                    //                            {
+                    //                                GeneralField.DataDetector.Address,
+                    //                                GeneralField.DataDetector.Link
+                    //                            },
+                    //                            DateStyle = GeneralField.DateStyleType.Long,
+                    //                            IgnoresTimeZone = true,
+                    //                            IsDynamicValue = true,
+                    //                            IsRelative = true,
+                    //                            Key = "Key5",
+                    //                            Label = "label",
+                    //                            Value = "value",
+                    //                            Type = GeneralField.DataType.Text
+                    //                    }
+                    //                        },
+                    //SecondaryFields = new List<GeneralField>
+                    //                            {
+                    //                                new GeneralField{
+                    //                        AttributedValue = "AttributedValue",
+                    //                        ChangeMessage = "ChangeMessage",
+                    //                        CurrencyCode = "CurrencyCode",
+                    //                        DataDetectorTypes = new List<GeneralField.DataDetector>
+                    //                            {
+                    //                                GeneralField.DataDetector.Address,
+                    //                                GeneralField.DataDetector.Link
+                    //                            },
+                    //                            DateStyle = GeneralField.DateStyleType.Long,
+                    //                            IgnoresTimeZone = true,
+                    //                            IsDynamicValue = true,
+                    //                            IsRelative = true,
+                    //                            Key = "Key6",
+                    //                            Label = "label",
+                    //                            Value = "value",
+                    //                            Type = GeneralField.DataType.Text
+                    //                                }
+                                                }
+                }
             };
             return template;
         }

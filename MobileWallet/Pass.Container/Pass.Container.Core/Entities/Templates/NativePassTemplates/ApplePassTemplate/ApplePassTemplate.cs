@@ -59,8 +59,8 @@ namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTe
         public DateTime? ExpirationDate { get; set; }
 
         //Available in iOS 7.0
-        [JsonProperty(PropertyName = "voided")]
-        public bool Voided { get; set; }
+        [JsonProperty(PropertyName = "voided", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Voided { get; set; }
 
         #endregion
 
@@ -72,8 +72,8 @@ namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTe
         public List<Beacon> Beacons { get; set; }
 
         //Available in iOS 7.0
-        [JsonProperty(PropertyName = "ignoresTimeZone")]
-        public bool IgnoresTimeZone { get; set; }
+        [JsonProperty(PropertyName = "ignoresTimeZone", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? IgnoresTimeZone { get; set; }
         
         [JsonProperty(PropertyName = "locations", NullValueHandling = NullValueHandling.Ignore)]
         public List<Location> Locations { get; set; }
@@ -154,7 +154,7 @@ namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTe
         public ApplePassTemplate()
         {
             this.FormatVersion = 1;
-            this.Voided = false;
+            //this.Voided = false;
             this.IgnoresTimeZone = false;
         }
     }

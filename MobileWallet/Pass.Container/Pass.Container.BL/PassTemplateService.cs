@@ -232,7 +232,7 @@ namespace Pass.Container.BL
         {
             dynamicFields.AddRange(
                 from field in fields
-                where (field.IsDynamicLabel || field.IsDynamicValue)
+                where ((field.IsDynamicLabel != null && field.IsDynamicLabel == true) || (field.IsDynamicValue != null && field.IsDynamicValue == true))
                 select field.Key);
         }
 

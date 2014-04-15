@@ -30,14 +30,14 @@ namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTe
         public string Value { get; set; }
 
         [JsonProperty(PropertyName = "textAlignment", NullValueHandling = NullValueHandling.Ignore)]
-        public TextAlignmentType TextAlignment { get; set; }
+        public TextAlignmentType? TextAlignment { get; set; }
 
         #endregion
 
         //Information about how a number should be displayed in a field
         #region Number Style Keys
         [JsonProperty(PropertyName = "numberStyle", NullValueHandling = NullValueHandling.Ignore)]
-        public NumberStyleType NumberStyle { get; set; }
+        public NumberStyleType? NumberStyle { get; set; }
 
         [JsonProperty(PropertyName = "currencyCode", NullValueHandling = NullValueHandling.Ignore)]
         public string CurrencyCode { get; set; }
@@ -47,16 +47,13 @@ namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTe
         //Information about how a date should be displayed in a field
         #region Date Style Keys
         [JsonProperty(PropertyName = "dateStyle", NullValueHandling = NullValueHandling.Ignore)]
-        public DateStyleType DateStyle { get; set; }
-
-        [JsonProperty(PropertyName = "ignoresTimeZone", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IgnoresTimeZone { get; set; }
+        public DateStyleType? DateStyle { get; set; }
 
         [JsonProperty(PropertyName = "isRelative", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IsRelative { get; set; }
+        public bool? IsRelative { get; set; }
 
         [JsonProperty(PropertyName = "timeStyle", NullValueHandling = NullValueHandling.Ignore)]
-        public DateStyleType TimeStyle { get; set; }
+        public DateStyleType? TimeStyle { get; set; }
 
         #endregion
 

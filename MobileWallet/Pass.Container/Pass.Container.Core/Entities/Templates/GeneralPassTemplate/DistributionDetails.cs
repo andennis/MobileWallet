@@ -15,8 +15,8 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
         public int? LimitPassPerUser { get; set; }
 
         [XmlElement(ElementName = "allPassesAsExpired")]
-        [JsonProperty(PropertyName = "allPassesAsExpired")]
-        public bool AllPassesAsExpired { get; set; }//??
+        [JsonProperty(PropertyName = "allPassesAsExpired", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? AllPassesAsExpired { get; set; }//??
 
         [XmlElement(ElementName = "expirationDate")]
         [JsonProperty(PropertyName = "expirationDate", NullValueHandling = NullValueHandling.Ignore)]

@@ -77,6 +77,7 @@ namespace Pass.Container.BL.PassTemplateGenerators
         }
         #endregion
 
+        #region Create ApplePassTemplate
         private ApplePassTemplate CreateApplePassTemplate(GeneralPassTemplate passTemplate)
         {
             var applePassTemplate = new ApplePassTemplate();
@@ -129,7 +130,8 @@ namespace Pass.Container.BL.PassTemplateGenerators
             {
                 if (passTemplate.DistributionDetails.ExpirationDate != null)
                     applePassTemplate.ExpirationDate = passTemplate.DistributionDetails.ExpirationDate;
-                applePassTemplate.Voided = passTemplate.DistributionDetails.AllPassesAsExpired;
+                if (passTemplate.DistributionDetails.AllPassesAsExpired != null)
+                    applePassTemplate.Voided = passTemplate.DistributionDetails.AllPassesAsExpired;
             }
 
             //Relevance Keys
@@ -168,6 +170,8 @@ namespace Pass.Container.BL.PassTemplateGenerators
                     applePassTemplate.MaxDistance = passTemplate.LocationDetails.MaxDistance;
             }
 
+            applePassTemplate.IgnoresTimeZone = passTemplate.IgnoresTimeZone;
+
             //Style Keys
             switch (passTemplate.PassStyle)
             {
@@ -192,6 +196,94 @@ namespace Pass.Container.BL.PassTemplateGenerators
 
             return applePassTemplate;
         }
+
+        private PassStructure GetPassStructure(GeneralPassTemplate passTemplate)
+        {
+            var passStructure = new PassStructure();
+
+            if (passTemplate.FieldDetails == null)
+                return passStructure;
+
+            if (passTemplate.FieldDetails.AuxiliaryFields != null && passTemplate.FieldDetails.AuxiliaryFields.Count > 0)
+            {
+                List<Field> auxiliaryFields = passTemplate.FieldDetails.AuxiliaryFields.Select(GetAppleField).ToList();
+                passStructure.AuxiliaryFields = auxiliaryFields;
+            }
+            if (passTemplate.FieldDetails.BackFields != null && passTemplate.FieldDetails.BackFields.Count > 0)
+            {
+                List<Field> backFields = passTemplate.FieldDetails.BackFields.Select(GetAppleField).ToList();
+                passStructure.BackFields = backFields;
+            }
+            if (passTemplate.FieldDetails.HeaderFields != null && passTemplate.FieldDetails.HeaderFields.Count > 0)
+            {
+                List<Field> headerFields = passTemplate.FieldDetails.HeaderFields.Select(GetAppleField).ToList();
+                passStructure.HeaderFields = headerFields;
+            }
+            if (passTemplate.FieldDetails.PrimaryFields != null && passTemplate.FieldDetails.PrimaryFields.Count > 0)
+            {
+                List<Field> primaryFields = passTemplate.FieldDetails.PrimaryFields.Select(GetAppleField).ToList();
+                passStructure.PrimaryFields = primaryFields;
+            }
+            if (passTemplate.FieldDetails.SecondaryFields != null && passTemplate.FieldDetails.SecondaryFields.Count > 0)
+            {
+                List<Field> secondaryFields = passTemplate.FieldDetails.SecondaryFields.Select(GetAppleField).ToList();
+                passStructure.SecondaryFields = secondaryFields;
+            }
+            return passStructure;
+        }
+
+        private Field GetAppleField(GeneralField templatefield)
+        {
+            var field = new Field();
+            if (!string.IsNullOrEmpty(templatefield.AttributedValue))
+                if (templatefield.AttributedValue.Contains("href"))
+                    field.AttributedValue = templatefield.AttributedValue;
+                else
+                {
+                    //TODO log 
+                }
+            if (!string.IsNullOrEmpty(templatefield.ChangeMessage))
+                if (templatefield.ChangeMessage.Contains("%@"))
+                    field.ChangeMessage = templatefield.ChangeMessage;
+                else
+                {
+                    //TODO log 
+                }
+
+            //Data detectors are applied only to back fields
+            if (templatefield.DataDetectorTypes != null && templatefield.DataDetectorTypes.Count > 0)
+                field.DataDetectorTypes = GetAppleDataDetectorTypes(templatefield.DataDetectorTypes);
+            field.Key = templatefield.Key;
+            if (templatefield.IsDynamicLabel != null && templatefield.IsDynamicLabel == true)
+                field.Label = "Label$$" + templatefield.Key + "$$";
+            else
+                if (!string.IsNullOrEmpty(templatefield.Label))
+                    field.Label = templatefield.Label;
+            if (templatefield.IsDynamicValue != null && templatefield.IsDynamicValue == true)
+                field.Value = "Value$$" + templatefield.Key + "$$";
+            else
+                field.Value = templatefield.Value;
+            //This key is not allowed for primary fields
+            if (templatefield.TextAlignment != null)
+                field.TextAlignment = GetAppleTextAlligment(templatefield.TextAlignment);
+
+            if (templatefield.Type == GeneralField.DataType.Number)
+                field.NumberStyle = GetAppleNumberStyle(templatefield.NumberStyle);
+            if (templatefield.Type == GeneralField.DataType.Currency)
+                field.CurrencyCode = templatefield.CurrencyCode;
+            if (templatefield.Type == GeneralField.DataType.Date)
+            {
+                field.DateStyle = GetAppleDateStyle(templatefield.DateStyle);
+                field.IsRelative = templatefield.IsRelative;
+            }
+            if (templatefield.Type == GeneralField.DataType.DateTime)
+            {
+                field.TimeStyle = GetAppleDateStyle(templatefield.TimeStyle);
+                field.IsRelative = templatefield.IsRelative;
+            }
+            return field;
+        }
+        #endregion
 
         //TODO GetAuthenticationToken
         private string GetAuthenticationToken(GeneralPassTemplate passTemplate)
@@ -228,83 +320,8 @@ namespace Pass.Container.BL.PassTemplateGenerators
             return serialNumber;
         }
 
-        private PassStructure GetPassStructure(GeneralPassTemplate passTemplate)
-        {
-            var passStructure = new PassStructure();
-
-            if (passTemplate.FieldDetails == null)
-                return passStructure;
-            
-            if (passTemplate.FieldDetails.AuxiliaryFields != null)
-            {
-                List<Field> auxiliaryFields = passTemplate.FieldDetails.AuxiliaryFields.Select(GetAppleField).ToList();
-                passStructure.AuxiliaryFields = auxiliaryFields;
-            }
-            if (passTemplate.FieldDetails.BackFields != null)
-            {
-                List<Field> backFields = passTemplate.FieldDetails.BackFields.Select(GetAppleField).ToList();
-                passStructure.BackFields = backFields;
-            }
-            if (passTemplate.FieldDetails.HeaderFields != null)
-            {
-                List<Field> headerFields = passTemplate.FieldDetails.HeaderFields.Select(GetAppleField).ToList();
-                passStructure.HeaderFields = headerFields;
-            }
-            if (passTemplate.FieldDetails.PrimaryFields != null)
-            {
-                List<Field> primaryFields = passTemplate.FieldDetails.PrimaryFields.Select(GetAppleField).ToList();
-                passStructure.PrimaryFields = primaryFields;
-            }
-            if (passTemplate.FieldDetails.SecondaryFields != null)
-            {
-                List<Field> secondaryFields = passTemplate.FieldDetails.SecondaryFields.Select(GetAppleField).ToList();
-                passStructure.SecondaryFields = secondaryFields;
-            }
-            return passStructure;
-        }
-
-        private Field GetAppleField(GeneralField templatefield)
-        {
-            var field = new Field();
-            //TODO need validation AttributedValue
-            if (!string.IsNullOrEmpty(templatefield.AttributedValue))
-                field.AttributedValue = templatefield.AttributedValue;
-            //TODO need validation ChangeMessage
-            if (!string.IsNullOrEmpty(templatefield.ChangeMessage))
-                field.ChangeMessage = templatefield.ChangeMessage;
-            if (templatefield.DataDetectorTypes != null)
-                field.DataDetectorTypes = GetAppleDataDetectorTypes(templatefield.DataDetectorTypes);
-            field.Key = templatefield.Key;
-            if (templatefield.IsDynamicLabel)
-                field.Label = "Label$$" + templatefield.Key + "$$";
-            else
-                if (!string.IsNullOrEmpty(templatefield.Label))
-                    field.Label = templatefield.Label;
-            if (templatefield.IsDynamicValue)
-                field.Value = "Value$$" + templatefield.Key + "$$";
-            else
-                field.Value = templatefield.Value;
-            field.TextAlignment = GetAppleTextAlligment(templatefield.TextAlignment);
-
-            if (templatefield.Type == GeneralField.DataType.Number)
-                field.NumberStyle = GetAppleNumberStyle(templatefield.NumberStyle);
-            if (templatefield.Type == GeneralField.DataType.Currency)
-                field.CurrencyCode = templatefield.CurrencyCode;
-            if (templatefield.Type == GeneralField.DataType.Date)
-            {
-                field.DateStyle = GetAppleDateStyle(templatefield.DateStyle);
-                field.IsRelative = templatefield.IsRelative;
-            }
-            if (templatefield.Type == GeneralField.DataType.DateTime)
-            {
-                field.TimeStyle = GetAppleDateStyle(templatefield.TimeStyle);
-                field.IsRelative = templatefield.IsRelative;
-            }
-            return field;
-        }
-
         # region Enum converters
-        private PassStructure.Transit GetAppleTransit(Transit transit)
+        private PassStructure.Transit GetAppleTransit(Transit? transit)
         {
             switch (transit)
             {
@@ -321,7 +338,7 @@ namespace Pass.Container.BL.PassTemplateGenerators
             }
             return PassStructure.Transit.PkTransitTypeAir;
         }
-        private BarcodeType GetAppleBarcodeType(GeneralBarcodeType barcodeType)
+        private BarcodeType GetAppleBarcodeType(GeneralBarcodeType? barcodeType)
         {
             switch (barcodeType)
             {
@@ -335,7 +352,7 @@ namespace Pass.Container.BL.PassTemplateGenerators
             return BarcodeType.Pdf417Code;
         }
 
-        private Field.TextAlignmentType GetAppleTextAlligment(GeneralField.TextAlignmentType textAlignmentType)
+        private Field.TextAlignmentType GetAppleTextAlligment(GeneralField.TextAlignmentType? textAlignmentType)
         {
             switch (textAlignmentType)
             {
@@ -351,7 +368,7 @@ namespace Pass.Container.BL.PassTemplateGenerators
             return Field.TextAlignmentType.PkTextAlignmentLeft;
         }
 
-        private Field.NumberStyleType GetAppleNumberStyle(GeneralField.NumberStyleType numberStyleType)
+        private Field.NumberStyleType GetAppleNumberStyle(GeneralField.NumberStyleType? numberStyleType)
         {
             switch (numberStyleType)
             {
@@ -367,7 +384,7 @@ namespace Pass.Container.BL.PassTemplateGenerators
             return Field.NumberStyleType.PkNumberStyleDecimal;
         }
 
-        private Field.DateStyleType GetAppleDateStyle(GeneralField.DateStyleType dateStyleType)
+        private Field.DateStyleType GetAppleDateStyle(GeneralField.DateStyleType? dateStyleType)
         {
             switch (dateStyleType)
             {

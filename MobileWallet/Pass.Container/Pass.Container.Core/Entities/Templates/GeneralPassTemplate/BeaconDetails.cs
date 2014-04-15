@@ -7,8 +7,8 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
 {
     public class BeaconDetails
     {
-        [XmlArray(ElementName = "beacons")]
-        [XmlArrayItem(ElementName = "beacon")]
+        [XmlArray(ElementName = "beacons", IsNullable = false)]
+        [XmlArrayItem(ElementName = "beacon", IsNullable = false)]
         [JsonProperty(PropertyName = "beacons", NullValueHandling = NullValueHandling.Ignore)]
         public List<GeneralBeacon> Beacons { get; set; }
     }

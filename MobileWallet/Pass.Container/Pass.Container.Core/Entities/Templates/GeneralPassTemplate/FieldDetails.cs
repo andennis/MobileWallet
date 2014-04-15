@@ -8,35 +8,35 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
 {
     public class FieldDetails
     {
-        [XmlArray(ElementName = "auxiliaryFields")]
-        [XmlArrayItem(ElementName = "field")]
+        [XmlArray(ElementName = "auxiliaryFields", IsNullable = false)]
+        [XmlArrayItem(ElementName = "field", IsNullable = false)]
         [JsonProperty(PropertyName = "auxiliaryFields", NullValueHandling = NullValueHandling.Ignore)]
         public List<GeneralField> AuxiliaryFields { get; set; }
 
-        [XmlArray(ElementName = "backFields")]
-        [XmlArrayItem(ElementName = "field")]
+        [XmlArray(ElementName = "backFields", IsNullable = false)]
+        [XmlArrayItem(ElementName = "field", IsNullable = false)]
         [JsonProperty(PropertyName = "backFields", NullValueHandling = NullValueHandling.Ignore)]
         public List<GeneralField> BackFields { get; set; }
 
-        [XmlArray(ElementName = "headerFields")]
-        [XmlArrayItem(ElementName = "field")]
+        [XmlArray(ElementName = "headerFields", IsNullable = false)]
+        [XmlArrayItem(ElementName = "field", IsNullable = false)]
         [JsonProperty(PropertyName = "headerFields", NullValueHandling = NullValueHandling.Ignore)]
         public List<GeneralField> HeaderFields { get; set; }
 
-        [XmlArray(ElementName = "primaryFields")]
-        [XmlArrayItem(ElementName = "field")]
+        [XmlArray(ElementName = "primaryFields", IsNullable = false)]
+        [XmlArrayItem(ElementName = "field", IsNullable = false)]
         [JsonProperty(PropertyName = "primaryFields", NullValueHandling = NullValueHandling.Ignore)]
         public List<GeneralField> PrimaryFields { get; set; }
 
-        [XmlArray(ElementName = "secondaryFields")]
-        [XmlArrayItem(ElementName = "field")]
+        [XmlArray(ElementName = "secondaryFields", IsNullable = false)]
+        [XmlArrayItem(ElementName = "field", IsNullable = false)]
         [JsonProperty(PropertyName = "secondaryFields", NullValueHandling = NullValueHandling.Ignore)]
         public List<GeneralField> SecondaryFields { get; set; }
 
         //WARNING! Required for boarding passes; otherwise not allowed.
         [XmlElement(ElementName = "transitType")]
         [JsonProperty(PropertyName = "transitType", NullValueHandling = NullValueHandling.Ignore)]
-        public Transit TransitType { get; set; }
+        public Transit? TransitType { get; set; }
     }
 
     [JsonConverter(typeof(StringEnumConverter))]
@@ -64,17 +64,17 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
         //Information about a field
         #region Standard Field Dictionary Keys
 
-        //iOS 7.0
-        [XmlElement(ElementName = "attributedValue")]
+        //iOS 7.0 example, <a href = "http://example.com/customers/123"> Edit my profile </a> is displayed as a link with the text “Edit my profile”.
+        [XmlElement(ElementName = "attributedValue", IsNullable = false)]
         [JsonProperty(PropertyName = "attributedValue", NullValueHandling = NullValueHandling.Ignore)]
         public string AttributedValue { get; set; }
 
-        [XmlElement(ElementName = "changeMessage")]
+        [XmlElement(ElementName = "changeMessage", IsNullable = false)]
         [JsonProperty(PropertyName = "changeMessage", NullValueHandling = NullValueHandling.Ignore)]
         public string ChangeMessage { get; set; }
 
-        [XmlArray(ElementName = "dataDetectorTypes")]
-        [XmlArrayItem(ElementName = "dataDetector")]
+        [XmlArray(ElementName = "dataDetectorTypes", IsNullable = false)]
+        [XmlArrayItem(ElementName = "dataDetector", IsNullable = false)]
         [JsonProperty(PropertyName = "dataDetectorTypes", NullValueHandling = NullValueHandling.Ignore)]
         public List<DataDetector> DataDetectorTypes { get; set; }
 
@@ -82,13 +82,13 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
         [JsonProperty(PropertyName = "key", Required = Required.Always)]
         public string Key { get; set; }
 
-        [XmlElement(ElementName = "label")]
+        [XmlElement(ElementName = "label", IsNullable = false)]
         [JsonProperty(PropertyName = "label", NullValueHandling = NullValueHandling.Ignore)]
         public string Label { get; set; }
 
         [XmlElement(ElementName = "isDynamicLabel")]
         [JsonProperty(PropertyName = "isDynamicLabel", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IsDynamicLabel { get; set; }
+        public bool? IsDynamicLabel { get; set; }
 
         [XmlElement(ElementName = "value")]
         [JsonProperty(PropertyName = "value", Required = Required.Always)]
@@ -96,15 +96,15 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
 
         [XmlElement(ElementName = "isDynamicValue")]
         [JsonProperty(PropertyName = "isDynamicValue", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IsDynamicValue { get; set; }
+        public bool? IsDynamicValue { get; set; }
 
         [XmlElement(ElementName = "textAlignment")]
         [JsonProperty(PropertyName = "textAlignment", NullValueHandling = NullValueHandling.Ignore)]
-        public TextAlignmentType TextAlignment { get; set; }
+        public TextAlignmentType? TextAlignment { get; set; }
 
         [XmlElement(ElementName = "type")]
         [JsonProperty(PropertyName = "type", Required = Required.Always)]
-        public DataType Type { get; set; }
+        public DataType? Type { get; set; }
 
         #endregion
 
@@ -112,9 +112,9 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
         #region Number Style Keys
         [XmlElement(ElementName = "numberStyle")]
         [JsonProperty(PropertyName = "numberStyle", NullValueHandling = NullValueHandling.Ignore)]
-        public NumberStyleType NumberStyle { get; set; }
+        public NumberStyleType? NumberStyle { get; set; }
 
-        [XmlElement(ElementName = "currencyCode")]
+        [XmlElement(ElementName = "currencyCode", IsNullable = false)]
         [JsonProperty(PropertyName = "currencyCode", NullValueHandling = NullValueHandling.Ignore)]
         public string CurrencyCode { get; set; }
 
@@ -125,19 +125,15 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
 
         [XmlElement(ElementName = "dateStyle")]
         [JsonProperty(PropertyName = "dateStyle", NullValueHandling = NullValueHandling.Ignore)]
-        public DateStyleType DateStyle { get; set; }
-
-        [XmlElement(ElementName = "ignoresTimeZone")]
-        [JsonProperty(PropertyName = "ignoresTimeZone", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IgnoresTimeZone { get; set; }
+        public DateStyleType? DateStyle { get; set; }
 
         [XmlElement(ElementName = "isRelative")]
         [JsonProperty(PropertyName = "isRelative", NullValueHandling = NullValueHandling.Ignore)]
-        public bool IsRelative { get; set; }
+        public bool? IsRelative { get; set; }
 
         [XmlElement(ElementName = "timeStyle")]
         [JsonProperty(PropertyName = "timeStyle", NullValueHandling = NullValueHandling.Ignore)]
-        public DateStyleType TimeStyle { get; set; }
+        public DateStyleType? TimeStyle { get; set; }
 
         #endregion
 
