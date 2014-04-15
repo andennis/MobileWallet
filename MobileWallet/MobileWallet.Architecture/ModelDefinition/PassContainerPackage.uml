@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel"
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="30622e7a-96f1-41b7-83af-6de6f2c37861"
   name="Pass.Container" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -949,8 +949,8 @@
           <association
             Id="e6d32a80-0943-4ce5-8265-917454e1e779"
             isDerived="false"
-            sourceEndRoleName="PassTemplate"
-            targetEndRoleName="PassTemplateNativeBase"
+            sourceEndRoleName=""
+            targetEndRoleName=""
             isLeaf="false"
             isAbstract="false">
             <classMoniker
@@ -961,7 +961,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="0ad8d824-0f2b-42b2-85c7-059bf9a3f004"
-                  name="PassTemplate"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -974,7 +973,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="02d68bfa-4e44-4494-b563-1c83d742816b"
-                  name="PassTemplateNativeBase"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -989,7 +987,7 @@
         <ownedAttributesInternal>
           <property
             Id="d4bdb5c8-7509-42c8-b720-798f15484fbc"
-            name="PackageId"
+            name="TemplateStorageId"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -1154,8 +1152,8 @@
           <association
             Id="c33b3673-5c30-4736-bcad-294ba9d84308"
             isDerived="false"
-            sourceEndRoleName="ClientDeviceRegistration"
-            targetEndRoleName="ClientPass"
+            sourceEndRoleName=""
+            targetEndRoleName=""
             isLeaf="false"
             isAbstract="false">
             <classMoniker
@@ -1166,7 +1164,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="f2cd1876-6b83-41ad-b4be-8c65290d7372"
-                  name="ClientDeviceRegistration"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -1192,7 +1189,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="91cba98c-e5e2-4e70-a97f-1467784b08df"
-                  name="ClientPass"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -1219,8 +1215,8 @@
           <association
             Id="49001d0a-24e6-46a7-8138-544ab5382a18"
             isDerived="false"
-            sourceEndRoleName="ClientDeviceRegistration"
-            targetEndRoleName="ClientDeviceBase"
+            sourceEndRoleName=""
+            targetEndRoleName=""
             isLeaf="false"
             isAbstract="false">
             <classMoniker
@@ -1231,7 +1227,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="ed1d3b15-85d2-4b39-a27b-304099dfa411"
-                  name="ClientDeviceRegistration"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -1257,7 +1252,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="27f36f73-5251-44d1-8529-db2e5dc25de1"
-                  name="ClientDeviceBase"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -1295,6 +1289,17 @@
           <property
             Id="febdf95a-c949-4a47-a519-9c33aca713f3"
             name="DeviceId"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="9d95876a-bd38-4dde-8217-e5f49d198028"
+            name="ClientType"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -1970,7 +1975,32 @@
         name="PassTemplateNative"
         isAbstract="false"
         isLeaf="false"
-        isActiveClass="false" />
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="3f7fb1d4-b4df-44a6-9ee5-a147b970c0da"
+            name="ClientType"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="6a4e4d72-c020-4641-bdba-e4a0541d8932"
+            name="CertificateId"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+      </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <class
@@ -2003,6 +2033,32 @@
             isComposite="false" />
         </ownedAttributesInternal>
       </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="6af47d6d-6e31-40a8-8e84-909719f06e2c"
+        name="IPassContainerService"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedOperations>
+          <operation
+            Id="628ad5a5-4468-45e0-9d32-6bb06c681cf6"
+            name="CreatePass"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="aae791f4-5572-483d-a7ac-6367501e29a0"
+            name="UpdatePassFields"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperations>
+      </Interface>
     </packageHasNamedElement>
   </packagedElements>
 </package>

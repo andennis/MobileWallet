@@ -1,25 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" dslVersion="1.0.0.0" Id="16425300-5c11-40bd-b09e-f76151ca4512" name="Pass.Consumer" linkedPackageId="98663e5f-50c6-422d-87e2-8e66bbb8e36c" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
-  <profileInstances>
-    <packageHasProfileInstances Id="32e4fd69-57b1-4db3-b161-633e5f424523">
-      <profileInstance Id="fb003979-4a21-401c-abf4-5971c1d71a23" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="23573b03-98a9-4b49-b4ef-6e9eaa031aa0">
-      <profileInstance Id="3f307582-3942-4764-bd60-130c3babfa27" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="8b06bbe2-a621-46de-aac3-6e66603ac014">
-      <profileInstance Id="e6a5c189-5056-4b12-bcfd-1f2616bad366" name="TextTemplateBindings">
-        <elementDefinition Id="06d93c75-9f7e-465a-a217-2c5fb68015af" />
-      </profileInstance>
-      <elementDefinition Id="1764e76e-4606-4e41-927d-7dee20e9c500" />
-    </packageHasProfileInstances>
-  </profileInstances>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="16425300-5c11-40bd-b09e-f76151ca4512" name="Pass.Consumer" linkedPackageId="98663e5f-50c6-422d-87e2-8e66bbb8e36c" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <class Id="613741f9-fcef-47f5-9549-80f21c6f8f4a" name="ClientDevice" isAbstract="false" isLeaf="false" isActiveClass="false">
@@ -88,6 +68,14 @@
             <elementDefinition Id="3e5ecb4c-f66a-4a13-9895-8f3c1a928c84" />
           </association>
         </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="0fe84b80-243e-4fab-bd99-ef0f6d2bf7ed" name="FirstName" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="25cf47cb-8c48-4563-be62-5616911e5be5" />
+          </property>
+          <property Id="5a666040-76ef-41c9-b7e4-3f608afec257" name="LastName" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="978c0663-cc4e-401d-bd6f-f6b29037cf16" />
+          </property>
+        </ownedAttributesInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
@@ -106,5 +94,25 @@
   </packagedElements>
   <package Id="98663e5f-50c6-422d-87e2-8e66bbb8e36c" name="MobileWalletModeling">
     <elementDefinition Id="a53e0939-3e57-42d8-a1d6-852d3d589578" />
+    <profileInstances>
+      <packageHasProfileInstances Id="32e4fd69-57b1-4db3-b161-633e5f424523">
+        <profileInstance Id="fb003979-4a21-401c-abf4-5971c1d71a23" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="23573b03-98a9-4b49-b4ef-6e9eaa031aa0">
+        <profileInstance Id="3f307582-3942-4764-bd60-130c3babfa27" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="8b06bbe2-a621-46de-aac3-6e66603ac014">
+        <profileInstance Id="e6a5c189-5056-4b12-bcfd-1f2616bad366" name="TextTemplateBindings">
+          <elementDefinition Id="06d93c75-9f7e-465a-a217-2c5fb68015af" />
+        </profileInstance>
+        <elementDefinition Id="1764e76e-4606-4e41-927d-7dee20e9c500" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </logicalClassDesignerModel>

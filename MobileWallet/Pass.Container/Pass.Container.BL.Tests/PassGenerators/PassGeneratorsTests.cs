@@ -11,13 +11,13 @@ using Pass.Container.Core.Entities;
 using Pass.Container.Factory;
 using Pass.Container.Repository.EF;
 
-namespace Pass.Container.BL.Tests.NativePassGenerators
+namespace Pass.Container.BL.Tests.PassGenerators
 {
-    class NativePassGeneratorsTests
+    public class PassGeneratorsTests
     {
         private readonly FileStorageConfig _fsConfig;
 
-        public NativePassGeneratorsTests()
+        public PassGeneratorsTests()
         {
             _fsConfig = new FileStorageConfig();
 

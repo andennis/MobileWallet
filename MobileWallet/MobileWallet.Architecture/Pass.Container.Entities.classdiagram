@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" dslVersion="1.0.0.0" Id="37424e87-0f3e-4682-95da-1a3b03249531" name="Pass.Container.Entities" linkedPackageId="fd556ddf-3216-4410-b5d2-e9fc37bd6e1a" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="37424e87-0f3e-4682-95da-1a3b03249531" name="Pass.Container.Entities" linkedPackageId="fd556ddf-3216-4410-b5d2-e9fc37bd6e1a" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <class Id="955e340f-5557-450e-8433-ed26bdba68d7" name="PassTemplate" isAbstract="false" isLeaf="false" isActiveClass="false">
@@ -106,16 +106,16 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="7b8a4bc6-2a5b-416e-9b2d-bf0d6bcc4cfd" />
           </association>
-          <association Id="0b8ebd71-119f-411b-8032-dee64cc89755" isDerived="false" sourceEndRoleName="PassTemplate" targetEndRoleName="PassTemplateNativeBase" isLeaf="false" isAbstract="false">
+          <association Id="0b8ebd71-119f-411b-8032-dee64cc89755" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
             <classMoniker Id="8fa6b521-e01f-4bb5-baf9-d67b01b6c9c4" LastKnownName="PassTemplateNative" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="09baebf9-1ed5-4299-a43f-5ac0e142bc00" name="PassTemplate" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                <memberEnd Id="09baebf9-1ed5-4299-a43f-5ac0e142bc00" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
                   <elementDefinition Id="0ad8d824-0f2b-42b2-85c7-059bf9a3f004" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="c9241f2b-926f-434e-8c14-51cf0ca13073" name="PassTemplateNativeBase" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                <memberEnd Id="c9241f2b-926f-434e-8c14-51cf0ca13073" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
                   <elementDefinition Id="02d68bfa-4e44-4494-b563-1c83d742816b" />
                 </memberEnd>
               </associationHasOwnedEnds>
@@ -124,7 +124,7 @@
           </association>
         </targetEnds>
         <ownedAttributesInternal>
-          <property Id="9a91e2b6-6ca8-4cce-9dd0-4a3781dce3d0" name="PackageId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+          <property Id="9a91e2b6-6ca8-4cce-9dd0-4a3781dce3d0" name="TemplateStorageId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="d4bdb5c8-7509-42c8-b720-798f15484fbc" />
           </property>
           <property Id="b5310c50-a2cb-42d5-8655-b9233692d45c" name="Name" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
@@ -237,11 +237,11 @@
       <class Id="1aff59ce-14a2-4ed4-ba8f-6b89273b3dd3" name="Registration" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="94448a0b-b237-43cb-a04f-a02230b2b6ba" />
         <targetEnds>
-          <association Id="c7595f1b-2841-46c0-8a23-b32a570f5c4c" isDerived="false" sourceEndRoleName="ClientDeviceRegistration" targetEndRoleName="ClientPass" isLeaf="false" isAbstract="false">
+          <association Id="c7595f1b-2841-46c0-8a23-b32a570f5c4c" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
             <classMoniker Id="081ba4b3-c83c-49a4-ba3f-dd5fbb128ded" LastKnownName="Pass" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="6c4488b9-8807-4af5-97bf-fcb5d7586114" name="ClientDeviceRegistration" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                <memberEnd Id="6c4488b9-8807-4af5-97bf-fcb5d7586114" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
                   <lowerValueInternal>
                     <literalString Id="3a598623-4fb2-4bee-8199-ea77e0f63a23" name="Lower" value="*">
                       <elementDefinition Id="8c1975a4-8170-4e2f-940a-aaaf5fe78ee9" />
@@ -256,7 +256,7 @@
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="32ce9865-2ce4-4c53-87dc-90c24a82d590" name="ClientPass" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <memberEnd Id="32ce9865-2ce4-4c53-87dc-90c24a82d590" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <lowerValueInternal>
                     <literalString Id="f53b253d-49cb-4e60-9700-19c64bbdd9ae" name="Lower" value="1">
                       <elementDefinition Id="ff13c2e8-dde2-4271-a439-744511524dce" />
@@ -273,11 +273,11 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="c33b3673-5c30-4736-bcad-294ba9d84308" />
           </association>
-          <association Id="da5afeff-95af-482a-9d29-6e2533b7cb6d" isDerived="false" sourceEndRoleName="ClientDeviceRegistration" targetEndRoleName="ClientDeviceBase" isLeaf="false" isAbstract="false">
+          <association Id="da5afeff-95af-482a-9d29-6e2533b7cb6d" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
             <classMoniker Id="92f76802-b82d-46dd-a271-6c95a81391d7" LastKnownName="ClientDevice" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="0203731c-5cd2-4f93-bce5-a4fe50bb1e2a" name="ClientDeviceRegistration" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                <memberEnd Id="0203731c-5cd2-4f93-bce5-a4fe50bb1e2a" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
                   <lowerValueInternal>
                     <literalString Id="2f16a306-3e2b-48c1-9829-00b4bbc52961" name="Lower" value="*">
                       <elementDefinition Id="6b9fced4-43b2-4887-bbf6-dd6f0623eb5b" />
@@ -292,7 +292,7 @@
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="9873b6cd-b03e-4e01-8ce4-b202f0a8905e" name="ClientDeviceBase" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <memberEnd Id="9873b6cd-b03e-4e01-8ce4-b202f0a8905e" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <elementDefinition Id="27f36f73-5251-44d1-8529-db2e5dc25de1" />
                 </memberEnd>
               </associationHasOwnedEnds>
@@ -313,6 +313,9 @@
         <ownedAttributesInternal>
           <property Id="aab1aee1-5905-4bab-834d-c01f1c743574" name="DeviceId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="febdf95a-c949-4a47-a519-9c33aca713f3" />
+          </property>
+          <property Id="4fc4be33-5775-4e13-859e-fcdcbc0303a3" name="ClientType" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="9d95876a-bd38-4dde-8217-e5f49d198028" />
           </property>
         </ownedAttributesInternal>
       </class>
@@ -336,6 +339,14 @@
     <logicalClassDesignerModelHasTypes>
       <class Id="8fa6b521-e01f-4bb5-baf9-d67b01b6c9c4" name="PassTemplateNative" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="c7fd8b4d-4e1d-46ea-a96c-bcc81f584eea" />
+        <ownedAttributesInternal>
+          <property Id="227357c8-8d2c-4cd0-a22b-de38f79b4aac" name="ClientType" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="3f7fb1d4-b4df-44a6-9ee5-a147b970c0da" />
+          </property>
+          <property Id="7c033bd1-a9d9-4e43-b2ec-c477067e437e" name="CertificateId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="6a4e4d72-c020-4641-bdba-e4a0541d8932" />
+          </property>
+        </ownedAttributesInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
