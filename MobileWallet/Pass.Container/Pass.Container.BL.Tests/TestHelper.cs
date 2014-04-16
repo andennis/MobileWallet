@@ -46,174 +46,168 @@ namespace Pass.Container.BL.Tests
         public static GeneralPassTemplate GetPassTemplateObject()
         {
             var template = new GeneralPassTemplate
-            {
-                //Standart keys
-                TemplateName = "Template name",
-                TemplateDescription = "Template description",
-                OrganizationName = "Organization name",
-                PassStyle = PassStyle.Coupon,
-                PassDescription = "Pass description",
-                PassSerialNumberType = PassSerialNumberType.AutoGgenerated,
-                PassTypeIdentifier = "pass.com.passlight.dev.test",
-                TeamIdentifier = "YHQB764QFA",
-                
-                //Visual Appearance Keys
-                BackgroundColor = Color.Blue,
-                LabelTextColor = Color.Red,
-                ValueTextColor = Color.CadetBlue,
-                //Others Keys
-                LogoText = "Logo text",
+                               {
+                                   //Standart keys
+                                   TemplateName = "Template name",
+                                   TemplateDescription = "Template description",
+                                   OrganizationName = "Organization name",
+                                   PassStyle = PassStyle.Coupon,
+                                   PassDescription = "Pass description",
+                                   PassSerialNumberType = PassSerialNumberType.AutoGgenerated,
+                                   PassTypeIdentifier = "pass.com.passlight.dev.test",
+                                   TeamIdentifier = "YHQB764QFA",
 
-                //Integration Details
-                IntegrationDetails = new IntegrationDetails
-                {
-                    CallbackNotifications = new CallbackNotifications
-                     {
-                         PassIssued = "passIssued@mail.com",
-                         PassRegistered = "passRegistered@mail.com",
-                         PassUnregistered = "passUnregistered@mail.com",
-                         PassUpdated = "passUpdated@mail.com"
-                     }
-                },
-                //Location Details
-                LocationDetails = new LocationDetails
-                {
-                    Locations = new List<GeneralLocation>
-                                {
-                                    new GeneralLocation
-                                        {
-                                            Latitude = 53.883980386469425,
-                                            Longitude = 27.59497405000002,
-                                            RelevantText = "Relevant text"
-                                        }
-                                }
-                },
-                //Barcode Details
-                BarcodeDetails = new BarcodeDetails
-                {
-                    AlternativeText = AlternativeText.DisplayTheBarcodeContent,
-                    BarcodeType = GeneralBarcodeType.Pdf417Code,
-                    EncodedMessage = EncodedMessage.EncodeThePassUniqueId,
-                    EncodingFormat = "UTF-8",
-                    TextToDisplay = "Text to display",
-                    TextToEncode = "Text to encode"
+                                   //Visual Appearance Keys
+                                   BackgroundColor = Color.Lavender,
+                                   LabelTextColor = Color.Teal,
+                                   ValueTextColor = Color.SlateGray,
+                                   //Others Keys
+                                   LogoText = "Passlight",
 
-                },
-                //Field Details
-                FieldDetails = new FieldDetails
-                {
-                    AuxiliaryFields = new List<GeneralField>
-                                {
-                                    new GeneralField
-                                        {
-                                            AttributedValue = "<a href = \"http://example.com/customers/123\"> Edit my profile </a>",
-                                            ChangeMessage = "Gate changed to %@.",
-                                            Key = "Key1",
-                                            Label = "label1",
-                                            Value = "value",
-                                            TextAlignment = GeneralField.TextAlignmentType.Right,
-                                            Type = GeneralField.DataType.Text
-                                        },
-                                        new GeneralField
-                                        {
-                                           ChangeMessage = "Gate changed to %@.",
-                                           //These keys are optional if the field’s value is a number; otherwise they are not allowed.
-                                            CurrencyCode = "USD",
-                                            Key = "Key2",
-                                            Label = "label2",
-                                            Value = "10",
-                                            Type = GeneralField.DataType.Currency
-                                        }
-                    //            },
-                    //BackFields = new List<GeneralField>
-                    //                {
-                    //                    new GeneralField
-                    //                    {
-                    //                        AttributedValue = "AttributedValue",
-                    //                        ChangeMessage = "ChangeMessage",
-                    //                        CurrencyCode = "CurrencyCode",
-                    //                        DataDetectorTypes = new List<GeneralField.DataDetector>
-                    //                            {
-                    //                                GeneralField.DataDetector.Address,
-                    //                                GeneralField.DataDetector.Link
-                    //                            },
-                    //                            DateStyle = GeneralField.DateStyleType.Long,
-                    //                            IgnoresTimeZone = true,
-                    //                            IsDynamicValue = true,
-                    //                            IsRelative = true,
-                    //                            Key = "Key3",
-                    //                            Label = "label",
-                    //                            Value = "value",
-                    //                            Type = GeneralField.DataType.Text
-                    //                    }
-                    //                },
-                    //HeaderFields = new List<GeneralField>
-                    //                    {
-                    //                        new GeneralField
-                    //                    {
-                    //                        AttributedValue = "AttributedValue",
-                    //                        ChangeMessage = "ChangeMessage",
-                    //                        CurrencyCode = "CurrencyCode",
-                    //                        DataDetectorTypes = new List<GeneralField.DataDetector>
-                    //                            {
-                    //                                GeneralField.DataDetector.Address,
-                    //                                GeneralField.DataDetector.Link
-                    //                            },
-                    //                            DateStyle = GeneralField.DateStyleType.Long,
-                    //                            IgnoresTimeZone = true,
-                    //                            IsDynamicValue = true,
-                    //                            IsRelative = true,
-                    //                            Key = "Key4",
-                    //                            Label = "label",
-                    //                            Value = "value",
-                    //                            Type = GeneralField.DataType.Text
-                    //                    }
-                    //                    },
-                    //PrimaryFields = new List<GeneralField>
-                    //                        {
-                    //                            new GeneralField
-                    //                    {
-                    //                        AttributedValue = "AttributedValue",
-                    //                        ChangeMessage = "ChangeMessage",
-                    //                        CurrencyCode = "CurrencyCode",
-                    //                        DataDetectorTypes = new List<GeneralField.DataDetector>
-                    //                            {
-                    //                                GeneralField.DataDetector.Address,
-                    //                                GeneralField.DataDetector.Link
-                    //                            },
-                    //                            DateStyle = GeneralField.DateStyleType.Long,
-                    //                            IgnoresTimeZone = true,
-                    //                            IsDynamicValue = true,
-                    //                            IsRelative = true,
-                    //                            Key = "Key5",
-                    //                            Label = "label",
-                    //                            Value = "value",
-                    //                            Type = GeneralField.DataType.Text
-                    //                    }
-                    //                        },
-                    //SecondaryFields = new List<GeneralField>
-                    //                            {
-                    //                                new GeneralField{
-                    //                        AttributedValue = "AttributedValue",
-                    //                        ChangeMessage = "ChangeMessage",
-                    //                        CurrencyCode = "CurrencyCode",
-                    //                        DataDetectorTypes = new List<GeneralField.DataDetector>
-                    //                            {
-                    //                                GeneralField.DataDetector.Address,
-                    //                                GeneralField.DataDetector.Link
-                    //                            },
-                    //                            DateStyle = GeneralField.DateStyleType.Long,
-                    //                            IgnoresTimeZone = true,
-                    //                            IsDynamicValue = true,
-                    //                            IsRelative = true,
-                    //                            Key = "Key6",
-                    //                            Label = "label",
-                    //                            Value = "value",
-                    //                            Type = GeneralField.DataType.Text
-                    //                                }
-                                                }
-                }
-            };
+                                   //Integration Details
+                                   IntegrationDetails = new IntegrationDetails
+                                                            {
+                                                                CallbackNotifications = new CallbackNotifications
+                                                                                            {
+                                                                                                PassIssued = "passIssued@mail.com",
+                                                                                                PassRegistered = "passRegistered@mail.com",
+                                                                                                PassUnregistered = "passUnregistered@mail.com",
+                                                                                                PassUpdated = "passUpdated@mail.com"
+                                                                                            }
+                                                            },
+                                   //Location Details
+                                   LocationDetails = new LocationDetails
+                                                         {
+                                                             Locations = new List<GeneralLocation>
+                                                                             {
+                                                                                 new GeneralLocation
+                                                                                     {
+                                                                                         Latitude = 53.883980386469425,
+                                                                                         Longitude = 27.59497405000002,
+                                                                                         RelevantText = "Relevant text"
+                                                                                     }
+                                                                             }
+                                                         },
+                                   //Barcode Details
+                                   BarcodeDetails = new BarcodeDetails
+                                                        {
+                                                            AlternativeText = AlternativeText.DisplayTheBarcodeContent,
+                                                            BarcodeType = GeneralBarcodeType.Pdf417Code,
+                                                            EncodedMessage = EncodedMessage.EncodeThePassUniqueId,
+                                                            EncodingFormat = "UTF-8",
+                                                            TextToDisplay = "Some text",
+                                                            TextToEncode = "Text to encode"
+                                                        },
+                                   //Distribution details
+                                   DistributionDetails = new DistributionDetails
+                                                             {
+                                                                 ExpirationDate = DateTime.Now.AddMinutes(5).ToString(),
+                                                                 AllPassesAsExpired = false
+                                                             },
+                                   //Field Details
+                                   FieldDetails = new FieldDetails
+                                                      {
+                                                          AuxiliaryFields = new List<GeneralField>
+                                                                                {
+                                                                                    new GeneralField
+                                                                                        {
+                                                                                            ChangeMessage = "Gate changed to %@.",
+                                                                                            Key = "Key1",
+                                                                                            Label = "Field",
+                                                                                            Value = "AuxiliaryField",
+                                                                                            TextAlignment = GeneralField.TextAlignmentType.Right,
+                                                                                            Type = GeneralField.DataType.Text
+                                                                                        },
+                                                                                    new GeneralField
+                                                                                        {
+                                                                                            Key = "Key2",
+                                                                                            Label = "Created date",
+                                                                                            Value = DateTime.Now.ToString(),
+                                                                                            DateStyle = GeneralField.DateStyleType.Short,
+                                                                                            IsRelative = false,
+                                                                                            Type = GeneralField.DataType.Date
+                                                                                        },
+                                                                                    new GeneralField
+                                                                                        {
+                                                                                            //These keys are optional if the field’s value is a number; otherwise they are not allowed.
+                                                                                            CurrencyCode = "USD",
+                                                                                            Key = "Key3",
+                                                                                            Label = "Balance",
+                                                                                            Value = "10",
+                                                                                            //Type = GeneralField.DataType.Text
+                                                                                            Type = GeneralField.DataType.Currency
+                                                                                        }
+                                                                                },
+                                                          BackFields = new List<GeneralField>
+                                                                           {
+                                                                              new GeneralField
+                                                                                        {
+                                                                                            AttributedValue = "<a href = \"http://example.com/customers/123\"> Edit my profile </a>",
+                                                                                            ChangeMessage = "Gate changed to %@.",
+                                                                                            Key = "Key4",
+                                                                                            Label = "Field",
+                                                                                            Value = "BackField",
+                                                                                            TextAlignment = GeneralField.TextAlignmentType.Right,
+                                                                                            Type = GeneralField.DataType.Text
+                                                                                        },
+                                                                                    new GeneralField
+                                                                                        {
+                                                                                            Key = "Key5",
+                                                                                            Label = "Created date",
+                                                                                            Value = DateTime.Now.ToString(),
+                                                                                            DateStyle = GeneralField.DateStyleType.Short,
+                                                                                            IsRelative = false,
+                                                                                            Type = GeneralField.DataType.Date
+                                                                                        },
+                                                                                    new GeneralField
+                                                                                        {
+                                                                                            //These keys are optional if the field’s value is a number; otherwise they are not allowed.
+                                                                                            CurrencyCode = "USD",
+                                                                                            Key = "Key6",
+                                                                                            Label = "Balance",
+                                                                                            Value = "10",
+                                                                                            //Type = GeneralField.DataType.Text
+                                                                                            Type = GeneralField.DataType.Currency
+                                                                                        }
+                                                                           },
+                                                          HeaderFields = new List<GeneralField>
+                                                                             {
+                                                                                    new GeneralField
+                                                                                        {
+                                                                                            ChangeMessage = "Gate changed to %@.",
+                                                                                            Key = "Key7",
+                                                                                            Label = "Field",
+                                                                                            Value = "HeaderField",
+                                                                                            TextAlignment = GeneralField.TextAlignmentType.Right,
+                                                                                            Type = GeneralField.DataType.Text
+                                                                                        }
+                                                                             },
+                                                          PrimaryFields = new List<GeneralField>
+                                                                              {
+                                                                                  new GeneralField
+                                                                                        {
+                                                                                            ChangeMessage = "Gate changed to %@.",
+                                                                                            Key = "Key8",
+                                                                                            Label = "Field",
+                                                                                            Value = "PrimaryField",
+                                                                                            TextAlignment = GeneralField.TextAlignmentType.Right,
+                                                                                            Type = GeneralField.DataType.Text
+                                                                                        }
+                                                                              },
+                                                          SecondaryFields = new List<GeneralField>
+                                                                                {
+                                                                                  new GeneralField
+                                                                                        {
+                                                                                            ChangeMessage = "Gate changed to %@.",
+                                                                                            Key = "Key9",
+                                                                                            Label = "Field",
+                                                                                            Value = "SecondaryField",
+                                                                                            TextAlignment = GeneralField.TextAlignmentType.Right,
+                                                                                            Type = GeneralField.DataType.Text
+                                                                                        }
+                                                                                }
+                                                      }
+                               };
             return template;
         }
 

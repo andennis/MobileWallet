@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
 {
@@ -169,6 +170,7 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
         //#endregion
     }
 
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum PassStyle
     {
         [XmlEnum(Name = "boardingPass")]

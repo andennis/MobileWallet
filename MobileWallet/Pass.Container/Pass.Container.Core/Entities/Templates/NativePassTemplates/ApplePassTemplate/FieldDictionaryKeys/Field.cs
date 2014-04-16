@@ -12,7 +12,7 @@ namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTe
 
         //Available in iOS 7.0
         [JsonProperty(PropertyName = "attributedValue", NullValueHandling = NullValueHandling.Ignore)]
-        public string AttributedValue { get; set; }
+        public object AttributedValue { get; set; }
 
         [JsonProperty(PropertyName = "changeMessage", NullValueHandling = NullValueHandling.Ignore)]
         public string ChangeMessage { get; set; }
@@ -27,7 +27,7 @@ namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTe
         public string Label { get; set; }
 
         [JsonProperty(PropertyName = "value", Required = Required.Always)]
-        public string Value { get; set; }
+        public object Value { get; set; }
 
         [JsonProperty(PropertyName = "textAlignment", NullValueHandling = NullValueHandling.Ignore)]
         public TextAlignmentType? TextAlignment { get; set; }

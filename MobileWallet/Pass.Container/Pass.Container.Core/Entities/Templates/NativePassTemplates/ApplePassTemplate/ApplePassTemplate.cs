@@ -56,7 +56,7 @@ namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTe
 
         //Available in iOS 7.0
         [JsonProperty(PropertyName = "expirationDate", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime? ExpirationDate { get; set; }
+        public string ExpirationDate { get; set; }
 
         //Available in iOS 7.0
         [JsonProperty(PropertyName = "voided", NullValueHandling = NullValueHandling.Ignore)]

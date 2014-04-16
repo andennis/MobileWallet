@@ -17,8 +17,7 @@ namespace Pass.Container.BL.PassGenerators
     public class ApplePassGenerator : BasePassGenerator, IPassGenerator
     {
         private const string CertificatePassword = "Pass3";
-        private const string CertificateFilePath = @"e:\Wallet_SVN\MobileWallet\Documentation\Passbook\Certificates\pass.com.passlight.dev.test\pass.p12";
-        private const string AppleWwdrcaCertificateFilePath = @"e:\Wallet_SVN\MobileWallet\Documentation\Passbook\Certificates\pass.com.passlight.dev.test\AppleWWDRCA.cer";
+        private const string CertificateFilesPath = @"e:\Wallet_SVN\MobileWallet\Documentation\Passbook\Certificates\pass.com.passlight.dev.test";
         private const string ApplePassTemplateFolderName = "ApplePassTemplate";
         private const string ApplePassTempFolderName = "Apple";
         private const string ApplePassTemplateJson = "pass.json";
@@ -103,17 +102,7 @@ namespace Pass.Container.BL.PassGenerators
             }
             File.WriteAllText(applePassJsonFilePath, passJsonText);
 
-            ApplePassGeneratorHelper.SignManigestFile(CertificateFilePath, CertificatePassword, AppleWwdrcaCertificateFilePath, passFolder);
-
-            ////Get certificate for pass
-            //X509Certificate2 certificate = _generatorHelper.GetCertificateFromFile(CertificateFilePath, CertificatePassword);
-
-            ////Sign pass files
-            //_generatorHelper.SignPassFiles(passFolder, certificate);
-
-            //Generate pkpass file
-            string pkpassFilePath = Path.Combine(passFolder, pass.SerialNumber + ".pkpass");
-            Compress.CompressDirectory(passFolder, pkpassFilePath);
+            string pkpassFilePath = ApplePassGeneratorHelper.GenaratePassPackage(passFolder, CertificateFilesPath, CertificatePassword);
 
             return pkpassFilePath;
         }
