@@ -1,46 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="16425300-5c11-40bd-b09e-f76151ca4512" name="Pass.Consumer" linkedPackageId="98663e5f-50c6-422d-87e2-8e66bbb8e36c" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="16425300-5c11-40bd-b09e-f76151ca4512" name="Pass.Consumer" linkedPackageId="98663e5f-50c6-422d-87e2-8e66bbb8e36c" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <packagedElements>
-    <logicalClassDesignerModelHasTypes>
-      <class Id="613741f9-fcef-47f5-9549-80f21c6f8f4a" name="ClientDevice" isAbstract="false" isLeaf="false" isActiveClass="false">
-        <elementDefinition Id="af83e8fe-54d1-4d1c-8740-2f3fda8e7cfd" />
-        <ownedAttributesInternal>
-          <property Id="1b6fc4a8-3cd2-4c9e-8f29-1a799fe49d41" name="DeviceId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="febdf95a-c949-4a47-a519-9c33aca713f3" />
-          </property>
-        </ownedAttributesInternal>
-      </class>
-    </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
       <class Id="4f80568d-dc43-4942-aba6-466931f81ce8" name="Consumer" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="0d9aabf4-54f1-4d14-bfca-c32c8b313251" />
         <targetEnds>
-          <association Id="446b818b-839e-4775-8c59-bbd160c81550" isDerived="false" sourceEndRoleName="Consumer" targetEndRoleName="ClientDevice" isLeaf="false" isAbstract="false">
-            <classMoniker Id="613741f9-fcef-47f5-9549-80f21c6f8f4a" LastKnownName="ClientDevice" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd Id="2f429052-47f7-474e-91c3-93f095317abe" name="Consumer" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="98d89ea3-982a-4498-97c6-3cb99faad347" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd Id="615587bc-d0b3-4871-86a3-41579bed1044" name="ClientDevice" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <lowerValueInternal>
-                    <literalString Id="e0a8dd8b-6519-4bd2-bbca-3e91dcbc78b3" name="Lower" value="1">
-                      <elementDefinition Id="33bedd28-66c7-4d35-bae7-dda455e6d27f" />
-                    </literalString>
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString Id="342787ea-0d30-4513-a27a-2969de2bf4b3" name="Upper" value="*">
-                      <elementDefinition Id="0066ad2b-7f95-43c3-b192-e800e6b1d977" />
-                    </literalString>
-                  </upperValueInternal>
-                  <elementDefinition Id="d79bf70f-0377-46f0-9aef-fb23cf0ed727" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-            <elementDefinition Id="dfbdd805-ff0b-4cb9-b2a8-ec82cb753331" />
-          </association>
           <association Id="fe086f51-6380-4cef-903f-fd3e9de856c5" isDerived="false" sourceEndRoleName="Consumer" targetEndRoleName="ConsumerField" isLeaf="false" isAbstract="false">
             <classMoniker Id="1f724373-635b-4f53-a05b-337d835d7439" LastKnownName="ConsumerField" />
             <relationshipOwnedElementsInternal>
@@ -67,6 +31,32 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="3e5ecb4c-f66a-4a13-9895-8f3c1a928c84" />
           </association>
+          <association Id="b262a911-7f7b-48a0-8d54-dbcab8f0c976" isDerived="false" sourceEndRoleName="Consumer" targetEndRoleName="ClientDevice2Consumer" isLeaf="false" isAbstract="false">
+            <classMoniker Id="dc719156-ef4f-4d0b-af37-93e20e55df6d" LastKnownName="Consumer2ClientDevice" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2cb3f0ef-8ff9-439e-8c62-87fa5a3814d3" name="Consumer" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="c2a6e033-ff89-409e-9eb5-6cb6233af626" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="09d31653-98f2-4688-9f76-46298c82e70b" name="ClientDevice2Consumer" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <lowerValueInternal>
+                    <literalString Id="d6d49cdd-d32e-4b53-b816-ce88ce54109d" name="Lower" value="*">
+                      <elementDefinition Id="c43bf43a-1d5a-49bc-9340-de6be6c53dfc" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="8daa8833-8ea2-4c41-8a77-84dfd7906468" name="Upper" value="*">
+                      <elementDefinition Id="ced0735c-0fdf-4eee-9db7-c6e5672bc5b3" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="55875c39-cc3e-417a-a55c-37a01725cd8a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="032656ee-cb4c-4143-bac4-fb4c5be01ce9" />
+          </association>
         </targetEnds>
         <ownedAttributesInternal>
           <property Id="0fe84b80-243e-4fab-bd99-ef0f6d2bf7ed" name="FirstName" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
@@ -87,6 +77,16 @@
           </property>
           <property Id="111b711b-802f-4b33-93ac-2cb1d7291d91" name="Value" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="b8abc2fe-35b2-47d2-af11-bcf76ec7263c" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="dc719156-ef4f-4d0b-af37-93e20e55df6d" name="Consumer2ClientDevice" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="e9ff5af4-8214-438c-9c5e-1af2044030d8" />
+        <ownedAttributesInternal>
+          <property Id="ffdfab49-4a77-4990-aefe-a2c89af758ff" name="ClientDeviceId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="b75c172d-4179-4c75-8c29-114e19e54701" />
           </property>
         </ownedAttributesInternal>
       </class>

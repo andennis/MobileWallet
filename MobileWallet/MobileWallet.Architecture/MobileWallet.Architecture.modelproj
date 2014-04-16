@@ -36,6 +36,9 @@
       <SubType>Content</SubType>
       <DependentUpon>FileStorage.Services.classdiagram</DependentUpon>
     </Content>
+    <Content Include="ModelDefinition\PassConsumer.uml">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="ObtainingTemplateFiles.activitydiagram">
       <SubType>Content</SubType>
     </Content>
