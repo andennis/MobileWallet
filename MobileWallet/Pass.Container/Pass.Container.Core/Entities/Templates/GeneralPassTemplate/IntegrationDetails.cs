@@ -37,18 +37,18 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
     public class AppOptions
     {
         [XmlArray(ElementName = "appIdentifier")]
-        [XmlArrayItem(ElementName = "value")]
-        [JsonProperty(PropertyName = "appIdentifier")]
+        [XmlArrayItem(ElementName = "value", IsNullable = false)]
+        [JsonProperty(PropertyName = "appIdentifier", NullValueHandling = NullValueHandling.Ignore)]
         public List<int> AppIdentifier { get; set; }
 
         //IOS 7 
         [XmlElement(ElementName = "appLaunchUrl")]
-        [JsonProperty(PropertyName = "appLaunchUrl")]
+        [JsonProperty(PropertyName = "appLaunchUrl", NullValueHandling = NullValueHandling.Ignore)]
         public string AppLaunchUrl { get; set; }
 
         //IOS 7 ApplePass - userInfo
         [XmlElement(ElementName = "customJsonData")]
-        [JsonProperty(PropertyName = "customJsonData")]
+        [JsonProperty(PropertyName = "customJsonData", NullValueHandling = NullValueHandling.Ignore)]
         public string CustomJsonData { get; set; }
     }
 }

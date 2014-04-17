@@ -37,7 +37,7 @@ namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTe
         [JsonProperty(PropertyName = "appLaunchURL", NullValueHandling = NullValueHandling.Ignore)]
         public string AppLaunchUrl { get; set; }
 
-        [JsonProperty(PropertyName = "associatedStore-Identifiers", Required = Required.Always)]
+        [JsonProperty(PropertyName = "associatedStore-Identifiers", NullValueHandling = NullValueHandling.Ignore)]
         public List<int> AssociatedStoreIdentifiers { get; set; }
 
         #endregion

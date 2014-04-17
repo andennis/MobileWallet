@@ -184,7 +184,7 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
         [XmlEnum(Name = "storeCard")]
         StoreCard = 4
     }
-
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum PassSerialNumberType
     {
         [XmlEnum(Name = "autoGgenerated")]
