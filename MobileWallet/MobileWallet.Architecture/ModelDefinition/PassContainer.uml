@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner"
   dslVersion="1.0.0.0"
   Id="30622e7a-96f1-41b7-83af-6de6f2c37861"
   name="Pass.Container" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -9,7 +9,7 @@
       <packageMoniker
         Id="884e21c8-6329-4b60-906e-e07c8e62093c"
         LastKnownName="FileStorage"
-        LastKnownLocation="FileStoragePackage.uml" />
+        LastKnownLocation="FileStorage.uml" />
     </dependency>
   </suppliersInternal>
   <packagedElements>
@@ -31,7 +31,7 @@
             <classMoniker
               Id="c6be7d12-6827-42f2-833f-8c25f0459f18"
               LastKnownName="PassField"
-              LastKnownLocation="PassContainerPackage.uml" />
+              LastKnownLocation="PassContainer.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
@@ -144,14 +144,14 @@
             <interfaceMoniker
               Id="939f0582-e1f9-4664-a425-86de153d00ec"
               LastKnownName="IPassDistributionService"
-              LastKnownLocation="PassContainerPackage.uml" />
+              LastKnownLocation="PassContainer.uml" />
           </interfaceRealization>
           <dependency
             Id="871dcbc7-c8eb-498c-9ed4-549830142bc2">
             <interfaceMoniker
               Id="bf94aa0f-b7a0-4be6-818a-a6d2150d0be3"
               LastKnownName="IFileStorageService"
-              LastKnownLocation="FileStoragePackage.uml" />
+              LastKnownLocation="FileStorage.uml" />
           </dependency>
         </suppliersInternal>
         <ownedOperationsInternal>
@@ -800,7 +800,7 @@
             <classMoniker
               Id="c6be7d12-6827-42f2-833f-8c25f0459f18"
               LastKnownName="PassField"
-              LastKnownLocation="PassContainerPackage.uml" />
+              LastKnownLocation="PassContainer.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
@@ -852,7 +852,7 @@
             <classMoniker
               Id="f150d342-3120-4ead-8f72-7922f2c616db"
               LastKnownName="Pass"
-              LastKnownLocation="PassContainerPackage.uml" />
+              LastKnownLocation="PassContainer.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
@@ -904,7 +904,7 @@
             <interfaceMoniker
               Id="9b0624bd-9d02-45e7-b84c-8ea7df594ccd"
               LastKnownName="INativePassTemplate"
-              LastKnownLocation="PassContainerPackage.uml" />
+              LastKnownLocation="PassContainer.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
@@ -956,7 +956,7 @@
             <classMoniker
               Id="c7fd8b4d-4e1d-46ea-a96c-bcc81f584eea"
               LastKnownName="PassTemplateNative"
-              LastKnownLocation="PassContainerPackage.uml" />
+              LastKnownLocation="PassContainer.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
@@ -1039,7 +1039,7 @@
             <classMoniker
               Id="802c7aa6-2faa-4adb-9ed6-31a13319da32"
               LastKnownName="PassFieldValue"
-              LastKnownLocation="PassContainerPackage.uml" />
+              LastKnownLocation="PassContainer.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
@@ -1159,7 +1159,7 @@
             <classMoniker
               Id="f150d342-3120-4ead-8f72-7922f2c616db"
               LastKnownName="Pass"
-              LastKnownLocation="PassContainerPackage.uml" />
+              LastKnownLocation="PassContainer.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
@@ -1222,7 +1222,7 @@
             <classMoniker
               Id="af83e8fe-54d1-4d1c-8740-2f3fda8e7cfd"
               LastKnownName="ClientDevice"
-              LastKnownLocation="PassContainerPackage.uml" />
+              LastKnownLocation="PassContainer.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
@@ -1325,7 +1325,7 @@
             <classMoniker
               Id="af83e8fe-54d1-4d1c-8740-2f3fda8e7cfd"
               LastKnownName="ClientDevice"
-              LastKnownLocation="PassContainerPackage.uml" />
+              LastKnownLocation="PassContainer.uml" />
           </generalization>
         </generalsInternal>
         <ownedAttributesInternal>
@@ -1356,14 +1356,14 @@
             <interfaceMoniker
               Id="0011cd7d-47e4-4709-8c0b-9fc6f641ccdd"
               LastKnownName="IApplePassProcessingService"
-              LastKnownLocation="PassContainerPackage.uml" />
+              LastKnownLocation="PassContainer.uml" />
           </interfaceRealization>
           <dependency
             Id="af4899f0-8811-4349-813a-61cc6ee8243b">
             <interfaceMoniker
               Id="bf94aa0f-b7a0-4be6-818a-a6d2150d0be3"
               LastKnownName="IFileStorageService"
-              LastKnownLocation="FileStoragePackage.uml" />
+              LastKnownLocation="FileStorage.uml" />
           </dependency>
         </suppliersInternal>
         <ownedOperationsInternal>
@@ -1661,7 +1661,7 @@
               <classMoniker
                 Id="2871f6c0-aa1f-417a-bcc1-b966ca97f2cb"
                 LastKnownName="PassTemplate"
-                LastKnownLocation="PassContainerPackage.uml" />
+                LastKnownLocation="PassContainer.uml" />
             </type_NamedElement>
           </property>
           <property
@@ -1837,14 +1837,14 @@
             <interfaceMoniker
               Id="379bf228-012d-4aac-b760-0606251b3b80"
               LastKnownName="IPassTemplateService"
-              LastKnownLocation="PassContainerPackage.uml" />
+              LastKnownLocation="PassContainer.uml" />
           </interfaceRealization>
           <dependency
             Id="a29243ed-6a21-4dc8-bdf1-bda508f076ff">
             <interfaceMoniker
               Id="bf94aa0f-b7a0-4be6-818a-a6d2150d0be3"
               LastKnownName="IFileStorageService"
-              LastKnownLocation="FileStoragePackage.uml" />
+              LastKnownLocation="FileStorage.uml" />
           </dependency>
         </suppliersInternal>
         <ownedOperationsInternal>
@@ -1987,7 +1987,7 @@
             <classMoniker
               Id="dfe73b5a-6f03-4ed3-b4fb-26c9570e8360"
               LastKnownName="Certificate"
-              LastKnownLocation="PassContainerPackage.uml" />
+              LastKnownLocation="PassCertificateStorage.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
@@ -2029,6 +2029,17 @@
             isDerivedUnion="false"
             aggregation="None"
             isComposite="false" />
+          <property
+            Id="b59f099c-2e8a-46f7-a507-280f9a5dd320"
+            name="CertificateId"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
         </ownedAttributesInternal>
       </class>
     </packageHasNamedElement>
@@ -2046,7 +2057,7 @@
             <classMoniker
               Id="c7fd8b4d-4e1d-46ea-a96c-bcc81f584eea"
               LastKnownName="PassTemplateNative"
-              LastKnownLocation="PassContainerPackage.uml" />
+              LastKnownLocation="PassContainer.uml" />
           </generalization>
         </generalsInternal>
         <ownedAttributesInternal>
@@ -2091,48 +2102,22 @@
       </Interface>
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <class
-        Id="dfe73b5a-6f03-4ed3-b4fb-26c9570e8360"
-        name="Certificate"
+      <Interface
+        Id="c17a5123-9184-40da-9513-b0b2d0e53aac"
+        name="IPassCertificateService"
         isAbstract="false"
-        isLeaf="false"
-        isActiveClass="false">
-        <ownedAttributesInternal>
-          <property
-            Id="f637fafc-790e-40f0-944e-08f6517f3879"
-            name="CertificateStorageId"
+        isLeaf="false">
+        <ownedOperations>
+          <operation
+            Id="0b33b71b-36de-4399-b5e1-ff37454e1cb6"
+            name="GetCertificate"
             isLeaf="false"
             isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false" />
-          <property
-            Id="3c34b1c8-0f01-4e3f-93b6-42357d345d4b"
-            name="Name"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false" />
-          <property
-            Id="783a530f-6b23-4b36-afaf-48b01f6c5414"
-            name="Description"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false" />
-        </ownedAttributesInternal>
-      </class>
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperations>
+      </Interface>
     </packageHasNamedElement>
   </packagedElements>
 </package>

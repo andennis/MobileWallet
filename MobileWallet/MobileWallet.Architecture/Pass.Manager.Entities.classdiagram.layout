@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14.75, 8.5" name="Pass.Manager.Entities">
+<logicalClassDesignerDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Pass.Manager.Entities">
   <logicalClassDesignerModelMoniker Id="efcce335-7bdf-4ffb-a686-518ba4d52bfa" />
   <nestedChildShapes>
     <classShape Id="e5c07d6d-ed6b-46b7-a30c-9a79ef7cf3f8" absoluteBounds="4.25, 2, 1.5, 0.90234373509883881" hideQualifiedName="false" increaseHeight="0" customColor="181, 193, 223">
@@ -65,36 +65,6 @@
         <classShapeMoniker Id="2977492d-8e32-4122-9f9d-78a57d1122e7" />
       </nodes>
     </commentConnector>
-    <classShape Id="661ccf70-6e85-4f8e-a912-43311c6feb16" absoluteBounds="8.75, 0.5, 2.125, 1.3828124701976781" hideQualifiedName="false" increaseHeight="0" customColor="181, 193, 223">
-      <classMoniker Id="f970c759-f32f-44fd-97d3-3f5e96e01746" LastKnownName="Certificate" />
-      <nestedChildShapes>
-        <AttributeElementListCompartment Id="59df4329-78aa-48ca-bc11-26677f9221c9" absoluteBounds="8.765, 0.89000000000000012, 2.0949999999999998, 0.68164060264825832" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
-        <OperationElementListCompartment Id="6d9a0878-adb5-40fe-8f1f-26d9c9dbb79f" absoluteBounds="8.765, 1.5816406026482583, 2.0949999999999998, 0.2011718675494194" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(5.75 : 0.951171867549419); (8.75 : 0.951171867549419)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="1" targetMultiplicity="1">
-      <associationMoniker Id="f0356066-06c9-4e11-b535-651fef29ab73" />
-      <relativeChildShapes />
-      <nodes>
-        <classShapeMoniker Id="f81286d9-c201-4e08-80dc-74101f5b7061" />
-        <classShapeMoniker Id="661ccf70-6e85-4f8e-a912-43311c6feb16" />
-      </nodes>
-    </associationConnector>
-    <classShape Id="cd329bf5-3579-47c7-88ff-6c505d23edc8" absoluteBounds="12.125, 0.5, 2.375, 1.0624999801317849" hideQualifiedName="false" increaseHeight="0" customColor="181, 193, 223">
-      <classMoniker Id="810e4f69-5c47-40dc-a732-522fb58ff4af" LastKnownName="CertificateApple" />
-      <nestedChildShapes>
-        <AttributeElementListCompartment Id="f7497bc2-b6e2-4f7e-9352-c3767f1d563f" absoluteBounds="12.14, 0.89000000000000012, 2.3449999999999998, 0.36132811258236563" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
-        <OperationElementListCompartment Id="610f12c9-9db1-40f2-b600-8ea142a6ecc8" absoluteBounds="12.14, 1.2613281125823657, 2.3449999999999998, 0.2011718675494194" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <generalizationConnector edgePoints="[(12.125 : 1.03124999006589); (10.875 : 1.03124999006589)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110">
-      <generalizationMoniker Id="73b69d71-1c12-46ba-af65-593f408eace7" />
-      <relativeChildShapes />
-      <nodes>
-        <classShapeMoniker Id="cd329bf5-3579-47c7-88ff-6c505d23edc8" />
-        <classShapeMoniker Id="661ccf70-6e85-4f8e-a912-43311c6feb16" />
-      </nodes>
-    </generalizationConnector>
     <classShape Id="91a94e6c-25f7-4e80-b981-6217e9687c30" absoluteBounds="6.75, 3.375, 2.25, 1.508148109515508" hideQualifiedName="false" increaseHeight="0.18800345897674561" customColor="181, 193, 223">
       <classMoniker Id="42da4c07-d7b5-4884-921d-17ae1882035b" LastKnownName="PassTemplate" />
       <nestedChildShapes>

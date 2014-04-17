@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" dslVersion="1.0.0.0" Id="68002523-f1ea-4fdd-8cb5-2cb49e8e3d33" name="Pass.CertificateStorage" linkedPackageId="a7832edb-d0c5-42c0-aea0-b85eef458099" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="20e0646a-7dd9-4ea3-9f77-62df04cb9e5f">
+      <profileInstance Id="10ee2d32-c56a-4c6f-afa0-559e5119d8d7" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="b5a39dca-9596-4409-9ebe-b94c5fdde4e5">
+      <profileInstance Id="899e46d6-f1d6-466e-9470-860a0673dc1b" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="8b60e3ea-a44f-41bc-aea5-647209fc1e83">
+      <profileInstance Id="a2a3c00a-ec81-4477-b8d0-c430c99edf38" name="TextTemplateBindings">
+        <elementDefinition Id="06d93c75-9f7e-465a-a217-2c5fb68015af" />
+      </profileInstance>
+      <elementDefinition Id="1764e76e-4606-4e41-927d-7dee20e9c500" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="512f58d6-b237-48ad-96cb-1b43407201ce" name="Certificate" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="dfe73b5a-6f03-4ed3-b4fb-26c9570e8360" />
+        <ownedAttributesInternal>
+          <property Id="1ec53af4-a0f5-43a0-a960-32fb700f016a" name="Name" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="3c34b1c8-0f01-4e3f-93b6-42357d345d4b" />
+          </property>
+          <property Id="93db2769-5fe0-4f6b-be94-17048830d6b5" name="Description" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="783a530f-6b23-4b36-afaf-48b01f6c5414" />
+          </property>
+          <property Id="72930b7a-6b66-466c-8c77-0ae3c9ed11c8" name="Password" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="fbe0bafb-3fb3-439d-9360-06012c627b9c" />
+          </property>
+          <property Id="0f2eddfc-fe37-4e2c-9b5c-5b294af7ebef" name="FileStorageId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="cabe4d15-360a-472c-8069-f2e79dd5bcc0" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="a7832edb-d0c5-42c0-aea0-b85eef458099" name="MobileWalletModeling">
+    <elementDefinition Id="a53e0939-3e57-42d8-a1d6-852d3d589578" />
+  </package>
+</logicalClassDesignerModel>

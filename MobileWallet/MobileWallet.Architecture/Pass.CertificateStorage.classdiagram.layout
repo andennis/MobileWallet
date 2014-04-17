@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Pass.CertificateStorage">
+  <logicalClassDesignerModelMoniker Id="68002523-f1ea-4fdd-8cb5-2cb49e8e3d33" />
+  <nestedChildShapes>
+    <classShape Id="23a2a30b-e7f4-4ba8-bbaa-3d92acfc4a78" absoluteBounds="3.625, 1.875, 2.75, 1.5429687152306237" hideQualifiedName="false" increaseHeight="0" customColor="181, 193, 223">
+      <classMoniker Id="512f58d6-b237-48ad-96cb-1b43407201ce" LastKnownName="Certificate" />
+      <nestedChildShapes>
+        <AttributeElementListCompartment Id="ae7ceeb8-f442-4461-85a6-0f14f60bc87d" absoluteBounds="3.64, 2.265, 2.7199999999999998, 0.84179684768120444" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <OperationElementListCompartment Id="beea87ca-613e-40c5-872c-985f39fb0ff4" absoluteBounds="3.64, 3.1167968476812042, 2.7199999999999998, 0.2011718675494194" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</logicalClassDesignerDiagram>

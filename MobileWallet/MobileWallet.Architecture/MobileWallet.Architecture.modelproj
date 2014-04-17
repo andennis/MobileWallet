@@ -36,6 +36,9 @@
       <SubType>Content</SubType>
       <DependentUpon>FileStorage.Services.classdiagram</DependentUpon>
     </Content>
+    <Content Include="ModelDefinition\PassCertificateStorage.uml">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="ModelDefinition\PassConsumer.uml">
       <SubType>Content</SubType>
     </Content>
@@ -53,32 +56,39 @@
       <SubType>Content</SubType>
       <DependentUpon>Main.classdiagram</DependentUpon>
     </Content>
-    <Content Include="ModelDefinition\FileStoragePackage.uml">
+    <Content Include="ModelDefinition\FileStorage.uml">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="ModelDefinition\PassProcessingWebPackage.uml">
+    <Content Include="ModelDefinition\PassProcessingWeb.uml">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="ModelDefinition\PassRedemptionWebPackage.uml">
+    <Content Include="ModelDefinition\PassRedemptionWeb.uml">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="ModelDefinition\ThirdPartySystemPackage.uml">
+    <Content Include="ModelDefinition\ThirdPartySystem.uml">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="ModelDefinition\PassManagerWebPackage.uml">
+    <Content Include="ModelDefinition\PassManagerWeb.uml">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="ModelDefinition\PassDistributionWebPackage.uml">
+    <Content Include="ModelDefinition\PassDistributionWeb.uml">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="ModelDefinition\PassManagerPackage.uml">
+    <Content Include="ModelDefinition\PassManager.uml">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="ModelDefinition\PassNotificationPackage.uml">
+    <Content Include="ModelDefinition\PassNotification.uml">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="ModelDefinition\PassContainerPackage.uml">
+    <Content Include="ModelDefinition\PassContainer.uml">
       <SubType>Content</SubType>
+    </Content>
+    <Content Include="Pass.CertificateStorage.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Pass.CertificateStorage.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Pass.CertificateStorage.classdiagram</DependentUpon>
     </Content>
     <Content Include="Pass.Consumer.classdiagram">
       <SubType>Content</SubType>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="efcce335-7bdf-4ffb-a686-518ba4d52bfa" name="Pass.Manager.Entities" linkedPackageId="1d411afb-d027-4df1-b6ee-fc80cb6fa8a8" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="efcce335-7bdf-4ffb-a686-518ba4d52bfa" name="Pass.Manager.Entities" linkedPackageId="1d411afb-d027-4df1-b6ee-fc80cb6fa8a8" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <ownedCommentsInternal>
     <comment Id="5dc93d1b-a2c2-46b4-a02d-05e2846081f7">
       <elementDefinition Id="1d36891a-3196-4789-adad-a8f254ee2a80" />
@@ -102,22 +102,6 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="d09086a1-290a-4f8c-9891-17e2b7e11af5" />
           </association>
-          <association Id="f0356066-06c9-4e11-b535-651fef29ab73" isDerived="false" sourceEndRoleName="ClientSite" targetEndRoleName="Certificate" isLeaf="false" isAbstract="false">
-            <classMoniker Id="f970c759-f32f-44fd-97d3-3f5e96e01746" LastKnownName="Certificate" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd Id="af0452e6-a1a9-49ef-8a4b-627aa68b8f1f" name="ClientSite" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="45d7ff35-978c-4052-b0f3-8cdc7c4bf367" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd Id="c8b457e7-f094-4601-bec4-fe8270042629" name="Certificate" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="58d3abfa-fc7e-495b-9306-0590e98aaadc" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-            <elementDefinition Id="00ddeb12-a9ff-4b7a-abe3-4f79c69b787f" />
-          </association>
         </targetEnds>
       </class>
     </logicalClassDesignerModelHasTypes>
@@ -130,38 +114,6 @@
           </property>
           <property Id="93f27776-aaa6-433b-8889-73c9d14de2ad" name="Format" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="c2fa59ef-e144-4232-8847-c8c2f3b04a57" />
-          </property>
-        </ownedAttributesInternal>
-      </class>
-    </logicalClassDesignerModelHasTypes>
-    <logicalClassDesignerModelHasTypes>
-      <class Id="f970c759-f32f-44fd-97d3-3f5e96e01746" name="Certificate" isAbstract="false" isLeaf="false" isActiveClass="false">
-        <elementDefinition Id="dfe73b5a-6f03-4ed3-b4fb-26c9570e8360" />
-        <ownedAttributesInternal>
-          <property Id="fcd09154-331f-47de-97a0-239bd4a962ef" name="CertificateStorageId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="f637fafc-790e-40f0-944e-08f6517f3879" />
-          </property>
-          <property Id="7d1ea8fc-3d1c-4bf3-957b-f1780f77f08d" name="Name" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="3c34b1c8-0f01-4e3f-93b6-42357d345d4b" />
-          </property>
-          <property Id="b552ba13-09e5-4d49-8621-03ba4dbb8726" name="Description" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="783a530f-6b23-4b36-afaf-48b01f6c5414" />
-          </property>
-        </ownedAttributesInternal>
-      </class>
-    </logicalClassDesignerModelHasTypes>
-    <logicalClassDesignerModelHasTypes>
-      <class Id="810e4f69-5c47-40dc-a732-522fb58ff4af" name="CertificateApple" isAbstract="false" isLeaf="false" isActiveClass="false">
-        <elementDefinition Id="96dc9c72-3c10-445a-a1dd-93aaf6ae7567" />
-        <generalsInternal>
-          <generalization Id="73b69d71-1c12-46ba-af65-593f408eace7" isSubstitutable="false">
-            <classMoniker Id="f970c759-f32f-44fd-97d3-3f5e96e01746" LastKnownName="Certificate" />
-            <elementDefinition Id="07d14642-7765-4d1a-b0bb-d5e86e1c92f6" />
-          </generalization>
-        </generalsInternal>
-        <ownedAttributesInternal>
-          <property Id="e3a60c75-1cc3-4335-9b47-b0b597f4fc46" name="PassTypeId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="5ebadf48-d448-4169-ba49-99205c71d872" />
           </property>
         </ownedAttributesInternal>
       </class>
