@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Ionic.Zip;
+﻿using Ionic.Zip;
 
 namespace Common.Utils
 {

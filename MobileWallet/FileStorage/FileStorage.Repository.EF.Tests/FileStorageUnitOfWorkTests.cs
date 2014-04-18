@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace FileStorage.Repository.EF.Tests
 {
     [TestFixture]
-    public class FileStorageUnitOfWorkTests : RepositoryTestsBase
+    public class FileStorageUnitOfWorkTests
     {
         private class UnknownEntity
         {
@@ -15,16 +15,27 @@ namespace FileStorage.Repository.EF.Tests
         [Test]
         public void FileStorageRepositoryTest()
         {
-            Assert.NotNull(_unitOfWork.FileStorageRepository);
-            Assert.IsInstanceOf<IFileStorageRepository>(_unitOfWork.FileStorageRepository);
+            using (var unitOfWork = GetFileStorageUnitOfWork())
+            {
+                Assert.NotNull(unitOfWork.FileStorageRepository);
+                Assert.IsInstanceOf<IFileStorageRepository>(unitOfWork.FileStorageRepository);
+            }
         }
 
         [Test]
         public void GetRepositoryTest()
         {
-            Assert.IsNotNull(_unitOfWork.GetRepository<StorageItem>());
-            Assert.IsNotNull(_unitOfWork.GetRepository<FolderItem>());
-            Assert.Throws<Exception>(() => _unitOfWork.GetRepository<UnknownEntity>());
+            using (var unitOfWork = GetFileStorageUnitOfWork())
+            {
+                Assert.IsNotNull(unitOfWork.GetRepository<StorageItem>());
+                Assert.IsNotNull(unitOfWork.GetRepository<FolderItem>());
+                Assert.Throws<Exception>(() => unitOfWork.GetRepository<UnknownEntity>());
+            }
+        }
+
+        private IFileStorageUnitOfWork GetFileStorageUnitOfWork()
+        {
+            return new FileStorageUnitOfWork(TestHelper.DbConfig);
         }
     }
 }
