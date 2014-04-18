@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Common.Utils;
 using FileStorage.Core;
+using Org.BouncyCastle.Cms;
 using Pass.Container.BL.Helpers;
 using Pass.Container.Core;
 using Pass.Container.Core.Exceptions;
@@ -22,6 +23,7 @@ namespace Pass.Container.BL.PassGenerators
         private const string ApplePassTempFolderName = "Apple";
         private const string ApplePassTemplateJson = "pass.json";
         private readonly IPassContainerConfig _config;
+        private readonly Dictionary<string, CmsSignedDataGenerator> _certificates = new Dictionary<string, CmsSignedDataGenerator>();
 
         public ApplePassGenerator(IPassContainerConfig config, IPassContainerUnitOfWork pcUnitOfWork, IFileStorageService fsService)
             :base(pcUnitOfWork, fsService)
@@ -32,6 +34,15 @@ namespace Pass.Container.BL.PassGenerators
         public string GeneratePass(int passId)
         {
             RepEntities.Pass pass = GetPass(passId);
+
+            //Certificate processing
+            if (!_certificates.ContainsKey(pass.PassTypeIdentifier))
+            {
+                var generator = ApplePassGeneratorHelper.GetCmsSignedDataGenerator(CertificateFilesPath, CertificatePassword);
+                if (generator == null)
+                    throw new PassGenerationException("Certificate processing was failed.");
+                _certificates.Add(pass.PassTypeIdentifier, generator);
+            }
 
             //Get storage item path
             DateTime lastUpdateDateTime;
@@ -102,7 +113,8 @@ namespace Pass.Container.BL.PassGenerators
             }
             File.WriteAllText(applePassJsonFilePath, passJsonText);
 
-            string pkpassFilePath = ApplePassGeneratorHelper.GenaratePassPackage(passFolder, CertificateFilesPath, CertificatePassword);
+            //string pkpassFilePath = ApplePassGeneratorHelper.GenaratePassPackage(passFolder, CertificateFilesPath, CertificatePassword);
+            string pkpassFilePath = ApplePassGeneratorHelper.GenaratePassPackage(passFolder,_certificates[pass.PassTypeIdentifier]);
 
             return pkpassFilePath;
         }

@@ -26,13 +26,14 @@ namespace Pass.Container.BL.Tests
         {
             //Prepare pass template source
             GeneralPassTemplate generalTemplate = GetPassTemplateObject();
-            //generalTemplate.FieldDetails.AuxiliaryFields.Add(new GeneralField
-            //        {
-            //            Key = "TestDynamicField",
-            //            Value = "TestDynamicFieldValue",
-            //            Type = GeneralField.DataType.Text,
-            //            IsDynamicValue = true
-            //        });
+            generalTemplate.FieldDetails.BackFields.Add(new GeneralField
+                                                                 {
+                                                                     Key = "Key01",
+                                                                     Label = "DynamicField",
+                                                                     Value = "Test",
+                                                                     Type = GeneralField.DataType.Text,
+                                                                     IsDynamicValue = true
+                                                                 });
 
             string path = Path.Combine(testPassTemplateDir, passTemplateFileName);
             if (File.Exists(path))

@@ -24,11 +24,11 @@ namespace Pass.Container.BL.Helpers
         {
             string pkpassFilePath = null;
 
-            Trace.TraceInformation("Generating the manifest file...");
+            //Trace.TraceInformation("Generating the manifest file...");
             string manifestJson = GetManifestJson(dirPath);
             GenerateManifestFile(dirPath, manifestJson);
 
-            Trace.TraceInformation("Signing the manifest file...");
+            //Trace.TraceInformation("Signing the manifest file...");
             string certificateFilePath = Path.Combine(cerPath, PassTypeIdCerName);
             X509Certificate2 card = GetCertificateFromFile(certificateFilePath, password);
             if (card == null)
@@ -40,12 +40,12 @@ namespace Pass.Container.BL.Helpers
                 Org.BouncyCastle.X509.X509Certificate cert = DotNetUtilities.FromX509Certificate(card);
                 Org.BouncyCastle.Crypto.AsymmetricKeyParameter privateKey = DotNetUtilities.GetKeyPair(card.PrivateKey).Private;
 
-                Trace.TraceInformation("Fetching Apple Certificate for signing..");
+                //Trace.TraceInformation("Fetching Apple Certificate for signing..");
                 string appleWwdrcaCertificateFilePath = Path.Combine(cerPath, AppleWwdrcaCerName);
                 X509Certificate2 appleCA = GetCertificateFromFile(appleWwdrcaCertificateFilePath, null);
                 Org.BouncyCastle.X509.X509Certificate appleCert = DotNetUtilities.FromX509Certificate(appleCA);
 
-                Trace.TraceInformation("Constructing the certificate chain..");
+                //Trace.TraceInformation("Constructing the certificate chain..");
                 var intermediateCerts = new ArrayList() { appleCert, cert };
 
                 var PP = new Org.BouncyCastle.X509.Store.X509CollectionStoreParameters(intermediateCerts);
@@ -56,14 +56,14 @@ namespace Pass.Container.BL.Helpers
                 generator.AddSigner(privateKey, cert, CmsSignedDataGenerator.DigestSha1);
                 generator.AddCertificates(st1);
 
-                Trace.TraceInformation("Processing the signature..");
+                //Trace.TraceInformation("Processing the signature..");
                 CmsProcessable content = new CmsProcessableByteArray(Encoding.ASCII.GetBytes(manifestJson));
                 CmsSignedData signedData = generator.Generate(content, false);
 
                 byte[] signatureBytes = signedData.GetEncoded();
                 File.WriteAllBytes(Path.Combine(dirPath, "signature"), signatureBytes);
 
-                Trace.TraceInformation("The file has been successfully signed!");
+                //Trace.TraceInformation("The file has been successfully signed!");
             }
             catch (Exception exp)
             {
@@ -72,16 +72,80 @@ namespace Pass.Container.BL.Helpers
             //Generate pkpass file
             try
             {
-                Trace.TraceInformation("Generating .pkpass archive..");
+                //Trace.TraceInformation("Generating .pkpass archive..");
                 pkpassFilePath = Path.Combine(dirPath, Guid.NewGuid() + ".pkpass");
                 Compress.CompressDirectory(dirPath, pkpassFilePath);
-                Trace.TraceInformation("The .pkpass archive has been successfully Generated!");
+                //Trace.TraceInformation("The .pkpass archive has been successfully Generated!");
             }
             catch (Exception exp)
             {
                 Trace.TraceError("Failed to generate .pkpass archive: [{0}]", exp.Message);
             }
             return pkpassFilePath;
+        }
+
+        public static string GenaratePassPackage(string dirPath, CmsSignedDataGenerator cmsSignedDataGenerator)
+        {
+            string pkpassFilePath = null;
+
+            //Trace.TraceInformation("Generating the manifest file...");
+            string manifestJson = GetManifestJson(dirPath);
+            GenerateManifestFile(dirPath, manifestJson);
+
+            //Trace.TraceInformation("Signing the manifest file...");
+               
+            CmsProcessable content = new CmsProcessableByteArray(Encoding.ASCII.GetBytes(manifestJson));
+            CmsSignedData signedData = cmsSignedDataGenerator.Generate(content, false);
+
+            byte[] signatureBytes = signedData.GetEncoded();
+            File.WriteAllBytes(Path.Combine(dirPath, "signature"), signatureBytes);
+
+           //Trace.TraceInformation("The file has been successfully signed!");
+           
+            //Generate pkpass file
+           //Trace.TraceInformation("Generating .pkpass archive..");
+           pkpassFilePath = Path.Combine(dirPath, Guid.NewGuid() + ".pkpass");
+           Compress.CompressDirectory(dirPath, pkpassFilePath);
+           //Trace.TraceInformation("The .pkpass archive has been successfully Generated!");
+           
+            return pkpassFilePath;
+        }
+
+        public static CmsSignedDataGenerator GetCmsSignedDataGenerator(string cerPath, string password)
+        {
+            CmsSignedDataGenerator generator = null;
+            string certificateFilePath = Path.Combine(cerPath, PassTypeIdCerName);
+            X509Certificate2 card = GetCertificateFromFile(certificateFilePath, password);
+            if (card == null)
+            {
+                throw new FileNotFoundException("Certificate could not be found.");
+            }
+            try
+            {
+                Org.BouncyCastle.X509.X509Certificate cert = DotNetUtilities.FromX509Certificate(card);
+                Org.BouncyCastle.Crypto.AsymmetricKeyParameter privateKey = DotNetUtilities.GetKeyPair(card.PrivateKey).Private;
+
+                //Trace.TraceInformation("Fetching Apple Certificate for signing..");
+                string appleWwdrcaCertificateFilePath = Path.Combine(cerPath, AppleWwdrcaCerName);
+                X509Certificate2 appleCA = GetCertificateFromFile(appleWwdrcaCertificateFilePath, null);
+                Org.BouncyCastle.X509.X509Certificate appleCert = DotNetUtilities.FromX509Certificate(appleCA);
+
+                //Trace.TraceInformation("Constructing the certificate chain..");
+                var intermediateCerts = new ArrayList() { appleCert, cert };
+
+                var PP = new Org.BouncyCastle.X509.Store.X509CollectionStoreParameters(intermediateCerts);
+                Org.BouncyCastle.X509.Store.IX509Store st1 = Org.BouncyCastle.X509.Store.X509StoreFactory.Create("CERTIFICATE/COLLECTION", PP);
+
+                generator = new CmsSignedDataGenerator();
+                generator.AddSigner(privateKey, cert, CmsSignedDataGenerator.DigestSha1);
+                generator.AddCertificates(st1);
+                return generator;
+            }
+            catch (Exception exp)
+            {
+                Trace.TraceError("Failed to sign the manifest file: [{0}]", exp.Message);
+            }
+            return null;
         }
 
         private static string GetManifestJson(string dirPath)
