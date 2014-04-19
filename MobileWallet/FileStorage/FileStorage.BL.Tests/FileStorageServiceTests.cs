@@ -24,6 +24,7 @@ namespace FileStorage.BL.Tests
         public void InitEachTest()
         {
             FsTestHelper.ClearFileStorage(_fsConfig);
+
         }
 
         [Test]

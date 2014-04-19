@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Common.Repository;
+﻿using Common.Repository;
 using NUnit.Framework;
 using Pass.CertificateStorage.Repository.Core;
 using Pass.CertificateStorage.Repository.Core.Entities;

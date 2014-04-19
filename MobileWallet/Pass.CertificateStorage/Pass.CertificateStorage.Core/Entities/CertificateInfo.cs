@@ -7,16 +7,16 @@ namespace Pass.CertificateStorage.Core.Entities
     public class CertificateInfo : IDisposable
     {
         public string Name { get; set; }
-        public Stream CerificateFile { get; set; }
+        public Stream CertificateFile { get; set; }
         public SecureString Password { get; set; }
 
         #region IDisposable
         public void Dispose()
         {
-            if (CerificateFile != null)
+            if (CertificateFile != null)
             {
-                CerificateFile.Dispose();
-                CerificateFile = null;
+                CertificateFile.Dispose();
+                CertificateFile = null;
             }
 
             if (Password != null)

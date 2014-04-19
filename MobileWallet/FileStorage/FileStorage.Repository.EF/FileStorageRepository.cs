@@ -36,11 +36,11 @@ namespace FileStorage.Repository.EF
 
         public void ClearFileStorage()
         {
-            using (var trn = new TransactionScope())
+            //using (var trn = new TransactionScope())
             {
                 ExecuteCommand(string.Format("DELETE FROM {0}.StorageItem", FileStorageDbContext.DbScheme));
                 ExecuteCommand(string.Format("DELETE FROM {0}.FolderItem", FileStorageDbContext.DbScheme));
-                trn.Complete();
+                //trn.Complete();
             }
         }
     }

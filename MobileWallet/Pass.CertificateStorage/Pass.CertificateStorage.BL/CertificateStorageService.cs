@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Common.Extensions;
 using Common.Repository;
 using Common.Utils;
@@ -32,8 +33,16 @@ namespace Pass.CertificateStorage.BL
 
         public int Put(CertificateInfo certInfo)
         {
-            Certificate cert = ConvertTo(certInfo);
-            cert.FileId = _fileStorageService.PutFile(certInfo.CerificateFile);
+            if (certInfo == null)
+                throw new ArgumentNullException("certInfo");
+            if (certInfo.CertificateFile == null)
+                throw new CertificateStorageException("Certificate file is not specified");
+
+            var cert = new Certificate() { Name = certInfo.Name };
+            string psw = certInfo.Password.ConvertToUnsecureString();
+            cert.Password = Crypto.EncryptString(psw, _config.SecurityKey, SecurityVector);
+            cert.Status = EntityStatus.Active;
+            cert.FileId = _fileStorageService.PutFile(certInfo.CertificateFile);
             _certRepository.Insert(cert);
             _unitOfWork.Save();
 
@@ -52,44 +61,47 @@ namespace Pass.CertificateStorage.BL
             string psw = Crypto.DecryptString(cert.Password, _config.SecurityKey, SecurityVector);
             certInfo.Password = psw.ConvertToSecureString();
             string certFilePath = _fileStorageService.GetStorageItemPath(cert.FileId);
-            certInfo.CerificateFile = new FileStream(certFilePath, FileMode.Open, FileAccess.Read);
+            certInfo.CertificateFile = new FileStream(certFilePath, FileMode.Open, FileAccess.Read);
 
             return certInfo;
         }
 
         public void Update(int certId, CertificateInfo certInfo)
         {
-            Certificate oldCert = _certRepository.Find(certId);
-            if (oldCert == null)
+            if (certInfo == null)
+                throw new ArgumentNullException("certInfo");
+
+            Certificate cert = _certRepository.Find(certId);
+            if (cert == null)
                 throw new CertificateStorageException(string.Format("Certificate ID:{0} not found", certId));
-            if (oldCert.Status == EntityStatus.Deleted)
+            if (cert.Status == EntityStatus.Deleted)
                 throw new CertificateStorageException(string.Format("Certificate ID:{0} was deleted", certId));
 
-            Certificate newCert = ConvertTo(certInfo);
-            newCert.CertificateId = oldCert.CertificateId;
-            if (certInfo.CerificateFile != null)
-                newCert.FileId = _fileStorageService.PutFile(certInfo.CerificateFile);
-            
-            _certRepository.Update(newCert);
+            cert.Name = certInfo.Name;
+            string psw = certInfo.Password.ConvertToUnsecureString();
+            cert.Password = Crypto.EncryptString(psw, _config.SecurityKey, SecurityVector);
+
+            int oldFileId = cert.FileId;
+            if (certInfo.CertificateFile != null)
+                cert.FileId = _fileStorageService.PutFile(certInfo.CertificateFile);
+
+            _certRepository.Update(cert);
             _unitOfWork.Save();
 
-            _fileStorageService.DeleteStorageItem(oldCert.FileId);
+            if (certInfo.CertificateFile != null)
+                _fileStorageService.DeleteStorageItem(oldFileId);
         }
 
         public void Delete(int certId)
         {
             Certificate cert = _certRepository.Find(certId);
-            if (cert != null)
-                _certRepository.Delete(cert);
-        }
+            if (cert == null)
+                return;
 
-        private Certificate ConvertTo(CertificateInfo certInfo)
-        {
-            var cert = new Certificate() {Name = certInfo.Name};
-            string psw = certInfo.Password.ConvertToUnsecureString();
-            cert.Password = Crypto.EncryptString(psw, _config.SecurityKey, SecurityVector);
-            cert.Status = EntityStatus.Active;
-            return cert;
+            _certRepository.Delete(cert);
+            _unitOfWork.Save();
+
+            _fileStorageService.DeleteStorageItem(cert.FileId);
         }
 
         #region IDisposable
