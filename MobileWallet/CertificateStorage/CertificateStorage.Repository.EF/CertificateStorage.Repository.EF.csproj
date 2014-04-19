@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{ED49EB16-2FCB-4EAC-A4DC-2830C8307FC6}</ProjectGuid>
+    <ProjectGuid>{1DBBE809-D0BA-4031-9AE6-DE6FF57354D7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CertificateStorage.BL.Tests</RootNamespace>
-    <AssemblyName>CertificateStorage.BL.Tests</AssemblyName>
+    <RootNamespace>CertificateStorage.Repository.EF</RootNamespace>
+    <AssemblyName>CertificateStorage.Repository.EF</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
@@ -32,16 +32,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="EntityFramework">
       <HintPath>..\..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -53,23 +48,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CertificateStorageConfigTests.cs" />
-    <Compile Include="CertificateStorageServiceTests.cs" />
+    <Compile Include="MigrationsContextFactory.cs" />
+    <Compile Include="CertificateStorageDbContext.cs" />
+    <Compile Include="CertificateStorageUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\Common.Configuration\Common.Configuration.csproj">
-      <Project>{dfabdfcc-3b69-434a-bd2a-6838cd7608a8}</Project>
-      <Name>Common.Configuration</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\Common.Extensions\Common.Extensions.csproj">
-      <Project>{1628e173-1be9-4dfc-bcbe-93334de8ee46}</Project>
-      <Name>Common.Extensions</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Common\Common.Repository.EF\Common.Repository.EF.csproj">
       <Project>{925ec36b-df88-4cde-bc59-fe03c0173cae}</Project>
       <Name>Common.Repository.EF</Name>
@@ -78,46 +65,10 @@
       <Project>{f36371d6-812f-49f5-9e9b-043265660647}</Project>
       <Name>Common.Repository</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\FileStorage\FileStorage.BL\FileStorage.BL.csproj">
-      <Project>{f067da74-e48f-4de7-85d4-1217bb3670e3}</Project>
-      <Name>FileStorage.BL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\FileStorage\FileStorage.Core\FileStorage.Core.csproj">
-      <Project>{06ebd357-60dc-4bd9-ad9b-0a736dcc2203}</Project>
-      <Name>FileStorage.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\FileStorage\FileStorage.Repository.Core\FileStorage.Repository.Core.csproj">
-      <Project>{cefdb101-184e-4484-9cf8-9616d68ae52a}</Project>
-      <Name>FileStorage.Repository.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\FileStorage\FileStorage.Repository.EF\FileStorage.Repository.EF.csproj">
-      <Project>{2378c604-fff4-44f9-9934-bb17013c27fb}</Project>
-      <Name>FileStorage.Repository.EF</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pass.CertificateStorage.BL\CertificateStorage.BL.csproj">
-      <Project>{6eb0253b-5bcd-43cd-bb76-2ccff5761e7a}</Project>
-      <Name>CertificateStorage.BL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pass.CertificateStorage.Core\CertificateStorage.Core.csproj">
-      <Project>{c65c0f7c-299b-4db8-9ab7-d3c246baba6f}</Project>
-      <Name>CertificateStorage.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pass.CertificateStorage.Repository.Core\CertificateStorage.Repository.Core.csproj">
+    <ProjectReference Include="..\CertificateStorage.Repository.Core\CertificateStorage.Repository.Core.csproj">
       <Project>{bb648ede-67d5-488c-b423-346e181b33db}</Project>
       <Name>CertificateStorage.Repository.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Pass.CertificateStorage.Repository.EF\CertificateStorage.Repository.EF.csproj">
-      <Project>{1dbbe809-d0ba-4031-9ae6-de6ff57354d7}</Project>
-      <Name>CertificateStorage.Repository.EF</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Data\TextFile1.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\TextFile2.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

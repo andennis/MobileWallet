@@ -71,19 +71,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pass.Container.Repository.C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CertificateStorage", "CertificateStorage", "{3DBBFF5A-E5EA-4F80-A649-C021DED0C417}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertificateStorage.Core", "Pass.CertificateStorage\Pass.CertificateStorage.Core\CertificateStorage.Core.csproj", "{C65C0F7C-299B-4DB8-9AB7-D3C246BABA6F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertificateStorage.Core", "CertificateStorage\CertificateStorage.Core\CertificateStorage.Core.csproj", "{C65C0F7C-299B-4DB8-9AB7-D3C246BABA6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertificateStorage.Repository.Core", "Pass.CertificateStorage\Pass.CertificateStorage.Repository.Core\CertificateStorage.Repository.Core.csproj", "{BB648EDE-67D5-488C-B423-346E181B33DB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertificateStorage.Repository.Core", "CertificateStorage\CertificateStorage.Repository.Core\CertificateStorage.Repository.Core.csproj", "{BB648EDE-67D5-488C-B423-346E181B33DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertificateStorage.Repository.EF", "Pass.CertificateStorage\Pass.CertificateStorage.Repository.EF\CertificateStorage.Repository.EF.csproj", "{1DBBE809-D0BA-4031-9AE6-DE6FF57354D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertificateStorage.Repository.EF", "CertificateStorage\CertificateStorage.Repository.EF\CertificateStorage.Repository.EF.csproj", "{1DBBE809-D0BA-4031-9AE6-DE6FF57354D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertificateStorage.Repository.EF.Tests", "Pass.CertificateStorage\Pass.CertificateStorage.Repository.EF.Tests\CertificateStorage.Repository.EF.Tests.csproj", "{9C1E11C6-E6F2-4837-A332-035636963C2D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertificateStorage.Repository.EF.Tests", "CertificateStorage\CertificateStorage.Repository.EF.Tests\CertificateStorage.Repository.EF.Tests.csproj", "{9C1E11C6-E6F2-4837-A332-035636963C2D}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CertificateStorage.DB.SqlServer", "Pass.CertificateStorage\Pass.CertificateStorage.DB.SqlServer\CertificateStorage.DB.SqlServer.sqlproj", "{D388B762-EC22-4E65-B1E7-B019F55F3360}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CertificateStorage.DB.SqlServer", "CertificateStorage\CertificateStorage.DB.SqlServer\CertificateStorage.DB.SqlServer.sqlproj", "{D388B762-EC22-4E65-B1E7-B019F55F3360}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertificateStorage.BL", "Pass.CertificateStorage\Pass.CertificateStorage.BL\CertificateStorage.BL.csproj", "{6EB0253B-5BCD-43CD-BB76-2CCFF5761E7A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertificateStorage.BL", "CertificateStorage\CertificateStorage.BL\CertificateStorage.BL.csproj", "{6EB0253B-5BCD-43CD-BB76-2CCFF5761E7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertificateStorage.BL.Tests", "Pass.CertificateStorage\Pass.CertificateStorage.BL.Tests\CertificateStorage.BL.Tests.csproj", "{ED49EB16-2FCB-4EAC-A4DC-2830C8307FC6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertificateStorage.BL.Tests", "CertificateStorage\CertificateStorage.BL.Tests\CertificateStorage.BL.Tests.csproj", "{ED49EB16-2FCB-4EAC-A4DC-2830C8307FC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -83,7 +83,7 @@
       <Project>{06EBD357-60DC-4BD9-AD9B-0A736DCC2203}</Project>
       <Name>FileStorage.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Pass.CertificateStorage\Pass.CertificateStorage.Core\CertificateStorage.Core.csproj">
+    <ProjectReference Include="..\..\CertificateStorage\CertificateStorage.Core\CertificateStorage.Core.csproj">
       <Project>{c65c0f7c-299b-4db8-9ab7-d3c246baba6f}</Project>
       <Name>CertificateStorage.Core</Name>
     </ProjectReference>
