@@ -1,6 +1,6 @@
 ﻿using Common.Repository;
 
-namespace Pass.CertificateStorage.Repository.Core.Entities
+namespace CertificateStorage.Repository.Core.Entities
 {
     public class Certificate : EntityVersionable
     {

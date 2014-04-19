@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Pass.CertificateStorage.BL
+namespace CertificateStorage.BL
 {
     public class CertificateStorageException : Exception
     {

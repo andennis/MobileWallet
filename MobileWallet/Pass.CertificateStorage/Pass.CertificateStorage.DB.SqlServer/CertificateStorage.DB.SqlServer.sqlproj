@@ -9,7 +9,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>Pass.CertificateStorage.DB.SqlServer</Name>
+    <Name>CertificateStorage.DB.SqlServer</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{d388b762-ec22-4e65-b1e7-b019f55f3360}</ProjectGuid>

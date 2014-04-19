@@ -1,8 +1,8 @@
-﻿using Common.Repository;
+﻿using CertificateStorage.Core;
+using Common.Repository;
 using NUnit.Framework;
-using Pass.CertificateStorage.Core;
 
-namespace Pass.CertificateStorage.BL.Tests
+namespace CertificateStorage.BL.Tests
 {
     [TestFixture]
     public class CertificateStorageConfigTests

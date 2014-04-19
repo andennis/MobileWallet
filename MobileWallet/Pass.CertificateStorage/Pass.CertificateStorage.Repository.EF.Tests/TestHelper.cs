@@ -1,6 +1,6 @@
 ﻿using Common.Repository;
 
-namespace Pass.CertificateStorage.Repository.EF.Tests
+namespace CertificateStorage.Repository.EF.Tests
 {
     public static class TestHelper
     {

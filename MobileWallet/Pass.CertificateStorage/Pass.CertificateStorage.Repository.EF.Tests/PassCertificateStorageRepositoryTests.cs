@@ -1,9 +1,9 @@
-﻿using Common.Repository;
+﻿using CertificateStorage.Repository.Core;
+using CertificateStorage.Repository.Core.Entities;
+using Common.Repository;
 using NUnit.Framework;
-using Pass.CertificateStorage.Repository.Core;
-using Pass.CertificateStorage.Repository.Core.Entities;
 
-namespace Pass.CertificateStorage.Repository.EF.Tests
+namespace CertificateStorage.Repository.EF.Tests
 {
     [TestFixture]
     public class PassCertificateStorageRepositoryTests

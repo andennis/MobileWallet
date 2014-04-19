@@ -1,7 +1,7 @@
-﻿using Common.Configuration;
-using Pass.CertificateStorage.Core;
+﻿using CertificateStorage.Core;
+using Common.Configuration;
 
-namespace Pass.CertificateStorage.BL
+namespace CertificateStorage.BL
 {
     public class CertificateStorageConfig : AppDbConfig, ICertificateStorageConfig
     {

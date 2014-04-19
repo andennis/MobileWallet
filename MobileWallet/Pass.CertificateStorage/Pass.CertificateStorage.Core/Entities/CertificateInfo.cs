@@ -2,7 +2,7 @@
 using System.IO;
 using System.Security;
 
-namespace Pass.CertificateStorage.Core.Entities
+namespace CertificateStorage.Core.Entities
 {
     public class CertificateInfo : IDisposable
     {

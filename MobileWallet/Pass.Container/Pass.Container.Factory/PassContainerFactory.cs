@@ -1,9 +1,8 @@
-﻿using System.Net;
+﻿using CertificateStorage.Core;
 using Common.Repository;
 using FileStorage.Core;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
-using Pass.CertificateStorage.Core;
 using Pass.Container.Core;
 
 namespace Pass.Container.Factory

@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
-using Pass.CertificateStorage.Repository.Core.Entities;
+using CertificateStorage.Repository.Core.Entities;
 
-namespace Pass.CertificateStorage.Repository.EF
+namespace CertificateStorage.Repository.EF
 {
     public class CertificateStorageDbContext : DbContext
     {

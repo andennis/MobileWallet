@@ -1,14 +1,14 @@
 ﻿using System;
 using System.IO;
+using CertificateStorage.Core;
+using CertificateStorage.Core.Entities;
+using CertificateStorage.Repository.EF;
 using Common.Extensions;
 using FileStorage.BL;
 using FileStorage.Repository.EF;
 using NUnit.Framework;
-using Pass.CertificateStorage.Core;
-using Pass.CertificateStorage.Core.Entities;
-using Pass.CertificateStorage.Repository.EF;
 
-namespace Pass.CertificateStorage.BL.Tests
+namespace CertificateStorage.BL.Tests
 {
     [TestFixture]
     public class CertificateStorageServiceTests

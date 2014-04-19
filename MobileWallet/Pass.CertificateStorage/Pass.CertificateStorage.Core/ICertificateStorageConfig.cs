@@ -1,6 +1,6 @@
 ﻿using Common.Repository;
 
-namespace Pass.CertificateStorage.Core
+namespace CertificateStorage.Core
 {
     public interface ICertificateStorageConfig : IDbConfig
     {

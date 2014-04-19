@@ -1,15 +1,15 @@
 ﻿using System;
 using System.IO;
+using CertificateStorage.Core;
+using CertificateStorage.Core.Entities;
+using CertificateStorage.Repository.Core;
+using CertificateStorage.Repository.Core.Entities;
 using Common.Extensions;
 using Common.Repository;
 using Common.Utils;
 using FileStorage.Core;
-using Pass.CertificateStorage.Core;
-using Pass.CertificateStorage.Core.Entities;
-using Pass.CertificateStorage.Repository.Core;
-using Pass.CertificateStorage.Repository.Core.Entities;
 
-namespace Pass.CertificateStorage.BL
+namespace CertificateStorage.BL
 {
     public class CertificateStorageService : ICertificateStorageService
     {

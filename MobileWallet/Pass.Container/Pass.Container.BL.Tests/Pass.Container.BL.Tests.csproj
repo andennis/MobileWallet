@@ -107,21 +107,21 @@
       <Project>{2378C604-FFF4-44F9-9934-BB17013C27FB}</Project>
       <Name>FileStorage.Repository.EF</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Pass.CertificateStorage\Pass.CertificateStorage.BL\Pass.CertificateStorage.BL.csproj">
+    <ProjectReference Include="..\..\Pass.CertificateStorage\Pass.CertificateStorage.BL\CertificateStorage.BL.csproj">
       <Project>{6eb0253b-5bcd-43cd-bb76-2ccff5761e7a}</Project>
-      <Name>Pass.CertificateStorage.BL</Name>
+      <Name>CertificateStorage.BL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Pass.CertificateStorage\Pass.CertificateStorage.Core\Pass.CertificateStorage.Core.csproj">
+    <ProjectReference Include="..\..\Pass.CertificateStorage\Pass.CertificateStorage.Core\CertificateStorage.Core.csproj">
       <Project>{c65c0f7c-299b-4db8-9ab7-d3c246baba6f}</Project>
-      <Name>Pass.CertificateStorage.Core</Name>
+      <Name>CertificateStorage.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Pass.CertificateStorage\Pass.CertificateStorage.Repository.Core\Pass.CertificateStorage.Repository.Core.csproj">
+    <ProjectReference Include="..\..\Pass.CertificateStorage\Pass.CertificateStorage.Repository.Core\CertificateStorage.Repository.Core.csproj">
       <Project>{bb648ede-67d5-488c-b423-346e181b33db}</Project>
-      <Name>Pass.CertificateStorage.Repository.Core</Name>
+      <Name>CertificateStorage.Repository.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Pass.CertificateStorage\Pass.CertificateStorage.Repository.EF\Pass.CertificateStorage.Repository.EF.csproj">
+    <ProjectReference Include="..\..\Pass.CertificateStorage\Pass.CertificateStorage.Repository.EF\CertificateStorage.Repository.EF.csproj">
       <Project>{1dbbe809-d0ba-4031-9ae6-de6ff57354d7}</Project>
-      <Name>Pass.CertificateStorage.Repository.EF</Name>
+      <Name>CertificateStorage.Repository.EF</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pass.Container.BL\Pass.Container.BL.csproj">
       <Project>{C26E7AFB-A944-48E6-9688-44B791BD697E}</Project>

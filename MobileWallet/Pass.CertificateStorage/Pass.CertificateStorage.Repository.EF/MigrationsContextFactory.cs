@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity.Infrastructure;
 
-namespace Pass.CertificateStorage.Repository.EF
+namespace CertificateStorage.Repository.EF
 {
     public class MigrationsContextFactory : IDbContextFactory<CertificateStorageDbContext>
     {

@@ -1,8 +1,8 @@
 ﻿using System.IO;
 using System.Security.Cryptography.X509Certificates;
+using CertificateStorage.Core;
+using CertificateStorage.Core.Entities;
 using Common.Extensions;
-using Pass.CertificateStorage.Core;
-using Pass.CertificateStorage.Core.Entities;
 using Pass.Container.Core;
 
 namespace Pass.Container.BL

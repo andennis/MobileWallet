@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using CertificateStorage.Repository.Core;
+using CertificateStorage.Repository.Core.Entities;
 using Common.Repository;
 using Common.Repository.EF;
-using Pass.CertificateStorage.Repository.Core;
-using Pass.CertificateStorage.Repository.Core.Entities;
 
-namespace Pass.CertificateStorage.Repository.EF
+namespace CertificateStorage.Repository.EF
 {
     public class CertificateStorageUnitOfWork : UnitOfWork, ICertificateStorageUnitOfWork
     {

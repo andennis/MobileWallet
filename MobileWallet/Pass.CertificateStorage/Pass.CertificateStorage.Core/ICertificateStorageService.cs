@@ -1,7 +1,7 @@
 ﻿using System;
-using Pass.CertificateStorage.Core.Entities;
+using CertificateStorage.Core.Entities;
 
-namespace Pass.CertificateStorage.Core
+namespace CertificateStorage.Core
 {
     public interface ICertificateStorageService : IDisposable
     {
