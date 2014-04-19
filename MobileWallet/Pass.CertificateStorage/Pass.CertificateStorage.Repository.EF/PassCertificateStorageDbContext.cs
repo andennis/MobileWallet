@@ -19,7 +19,9 @@ namespace Pass.CertificateStorage.Repository.EF
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Certificate>().ToTable("Certificate", DbScheme);
-            modelBuilder.Entity<Certificate>().Property(x => x.Name).IsRequired().HasMaxLength(400);
+            modelBuilder.Entity<Certificate>().Property(x => x.Name).HasMaxLength(512);
+            modelBuilder.Entity<Certificate>().Property(x => x.Password).HasMaxLength(512);
+            modelBuilder.Entity<Certificate>().Property(x => x.FileId).IsRequired();
         }
     }
 }

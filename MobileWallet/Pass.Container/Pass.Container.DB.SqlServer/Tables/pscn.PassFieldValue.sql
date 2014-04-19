@@ -2,8 +2,8 @@
     [PassFieldValueId] INT            IDENTITY (1, 1) NOT NULL,
     [PassFieldId]      INT            NOT NULL,
     [PassId]           INT            NOT NULL,
-    [Label]            NVARCHAR (400) NULL,
-    [Value]            NVARCHAR (400) NULL,
+    [Label]            NVARCHAR (512) NULL,
+    [Value]            NVARCHAR (512) NULL,
     [Version]          INT            NOT NULL,
     [CreatedDate]      DATETIME       NOT NULL,
     [UpdatedDate]      DATETIME       NOT NULL,
@@ -11,6 +11,8 @@
     CONSTRAINT [FK_pscn.PassFieldValue_pscn.Pass_PassId] FOREIGN KEY ([PassId]) REFERENCES [pscn].[Pass] ([PassId]) ON DELETE CASCADE,
     CONSTRAINT [FK_pscn.PassFieldValue_pscn.PassField_PassFieldId] FOREIGN KEY ([PassFieldId]) REFERENCES [pscn].[PassField] ([PassFieldId])
 );
+
+
 
 
 
