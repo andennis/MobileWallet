@@ -51,7 +51,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -62,6 +61,10 @@
     <ProjectReference Include="..\..\FileStorage\FileStorage.Core\FileStorage.Core.csproj">
       <Project>{06ebd357-60dc-4bd9-ad9b-0a736dcc2203}</Project>
       <Name>FileStorage.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pass.CertificateStorage\Pass.CertificateStorage.Core\Pass.CertificateStorage.Core.csproj">
+      <Project>{c65c0f7c-299b-4db8-9ab7-d3c246baba6f}</Project>
+      <Name>Pass.CertificateStorage.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pass.Container.Core\Pass.Container.Core.csproj">
       <Project>{062e8da0-3ef1-4481-8fcf-cfeb54a39771}</Project>

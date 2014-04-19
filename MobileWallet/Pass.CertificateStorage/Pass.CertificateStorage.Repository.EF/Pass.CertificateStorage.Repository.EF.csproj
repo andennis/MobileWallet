@@ -49,8 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MigrationsContextFactory.cs" />
-    <Compile Include="PassCertificateStorageDbContext.cs" />
-    <Compile Include="PassCertificateStorageUnitOfWork.cs" />
+    <Compile Include="CertificateStorageDbContext.cs" />
+    <Compile Include="CertificateStorageUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

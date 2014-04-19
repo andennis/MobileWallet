@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplePassProcessingServiceTests.cs" />
+    <Compile Include="PassCertificateServiceTests.cs" />
     <Compile Include="PassGenerators\PassGeneratorsTests.cs" />
     <Compile Include="PassTemplateGenerators\PassTemplateGeneratorsTests.cs" />
     <Compile Include="PassContainerConfigTests.cs" />
@@ -106,6 +107,22 @@
       <Project>{2378C604-FFF4-44F9-9934-BB17013C27FB}</Project>
       <Name>FileStorage.Repository.EF</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Pass.CertificateStorage\Pass.CertificateStorage.BL\Pass.CertificateStorage.BL.csproj">
+      <Project>{6eb0253b-5bcd-43cd-bb76-2ccff5761e7a}</Project>
+      <Name>Pass.CertificateStorage.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pass.CertificateStorage\Pass.CertificateStorage.Core\Pass.CertificateStorage.Core.csproj">
+      <Project>{c65c0f7c-299b-4db8-9ab7-d3c246baba6f}</Project>
+      <Name>Pass.CertificateStorage.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pass.CertificateStorage\Pass.CertificateStorage.Repository.Core\Pass.CertificateStorage.Repository.Core.csproj">
+      <Project>{bb648ede-67d5-488c-b423-346e181b33db}</Project>
+      <Name>Pass.CertificateStorage.Repository.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pass.CertificateStorage\Pass.CertificateStorage.Repository.EF\Pass.CertificateStorage.Repository.EF.csproj">
+      <Project>{1dbbe809-d0ba-4031-9ae6-de6ff57354d7}</Project>
+      <Name>Pass.CertificateStorage.Repository.EF</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pass.Container.BL\Pass.Container.BL.csproj">
       <Project>{C26E7AFB-A944-48E6-9688-44B791BD697E}</Project>
       <Name>Pass.Container.BL</Name>
@@ -135,7 +152,9 @@
     <None Include="TestCertificate\pass.com.passlight.dev.test\AppleWWDRCA.cer" />
     <None Include="TestCertificate\pass.com.passlight.dev.test\cer_sign_request.csr" />
     <None Include="TestCertificate\pass.com.passlight.dev.test\pass.cer" />
-    <None Include="TestCertificate\pass.com.passlight.dev.test\pass.p12" />
+    <None Include="TestCertificate\pass.com.passlight.dev.test\pass.p12">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="TestCertificate\pass.com.passlight.dev.test\pass.pem" />
     <None Include="TestCertificate\pass.com.passlight.dev.test\private_key.key" />
   </ItemGroup>

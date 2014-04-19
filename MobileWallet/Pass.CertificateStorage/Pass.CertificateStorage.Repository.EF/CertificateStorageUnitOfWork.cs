@@ -7,12 +7,12 @@ using Pass.CertificateStorage.Repository.Core.Entities;
 
 namespace Pass.CertificateStorage.Repository.EF
 {
-    public class PassCertificateStorageUnitOfWork : UnitOfWork, IPassCertificateStorageUnitOfWork
+    public class CertificateStorageUnitOfWork : UnitOfWork, ICertificateStorageUnitOfWork
     {
         private readonly HashSet<Type> _allowedRepositoryEntities;
 
-        public PassCertificateStorageUnitOfWork(IDbConfig dbConfig)
-            :base(new PassCertificateStorageDbContext(dbConfig.ConnectionString))
+        public CertificateStorageUnitOfWork(IDbConfig dbConfig)
+            :base(new CertificateStorageDbContext(dbConfig.ConnectionString))
         {
             _allowedRepositoryEntities = new HashSet<Type>() { typeof(Certificate) };
         }

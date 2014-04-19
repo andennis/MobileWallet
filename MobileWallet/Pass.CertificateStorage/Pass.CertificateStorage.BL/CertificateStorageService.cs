@@ -17,11 +17,11 @@ namespace Pass.CertificateStorage.BL
 
         private readonly ICertificateStorageConfig _config;
         private readonly IFileStorageService _fileStorageService;
-        private readonly IPassCertificateStorageUnitOfWork _unitOfWork;
+        private readonly ICertificateStorageUnitOfWork _unitOfWork;
         private readonly IRepository<Certificate> _certRepository;
 
         public CertificateStorageService(ICertificateStorageConfig config, 
-            IPassCertificateStorageUnitOfWork unitOfWork,
+            ICertificateStorageUnitOfWork unitOfWork,
             IFileStorageService fileStorageService)
         {
             _config = config;

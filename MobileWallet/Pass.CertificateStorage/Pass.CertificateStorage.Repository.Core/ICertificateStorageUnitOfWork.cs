@@ -2,7 +2,7 @@
 
 namespace Pass.CertificateStorage.Repository.Core
 {
-    public interface IPassCertificateStorageUnitOfWork : IUnitOfWork
+    public interface ICertificateStorageUnitOfWork : IUnitOfWork
     {
     }
 }

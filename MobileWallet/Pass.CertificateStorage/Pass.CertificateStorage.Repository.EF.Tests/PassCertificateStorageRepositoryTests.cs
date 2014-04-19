@@ -11,7 +11,7 @@ namespace Pass.CertificateStorage.Repository.EF.Tests
         [Test]
         public void CertificateCrudOperationsTest()
         {
-            using (IPassCertificateStorageUnitOfWork unitOfWork = new PassCertificateStorageUnitOfWork(TestHelper.DbConfig))
+            using (ICertificateStorageUnitOfWork unitOfWork = new CertificateStorageUnitOfWork(TestHelper.DbConfig))
             {
                 IRepository<Certificate> certRep = unitOfWork.GetRepository<Certificate>();
                 var cert1 = new Certificate()

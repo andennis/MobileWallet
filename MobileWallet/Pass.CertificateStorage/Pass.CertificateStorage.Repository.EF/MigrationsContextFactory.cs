@@ -2,11 +2,11 @@
 
 namespace Pass.CertificateStorage.Repository.EF
 {
-    public class MigrationsContextFactory : IDbContextFactory<PassCertificateStorageDbContext>
+    public class MigrationsContextFactory : IDbContextFactory<CertificateStorageDbContext>
     {
-        public PassCertificateStorageDbContext Create()
+        public CertificateStorageDbContext Create()
         {
-            return new PassCertificateStorageDbContext("Data Source=localhost;Initial Catalog=MobileWallet;User ID=sa;Password=sa1");
+            return new CertificateStorageDbContext("Data Source=localhost;Initial Catalog=MobileWallet;User ID=sa;Password=sa1");
         }
     }
 }

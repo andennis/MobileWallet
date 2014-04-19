@@ -1,7 +1,9 @@
-﻿using Common.Repository;
+﻿using System.Net;
+using Common.Repository;
 using FileStorage.Core;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
+using Pass.CertificateStorage.Core;
 using Pass.Container.Core;
 
 namespace Pass.Container.Factory
@@ -14,6 +16,7 @@ namespace Pass.Container.Factory
         {
             _iocContainer.LoadConfiguration("FileStorage");
             _iocContainer.LoadConfiguration("PassContainer");
+            _iocContainer.LoadConfiguration("CertificateStorage");
         }
 
         public static IPassTemplateService CreateTemplateService(IPassContainerConfig ptConfig, IFileStorageConfig fsConfig)
@@ -42,6 +45,16 @@ namespace Pass.Container.Factory
                 new DependencyOverride<IPassContainerConfig>(ptConfig),
                 new DependencyOverride<IDbConfig>(ptConfig),
                 new DependencyOverride<IFileStorageConfig>(fsConfig));
+        }
+
+        public static ICertificateStorageService CreateCertificateStorageService()
+        {
+            return _iocContainer.Resolve<ICertificateStorageService>();
+        }
+
+        public static IPassCertificateService CreatePassCertificateService()
+        {
+            return _iocContainer.Resolve<IPassCertificateService>();
         }
 
     }

@@ -3,11 +3,11 @@ using Pass.CertificateStorage.Repository.Core.Entities;
 
 namespace Pass.CertificateStorage.Repository.EF
 {
-    public class PassCertificateStorageDbContext : DbContext
+    public class CertificateStorageDbContext : DbContext
     {
         public const string DbScheme = "cer";
 
-        public PassCertificateStorageDbContext(string nameOrConnectionString)
+        public CertificateStorageDbContext(string nameOrConnectionString)
             :base(nameOrConnectionString)
         {
             //Database.SetInitializer<PassCertificateStorageDbContext>(null);

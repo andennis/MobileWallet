@@ -15,7 +15,7 @@ namespace Pass.CertificateStorage.Repository.EF.Tests
         [Test]
         public void GetRepositoryTest()
         {
-            using (IPassCertificateStorageUnitOfWork unitOfWork = new PassCertificateStorageUnitOfWork(TestHelper.DbConfig))
+            using (ICertificateStorageUnitOfWork unitOfWork = new CertificateStorageUnitOfWork(TestHelper.DbConfig))
             {
                 Assert.IsNotNull(unitOfWork.GetRepository<Certificate>());
                 Assert.Throws<Exception>(() => unitOfWork.GetRepository<UnknownEntity>());

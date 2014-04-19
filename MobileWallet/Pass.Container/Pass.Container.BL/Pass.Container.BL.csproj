@@ -51,6 +51,7 @@
     <Compile Include="Caching\FileCacheStore.cs" />
     <Compile Include="EntityConverter.cs" />
     <Compile Include="Helpers\ApplePassGeneratorHelper.cs" />
+    <Compile Include="PassCertificateService.cs" />
     <Compile Include="PassGenerators\ApplePassGenerator.cs" />
     <Compile Include="PassGenerators\BasePassGenerator.cs" />
     <Compile Include="PassTemplateGenerators\ApplePassTemplateGenerator.cs" />
@@ -81,6 +82,10 @@
     <ProjectReference Include="..\..\FileStorage\FileStorage.Core\FileStorage.Core.csproj">
       <Project>{06EBD357-60DC-4BD9-AD9B-0A736DCC2203}</Project>
       <Name>FileStorage.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pass.CertificateStorage\Pass.CertificateStorage.Core\Pass.CertificateStorage.Core.csproj">
+      <Project>{c65c0f7c-299b-4db8-9ab7-d3c246baba6f}</Project>
+      <Name>Pass.CertificateStorage.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pass.Container.Core\Pass.Container.Core.csproj">
       <Project>{062e8da0-3ef1-4481-8fcf-cfeb54a39771}</Project>

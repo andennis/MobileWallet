@@ -40,7 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Certificate.cs" />
-    <Compile Include="IPassCertificateStorageUnitOfWork.cs" />
+    <Compile Include="ICertificateStorageUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.IO;
-using System.Linq;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
 using Common.Extensions;
 using FileStorage.BL;
 using FileStorage.Repository.EF;
@@ -133,7 +127,7 @@ namespace Pass.CertificateStorage.BL.Tests
             var cerConfig = new CertificateStorageConfig();
             var fsConfig = new FileStorageConfig();
             return new CertificateStorageService(cerConfig,
-                new PassCertificateStorageUnitOfWork(cerConfig),
+                new CertificateStorageUnitOfWork(cerConfig),
                 new FileStorageService(fsConfig, new FileStorageUnitOfWork(fsConfig)));
         }
 
