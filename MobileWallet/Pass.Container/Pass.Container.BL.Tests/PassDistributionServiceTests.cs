@@ -46,7 +46,7 @@ namespace Pass.Container.BL.Tests
 
                 var passToken = new PassTokenInfo() {PassTemplateId = passTemplateId};
                 IList<PassFieldInfo> fields = distService.GetPassFields(passToken);
-                Assert.AreEqual(7, fields.Count);
+                Assert.AreEqual(1, fields.Count);
             }
         }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Pass.Container.Core.Entities;
+using Pass.Container.Core.Entities.Enums;
 
 namespace Pass.Container.Core
 {
@@ -9,5 +10,6 @@ namespace Pass.Container.Core
         int CreatePass(int passTemplateId, IList<PassFieldInfo> passFieldValues, DateTime? expDate = null);
         IList<PassFieldInfo> GetPassFields(int passId);
         void UpdatePassFields(int passId, IList<PassFieldInfo> passFieldValues);
+        string GetPassPackage(int passId, ClientType deviceType);
     }
 }

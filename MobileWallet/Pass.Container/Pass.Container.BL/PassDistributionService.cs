@@ -34,9 +34,9 @@ namespace Pass.Container.BL
         }
 
         #region IPassDistributionService
-        public string GetPassPackage(PassTokenInfo passToken, ClientType deviceType)
+        public string GetPassPackage(PassTokenInfo passToken, ClientType clientType)
         {
-            throw new NotImplementedException();
+            return _passContainerService.GetPassPackage(Convert.ToInt32(passToken.PassId), clientType);
         }
 
         public IList<PassFieldInfo> GetPassFields(PassTokenInfo passToken)

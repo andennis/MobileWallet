@@ -54,9 +54,9 @@ namespace Pass.Container.BL
             //Generate native pass templates
             string passTemplateFilePath = Path.Combine(templateStorageItemPath, _ptConfig.PassTemplateFolderName, _ptConfig.PassTemplateFileName);
             var generalPassTemplate = passTemplateFilePath.LoadFromXml<GeneralPassTemplate>();
-            foreach (var nativePassTemplateGenerator in _passTemplateGenerators)
+            foreach (IPassTemplateGenerator nativePassTemplateGenerator in _passTemplateGenerators.Values)
             {
-                nativePassTemplateGenerator.Value.Generate(generalPassTemplate, templateStorageItemPath);
+                nativePassTemplateGenerator.Generate(generalPassTemplate, templateStorageItemPath);
             }
 
             //Get dynamic fields
@@ -64,10 +64,21 @@ namespace Pass.Container.BL
 
             //Save nessesary information into DB
             var passTemplate = new PassTemplate { Name = generalPassTemplate.TemplateName, PackageId = templateStorageItemId, Status = EntityStatus.Active };
-            var passTemplateApple = new PassTemplateApple { PassTemplateId = passTemplate.PassTemplateId, PassTypeId = ""};
+            var passTemplateApple = new PassTemplateApple
+                                    {
+                                        PassTemplateId = passTemplate.PassTemplateId, 
+                                        PassTypeId = generalPassTemplate.PassTypeIdentifier,
+                                        CertificateId = -1//TODO Certificate should be taken from GeneralPassTemplate
+                                    };
             foreach (var dynamicFieldName in dynamicFields)
             {
-                _repPassField.Insert(new PassField { Name = dynamicFieldName, PassTemplateId = passTemplate.PassTemplateId });
+                _repPassField.Insert(new PassField
+                                     {
+                                         Name = dynamicFieldName,
+                                         //DefaultLabel = ???, //TODO Default label and default value should be taken from GeneralPassTemplate
+                                         //DefaultValue = ???,
+                                         PassTemplateId = passTemplate.PassTemplateId
+                                     });
             }
             _repPassTemplate.Insert(passTemplate);
             _repPassTemplateApple.Insert(passTemplateApple);
@@ -193,7 +204,7 @@ namespace Pass.Container.BL
                 throw new PassTemplateException(string.Format("Pass template file was not found. File path: {0}", templateFilePath));
 
             //Validate pass template file
-            bool isValidTemplate = ValidatePassTemplate(templateFilePath);// //TODO implement validate pass template
+            bool isValidTemplate = ValidatePassTemplate(templateFilePath);//TODO implement validate pass template
             if (!isValidTemplate)
                 throw new PassTemplateException(string.Format("Pass template file does not valid. File path: {0}", templateFilePath));
 
@@ -202,8 +213,8 @@ namespace Pass.Container.BL
 
             //Put all pass template files in FileStorage
             int templateStorageItemId = _fsService.CreateStorageFolder(out templateStorageItemPath);
-            var templatefiles = Directory.GetFiles(passTemplatePath);
-            foreach (var file in templatefiles)
+            string[] templatefiles = Directory.GetFiles(passTemplatePath);
+            foreach (string file in templatefiles)
             {
                 _fsService.PutToStorageFolder(templateStorageItemId, file, _ptConfig.PassTemplateFolderName, true);
             }
@@ -212,28 +223,30 @@ namespace Pass.Container.BL
         }
         private List<string> GetDynamicFields(GeneralPassTemplate generalPassTemplate)
         {
-            if (generalPassTemplate.FieldDetails == null)
-                return new List<string>();
-
             var dynamicFields = new List<string>();
+            if (generalPassTemplate.FieldDetails == null)
+                return dynamicFields;
+            
             //Get dynamic fields from AuxiliaryFields
             GetDynamicFields(generalPassTemplate.FieldDetails.AuxiliaryFields, dynamicFields);
+
             //Get dynamic fields from BackFields
             GetDynamicFields(generalPassTemplate.FieldDetails.BackFields, dynamicFields);
+
             //Get dynamic fields from HeaderFields
             GetDynamicFields(generalPassTemplate.FieldDetails.HeaderFields, dynamicFields);
+
             //Get dynamic fields from PrimaryFields
             GetDynamicFields(generalPassTemplate.FieldDetails.PrimaryFields, dynamicFields);
+
             //Get dynamic fields from SecondaryFields
             GetDynamicFields(generalPassTemplate.FieldDetails.SecondaryFields, dynamicFields);
+
             return dynamicFields;
         }
         private void GetDynamicFields(IEnumerable<GeneralField> fields, List<string> dynamicFields)
         {
-            dynamicFields.AddRange(
-                from field in fields
-                where ((field.IsDynamicLabel != null && field.IsDynamicLabel == true) || (field.IsDynamicValue != null && field.IsDynamicValue == true))
-                select field.Key);
+            dynamicFields.AddRange(fields.Where(x => x.IsDynamicLabel == true || x.IsDynamicValue == true).Select(x => x.Key));
         }
 
         #region IDisposable

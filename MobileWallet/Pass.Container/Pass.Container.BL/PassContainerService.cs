@@ -2,22 +2,41 @@
 using System.Collections.Generic;
 using System.Linq;
 using Common.Repository;
+using FileStorage.Core;
+using Pass.Container.BL.PassGenerators;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
+using Pass.Container.Core.Entities.Enums;
+using Pass.Container.Core.Exceptions;
 using Pass.Container.Repository.Core;
 using Pass.Container.Repository.Core.Entities;
 using RepEntities = Pass.Container.Repository.Core.Entities;
-
 
 namespace Pass.Container.BL
 {
     public class PassContainerService : IPassContainerService
     {
+        private readonly IPassContainerConfig _config;
         private readonly IPassContainerUnitOfWork _pcUnitOfWork;
+        private readonly IFileStorageService _fileStorageService;
+        private readonly IPassCertificateService _certService;
 
-        public PassContainerService(IPassContainerUnitOfWork pcUnitOfWork)
+        private readonly IDictionary<ClientType, IPassGenerator> _passGenerators; 
+
+        public PassContainerService(IPassContainerConfig config, 
+            IPassContainerUnitOfWork pcUnitOfWork, 
+            IFileStorageService fileStorageService,
+            IPassCertificateService certService)
         {
+            _config = config;
             _pcUnitOfWork = pcUnitOfWork;
+            _fileStorageService = fileStorageService;
+            _certService = certService;
+
+            _passGenerators = new Dictionary<ClientType, IPassGenerator>()
+                              {
+                                  {ClientType.Apple, new ApplePassGenerator(_config, _pcUnitOfWork, _fileStorageService)}
+                              };
         }
 
         public int CreatePass(int passTemplateId, IList<PassFieldInfo> fieldValues, DateTime? expDate = null)
@@ -58,7 +77,7 @@ namespace Pass.Container.BL
                 }
                 else
                 {
-                    pfv = EntityConverter.PassFieldInfoToFieldValue(fieldInfo);
+                    pfv = EntityConverter.PassFieldInfoToRepositoryFieldValue(fieldInfo);
                     pfv.PassId = pass.PassId;
                     pfv.PassFieldId = passField.PassFieldId;
                 }
@@ -69,7 +88,7 @@ namespace Pass.Container.BL
             /*
             foreach (PassFieldInfo fieldValue in fieldValues)
             {
-                PassFieldValue pfv = EntityConverter.PassFieldInfoToFieldValue(fieldValue);
+                PassFieldValue pfv = EntityConverter.PassFieldInfoToRepositoryFieldValue(fieldValue);
                 pfv.PassId = pass.PassId;
                 repPassFieldVal.Insert(pfv);
             }
@@ -99,6 +118,21 @@ namespace Pass.Container.BL
         public void UpdatePassFields(int passId, IList<PassFieldInfo> passFieldValues)
         {
             throw new NotImplementedException();
+        }
+
+        public string GetPassPackage(int passId, ClientType clientType)
+        {
+            IPassGenerator pg = GetPassGenerator(clientType);
+            return pg.GeneratePass(passId);
+        }
+
+        private IPassGenerator GetPassGenerator(ClientType clientType)
+        {
+            IPassGenerator pg;
+            if (!_passGenerators.TryGetValue(clientType, out pg))
+                throw new PassGenerationException(string.Format("ClientType: {0} is not supported", clientType));
+
+            return pg;
         }
 
         private string GenerateSerialNumber()

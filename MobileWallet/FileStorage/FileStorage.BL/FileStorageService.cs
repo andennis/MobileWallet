@@ -90,7 +90,7 @@ namespace FileStorage.BL
                 Name = Path.GetFileName(dstFilePath),
                 Status = ItemStatus.Active,
                 ItemType = StorageItemType.File,
-                OriginalName = srcFileName,
+                OriginalName = Path.GetFileName(srcFileName),
                 Size = fileSize
             };
 

@@ -289,6 +289,18 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CertificateStorage\CertificateStorage.BL\CertificateStorage.BL.csproj">
+      <Project>{6eb0253b-5bcd-43cd-bb76-2ccff5761e7a}</Project>
+      <Name>CertificateStorage.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CertificateStorage\CertificateStorage.Core\CertificateStorage.Core.csproj">
+      <Project>{c65c0f7c-299b-4db8-9ab7-d3c246baba6f}</Project>
+      <Name>CertificateStorage.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CertificateStorage\CertificateStorage.Repository.EF\CertificateStorage.Repository.EF.csproj">
+      <Project>{1dbbe809-d0ba-4031-9ae6-de6ff57354d7}</Project>
+      <Name>CertificateStorage.Repository.EF</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FileStorage\FileStorage.BL\FileStorage.BL.csproj">
       <Project>{f067da74-e48f-4de7-85d4-1217bb3670e3}</Project>
       <Name>FileStorage.BL</Name>
