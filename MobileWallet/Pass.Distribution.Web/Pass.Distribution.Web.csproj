@@ -151,6 +151,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\PassTokenInfo.cs" />
+    <Compile Include="App_Code\PassDistribution.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -281,7 +283,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Pass\Index.cshtml" />
+    <Content Include="Views\Pass\Edit.cshtml" />
     <Content Include="Views\Pass\NotSupported.cshtml" />
   </ItemGroup>
   <ItemGroup />
@@ -300,6 +302,14 @@
     <ProjectReference Include="..\CertificateStorage\CertificateStorage.Repository.EF\CertificateStorage.Repository.EF.csproj">
       <Project>{1dbbe809-d0ba-4031-9ae6-de6ff57354d7}</Project>
       <Name>CertificateStorage.Repository.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.Extensions\Common.Extensions.csproj">
+      <Project>{1628e173-1be9-4dfc-bcbe-93334de8ee46}</Project>
+      <Name>Common.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.Utils\Common.Utils.csproj">
+      <Project>{f1cad860-50fc-456c-96cd-1332cc48d03f}</Project>
+      <Name>Common.Utils</Name>
     </ProjectReference>
     <ProjectReference Include="..\FileStorage\FileStorage.BL\FileStorage.BL.csproj">
       <Project>{f067da74-e48f-4de7-85d4-1217bb3670e3}</Project>

@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="Entities\Enums\PassProcessingStatus.cs" />
     <Compile Include="Entities\PassFieldInfo.cs" />
-    <Compile Include="Entities\PassTokenInfo.cs" />
     <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\FieldDictionaryKeys\Field.cs" />
     <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\LowerLevelKeys\Barcode.cs" />
     <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\LowerLevelKeys\Beacon.cs" />
@@ -70,8 +69,6 @@
     <Compile Include="IPassTemplateGenerator.cs" />
     <Compile Include="IPassContainerConfig.cs" />
     <Compile Include="IPassContainerService.cs" />
-    <Compile Include="IPassDistributionConfig.cs" />
-    <Compile Include="IPassDistributionService.cs" />
     <Compile Include="IPassTemplateConfig.cs" />
     <Compile Include="IPassTemplateService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -12,6 +12,7 @@ namespace Pass.Distribution.Web
 			var container = new UnityContainer();
 
             container.LoadConfiguration("FileStorage");
+            container.LoadConfiguration("CertificateStorage");
             container.LoadConfiguration("PassContainer");
             
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));

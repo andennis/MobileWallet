@@ -13,7 +13,7 @@
         <p>Please enter your details to add this pass to your phone</p>    
     </div>
     
-    @using (Html.BeginForm("Update", "Pass"))
+    @using (Html.BeginForm())
     {
         @Html.HiddenFor(x => x.PassToken);
         

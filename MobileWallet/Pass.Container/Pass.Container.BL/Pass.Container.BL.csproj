@@ -57,7 +57,6 @@
     <Compile Include="PassTemplateGenerators\ApplePassTemplateGenerator.cs" />
     <Compile Include="PassContainerConfig.cs" />
     <Compile Include="PassContainerService.cs" />
-    <Compile Include="PassDistributionService.cs" />
     <Compile Include="Caching\PassTemplateCacheStore.cs" />
     <Compile Include="PassTemplateService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

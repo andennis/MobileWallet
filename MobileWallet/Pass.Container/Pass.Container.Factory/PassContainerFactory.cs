@@ -26,13 +26,6 @@ namespace Pass.Container.Factory
             //new DependencyOverride<IFileStorageConfig>(fsConfig));
         }
 
-        public static IPassDistributionService CreateDistributionService(IPassContainerConfig pdConfig)
-        {
-            return _iocContainer.Resolve<IPassDistributionService>();
-            //new DependencyOverride<IPassDistributionConfig>(pdConfig),
-            //new DependencyOverride<IDbConfig>(pdConfig));
-        }
-
         public static IPassContainerService CreateContainerService(IDbConfig pdConfig)
         {
             return _iocContainer.Resolve<IPassContainerService>(/*new DependencyOverride<IDbConfig>(pdConfig)*/);

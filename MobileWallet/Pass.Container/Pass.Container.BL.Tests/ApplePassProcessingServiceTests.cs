@@ -95,21 +95,12 @@ namespace Pass.Container.BL.Tests
                                                                                        Value = x.PassFieldId + "_Value"
                                                                                    }).ToList();
 
-            using (var distributionService = GetDistributionService())
-            {
-                //distributionService.CreatePass(passTemplateId, fieldValues);
-            }
             throw new NotImplementedException();
         }
 
         private IPassTemplateService GetPassTemplateService()
         {
             return PassContainerFactory.CreateTemplateService(new PassContainerConfig(), new FileStorageConfig());
-        }
-
-        private IPassDistributionService GetDistributionService()
-        {
-            return PassContainerFactory.CreateDistributionService(new PassContainerConfig());
         }
 
         private IApplePassProcessingService GetAppleDevicePassProcessingService()

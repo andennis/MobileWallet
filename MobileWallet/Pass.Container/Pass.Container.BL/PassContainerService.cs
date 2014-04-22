@@ -139,7 +139,6 @@ namespace Pass.Container.BL
         {
             return Guid.NewGuid().ToString();
         }
-
         private string GenerateAuthToken()
         {
             return Guid.NewGuid().ToString().ToUpper();
