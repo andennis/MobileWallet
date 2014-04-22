@@ -46,8 +46,8 @@ namespace Pass.Container.BL.Tests
 
         public static GeneralPassTemplate GetPassTemplateObject()
         {
-            string generalPathTemplateJson = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestTemplates", "Template1", "TestTemplate1.xml"));
-            var generalPassTemplate = generalPathTemplateJson.LoadFromXml<GeneralPassTemplate>();           
+            string generalPathTemplateFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestTemplates", "Template1", "TestTemplate1.xml");
+            var generalPassTemplate = generalPathTemplateFilePath.LoadFromXml<GeneralPassTemplate>();           
             return generalPassTemplate;
         }
 
