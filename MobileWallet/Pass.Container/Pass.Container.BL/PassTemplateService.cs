@@ -68,7 +68,7 @@ namespace Pass.Container.BL
                                     {
                                         PassTemplateId = passTemplate.PassTemplateId, 
                                         PassTypeId = generalPassTemplate.PassTypeIdentifier,
-                                        CertificateId = -1//TODO Certificate should be taken from GeneralPassTemplate
+                                        CertificateId = generalPassTemplate.CertificateId
                                     };
             foreach (var dynamicFieldName in dynamicFields)
             {

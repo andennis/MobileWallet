@@ -161,9 +161,10 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="TestCertificate\pass.com.passlight.dev.test\CertificatePassword.txt" />
-    <Content Include="TestPassFiles\Apple\icon.png">
+    <Content Include="TestTemplates\Template1\icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="TestTemplates\Template1\TestTemplate1.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

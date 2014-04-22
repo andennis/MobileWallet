@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<passTemplate xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.mobilewallet.com">
+  <organizationName>Organization name</organizationName>
+  <templateName>Template name</templateName>
+  <templateDescription>Template description</templateDescription>
+  <passType>coupon</passType>
+  <passDescription>Pass description</passDescription>
+  <passSerialNumberType>autoGgenerated</passSerialNumberType>
+  <passTypeIdentifier>pass.com.passlight.dev.test</passTypeIdentifier>
+  <teamIdentifier>YHQB764QFA</teamIdentifier>
+  <backgroundColor>-1644806</backgroundColor>
+  <labelTextColor>-16744320</labelTextColor>
+  <valueTextColor>-9404272</valueTextColor>
+  <suppressStripShine xsi:nil="true" />
+  <ignoresTimeZone xsi:nil="true" />
+  <logoText>Passlight</logoText>
+  <integrationDetails>
+    <callbackNotifications>
+      <passIssued>passIssued@mail.com</passIssued>
+      <passRegistered>passRegistered@mail.com</passRegistered>
+      <passUpdated>passUpdated@mail.com</passUpdated>
+      <passUnregistered>passUnregistered@mail.com</passUnregistered>
+    </callbackNotifications>
+  </integrationDetails>
+  <locationDetails>
+    <maxDistance xsi:nil="true" />
+    <locations>
+      <location>
+        <altitude xsi:nil="true" />
+        <latitude>53.883980386469425</latitude>
+        <longitude>27.594974050000019</longitude>
+        <relevantText>Relevant text</relevantText>
+      </location>
+    </locations>
+  </locationDetails>
+  <distributionDetails>
+    <passLinkType>public</passLinkType>
+    <limitPassPerUser xsi:nil="true" />
+    <allPassesAsExpired>false</allPassesAsExpired>
+    <expirationDate>04/18/2014 10:31:53 AM</expirationDate>
+    <quantityRestriction xsi:nil="true" />
+    <dateRestriction xsi:nil="true" />
+  </distributionDetails>
+  <barcodeDetails>
+    <barcodeType>pdf417Code</barcodeType>
+    <encodedMessage>encodeThePassUniqueId</encodedMessage>
+    <textToEncode>Text to encode</textToEncode>
+    <alternativeText>DisplayTheBarcodeContent</alternativeText>
+    <textToDisplay>Some text</textToDisplay>
+    <encodingFormat>UTF-8</encodingFormat>
+  </barcodeDetails>
+  <fieldDetails>
+    <auxiliaryFields>
+      <field>
+        <changeMessage>Gate changed to %@.</changeMessage>
+        <key>Key1</key>
+        <label>Field</label>
+        <isDynamicLabel xsi:nil="true" />
+        <value>AuxiliaryField</value>
+        <isDynamicValue xsi:nil="true" />
+        <textAlignment>right</textAlignment>
+        <type>text</type>
+        <numberStyle xsi:nil="true" />
+        <dateStyle xsi:nil="true" />
+        <isRelative xsi:nil="true" />
+        <timeStyle xsi:nil="true" />
+      </field>
+      <field>
+        <key>Key2</key>
+        <label>Created date</label>
+        <isDynamicLabel xsi:nil="true" />
+        <value>04/18/2014 10:26:53 AM</value>
+        <isDynamicValue xsi:nil="true" />
+        <textAlignment xsi:nil="true" />
+        <type>date</type>
+        <numberStyle xsi:nil="true" />
+        <dateStyle>short</dateStyle>
+        <isRelative>false</isRelative>
+        <timeStyle xsi:nil="true" />
+      </field>
+      <field>
+        <key>Key3</key>
+        <label>Balance</label>
+        <isDynamicLabel xsi:nil="true" />
+        <value>10</value>
+        <isDynamicValue xsi:nil="true" />
+        <textAlignment xsi:nil="true" />
+        <type>currency</type>
+        <numberStyle xsi:nil="true" />
+        <currencyCode>USD</currencyCode>
+        <dateStyle xsi:nil="true" />
+        <isRelative xsi:nil="true" />
+        <timeStyle xsi:nil="true" />
+      </field>
+    </auxiliaryFields>
+    <backFields>
+      <field>
+        <attributedValue>&lt;a href = "http://example.com/customers/123"&gt; Edit my profile &lt;/a&gt;</attributedValue>
+        <changeMessage>Gate changed to %@.</changeMessage>
+        <key>Key4</key>
+        <label>Field</label>
+        <isDynamicLabel xsi:nil="true" />
+        <value>BackField</value>
+        <isDynamicValue xsi:nil="true" />
+        <textAlignment>right</textAlignment>
+        <type>text</type>
+        <numberStyle xsi:nil="true" />
+        <dateStyle xsi:nil="true" />
+        <isRelative xsi:nil="true" />
+        <timeStyle xsi:nil="true" />
+      </field>
+      <field>
+        <key>Key5</key>
+        <label>Created date</label>
+        <isDynamicLabel xsi:nil="true" />
+        <value>04/18/2014 10:26:53 AM</value>
+        <isDynamicValue xsi:nil="true" />
+        <textAlignment xsi:nil="true" />
+        <type>date</type>
+        <numberStyle xsi:nil="true" />
+        <dateStyle>short</dateStyle>
+        <isRelative>false</isRelative>
+        <timeStyle xsi:nil="true" />
+      </field>
+      <field>
+        <key>Key6</key>
+        <label>Balance</label>
+        <isDynamicLabel xsi:nil="true" />
+        <value>10</value>
+        <isDynamicValue xsi:nil="true" />
+        <textAlignment xsi:nil="true" />
+        <type>currency</type>
+        <numberStyle xsi:nil="true" />
+        <currencyCode>USD</currencyCode>
+        <dateStyle xsi:nil="true" />
+        <isRelative xsi:nil="true" />
+        <timeStyle xsi:nil="true" />
+      </field>
+      <field>
+        <key>Key01</key>
+        <label>DynamicField</label>
+        <isDynamicLabel xsi:nil="true" />
+        <value>Test</value>
+        <isDynamicValue>true</isDynamicValue>
+        <textAlignment xsi:nil="true" />
+        <type>text</type>
+        <numberStyle xsi:nil="true" />
+        <dateStyle xsi:nil="true" />
+        <isRelative xsi:nil="true" />
+        <timeStyle xsi:nil="true" />
+      </field>
+    </backFields>
+    <headerFields>
+      <field>
+        <changeMessage>Gate changed to %@.</changeMessage>
+        <key>Key7</key>
+        <label>Field</label>
+        <isDynamicLabel xsi:nil="true" />
+        <value>HeaderField</value>
+        <isDynamicValue xsi:nil="true" />
+        <textAlignment>right</textAlignment>
+        <type>text</type>
+        <numberStyle xsi:nil="true" />
+        <dateStyle xsi:nil="true" />
+        <isRelative xsi:nil="true" />
+        <timeStyle xsi:nil="true" />
+      </field>
+    </headerFields>
+    <primaryFields>
+      <field>
+        <changeMessage>Gate changed to %@.</changeMessage>
+        <key>Key8</key>
+        <label>Field</label>
+        <isDynamicLabel xsi:nil="true" />
+        <value>PrimaryField</value>
+        <isDynamicValue xsi:nil="true" />
+        <textAlignment>right</textAlignment>
+        <type>text</type>
+        <numberStyle xsi:nil="true" />
+        <dateStyle xsi:nil="true" />
+        <isRelative xsi:nil="true" />
+        <timeStyle xsi:nil="true" />
+      </field>
+    </primaryFields>
+    <secondaryFields>
+      <field>
+        <changeMessage>Gate changed to %@.</changeMessage>
+        <key>Key9</key>
+        <label>Field</label>
+        <isDynamicLabel xsi:nil="true" />
+        <value>SecondaryField</value>
+        <isDynamicValue xsi:nil="true" />
+        <textAlignment>right</textAlignment>
+        <type>text</type>
+        <numberStyle xsi:nil="true" />
+        <dateStyle xsi:nil="true" />
+        <isRelative xsi:nil="true" />
+        <timeStyle xsi:nil="true" />
+      </field>
+    </secondaryFields>
+    <transitType xsi:nil="true" />
+  </fieldDetails>
+</passTemplate>

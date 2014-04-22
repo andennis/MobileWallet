@@ -46,6 +46,10 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
         [JsonProperty(PropertyName = "passTypeIdentifier", Required = Required.Always)]
         public string PassTypeIdentifier { get; set; }
 
+        [XmlElement(ElementName = "certificateId")]
+        [JsonProperty(PropertyName = "certificateId", Required = Required.Always)]
+        public int CertificateId { get; set; }
+
         [XmlElement(ElementName = "teamIdentifier")]
         [JsonProperty(PropertyName = "teamIdentifier", Required = Required.Always)]
         public string TeamIdentifier { get; set; }
