@@ -22,7 +22,7 @@ namespace Pass.Processing.Web.Controllers
     {
         [HttpPost]
         [Route("devices/{deviceLibraryIdentifier}/registrations/{passTypeIdentifier}/{serialNumber}")]
-        public HttpResponseMessage RegisterDevice(string deviceLibraryIdentifier, string passTypeIdentifier, string serialNumber, [FromBody]string pushTokenJson)
+        public HttpResponseMessage RegisterDevice(string deviceLibraryIdentifier, string passTypeIdentifier, string serialNumber, [FromBody]DevicePushToken devicePushToken)
         {
             HttpResponseMessage response = null;
             try
@@ -34,12 +34,11 @@ namespace Pass.Processing.Web.Controllers
                 if (authHeader != null && authHeader.Contains("ApplePass "))
                 {
                     string authToken = authHeader.Replace("ApplePass ", String.Empty);
-                    var pushToken = pushTokenJson.JsonToObject<DevicePushToken>();
 
                     PassProcessingStatus status;
                     using (IApplePassProcessingService passProcessingService = GetAppleDevicePassProcessingService())
                     {
-                        passProcessingService.RegisterDevice(deviceLibraryIdentifier, passTypeIdentifier, serialNumber, pushToken.PushToken, authToken, out status);
+                        passProcessingService.RegisterDevice(deviceLibraryIdentifier, passTypeIdentifier, serialNumber, devicePushToken.PushToken, authToken, out status);
                     }
                     
 
@@ -73,7 +72,7 @@ namespace Pass.Processing.Web.Controllers
 
         [HttpDelete]
         [Route("devices/{deviceLibraryIdentifier}/registrations/{passTypeIdentifier}/{serialNumber}")]
-        public HttpResponseMessage UnregisterDevice(string deviceLibraryIdentifier, string passTypeIdentifier, string serialNumber, [FromBody]string pushTokenJson)
+        public HttpResponseMessage UnregisterDevice(string deviceLibraryIdentifier, string passTypeIdentifier, string serialNumber, [FromBody]DevicePushToken devicePushToken)
         {
             HttpResponseMessage response = null;
             try
@@ -85,12 +84,11 @@ namespace Pass.Processing.Web.Controllers
                 if (authHeader != null && authHeader.Contains("ApplePass "))
                 {
                     string authToken = authHeader.Replace("ApplePass ", String.Empty);
-                    var pushToken = pushTokenJson.JsonToObject<DevicePushToken>();
 
                     PassProcessingStatus status;
                     using (IApplePassProcessingService passProcessingService = GetAppleDevicePassProcessingService())
                     {
-                        passProcessingService.UnregisterDevice(deviceLibraryIdentifier, passTypeIdentifier, serialNumber, pushToken.PushToken, authToken, out status);
+                        passProcessingService.UnregisterDevice(deviceLibraryIdentifier, passTypeIdentifier, serialNumber, devicePushToken.PushToken, authToken, out status);
                     }
 
                     //If the device is unregistered, return HTTP status 200.
@@ -234,13 +232,16 @@ namespace Pass.Processing.Web.Controllers
 
         [HttpPost]
         [Route("log")]
-        public HttpResponseMessage Log([FromBody]string logMessage)
+        public HttpResponseMessage Log([FromBody]LogInformation logMessage)
         {
             try
             {
+                var bodyStream = new StreamReader(HttpContext.Current.Request.InputStream);
+                bodyStream.BaseStream.Seek(0, SeekOrigin.Begin);
+                var bodyText = bodyStream.ReadToEnd();
                 using (IApplePassProcessingService passProcessingService = GetAppleDevicePassProcessingService())
                 {
-                    passProcessingService.Log(logMessage);
+                    passProcessingService.Log(logMessage.Logs[0]);
                 }
             }
             catch (Exception)
