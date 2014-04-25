@@ -9,8 +9,8 @@ namespace Pass.Container.BL
             : base("PassContainer")
         {
         }
-        
-        #region IPassContainerConfig
+
+        #region IPassTemplateConfig
         public string PassTemplateFolderName
         {
             get { return GetValue("PassTemplateFolderName"); }
@@ -18,10 +18,6 @@ namespace Pass.Container.BL
         public string PassTemplateFileName
         {
             get { return GetValue("PassTemplateFileName"); }
-        }
-        public string PassGeneratorTempFolderPath
-        {
-            get { return GetValue("PassGeneratorTempFolderPath"); }
         }
         public string ApplePassTemplateWebServerUrl
         {
@@ -36,12 +32,18 @@ namespace Pass.Container.BL
         }
         #endregion
 
-        #region IPassDistributionConfig
-        public string SecurityKey
+        #region IPassGeneratorConfig
+        public string PassGeneratorTempFolderPath
         {
-            get { return GetValue("SecurityKey"); }
+            get { return GetValue("PassGeneratorTempFolderPath"); }
         }
         #endregion
 
+        #region IApplePassGeneratorConfig
+        public string AppleWWDRCAPath
+        {
+            get { return GetValue("AppleWWDRCAPath"); }
+        }
+        #endregion
     }
 }

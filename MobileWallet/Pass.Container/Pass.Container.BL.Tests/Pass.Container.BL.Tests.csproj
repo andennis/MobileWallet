@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="ApplePassProcessingServiceTests.cs" />
     <Compile Include="PassCertificateServiceTests.cs" />
+    <Compile Include="PassGenerators\ApplePassGeneratorTests.cs" />
     <Compile Include="PassGenerators\PassGeneratorsTests.cs" />
     <Compile Include="PassTemplateGenerators\PassTemplateGeneratorsTests.cs" />
     <Compile Include="PassContainerConfigTests.cs" />

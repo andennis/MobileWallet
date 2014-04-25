@@ -35,7 +35,7 @@ namespace Pass.Container.BL
 
             _passGenerators = new Dictionary<ClientType, IPassGenerator>()
                               {
-                                  {ClientType.Apple, new ApplePassGenerator(_config, _pcUnitOfWork, _fileStorageService)}
+                                  {ClientType.Apple, new ApplePassGenerator(_config, _pcUnitOfWork, _fileStorageService, _certService)}
                               };
         }
 

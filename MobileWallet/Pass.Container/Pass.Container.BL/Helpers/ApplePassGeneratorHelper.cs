@@ -26,15 +26,14 @@ namespace Pass.Container.BL.Helpers
 
             //Trace.TraceInformation("Generating the manifest file...");
             string manifestJson = GetManifestJson(dirPath);
-            GenerateManifestFile(dirPath, manifestJson);
+            SaveManifestFile(dirPath, manifestJson);
 
             //Trace.TraceInformation("Signing the manifest file...");
             string certificateFilePath = Path.Combine(cerPath, PassTypeIdCerName);
             X509Certificate2 card = GetCertificateFromFile(certificateFilePath, password);
             if (card == null)
-            {
                 throw new FileNotFoundException("Certificate could not be found.");
-            }
+
             try
             {
                 Org.BouncyCastle.X509.X509Certificate cert = DotNetUtilities.FromX509Certificate(card);
@@ -90,7 +89,7 @@ namespace Pass.Container.BL.Helpers
 
             //Trace.TraceInformation("Generating the manifest file...");
             string manifestJson = GetManifestJson(dirPath);
-            GenerateManifestFile(dirPath, manifestJson);
+            SaveManifestFile(dirPath, manifestJson);
 
             //Trace.TraceInformation("Signing the manifest file...");
                
@@ -113,39 +112,35 @@ namespace Pass.Container.BL.Helpers
 
         public static CmsSignedDataGenerator GetCmsSignedDataGenerator(string cerPath, string password)
         {
-            CmsSignedDataGenerator generator = null;
             string certificateFilePath = Path.Combine(cerPath, PassTypeIdCerName);
             X509Certificate2 card = GetCertificateFromFile(certificateFilePath, password);
             if (card == null)
-            {
                 throw new FileNotFoundException("Certificate could not be found.");
-            }
-            try
-            {
-                Org.BouncyCastle.X509.X509Certificate cert = DotNetUtilities.FromX509Certificate(card);
-                Org.BouncyCastle.Crypto.AsymmetricKeyParameter privateKey = DotNetUtilities.GetKeyPair(card.PrivateKey).Private;
 
-                //Trace.TraceInformation("Fetching Apple Certificate for signing..");
-                string appleWwdrcaCertificateFilePath = Path.Combine(cerPath, AppleWwdrcaCerName);
-                X509Certificate2 appleCA = GetCertificateFromFile(appleWwdrcaCertificateFilePath, null);
-                Org.BouncyCastle.X509.X509Certificate appleCert = DotNetUtilities.FromX509Certificate(appleCA);
+            string appleWwdrcaCertificateFilePath = Path.Combine(cerPath, AppleWwdrcaCerName);
+            X509Certificate2 appleCA = GetCertificateFromFile(appleWwdrcaCertificateFilePath, null);
 
-                //Trace.TraceInformation("Constructing the certificate chain..");
-                var intermediateCerts = new ArrayList() { appleCert, cert };
+            return GetCmsSignedDataGenerator(card, appleCA);
+        }
 
-                var PP = new Org.BouncyCastle.X509.Store.X509CollectionStoreParameters(intermediateCerts);
-                Org.BouncyCastle.X509.Store.IX509Store st1 = Org.BouncyCastle.X509.Store.X509StoreFactory.Create("CERTIFICATE/COLLECTION", PP);
+        public static CmsSignedDataGenerator GetCmsSignedDataGenerator(X509Certificate2 card, X509Certificate2 appleCA)
+        {
+            if (card == null)
+                throw new ArgumentNullException("card");
 
-                generator = new CmsSignedDataGenerator();
-                generator.AddSigner(privateKey, cert, CmsSignedDataGenerator.DigestSha1);
-                generator.AddCertificates(st1);
-                return generator;
-            }
-            catch (Exception exp)
-            {
-                Trace.TraceError("Failed to sign the manifest file: [{0}]", exp.Message);
-            }
-            return null;
+            Org.BouncyCastle.X509.X509Certificate cert = DotNetUtilities.FromX509Certificate(card);
+            Org.BouncyCastle.Crypto.AsymmetricKeyParameter privateKey = DotNetUtilities.GetKeyPair(card.PrivateKey).Private;
+
+            Org.BouncyCastle.X509.X509Certificate appleCert = DotNetUtilities.FromX509Certificate(appleCA);
+
+            var intermediateCerts = new ArrayList() { appleCert, cert };
+            var pp = new Org.BouncyCastle.X509.Store.X509CollectionStoreParameters(intermediateCerts);
+            Org.BouncyCastle.X509.Store.IX509Store st1 = Org.BouncyCastle.X509.Store.X509StoreFactory.Create("CERTIFICATE/COLLECTION", pp);
+
+            var generator = new CmsSignedDataGenerator();
+            generator.AddSigner(privateKey, cert, CmsSignedGenerator.DigestSha1);
+            generator.AddCertificates(st1);
+            return generator;
         }
 
         private static string GetManifestJson(string dirPath)
@@ -161,8 +156,9 @@ namespace Pass.Container.BL.Helpers
                 string hash = GenerateHashOfFile(file.FullName);
                 hashOfFiles.Add(file.Name, hash);
             }
-            if (!(hashOfFiles.Count > 0) || !hashOfFiles.ContainsKey("pass.json"))
+            if (!hashOfFiles.Any() || !hashOfFiles.ContainsKey("pass.json"))
                 throw new FileNotFoundException("Necessary files does not found in the directory. Directory path: " + dirPath);
+
             return hashOfFiles.ObjectToJson();
         }
 
@@ -189,7 +185,7 @@ namespace Pass.Container.BL.Helpers
             return hashText.ToString();
         }
 
-        private static void GenerateManifestFile(string dirPath, string manifestJson)
+        private static void SaveManifestFile(string dirPath, string manifestJson)
         {
             if (!Directory.Exists(dirPath))
                 throw new DirectoryNotFoundException("Directory was not found. Directory path: " + dirPath);

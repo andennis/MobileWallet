@@ -17,6 +17,8 @@ namespace Pass.Container.BL
         private readonly IPassContainerUnitOfWork _pcUnitOfWork;
         private readonly IFileStorageService _fsService;
         private readonly IPassContainerConfig _config;
+        private readonly IPassCertificateService _certService;
+
         //Repositories
         private readonly IRepository<PassTemplate> _repPassTemplate;
         private readonly IRepository<PassTemplateNative> _repTemplateNative;
@@ -28,11 +30,12 @@ namespace Pass.Container.BL
         private readonly IRepository<ClientDeviceApple> _repClientDeviceApple;
         private readonly ApplePassGenerator _passGenerator;
 
-        public ApplePassProcessingService(IPassContainerConfig config, IPassContainerUnitOfWork pcUnitOfWork, IFileStorageService fsService)
+        public ApplePassProcessingService(IPassContainerConfig config, IPassContainerUnitOfWork pcUnitOfWork, IFileStorageService fsService, IPassCertificateService certService)
         {
             _pcUnitOfWork = pcUnitOfWork;
             _fsService = fsService;
             _config = config;
+            _certService = certService;
 
             //Repositories
             _repPassTemplate = _pcUnitOfWork.GetRepository<PassTemplate>();
@@ -44,7 +47,7 @@ namespace Pass.Container.BL
             _repRegistration = _pcUnitOfWork.GetRepository<Registration>();
             _repClientDeviceApple = _pcUnitOfWork.GetRepository<ClientDeviceApple>();
 
-            _passGenerator = new ApplePassGenerator(_config, _pcUnitOfWork, _fsService);
+            _passGenerator = new ApplePassGenerator(_config, _pcUnitOfWork, _fsService, _certService);
         }
 
         public void RegisterDevice(string deviceLibraryIdentifier, string passTypeIdentifier, string serialNumber, string pushToken, string authToken, out PassProcessingStatus status)

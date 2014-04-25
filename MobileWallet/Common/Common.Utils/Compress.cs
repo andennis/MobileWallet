@@ -1,4 +1,5 @@
-﻿using Ionic.Zip;
+﻿using System.Collections.Generic;
+using Ionic.Zip;
 
 namespace Common.Utils
 {
@@ -13,9 +14,23 @@ namespace Common.Utils
             }
         }
 
-        public static void Uncompress(string uncompressDirPath, string resultDirPath)
+        public static void CompressFiles(IEnumerable<string> files, string resultFilePath)
         {
-            using (ZipFile zip1 = ZipFile.Read(uncompressDirPath))
+            CompressFiles(files, string.Empty, resultFilePath);
+        }
+
+        public static void CompressFiles(IEnumerable<string> files, string dirPathInArchive, string resultFilePath)
+        {
+            using (var zip = new ZipFile())
+            {
+                zip.AddFiles(files, false, dirPathInArchive);
+                zip.Save(resultFilePath);
+            }
+        }
+
+        public static void Uncompress(string compressedFile, string resultDirPath)
+        {
+            using (ZipFile zip1 = ZipFile.Read(compressedFile))
             {
                 foreach (ZipEntry zipItem in zip1)
                     zipItem.Extract(resultDirPath, ExtractExistingFileAction.OverwriteSilently);

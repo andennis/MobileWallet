@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Common.Repository;
 using FileStorage.Core;
+using Pass.Container.Core;
 using Pass.Container.Core.Exceptions;
 using Pass.Container.Repository.Core;
 using Pass.Container.Repository.Core.Entities;
@@ -14,16 +15,19 @@ namespace Pass.Container.BL.PassGenerators
     {
         private readonly IPassContainerUnitOfWork _pcUnitOfWork;
         private readonly IFileStorageService _fsService;
+        protected readonly IPassCertificateService _certService;
+
         //Repositories
         protected readonly IRepository<Repository.Core.Entities.Pass> _repPass;
         private readonly IRepository<PassTemplate> _repPassTemplate;
         private readonly IRepository<PassField> _repPassField;
         private readonly IRepository<PassFieldValue> _repPassFieldValue;
 
-        public BasePassGenerator(IPassContainerUnitOfWork pcUnitOfWork, IFileStorageService fsService)
+        public BasePassGenerator(IPassContainerUnitOfWork pcUnitOfWork, IFileStorageService fsService, IPassCertificateService certService)
         {
-           _pcUnitOfWork = pcUnitOfWork;
+            _pcUnitOfWork = pcUnitOfWork;
             _fsService = fsService;
+            _certService = certService;
 
             //Repositories
             _repPass = _pcUnitOfWork.GetRepository<Repository.Core.Entities.Pass>();
@@ -34,9 +38,9 @@ namespace Pass.Container.BL.PassGenerators
 
         protected RepEntities.Pass GetPass(int passId)
         {
-            RepEntities.Pass pass = _repPass.Query().Filter(x => x.PassId == passId).Get().FirstOrDefault();
+            RepEntities.Pass pass = _repPass.Query().Include(x => x.Template.NativeTemplates).Filter(x => x.PassId == passId).Get().FirstOrDefault();
             if (pass == null)
-                throw new PassGenerationException(String.Format("Pass was not found. Pass Id: {0}", passId));
+                throw new PassGenerationException(string.Format("Pass was not found. Pass Id: {0}", passId));
 
             return pass;
         }
