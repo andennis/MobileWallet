@@ -72,7 +72,7 @@ namespace Pass.Container.BL
 
             Directory.CreateDirectory(templatePath);
 
-            foreach (string srcFilePath in Directory.GetFiles(srcTemplateFolderPath))
+            foreach (string srcFilePath in Directory.EnumerateFiles(srcTemplateFolderPath))
             {
                 string fileName = Path.GetFileName(srcFilePath);
                 File.Copy(srcFilePath, Path.Combine(templatePath, fileName));
@@ -88,7 +88,7 @@ namespace Pass.Container.BL
             if (!Directory.Exists(templatePath))
                 throw new PassTemplateException(string.Format("Directory '{0}' not found", templatePath));
 
-            foreach (string srcFilePath in Directory.GetFiles(templatePath))
+            foreach (string srcFilePath in Directory.EnumerateFiles(templatePath))
             {
                 string fileName = Path.GetFileName(srcFilePath);
                 File.Copy(srcFilePath, Path.Combine(dstTemplateFolderPath, fileName));
