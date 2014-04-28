@@ -4,9 +4,12 @@ namespace Pass.Container.Core
 {
     public interface IPassTemplateStorageService
     {
-        void PutBaseTemplateFiles(int passTemplateId, string srcTemplateFolderPath);
-        void PutNativeTemplateFiles(int passTemplateId, ClientType clientType, string srcTemplateFolderPath);
-        void GetBaseTemplateFiles(int passTemplateId, string dstFolderPath);
-        void GetNativeTemplateFiles(int passTemplateId, ClientType clientType, string dstFolderPath);
+        int CreateTemplateStorage();
+
+        void PutBaseTemplateFiles(int templateStorageId, string srcTemplateFolderPath);
+        void PutNativeTemplateFiles(int templateStorageId, ClientType clientType, string srcTemplateFolderPath);
+
+        void GetBaseTemplateFiles(int templateStorageId, string dstFolderPath);
+        void GetNativeTemplateFiles(int templateStorageId, ClientType clientType, string dstFolderPath);
     }
 }

@@ -49,5 +49,10 @@ namespace Pass.Container.Factory
             return _iocContainer.Resolve<IPassCertificateService>();
         }
 
+        public static  IPassTemplateStorageService GetPassTemplateStorageService()
+        {
+            return _iocContainer.Resolve<IPassTemplateStorageService>();
+        }
+
     }
 }
