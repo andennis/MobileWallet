@@ -41,7 +41,7 @@ namespace Pass.Container.BL.Tests
         {
             _pcUnitOfWork = TestHelper.PassContainerUnitOfWork;
             _testPassTemplateDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestPassTemplate");
-            _passTemplateFileName = TestHelper.PassContainerConfig.PassTemplateFileName;
+            _passTemplateFileName = "template.xml";
 
             //Repositories
             //_repPassTemplate = _pcUnitOfWork.GetRepository<PassTemplate>();

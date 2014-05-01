@@ -48,6 +48,7 @@
     <Compile Include="JsonExtensionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecureStringExtensionsTests.cs" />
+    <Compile Include="StringExtensionsTests.cs" />
     <Compile Include="XmlExtensionsTests.cs" />
   </ItemGroup>
   <ItemGroup>

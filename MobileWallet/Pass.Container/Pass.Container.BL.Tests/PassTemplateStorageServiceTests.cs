@@ -38,6 +38,8 @@ namespace Pass.Container.BL.Tests
             Assert.AreEqual(2, files.Count());
             CollectionAssert.Contains(files, "BaseFile1.txt");
             CollectionAssert.Contains(files, "BaseFile2.txt");
+            Assert.True(Directory.Exists(Path.Combine(TemplateStorageData, "Base", "F1")));
+            Assert.True(File.Exists(Path.Combine(TemplateStorageData, "Base", "F1", "BaseFile11.txt")));
         }
 
         [Test]
@@ -58,6 +60,8 @@ namespace Pass.Container.BL.Tests
             Assert.AreEqual(2, files.Count());
             CollectionAssert.Contains(files, "AppleFile1.txt");
             CollectionAssert.Contains(files, "AppleFile2.txt");
+            Assert.True(Directory.Exists(Path.Combine(TemplateStorageData, "Apple", "F1")));
+            Assert.True(File.Exists(Path.Combine(TemplateStorageData, "Apple", "F1", "AppleFile11.txt")));
         }
 
     }

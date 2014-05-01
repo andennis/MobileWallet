@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Common.Repository;
+using Common.Utils;
 using FileStorage.Core;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities.Enums;
 using Pass.Container.Core.Exceptions;
-using Pass.Container.Repository.Core;
-using Pass.Container.Repository.Core.Entities;
 
 namespace Pass.Container.BL
 {
@@ -66,17 +64,20 @@ namespace Pass.Container.BL
                 throw new ArgumentNullException("srcTemplateFolderPath");
 
             string siPath = _fsService.GetStorageItemPath(templateStorageId);
-            string templatePath = Path.Combine(siPath, dstTemplateFolderName);
-            if (Directory.Exists(templatePath))
-                Directory.Delete(templatePath, true);
+            string dstTemplatePath = Path.Combine(siPath, dstTemplateFolderName);
+            if (Directory.Exists(dstTemplatePath))
+                Directory.Delete(dstTemplatePath, true);
 
-            Directory.CreateDirectory(templatePath);
+            Directory.CreateDirectory(dstTemplatePath);
+            FileHelper.DirectoryCopy(srcTemplateFolderPath, dstTemplatePath, true);
 
+            /*
             foreach (string srcFilePath in Directory.EnumerateFiles(srcTemplateFolderPath))
             {
                 string fileName = Path.GetFileName(srcFilePath);
                 File.Copy(srcFilePath, Path.Combine(templatePath, fileName));
             }
+            */
         }
         private void GetTemplateFiles(int templateStorageId, string srcTemplateFolderName, string dstTemplateFolderPath)
         {
@@ -84,15 +85,19 @@ namespace Pass.Container.BL
                 throw new ArgumentNullException("dstTemplateFolderPath");
 
             string siPath = _fsService.GetStorageItemPath(templateStorageId);
-            string templatePath = Path.Combine(siPath, srcTemplateFolderName);
-            if (!Directory.Exists(templatePath))
-                throw new PassTemplateException(string.Format("Directory '{0}' not found", templatePath));
+            string srcTemplatePath = Path.Combine(siPath, srcTemplateFolderName);
+            if (!Directory.Exists(srcTemplatePath))
+                throw new PassTemplateException(string.Format("Directory '{0}' not found", srcTemplatePath));
 
+            FileHelper.DirectoryCopy(srcTemplatePath, dstTemplateFolderPath, true);
+
+            /*
             foreach (string srcFilePath in Directory.EnumerateFiles(templatePath))
             {
                 string fileName = Path.GetFileName(srcFilePath);
                 File.Copy(srcFilePath, Path.Combine(dstTemplateFolderPath, fileName));
             }
+            */
         }
     }
 }

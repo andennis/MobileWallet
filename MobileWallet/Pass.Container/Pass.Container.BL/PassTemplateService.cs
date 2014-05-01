@@ -4,11 +4,11 @@ using System.IO;
 using System.Linq;
 using Common.Extensions;
 using Common.Repository;
-using FileStorage.Core;
+using Common.Utils;
+using Pass.Container.BL.Helpers;
 using Pass.Container.BL.PassTemplateGenerators;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
-using Pass.Container.Core.Entities.Enums;
 using Pass.Container.Core.Entities.Templates.GeneralPassTemplate;
 using Pass.Container.Core.Exceptions;
 using Pass.Container.Repository.Core;
@@ -18,52 +18,68 @@ namespace Pass.Container.BL
 {
     public class PassTemplateService : IPassTemplateService
     {
+        private const string TemplateFileName = "template.xml";
+
         private readonly IPassTemplateConfig _ptConfig;
         private readonly IPassContainerUnitOfWork _pcUnitOfWork;
-        private readonly IFileStorageService _fsService;
+        private readonly IPassTemplateStorageService _ptsService;
         //Repositories
         private readonly IRepository<PassTemplate> _repPassTemplate;
         private readonly IRepository<PassTemplateApple> _repPassTemplateApple;
         private readonly IRepository<PassField> _repPassField;
         //Native pass template generators
-        private readonly IDictionary<ClientType, IPassTemplateGenerator> _passTemplateGenerators;
+        private readonly IList<IPassTemplateGenerator> _passTemplateGenerators;
 
-        public PassTemplateService(IPassTemplateConfig config, IPassContainerUnitOfWork pcUnitOfWork, IFileStorageService fsService)
+        public PassTemplateService(IPassTemplateConfig config, IPassContainerUnitOfWork pcUnitOfWork, IPassTemplateStorageService ptsService)
         {
             _ptConfig = config;
             _pcUnitOfWork = pcUnitOfWork;
-            _fsService = fsService;
+            _ptsService = ptsService;
 
             //Repositories
             _repPassTemplate = _pcUnitOfWork.GetRepository<PassTemplate>();
             _repPassTemplateApple = _pcUnitOfWork.GetRepository<PassTemplateApple>();
             _repPassField = _pcUnitOfWork.GetRepository<PassField>();
 
-            _passTemplateGenerators = new Dictionary<ClientType, IPassTemplateGenerator>
-                {
-                    {ClientType.Apple, new ApplePassTemplateGenerator(config)}
-                };
+            _passTemplateGenerators = new List<IPassTemplateGenerator>
+                                        {
+                                            new ApplePassTemplateGenerator(config)
+                                        };
         }
 
         public int CreatePassTemlate(string passTemplatePath)
         {
-            //Check pass template and put in file storage
-            string templateStorageItemPath;
-            int templateStorageItemId = CreatePassTemplateFileStorageItem(passTemplatePath, out templateStorageItemPath);
+            //Create template location
+            int templateStorageId = _ptsService.CreateTemplateStorage();
+            _ptsService.PutBaseTemplateFiles(templateStorageId, passTemplatePath);
 
             //Generate native pass templates
-            string passTemplateFilePath = Path.Combine(templateStorageItemPath, _ptConfig.PassTemplateFolderName, _ptConfig.PassTemplateFileName);
-            var generalPassTemplate = passTemplateFilePath.LoadFromXml<GeneralPassTemplate>();
-            foreach (IPassTemplateGenerator nativePassTemplateGenerator in _passTemplateGenerators.Values)
+            string srcImageFilesPath = Path.Combine(passTemplatePath, ApplePass.TemplateImageFolder);
+            string srcTemplateFilePath = Path.Combine(passTemplatePath, TemplateFileName);
+            var generalPassTemplate = srcTemplateFilePath.LoadFromXml<GeneralPassTemplate>();
+            string dstTemplatePath = Path.Combine(_ptConfig.PassTemplateWorkingFolder, GetTemporaryTemplateFolder());
+            foreach (IPassTemplateGenerator templateGenerator in _passTemplateGenerators)
             {
-                nativePassTemplateGenerator.Generate(generalPassTemplate, templateStorageItemPath);
+                string dstNativeTemplatePath = Path.Combine(dstTemplatePath, templateGenerator.ClientType.ToString());
+                Directory.CreateDirectory(dstNativeTemplatePath);
+
+                FileHelper.DirectoryCopy(srcImageFilesPath, Path.Combine(dstNativeTemplatePath, ApplePass.TemplateImageFolder), false);
+
+                templateGenerator.Generate(generalPassTemplate, Directory.EnumerateFiles(srcImageFilesPath), dstNativeTemplatePath);
+                _ptsService.PutNativeTemplateFiles(templateStorageId, templateGenerator.ClientType, dstNativeTemplatePath);
             }
+            Directory.Delete(dstTemplatePath, true);
 
             //Get dynamic fields
             IEnumerable<string> dynamicFields = GetDynamicFields(generalPassTemplate);
 
             //Save nessesary information into DB
-            var passTemplate = new PassTemplate { Name = generalPassTemplate.TemplateName, PackageId = templateStorageItemId, Status = EntityStatus.Active };
+            var passTemplate = new PassTemplate
+                               {
+                                   Name = generalPassTemplate.TemplateName,
+                                   PackageId = templateStorageId, 
+                                   Status = EntityStatus.Active
+                               };
             var passTemplateApple = new PassTemplateApple
                                     {
                                         PassTemplateId = passTemplate.PassTemplateId, 
@@ -86,6 +102,11 @@ namespace Pass.Container.BL
 
             return passTemplate.PassTemplateId;
         }
+
+        private string GetTemporaryTemplateFolder()
+        {
+            return FileHelper.GetRandomFolderName();
+        }
         public void DeletePassTemplate(int passTemplateId)
         {
             PassTemplate passTemplate = _repPassTemplate.Find(passTemplateId);
@@ -96,19 +117,6 @@ namespace Pass.Container.BL
             passTemplate.Status = EntityStatus.Deleted;
             _repPassTemplate.Update(passTemplate);
             _pcUnitOfWork.Save();
-        }
-
-        public string GetNativePassTemplate(int passTemplateId, ClientType clientType)
-        {
-            //PassTemplate passTemplate = _repPassTemplate.Find(passTemplateId);
-            //switch (passTemplateType)
-            //{
-            //     case PassTemplateType.AppleTemplate:
-            //        _repPassTemplateApple.Query()
-            //                             .Filter(x => x.PassTemplateId == passTemplateId)
-            //                             .Get().ToList();
-            //}
-            throw new NotImplementedException();
         }
 
         public IList<PassFieldInfo> GetPassTemplateFields(int passTemplateId)
@@ -129,8 +137,9 @@ namespace Pass.Container.BL
         {
             PassTemplate passTemplate = _repPassTemplate.Find(passTemplateId);
             if (passTemplate == null)
-                throw new ArgumentException(string.Format("Template with id={0} does not exist.", passTemplateId));
+                throw new PassTemplateException(string.Format("Template ID:{0} not found", passTemplateId));
 
+            /*
             //Check pass template and put in file storage
             string templateStorageItemPath;
             int templateStorageItemId = CreatePassTemplateFileStorageItem(passTemplatePath, out templateStorageItemPath);
@@ -140,14 +149,14 @@ namespace Pass.Container.BL
             var generalPassTemplate = passTemplateFilePath.LoadFromXml<GeneralPassTemplate>();
             foreach (var nativePassTemplateGenerator in _passTemplateGenerators)
             {
-                nativePassTemplateGenerator.Value.Generate(generalPassTemplate, templateStorageItemPath);
+                nativePassTemplateGenerator.Generate(generalPassTemplate, templateStorageItemPath);
             }
-
+            
             //Update pass template in DB
             passTemplate.Name = generalPassTemplate.TemplateName;
             passTemplate.PackageId = templateStorageItemId;
             _repPassTemplate.Update(passTemplate);
-
+            
             //Get dynamic fields
             List<string> dynamicFields = GetDynamicFields(generalPassTemplate);
 
@@ -182,6 +191,7 @@ namespace Pass.Container.BL
 
             //Save DB changes
             _pcUnitOfWork.Save();
+            */
         }
 
         public bool ValidatePassTemplate(string passTemplateFilePath)
@@ -190,7 +200,7 @@ namespace Pass.Container.BL
             //check different key in field
             return true;
         }
-
+        /*
         private int CreatePassTemplateFileStorageItem(string passTemplatePath, out string templateStorageItemPath)
         {
             if (string.IsNullOrEmpty(passTemplatePath))
@@ -221,6 +231,7 @@ namespace Pass.Container.BL
 
             return templateStorageItemId;
         }
+        */
         private List<string> GetDynamicFields(GeneralPassTemplate generalPassTemplate)
         {
             var dynamicFields = new List<string>();

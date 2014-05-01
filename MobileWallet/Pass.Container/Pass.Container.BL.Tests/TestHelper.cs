@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using Common.Extensions;
 using FileStorage.BL;
@@ -17,6 +15,9 @@ namespace Pass.Container.BL.Tests
 {
     public static class TestHelper
     {
+        public const string CertificateFileApple = @"TestCertificates\Apple\pass.com.passlight.dev.test\pass.p12";
+        public const string CertificateApplePassword = "Pass3";
+
         private const string AppleIconFileName = "icon.png";
         public static IPassContainerConfig PassContainerConfig { get { return new PassContainerConfig(); } }
         public static IPassContainerUnitOfWork PassContainerUnitOfWork { get { return new PassContainerUnitOfWork(new PassContainerConfig()); } }

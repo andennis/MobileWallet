@@ -34,7 +34,6 @@ namespace Common.Utils
                 }
             }
         }
-
         public static string DecryptString(string textToDecrypt, string key, string iv)
         {
             if (string.IsNullOrEmpty(textToDecrypt))
@@ -67,5 +66,20 @@ namespace Common.Utils
                 }
             }
         }
+
+        public static string CalculateHash(byte[] data)
+        {
+            var hashText = new StringBuilder();
+            byte[] hashData = SHA1.Create().ComputeHash(data);
+
+            foreach (byte b in hashData)
+            {
+                string hexValue = b.ToString("X2").ToLower();
+                hashText.Append(hexValue);
+            }
+
+            return hashText.ToString();
+        }
+
     }
 }

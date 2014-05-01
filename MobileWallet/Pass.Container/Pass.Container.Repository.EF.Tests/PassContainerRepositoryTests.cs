@@ -2,6 +2,7 @@
 using Common.Repository;
 using FluentAssertions;
 using NUnit.Framework;
+using Pass.Container.Core.Entities.Enums;
 using Pass.Container.Repository.Core.Entities;
 
 namespace Pass.Container.Repository.EF.Tests
@@ -165,5 +166,27 @@ namespace Pass.Container.Repository.EF.Tests
 
             }
         }
+
+        /*
+        [Test]
+        public void Test1()
+        {
+            using (var unitOfWork = new PassContainerUnitOfWork(TestHelper.DbConfig))
+            {
+                var repPass = unitOfWork.GetRepository<Core.Entities.Pass>();
+                var r = repPass.Query()
+                    .Include(x => x.Template.NativeTemplates)
+                    .Include(x => x.Template.PassFields)
+                    .Include(x => x.FieldValues)
+                    .Filter(x => x.PassTemplateId == 1005)
+                    //.Filter(x1 => x1.Template.NativeTemplates.FirstOrDefault(x2 => x2.ClientType == ClientDeviceType.Apple) != null)
+                    .Get().FirstOrDefault();
+                //.Where(x2 => x2.Template.NativeTemplates.Where(x1 => x1.ClientType == ClientDeviceType.Apple));
+
+
+            }
+            
+        }
+        */
     }
 }

@@ -12,17 +12,14 @@ namespace Pass.Container.BL.Tests
     [TestFixture]
     public class PassCertificateServiceTests
     {
-        private const string TestCertificate = @"TestCertificate\pass.com.passlight.dev.test\pass.p12";
-
         [Test]
         public void GetCertificateTest()
         {
             int certId;
             using (ICertificateStorageService certStorageService = PassContainerFactory.CreateCertificateStorageService())
             {
-                const string psw = "Pass3";
-                var certInfo = new CertificateInfo() { Name = "pass.com.passlight.dev.test", Password = psw.ConvertToSecureString()};
-                using (var fs = new FileStream(TestCertificate, FileMode.Open, FileAccess.Read))
+                var certInfo = new CertificateInfo() { Name = "pass.com.passlight.dev.test", Password = TestHelper.CertificateApplePassword.ConvertToSecureString() };
+                using (var fs = new FileStream(TestHelper.CertificateFileApple, FileMode.Open, FileAccess.Read))
                 {
                     certInfo.CertificateFile = fs;
                     certId = certStorageService.Put(certInfo);

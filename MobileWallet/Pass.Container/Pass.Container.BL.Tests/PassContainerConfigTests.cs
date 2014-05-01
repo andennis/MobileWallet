@@ -14,6 +14,8 @@ namespace Pass.Container.BL.Tests
             var pcConfig = new PassContainerConfig();
 
             Assert.IsNotNullOrEmpty(pcConfig.ConnectionString);
+            Assert.IsNotNullOrEmpty(pcConfig.PassWorkingFolder);
+
             //TODO check all other config parametes
             throw new NotImplementedException();
         }
@@ -25,6 +27,7 @@ namespace Pass.Container.BL.Tests
             Assert.IsInstanceOf<IPassContainerConfig>(pcConfig);
             Assert.IsInstanceOf<IPassTemplateConfig>(pcConfig);
             Assert.IsInstanceOf<IDbConfig>(pcConfig);
+            Assert.IsInstanceOf<IApplePassGeneratorConfig>(pcConfig);
         }
     }
 }

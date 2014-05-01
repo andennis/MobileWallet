@@ -40,7 +40,7 @@ namespace Pass.Container.BL.Tests.PassGenerators
             using (var pcs = GetPassContainerService())
             {
                 string testPassTemplateDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestPassTemplate");
-                TestHelper.PreparePassTemplateSource(testPassTemplateDir, TestHelper.PassContainerConfig.PassTemplateFileName);
+                TestHelper.PreparePassTemplateSource(testPassTemplateDir, "template.xml");
                 int passTemplateId = pts.CreatePassTemlate(testPassTemplateDir);
 
                 IList<PassFieldInfo> fields = pts.GetPassTemplateFields(passTemplateId);

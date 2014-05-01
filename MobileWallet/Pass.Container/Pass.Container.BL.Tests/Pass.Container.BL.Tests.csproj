@@ -149,18 +149,41 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config" />
-    <None Include="TestCertificate\pass.com.passlight.dev.test\AppleWWDRCA.cer" />
-    <None Include="TestCertificate\pass.com.passlight.dev.test\cer_sign_request.csr" />
-    <None Include="TestCertificate\pass.com.passlight.dev.test\pass.cer" />
-    <None Include="TestCertificate\pass.com.passlight.dev.test\pass.p12">
+    <None Include="PassGenerators\Data\AppleTemplate\manifest_t.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestCertificate\pass.com.passlight.dev.test\pass.pem" />
-    <None Include="TestCertificate\pass.com.passlight.dev.test\private_key.key" />
+    <None Include="PassGenerators\Data\AppleTemplate\pass_t.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="TestCertificates\Apple\AppleWWDRCA.cer">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestCertificates\Apple\pass.com.passlight.dev.test\cer_sign_request.csr" />
+    <None Include="TestCertificates\Apple\pass.com.passlight.dev.test\pass.cer" />
+    <None Include="TestCertificates\Apple\pass.com.passlight.dev.test\pass.p12">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestCertificates\Apple\pass.com.passlight.dev.test\pass.pem" />
+    <None Include="TestCertificates\Apple\pass.com.passlight.dev.test\private_key.key" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Data\TemplateService\Template\Images\icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TemplateService\Template\Template.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TemplateStorage\Apple\F1\AppleFile11.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\TemplateStorage\Base\F1\BaseFile11.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PassGenerators\Data\AppleTemplate\Images\icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Data\TemplateStorage\Apple\AppleFile1.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -173,7 +196,7 @@
     <Content Include="Data\TemplateStorage\Base\BaseFile2.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestCertificate\pass.com.passlight.dev.test\CertificatePassword.txt" />
+    <Content Include="TestCertificates\Apple\pass.com.passlight.dev.test\CertificatePassword.txt" />
     <Content Include="TestTemplates\Template1\icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

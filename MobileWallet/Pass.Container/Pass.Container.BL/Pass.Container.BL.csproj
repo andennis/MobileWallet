@@ -50,6 +50,7 @@
     <Compile Include="ApplePassProcessingService.cs" />
     <Compile Include="Caching\FileCacheStore.cs" />
     <Compile Include="EntityConverter.cs" />
+    <Compile Include="Helpers\ApplePass.cs" />
     <Compile Include="Helpers\ApplePassGeneratorHelper.cs" />
     <Compile Include="PassCertificateService.cs" />
     <Compile Include="PassGenerators\ApplePassGenerator.cs" />

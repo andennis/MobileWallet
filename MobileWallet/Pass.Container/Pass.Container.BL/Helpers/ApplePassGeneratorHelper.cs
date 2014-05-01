@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Security.Cryptography.Pkcs;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using Common.Extensions;
@@ -83,31 +81,20 @@ namespace Pass.Container.BL.Helpers
             return pkpassFilePath;
         }
 
-        public static string GenaratePassPackage(string dirPath, CmsSignedDataGenerator cmsSignedDataGenerator)
+        public static void GenaratePassPackage(string srcPassFilesDir, CmsSignedDataGenerator cmsSignedDataGenerator, string dstPackageFile)
         {
-            string pkpassFilePath = null;
+            string manifestJson = GetManifestJson(srcPassFilesDir);
+            SaveManifestFile(srcPassFilesDir, manifestJson);
 
-            //Trace.TraceInformation("Generating the manifest file...");
-            string manifestJson = GetManifestJson(dirPath);
-            SaveManifestFile(dirPath, manifestJson);
-
-            //Trace.TraceInformation("Signing the manifest file...");
-               
             CmsProcessable content = new CmsProcessableByteArray(Encoding.ASCII.GetBytes(manifestJson));
             CmsSignedData signedData = cmsSignedDataGenerator.Generate(content, false);
 
             byte[] signatureBytes = signedData.GetEncoded();
-            File.WriteAllBytes(Path.Combine(dirPath, "signature"), signatureBytes);
+            File.WriteAllBytes(Path.Combine(srcPassFilesDir, "signature"), signatureBytes);
 
-           //Trace.TraceInformation("The file has been successfully signed!");
-           
             //Generate pkpass file
-           //Trace.TraceInformation("Generating .pkpass archive..");
-           pkpassFilePath = Path.Combine(dirPath, Guid.NewGuid() + ".pkpass");
-           Compress.CompressDirectory(dirPath, pkpassFilePath);
-           //Trace.TraceInformation("The .pkpass archive has been successfully Generated!");
-           
-            return pkpassFilePath;
+            string pkpassFilePath = Path.Combine(srcPassFilesDir, dstPackageFile);
+            Compress.CompressDirectory(srcPassFilesDir, pkpassFilePath);
         }
 
         public static CmsSignedDataGenerator GetCmsSignedDataGenerator(string cerPath, string password)
@@ -153,24 +140,26 @@ namespace Pass.Container.BL.Helpers
             var dirInfo = new DirectoryInfo(dirPath);
             foreach (var file in dirInfo.GetFiles())
             {
-                string hash = GenerateHashOfFile(file.FullName);
+                string hash = GenerateFileHash(file.FullName);
                 hashOfFiles.Add(file.Name, hash);
             }
+
             if (!hashOfFiles.Any() || !hashOfFiles.ContainsKey("pass.json"))
                 throw new FileNotFoundException("Necessary files does not found in the directory. Directory path: " + dirPath);
 
             return hashOfFiles.ObjectToJson();
         }
 
-        private static string GenerateHashOfFile(string filePath)
+        private static string GenerateFileHash(string fileName)
         {
-            if (!File.Exists(filePath))
-                throw new FileNotFoundException("File was not found. File path: " + filePath);
+            if (!File.Exists(fileName))
+                throw new FileNotFoundException("File was not found. File path: " + fileName);
 
-            byte[] fileData = File.ReadAllBytes(filePath);
-            return GenerateHash(fileData);
+            byte[] fileData = File.ReadAllBytes(fileName);
+            return Crypto.CalculateHash(fileData);
         }
 
+        /*
         private static string GenerateHash(byte[] fileData)
         {
             var hashText = new StringBuilder();
@@ -184,6 +173,7 @@ namespace Pass.Container.BL.Helpers
 
             return hashText.ToString();
         }
+        */
 
         private static void SaveManifestFile(string dirPath, string manifestJson)
         {
@@ -193,6 +183,7 @@ namespace Pass.Container.BL.Helpers
             File.WriteAllText(Path.Combine(dirPath, "manifest.json"), manifestJson);
         }
 
+        /*
         private static byte[] SignByCertificate(string manifest, X509Certificate2 certificate)
         {
             byte[] manifestBytes = Encoding.ASCII.GetBytes(manifest);
@@ -204,6 +195,7 @@ namespace Pass.Container.BL.Helpers
             signedCms.ComputeSignature(signer);
             return signedCms.Encode();
         }
+        */
 
         private static X509Certificate2 GetCertificateFromFile(string cerPath, string password)
         {
@@ -223,6 +215,7 @@ namespace Pass.Container.BL.Helpers
             return certificate;
         }
 
+        /*
         private static X509Certificate2 GetCertificate(string nameOfPassCertificate)
         {
             // Open the cert store on the Local Machine
@@ -238,5 +231,6 @@ namespace Pass.Container.BL.Helpers
 
             return null;
         }
+        */
     }
 }

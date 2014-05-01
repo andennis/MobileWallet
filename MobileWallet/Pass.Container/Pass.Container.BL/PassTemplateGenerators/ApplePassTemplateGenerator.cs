@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Common.Extensions;
+using Common.Utils;
+using Pass.Container.BL.Helpers;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities.Enums;
 using Pass.Container.Core.Entities.Templates.GeneralPassTemplate;
@@ -14,67 +16,63 @@ namespace Pass.Container.BL.PassTemplateGenerators
 {
     public class ApplePassTemplateGenerator : IPassTemplateGenerator
     {
+        private readonly static List<string> _applePassTemplateFiles = new List<string> 
+                                                                    { 
+                                                                        "logo.png", 
+                                                                        "icon.png", 
+                                                                        "strip.png", 
+                                                                        "background.png", 
+                                                                        "thumbnail.png",
+                                                                        "footer.png",
+                                                                        "logo@2x.png", 
+                                                                        "icon@2x.png", 
+                                                                        "strip@2x.png", 
+                                                                        "background@2x.png", 
+                                                                        "thumbnail@2x.png",
+                                                                        "footer@2x.png"
+                                                                    };
+
         private readonly IPassTemplateConfig _ptConfig;
-        private const string ApplePassTemplateFolderName = "ApplePassTemplate";
-        private const string ApplePassTemplateFileName = "pass.json";
-        private static List<string> _applePassTemplateFiles;
 
         public ApplePassTemplateGenerator(IPassTemplateConfig config)
         {
             _ptConfig = config;
-            _applePassTemplateFiles = new List<string> { 
-                "logo.png", 
-                "icon.png", 
-                "strip.png", 
-                "background.png", 
-                "thumbnail.png",
-                "footer.png",
-                "logo@2x.png", 
-                "icon@2x.png", 
-                "strip@2x.png", 
-                "background@2x.png", 
-                "thumbnail@2x.png",
-                "footer@2x.png"
-            };
         }
 
         #region IPassTemplateGenerator
+
         public ClientType ClientType
         {
             get { return ClientType.Apple; }
         }
 
-        public void Generate(GeneralPassTemplate passTemplate, string storageItemPath)
+        public void Generate(GeneralPassTemplate passTemplate, IEnumerable<string> imageFiles, string dstTemplateFilesPath)
         {
-            //Create Apple pass template
+            //Build Apple pass template
             ApplePassTemplate applePassTemplate = CreateApplePassTemplate(passTemplate);
-            string applePassTemplateJson = applePassTemplate.ObjectToJson();
+            string passContent = applePassTemplate.ObjectToJson();
+            string passContentFile = Path.Combine(dstTemplateFilesPath, ApplePass.TemplateFileName);
+            File.WriteAllText(passContentFile, passContent);
 
-            //Save Apple pass template into file storage
-            string applePassTemplateFolderPath = Path.Combine(storageItemPath, ApplePassTemplateFolderName);
-            if (!Directory.Exists(applePassTemplateFolderPath))
-                Directory.CreateDirectory(applePassTemplateFolderPath);
-
-            string applePassTemplateFilePath = Path.Combine(applePassTemplateFolderPath, ApplePassTemplateFileName);
-            if (File.Exists(applePassTemplateFilePath))
-                File.Delete(applePassTemplateFilePath);
-
-            File.WriteAllText(applePassTemplateFilePath, applePassTemplateJson);
-
-            //Copy Apple pass template files into Apple pass template folder
-            IEnumerable<string> files = Directory.EnumerateFiles(Path.Combine(storageItemPath, _ptConfig.PassTemplateFolderName));
-            foreach (var file in files)
-            {
-                if (!_applePassTemplateFiles.Any(applePassTemplateFile => file.Contains(applePassTemplateFile)))
-                    continue;
-
-                string filePath = file.Replace(_ptConfig.PassTemplateFolderName, ApplePassTemplateFolderName);
-                if (File.Exists(filePath))
-                    File.Delete(filePath);
-
-                File.Copy(file, filePath);
-            }
+            //Build manifest for images
+            string manifest = BuildManifest(imageFiles);
+            string manifestFilePath = Path.Combine(dstTemplateFilesPath, ApplePass.ManifestTemplateFileName);
+            File.WriteAllText(manifestFilePath, manifest);
         }
+
+        private string BuildManifest(IEnumerable<string> files)
+        {
+            var dictManifest = new Dictionary<string, string>();
+            foreach (string filePath in files)
+            {
+                string fileName = Path.GetFileName(filePath);
+                byte[] fileData = File.ReadAllBytes(filePath);
+                string fileHash = Crypto.CalculateHash(fileData);
+                dictManifest.Add(fileName, fileHash);
+            }
+            return dictManifest.ObjectToJson();
+        }
+
         #endregion
 
         #region Create ApplePassTemplate
@@ -89,7 +87,7 @@ namespace Pass.Container.BL.PassTemplateGenerators
             applePassTemplate.OrganizationName = passTemplate.OrganizationName;
             applePassTemplate.PassTypeIdentifier = passTemplate.PassTypeIdentifier;
             applePassTemplate.TeamIdentifier = passTemplate.TeamIdentifier;
-            applePassTemplate.SerialNumber = GetSerialNumber(passTemplate);
+            applePassTemplate.SerialNumber = ApplePass.FieldSerialNumber;
             
             //Visual Appearance Keys
             applePassTemplate.BackgroundColor = "rgb(" + passTemplate.BackgroundColor.R + ", " + passTemplate.BackgroundColor.G + ", " + passTemplate.BackgroundColor.B + ")";
@@ -297,14 +295,15 @@ namespace Pass.Container.BL.PassTemplateGenerators
             return "vxwxd7J8AlNNFPS85u0ewzFdc";
         }
 
+        /*
         private string GetSerialNumber(GeneralPassTemplate passTemplate)
         {
             string serialNumber;
             switch (passTemplate.PassSerialNumberType)
             {
-                case PassSerialNumberType.AutoGgenerated:
+                case PassSerialNumberType.AutoGenerated:
                     {
-                        serialNumber = "SerialNumber_SN_";
+                        serialNumber = ApplePass.FieldSerialNumber;
                         break;
                     }
                 case PassSerialNumberType.Provided:
@@ -325,6 +324,7 @@ namespace Pass.Container.BL.PassTemplateGenerators
             }
             return serialNumber;
         }
+        */
 
         # region Enum converters
         private PassStructure.Transit GetAppleTransit(Transit? transit)

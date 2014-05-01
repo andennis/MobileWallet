@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using Common.Repository;
 using FileStorage.Core;
 using Pass.Container.BL.PassGenerators;
@@ -20,23 +22,19 @@ namespace Pass.Container.BL
         private readonly IPassContainerUnitOfWork _pcUnitOfWork;
         private readonly IFileStorageService _fileStorageService;
         private readonly IPassCertificateService _certService;
-
-        private readonly IDictionary<ClientType, IPassGenerator> _passGenerators; 
+        private readonly IPassTemplateStorageService _templateStorageService;
 
         public PassContainerService(IPassContainerConfig config, 
             IPassContainerUnitOfWork pcUnitOfWork, 
             IFileStorageService fileStorageService,
-            IPassCertificateService certService)
+            IPassCertificateService certService,
+            IPassTemplateStorageService templateStorageService)
         {
             _config = config;
             _pcUnitOfWork = pcUnitOfWork;
             _fileStorageService = fileStorageService;
             _certService = certService;
-
-            _passGenerators = new Dictionary<ClientType, IPassGenerator>()
-                              {
-                                  {ClientType.Apple, new ApplePassGenerator(_config, _pcUnitOfWork, _fileStorageService, _certService)}
-                              };
+            _templateStorageService = templateStorageService;
         }
 
         public int CreatePass(int passTemplateId, IList<PassFieldInfo> fieldValues, DateTime? expDate = null)
@@ -122,17 +120,76 @@ namespace Pass.Container.BL
 
         public string GetPassPackage(int passId, ClientType clientType)
         {
-            IPassGenerator pg = GetPassGenerator(clientType);
-            return pg.GeneratePass(passId);
+            IRepository<RepEntities.Pass> repPass = _pcUnitOfWork.GetRepository<RepEntities.Pass>();
+            RepEntities.Pass pass = repPass.Query()
+                .Filter(x => x.PassId == passId)
+                .Include(x => x.Template.NativeTemplates)
+                .Include(x => x.Template.PassFields)
+                .Include(x => x.FieldValues)
+                .Get()
+                .FirstOrDefault();
+            if (pass == null)
+                throw new PassContainerException(string.Format("Pass ID:{0} not found", passId));
+
+            string templateFolder = GetTemporaryTemplateFolder(pass.Template.PassTemplateId, clientType);
+            if (!Directory.Exists(templateFolder))
+            {
+                Directory.CreateDirectory(templateFolder);
+                _templateStorageService.GetNativeTemplateFiles(pass.Template.PackageId, clientType, templateFolder);
+            }
+
+            string passFolder = GetTemporaryPassFolder(pass.Template.PassTemplateId, passId, clientType);
+            if (Directory.Exists(passFolder))
+                Directory.Delete(passFolder, true);
+            Directory.CreateDirectory(passFolder);
+
+            IPassGenerator2 pg = GetPassGenerator(pass.Template, clientType, templateFolder);
+            IEnumerable<PassFieldInfo> fields = GetPassFields(pass);
+            return pg.GeneratePass(pass.SerialNumber, fields, passFolder);
+        }
+        
+        private IEnumerable<PassFieldInfo> GetPassFields(RepEntities.Pass pass)
+        {
+            return pass.FieldValues
+                .Select(x => new PassFieldInfo()
+                             {
+                                 PassFieldId = x.PassFieldId,
+                                 Name = x.PassField.Name,
+                                 Label = string.IsNullOrEmpty(x.Label) ? x.PassField.DefaultLabel : x.Label,
+                                 Value = string.IsNullOrEmpty(x.Value) ? x.PassField.DefaultValue : x.Value,
+                             });
         }
 
-        private IPassGenerator GetPassGenerator(ClientType clientType)
+        private string GetTemporaryTemplateFolder(int templateId, ClientType clientType)
         {
-            IPassGenerator pg;
-            if (!_passGenerators.TryGetValue(clientType, out pg))
-                throw new PassGenerationException(string.Format("ClientType: {0} is not supported", clientType));
+            return Path.Combine(_config.PassWorkingFolder, "T" + templateId, clientType.ToString());
+        }
+        private string GetTemporaryPassFolder(int templateId, int passId, ClientType clientType)
+        {
+            return Path.Combine(_config.PassWorkingFolder, "T" + templateId, clientType.ToString(), "Passes", passId.ToString());
+        }
 
-            return pg;
+        private IPassGenerator2 GetPassGenerator(PassTemplate passTemplate, ClientType clientType, string srcTemplateFolder)
+        {
+            switch (clientType)
+            {
+                case ClientType.Apple:
+                    var appleTemplate = passTemplate.NativeTemplates.OfType<PassTemplateApple>().FirstOrDefault();
+                    if (appleTemplate == null)
+                        throw new PassContainerException("Apple pass template not found");
+
+                    return GetApplePassGenerator(appleTemplate, srcTemplateFolder);
+                default:
+                    throw new PassContainerException("Pass generated is not specified for client type: " + clientType);
+            }
+
+            
+        }
+
+        private IPassGenerator2 GetApplePassGenerator(PassTemplateApple appleTemplate, string srcTemplateFolder)
+        {
+            X509Certificate2 cert = _certService.GetCertificate(appleTemplate.CertificateId);
+            return new ApplePassGenerator2(_config, srcTemplateFolder, cert);
         }
 
         private string GenerateSerialNumber()

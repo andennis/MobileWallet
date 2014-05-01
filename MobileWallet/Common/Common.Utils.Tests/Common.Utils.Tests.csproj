@@ -46,8 +46,10 @@
   <ItemGroup>
     <Compile Include="CompressTests.cs" />
     <Compile Include="CryptoTests.cs" />
+    <Compile Include="FileHelperTest.cs" />
     <Compile Include="MemCacheTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SignedDataGeneratorTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -63,6 +65,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\Compress\Folder1\TextFile2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\FileHelper\Dir1\Dir11\TextFile11.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\FileHelper\Dir1\TextFile1.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

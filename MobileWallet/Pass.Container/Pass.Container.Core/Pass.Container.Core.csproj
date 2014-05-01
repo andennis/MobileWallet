@@ -60,14 +60,14 @@
     <Compile Include="Entities\Templates\GeneralPassTemplate\LanguageDetails.cs" />
     <Compile Include="Entities\Templates\GeneralPassTemplate\LocationDetails.cs" />
     <Compile Include="Entities\Templates\GeneralPassTemplate\GeneralPassTemplate.cs" />
-    <Compile Include="Exceptions\PassDistributionException.cs" />
+    <Compile Include="Exceptions\PassContainerException.cs" />
     <Compile Include="Exceptions\PassGenerationException.cs" />
     <Compile Include="Exceptions\PassTemplateException.cs" />
     <Compile Include="IApplePassGeneratorConfig.cs" />
     <Compile Include="IApplePassProcessingService.cs" />
     <Compile Include="IPassCertificateService.cs" />
     <Compile Include="IPassGenerator.cs" />
-    <Compile Include="IPassGeneratorConfig.cs" />
+    <Compile Include="IPassGenerator2.cs" />
     <Compile Include="IPassTemplateStorageService.cs" />
     <Compile Include="IPassTemplateGenerator.cs" />
     <Compile Include="IPassContainerConfig.cs" />

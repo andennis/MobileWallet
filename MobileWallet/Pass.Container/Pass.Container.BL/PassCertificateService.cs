@@ -22,7 +22,8 @@ namespace Pass.Container.BL
             {
                 var ms = new MemoryStream();
                 certInfo.CertificateFile.CopyTo(ms);
-                return new X509Certificate2(ms.ToArray(), certInfo.Password.ConvertToUnsecureString());
+                return new X509Certificate2(ms.ToArray(), certInfo.Password.ConvertToUnsecureString(),
+                    X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.Exportable);
             }
         }
 

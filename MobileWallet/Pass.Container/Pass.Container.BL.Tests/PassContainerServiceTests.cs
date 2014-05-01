@@ -44,7 +44,7 @@ namespace Pass.Container.BL.Tests
             using (var pcs = GetPassContainerService())
             {
                 string testPassTemplateDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestPassTemplate");
-                TestHelper.PreparePassTemplateSource(testPassTemplateDir, TestHelper.PassContainerConfig.PassTemplateFileName);
+                TestHelper.PreparePassTemplateSource(testPassTemplateDir, "template.xml");
                 int passTemplateId = pts.CreatePassTemlate(testPassTemplateDir);
 
                 IList<PassFieldInfo> fields = pts.GetPassTemplateFields(passTemplateId);
@@ -57,7 +57,7 @@ namespace Pass.Container.BL.Tests
         [Test]
         public void UpdatePassFieldsTest()
         {
-            
+            throw new NotImplementedException();
         }
 
         private IPassContainerService GetPassContainerService()

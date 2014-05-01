@@ -21,6 +21,8 @@ namespace Pass.Container.BL.Tests
     [TestFixture]
     public class PassTemplateServiceTests
     {
+        private const string TemplateFolder = @"Data\TemplateService\Template";
+
         //UnitOfWork
         private IPassContainerUnitOfWork _pcUnitOfWork;
         private readonly string _testPassTemplateDir;
@@ -34,7 +36,7 @@ namespace Pass.Container.BL.Tests
         public PassTemplateServiceTests()
         {
             _testPassTemplateDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestPassTemplate");
-            _passTemplateFileName = TestHelper.PassContainerConfig.PassTemplateFileName;
+            _passTemplateFileName = "template.xml";
         }
 
         [SetUp]

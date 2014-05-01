@@ -2,14 +2,14 @@
 
 namespace Pass.Container.Core.Exceptions
 {
-    public class PassDistributionException : Exception
+    public class PassContainerException : Exception
     {
-        public PassDistributionException(string message)
+        public PassContainerException(string message)
             : base(message)
         {
         }
 
-        public PassDistributionException(string message, Exception innerException)
+        public PassContainerException(string message, Exception innerException)
             :base(message, innerException)
         {
         }

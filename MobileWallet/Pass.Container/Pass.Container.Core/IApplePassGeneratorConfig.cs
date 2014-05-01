@@ -1,7 +1,7 @@
 ﻿
 namespace Pass.Container.Core
 {
-    public interface IApplePassGeneratorConfig : IPassGeneratorConfig
+    public interface IApplePassGeneratorConfig
     {
         string AppleWWDRCAPath { get; }
     }

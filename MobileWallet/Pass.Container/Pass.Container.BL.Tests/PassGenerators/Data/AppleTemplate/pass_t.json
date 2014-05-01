@@ -1,0 +1,110 @@
+{
+   "description":"Pass description",
+   "formatVersion":1,
+   "organizationName":"Organization name",
+   "passTypeIdentifier":"pass.com.passlight.dev.test",
+   "serialNumber":"SerialNumber_SN_",
+   "teamIdentifier":"YHQB764QFA",
+   "expirationDate":"2014-04-20T23:25+03:00",
+   "voided":false,
+   "locations":[
+      {
+         "latitude":53.883980386469425,
+         "longitude":27.594974050000019,
+         "relevantText":"Relevant text"
+      }
+   ],
+   "coupon":{
+      "auxiliaryFields":[
+         {
+            "changeMessage":"Gate changed to %@.",
+            "key":"Key1",
+            "label":"Field",
+            "value":"AuxiliaryField",
+            "textAlignment":"PKTextAlignmentRight"
+         },
+         {
+            "key":"Key2",
+            "label":"Created date",
+            "value":"2014-04-20T23:20+03:00",
+            "dateStyle":"PKDateStyleShort",
+            "isRelative":false,
+            "timeStyle":"PKDateStyleNone"
+         },
+         {
+            "key":"Key3",
+            "label":"Balance",
+            "value":10,
+            "currencyCode":"USD"
+         }
+      ],
+      "backFields":[
+         {
+            "attributedValue":"<a href = \"http://example.com/customers/123\"> Edit my profile </a>",
+            "changeMessage":"Gate changed to %@.",
+            "key":"Key4",
+            "label":"Field",
+            "value":"BackField",
+            "textAlignment":"PKTextAlignmentRight"
+         },
+         {
+            "key":"Key5",
+            "label":"Created date",
+            "value":"2014-04-20T23:20+03:00",
+            "dateStyle":"PKDateStyleShort",
+            "isRelative":false,
+            "timeStyle":"PKDateStyleNone"
+         },
+         {
+            "key":"Key6",
+            "label":"Balance",
+            "value":10,
+            "currencyCode":"USD"
+         },
+         {
+            "key":"Key01",
+            "label":"Label$$Key01$$",
+            "value":"Value$$Key01$$"
+         }
+      ],
+      "headerFields":[
+         {
+            "changeMessage":"Gate changed to %@.",
+            "key":"Key7",
+            "label":"Field",
+            "value":"HeaderField",
+            "textAlignment":"PKTextAlignmentRight"
+         }
+      ],
+      "primaryFields":[
+         {
+            "changeMessage":"Gate changed to %@.",
+            "key":"Key8",
+            "label":"Field",
+            "value":"PrimaryField",
+            "textAlignment":"PKTextAlignmentRight"
+         }
+      ],
+      "secondaryFields":[
+         {
+            "changeMessage":"Gate changed to %@.",
+            "key":"Key9",
+            "label":"Field",
+            "value":"SecondaryField",
+            "textAlignment":"PKTextAlignmentRight"
+         }
+      ]
+   },
+   "barcode":{
+      "altText":"Some text",
+      "format":"PKBarcodeFormatPDF417",
+      "message":"Text to encode",
+      "messageEncoding":"UTF-8"
+   },
+   "backgroundColor":"rgb(230, 230, 250)",
+   "foregroundColor":"rgb(112, 128, 144)",
+   "labelColor":"rgb(0, 128, 128)",
+   "logoText":"Passlight",
+   "authenticationToken":"vxwxd7J8AlNNFPS85u0ewzFdc",
+   "webServiceURL":"http://denis-pc/Pass.Processing.Web/"
+}

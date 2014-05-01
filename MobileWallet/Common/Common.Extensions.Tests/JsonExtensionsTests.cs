@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using NUnit.Framework;
 
 namespace Common.Extensions.Tests
 {
@@ -36,6 +37,20 @@ namespace Common.Extensions.Tests
             Assert.AreEqual("Name1", obj.Name);
             Assert.AreEqual(1, obj.Value);
         }
+
+        /*
+        [Test]
+        public void Test1()
+        {
+            var d = new Dictionary<string, string>()
+                    {
+                        {"K1", "V1"},
+                        {"K2", "V2"}
+                    };
+            string s = d.ObjectToJson();
+            var d2 = s.JsonToObject<Dictionary<string, string>>();
+        }
+        */
 
     }
 }

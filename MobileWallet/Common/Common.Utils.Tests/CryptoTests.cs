@@ -29,5 +29,13 @@ namespace Common.Utils.Tests
             decrypted = Crypto.DecryptString(encrypted, key, iv);
             Assert.AreNotEqual(textToEncrypt, decrypted);
         }
+
+        [Test]
+        public void CalculateHashTest()
+        {
+            var data = new byte[]{1,2,3,4,5};
+            string hashCode = Crypto.CalculateHash(data);
+            Assert.AreEqual("11966ab9c099f8fabefac54c08d5be2bd8c903af", hashCode);
+        }
     }
 }

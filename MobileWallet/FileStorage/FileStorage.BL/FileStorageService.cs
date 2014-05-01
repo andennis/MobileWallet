@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using Common.Repository;
+using Common.Utils;
 using FileStorage.Core;
 using FileStorage.Repository.Core;
 using FileStorage.Repository.Core.Entities;
@@ -109,7 +110,7 @@ namespace FileStorage.BL
             if (moveFolder)
                 Directory.Move(srcFolderPath, dstPath);
             else
-                DirectoryCopy(srcFolderPath, dstPath, true);
+                FileHelper.DirectoryCopy(srcFolderPath, dstPath, true);
 
             //Save new storage item (folder) to database
             var newStorageItem = new StorageItem()
@@ -169,7 +170,7 @@ namespace FileStorage.BL
                 if (move)
                     Directory.Move(srcDirOrFilePath, dstDirPath);
                 else
-                    DirectoryCopy(srcDirOrFilePath, dstDirPath, true);
+                    FileHelper.DirectoryCopy(srcDirOrFilePath, dstDirPath, true);
             }
             else
             {
@@ -198,11 +199,11 @@ namespace FileStorage.BL
             throw new NotImplementedException();
         }
 
+        /*
         private static void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs)
         {
             // Get the subdirectories for the specified directory.
             var srcDirInfo = new DirectoryInfo(sourceDirName);
-            DirectoryInfo[] dirs = srcDirInfo.GetDirectories();
 
             if (!srcDirInfo.Exists)
                 throw new DirectoryNotFoundException("Source directory does not exist or could not be found: " + sourceDirName);
@@ -222,6 +223,7 @@ namespace FileStorage.BL
             // If copying subdirectories, copy them and their contents to new location. 
             if (copySubDirs)
             {
+                DirectoryInfo[] dirs = srcDirInfo.GetDirectories();
                 foreach (DirectoryInfo subdir in dirs)
                 {
                     string temppath = Path.Combine(destDirName, subdir.Name);
@@ -229,7 +231,7 @@ namespace FileStorage.BL
                 }
             }
         }
-
+        */
         private string GetNewStorageItemPath(out FolderItem parentFolder)
         {
             //Get the folder where the file should be placed
@@ -306,8 +308,7 @@ namespace FileStorage.BL
 
         private string GenerateFolderName()
         {
-            string name = Path.GetRandomFileName();
-            return /*FolderItemPrefix +*/ name.Remove(name.Length - 4, 1);
+            return FileHelper.GetRandomFolderName();
         }
 
         #region IDisposable
