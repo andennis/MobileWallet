@@ -69,15 +69,7 @@ namespace Pass.Container.BL
                 Directory.Delete(dstTemplatePath, true);
 
             Directory.CreateDirectory(dstTemplatePath);
-            FileHelper.DirectoryCopy(srcTemplateFolderPath, dstTemplatePath, true);
-
-            /*
-            foreach (string srcFilePath in Directory.EnumerateFiles(srcTemplateFolderPath))
-            {
-                string fileName = Path.GetFileName(srcFilePath);
-                File.Copy(srcFilePath, Path.Combine(templatePath, fileName));
-            }
-            */
+            FileHelper.DirectoryCopy(srcTemplateFolderPath, dstTemplatePath, true, true);
         }
         private void GetTemplateFiles(int templateStorageId, string srcTemplateFolderName, string dstTemplateFolderPath)
         {
@@ -89,15 +81,7 @@ namespace Pass.Container.BL
             if (!Directory.Exists(srcTemplatePath))
                 throw new PassTemplateException(string.Format("Directory '{0}' not found", srcTemplatePath));
 
-            FileHelper.DirectoryCopy(srcTemplatePath, dstTemplateFolderPath, true);
-
-            /*
-            foreach (string srcFilePath in Directory.EnumerateFiles(templatePath))
-            {
-                string fileName = Path.GetFileName(srcFilePath);
-                File.Copy(srcFilePath, Path.Combine(dstTemplateFolderPath, fileName));
-            }
-            */
+            FileHelper.DirectoryCopy(srcTemplatePath, dstTemplateFolderPath, true, true);
         }
     }
 }

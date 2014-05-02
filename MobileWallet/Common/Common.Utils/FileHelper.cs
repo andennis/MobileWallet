@@ -4,35 +4,30 @@ namespace Common.Utils
 {
     public static class FileHelper
     {
-        public static void DirectoryCopy(string sourceDir, string destDir, bool copySubDirs)
+        public static void DirectoryCopy(string sourceDir, string destDir, bool copySubDirs, bool overwrite = false)
         {
-            // Get the subdirectories for the specified directory.
             var srcDirInfo = new DirectoryInfo(sourceDir);
-
             if (!srcDirInfo.Exists)
                 throw new DirectoryNotFoundException("Source directory does not exist or could not be found: " + sourceDir);
 
-            // If the destination directory doesn't exist, create it. 
             if (!Directory.Exists(destDir))
                 Directory.CreateDirectory(destDir);
 
-            // Get the files in the directory and copy them to the new location.
-            FileInfo[] files = srcDirInfo.GetFiles();
-            foreach (FileInfo file in files)
+            //Copy files
+            foreach (FileInfo file in srcDirInfo.EnumerateFiles())
             {
-                string temppath = Path.Combine(destDir, file.Name);
-                file.CopyTo(temppath, false);
+                string dstPath = Path.Combine(destDir, file.Name);
+                file.CopyTo(dstPath, overwrite);
             }
 
-            // If copying subdirectories, copy them and their contents to new location. 
-            if (copySubDirs)
+            if (!copySubDirs)
+                return;
+
+            //Copy subdirectories and their child directories and files
+            foreach (DirectoryInfo subdir in srcDirInfo.EnumerateDirectories())
             {
-                DirectoryInfo[] dirs = srcDirInfo.GetDirectories();
-                foreach (DirectoryInfo subdir in dirs)
-                {
-                    string temppath = Path.Combine(destDir, subdir.Name);
-                    DirectoryCopy(subdir.FullName, temppath, true);
-                }
+                string dstPath = Path.Combine(destDir, subdir.Name);
+                DirectoryCopy(subdir.FullName, dstPath, true, overwrite);
             }
         }
 

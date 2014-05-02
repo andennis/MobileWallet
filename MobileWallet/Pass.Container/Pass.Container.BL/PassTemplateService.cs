@@ -63,7 +63,7 @@ namespace Pass.Container.BL
                 string dstNativeTemplatePath = Path.Combine(dstTemplatePath, templateGenerator.ClientType.ToString());
                 Directory.CreateDirectory(dstNativeTemplatePath);
 
-                FileHelper.DirectoryCopy(srcImageFilesPath, Path.Combine(dstNativeTemplatePath, ApplePass.TemplateImageFolder), false);
+                FileHelper.DirectoryCopy(srcImageFilesPath, Path.Combine(dstNativeTemplatePath, ApplePass.TemplateImageFolder), false, true);
 
                 templateGenerator.Generate(generalPassTemplate, Directory.EnumerateFiles(srcImageFilesPath), dstNativeTemplatePath);
                 _ptsService.PutNativeTemplateFiles(templateStorageId, templateGenerator.ClientType, dstNativeTemplatePath);
@@ -232,7 +232,7 @@ namespace Pass.Container.BL
             return templateStorageItemId;
         }
         */
-        private List<string> GetDynamicFields(GeneralPassTemplate generalPassTemplate)
+        private IEnumerable<string> GetDynamicFields(GeneralPassTemplate generalPassTemplate)
         {
             var dynamicFields = new List<string>();
             if (generalPassTemplate.FieldDetails == null)

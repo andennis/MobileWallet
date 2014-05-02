@@ -42,7 +42,7 @@ namespace CertificateStorage.BL
             string psw = certInfo.Password.ConvertToUnsecureString();
             cert.Password = Crypto.EncryptString(psw, _config.SecurityKey, SecurityVector);
             cert.Status = EntityStatus.Active;
-            cert.FileId = _fileStorageService.PutFile(certInfo.CertificateFile);
+            cert.FileId = _fileStorageService.Put(certInfo.CertificateFile);
             _certRepository.Insert(cert);
             _unitOfWork.Save();
 
@@ -83,7 +83,7 @@ namespace CertificateStorage.BL
 
             int oldFileId = cert.FileId;
             if (certInfo.CertificateFile != null)
-                cert.FileId = _fileStorageService.PutFile(certInfo.CertificateFile);
+                cert.FileId = _fileStorageService.Put(certInfo.CertificateFile);
 
             _certRepository.Update(cert);
             _unitOfWork.Save();

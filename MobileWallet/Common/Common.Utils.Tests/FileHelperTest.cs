@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using NUnit.Framework;
 
 namespace Common.Utils.Tests
@@ -32,6 +27,9 @@ namespace Common.Utils.Tests
             Assert.True(Directory.Exists(Path.Combine(TestTempFolder, "Dir11")));
             Assert.True(File.Exists(Path.Combine(TestTempFolder, "TextFile1.txt")));
             Assert.True(File.Exists(Path.Combine(TestTempFolder, "Dir11", "TextFile11.txt")));
+
+            Assert.Throws<IOException>(() => FileHelper.DirectoryCopy(srcDir, TestTempFolder, true, false));
+            Assert.DoesNotThrow(() => FileHelper.DirectoryCopy(srcDir, TestTempFolder, true, true));
 
             Directory.Delete(TestTempFolder, true);
             Directory.CreateDirectory(TestTempFolder);
