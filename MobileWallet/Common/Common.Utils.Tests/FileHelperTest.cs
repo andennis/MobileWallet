@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Linq;
 using NUnit.Framework;
 
 namespace Common.Utils.Tests
@@ -37,6 +38,17 @@ namespace Common.Utils.Tests
             Assert.DoesNotThrow(() => FileHelper.DirectoryCopy(srcDir, TestTempFolder, false));
             Assert.False(Directory.Exists(Path.Combine(TestTempFolder, "Dir11")));
             Assert.True(File.Exists(Path.Combine(TestTempFolder, "TextFile1.txt")));
+        }
+
+        [Test]
+        public void CopyFilesToDirectoryTest()
+        {
+            string dstPath = Path.Combine(TestTempFolder, "F1");
+            string[] files1 =  Directory.GetFiles(Path.Combine(TestFolder, "Dir1"));
+            FileHelper.CopyFilesToDirectory(files1, dstPath, true);
+
+            string[] files2 = Directory.GetFiles(dstPath);
+            CollectionAssert.AreEqual(files1.Select(Path.GetFileName), files2.Select(Path.GetFileName));
         }
 
         [Test]

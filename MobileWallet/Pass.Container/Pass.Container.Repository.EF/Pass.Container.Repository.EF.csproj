@@ -51,6 +51,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MigrationsContextFactory.cs" />
+    <Compile Include="Migrations\201404221335571_InitialCreate.cs" />
+    <Compile Include="Migrations\201404221335571_InitialCreate.Designer.cs">
+      <DependentUpon>201404221335571_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201405031306065_M1.cs" />
+    <Compile Include="Migrations\201405031306065_M1.Designer.cs">
+      <DependentUpon>201405031306065_M1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201405031653558_M2.cs" />
+    <Compile Include="Migrations\201405031653558_M2.Designer.cs">
+      <DependentUpon>201405031653558_M2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PassContainerDbContext.cs" />
     <Compile Include="PassContainerUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,6 +85,17 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201404221335571_InitialCreate.resx">
+      <DependentUpon>201404221335571_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405031306065_M1.resx">
+      <DependentUpon>201405031306065_M1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405031653558_M2.resx">
+      <DependentUpon>201405031653558_M2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

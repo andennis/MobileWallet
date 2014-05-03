@@ -72,7 +72,7 @@ namespace Pass.Container.BL.PassGenerators
                 throw new ArgumentNullException("serialNumber");
 
             //Load pass template content file
-            string filePath = Path.Combine(_templateFilesPath, ApplePass.TemplateFileName);
+            string filePath = Path.Combine(_templateFilesPath, ApplePass.PassTemplateFileName);
             if (!File.Exists(filePath))
                 throw new PassContainerException(string.Format("File '{0}' not found", filePath));
 

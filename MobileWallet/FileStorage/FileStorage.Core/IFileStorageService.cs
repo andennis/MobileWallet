@@ -25,6 +25,7 @@ namespace FileStorage.Core
         /// <param name="dstDirPath">directory path in scope of storage item(folder)</param>
         /// <param name="move">Move files and directories if True or copy if False</param>
         void PutToStorageFolder(int itemId, string srcFileOrDirPath, string dstDirPath, bool move = false);
+        void ClearStorageFolder(int itemId);
 
         void DeleteStorageItem(int itemId);
         void PurgeDeletedItems();

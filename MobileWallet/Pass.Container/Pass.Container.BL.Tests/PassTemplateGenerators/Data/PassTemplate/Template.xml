@@ -1,14 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <passTemplate xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.mobilewallet.com">
   <organizationName>Organization name</organizationName>
-  <templateName>Template1</templateName>
+  <templateName>Template name</templateName>
   <templateDescription>Template description</templateDescription>
   <passType>coupon</passType>
   <passDescription>Pass description</passDescription>
   <passSerialNumberType>autoGgenerated</passSerialNumberType>
   <passTypeIdentifier>pass.com.passlight.dev.test</passTypeIdentifier>
   <teamIdentifier>YHQB764QFA</teamIdentifier>
-  <certificateId>111</certificateId>
   <backgroundColor>-1644806</backgroundColor>
   <labelTextColor>-16744320</labelTextColor>
   <valueTextColor>-9404272</valueTextColor>
@@ -139,9 +138,9 @@
       </field>
       <field>
         <key>Key01</key>
-        <label>LKey01</label>
+        <label>DynamicField</label>
         <isDynamicLabel xsi:nil="true" />
-        <value>VKey01</value>
+        <value>Test</value>
         <isDynamicValue>true</isDynamicValue>
         <textAlignment xsi:nil="true" />
         <type>text</type>

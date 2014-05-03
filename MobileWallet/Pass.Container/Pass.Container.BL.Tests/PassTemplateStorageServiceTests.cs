@@ -17,7 +17,7 @@ namespace Pass.Container.BL.Tests
         [TestFixtureSetUp]
         public void InitAllTests()
         {
-            _tsService = PassContainerFactory.GetPassTemplateStorageService();
+            _tsService = PassContainerFactory.CreatePassTemplateStorageService();
         }
 
         [Test]

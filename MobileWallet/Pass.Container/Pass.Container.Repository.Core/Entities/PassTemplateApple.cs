@@ -3,6 +3,5 @@
     public sealed class PassTemplateApple : PassTemplateNative
     {
         public string PassTypeId { get; set; }
-        public int CertificateStorageItemId { get; set; }
     }
 }

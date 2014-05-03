@@ -185,6 +185,12 @@ namespace FileStorage.BL
                     File.Copy(srcFileOrDirPath, dstDirPath);
             }
         }
+        public void ClearStorageFolder(int itemId)
+        {
+            string dstStorageFolder = GetStorageItemPath(itemId);
+            Directory.Delete(dstStorageFolder, true);
+            Directory.CreateDirectory(dstStorageFolder);
+        }
 
         public void DeleteStorageItem(int itemId)
         {

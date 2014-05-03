@@ -270,6 +270,27 @@ namespace FileStorage.BL.Tests
         }
 
         [Test]
+        public void ClearStorageFolderTest()
+        {
+            using (var fsService = GetFileStorageService())
+            {
+                //Create storage folder
+                int id = fsService.Put(TestFolderBase);
+                string strorageFolderPath = fsService.GetStorageItemPath(id);
+
+                CollectionAssert.IsNotEmpty(Directory.GetFiles(strorageFolderPath));
+                CollectionAssert.IsNotEmpty(Directory.GetDirectories(strorageFolderPath)); 
+
+                //Clear storage folder
+                Assert.DoesNotThrow(() => fsService.ClearStorageFolder(id));
+                Assert.True(Directory.Exists(strorageFolderPath));
+
+                CollectionAssert.IsEmpty(Directory.GetFiles(strorageFolderPath));
+                CollectionAssert.IsEmpty(Directory.GetDirectories(strorageFolderPath)); 
+            }
+        }
+
+        [Test]
         public void GetFilePathTest()
         {
             using (var fsService = GetFileStorageService())

@@ -7,6 +7,6 @@ namespace Pass.Container.Core
     public interface IPassTemplateGenerator
     {
         ClientType ClientType { get; }
-        void Generate(GeneralPassTemplate passTemplate, IEnumerable<string> imageFiles, string dstTemplateFilesPath);
+        void Generate(GeneralPassTemplate generalTemplate, IEnumerable<string> imageFiles, string dstTemplateFilesPath);
     }
 }

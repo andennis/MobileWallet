@@ -46,18 +46,30 @@ namespace Pass.Container.BL.PassTemplateGenerators
             get { return ClientType.Apple; }
         }
 
-        public void Generate(GeneralPassTemplate passTemplate, IEnumerable<string> imageFiles, string dstTemplateFilesPath)
+        public void Generate(GeneralPassTemplate generalTemplate, IEnumerable<string> imageFiles, string dstTemplateFilesPath)
         {
+            if (generalTemplate == null)
+                throw new ArgumentNullException("generalTemplate");
+            if (dstTemplateFilesPath == null)
+                throw new ArgumentNullException("dstTemplateFilesPath");
+
             //Build Apple pass template
-            ApplePassTemplate applePassTemplate = CreateApplePassTemplate(passTemplate);
+            ApplePassTemplate applePassTemplate = CreateApplePassTemplate(generalTemplate);
             string passContent = applePassTemplate.ObjectToJson();
-            string passContentFile = Path.Combine(dstTemplateFilesPath, ApplePass.TemplateFileName);
+            string passContentFile = Path.Combine(dstTemplateFilesPath, ApplePass.PassTemplateFileName);
             File.WriteAllText(passContentFile, passContent);
 
             //Build manifest for images
-            string manifest = BuildManifest(imageFiles);
-            string manifestFilePath = Path.Combine(dstTemplateFilesPath, ApplePass.ManifestTemplateFileName);
-            File.WriteAllText(manifestFilePath, manifest);
+            if (imageFiles != null && imageFiles.Any())
+            {
+                string manifest = BuildManifest(imageFiles);
+                string manifestFilePath = Path.Combine(dstTemplateFilesPath, ApplePass.ManifestTemplateFileName);
+                File.WriteAllText(manifestFilePath, manifest);
+
+                //Copy image files
+                string dstImageFilesPath = Path.Combine(dstTemplateFilesPath, ApplePass.TemplateImageFolder);
+                FileHelper.CopyFilesToDirectory(imageFiles, dstImageFilesPath, true);
+            }
         }
 
         private string BuildManifest(IEnumerable<string> files)
@@ -80,6 +92,7 @@ namespace Pass.Container.BL.PassTemplateGenerators
         {
             var applePassTemplate = new ApplePassTemplate();
             //Standard Keys
+            //TODO ApplePassTemplateWebServerUrl should be moved to pass generation logic
             applePassTemplate.WebServiceUrl = _ptConfig.ApplePassTemplateWebServerUrl;
             applePassTemplate.AuthenticationToken = GetAuthenticationToken(passTemplate);
             applePassTemplate.Description = passTemplate.PassDescription;

@@ -59,6 +59,7 @@
     <Compile Include="PassCertificateServiceTests.cs" />
     <Compile Include="PassGenerators\ApplePassGeneratorTests.cs" />
     <Compile Include="PassGenerators\PassGeneratorsTests.cs" />
+    <Compile Include="PassTemplateGenerators\ApplePassTemplateGeneratorTests.cs" />
     <Compile Include="PassTemplateGenerators\PassTemplateGeneratorsTests.cs" />
     <Compile Include="PassContainerConfigTests.cs" />
     <Compile Include="PassContainerServiceTests.cs" />
@@ -83,6 +84,10 @@
     <ProjectReference Include="..\..\Common\Common.Repository\Common.Repository.csproj">
       <Project>{F36371D6-812F-49F5-9E9B-043265660647}</Project>
       <Name>Common.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Common.Utils\Common.Utils.csproj">
+      <Project>{f1cad860-50fc-456c-96cd-1332cc48d03f}</Project>
+      <Name>Common.Utils</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\FileStorage\FileStorage.BL.Tests\FileStorage.BL.Tests.csproj">
       <Project>{daef4d0d-c211-4dcd-9eb5-9736c66adf61}</Project>
@@ -194,6 +199,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\TemplateStorage\Base\BaseFile2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PassTemplateGenerators\Data\PassTemplate\Images\icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PassTemplateGenerators\Data\PassTemplate\Template.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="TestCertificates\Apple\pass.com.passlight.dev.test\CertificatePassword.txt" />
