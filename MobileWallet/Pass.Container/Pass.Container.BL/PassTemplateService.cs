@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using CertificateStorage.Core;
+using CertificateStorage.Core.Entities;
 using Common.Extensions;
 using Common.Repository;
 using Common.Utils;
@@ -9,6 +11,7 @@ using Pass.Container.BL.Helpers;
 using Pass.Container.BL.PassTemplateGenerators;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
+using Pass.Container.Core.Entities.Enums;
 using Pass.Container.Core.Entities.Templates.GeneralPassTemplate;
 using Pass.Container.Core.Exceptions;
 using Pass.Container.Repository.Core;
@@ -23,18 +26,25 @@ namespace Pass.Container.BL
         private readonly IPassTemplateConfig _ptConfig;
         private readonly IPassContainerUnitOfWork _pcUnitOfWork;
         private readonly IPassTemplateStorageService _ptsService;
+        private readonly ICertificateStorageService _csService;
+
         //Repositories
         private readonly IRepository<PassTemplate> _repPassTemplate;
         private readonly IRepository<PassTemplateApple> _repPassTemplateApple;
         private readonly IRepository<PassField> _repPassField;
+
         //Native pass template generators
         private readonly IList<IPassTemplateGenerator> _passTemplateGenerators;
 
-        public PassTemplateService(IPassTemplateConfig config, IPassContainerUnitOfWork pcUnitOfWork, IPassTemplateStorageService ptsService)
+        public PassTemplateService(IPassTemplateConfig config, 
+            IPassContainerUnitOfWork pcUnitOfWork, 
+            IPassTemplateStorageService ptsService,
+            ICertificateStorageService csService)
         {
             _ptConfig = config;
             _pcUnitOfWork = pcUnitOfWork;
             _ptsService = ptsService;
+            _csService = csService;
 
             //Repositories
             _repPassTemplate = _pcUnitOfWork.GetRepository<PassTemplate>();
@@ -71,7 +81,7 @@ namespace Pass.Container.BL
                                         PassTemplateId = passTemplate.PassTemplateId, 
                                         ClientType = ClientDeviceType.Apple,
                                         PassTypeId = generalPassTemplate.PassTypeIdentifier,
-                                        CertificateId = generalPassTemplate.CertificateId
+                                        CertificateId = GetCertificateId(generalPassTemplate, ClientType.Apple)
                                     };
 
             IEnumerable<GeneralField> dynamicFields = GetDynamicFields(generalPassTemplate);
@@ -95,6 +105,9 @@ namespace Pass.Container.BL
 
         public void UpdatePassTemlate(int passTemplateId, string passTemplatePath)
         {
+            if (passTemplatePath == null)
+                throw new ArgumentNullException("passTemplatePath");
+
             PassTemplate passTemplate = _repPassTemplate.Query()
                 .Include(x => x.PassFields)
                 .Filter(x => x.PassTemplateId == passTemplateId)
@@ -152,7 +165,7 @@ namespace Pass.Container.BL
             if (passTemplateApple == null)
                 throw new PassTemplateException("Apple native template record does not exist");
 
-            passTemplateApple.CertificateId = generalPassTemplate.CertificateId;
+            passTemplateApple.CertificateId = GetCertificateId(generalPassTemplate, ClientType.Apple);
             passTemplateApple.PassTypeId = generalPassTemplate.PassTypeIdentifier;
             _repPassTemplateApple.Update(passTemplateApple);
 
@@ -206,7 +219,7 @@ namespace Pass.Container.BL
                 .ToList();
         }
 
-        public bool ValidatePassTemplate(string passTemplateFilePath)
+        private bool ValidatePassTemplate(string passTemplateFilePath)
         {
             //TODO Pass template validation
             //check different key in field
@@ -244,6 +257,19 @@ namespace Pass.Container.BL
         private string GetTemporaryTemplateFolder()
         {
             return FileHelper.GetRandomFolderName();
+        }
+
+        private int GetCertificateId(GeneralPassTemplate genPassTemplate, ClientType clientType)
+        {
+            if (clientType != ClientType.Apple)
+                throw new PassTemplateException(string.Format("Client type: {0} is not supported", clientType));
+            
+            string certName = string.Format("TID{0}/PTID{1}", genPassTemplate.TeamIdentifier,
+                genPassTemplate.PassTypeIdentifier);
+            using (CertificateInfo certInfo = _csService.Read(certName))
+            {
+                return certInfo.CertificateId;
+            }
         }
 
         #region IDisposable

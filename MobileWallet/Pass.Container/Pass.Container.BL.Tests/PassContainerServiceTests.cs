@@ -67,7 +67,7 @@ namespace Pass.Container.BL.Tests
 
         private IPassTemplateService GetPassTemplateService()
         {
-            return PassContainerFactory.CreateTemplateService(new PassContainerConfig(), _fsConfig);
+            return PassContainerFactory.CreateTemplateService(null);
         }
 
     }

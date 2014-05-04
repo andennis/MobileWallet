@@ -7,7 +7,8 @@ namespace CertificateStorage.Core
     {
         int Put(CertificateInfo certInfo);
         CertificateInfo Read(int certId);
-        void Update(int certId, CertificateInfo certInfo);
+        CertificateInfo Read(string certName);
+        void Update(CertificateInfo certInfo);
         void Delete(int certId);
     }
 }

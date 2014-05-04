@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using CertificateStorage.Core;
 using CertificateStorage.Core.Entities;
 using CertificateStorage.Repository.Core;
@@ -57,25 +59,43 @@ namespace CertificateStorage.BL
             if (cert.Status == EntityStatus.Deleted)
                 throw new CertificateStorageException(string.Format("Certificate ID:{0} was deleted", certId));
 
-            var certInfo = new CertificateInfo() {Name = cert.Name};
+            return ConvertTo(cert);
+        }
+
+        public CertificateInfo Read(string certName)
+        {
+            if (certName == null)
+                throw new ArgumentNullException("certName");
+
+            Certificate cert = _certRepository.Query().Filter(x => x.Name == certName).Get().FirstOrDefault();
+            if (cert == null)
+                throw new CertificateStorageException(string.Format("Certificate Name:'{0}' not found", certName));
+            if (cert.Status == EntityStatus.Deleted)
+                throw new CertificateStorageException(string.Format("Certificate Name:{0} was deleted", certName));
+
+            return ConvertTo(cert);
+        }
+
+        private CertificateInfo ConvertTo(Certificate cert)
+        {
+            var certInfo = new CertificateInfo() { CertificateId = cert.CertificateId, Name = cert.Name };
             string psw = Crypto.DecryptString(cert.Password, _config.SecurityKey, SecurityVector);
             certInfo.Password = psw.ConvertToSecureString();
             string certFilePath = _fileStorageService.GetStorageItemPath(cert.FileId);
             certInfo.CertificateFile = new FileStream(certFilePath, FileMode.Open, FileAccess.Read);
-
             return certInfo;
         }
 
-        public void Update(int certId, CertificateInfo certInfo)
+        public void Update(CertificateInfo certInfo)
         {
             if (certInfo == null)
                 throw new ArgumentNullException("certInfo");
 
-            Certificate cert = _certRepository.Find(certId);
+            Certificate cert = _certRepository.Find(certInfo.CertificateId);
             if (cert == null)
-                throw new CertificateStorageException(string.Format("Certificate ID:{0} not found", certId));
+                throw new CertificateStorageException(string.Format("Certificate ID:{0} not found", certInfo.CertificateId));
             if (cert.Status == EntityStatus.Deleted)
-                throw new CertificateStorageException(string.Format("Certificate ID:{0} was deleted", certId));
+                throw new CertificateStorageException(string.Format("Certificate ID:{0} was deleted", certInfo.CertificateId));
 
             cert.Name = certInfo.Name;
             string psw = certInfo.Password.ConvertToUnsecureString();
@@ -94,14 +114,15 @@ namespace CertificateStorage.BL
 
         public void Delete(int certId)
         {
-            Certificate cert = _certRepository.Find(certId);
+            Certificate cert = _certRepository.Query()
+                .Filter(x => x.CertificateId == certId && x.Status != EntityStatus.Deleted)
+                .Get().FirstOrDefault();
             if (cert == null)
                 return;
 
-            _certRepository.Delete(cert);
+            cert.Status = EntityStatus.Deleted;
+            _certRepository.Update(cert);
             _unitOfWork.Save();
-
-            _fileStorageService.DeleteStorageItem(cert.FileId);
         }
 
         #region IDisposable

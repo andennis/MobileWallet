@@ -32,7 +32,7 @@ namespace CertificateStorage.BL.Tests
             const string psw = "Psw1";
 
             //Put
-            var cert = new CertificateInfo() {Name = "N1", Password = psw.ConvertToSecureString()};
+            var cert = new CertificateInfo() { Name = Guid.NewGuid().ToString(), Password = psw.ConvertToSecureString() };
             Assert.Throws<CertificateStorageException>(() => _certService.Put(cert));
 
             using (var fs = new FileStream(TestFile1, FileMode.Open, FileAccess.Read))
@@ -42,7 +42,7 @@ namespace CertificateStorage.BL.Tests
                 Assert.Greater(certId, 0);
             }
 
-            //Read
+            //Read by ID
             using (CertificateInfo cert2 = _certService.Read(certId))
             {
                 Assert.IsNotNull(cert2);
@@ -55,22 +55,40 @@ namespace CertificateStorage.BL.Tests
                 Assert.AreEqual("Hello!!!", fileContent);
             }
 
+            //Read by name
+            using (CertificateInfo cert3 = _certService.Read(cert.Name))
+            {
+                Assert.IsNotNull(cert3);
+                Assert.AreEqual(cert.Name, cert3.Name);
+                Assert.AreEqual(psw, cert3.Password.ConvertToUnsecureString());
+                Assert.IsNotNull(cert3.CertificateFile);
+
+                var sr = new StreamReader(cert3.CertificateFile);
+                string fileContent = sr.ReadToEnd();
+                Assert.AreEqual("Hello!!!", fileContent);
+            }
+
             Assert.Throws<CertificateStorageException>(() => _certService.Read(-1));
         }
 
         [Test]
         public void UpdateTest()
         {
-            Assert.Throws<ArgumentNullException>(() => _certService.Update(-1, null));
-            Assert.Throws<CertificateStorageException>(() => _certService.Update(-1, new CertificateInfo()));
+            Assert.Throws<ArgumentNullException>(() => _certService.Update(null));
+            Assert.Throws<CertificateStorageException>(() => _certService.Update(new CertificateInfo()));
 
-            int certId = PutCertificate("Cer1", "123", TestFile1);
+            int certId = PutCertificate(Guid.NewGuid().ToString(), "123", TestFile1);
 
             const string psw = "321";
-            var cert1 = new CertificateInfo() {Name = "Cert2", Password = psw.ConvertToSecureString()};
+            var cert1 = new CertificateInfo()
+                        {
+                            CertificateId = certId, 
+                            Name = Guid.NewGuid().ToString(), 
+                            Password = psw.ConvertToSecureString()
+                        };
 
             //Update only password and name
-            Assert.DoesNotThrow(() => _certService.Update(certId, cert1));
+            Assert.DoesNotThrow(() => _certService.Update(cert1));
             using (CertificateInfo cert2 = _certService.Read(certId))
             {
                 Assert.IsNotNull(cert2);
@@ -87,7 +105,7 @@ namespace CertificateStorage.BL.Tests
             using (var fs = new FileStream(TestFile2, FileMode.Open, FileAccess.Read))
             {
                 cert1.CertificateFile = fs;
-                Assert.DoesNotThrow(() => _certService.Update(certId, cert1));
+                Assert.DoesNotThrow(() => _certService.Update(cert1));
             }
             using (CertificateInfo cert2 = _certService.Read(certId))
             {
@@ -105,7 +123,7 @@ namespace CertificateStorage.BL.Tests
         [Test]
         public void DeleteTest()
         {
-            int certId = PutCertificate("Cer1", "123", TestFile1);
+            int certId = PutCertificate(Guid.NewGuid().ToString(), "123", TestFile1);
             Assert.DoesNotThrow(() => _certService.Read(certId));
 
             _certService.Delete(certId);
@@ -114,8 +132,8 @@ namespace CertificateStorage.BL.Tests
 
         private int PutCertificate(string name, string password, string filePath)
         {
-            var cert = new CertificateInfo() { Name = "N1", Password = password.ConvertToSecureString() };
-            using (var fs = new FileStream(TestFile1, FileMode.Open, FileAccess.Read))
+            var cert = new CertificateInfo() { Name = name, Password = password.ConvertToSecureString() };
+            using (var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
             {
                 cert.CertificateFile = fs;
                 return _certService.Put(cert);

@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using Common.Repository;
-using FileStorage.Core;
 using Pass.Container.BL.PassGenerators;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
@@ -20,19 +19,16 @@ namespace Pass.Container.BL
     {
         private readonly IPassContainerConfig _config;
         private readonly IPassContainerUnitOfWork _pcUnitOfWork;
-        private readonly IFileStorageService _fileStorageService;
         private readonly IPassCertificateService _certService;
         private readonly IPassTemplateStorageService _templateStorageService;
 
         public PassContainerService(IPassContainerConfig config, 
             IPassContainerUnitOfWork pcUnitOfWork, 
-            IFileStorageService fileStorageService,
             IPassCertificateService certService,
             IPassTemplateStorageService templateStorageService)
         {
             _config = config;
             _pcUnitOfWork = pcUnitOfWork;
-            _fileStorageService = fileStorageService;
             _certService = certService;
             _templateStorageService = templateStorageService;
         }

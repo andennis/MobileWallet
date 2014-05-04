@@ -100,7 +100,7 @@ namespace Pass.Container.BL.Tests
 
         private IPassTemplateService GetPassTemplateService()
         {
-            return PassContainerFactory.CreateTemplateService(new PassContainerConfig(), new FileStorageConfig());
+            return PassContainerFactory.CreateTemplateService(null);
         }
 
         private IApplePassProcessingService GetAppleDevicePassProcessingService()
@@ -108,9 +108,5 @@ namespace Pass.Container.BL.Tests
             return PassContainerFactory.CreateApplePassProcessingService(new PassContainerConfig(), new FileStorageConfig());
         }
 
-        private IFileStorageService GetFileStorageService()
-        {
-            return FileStorageFactory.Create(new FileStorageConfig());
-        }
     }
 }

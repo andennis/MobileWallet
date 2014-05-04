@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Pass.Container.Core.Entities;
+﻿using Pass.Container.Core.Entities;
 using Pass.Container.Core.Entities.Enums;
 using Pass.Container.Repository.Core.Entities;
 
