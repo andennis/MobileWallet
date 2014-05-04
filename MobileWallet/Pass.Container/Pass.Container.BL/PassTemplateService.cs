@@ -264,7 +264,7 @@ namespace Pass.Container.BL
             if (clientType != ClientType.Apple)
                 throw new PassTemplateException(string.Format("Client type: {0} is not supported", clientType));
             
-            string certName = string.Format("TID{0}/PTID{1}", genPassTemplate.TeamIdentifier,
+            string certName = string.Format("TID#{0}/PTID#{1}", genPassTemplate.TeamIdentifier,
                 genPassTemplate.PassTypeIdentifier);
             using (CertificateInfo certInfo = _csService.Read(certName))
             {

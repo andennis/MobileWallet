@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Security.Cryptography.X509Certificates;
 using Common.Extensions;
 using FileStorage.BL;
 using FileStorage.BL.Tests;
@@ -50,6 +51,13 @@ namespace Pass.Container.BL.Tests
             string generalPathTemplateFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestTemplates", "Template1", "TestTemplate1.xml");
             var generalPassTemplate = generalPathTemplateFilePath.LoadFromXml<GeneralPassTemplate>();           
             return generalPassTemplate;
+        }
+
+        public static X509Certificate2 GetCertificateApple()
+        {
+            return new X509Certificate2(CertificateFileApple,
+                CertificateApplePassword,
+                X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.Exportable);
         }
 
         public static void ClearFileStorage(IFileStorageConfig fsConfig)

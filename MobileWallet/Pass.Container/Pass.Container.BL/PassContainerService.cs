@@ -79,15 +79,6 @@ namespace Pass.Container.BL
                 repPassFieldVal.Insert(pfv);
             }
 
-            /*
-            foreach (PassFieldInfo fieldValue in fieldValues)
-            {
-                PassFieldValue pfv = EntityConverter.PassFieldInfoToRepositoryFieldValue(fieldValue);
-                pfv.PassId = pass.PassId;
-                repPassFieldVal.Insert(pfv);
-            }
-            */
-
             _pcUnitOfWork.Save();
             return pass.PassId;
         }

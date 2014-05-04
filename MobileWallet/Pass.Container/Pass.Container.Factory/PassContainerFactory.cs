@@ -19,11 +19,13 @@ namespace Pass.Container.Factory
             _iocContainer.LoadConfiguration("CertificateStorage");
         }
 
-        public static IPassTemplateService CreateTemplateService(ICertificateStorageService csService)
+        public static IPassTemplateService CreateTemplateService(ICertificateStorageService csService, IPassCertificateService pcService)
         {
             var ro = new List<ResolverOverride>();
             if (csService != null)
                 ro.Add(new DependencyOverride<ICertificateStorageService>(csService));
+            if (pcService != null)
+                ro.Add(new DependencyOverride<IPassCertificateService>(pcService));
             
             return _iocContainer.Resolve<IPassTemplateService>(ro.ToArray());
             //new DependencyOverride<IPassTemplateConfig>(ptConfig),

@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using System.Security.Cryptography.X509Certificates;
 using NUnit.Framework;
 using Pass.Container.BL.PassGenerators;
 using Pass.Container.Core.Entities;
@@ -14,10 +13,7 @@ namespace Pass.Container.BL.Tests.PassGenerators
         [Test]
         public void GeneratePassTest()
         {
-            var cert = new X509Certificate2(TestHelper.CertificateFileApple, 
-                TestHelper.CertificateApplePassword, 
-                X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.Exportable);
-
+            var cert = TestHelper.GetCertificateApple();
             var passGenerator = new ApplePassGenerator2(new PassContainerConfig(), TemplatePath, cert);
             var fields = new PassFieldInfo[]
                          {

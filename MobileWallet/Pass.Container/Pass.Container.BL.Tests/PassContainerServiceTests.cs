@@ -3,7 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using CertificateStorage.Core;
+using CertificateStorage.Core.Entities;
 using FileStorage.BL;
+using Moq;
 using NUnit.Framework;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
@@ -67,8 +70,23 @@ namespace Pass.Container.BL.Tests
 
         private IPassTemplateService GetPassTemplateService()
         {
-            return PassContainerFactory.CreateTemplateService(null);
+            return PassContainerFactory.CreateTemplateService(GetMockCertificateStorageService(), GetMockPassCertificateService());
         }
+
+        private ICertificateStorageService GetMockCertificateStorageService()
+        {
+            var scService = new Mock<ICertificateStorageService>();
+            var cert = new CertificateInfo() {CertificateId = 1, Name = "Cert1"};
+            scService.Setup(x => x.Read(It.Is<string>(v => v == "TID#YHQB764QFA/PTID#pass.com.passlight.dev.test"))).Returns(cert);
+            return scService.Object;
+        }
+        private IPassCertificateService GetMockPassCertificateService()
+        {
+            var certService = new Mock<IPassCertificateService>();
+            certService.Setup(x => x.GetCertificate(It.Is<int>(v => v == 1))).Returns(TestHelper.GetCertificateApple());
+            return certService.Object;
+        }
+
 
     }
 }
