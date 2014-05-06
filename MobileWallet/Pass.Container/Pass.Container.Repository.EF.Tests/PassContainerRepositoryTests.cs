@@ -26,7 +26,7 @@ namespace Pass.Container.Repository.EF.Tests
                 Assert.Greater(pt1.PassTemplateId, 0);
                 Assert.Greater(ptApple1.PassTemplateNativeId, 0);
 
-                var pass1 = new Core.Entities.Pass() { AuthToken = "123", SerialNumber = "123", Status = EntityStatus.Active, PassTemplateId = pt1.PassTemplateId, PassTypeIdentifier = "123" };
+                var pass1 = new Core.Entities.Pass() { AuthToken = "123", SerialNumber = "123", Status = EntityStatus.Active, PassTemplateId = pt1.PassTemplateId/*, PassTypeIdentifier = "123"*/ };
                 var repPass = unitOfWork.GetRepository<Core.Entities.Pass>();
                 repPass.Insert(pass1);
 
@@ -143,7 +143,7 @@ namespace Pass.Container.Repository.EF.Tests
                 repPassTemplate.Insert(pt1);
                 unitOfWork.Save();
 
-                var pass1 = new Core.Entities.Pass() { AuthToken = "123", SerialNumber = "123", Status = EntityStatus.Active, PassTemplateId = pt1.PassTemplateId, PassTypeIdentifier = "123" };
+                var pass1 = new Core.Entities.Pass() { AuthToken = "123", SerialNumber = "123", Status = EntityStatus.Active, PassTemplateId = pt1.PassTemplateId/*, PassTypeIdentifier = "123"*/ };
                 var repPass = unitOfWork.GetRepository<Core.Entities.Pass>();
                 repPass.Insert(pass1);
                 unitOfWork.Save();

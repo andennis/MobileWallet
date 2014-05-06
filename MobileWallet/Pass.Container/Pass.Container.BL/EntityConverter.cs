@@ -6,14 +6,15 @@ namespace Pass.Container.BL
 {
     public static class EntityConverter
     {
-        public static PassFieldValue PassFieldInfoToRepositoryFieldValue(PassFieldInfo passFieldInfo)
+        public static PassFieldInfo RepositoryFieldValueToPassFieldInfo(PassFieldValue passFieldValue)
         {
-            return new PassFieldValue()
-                       {
-                           PassFieldId = passFieldInfo.PassFieldId,
-                           Value = passFieldInfo.Value,
-                           Label = passFieldInfo.Label,
-                       };
+            return new PassFieldInfo()
+            {
+                PassFieldId = passFieldValue.PassFieldId,
+                Name = passFieldValue.PassField.Name,
+                Label = string.IsNullOrEmpty(passFieldValue.Label) ? passFieldValue.PassField.DefaultLabel : passFieldValue.Label,
+                Value = string.IsNullOrEmpty(passFieldValue.Value) ? passFieldValue.PassField.DefaultValue : passFieldValue.Value,
+            };
         }
 
         public static ClientDeviceType ClientTypeToRepositoryClientDeviceType(ClientType clientType)
@@ -28,5 +29,6 @@ namespace Pass.Container.BL
                     return ClientDeviceType.Unknown;
             }
         }
+
     }
 }

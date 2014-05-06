@@ -44,7 +44,7 @@ namespace Pass.Container.BL
                            {
                                PassTemplateId = passTemplateId,
                                SerialNumber = GenerateSerialNumber(),
-                               PassTypeIdentifier = string.Empty,
+                               //PassTypeIdentifier = string.Empty,
                                AuthToken = GenerateAuthToken(),
                                Status = EntityStatus.Active,
                                ExpirationDate = expDate
@@ -55,25 +55,25 @@ namespace Pass.Container.BL
             IList<PassField> passFields = repPassField.Query().Filter(x => x.PassTemplateId == passTemplateId).Get().ToList();
             foreach (PassField passField in passFields)
             {
-                PassFieldInfo fieldInfo = fieldValues.FirstOrDefault(x => x.PassFieldId == passField.PassFieldId)
-                    ?? fieldValues.FirstOrDefault(x => x.Name == passField.Name);
+                PassFieldInfo fieldInfo = (fieldValues != null)
+                    ? fieldValues.FirstOrDefault(x => x.Name == passField.Name)
+                    : null;
 
-                PassFieldValue pfv;
-                if (fieldInfo == null)
-                {
-                    pfv = new PassFieldValue()
+                var pfv = new PassFieldValue()
                               {
                                   PassId = pass.PassId,
                                   PassFieldId = passField.PassFieldId,
-                                  Value = passField.DefaultValue,
-                                  Label = passField.DefaultLabel
                               };
+
+                if (fieldInfo == null)
+                {
+                    pfv.Label = passField.DefaultLabel;
+                    pfv.Value = passField.DefaultValue;
                 }
                 else
                 {
-                    pfv = EntityConverter.PassFieldInfoToRepositoryFieldValue(fieldInfo);
-                    pfv.PassId = pass.PassId;
-                    pfv.PassFieldId = passField.PassFieldId;
+                    pfv.Label = fieldInfo.Label ?? passField.DefaultLabel;
+                    pfv.Value = fieldInfo.Value ?? passField.DefaultValue;
                 }
 
                 repPassFieldVal.Insert(pfv);
@@ -90,13 +90,7 @@ namespace Pass.Container.BL
                 .Filter(x => x.PassId == passId)
                 .Include(x => x.PassField)
                 .Get()
-                .Select(x => new PassFieldInfo()
-                {
-                    PassFieldId = x.PassFieldId,
-                    Name = x.PassField.Name,
-                    Label = string.IsNullOrEmpty(x.Label) ? x.PassField.DefaultLabel : x.Label,
-                    Value = string.IsNullOrEmpty(x.Value) ? x.PassField.DefaultValue : x.Value,
-                })
+                .Select(EntityConverter.RepositoryFieldValueToPassFieldInfo)
                 .ToList();
         }
 
@@ -131,22 +125,10 @@ namespace Pass.Container.BL
             Directory.CreateDirectory(passFolder);
 
             IPassGenerator2 pg = GetPassGenerator(pass.Template, clientType, templateFolder);
-            IEnumerable<PassFieldInfo> fields = GetPassFields(pass);
+            IEnumerable<PassFieldInfo> fields = pass.FieldValues.Select(EntityConverter.RepositoryFieldValueToPassFieldInfo);
             return pg.GeneratePass(pass.SerialNumber, fields, passFolder);
         }
         
-        private IEnumerable<PassFieldInfo> GetPassFields(RepEntities.Pass pass)
-        {
-            return pass.FieldValues
-                .Select(x => new PassFieldInfo()
-                             {
-                                 PassFieldId = x.PassFieldId,
-                                 Name = x.PassField.Name,
-                                 Label = string.IsNullOrEmpty(x.Label) ? x.PassField.DefaultLabel : x.Label,
-                                 Value = string.IsNullOrEmpty(x.Value) ? x.PassField.DefaultValue : x.Value,
-                             });
-        }
-
         private string GetTemporaryTemplateFolder(int templateId, ClientType clientType)
         {
             return Path.Combine(_config.PassWorkingFolder, "T" + templateId, clientType.ToString());
@@ -172,7 +154,6 @@ namespace Pass.Container.BL
 
             
         }
-
         private IPassGenerator2 GetApplePassGenerator(PassTemplateApple appleTemplate, string srcTemplateFolder)
         {
             X509Certificate2 cert = _certService.GetCertificate(appleTemplate.CertificateId);

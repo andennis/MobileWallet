@@ -24,7 +24,6 @@ namespace Pass.Container.BL.Tests
     public class PassTemplateServiceTests
     {
         private const string TemplateFolder = @"Data\TemplateService\Template";
-        private const string TemplateFileName = "template.xml";
         private const string TempFolder = @"Data\TemplateService\Temp";
 
         [SetUp]
@@ -41,11 +40,11 @@ namespace Pass.Container.BL.Tests
         [Test]
         public void PassTemplateXmlSerializationTest()
         {
-            string templatePath = Path.Combine(TemplateFolder, TemplateFileName);
+            string templatePath = Path.Combine(TemplateFolder, TestHelper.TemplateFileName);
             var generalTemplate1 = templatePath.LoadFromXml<GeneralPassTemplate>();
             generalTemplate1.TemplateName = Guid.NewGuid().ToString();
 
-            templatePath = Path.Combine(TempFolder, TemplateFileName);
+            templatePath = Path.Combine(TempFolder, TestHelper.TemplateFileName);
             generalTemplate1.SaveToXml(templatePath);
 
             var generalTemplate2 = templatePath.LoadFromXml<GeneralPassTemplate>();
@@ -63,7 +62,7 @@ namespace Pass.Container.BL.Tests
                 Assert.Greater(passTemplateId, 0);
             }
 
-            string templateFilePath = Path.Combine(TemplateFolder, TemplateFileName);
+            string templateFilePath = Path.Combine(TemplateFolder, TestHelper.TemplateFileName);
             var generalPassTemplate = templateFilePath.LoadFromXml<GeneralPassTemplate>();
 
             using (IPassContainerUnitOfWork pcUnitOfWork = TestHelper.PassContainerUnitOfWork)
@@ -102,7 +101,7 @@ namespace Pass.Container.BL.Tests
                 //General template
                 string templatePath = Path.Combine(TempFolder, "General");
                 ptsService.GetBaseTemplateFiles(passTemplate.PackageId, templatePath);
-                Assert.True(File.Exists(Path.Combine(templatePath, TemplateFileName)));
+                Assert.True(File.Exists(Path.Combine(templatePath, TestHelper.TemplateFileName)));
 
                 string dstImageFolderPath = Path.Combine(templatePath, "Images");
                 Assert.True(Directory.Exists(dstImageFolderPath));
@@ -154,7 +153,7 @@ namespace Pass.Container.BL.Tests
 
                 string newTemplateFolder = Path.Combine(TempFolder, "Template2");
                 FileHelper.DirectoryCopy(TemplateFolder, newTemplateFolder, true);
-                string newTemplateFile = Path.Combine(newTemplateFolder, TemplateFileName);
+                string newTemplateFile = Path.Combine(newTemplateFolder, TestHelper.TemplateFileName);
                 generalPassTemplate = newTemplateFile.LoadFromXml<GeneralPassTemplate>();
 
                 generalPassTemplate.TemplateName = "Template2";
@@ -250,7 +249,7 @@ namespace Pass.Container.BL.Tests
 
         private IPassTemplateService GetPassTemplateService()
         {
-            return PassContainerFactory.CreateTemplateService(GetMockCertificateStorageService());
+            return PassContainerFactory.CreateTemplateService(GetMockCertificateStorageService(), null);
         }
 
         private ICertificateStorageService GetMockCertificateStorageService()

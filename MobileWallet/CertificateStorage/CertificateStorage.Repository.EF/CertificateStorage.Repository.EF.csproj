@@ -51,11 +51,6 @@
     <Compile Include="MigrationsContextFactory.cs" />
     <Compile Include="CertificateStorageDbContext.cs" />
     <Compile Include="CertificateStorageUnitOfWork.cs" />
-    <Compile Include="Migrations\201405041915246_M1.cs" />
-    <Compile Include="Migrations\201405041915246_M1.Designer.cs">
-      <DependentUpon>201405041915246_M1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -74,11 +69,6 @@
       <Project>{bb648ede-67d5-488c-b423-346e181b33db}</Project>
       <Name>CertificateStorage.Repository.Core</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201405041915246_M1.resx">
-      <DependentUpon>201405041915246_M1.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

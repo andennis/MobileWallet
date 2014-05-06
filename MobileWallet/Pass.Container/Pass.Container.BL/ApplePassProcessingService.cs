@@ -62,7 +62,7 @@ namespace Pass.Container.BL
 
             //Find pass
             RepEntities.Pass pass = _repPass.Query()
-                .Filter(x => x.SerialNumber == serialNumber && x.AuthToken == authToken && x.PassTypeIdentifier == passTypeIdentifier)
+                .Filter(x => x.SerialNumber == serialNumber && x.AuthToken == authToken /*&& x.PassTypeIdentifier == passTypeIdentifier*/)
                 .Include(x => x.PassRegistrations)
                 .Get()
                 .FirstOrDefault();
@@ -135,7 +135,7 @@ namespace Pass.Container.BL
 
             //Find pass
             RepEntities.Pass pass = _repPass.Query()
-                .Filter(x => x.SerialNumber == serialNumber && x.AuthToken == authToken && x.PassTypeIdentifier == passTypeIdentifier)
+                .Filter(x => x.SerialNumber == serialNumber && x.AuthToken == authToken /*&& x.PassTypeIdentifier == passTypeIdentifier*/)
                 .Include(x => x.PassRegistrations)
                 .Get()
                 .FirstOrDefault();
@@ -198,7 +198,7 @@ namespace Pass.Container.BL
 
             IEnumerable<int> passIdsOfDevice = device.PassRegistrations.Select(x => x.PassId);
             IQueryable<RepEntities.Pass> passesOfDevice = _repPass.Query()
-                                                                    .Filter(x => passIdsOfDevice.Contains(x.PassId) && x.PassTypeIdentifier == passTypeIdentifier)
+                                                                    .Filter(x => passIdsOfDevice.Contains(x.PassId) /*&& x.PassTypeIdentifier == passTypeIdentifier*/)
                                                                     .Get();
             if (!passIdsOfDevice.Any())
             {
@@ -240,7 +240,7 @@ namespace Pass.Container.BL
 
             //Find pass
             RepEntities.Pass pass = _repPass.Query()
-                .Filter(x => x.SerialNumber == serialNumber && x.PassTypeIdentifier == passTypeIdentifier)
+                .Filter(x => x.SerialNumber == serialNumber /*&& x.PassTypeIdentifier == passTypeIdentifier*/)
                 .Get()
                 .FirstOrDefault();
 

@@ -100,7 +100,7 @@ namespace Pass.Container.BL.Tests
 
         private IPassTemplateService GetPassTemplateService()
         {
-            return PassContainerFactory.CreateTemplateService(null);
+            return PassContainerFactory.CreateTemplateService(null, null);
         }
 
         private IApplePassProcessingService GetAppleDevicePassProcessingService()

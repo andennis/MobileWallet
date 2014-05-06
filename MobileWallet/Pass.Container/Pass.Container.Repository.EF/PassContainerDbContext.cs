@@ -40,7 +40,7 @@ namespace Pass.Container.Repository.EF
             modelBuilder.Entity<Core.Entities.Pass>().HasRequired(x => x.Template).WithMany(x => x.Passes).HasForeignKey(x => x.PassTemplateId).WillCascadeOnDelete(false);
             modelBuilder.Entity<Core.Entities.Pass>().Property(x => x.AuthToken).IsRequired().HasMaxLength(512);
             modelBuilder.Entity<Core.Entities.Pass>().Property(x => x.SerialNumber).IsRequired().HasMaxLength(512);
-            modelBuilder.Entity<Core.Entities.Pass>().Property(x => x.PassTypeIdentifier).IsRequired().HasMaxLength(512);
+            //modelBuilder.Entity<Core.Entities.Pass>().Property(x => x.PassTypeIdentifier).IsRequired().HasMaxLength(512);
             modelBuilder.Entity<Core.Entities.Pass>().Property(x => x.Version).IsConcurrencyToken();
 
             modelBuilder.Entity<PassFieldValue>().ToTable("PassFieldValue", DbScheme);

@@ -123,24 +123,49 @@
         <timeStyle xsi:nil="true" />
       </field>
       <field>
-        <key>Key6</key>
-        <label>Balance</label>
+        <key>Key01</key>
+        <label>LKey01</label>
         <isDynamicLabel xsi:nil="true" />
-        <value>10</value>
-        <isDynamicValue xsi:nil="true" />
+        <value>VKey01</value>
+        <isDynamicValue>true</isDynamicValue>
         <textAlignment xsi:nil="true" />
-        <type>currency</type>
+        <type>text</type>
         <numberStyle xsi:nil="true" />
-        <currencyCode>USD</currencyCode>
         <dateStyle xsi:nil="true" />
         <isRelative xsi:nil="true" />
         <timeStyle xsi:nil="true" />
       </field>
       <field>
-        <key>Key01</key>
-        <label>LKey01</label>
+        <key>Key02</key>
+        <label>LKey02</label>
         <isDynamicLabel xsi:nil="true" />
-        <value>VKey01</value>
+        <value>VKey02</value>
+        <isDynamicValue>true</isDynamicValue>
+        <textAlignment xsi:nil="true" />
+        <type>text</type>
+        <numberStyle xsi:nil="true" />
+        <dateStyle xsi:nil="true" />
+        <isRelative xsi:nil="true" />
+        <timeStyle xsi:nil="true" />
+      </field>
+      <field>
+        <key>Key03</key>
+        <label>LKey03</label>
+        <isDynamicLabel xsi:nil="true" />
+        <value>VKey03</value>
+        <isDynamicValue>true</isDynamicValue>
+        <textAlignment xsi:nil="true" />
+        <type>text</type>
+        <numberStyle xsi:nil="true" />
+        <dateStyle xsi:nil="true" />
+        <isRelative xsi:nil="true" />
+        <timeStyle xsi:nil="true" />
+      </field>
+      <field>
+        <key>Key04</key>
+        <label>LKey04</label>
+        <isDynamicLabel xsi:nil="true" />
+        <value>VKey04</value>
         <isDynamicValue>true</isDynamicValue>
         <textAlignment xsi:nil="true" />
         <type>text</type>

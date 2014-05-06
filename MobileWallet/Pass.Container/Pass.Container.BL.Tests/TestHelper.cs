@@ -16,6 +16,7 @@ namespace Pass.Container.BL.Tests
 {
     public static class TestHelper
     {
+        public const string TemplateFileName = "template.xml";
         public const string CertificateFileApple = @"TestCertificates\Apple\pass.com.passlight.dev.test\pass.p12";
         public const string CertificateApplePassword = "Pass3";
 

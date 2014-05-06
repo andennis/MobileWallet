@@ -110,7 +110,7 @@ namespace Pass.Container.BL.Tests.PassGenerators
 
         private IPassTemplateService GetPassTemplateService()
         {
-            return PassContainerFactory.CreateTemplateService(null);
+            return PassContainerFactory.CreateTemplateService(null, null);
         }
 
         private IFileStorageService GetFileStorageService()
