@@ -33,9 +33,15 @@ namespace Pass.Container.Factory
             //new DependencyOverride<IFileStorageConfig>(fsConfig));
         }
 
-        public static IPassContainerService CreateContainerService(IDbConfig pdConfig)
+        public static IPassContainerService CreateContainerService(ICertificateStorageService csService, IPassCertificateService pcService)
         {
-            return _iocContainer.Resolve<IPassContainerService>(/*new DependencyOverride<IDbConfig>(pdConfig)*/);
+            var ro = new List<ResolverOverride>();
+            if (csService != null)
+                ro.Add(new DependencyOverride<ICertificateStorageService>(csService));
+            if (pcService != null)
+                ro.Add(new DependencyOverride<IPassCertificateService>(pcService));
+
+            return _iocContainer.Resolve<IPassContainerService>(ro.ToArray());
         }
 
         public static IApplePassProcessingService CreateApplePassProcessingService(IPassContainerConfig ptConfig, IFileStorageConfig fsConfig)

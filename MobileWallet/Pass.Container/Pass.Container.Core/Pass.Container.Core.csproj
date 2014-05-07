@@ -67,7 +67,6 @@
     <Compile Include="IApplePassProcessingService.cs" />
     <Compile Include="IPassCertificateService.cs" />
     <Compile Include="IPassGenerator.cs" />
-    <Compile Include="IPassGenerator2.cs" />
     <Compile Include="IPassTemplateStorageService.cs" />
     <Compile Include="IPassTemplateGenerator.cs" />
     <Compile Include="IPassContainerConfig.cs" />

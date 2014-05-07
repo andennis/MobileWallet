@@ -6,15 +6,15 @@ namespace Pass.Container.BL
 {
     public static class EntityConverter
     {
-        public static PassFieldInfo RepositoryFieldValueToPassFieldInfo(PassFieldValue passFieldValue)
+        public static PassFieldInfo RepositoryFieldValueToPassFieldInfo(PassFieldValue passFieldValue, bool defultIfNull)
         {
             return new PassFieldInfo()
-            {
-                PassFieldId = passFieldValue.PassFieldId,
-                Name = passFieldValue.PassField.Name,
-                Label = string.IsNullOrEmpty(passFieldValue.Label) ? passFieldValue.PassField.DefaultLabel : passFieldValue.Label,
-                Value = string.IsNullOrEmpty(passFieldValue.Value) ? passFieldValue.PassField.DefaultValue : passFieldValue.Value,
-            };
+                    {
+                        PassFieldId = passFieldValue.PassFieldId,
+                        Name = passFieldValue.PassField.Name,
+                        Label = passFieldValue.Label ?? (defultIfNull ? passFieldValue.PassField.DefaultLabel : null),
+                        Value = passFieldValue.Value ?? (defultIfNull ? passFieldValue.PassField.DefaultValue : null)
+                    };
         }
 
         public static ClientDeviceType ClientTypeToRepositoryClientDeviceType(ClientType clientType)

@@ -125,7 +125,7 @@
       <field>
         <key>Key01</key>
         <label>LKey01</label>
-        <isDynamicLabel xsi:nil="true" />
+        <isDynamicLabel>true</isDynamicLabel>
         <value>VKey01</value>
         <isDynamicValue>true</isDynamicValue>
         <textAlignment xsi:nil="true" />

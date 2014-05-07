@@ -14,7 +14,7 @@ namespace Pass.Container.BL.Tests.PassGenerators
         public void GeneratePassTest()
         {
             var cert = TestHelper.GetCertificateApple();
-            var passGenerator = new ApplePassGenerator2(new PassContainerConfig(), TemplatePath, cert);
+            var passGenerator = new ApplePassGenerator(new PassContainerConfig(), TemplatePath, cert);
             var fields = new PassFieldInfo[]
                          {
                              new PassFieldInfo() {Name = "Key01", Label = "L1", Value = "V1"}

@@ -10,6 +10,8 @@ using Moq;
 using NUnit.Framework;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
+using Pass.Container.Core.Entities.Enums;
+using Pass.Container.Core.Exceptions;
 using Pass.Container.Factory;
 using Pass.Container.Repository.Core;
 using Pass.Container.Repository.Core.Entities;
@@ -23,9 +25,19 @@ namespace Pass.Container.BL.Tests
     {
         private const string TemplateFolder = @"Data\ContainerService\Template";
         private const string TempFolder = @"Data\ContainerService\Temp";
+        private int _passTemplateId;
+
+        [TestFixtureSetUp]
+        public void InitAllTests()
+        {
+            using (var pts = GetPassTemplateService())
+            {
+                _passTemplateId = pts.CreatePassTemlate(TemplateFolder);
+            }
+        }
 
         [SetUp]
-        public virtual void InitEachTest()
+        public void InitEachTest()
         {
             //Clear temp folder
             if (Directory.Exists(TempFolder))
@@ -38,12 +50,7 @@ namespace Pass.Container.BL.Tests
         [Test]
         public void CreatePassAndCheckFieldsTest()
         {
-            using (var pts = GetPassTemplateService())
-            using (var pcs = GetPassContainerService())
-            {
-                int passTemplateId = pts.CreatePassTemlate(TemplateFolder);
-
-                IList<PassFieldInfo> fields1 = new List<PassFieldInfo>()
+            IList<PassFieldInfo> fields1 = new List<PassFieldInfo>()
                                                   {
                                                       new PassFieldInfo()
                                                           {
@@ -62,10 +69,19 @@ namespace Pass.Container.BL.Tests
                                                               Value = Guid.NewGuid().ToString()
                                                           }
                                                   };
-                int passId = pcs.CreatePass(passTemplateId, fields1);
+            int passId;
+            //Create pass
+            using (IPassContainerService pcs = GetPassContainerService())
+            {
+                passId = pcs.CreatePass(_passTemplateId, fields1);
                 Assert.Greater(passId, 0);
+            }
 
+            //Check pass fields
+            using (IPassContainerService pcs = GetPassContainerService())
+            {
                 IList<PassFieldInfo> fields2 = pcs.GetPassFields(passId);
+                Assert.NotNull(fields2);
                 Assert.AreEqual(4, fields2.Count);
 
                 PassFieldInfo field1 = fields1.First(x => x.Name == "Key01");
@@ -94,16 +110,123 @@ namespace Pass.Container.BL.Tests
         }
 
         [Test]
-        public void UpdatePassAndCheckFieldsTest()
+        public void UpdatePassFieldsTest()
         {
-            throw new NotImplementedException();
+            int passId;
+            IList<PassFieldInfo> fields1 = new List<PassFieldInfo>()
+                                                   {
+                                                       new PassFieldInfo()
+                                                           {
+                                                               Name = "Key01",
+                                                               Label = Guid.NewGuid().ToString(),
+                                                               Value = Guid.NewGuid().ToString()
+                                                           },
+                                                       new PassFieldInfo()
+                                                           {
+                                                               Name = "Key02",
+                                                               Label = Guid.NewGuid().ToString(),
+                                                           },
+                                                       new PassFieldInfo()
+                                                           {
+                                                               Name = "Key03",
+                                                               Value = Guid.NewGuid().ToString()
+                                                           }
+                                                   };
+            //Create pass and update pass fields
+            using (IPassContainerService pcs = GetPassContainerService())
+            {
+                //Create pass
+                passId = pcs.CreatePass(_passTemplateId, fields1);
+                Assert.Greater(passId, 0);
+
+                IList<PassFieldInfo> fields2 = pcs.GetPassFields(passId);
+                Assert.NotNull(fields2);
+                Assert.AreEqual(4, fields2.Count);
+
+                //Update pass fields
+                PassFieldInfo field1 = fields1.First(x => x.Name == "Key01");
+                field1.Label = Guid.NewGuid().ToString();
+                field1.Value = Guid.NewGuid().ToString();
+
+                field1 = fields1.First(x => x.Name == "Key02");
+                field1.Label = null;
+                field1.Value = Guid.NewGuid().ToString();
+
+                field1 = fields1.First(x => x.Name == "Key03");
+                field1.Label = Guid.NewGuid().ToString();
+                field1.Value = null;
+
+                Assert.DoesNotThrow(() => pcs.UpdatePassFields(passId, fields1));
+
+                var wrongFields = new List<PassFieldInfo>() {new PassFieldInfo() {Name = Guid.NewGuid().ToString()}};
+                Assert.Throws<PassContainerException>(() => pcs.UpdatePassFields(passId, wrongFields));
+                Assert.Throws<PassContainerException>(() => pcs.UpdatePassFields(-1, wrongFields));
+                Assert.Throws<ArgumentNullException>(() => pcs.UpdatePassFields(passId, null));
+            }
+
+            //Check pass fields
+            using (IPassContainerService pcs = GetPassContainerService())
+            {
+                IList<PassFieldInfo> fields2 = pcs.GetPassFields(passId);
+                Assert.NotNull(fields2);
+                Assert.AreEqual(4, fields2.Count);
+
+                PassFieldInfo field1 = fields1.First(x => x.Name == "Key01");
+                PassFieldInfo field2 = fields2.FirstOrDefault(x => x.Name == field1.Name);
+                Assert.NotNull(field2);
+                Assert.AreEqual(field1.Label, field2.Label);
+                Assert.AreEqual(field1.Value, field2.Value);
+
+                field1 = fields1.First(x => x.Name == "Key02");
+                field2 = fields2.FirstOrDefault(x => x.Name == field1.Name);
+                Assert.NotNull(field2);
+                Assert.AreEqual(field1.Label, field2.Label);
+                Assert.AreEqual(field1.Value, field2.Value);
+
+                field1 = fields1.First(x => x.Name == "Key03");
+                field2 = fields2.FirstOrDefault(x => x.Name == field1.Name);
+                Assert.NotNull(field2);
+                Assert.AreEqual(field1.Label, field2.Label);
+                Assert.AreEqual(field1.Value, field2.Value);
+
+                field2 = fields2.FirstOrDefault(x => x.Name == "Key04");
+                Assert.NotNull(field2);
+                Assert.AreEqual("LKey04", field2.Label);
+                Assert.AreEqual("VKey04", field2.Value);
+            }
+        }
+
+        [Test]
+        public void GetPassPackageAppleTest()
+        {
+            int passId;
+            using (IPassContainerService pcs = GetPassContainerService())
+            {
+                IList<PassFieldInfo> fields1 = new List<PassFieldInfo>()
+                                                   {
+                                                       new PassFieldInfo()
+                                                           {
+                                                               Name = "Key01",
+                                                               Label = "MyL1",
+                                                               Value = "MyV1"
+                                                           }
+                                                   };
+
+                passId = pcs.CreatePass(_passTemplateId, fields1);
+            }
+
+            using (IPassContainerService pcs = GetPassContainerService())
+            {
+                string fileName = pcs.GetPassPackage(passId, ClientType.Apple);
+                Assert.IsNotNullOrEmpty(fileName);
+                Assert.True(File.Exists(fileName));
+            }
         }
 
         private IPassContainerService GetPassContainerService()
         {
-            return PassContainerFactory.CreateContainerService(new PassContainerConfig());
+            return PassContainerFactory.CreateContainerService(GetMockCertificateStorageService(), GetMockPassCertificateService());
         }
-
         private IPassTemplateService GetPassTemplateService()
         {
             return PassContainerFactory.CreateTemplateService(GetMockCertificateStorageService(), GetMockPassCertificateService());

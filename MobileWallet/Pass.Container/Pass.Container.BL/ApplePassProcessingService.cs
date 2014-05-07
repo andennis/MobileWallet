@@ -47,7 +47,8 @@ namespace Pass.Container.BL
             _repRegistration = _pcUnitOfWork.GetRepository<Registration>();
             _repClientDeviceApple = _pcUnitOfWork.GetRepository<ClientDeviceApple>();
 
-            _passGenerator = new ApplePassGenerator(_config, _pcUnitOfWork, _fsService, _certService);
+            //TODO ApplePassGenerator should be inicialized
+            //_passGenerator = new ApplePassGenerator(_config, );
         }
 
         public void RegisterDevice(string deviceLibraryIdentifier, string passTypeIdentifier, string serialNumber, string pushToken, string authToken, out PassProcessingStatus status)
@@ -250,7 +251,8 @@ namespace Pass.Container.BL
                 return null;
             }
 
-            string pkpassFilePath = _passGenerator.GeneratePass(pass.PassId);
+            //TODO invoke passGenerator.GeneratePass
+            string pkpassFilePath = string.Empty; //_passGenerator.GeneratePass(pass.PassId);
 
             status = PassProcessingStatus.Succeed;
             return pkpassFilePath;
