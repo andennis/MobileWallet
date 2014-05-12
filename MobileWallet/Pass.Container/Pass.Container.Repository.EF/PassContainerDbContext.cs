@@ -6,6 +6,7 @@ namespace Pass.Container.Repository.EF
     public class PassContainerDbContext : DbContext
     {
         public const string DbScheme = "pscn";
+        private const int PassTypeIdLen = 128;
 
         public PassContainerDbContext(string nameOrConnectionString)
             :base(nameOrConnectionString)
@@ -38,9 +39,9 @@ namespace Pass.Container.Repository.EF
 
             modelBuilder.Entity<Core.Entities.Pass>().ToTable("Pass", DbScheme);
             modelBuilder.Entity<Core.Entities.Pass>().HasRequired(x => x.Template).WithMany(x => x.Passes).HasForeignKey(x => x.PassTemplateId).WillCascadeOnDelete(false);
-            modelBuilder.Entity<Core.Entities.Pass>().Property(x => x.AuthToken).IsRequired().HasMaxLength(512);
-            modelBuilder.Entity<Core.Entities.Pass>().Property(x => x.SerialNumber).IsRequired().HasMaxLength(512);
-            //modelBuilder.Entity<Core.Entities.Pass>().Property(x => x.PassTypeIdentifier).IsRequired().HasMaxLength(512);
+            modelBuilder.Entity<Core.Entities.Pass>().Property(x => x.AuthToken).IsRequired().HasMaxLength(64).IsUnicode(false);
+            modelBuilder.Entity<Core.Entities.Pass>().Property(x => x.SerialNumber).IsRequired().HasMaxLength(64).IsUnicode(false);
+            modelBuilder.Entity<Core.Entities.Pass>().Property(x => x.PassTypeId).IsRequired().HasMaxLength(PassTypeIdLen).IsUnicode(false);
             modelBuilder.Entity<Core.Entities.Pass>().Property(x => x.Version).IsConcurrencyToken();
 
             modelBuilder.Entity<PassFieldValue>().ToTable("PassFieldValue", DbScheme);
@@ -54,7 +55,7 @@ namespace Pass.Container.Repository.EF
             modelBuilder.Entity<PassTemplateNative>().HasRequired(x => x.Template).WithMany(x => x.NativeTemplates).HasForeignKey(x => x.PassTemplateId);
 
             modelBuilder.Entity<PassTemplateApple>().ToTable("PassTemplateApple", DbScheme);
-            modelBuilder.Entity<PassTemplateApple>().Property(x => x.PassTypeId).IsRequired().HasMaxLength(512);
+            modelBuilder.Entity<PassTemplateApple>().Property(x => x.PassTypeId).IsRequired().HasMaxLength(PassTypeIdLen).IsUnicode(false);
 
             //Client device registrations
             modelBuilder.Entity<ClientDevice>().ToTable("ClientDevice", DbScheme);

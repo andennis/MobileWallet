@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Common.Repository;
-using FileStorage.Core;
 using Pass.Container.BL.PassGenerators;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities.Enums;
@@ -15,36 +14,43 @@ namespace Pass.Container.BL
     public class ApplePassProcessingService : IApplePassProcessingService
     {
         private readonly IPassContainerUnitOfWork _pcUnitOfWork;
-        private readonly IFileStorageService _fsService;
         private readonly IPassContainerConfig _config;
+        /*
+        private readonly IFileStorageService _fsService;
         private readonly IPassCertificateService _certService;
+        */
 
         //Repositories
+        /*
         private readonly IRepository<PassTemplate> _repPassTemplate;
         private readonly IRepository<PassTemplateNative> _repTemplateNative;
         private readonly IRepository<PassTemplateApple> _repPassTemplateApple;
         private readonly IRepository<PassField> _repPassField;
         private readonly IRepository<PassFieldValue> _repPassFieldValue;
-        private readonly IRepository<RepEntities.Pass> _repPass;
         private readonly IRepository<Registration> _repRegistration;
+        */
+        private readonly IRepository<RepEntities.Pass> _repPass;
         private readonly IRepository<ClientDeviceApple> _repClientDeviceApple;
         private readonly ApplePassGenerator _passGenerator;
 
-        public ApplePassProcessingService(IPassContainerConfig config, IPassContainerUnitOfWork pcUnitOfWork, IFileStorageService fsService, IPassCertificateService certService)
+        public ApplePassProcessingService(IPassContainerConfig config, IPassContainerUnitOfWork pcUnitOfWork/*, IFileStorageService fsService, IPassCertificateService certService*/)
         {
             _pcUnitOfWork = pcUnitOfWork;
-            _fsService = fsService;
             _config = config;
+            /*
+            _fsService = fsService;
             _certService = certService;
-
+            */
             //Repositories
+            /*
             _repPassTemplate = _pcUnitOfWork.GetRepository<PassTemplate>();
             _repTemplateNative = _pcUnitOfWork.GetRepository<PassTemplateNative>();
             _repPassTemplateApple = _pcUnitOfWork.GetRepository<PassTemplateApple>();
             _repPassField = _pcUnitOfWork.GetRepository<PassField>();
             _repPassFieldValue = _pcUnitOfWork.GetRepository<PassFieldValue>();
-            _repPass = _pcUnitOfWork.GetRepository<RepEntities.Pass>();
             _repRegistration = _pcUnitOfWork.GetRepository<Registration>();
+            */
+            _repPass = _pcUnitOfWork.GetRepository<RepEntities.Pass>();
             _repClientDeviceApple = _pcUnitOfWork.GetRepository<ClientDeviceApple>();
 
             //TODO ApplePassGenerator should be inicialized
@@ -63,7 +69,7 @@ namespace Pass.Container.BL
 
             //Find pass
             RepEntities.Pass pass = _repPass.Query()
-                .Filter(x => x.SerialNumber == serialNumber && x.AuthToken == authToken /*&& x.PassTypeIdentifier == passTypeIdentifier*/)
+                .Filter(x => x.SerialNumber == serialNumber /*&& x.AuthToken == authToken*/ && x.PassTypeId == passTypeIdentifier)
                 .Include(x => x.PassRegistrations)
                 .Get()
                 .FirstOrDefault();
@@ -74,9 +80,9 @@ namespace Pass.Container.BL
                 return;
             }
 
-            //Find the same device registration
+            //Find device registration
             ClientDeviceApple device = _repClientDeviceApple.Query()
-                                 .Filter(x => x.DeviceId == deviceLibraryIdentifier && x.PushToken == pushToken)
+                                 .Filter(x => x.DeviceId == deviceLibraryIdentifier /*&& x.PushToken == pushToken*/)
                                  .Include(x => x.PassRegistrations)
                                  .Get()
                                  .FirstOrDefault();
@@ -136,7 +142,7 @@ namespace Pass.Container.BL
 
             //Find pass
             RepEntities.Pass pass = _repPass.Query()
-                .Filter(x => x.SerialNumber == serialNumber && x.AuthToken == authToken /*&& x.PassTypeIdentifier == passTypeIdentifier*/)
+                .Filter(x => x.SerialNumber == serialNumber /*&& x.AuthToken == authToken*/ && x.PassTypeId == passTypeIdentifier)
                 .Include(x => x.PassRegistrations)
                 .Get()
                 .FirstOrDefault();
@@ -149,7 +155,7 @@ namespace Pass.Container.BL
 
             //Find the same device registration
             ClientDeviceApple device = _repClientDeviceApple.Query()
-                                 .Filter(x => x.DeviceId == deviceLibraryIdentifier && x.PushToken == pushToken)
+                                 .Filter(x => x.DeviceId == deviceLibraryIdentifier /*&& x.PushToken == pushToken*/)
                                  .Include(x => x.PassRegistrations)
                                  .Get()
                                  .FirstOrDefault();
@@ -199,7 +205,7 @@ namespace Pass.Container.BL
 
             IEnumerable<int> passIdsOfDevice = device.PassRegistrations.Select(x => x.PassId);
             IQueryable<RepEntities.Pass> passesOfDevice = _repPass.Query()
-                                                                    .Filter(x => passIdsOfDevice.Contains(x.PassId) /*&& x.PassTypeIdentifier == passTypeIdentifier*/)
+                                                                    .Filter(x => passIdsOfDevice.Contains(x.PassId) && x.PassTypeId == passTypeIdentifier)
                                                                     .Get();
             if (!passIdsOfDevice.Any())
             {
@@ -241,7 +247,7 @@ namespace Pass.Container.BL
 
             //Find pass
             RepEntities.Pass pass = _repPass.Query()
-                .Filter(x => x.SerialNumber == serialNumber /*&& x.PassTypeIdentifier == passTypeIdentifier*/)
+                .Filter(x => x.SerialNumber == serialNumber && x.PassTypeId == passTypeIdentifier)
                 .Get()
                 .FirstOrDefault();
 

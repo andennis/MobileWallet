@@ -166,11 +166,24 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="b994be99-ed7f-470d-a063-64519f85a71f" />
           </association>
+          <association Id="c88253db-5f21-45f9-8f8c-c9ad9d2b0e30" isDerived="false" sourceEndRoleName="Pass" targetEndRoleName="PassNative" isLeaf="false" isAbstract="false">
+            <classMoniker Id="5838a26d-98c5-402b-ac46-ed606e487a14" LastKnownName="PassNative" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="52580fce-373a-416d-a2b1-04fdcb331160" name="Pass" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="10ba2f62-f90c-4b37-810a-14472b0cf4ee" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="47ced8ce-315b-4056-9565-92aed834f1bd" name="PassNative" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="730a2317-ea15-42c3-8db2-85ed064c63da" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="e86932e7-18e7-4dca-bb2f-f4c4ad789cef" />
+          </association>
         </targetEnds>
         <ownedAttributesInternal>
-          <property Id="bf9a8405-db87-46ff-8ff0-24d89f5d4ff7" name="SerialNumber" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="db534073-a33b-4e85-9b36-2db1e623c1bd" />
-          </property>
           <property Id="7112284d-39f9-46d9-b5cf-f9e9e0805a0b" name="AuthToken" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="f24187c7-d4e4-4473-8de9-4e6379a16764" />
           </property>
@@ -361,6 +374,35 @@
         <ownedAttributesInternal>
           <property Id="96bbd201-7509-46f8-9e88-9c450ea6bee1" name="PassTypeId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="32c7ba9e-cb96-4964-90f7-ecc021ceef12" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="5838a26d-98c5-402b-ac46-ed606e487a14" name="PassNative" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="8c785a7e-0a61-4196-9539-b2d72fac57ae" />
+        <ownedAttributesInternal>
+          <property Id="af74b716-f9b3-4939-9101-f932910e0395" name="SerialNumber" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="d40a1c02-f29e-49b3-b732-c4c821564064" />
+          </property>
+          <property Id="a3695121-b8e6-4e75-88d4-49a4afd79b28" name="ClientType" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="4e298277-3ccf-4c53-ac37-f438ce2f374d" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="4b456a18-4a03-4472-9de2-33d93df3fb21" name="PassApple" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="18029313-7cda-470a-99e1-ee51307ceb93" />
+        <generalsInternal>
+          <generalization Id="52671906-35b7-4a79-9285-57b36ede4f9e" isSubstitutable="false">
+            <classMoniker Id="5838a26d-98c5-402b-ac46-ed606e487a14" LastKnownName="PassNative" />
+            <elementDefinition Id="01cede08-3008-491f-8f80-7502cc1f08e3" />
+          </generalization>
+        </generalsInternal>
+        <ownedAttributesInternal>
+          <property Id="49dfa66c-aa08-4d74-87ba-498c7e3bba51" name="PassTypeId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="fb6142bc-20e5-4756-9b6b-c817646ff350" />
           </property>
         </ownedAttributesInternal>
       </class>

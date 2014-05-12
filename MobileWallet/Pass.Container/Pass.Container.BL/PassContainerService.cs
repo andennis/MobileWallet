@@ -39,13 +39,27 @@ namespace Pass.Container.BL
             IRepository<PassFieldValue> repPassFieldVal = _pcUnitOfWork.GetRepository<PassFieldValue>();
             IRepository<PassField> repPassField = _pcUnitOfWork.GetRepository<PassField>();
             IRepository<RepEntities.Pass> repPass = _pcUnitOfWork.GetRepository<RepEntities.Pass>();
+            IRepository<PassTemplate> repPassTemplate = _pcUnitOfWork.GetRepository<PassTemplate>();
+
+            PassTemplate passTemplate = repPassTemplate.Query()
+                .Include(x => x.NativeTemplates)
+                .Filter(x => x.PassTemplateId == passTemplateId)
+                .Get()
+                .FirstOrDefault();
+
+            if (passTemplate == null)
+                throw new PassContainerException(string.Format("Pass template ID: {0} not found", passTemplateId));
+
+            PassTemplateApple ptApple = passTemplate.NativeTemplates.OfType<PassTemplateApple>().FirstOrDefault();
+            if (ptApple == null)
+                throw new PassContainerException(string.Format("Apple native templte for pass template ID: {0} not found", passTemplateId));
 
             //Create Pass
             var pass = new RepEntities.Pass()
                            {
                                PassTemplateId = passTemplateId,
                                SerialNumber = GenerateSerialNumber(),
-                               //PassTypeIdentifier = string.Empty,
+                               PassTypeId = ptApple.PassTypeId,
                                AuthToken = GenerateAuthToken(),
                                Status = EntityStatus.Active,
                                ExpirationDate = expDate
