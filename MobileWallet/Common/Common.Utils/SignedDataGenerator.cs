@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using Common.Extensions;
 using Org.BouncyCastle.Cms;
 using Org.BouncyCastle.Security;
@@ -51,7 +52,8 @@ namespace Common.Utils
 
         public byte[] SignText(string text)
         {
-            return SignData(text.GetBytes());
+            byte[] data = new UTF8Encoding().GetBytes(text);
+            return SignData(data);
         }
     }
 }

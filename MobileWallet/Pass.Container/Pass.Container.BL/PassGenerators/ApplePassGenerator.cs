@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using Common.Extensions;
 using Common.Utils;
 using Pass.Container.BL.Helpers;
@@ -127,7 +128,8 @@ namespace Pass.Container.BL.PassGenerators
             }
 
             //Add hash of pass content
-            byte[] contentData = passContent.GetBytes();
+            Encoding encoding = new UTF8Encoding();
+            byte[] contentData = encoding.GetBytes(passContent);
             string contentHash = Crypto.CalculateHash(contentData);
             dictManifest.Add(ApplePass.PassFileName, contentHash);
 
