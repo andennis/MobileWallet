@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using CertificateStorage.Core;
 using CertificateStorage.Core.Entities;
-using FileStorage.BL;
 using Moq;
 using NUnit.Framework;
 using Pass.Container.Core;
@@ -13,15 +12,12 @@ using Pass.Container.Core.Entities;
 using Pass.Container.Core.Entities.Enums;
 using Pass.Container.Core.Exceptions;
 using Pass.Container.Factory;
-using Pass.Container.Repository.Core;
-using Pass.Container.Repository.Core.Entities;
-using Pass.Container.Repository.EF;
 
 
 namespace Pass.Container.BL.Tests
 {
     [TestFixture]
-    public class PassContainerServiceTests
+    public class PassServiceTests
     {
         private const string TemplateFolder = @"Data\ContainerService\Template";
         private const string TempFolder = @"Data\ContainerService\Temp";
@@ -71,14 +67,14 @@ namespace Pass.Container.BL.Tests
                                                   };
             int passId;
             //Create pass
-            using (IPassContainerService pcs = GetPassContainerService())
+            using (IPassService pcs = GetPassContainerService())
             {
                 passId = pcs.CreatePass(_passTemplateId, fields1);
                 Assert.Greater(passId, 0);
             }
 
             //Check pass fields
-            using (IPassContainerService pcs = GetPassContainerService())
+            using (IPassService pcs = GetPassContainerService())
             {
                 IList<PassFieldInfo> fields2 = pcs.GetPassFields(passId);
                 Assert.NotNull(fields2);
@@ -133,7 +129,7 @@ namespace Pass.Container.BL.Tests
                                                            }
                                                    };
             //Create pass and update pass fields
-            using (IPassContainerService pcs = GetPassContainerService())
+            using (IPassService pcs = GetPassContainerService())
             {
                 //Create pass
                 passId = pcs.CreatePass(_passTemplateId, fields1);
@@ -165,7 +161,7 @@ namespace Pass.Container.BL.Tests
             }
 
             //Check pass fields
-            using (IPassContainerService pcs = GetPassContainerService())
+            using (IPassService pcs = GetPassContainerService())
             {
                 IList<PassFieldInfo> fields2 = pcs.GetPassFields(passId);
                 Assert.NotNull(fields2);
@@ -200,7 +196,7 @@ namespace Pass.Container.BL.Tests
         public void GetPassPackageAppleTest()
         {
             int passId;
-            using (IPassContainerService pcs = GetPassContainerService())
+            using (IPassService pcs = GetPassContainerService())
             {
                 IList<PassFieldInfo> fields1 = new List<PassFieldInfo>()
                                                    {
@@ -215,7 +211,7 @@ namespace Pass.Container.BL.Tests
                 passId = pcs.CreatePass(_passTemplateId, fields1);
             }
 
-            using (IPassContainerService pcs = GetPassContainerService())
+            using (IPassService pcs = GetPassContainerService())
             {
                 string fileName = pcs.GetPassPackage(passId, ClientType.Apple);
                 Assert.IsNotNullOrEmpty(fileName);
@@ -223,7 +219,7 @@ namespace Pass.Container.BL.Tests
             }
         }
 
-        private IPassContainerService GetPassContainerService()
+        private IPassService GetPassContainerService()
         {
             return PassContainerFactory.CreateContainerService(GetMockCertificateStorageService(), GetMockPassCertificateService());
         }
@@ -245,7 +241,6 @@ namespace Pass.Container.BL.Tests
             certService.Setup(x => x.GetCertificate(It.Is<int>(v => v == 1))).Returns(TestHelper.GetCertificateApple());
             return certService.Object;
         }
-
 
     }
 }

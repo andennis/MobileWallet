@@ -327,7 +327,7 @@
           <property Id="aab1aee1-5905-4bab-834d-c01f1c743574" name="DeviceId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="febdf95a-c949-4a47-a519-9c33aca713f3" />
           </property>
-          <property Id="4fc4be33-5775-4e13-859e-fcdcbc0303a3" name="ClientType" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+          <property Id="4fc4be33-5775-4e13-859e-fcdcbc0303a3" name="DeviceType" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="9d95876a-bd38-4dde-8217-e5f49d198028" />
           </property>
         </ownedAttributesInternal>
@@ -353,7 +353,7 @@
       <class Id="8fa6b521-e01f-4bb5-baf9-d67b01b6c9c4" name="PassTemplateNative" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="c7fd8b4d-4e1d-46ea-a96c-bcc81f584eea" />
         <ownedAttributesInternal>
-          <property Id="227357c8-8d2c-4cd0-a22b-de38f79b4aac" name="ClientType" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+          <property Id="227357c8-8d2c-4cd0-a22b-de38f79b4aac" name="DeviceType" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="3f7fb1d4-b4df-44a6-9ee5-a147b970c0da" />
           </property>
           <property Id="972a019d-9b13-4bc7-a26f-ad17bec65926" name="CertificateId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
@@ -385,7 +385,7 @@
           <property Id="af74b716-f9b3-4939-9101-f932910e0395" name="SerialNumber" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="d40a1c02-f29e-49b3-b732-c4c821564064" />
           </property>
-          <property Id="a3695121-b8e6-4e75-88d4-49a4afd79b28" name="ClientType" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+          <property Id="a3695121-b8e6-4e75-88d4-49a4afd79b28" name="DeviceType" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="4e298277-3ccf-4c53-ac37-f438ce2f374d" />
           </property>
         </ownedAttributesInternal>

@@ -16,6 +16,7 @@ namespace Pass.Container.BL.PassTemplateGenerators
 {
     public class ApplePassTemplateGenerator : IPassTemplateGenerator
     {
+        /*
         private readonly static List<string> _applePassTemplateFiles = new List<string> 
                                                                     { 
                                                                         "logo.png", 
@@ -31,6 +32,7 @@ namespace Pass.Container.BL.PassTemplateGenerators
                                                                         "thumbnail@2x.png",
                                                                         "footer@2x.png"
                                                                     };
+        */
 
         private readonly IPassTemplateConfig _ptConfig;
 

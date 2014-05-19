@@ -65,7 +65,7 @@
     <Compile Include="PassTemplateGenerators\ApplePassTemplateGeneratorTests.cs" />
     <Compile Include="PassTemplateGenerators\PassTemplateGeneratorsTests.cs" />
     <Compile Include="PassContainerConfigTests.cs" />
-    <Compile Include="PassContainerServiceTests.cs" />
+    <Compile Include="PassServiceTests.cs" />
     <Compile Include="PassTemplateServiceTests.cs" />
     <Compile Include="PassTemplateStorageServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

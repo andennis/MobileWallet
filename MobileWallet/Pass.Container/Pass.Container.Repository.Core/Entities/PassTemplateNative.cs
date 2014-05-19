@@ -5,7 +5,7 @@
         public int PassTemplateNativeId { get; set; }
         public int PassTemplateId { get; set; }
         public int CertificateId { get; set; }
-        public ClientDeviceType ClientType { get; set; }
+        public ClientDeviceType DeviceType { get; set; }
         public PassTemplate Template { get; set; }
     }
 }

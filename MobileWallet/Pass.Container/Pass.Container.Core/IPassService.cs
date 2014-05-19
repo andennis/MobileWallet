@@ -5,7 +5,7 @@ using Pass.Container.Core.Entities.Enums;
 
 namespace Pass.Container.Core
 {
-    public interface IPassContainerService : IDisposable
+    public interface IPassService : IDisposable
     {
         int CreatePass(int passTemplateId, IList<PassFieldInfo> passFieldValues, DateTime? expDate = null);
         IList<PassFieldInfo> GetPassFields(int passId);

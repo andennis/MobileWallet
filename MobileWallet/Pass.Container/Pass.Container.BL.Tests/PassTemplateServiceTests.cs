@@ -83,7 +83,7 @@ namespace Pass.Container.BL.Tests
                 Assert.NotNull(passTemplate.NativeTemplates);
                 PassTemplateApple applePassTemplate = passTemplate.NativeTemplates.OfType<PassTemplateApple>().FirstOrDefault();
                 Assert.NotNull(applePassTemplate);
-                Assert.AreEqual(ClientDeviceType.Apple, applePassTemplate.ClientType);
+                Assert.AreEqual(ClientDeviceType.Apple, applePassTemplate.DeviceType);
                 Assert.AreEqual(generalPassTemplate.PassTypeIdentifier, applePassTemplate.PassTypeId);
 
                 //Check pass dynamic fields
@@ -195,7 +195,7 @@ namespace Pass.Container.BL.Tests
                 PassTemplateApple applePassTemplate =
                     passTemplate2.NativeTemplates.OfType<PassTemplateApple>().FirstOrDefault();
                 Assert.NotNull(applePassTemplate);
-                Assert.AreEqual(ClientDeviceType.Apple, applePassTemplate.ClientType);
+                Assert.AreEqual(ClientDeviceType.Apple, applePassTemplate.DeviceType);
                 Assert.AreEqual(generalPassTemplate.PassTypeIdentifier, applePassTemplate.PassTypeId);
 
                 //Check pass dynamic fields

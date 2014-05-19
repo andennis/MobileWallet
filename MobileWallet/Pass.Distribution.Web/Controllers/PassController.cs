@@ -20,12 +20,12 @@ namespace Pass.Distribution.Web.Controllers
     {
         private const string SequrityKey = "1234567890987654";
 
-        private readonly IPassContainerService _passContainerService;
+        private readonly IPassService _passService;
         private readonly IPassTemplateService _passTemplateService;
 
-        public PassController(IPassContainerService passContainerService, IPassTemplateService passTemplateService)
+        public PassController(IPassService passService, IPassTemplateService passTemplateService)
         {
-            _passContainerService = passContainerService;
+            _passService = passService;
             _passTemplateService = passTemplateService;
         }
 
@@ -35,7 +35,7 @@ namespace Pass.Distribution.Web.Controllers
             if (clientType == ClientType.Unknown)
                 return RedirectToAction("NotSupported");
 
-            IList<PassFieldInfo> passFields = _passContainerService.GetPassFields(id);
+            IList<PassFieldInfo> passFields = _passService.GetPassFields(id);
 
             var tokenInfo = new PassTokenInfo(){Id = id};
             var model = new PassModel()
@@ -51,7 +51,7 @@ namespace Pass.Distribution.Web.Controllers
         public ActionResult EditPass(PassModel model)
         {
             PassTokenInfo tokenInfo = DecryptPassToken(model.PassToken);
-            _passContainerService.UpdatePassFields(tokenInfo.Id, model.PassFields);
+            _passService.UpdatePassFields(tokenInfo.Id, model.PassFields);
             return RedirectToAction("Download", new { token = model.PassToken });
         }
 
@@ -77,7 +77,7 @@ namespace Pass.Distribution.Web.Controllers
         public ActionResult CreatePass(PassModel model)
         {
             PassTokenInfo tokenInfo = DecryptPassToken(model.PassToken);
-            tokenInfo.Id = _passContainerService.CreatePass(tokenInfo.Id, model.PassFields);
+            tokenInfo.Id = _passService.CreatePass(tokenInfo.Id, model.PassFields);
             string token = EncryptPassToken(tokenInfo);
             return RedirectToAction("Download", new { token });
         }
@@ -89,7 +89,7 @@ namespace Pass.Distribution.Web.Controllers
                 return RedirectToAction("NotSupported");
 
             PassTokenInfo tokenInfo = DecryptPassToken(token);
-            string path = _passContainerService.GetPassPackage(tokenInfo.Id, clientType);
+            string path = _passService.GetPassPackage(tokenInfo.Id, clientType);
             return File(path, "application/vnd.apple.pkpass", Path.GetFileName(path));
         }
 

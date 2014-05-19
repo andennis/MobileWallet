@@ -1296,7 +1296,7 @@
             isComposite="false" />
           <property
             Id="4e298277-3ccf-4c53-ac37-f438ce2f374d"
-            name="ClientType"
+            name="DeviceType"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"

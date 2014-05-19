@@ -16,14 +16,14 @@ using RepEntities = Pass.Container.Repository.Core.Entities;
 
 namespace Pass.Container.BL
 {
-    public class PassContainerService : IPassContainerService
+    public class PassService : IPassService
     {
         private readonly IPassContainerConfig _config;
         private readonly IPassContainerUnitOfWork _pcUnitOfWork;
         private readonly IPassCertificateService _certService;
         private readonly IPassTemplateStorageService _templateStorageService;
 
-        public PassContainerService(IPassContainerConfig config, 
+        public PassService(IPassContainerConfig config, 
             IPassContainerUnitOfWork pcUnitOfWork, 
             IPassCertificateService certService,
             IPassTemplateStorageService templateStorageService)
@@ -97,7 +97,6 @@ namespace Pass.Container.BL
             _pcUnitOfWork.Save();
             return pass.PassId;
         }
-
         public IList<PassFieldInfo> GetPassFields(int passId)
         {
             IRepository<PassFieldValue> repPassFieldVal = _pcUnitOfWork.GetRepository<PassFieldValue>();
@@ -118,7 +117,6 @@ namespace Pass.Container.BL
 
             return fields;
         }
-
         public void UpdatePassFields(int passId, IList<PassFieldInfo> newFieldValues)
         {
             if (newFieldValues == null)
@@ -152,7 +150,6 @@ namespace Pass.Container.BL
 
             _pcUnitOfWork.Save();
         }
-
         public string GetPassPackage(int passId, ClientType clientType)
         {
             IRepository<RepEntities.Pass> repPass = _pcUnitOfWork.GetRepository<RepEntities.Pass>();
@@ -182,7 +179,7 @@ namespace Pass.Container.BL
             IEnumerable<PassFieldInfo> fields = pass.FieldValues.Select(x => EntityConverter.RepositoryFieldValueToPassFieldInfo(x, false));
             return pg.GeneratePass(pass.SerialNumber, fields, passFolder);
         }
-        
+
         private string GetTemporaryTemplateFolder(int templateId, ClientType clientType)
         {
             return Path.Combine(_config.PassWorkingFolder, "T" + templateId, clientType.ToString());

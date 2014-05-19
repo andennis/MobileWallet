@@ -128,8 +128,8 @@ namespace Pass.Processing.Web.Controllers
                 DateTime.TryParse(passesUpdatedSince, out passesUpdatedSinceTime);
 
                 PassProcessingStatus status;
-                var lastUpdated = new DateTime();
-                IList<string> passSerialNumbers = _passProcessingService.GetSerialNumbersOfPasses(deviceLibraryIdentifier, passTypeIdentifier, ref lastUpdated, out status, passesUpdatedSinceTime);
+                DateTime lastUpdated;
+                IList<string> passSerialNumbers = _passProcessingService.GetSerialNumbersOfPasses(deviceLibraryIdentifier, passTypeIdentifier, out lastUpdated, out status, passesUpdatedSinceTime);
                 //Return:
                 //{ 
                     //“serialNumbers” : [ <serialNo.>, <serialNo.>, ... ],

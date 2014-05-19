@@ -1327,7 +1327,7 @@
             isComposite="false" />
           <property
             Id="9d95876a-bd38-4dde-8217-e5f49d198028"
-            name="ClientType"
+            name="DeviceType"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -2048,7 +2048,7 @@
         <ownedAttributesInternal>
           <property
             Id="3f7fb1d4-b4df-44a6-9ee5-a147b970c0da"
-            name="ClientType"
+            name="DeviceType"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
