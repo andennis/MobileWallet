@@ -1,4 +1,5 @@
 ﻿using Common.Repository;
+using Pass.Container.Repository.Core;
 
 namespace Pass.Container.Repository.EF.Tests
 {
@@ -13,5 +14,11 @@ namespace Pass.Container.Repository.EF.Tests
         }
 
         public static IDbConfig DbConfig{get{return new TestDbConfig();}}
+
+        public static IPassContainerUnitOfWork GetPassContainerUnitOfWork()
+        {
+            return new PassContainerUnitOfWork(TestHelper.DbConfig);
+        }
+
     }
 }

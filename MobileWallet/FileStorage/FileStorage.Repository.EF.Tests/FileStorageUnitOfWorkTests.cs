@@ -19,6 +19,7 @@ namespace FileStorage.Repository.EF.Tests
             {
                 Assert.NotNull(unitOfWork.FileStorageRepository);
                 Assert.IsInstanceOf<IFileStorageRepository>(unitOfWork.FileStorageRepository);
+                Assert.IsInstanceOf<IFileStorageRepository>(unitOfWork.GetRepository<FolderItem>());
             }
         }
 

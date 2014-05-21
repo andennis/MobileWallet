@@ -25,6 +25,10 @@ namespace Common.Repository.EF
         {
             return _dbSet.SqlQuery(query, parameters).AsQueryable();
         }
+        public virtual IQueryable<T> SqlQuery<T>(string query, params object[] parameters)
+        {
+            return _dbContext.Database.SqlQuery<T>(query, parameters).AsQueryable();
+        }
         public virtual T SqlQueryScalar<T>(string query, params object[] parameters)
         {
              return _dbContext.Database.SqlQuery<T>(query, parameters).FirstOrDefault();

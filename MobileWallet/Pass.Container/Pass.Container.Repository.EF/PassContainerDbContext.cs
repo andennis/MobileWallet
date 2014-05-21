@@ -59,10 +59,10 @@ namespace Pass.Container.Repository.EF
 
             //Client device registrations
             modelBuilder.Entity<ClientDevice>().ToTable("ClientDevice", DbScheme);
-            modelBuilder.Entity<ClientDevice>().Property(x => x.DeviceId).IsRequired().HasMaxLength(512);
+            modelBuilder.Entity<ClientDevice>().Property(x => x.DeviceId).IsRequired().HasMaxLength(64);
 
             modelBuilder.Entity<ClientDeviceApple>().ToTable("ClientDeviceApple", DbScheme);
-            modelBuilder.Entity<ClientDeviceApple>().Property(x => x.PushToken).IsRequired().HasMaxLength(512);
+            modelBuilder.Entity<ClientDeviceApple>().Property(x => x.PushToken).IsRequired().HasMaxLength(64);
 
             modelBuilder.Entity<Registration>().ToTable("Registration", DbScheme);
             modelBuilder.Entity<Registration>().HasKey(x => new { x.ClientDeviceId, x.PassId });

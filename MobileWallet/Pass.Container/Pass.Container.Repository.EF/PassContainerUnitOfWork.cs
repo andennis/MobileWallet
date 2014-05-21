@@ -9,6 +9,7 @@ namespace Pass.Container.Repository.EF
 {
     public class PassContainerUnitOfWork : UnitOfWork, IPassContainerUnitOfWork
     {
+        private IPassRepository _passRepository;
         private readonly HashSet<Type> _allowedRepositoryEntities;
 
         public PassContainerUnitOfWork(IDbConfig dbConfig)
@@ -32,5 +33,22 @@ namespace Pass.Container.Repository.EF
         {
             get { return _allowedRepositoryEntities; }
         }
+
+        public override IRepository<TEntity> GetRepository<TEntity>()
+        {
+            if (typeof(TEntity) == typeof(Core.Entities.Pass))
+                return (IRepository<TEntity>)this.PassRepository;
+
+            return base.GetRepository<TEntity>();
+        }
+
+        public IPassRepository PassRepository
+        {
+            get
+            {
+                return _passRepository ?? (_passRepository = new PassRepository(_dbContext));
+            }
+        }
+
     }
 }

@@ -33,32 +33,35 @@ namespace Pass.Processing.Web.Controllers
 
                 //The Authorization header is supplied; its value is the word “ApplePass”, 
                 //followed by a space, followed by the pass’s authorization token as specified in the pass.
-                if (authHeader != null && authHeader.Contains("ApplePass "))
+                if (authHeader == null || !authHeader.Contains("ApplePass "))
+                    return Request.CreateResponse(HttpStatusCode.Unauthorized);
+                
+                string authToken = authHeader.Replace("ApplePass ", string.Empty);
+
+                PassProcessingStatus status;
+                _passProcessingService.RegisterDevice(deviceLibraryIdentifier, passTypeIdentifier, serialNumber, devicePushToken.PushToken, authToken, out status);
+
+                switch (status)
                 {
-                    string authToken = authHeader.Replace("ApplePass ", String.Empty);
-
-                    PassProcessingStatus status;
-                    _passProcessingService.RegisterDevice(deviceLibraryIdentifier, passTypeIdentifier, serialNumber, devicePushToken.PushToken, authToken, out status);
-
-                    //If the serial number is already registered for this device, return HTTP status 200.
-                    if (status == PassProcessingStatus.AlreadyDone)
+                    case PassProcessingStatus.AlreadyDone:
+                        //If the serial number is already registered for this device, return HTTP status 200.
                         response = Request.CreateResponse(HttpStatusCode.OK);
-
-                    //If registration succeeds, return HTTP status 201
-                    if (status == PassProcessingStatus.Succeed)
+                        break;
+                    case PassProcessingStatus.Succeed:
+                        //If registration succeeds, return HTTP status 201
                         response = Request.CreateResponse(HttpStatusCode.Created);
-
-                    if (status == PassProcessingStatus.Unauthorized)
+                        break;
+                    case PassProcessingStatus.Unauthorized:
                         response = Request.CreateResponse(HttpStatusCode.Unauthorized);
-
-                    if (status == PassProcessingStatus.NotFound)
+                        break;
+                    case PassProcessingStatus.NotFound:
                         response = Request.CreateResponse(HttpStatusCode.NotFound);
-
-                    if (status == PassProcessingStatus.Error)
+                        break;
+                    case PassProcessingStatus.Error:
                         response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Device were not registered.");
+                        break;
                 }
-                else//If the request is not authorized, return HTTP status 401
-                    response = Request.CreateResponse(HttpStatusCode.Unauthorized);
+                    
             }
             catch
             {

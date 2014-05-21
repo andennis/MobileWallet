@@ -2,13 +2,12 @@
 using Common.Repository;
 using FluentAssertions;
 using NUnit.Framework;
-using Pass.Container.Core.Entities.Enums;
 using Pass.Container.Repository.Core.Entities;
 
 namespace Pass.Container.Repository.EF.Tests
 {
     [TestFixture]
-    public class PassContainerRepositoryTests
+    public class PassContainerRepositoriesTests
     {
         [Test]
         public void PassCrudOperationsTest()

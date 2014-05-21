@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Common.Repository;
@@ -31,9 +32,10 @@ namespace Pass.Container.BL
         */
         private readonly IRepository<RepEntities.Pass> _repPass;
         private readonly IRepository<ClientDeviceApple> _repClientDeviceApple;
+        private readonly IPassService _passService;
         private readonly ApplePassGenerator _passGenerator;
 
-        public ApplePassProcessingService(IPassContainerConfig config, IPassContainerUnitOfWork pcUnitOfWork/*, IFileStorageService fsService, IPassCertificateService certService*/)
+        public ApplePassProcessingService(IPassContainerConfig config, IPassContainerUnitOfWork pcUnitOfWork, IPassService passService)
             :base(pcUnitOfWork)
         {
             _config = config;
@@ -52,26 +54,10 @@ namespace Pass.Container.BL
             */
             _repPass = _pcUnitOfWork.GetRepository<RepEntities.Pass>();
             _repClientDeviceApple = _pcUnitOfWork.GetRepository<ClientDeviceApple>();
+            _passService = passService;
 
             //TODO ApplePassGenerator should be inicialized
             //_passGenerator = new ApplePassGenerator(_config, );
-        }
-
-        private RepEntities.Pass GetPass(string serialNumber, string passTypeId)
-        {
-            return _repPass.Query()
-                .Filter(x => x.SerialNumber == serialNumber && x.PassTypeId == passTypeId)
-                //.Include(x => x.PassRegistrations)
-                .Get()
-                .FirstOrDefault();
-        }
-
-        private ClientDeviceApple GetClientDevice(string deviceId)
-        {
-            return _repClientDeviceApple.Query()
-                                 .Filter(x => x.DeviceId == deviceId && x.DeviceType == ClientDeviceType.Apple)
-                                 .Get()
-                                 .FirstOrDefault();
         }
 
         public void RegisterDevice(string deviceLibraryIdentifier, string passTypeIdentifier, string serialNumber, string pushToken, string authToken, out PassProcessingStatus status)
@@ -200,17 +186,17 @@ namespace Pass.Container.BL
         public IList<string> GetSerialNumbersOfPasses(string deviceLibraryIdentifier, string passTypeIdentifier, out DateTime lastUpdated, out PassProcessingStatus status, DateTime? passesUpdatedSince = null)
         {
             lastUpdated = DateTime.Now;
-            ClientDeviceApple device = _repClientDeviceApple.Query()
-                                                            .Filter(x => x.DeviceId == deviceLibraryIdentifier)
-                                                            .Include(x => x.PassRegistrations)
-                                                            .Get()
-                                                            .FirstOrDefault();
+            ClientDevice device = GetClientDevice(deviceLibraryIdentifier, ClientDeviceType.Apple);
             if (device == null)
             {
                 status = PassProcessingStatus.NotFound;
                 return null;
             }
 
+            status = PassProcessingStatus.Succeed;
+            return _pcUnitOfWork.PassRepository.GetSerialNumbersOfChangedPassesApple(deviceLibraryIdentifier, passTypeIdentifier, passesUpdatedSince);
+
+            /*
             IEnumerable<int> passIdsOfDevice = device.PassRegistrations.Select(x => x.PassId);
             IQueryable<RepEntities.Pass> passesOfDevice = _repPass.Query()
                 .Filter(x => passIdsOfDevice.Contains(x.PassId) && x.PassTypeId == passTypeIdentifier)
@@ -242,6 +228,7 @@ namespace Pass.Container.BL
             status = PassProcessingStatus.Succeed;
             lastUpdated = lastUpdatedTime;
             return updatedPasses;
+            */
         }
 
         public string GetPass(string passTypeIdentifier, string serialNumber, string authToken, out PassProcessingStatus status)
@@ -252,23 +239,36 @@ namespace Pass.Container.BL
                 status = PassProcessingStatus.NotFound;
                 return null;
             }
-
             if (!Authenticate(authToken, pass))
             {
                 status = PassProcessingStatus.Unauthorized;
                 return null;
             }
 
-            //TODO invoke passGenerator.GeneratePass
-            string pkpassFilePath = string.Empty; //_passGenerator.GeneratePass(pass.PassId);
-
             status = PassProcessingStatus.Succeed;
-            return pkpassFilePath;
+            return _passService.GetPassPackage(pass.PassId, ClientType.Apple);
         }
 
         public void Log(string logMessage)
         {
             throw new NotImplementedException();
+        }
+
+
+        private RepEntities.Pass GetPass(string serialNumber, string passTypeId)
+        {
+            return _repPass.Query()
+                .Filter(x => x.SerialNumber == serialNumber && x.PassTypeId == passTypeId)
+                .Get()
+                .FirstOrDefault();
+        }
+
+        private ClientDeviceApple GetClientDevice(string deviceId)
+        {
+            return _repClientDeviceApple.Query()
+                .Filter(x => x.DeviceId == deviceId && x.DeviceType == ClientDeviceType.Apple)
+                .Get()
+                .FirstOrDefault();
         }
 
         /*

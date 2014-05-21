@@ -47,6 +47,7 @@
     <Compile Include="Entities\PassTemplateNative.cs" />
     <Compile Include="Entities\Registration.cs" />
     <Compile Include="IPassContainerUnitOfWork.cs" />
+    <Compile Include="IPassRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
