@@ -7,9 +7,12 @@
     [Version]        INT            NOT NULL,
     [CreatedDate]    DATETIME       NOT NULL,
     [UpdatedDate]    DATETIME       NOT NULL,
+    [Status]         INT            DEFAULT ((0)) NOT NULL,
     CONSTRAINT [PK_pscn.PassField] PRIMARY KEY CLUSTERED ([PassFieldId] ASC),
     CONSTRAINT [FK_pscn.PassField_pscn.PassTemplate_PassTemplateId] FOREIGN KEY ([PassTemplateId]) REFERENCES [pscn].[PassTemplate] ([PassTemplateId]) ON DELETE CASCADE
 );
+
+
 
 
 
