@@ -6,6 +6,6 @@ namespace Pass.Container.Repository.Core
 {
     public interface IPassRepository : IRepository<Entities.Pass>
     {
-        IList<string> GetSerialNumbersOfChangedPassesApple(string deviceId, string passTypeId, DateTime? updateTag);
+        IList<string> GetPassSerialNumbersApple(string deviceId, string passTypeId, DateTime? updateTag);
     }
 }

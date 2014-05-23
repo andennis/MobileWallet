@@ -15,7 +15,7 @@ namespace Pass.Container.BL
 {
     public class ApplePassProcessingService : PassInteractionBase, IApplePassProcessingService
     {
-        private readonly IPassContainerConfig _config;
+        //private readonly IPassContainerConfig _config;
         /*
         private readonly IFileStorageService _fsService;
         private readonly IPassCertificateService _certService;
@@ -33,12 +33,12 @@ namespace Pass.Container.BL
         private readonly IRepository<RepEntities.Pass> _repPass;
         private readonly IRepository<ClientDeviceApple> _repClientDeviceApple;
         private readonly IPassService _passService;
-        private readonly ApplePassGenerator _passGenerator;
+        //private readonly ApplePassGenerator _passGenerator;
 
-        public ApplePassProcessingService(IPassContainerConfig config, IPassContainerUnitOfWork pcUnitOfWork, IPassService passService)
+        public ApplePassProcessingService(IPassContainerUnitOfWork pcUnitOfWork, IPassService passService)
             :base(pcUnitOfWork)
         {
-            _config = config;
+            //_config = config;
             /*
             _fsService = fsService;
             _certService = certService;
@@ -194,7 +194,7 @@ namespace Pass.Container.BL
             }
 
             status = PassProcessingStatus.Succeed;
-            return _pcUnitOfWork.PassRepository.GetSerialNumbersOfChangedPassesApple(deviceLibraryIdentifier, passTypeIdentifier, passesUpdatedSince);
+            return _pcUnitOfWork.PassRepository.GetPassSerialNumbersApple(deviceLibraryIdentifier, passTypeIdentifier, passesUpdatedSince);
 
             /*
             IEnumerable<int> passIdsOfDevice = device.PassRegistrations.Select(x => x.PassId);

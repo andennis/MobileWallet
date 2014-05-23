@@ -3,7 +3,7 @@
 -- Create date: 05/12/2014
 -- Description:	returns serila numbers of changed passes
 -- =============================================
-CREATE PROCEDURE [pscn].[GetSerialNumbersOfChangedPassesApple]
+CREATE PROCEDURE [pscn].[GetPassSerialNumbersApple]
     @DeviceId VARCHAR(64),
     @PassTypeId VARCHAR(128),
     @UpdateTag DATETIME = NULL

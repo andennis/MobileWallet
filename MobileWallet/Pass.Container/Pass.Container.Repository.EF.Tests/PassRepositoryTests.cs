@@ -8,11 +8,11 @@ namespace Pass.Container.Repository.EF.Tests
     public class PassRepositoryTests
     {
         [Test]
-        public void GetSerialNumbersOfChangedPassesAppleTest()
+        public void GetPassSerialNumbersAppleTest()
         {
             using (var unitOfWork = TestHelper.GetPassContainerUnitOfWork())
             {
-                IList<string> passes = unitOfWork.PassRepository.GetSerialNumbersOfChangedPassesApple("123", "321", DateTime.Now);
+                IList<string> passes = unitOfWork.PassRepository.GetPassSerialNumbersApple("123", "321", DateTime.Now);
                 Assert.IsNotNull(passes);
                 CollectionAssert.IsEmpty(passes);
             }

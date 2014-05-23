@@ -11,10 +11,6 @@ namespace Pass.Container.BL
         }
 
         #region IPassTemplateConfig
-        public string PassTemplateFolderName
-        {
-            get { return GetValue("PassTemplateFolderName"); }
-        }
         public string ApplePassTemplateWebServerUrl
         {
             get { return GetValue("ApplePassTemplateWebServerUrl"); }

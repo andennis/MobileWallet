@@ -15,9 +15,9 @@ namespace Pass.Container.Repository.EF
         {
         }
 
-        public IList<string> GetSerialNumbersOfChangedPassesApple(string deviceId, string passTypeId, DateTime? updateTag)
+        public IList<string> GetPassSerialNumbersApple(string deviceId, string passTypeId, DateTime? updateTag)
         {
-            return SqlQuery<string>(PassContainerDbContext.DbScheme + ".GetSerialNumbersOfChangedPassesApple @DeviceId, @PassTypeId, @UpdateTag",
+            return SqlQuery<string>(PassContainerDbContext.DbScheme + ".GetPassSerialNumbersApple @DeviceId, @PassTypeId, @UpdateTag",
                                           new SqlParameter("DeviceId", deviceId),
                                           new SqlParameter("PassTypeId", passTypeId),
                                           new SqlParameter("UpdateTag", updateTag)).ToList();
