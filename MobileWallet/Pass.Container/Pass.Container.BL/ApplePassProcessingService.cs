@@ -130,7 +130,7 @@ namespace Pass.Container.BL
             status = PassProcessingStatus.Succeed;
             */
         }
-        public void UnregisterDevice(string deviceLibraryIdentifier, string passTypeIdentifier, string serialNumber, string pushToken, string authToken, out PassProcessingStatus status)
+        public void UnregisterDevice(string deviceLibraryIdentifier, string passTypeIdentifier, string serialNumber, string authToken, out PassProcessingStatus status)
         {
             RepEntities.Pass pass = GetPass(serialNumber, passTypeIdentifier);
             if (pass == null)

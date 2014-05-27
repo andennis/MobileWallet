@@ -73,7 +73,7 @@ namespace Pass.Processing.Web.Controllers
 
         [HttpDelete]
         [Route("devices/{deviceLibraryIdentifier}/registrations/{passTypeIdentifier}/{serialNumber}")]
-        public HttpResponseMessage UnregisterDevice(string deviceLibraryIdentifier, string passTypeIdentifier, string serialNumber, [FromBody]DevicePushToken devicePushToken)
+        public HttpResponseMessage UnregisterDevice(string deviceLibraryIdentifier, string passTypeIdentifier, string serialNumber/*, [FromBody]DevicePushToken devicePushToken*/)
         {
             HttpResponseMessage response = null;
             try
@@ -87,8 +87,7 @@ namespace Pass.Processing.Web.Controllers
                     string authToken = authHeader.Replace("ApplePass ", String.Empty);
 
                     PassProcessingStatus status;
-                    _passProcessingService.UnregisterDevice(deviceLibraryIdentifier, passTypeIdentifier, serialNumber,
-                        devicePushToken.PushToken, authToken, out status);
+                    _passProcessingService.UnregisterDevice(deviceLibraryIdentifier, passTypeIdentifier, serialNumber, authToken, out status);
 
                     //If the device is unregistered, return HTTP status 200.
                     if (status == PassProcessingStatus.Succeed)
