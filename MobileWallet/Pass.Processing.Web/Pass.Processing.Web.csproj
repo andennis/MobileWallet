@@ -119,8 +119,8 @@
     </Reference>
     <Reference Include="System.Net.Http.WebRequest">
     </Reference>
-    <Reference Include="Unity.Mvc5">
-      <HintPath>..\packages\Unity.Mvc5.1.1\lib\net45\Unity.Mvc5.dll</HintPath>
+    <Reference Include="Unity.WebApi">
+      <HintPath>..\packages\Unity.WebAPI.5.1\lib\net45\Unity.WebApi.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +155,18 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CertificateStorage\CertificateStorage.BL\CertificateStorage.BL.csproj">
+      <Project>{6eb0253b-5bcd-43cd-bb76-2ccff5761e7a}</Project>
+      <Name>CertificateStorage.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CertificateStorage\CertificateStorage.Core\CertificateStorage.Core.csproj">
+      <Project>{c65c0f7c-299b-4db8-9ab7-d3c246baba6f}</Project>
+      <Name>CertificateStorage.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CertificateStorage\CertificateStorage.Repository.EF\CertificateStorage.Repository.EF.csproj">
+      <Project>{1dbbe809-d0ba-4031-9ae6-de6ff57354d7}</Project>
+      <Name>CertificateStorage.Repository.EF</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Common\Common.Configuration\Common.Configuration.csproj">
       <Project>{DFABDFCC-3B69-434A-BD2A-6838CD7608A8}</Project>
       <Name>Common.Configuration</Name>
@@ -170,6 +182,10 @@
     <ProjectReference Include="..\Common\Common.Repository\Common.Repository.csproj">
       <Project>{F36371D6-812F-49F5-9E9B-043265660647}</Project>
       <Name>Common.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.Utils\Common.Utils.csproj">
+      <Project>{f1cad860-50fc-456c-96cd-1332cc48d03f}</Project>
+      <Name>Common.Utils</Name>
     </ProjectReference>
     <ProjectReference Include="..\FileStorage\FileStorage.BL\FileStorage.BL.csproj">
       <Project>{F067DA74-E48F-4DE7-85D4-1217BB3670E3}</Project>
@@ -196,6 +212,7 @@
       <Name>Pass.Container.Repository.EF</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

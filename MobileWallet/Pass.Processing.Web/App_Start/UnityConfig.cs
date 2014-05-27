@@ -1,7 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using System.Web.Http;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
-using Unity.Mvc5;
+using Unity.WebApi;
 
 namespace Pass.Processing.Web
 {
@@ -14,8 +14,8 @@ namespace Pass.Processing.Web
             container.LoadConfiguration("FileStorage");
             container.LoadConfiguration("CertificateStorage");
             container.LoadConfiguration("PassContainer");
-           
-            DependencyResolver.SetResolver(new UnityDependencyResolver(container));
+            
+            GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }
     }
 }
