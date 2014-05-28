@@ -18,7 +18,12 @@ namespace Pass.Container.BL.Tests
             int certId;
             using (ICertificateStorageService certStorageService = PassContainerFactory.CreateCertificateStorageService())
             {
-                var certInfo = new CertificateInfo() { Name = "pass.com.passlight.dev.test", Password = TestHelper.CertificateApplePassword.ConvertToSecureString() };
+                var certInfo = new CertificateInfo()
+                                   {
+                                       //Name = Guid.NewGuid().ToString(), 
+                                       Name = "pass.com.passlight.dev.test",
+                                       Password = TestHelper.CertificateApplePassword.ConvertToSecureString()
+                                   };
                 using (var fs = new FileStream(TestHelper.CertificateFileApple, FileMode.Open, FileAccess.Read))
                 {
                     certInfo.CertificateFile = fs;

@@ -11,10 +11,6 @@ namespace Pass.Container.BL
         }
 
         #region IPassTemplateConfig
-        public string ApplePassTemplateWebServerUrl
-        {
-            get { return GetValue("ApplePassTemplateWebServerUrl"); }
-        }
         public string PassTemplateWorkingFolder
         {
             get { return GetValue("PassTemplateWorkingFolder"); }
@@ -29,6 +25,10 @@ namespace Pass.Container.BL
         #endregion
 
         #region IApplePassGeneratorConfig
+        public string AppleWebServerUrl
+        {
+            get { return GetValue("AppleWebServerUrl"); }
+        }
         public string AppleWWDRCAPath
         {
             get { return GetValue("AppleWWDRCAPath"); }

@@ -105,7 +105,7 @@ namespace Pass.Container.BL
                 .Include(x => x.PassField)
                 .Get()
                 .AsEnumerable()
-                .Select(x => EntityConverter.RepositoryFieldValueToPassFieldInfo(x, false))
+                .Select(x => EntityConverter.RepositoryFieldValueToPassFieldInfo(x, true))
                 .ToList();
 
             if (!fields.Any())
@@ -176,8 +176,8 @@ namespace Pass.Container.BL
             Directory.CreateDirectory(passFolder);
 
             IPassGenerator pg = GetPassGenerator(pass.Template, clientType, templateFolder);
-            IEnumerable<PassFieldInfo> fields = pass.FieldValues.Select(x => EntityConverter.RepositoryFieldValueToPassFieldInfo(x, false));
-            return pg.GeneratePass(pass.SerialNumber, fields, passFolder);
+            IEnumerable<PassFieldInfo> fields = pass.FieldValues.Select(x => EntityConverter.RepositoryFieldValueToPassFieldInfo(x, true));
+            return pg.GeneratePass(pass.AuthToken, pass.SerialNumber, fields, passFolder);
         }
 
         private string GetTemporaryTemplateFolder(int templateId, ClientType clientType)
@@ -198,14 +198,14 @@ namespace Pass.Container.BL
                     if (appleTemplate == null)
                         throw new PassContainerException("Apple pass template not found");
 
-                    return GetApplePassGenerator(appleTemplate, srcTemplateFolder);
+                    return CreateApplePassGenerator(appleTemplate, srcTemplateFolder);
                 default:
                     throw new PassContainerException("Pass generated is not specified for client type: " + clientType);
             }
 
             
         }
-        private IPassGenerator GetApplePassGenerator(PassTemplateApple appleTemplate, string srcTemplateFolder)
+        private ApplePassGenerator CreateApplePassGenerator(PassTemplateApple appleTemplate, string srcTemplateFolder)
         {
             X509Certificate2 cert = _certService.GetCertificate(appleTemplate.CertificateId);
             return new ApplePassGenerator(_config, srcTemplateFolder, cert);

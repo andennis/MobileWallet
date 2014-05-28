@@ -5,6 +5,6 @@ namespace Pass.Container.Core
 {
     public interface IPassGenerator
     {
-        string GeneratePass(string serialNumber, IEnumerable<PassFieldInfo> fields, string dstPassFilesPath);
+        string GeneratePass(string authToken, string serialNumber, IEnumerable<PassFieldInfo> fields, string dstPassFilesPath);
     }
 }

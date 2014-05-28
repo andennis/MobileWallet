@@ -53,7 +53,7 @@ namespace Pass.Container.BL
 
             _passTemplateGenerators = new List<IPassTemplateGenerator>
                                         {
-                                            new ApplePassTemplateGenerator(config)
+                                            new ApplePassTemplateGenerator()
                                         };
         }
 

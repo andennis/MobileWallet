@@ -37,10 +37,10 @@ namespace Pass.Container.BL.PassGenerators
             }
         }
 
-        public string GeneratePass(string serialNumber, IEnumerable<PassFieldInfo> fields, string dstPassFilesPath)
+        public string GeneratePass(string authToken, string serialNumber, IEnumerable<PassFieldInfo> fields, string dstPassFilesPath)
         {
             //Pass content
-            string passContent = BuildPassContent(serialNumber, fields);
+            string passContent = BuildPassContent(authToken, serialNumber, fields);
             string contentFilePath = Path.Combine(dstPassFilesPath, ApplePass.PassFileName);
             File.WriteAllText(contentFilePath, passContent);
 
@@ -67,7 +67,7 @@ namespace Pass.Container.BL.PassGenerators
             return packageFilePath;
         }
 
-        private string BuildPassContent(string serialNumber, IEnumerable<PassFieldInfo> fields)
+        private string BuildPassContent(string authToken, string serialNumber, IEnumerable<PassFieldInfo> fields)
         {
             if (serialNumber == null)
                 throw new ArgumentNullException("serialNumber");
@@ -79,6 +79,12 @@ namespace Pass.Container.BL.PassGenerators
 
             string passContent = File.ReadAllText(filePath);
 
+            //Replace WebServiceUrl
+            passContent = passContent.ReplaceFirst(ApplePass.FieldWebServiceUrl, _config.AppleWebServerUrl);
+
+            //Replace authentication token
+            passContent = passContent.ReplaceFirst(ApplePass.FieldAuthToken, authToken);
+
             //Replace serial number
             passContent = passContent.ReplaceFirst(ApplePass.FieldSerialNumber, serialNumber);
 
@@ -87,13 +93,13 @@ namespace Pass.Container.BL.PassGenerators
             {
                 if (pfInfo.Label != null)
                 {
-                    string labelFieldName = @"Label$$" + pfInfo.Name + "$$";
+                    string labelFieldName = string.Format(ApplePass.FieldLabelFormat, pfInfo.Name); //@"Label$$" + pfInfo.Name + "$$";
                     passContent = passContent.ReplaceFirst(labelFieldName, pfInfo.Label);
                 }
 
                 if (pfInfo.Value != null)
                 {
-                    string valueFieldName = @"Value$$" + pfInfo.Name + "$$";
+                    string valueFieldName = string.Format(ApplePass.FieldValueFormat, pfInfo.Name); //@"Value$$" + pfInfo.Name + "$$";
                     passContent = passContent.ReplaceFirst(valueFieldName, pfInfo.Value);
                 }
             }

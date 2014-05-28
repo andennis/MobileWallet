@@ -13,6 +13,7 @@ using Org.BouncyCastle.Security;
 
 namespace Pass.Container.BL.Helpers
 {
+    [Obsolete]
     public static class ApplePassGeneratorHelper
     {
         private const string PassTypeIdCerName = "pass.p12";

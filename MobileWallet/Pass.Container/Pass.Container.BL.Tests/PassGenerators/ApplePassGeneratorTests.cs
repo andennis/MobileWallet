@@ -25,10 +25,12 @@ namespace Pass.Container.BL.Tests.PassGenerators
                 Directory.Delete(dstPackagePath, true);
             Directory.CreateDirectory(dstPackagePath);
 
-            string fileName = passGenerator.GeneratePass("SN0123", fields, dstPackagePath);
+            string fileName = passGenerator.GeneratePass("AT123", "SN0123", fields, dstPackagePath);
             Assert.IsNotNullOrEmpty(fileName);
             Assert.AreEqual(".pkpass", Path.GetExtension(fileName));
             Assert.True(File.Exists(fileName));
+
+            //TODO the test should be improved to check provided fields
         }
     }
 }

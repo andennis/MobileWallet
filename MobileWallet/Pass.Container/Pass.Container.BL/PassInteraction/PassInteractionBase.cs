@@ -50,7 +50,7 @@ namespace Pass.Container.BL.PassInteraction
         protected PassProcessingStatus RemovePassFromClientDevice(int passId, ClientDevice clientDevice)
         {
             IRepository<Registration> regRep = _pcUnitOfWork.GetRepository<Registration>();
-            var reg = regRep.Find(passId, clientDevice.DeviceId);
+            var reg = regRep.Find(passId, clientDevice.ClientDeviceId);
             if (reg == null || reg.Status != EntityStatus.Active)
                 return PassProcessingStatus.AlreadyDone;
 

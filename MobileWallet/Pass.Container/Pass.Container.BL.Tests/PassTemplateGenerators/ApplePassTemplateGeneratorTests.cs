@@ -18,7 +18,7 @@ namespace Pass.Container.BL.Tests.PassTemplateGenerators
         [Test]
         public void ClientTypeTest()
         {
-            var generator = new ApplePassTemplateGenerator(new PassContainerConfig());
+            var generator = new ApplePassTemplateGenerator();
             Assert.AreEqual(ClientType.Apple, generator.ClientType);
         }
 
@@ -37,7 +37,7 @@ namespace Pass.Container.BL.Tests.PassTemplateGenerators
 
             string imageFilesPath = Path.Combine(TemplateFolder, "Images");
 
-            var generator = new ApplePassTemplateGenerator(new PassContainerConfig());
+            var generator = new ApplePassTemplateGenerator();
             Assert.DoesNotThrow(() => generator.Generate(genPassTemplate, Directory.EnumerateFiles(imageFilesPath), dstTemplateFolder));
 
             string dstImageFilesPath = Path.Combine(dstTemplateFolder, ApplePass.TemplateImageFolder);
