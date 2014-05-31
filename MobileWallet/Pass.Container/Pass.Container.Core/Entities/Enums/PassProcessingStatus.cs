@@ -7,7 +7,8 @@ namespace Pass.Container.Core.Entities.Enums
         AlreadyDone = 2,
         Unauthorized = 3,
         NotFound = 4,
-        NoContent = 5,
-        Error = 6
+        NotModified = 5,
+        NoContent = 6,
+        Error = 7
     }
 }

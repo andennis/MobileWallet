@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Common.Repository;
 using Pass.Container.Core.Entities.Enums;
 using Pass.Container.Repository.Core;
@@ -11,11 +7,11 @@ using RepEntities = Pass.Container.Repository.Core.Entities;
 
 namespace Pass.Container.BL.PassInteraction
 {
-    public abstract class PassInteractionBase
+    public abstract class PassProcessingBase
     {
         protected readonly IPassContainerUnitOfWork _pcUnitOfWork;
 
-        protected PassInteractionBase(IPassContainerUnitOfWork pcUnitOfWork)
+        protected PassProcessingBase(IPassContainerUnitOfWork pcUnitOfWork)
         {
             _pcUnitOfWork = pcUnitOfWork;
         }

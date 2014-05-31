@@ -54,7 +54,7 @@
     <Compile Include="Helpers\ApplePassGeneratorHelper.cs" />
     <Compile Include="PassCertificateService.cs" />
     <Compile Include="PassGenerators\ApplePassGenerator.cs" />
-    <Compile Include="PassInteraction\PassInteractionBase.cs" />
+    <Compile Include="PassProcessing\PassProcessingBase.cs" />
     <Compile Include="PassTemplateGenerators\ApplePassTemplateGenerator.cs" />
     <Compile Include="PassContainerConfig.cs" />
     <Compile Include="PassService.cs" />
