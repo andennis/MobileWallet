@@ -47,8 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplePassProcessingService.cs" />
-    <Compile Include="Caching\FileCacheStore.cs" />
+    <Compile Include="PassProcessing\PassProcessingAppleService.cs" />
     <Compile Include="EntityConverter.cs" />
     <Compile Include="Helpers\ApplePass.cs" />
     <Compile Include="Helpers\ApplePassGeneratorHelper.cs" />
@@ -58,7 +57,6 @@
     <Compile Include="PassTemplateGenerators\ApplePassTemplateGenerator.cs" />
     <Compile Include="PassContainerConfig.cs" />
     <Compile Include="PassService.cs" />
-    <Compile Include="Caching\PassTemplateCacheStore.cs" />
     <Compile Include="PassTemplateService.cs" />
     <Compile Include="PassTemplateStorageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

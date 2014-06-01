@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using NUnit.Framework;
+using Pass.Container.Repository.Core.Entities;
 
 namespace Pass.Container.Repository.EF.Tests
 {
@@ -8,14 +8,15 @@ namespace Pass.Container.Repository.EF.Tests
     public class PassRepositoryTests
     {
         [Test]
-        public void GetPassSerialNumbersAppleTest()
+        public void GetChangedPassesAppleTest()
         {
             using (var unitOfWork = TestHelper.GetPassContainerUnitOfWork())
             {
-                IList<string> passes = unitOfWork.PassRepository.GetPassSerialNumbersApple("123", "321", DateTime.Now);
+                IList<ChangedPass> passes = unitOfWork.PassRepository.GetChangedPassesApple("123", "321", null);
                 Assert.IsNotNull(passes);
                 CollectionAssert.IsEmpty(passes);
             }
         }
+
     }
 }

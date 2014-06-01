@@ -3,9 +3,8 @@ using Common.Repository;
 using Pass.Container.Core.Entities.Enums;
 using Pass.Container.Repository.Core;
 using Pass.Container.Repository.Core.Entities;
-using RepEntities = Pass.Container.Repository.Core.Entities;
 
-namespace Pass.Container.BL.PassInteraction
+namespace Pass.Container.BL.PassProcessing
 {
     public abstract class PassProcessingBase
     {
@@ -64,7 +63,7 @@ namespace Pass.Container.BL.PassInteraction
                 .FirstOrDefault();
         }
 
-        protected bool Authenticate(string authToken, RepEntities.Pass pass)
+        protected bool Authenticate(string authToken, Repository.Core.Entities.Pass pass)
         {
             return (pass.AuthToken == authToken);
         }

@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="Entities\Enums\PassProcessingStatus.cs" />
     <Compile Include="Entities\PassFieldInfo.cs" />
+    <Compile Include="Entities\PassPackageInfo.cs" />
+    <Compile Include="Entities\ChangedPassesInfo.cs" />
     <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\FieldDictionaryKeys\Field.cs" />
     <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\LowerLevelKeys\Barcode.cs" />
     <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\LowerLevelKeys\Beacon.cs" />
@@ -64,7 +66,7 @@
     <Compile Include="Exceptions\PassGenerationException.cs" />
     <Compile Include="Exceptions\PassTemplateException.cs" />
     <Compile Include="IApplePassGeneratorConfig.cs" />
-    <Compile Include="IApplePassProcessingService.cs" />
+    <Compile Include="IPassProcessingAppleService.cs" />
     <Compile Include="IPassCertificateService.cs" />
     <Compile Include="IPassGenerator.cs" />
     <Compile Include="IPassTemplateStorageService.cs" />
@@ -75,9 +77,7 @@
     <Compile Include="IPassTemplateService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Entities\Templates\NativePassTemplates\GooglePassTemplate\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common.Repository\Common.Repository.csproj">
       <Project>{F36371D6-812F-49F5-9E9B-043265660647}</Project>

@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using Common.Repository.EF;
 using Pass.Container.Repository.Core;
+using Pass.Container.Repository.Core.Entities;
 
 namespace Pass.Container.Repository.EF
 {
@@ -15,12 +16,14 @@ namespace Pass.Container.Repository.EF
         {
         }
 
-        public IList<string> GetPassSerialNumbersApple(string deviceId, string passTypeId, DateTime? updateTag)
+        public IList<ChangedPass> GetChangedPassesApple(string deviceId, string passTypeId, DateTime? updateTag)
         {
-            return SqlQuery<string>(PassContainerDbContext.DbScheme + ".GetPassSerialNumbersApple @DeviceId, @PassTypeId, @UpdateTag",
+            return SqlQuery<ChangedPass>(PassContainerDbContext.DbScheme + ".GetChangedPassesApple @DeviceId, @PassTypeId, @UpdateTag",
                                           new SqlParameter("DeviceId", deviceId),
                                           new SqlParameter("PassTypeId", passTypeId),
-                                          new SqlParameter("UpdateTag", updateTag)).ToList();
+                                          new SqlParameter("UpdateTag", (object)updateTag ?? DBNull.Value)).ToList();
         }
+
     }
+
 }

@@ -74,6 +74,6 @@
     <Build Include="Tables\pscn.PassTemplateApple.sql" />
     <Build Include="Tables\pscn.ClientDeviceApple.sql" />
     <Build Include="Security\pscn.sql" />
-    <Build Include="Stored Procedures\pscn.GetPassSerialNumbersApple.sql" />
+    <Build Include="Stored Procedures\pscn.GetChangedPassesApple.sql" />
   </ItemGroup>
 </Project>

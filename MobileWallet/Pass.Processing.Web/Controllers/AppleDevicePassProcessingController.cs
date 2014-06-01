@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Web;
 using System.Web.Http;
 using Pass.Container.Core;
+using Pass.Container.Core.Entities;
 using Pass.Container.Core.Entities.Enums;
 using Pass.Processing.Web.Models;
 
@@ -15,9 +14,9 @@ namespace Pass.Processing.Web.Controllers
     [RoutePrefix("v1")]
     public class AppleDevicePassProcessingController : ApiController
     {
-        private readonly IApplePassProcessingService _passProcessingService;
+        private readonly IPassProcessingAppleService _passProcessingService;
 
-        public AppleDevicePassProcessingController(IApplePassProcessingService passProcessingService)
+        public AppleDevicePassProcessingController(IPassProcessingAppleService passProcessingService)
         {
             _passProcessingService = passProcessingService;
         }
@@ -32,8 +31,7 @@ namespace Pass.Processing.Web.Controllers
                 if (authToken == null)
                     return Request.CreateResponse(HttpStatusCode.Unauthorized);
 
-                PassProcessingStatus status;
-                _passProcessingService.RegisterDevice(deviceLibraryIdentifier, passTypeIdentifier, serialNumber, devicePushToken.PushToken, authToken, out status);
+                PassProcessingStatus status = _passProcessingService.RegisterDevice(deviceLibraryIdentifier, passTypeIdentifier, serialNumber, devicePushToken.PushToken, authToken);
 
                 switch (status)
                 {
@@ -75,8 +73,7 @@ namespace Pass.Processing.Web.Controllers
                 if (authToken == null)
                     return Request.CreateResponse(HttpStatusCode.Unauthorized);
 
-                PassProcessingStatus status;
-                _passProcessingService.UnregisterDevice(deviceLibraryIdentifier, passTypeIdentifier, serialNumber, authToken, out status);
+                PassProcessingStatus status = _passProcessingService.UnregisterDevice(deviceLibraryIdentifier, passTypeIdentifier, serialNumber, authToken);
 
                 if (status == PassProcessingStatus.Succeed)
                     return Request.CreateResponse(HttpStatusCode.OK);
@@ -114,9 +111,8 @@ namespace Pass.Processing.Web.Controllers
                 DateTime passesUpdatedSinceTime;
                 DateTime.TryParse(passesUpdatedSince, out passesUpdatedSinceTime);//TODO check date format
 
-                PassProcessingStatus status;
-                DateTime lastUpdated;
-                IList<string> serialNumbers = _passProcessingService.GetSerialNumbersOfPasses(deviceLibraryIdentifier, passTypeIdentifier, out lastUpdated, out status, passesUpdatedSinceTime);
+                ChangedPassesInfo changedPassesInfo;
+                PassProcessingStatus status = _passProcessingService.GetChangedPasses(deviceLibraryIdentifier, passTypeIdentifier, passesUpdatedSinceTime, out changedPassesInfo);
                 //Return:
                 //{ 
                     //“serialNumbers” : [ <serialNo.>, <serialNo.>, ... ],
@@ -128,8 +124,8 @@ namespace Pass.Processing.Web.Controllers
                 {
                     var obj = new 
                         {
-                            serialNumbers = string.Join(", ", serialNumbers),
-                            lastUpdated
+                            serialNumbers = string.Join(", ", changedPassesInfo.SerialNumbers),
+                            lastUpdated = changedPassesInfo.LastUpdated
                         };
                     if (obj.serialNumbers.Length > 0)
                         obj.serialNumbers.Remove(obj.serialNumbers.Length - 1);
@@ -169,27 +165,26 @@ namespace Pass.Processing.Web.Controllers
 
                 //Support standard HTTP caching on this endpoint: check for the If-Modified-Since header and return HTTP
                 //status code 304 if the pass has not changed.
-                string modifiedSince = HttpContext.Current.Request.Headers["If-Modified-Since"];
-                DateTime? dtModifiedSince = !string.IsNullOrEmpty(modifiedSince) ? Convert.ToDateTime(modifiedSince) : (DateTime?)null;
+                DateTime? dtModifiedSince = this.Request.Headers.IfModifiedSince.HasValue
+                    ? this.Request.Headers.IfModifiedSince.Value.DateTime
+                    : (DateTime?)null;
 
-                PassProcessingStatus status;
-                string pkpassFilePath = _passProcessingService.GetPass(passTypeIdentifier, serialNumber, authToken, out status, dtModifiedSince);
+                PassPackageInfo packageInfo;
+                PassProcessingStatus status = _passProcessingService.GetPassPackage(passTypeIdentifier, serialNumber, authToken, dtModifiedSince, out packageInfo);
 
                 switch (status)
                 {
                     case PassProcessingStatus.Succeed:
                         //If request is authorized, return HTTP status 200 with a payload of the pass data.
-                        var stream = new FileStream(pkpassFilePath, FileMode.Open);
+                        var stream = new FileStream(packageInfo.PackageFilePath, FileMode.Open);
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
                         response.Content = new StreamContent(stream);
                         response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+                        response.Content.Headers.LastModified = packageInfo.UpdatedDate;
                         return response;
 
                     case PassProcessingStatus.NotModified:
-                        HttpResponseMessage response2 = Request.CreateResponse(HttpStatusCode.NotModified);
-                        //response2.Headers.Add("Last-modified", );
-                        return response2;
-
+                        return Request.CreateResponse(HttpStatusCode.NotModified);
                     default:
                         return GetStandardResponse(status, "Getting pass failed");
                 }
@@ -234,14 +229,13 @@ namespace Pass.Processing.Web.Controllers
         {
             //The Authorization header is supplied; its value is the word “ApplePass”, 
             //followed by a space, followed by the pass’s authorization token as specified in the pass.
-            string authHeader = HttpContext.Current.Request.Headers["Authorization"];
-            const string AuthApplePass = "ApplePass";
-            if (authHeader == null || !authHeader.StartsWith(AuthApplePass) || AuthApplePass.Length + 2 > authHeader.Length)
+            AuthenticationHeaderValue authHeader = this.Request.Headers.Authorization;
+            if (authHeader == null || authHeader.Scheme != "ApplePass")
                 return null;
 
-            return authHeader.Substring(AuthApplePass.Length + 1);
+            return authHeader.Parameter;
         }
-        HttpResponseMessage GetStandardResponse(PassProcessingStatus status, string errorMsg)
+        private HttpResponseMessage GetStandardResponse(PassProcessingStatus status, string errorMsg)
         {
             switch (status)
             {

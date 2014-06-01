@@ -103,7 +103,7 @@ namespace Pass.Container.BL.Tests
             return PassContainerFactory.CreateTemplateService(null, null);
         }
 
-        private IApplePassProcessingService GetAppleDevicePassProcessingService()
+        private IPassProcessingAppleService GetAppleDevicePassProcessingService()
         {
             return PassContainerFactory.CreateApplePassProcessingService(new PassContainerConfig(), new FileStorageConfig());
         }

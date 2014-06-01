@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using Common.Repository;
+using Pass.Container.Repository.Core.Entities;
 
 namespace Pass.Container.Repository.Core
 {
     public interface IPassRepository : IRepository<Entities.Pass>
     {
-        IList<string> GetPassSerialNumbersApple(string deviceId, string passTypeId, DateTime? updateTag);
+        IList<ChangedPass> GetChangedPassesApple(string deviceId, string passTypeId, DateTime? updateTag);
     }
+
 }
