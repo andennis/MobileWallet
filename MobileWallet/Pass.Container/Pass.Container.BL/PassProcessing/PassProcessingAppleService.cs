@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Common.Extensions;
 using Common.Repository;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
@@ -102,14 +103,16 @@ namespace Pass.Container.BL.PassProcessing
                 return PassProcessingStatus.NotFound;
             if (!Authenticate(authToken, pass))
                 return PassProcessingStatus.Unauthorized;
-            if (lastUpdatedDate.HasValue && lastUpdatedDate.Value >= pass.UpdatedDate)
+
+            DateTime updatedDate = pass.UpdatedDate.TruncateMiliseconds();
+            if (lastUpdatedDate.HasValue && lastUpdatedDate.Value >= updatedDate)
                 return PassProcessingStatus.NotModified;
 
             string packagePath = _passService.GetPassPackage(pass.PassId, ClientType.Apple);
             packageInfo = new PassPackageInfo()
                           {
                               PackageFilePath = packagePath,
-                              UpdatedDate = pass.UpdatedDate
+                              UpdatedDate = updatedDate
                           };
 
             return PassProcessingStatus.Succeed;

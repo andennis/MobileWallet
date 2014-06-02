@@ -166,7 +166,7 @@ namespace Pass.Processing.Web.Controllers
                 //Support standard HTTP caching on this endpoint: check for the If-Modified-Since header and return HTTP
                 //status code 304 if the pass has not changed.
                 DateTime? dtModifiedSince = this.Request.Headers.IfModifiedSince.HasValue
-                    ? this.Request.Headers.IfModifiedSince.Value.DateTime
+                    ? this.Request.Headers.IfModifiedSince.Value.LocalDateTime
                     : (DateTime?)null;
 
                 PassPackageInfo packageInfo;
