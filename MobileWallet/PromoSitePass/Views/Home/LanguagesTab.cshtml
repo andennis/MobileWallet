@@ -1,0 +1,129 @@
+﻿<div class="divTabEditor">
+    <div class="clearBlock"></div>
+    <br>
+    <div class="explanations">
+        Если Вы хотите локализовать свой пасс для нескольких языков выбрите нужный язык ниже.
+        Вы можете ввести собственный перевод для полей и заголовков, а также загрузить собственные изображения для каждого языка.
+        Даты и валюты будут отображаться в соответствии с языком и местоположением пользователя.
+    </div>
+    <br>
+    Content Language Inputs Button
+    <!--Pass language select-->
+    <p class="labelInput labelInputSelectLanguages">
+        <span data-toggle="tooltip" title="Выберите язык, который Вы использовали, создавая Ваш пасс">Язык пасса</span>
+    </p>
+    <select class="form-control languagesSelect">
+        <option value="ar">(Arabic) العربية</option>
+        <option value="ca">Català (Catalan)</option>
+        <option value="zh-Hans">简体中文 (Simplified Chinese)</option>
+        <option value="zh-Hant">繁體中文 (Traditional Chinese)</option>
+        <option value="hr">Hrvatski (Croatian)</option>
+        <option value="cs">Čeština (Czech)</option>
+        <option value="da">Dansk (Danish)</option>
+        <option value="nl">Nederlands (Dutch)</option>
+        <option value="en">English</option>
+        <option value="en-GB">English (British)</option>
+        <option value="fi">Suomi (Finnish)</option>
+        <option value="fr">Français (French)</option>
+        <option value="de">Deutsch (German)</option>
+        <option value="el">Ελληνικά (Greek)</option>
+        <option value="he">(Hebrew) עברית</option>
+        <option value="hu">Magyar (Hungarian)</option>
+        <option value="id">Bahasa Indonesia (Indonesian)</option>
+        <option value="it">Italiano (Italian)</option>
+        <option value="ja">日本語 (Japanese)</option>
+        <option value="ko">한국어 (Korean)</option>
+        <option value="ms">Bahasa Melayu (Malay)</option>
+        <option value="nb">Norsk Bokmål (Norwegian)</option>
+        <option value="pl">Polski (Polish)</option>
+        <option value="pt-BR">Português (Brazilian Portuguese)</option>
+        <option value="pt">Português de Portugal (Portuguese)</option>
+        <option value="ro">Română (Romanian)</option>
+        <option value="ru" selected="selected">Русский (Russian)</option>
+        <option value="sk">Slovenčina (Slovakian)</option>
+        <option value="es">Español (Spanish)</option>
+        <option value="sv">Svenska (Swedish)</option>
+        <option value="th">ภาษาไทย (Thai)</option>
+        <option value="tr">Türkçe (Turkish)</option>
+        <option value="uk">Українська (Ukranian)</option>
+        <option value="vi">Tiếng Việt (Vietnamese)</option>
+    </select>
+    <br />
+
+    <!--Language collapse field 1-->
+    <div id="mainCollapsePanelLanguageContent">
+        <div id="collapsePanelLanguageContent1">
+            <div class="collapseLinkContent" style="width: 525px; position: relative;">
+                <input type="checkbox" name="checkboxLanguage1" id="checkboxLanguage1" class="checkboxCollapse">
+                <label for="checkboxLanguage1" class="checkboxCollapseLabel"></label>
+                <a data-toggle="collapse" data-parent="#mainCollapsePanelAddressContent" href="#collapseContentLanguage1">
+                    <p class="labelInput">
+                        <span data-toggle="tooltip" title="Введите адрес Вашего магазина">Язык</span>
+                    </p>                   
+                </a>                
+                <select class="form-control languagesSelect">
+                    <option value="ar">(Arabic) العربية</option>
+                    <option value="ca">Català (Catalan)</option>
+                    <option value="zh-Hans">简体中文 (Simplified Chinese)</option>
+                    <option value="zh-Hant">繁體中文 (Traditional Chinese)</option>
+                    <option value="hr">Hrvatski (Croatian)</option>
+                    <option value="cs">Čeština (Czech)</option>
+                    <option value="da">Dansk (Danish)</option>
+                    <option value="nl">Nederlands (Dutch)</option>
+                    <option value="en">English</option>
+                    <option value="en-GB">English (British)</option>
+                    <option value="fi">Suomi (Finnish)</option>
+                    <option value="fr">Français (French)</option>
+                    <option value="de">Deutsch (German)</option>
+                    <option value="el">Ελληνικά (Greek)</option>
+                    <option value="he">(Hebrew) עברית</option>
+                    <option value="hu">Magyar (Hungarian)</option>
+                    <option value="id">Bahasa Indonesia (Indonesian)</option>
+                    <option value="it">Italiano (Italian)</option>
+                    <option value="ja">日本語 (Japanese)</option>
+                    <option value="ko">한국어 (Korean)</option>
+                    <option value="ms">Bahasa Melayu (Malay)</option>
+                    <option value="nb">Norsk Bokmål (Norwegian)</option>
+                    <option value="pl">Polski (Polish)</option>
+                    <option value="pt-BR">Português (Brazilian Portuguese)</option>
+                    <option value="pt">Português de Portugal (Portuguese)</option>
+                    <option value="ro">Română (Romanian)</option>
+                    <option value="ru" selected="selected">Русский (Russian)</option>
+                    <option value="sk">Slovenčina (Slovakian)</option>
+                    <option value="es">Español (Spanish)</option>
+                    <option value="sv">Svenska (Swedish)</option>
+                    <option value="th">ภาษาไทย (Thai)</option>
+                    <option value="tr">Türkçe (Turkish)</option>
+                    <option value="uk">Українська (Ukranian)</option>
+                    <option value="vi">Tiếng Việt (Vietnamese)</option>
+                </select>                
+            </div>
+            <a data-toggle="collapse" data-parent="#mainCollapsePanelAddressContent" href="#collapseContentLanguage1">
+                <img src="~/Images/createCard/expand.png" class="expandImageCollapseLanguages" data-toggle="tooltip" title="Развернуть(свернуть) поле" />
+            </a>
+            <div id="collapseContentLanguage1" class="collapseContent collapse in">
+                <div id="divLanguageTextInputs1">
+                    <div class="divInputLanguageText" style="padding-right: 8px;">
+                        <p class="labelInputLanguageText">Оригинальный текст<span class="spanRed">*</span></p>
+                        <textarea id="textInputLanguage1Original1" class="form-control textInputLanguageText" placeholder="Обязательный" rows="2"></textarea>
+                    </div>
+                    <div class="divInputLanguageText">
+                        <p class="labelInputLanguageText">Перевод<span class="spanRed">*</span></p>
+                        <textarea id="textInputLanguage1Local1" class="form-control textInputLanguageText" placeholder="Обязательный" rows="2"></textarea>
+                    </div>
+                    <div id="divTextInputsLanguage1Row2">
+                        <div class="divInputLanguageText" style="padding-right: 8px;">
+                            <textarea id="textInputLanguage1Original2" class="form-control textInputLanguageText" placeholder="Обязательный" rows="2"></textarea>
+                        </div>
+                        <div class="divInputLanguageText">
+                            <textarea id="textInputLanguage1Local2" class="form-control textInputLanguageText" placeholder="Обязательный" rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <button id="addRowLanguageButton1" class="emerald-flat-button AddRowLanguageButton" onclick="AddLanguageTextRow(id)">Добавить строку</button>
+                <div style="color: #DBDBDB;">-------------------------------------------------------------------------------------------------</div>
+            </div>
+        </div>
+    </div>
+    <button id="addLanguageButton" class="emerald-flat-button" style="width:120px;margin-left:0px;margin-top:18px;position:relative;" onclick="AddLanguageField();">Добавить язык</button>
+</div>

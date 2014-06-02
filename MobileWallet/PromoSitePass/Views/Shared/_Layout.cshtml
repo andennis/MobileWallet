@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        /*.navbar-inverse .navbar-nav > li > a {
+            color: white;
+            font-size: 20px;
+        }
+        .navbar-inverse {
+            background-color: #00b4f0;
+            border-color: #00b4f0;
+        }
+        
+        .navbar-fixed-top, .navbar-fixed-bottom {
+            position: absolute;
+        }
+        .navbar-inverse .navbar-brand {
+            color: white;
+        }*/
+
+
+        body {
+            padding-top: 0;
+        }
+
+        .container {
+            max-width: 100%;
+            padding-right: 0px;
+            padding-left: 0px;
+        }
+
+        .body-content {
+            padding-right: 0px;
+            padding-left: 0px;
+        }
+
+        ::selection {
+            background-color: #f36f5f;
+            color: #fff;
+        }
+
+        /*main menu*/
+        .menu {
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        ul {
+            border: 0;
+            float: left;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-align: left;
+        }
+
+            ul li {
+                display: block;
+                position: relative;
+                float: left;
+                border: 0;
+                float: left;
+                margin: 0;
+                padding: 0 5px 0 0;
+            }
+
+        li ul {
+            display: none;
+        }
+
+        ul li a {
+            display: block;
+            text-decoration: none;
+            color: #87898F;
+            border-top: 1px solid #ffffff;
+            padding: 5px 10px 5px 10px;
+            font-size: 18px;
+        }
+
+            ul li a.active {
+                font-weight: bold;
+                color: #00bcf2;
+                border-bottom: 2px solid #00bcf2;
+            }
+
+            ul li a:hover {
+                color: #00bcf2;
+                text-decoration: none;
+            }
+
+            ul li a.active:hover {
+                /*color: #006d8c;
+                background: #fadd1e;*/
+            }
+
+        li:hover ul {
+            display: block;
+            position: absolute;
+        }
+
+        li:hover li {
+            float: none;
+            font-size: 11px;
+        }
+
+        li:hover a {
+            /*background: #5d5d5d;*/
+        }
+
+        li:hover li a {
+            background: #00bcf2;
+            color: white;
+        }
+
+            li:hover li a:hover {
+                background: #fadd1e;
+                color: #006d8c;
+            }
+    </style>
+</head>
+<body>
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Наше название", "MainPage", "Home", null, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Описание", "About", "Home")</li>
+                    <li>@Html.ActionLink("Контакты", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Создать электронную карту", "EmptyCardDesigner", "Home", new { target = "_blank" })</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>*@
+    
+
+    <div style="margin-right: auto; margin-left: auto; width: 1000px; text-align: left;">
+        <a href="@Url.Action("MainPage", "Home")">
+            <img src="@Url.Content("~/Images/MainPage/PassLightLogo.jpg")" style="margin-top: 10px;width: 250px; ">
+        </a>       
+        <div class="menu" style="position: absolute; margin-left: 300px; top: 32px; z-index: 1000;">
+            <ul>
+                <li>@Html.ActionLink("Главная", "MainPage", "Home", null, new {@class = "active"})</li>
+                <li>
+                    <a href="#">Бизнес стратегии</a>
+                    <ul>
+                        <li><a href="~/Home/CouponsStrategy">Купоны</a></li>
+                        <li><a href="">Накопительная карта</a></li>
+                        <li><a href="">Карта клиента</a></li>
+                        <li><a href="">Билет на событие</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Инструменты</a>
+                    <ul>
+                        @*<li><a href="">Дизайнер пассов</a></li>*@
+                        <li>@Html.ActionLink("Дизайнер пассов", "EmptyCardDesigner", "Home")</li>
+                    </ul>
+                </li>
+                <li>@Html.ActionLink("Контакты", "Contact", "Home")</li>
+                @*<li><a href="#">Регистрация</a></li>*@
+            </ul>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

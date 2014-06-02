@@ -1,0 +1,2777 @@
+﻿@{
+    Layout = "";
+}
+
+@using System.Diagnostics
+@using System.Web.Script.Serialization
+@using PromoSitePass.Models.GeneralPassTemplate
+@model PromoSitePass.Models.GeneralPassTemplate.GeneralPassTemplate
+
+<link href="~/Content/createCard/bootstrap-theme.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/createCard/skeleton.css" rel="stylesheet" />
+<link href="~/Content/createCard/style.css" rel="stylesheet" />
+<link href="~/Content/createCard/jquery.simple-dtpicker.css" rel="stylesheet" />
+
+
+<script src="~/Scripts/createCard/jquery-1.8.3.js"></script>
+@*<script src="~/Scripts/createCard/jquery-2.0.2.js"></script>*@
+@*<script src="~/Scripts/createCard/jquery-1.7.1.js"></script>*@
+<script src="~/Scripts/createCard/bootstrap.js"></script>
+<script src="~/Scripts/createCard/jquery.flippy.js"></script>
+<script src="~/Scripts/createCard/mColorPicker.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script src="~/Scripts/createCard/jquery.simple-dtpicker.js"></script>
+<script src="~/Scripts/createCard/StackBlur.js"></script>
+
+<style>
+    #body {
+        background-color: white;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    body {
+        text-align: left;
+    }
+
+    input {
+        border: 1px solid #cccccc;
+    }
+
+    .passTypeImg {
+        height: 110px;
+        width: 90px;
+    }
+
+    .passType {
+        float: left;
+        width: 106px;
+        height: 145px;
+    }
+
+    .clearBlock {
+        width: 20px;
+        height: 830px;
+        position: relative;
+        float: left;
+    }
+
+    .labelInput {
+        float: left;
+        height: 32px;
+        width: 138px;
+        padding: 5px;
+        z-index: 4;
+        font-weight: 700;
+        margin: 0 0 0 0px;
+    }
+
+        .labelInput a, .labelInput span {
+            color: #777981;
+        }
+
+            .labelInput a:hover {
+                text-decoration: none;
+            }
+
+    .labelInputPassSettings {
+        width: 195px;
+    }
+
+    .labelInputBarcode {
+        width: 220px;
+    }
+
+    .labelInputLockScreen {
+        width: 220px;
+    }
+
+    .labelInputAddress {
+        width: 116px;
+    }
+
+    .labelInputLanguageText {
+        height: 32px;
+        width: 167px;
+        padding: 5px;
+        color: #777981;
+        margin: 0 0 0 0px;
+        font-weight: 700;
+    }
+
+    .labelInputSelectLanguages {
+        width: 164px;
+    }
+
+    .distributionSelect {
+        width: 358px;
+        height: 28px;
+    }
+
+    .distributionContentSelect {
+        width: 243px;
+        height: 28px;
+    }
+
+    .passT {
+        position: absolute;
+        width: 22px;
+        height: 22px;
+        -ms-opacity: 0;
+        opacity: 0;
+    }
+
+    .title {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .inputField {
+        padding: 2px 14px;
+        font-size: 1.2em;
+        color: #787878;
+        -ms-text-shadow: 0px 1px 0px #fff;
+        -webkit-text-shadow: 0px 1px 0px #fff;
+        text-shadow: 0px 1px 0px #fff;
+        outline: none;
+        background: -webkit-gradient(linear, left top, left bottom, from(#e0e0e0), to(#ffffff));
+    }
+
+    .peter-river-flat-button {
+        width: 126px;
+        height: 30px;
+        padding: 0;
+        font-size: 12px;
+        font-weight: bold;
+        border-bottom: none;
+        -webkit-box-shadow: none;
+        -ms-box-shadow: none;
+        box-shadow: none;
+    }
+
+        .peter-river-flat-button:active {
+            top: 1px;
+            outline: none;
+            -webkit-box-shadow: none;
+            -ms-box-shadow: none;
+            box-shadow: none;
+        }
+
+    .tabMain {
+        margin-right: 1px;
+        border: none;
+        -ms-border-radius: 0 0 0 0;
+        border-radius: 0 0 0 0;
+        float: left;
+        padding: 6px 5px;
+    }
+
+        .tabMain.active, .tabMain.active:hover, .tabMain:focus {
+            color: black;
+            background-color: #f1c40f;
+            border: none;
+        }
+
+        .tabMain:link, .tabMain:visited, .tabMain:active, .tabMain:hover {
+            color: white;
+        }
+
+        .tabMain:hover {
+            background: #e67e22;
+        }
+
+    .saveTab {
+        width: 110px;
+        background: #16a085;
+    }
+
+        .saveTab:hover, .saveTab.active:hover {
+            background: #2ecc71;
+            color: white;
+        }
+
+        .saveTab.active {
+            background: #16a085;
+            color: white;
+        }
+
+    .spanLogoImagePass {
+        max-width: 250px;
+        max-height: 43px;
+    }
+
+    .spanStripImagePass {
+        width: 270px;
+        max-height: 106px;
+    }
+
+    .spanBackgroundImagePass {
+        width: 0px;
+        max-height: 0px;
+    }
+
+    #thumbnailImagePass.generic {
+        max-width: 68px;
+        max-height: 68px;
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+        -ms-box-shadow: none;
+        box-shadow: 0 0 1px #888,0 0 0 5px #fff;
+        margin-top: 46px;
+        margin-left: 186px;
+    }
+
+    #thumbnailImagePass.eventTicket {
+        max-width: 70px;
+        max-height: 76px;
+        -webkit-box-shadow: none;
+        -ms-box-shadow: none;
+        box-shadow: none;
+        margin-top: 38px;
+        margin-left: 186px;
+    }
+
+    .customFile {
+        width: 219px;
+        margin-left: -9px;
+        cursor: default;
+        height: 28px;
+        z-index: 2;
+        -webkit-filter: alpha(opacity: 0);
+        -moz-filter: alpha(opacity: 0);
+        -o-filter: alpha(opacity: 0);
+        filter: alpha(opacity: 0);
+        -ms-opacity: 0;
+        opacity: 0;
+        position: absolute;
+    }
+
+        .customFile:hover {
+            cursor: pointer;
+        }
+
+    .fakeButton {
+        position: absolute;
+        z-index: 1;
+        width: 85px;
+        height: 21px;
+        background: url(images/createCard/button.jpg) no-repeat left top;
+        float: left;
+    }
+
+    .emerald-flat-button {
+        position: absolute;
+        width: 85px;
+        height: 28px;
+        padding: 4px;
+        font-size: 13px;
+        border-bottom: none;
+        -webkit-box-shadow: none;
+        -ms-box-shadow: none;
+        box-shadow: none;
+        margin-left: 125px;
+    }
+
+        .emerald-flat-button:active {
+            top: 1px;
+            outline: none;
+            -webkit-box-shadow: none;
+            -ms-box-shadow: none;
+            box-shadow: none;
+        }
+
+        .emerald-flat-button:hover {
+            cursor: pointer;
+        }
+
+    .blocker {
+        position: absolute;
+        z-index: 3;
+        width: 150px;
+        height: 28px;
+        margin-left: -25px;
+    }
+
+    .FileName {
+        position: absolute;
+        height: 15px;
+        margin-left: 195px;
+        font-family: Verdana;
+        font-size: 10pt;
+        color: Gray;
+        margin-top: 2px;
+        padding-top: 1px;
+        padding-left: 27px;
+    }
+
+    .activeBrowseButton {
+        display: none;
+    }
+
+    #rightPanel div.tabMainContent {
+        display: none;
+    }
+
+    #rightPanel p.active {
+        color: black;
+        cursor: default;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    #rightPanel div.active {
+        display: block;
+        width: 100%;
+    }
+
+    #rightPanel p.tabMainContent {
+    }
+
+    #wrapper div.tabFrontContent {
+        display: none;
+    }
+
+    #wrapper p.active {
+        color: black;
+        cursor: default;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    #wrapper div.active {
+        display: block;
+        width: 100%;
+    }
+
+    #wrapper p.tabFrontContent {
+        background-color: gray;
+        position: absolute;
+        -ms-opacity: 0.4;
+        opacity: 0.4;
+    }
+
+        #wrapper p.tabFrontContent:hover {
+            cursor: pointer;
+        }
+
+    .labelTextHeader {
+        font-size: 10px;
+        overflow: hidden;
+        -ms-text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        -moz-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        padding-right: 10px;
+    }
+
+    .valueTextHeader {
+        font-size: 12px;
+        color: white;
+        overflow: hidden;
+        -ms-text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        -moz-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        padding-right: 10px;
+    }
+
+    .labelTextPrimary {
+        left: 0px;
+        /*position: absolute;*/
+        /*top: 122px;*/
+        max-width: 244px;
+        /*height: 36px;*/
+        border: dashed 0px;
+        font-size: 10px;
+        color: white;
+        overflow: hidden;
+        -ms-text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        -moz-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+    }
+
+    .valueTextPrimary {
+        left: 0px;
+        /*position: absolute;*/
+        /*top: 48px;*/
+        max-width: 244px;
+        /*height: 73px;*/
+        border: dashed 0px;
+        font-size: 25px;
+        color: white;
+        overflow: hidden;
+        -ms-text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        -moz-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+    }
+
+    .labelTextAuxiliary {
+        max-width: 244px;
+        font-size: 10px;
+        overflow: hidden;
+        -ms-text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        -moz-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        padding-right: 10px;
+    }
+
+    .valueTextAuxiliary {
+        font-size: 12px;
+        color: white;
+        overflow: hidden;
+        -ms-text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        -moz-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        padding-right: 10px;
+    }
+
+    .labelTextSecondary {
+        max-width: 244px;
+        font-size: 10px;
+        overflow: hidden;
+        -ms-text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        -moz-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        padding-right: 10px;
+    }
+
+    .valueTextSecondary {
+        font-size: 12px;
+        color: white;
+        overflow: hidden;
+        -ms-text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        -moz-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        padding-right: 10px;
+    }
+
+    .barcodePass {
+        display: none;
+    }
+
+        .barcodePass.active {
+            display: block;
+        }
+
+    #divBarcodeFormat input.active {
+        border: solid 3px gray;
+    }
+
+    .divBackFieldContentPass {
+        min-height: 30px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .labelFieldBackPass {
+        font-size: 10px;
+        white-space: normal;
+        -ms-word-wrap: break-word;
+        word-wrap: break-word;
+    }
+
+    .valueFieldBackPass {
+        font-size: 15px;
+        white-space: normal;
+        -ms-word-wrap: break-word;
+        word-wrap: break-word;
+    }
+
+    .flexContainerAuxiliaryLabels {
+        position: absolute;
+        width: 244px;
+        height: 13px;
+        top: 168px;
+        left: 13px;
+        overflow: hidden;
+        -ms-text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        -moz-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        display: inline-flexbox;
+        display: inline-flex;
+        justify-content: space-between;
+    }
+
+    .flexContainerAuxiliaryValues {
+        position: absolute;
+        width: 244px;
+        height: 24px;
+        top: 181px;
+        left: 13px;
+        overflow: hidden;
+        -ms-text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        -moz-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        display: inline-flexbox;
+        display: inline-flex;
+        justify-content: space-between;
+    }
+
+    .flexContainerHeaderFields {
+        position: absolute;
+        display: inline-flexbox;
+        display: inline-flex;
+        width: 165px;
+        left: 105px;
+        justify-content: flex-end;
+    }
+
+    .flexContainerPrimaryFields {
+        position: absolute;
+        display: inline-flexbox;
+        display: inline-flex;
+        width: 257px;
+        left: 13px;
+        justify-content: flex-end;
+    }
+
+    .flexContainerAuxiliaryFields {
+        position: absolute;
+        display: inline-flexbox;
+        display: inline-flex;
+        width: 257px;
+        left: 13px;
+        justify-content: flex-end;
+    }
+
+    .flexContainerSecondaryFields {
+        position: absolute;
+        display: inline-flexbox;
+        display: inline-flex;
+        width: 257px;
+        left: 13px;
+        justify-content: flex-end;
+    }
+
+    .removeImage {
+        position: absolute;
+        color: white;
+        font-weight: bold;
+        width: 14px;
+        height: 14px;
+        font-size: 10px;
+        margin-left: 340px;
+        margin-top: 7px;
+        background: #e74c3c;
+        text-align: center;
+        -ms-opacity: .3;
+        opacity: .3;
+    }
+
+        .removeImage:hover {
+            opacity: 1;
+            cursor: pointer;
+        }
+
+    .removeField {
+        position: absolute;
+        color: white;
+        font-weight: bold;
+        width: 17px;
+        height: 17px;
+        font-size: 12px;
+        margin-left: 517px;
+        margin-top: -27px;
+        background: #e74c3c;
+        text-align: center;
+        -ms-opacity: .3;
+        opacity: .3;
+    }
+
+        .removeField:hover {
+            -ms-opacity: 1;
+            opacity: 1;
+            cursor: pointer;
+        }
+
+    .radioFlexContainer {
+        display: -webkit-flex;
+        display: flex;
+        width: 370px;
+        height: 32px;
+    }
+
+    .inputTextFlexContainer {
+        display: -webkit-flex;
+        display: flex;
+    }
+
+    .radio, .radio + .radio, .checkbox + .checkbox {
+        width: 124px;
+        margin: auto 0px;
+        font-size: 13px;
+    }
+
+    .LabelAndValueInput {
+        width: 300px;
+        height: 28px;
+        margin-left: 128px;
+        display: inline;
+        float: left;
+    }
+
+    .rdiosPrompt {
+        height: 28px;
+        line-height: 28px;
+        color: #87898F;
+        font-size: 13px;
+        display: none;
+    }
+
+    .explanations {
+        color: #7B7D81;
+        font-size: 13px;
+    }
+
+    .collapseLinkContent {
+        padding: 4px 0px 0px 6px;
+        border: none;
+        background-color: rgb(231, 231, 231);
+        outline: none;
+        -ms-border-radius: 5px;
+        border-radius: 5px;
+        display: flex;
+        width: 470px;
+    }
+
+    .textInputNameContent {
+        width: 300px;
+        height: 28px;
+    }
+
+    .textInputBarcode {
+        width: 345px;
+        height: 28px;
+    }
+
+    .textInputLanguageText {
+        width: 234px;
+    }
+
+    .divInputLanguageText {
+        float: left;
+        padding-bottom: 5px;
+    }
+
+    .textInputAddress {
+        width: 357px;
+        height: 28px;
+    }
+
+    .languagesSelect {
+        width: 357px;
+        height: 28px;
+    }
+
+    .collapseContent {
+        margin-top: 12px;
+        margin-left: 68px;
+        margin-bottom: 20px;
+    }
+
+    .distributioncollapseContent {
+        margin-top: 12px;
+        margin-left: 51px;
+        margin-bottom: 20px;
+    }
+
+    .LabelAndValueInputCollapse {
+        width: 261px;
+        height: 28px;
+        margin-left: 128px;
+    }
+
+    .expandImageCollapse {
+        width: 19px;
+        position: absolute;
+        margin-left: 310px;
+        margin-top: 4px;
+        cursor: move;
+    }
+
+    .expandImageCollapseLanguages {
+        width: 19px;
+        margin-left: 533px;
+        margin-top: -27px;
+        cursor: move;
+    }
+
+    .displayNone {
+        display: none;
+    }
+
+    .displayBlock {
+        display: block;
+    }
+
+    .spanRed {
+        color: red !important;
+        padding-left: 3px;
+    }
+
+    input[type=checkbox].checkboxCollapse {
+        display: none;
+    }
+
+        input[type=checkbox].checkboxCollapse + label.checkboxCollapseLabel {
+            padding-left: 20px;
+            height: 20px;
+            display: inline-block;
+            line-height: 20px;
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            font-size: 20px;
+            vertical-align: middle;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        input[type=checkbox].checkboxCollapse:checked + label.checkboxCollapseLabel {
+            background-position: 0 -20px;
+        }
+
+    label.checkboxCollapseLabel {
+        background-image: url(/Images/createCard/csscheckbox.png);
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+    }
+
+    .radioSerialNumber {
+        width: 370px;
+    }
+
+    .divCheckboxLabelAndValue {
+        margin-left: 129px;
+        margin-top: 5px;
+        font-size: 13px;
+    }
+
+    .divNotificationInputCollapseField {
+        margin-left: 129px;
+        font-size: 13px;
+    }
+
+    .divNotificationInputAddress {
+        margin-left: 118px;
+        font-size: 13px;
+    }
+
+    .divDataTypeCollapseField {
+        padding-top: 15px;
+        margin-left: 129px;
+        font-size: 13px;
+    }
+
+        .divDataTypeCollapseField select {
+            width: 210px;
+        }
+
+    .pDataTypeCollapseField {
+        width: 90px;
+        float: left;
+        padding: 5px 0px;
+    }
+
+    .pDateTime {
+        width: 125px;
+    }
+
+    .pDateTimeCheckbox {
+        width: 200px;
+    }
+
+    .divDateTimeCheckbox {
+        padding-top: 10px;
+    }
+
+    .form-control {
+        padding: 6px 8px;
+        height: 28px;
+        line-height: 16px;
+    }
+
+    .pYellowButton {
+        background: #f1c40f;
+        color: white;
+        width: 165px;
+        height: 28px;
+        text-align: center;
+        margin-left: 313px;
+        font-weight: bold;
+        cursor: pointer;
+        padding: 5px 0px;
+        font-size: 13px;
+    }
+
+        .pYellowButton:hover {
+            background: #e67e22;
+            color: black;
+        }
+
+    .AddRowLanguageButton {
+        width: 113px;
+        margin-left: 374px;
+        margin-top: 8px;
+        position: relative;
+        padding: 1px;
+        height: 24px;
+    }
+
+    .divTabEditor {
+        max-height: 610px;
+        height: 610px;
+        width: auto;
+        margin-right: 3px;
+        padding-right: 20px;
+        max-height: 610px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        float: right;
+    }
+
+    .pDistribution {
+        width: 280px;
+        float: left;
+        padding: 5px 0px;
+        font-weight: bold;
+        color: #777981;
+    }
+
+    .pDistributionCheckbox {
+        width: 220px;
+        float: left;
+        padding: 5px 4px;
+        font-weight: 100;
+        color: #777981;
+    }
+
+    .gMapLockScreen {
+        width: 550px;
+        height: 420px;
+        left: 50%;
+        top: 50%;
+        margin-left: -275px;
+        margin-top: -245px;
+        position: fixed;
+        display: none;
+        z-index: 200;
+        background-color: white;
+    }
+
+    .gMap {
+        width: 550px;
+        height: 360px;
+    }
+
+    .labelInputAddressMap {
+        width: 63px;
+        height: 30px;
+        color: #777981;
+    }
+
+    .textInputAddressMap {
+        width: 414px;
+        height: 28px;
+        float: left;
+    }
+
+    .divFormInputMap {
+        padding: 1px 0px;
+    }
+
+    .pFindButtonMap {
+        width: 70px;
+        height: 28px;
+        background: #2ecc71;
+        margin-left: auto;
+        text-align: center;
+        font-weight: bold;
+        margin: 0 0 0 auto;
+        padding: 4px;
+        cursor: pointer;
+        color: white;
+    }
+
+        .pFindButtonMap:hover {
+            color: #777981;
+        }
+
+    .pUseButtonMap {
+        width: 100px;
+    }
+
+    .divLatLngMap {
+        width: 450px;
+        height: 30px;
+        color: #777981;
+        font-weight: bold;
+        padding: 5px;
+        float: left;
+    }
+
+    #darkAreaLockScreen {
+        background: black;
+        -ms-opacity: 0.4;
+        opacity: 0.4;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 199;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: none;
+    }
+
+    .radioInputFixOrDinamicLabel {
+    }
+
+    .radioInputFixOrDinamicValue {
+    }
+
+
+    .datepicker_header {
+        width: 243px;
+    }
+
+    .datepicker_table {
+        width: 177px;
+        height: 150px;
+    }
+
+    .datepicker_timelist {
+        height: 150px !important;
+    }
+
+    .passTypeImg.selected {
+        -webkit-box-shadow: 0 0 4px 3px #f2be1c !important;
+        -ms-box-shadow: 0 0 4px 3px #f2be1c !important;
+        box-shadow: 0 0 4px 3px #f2be1c !important;
+    }
+
+    .passTypeImg:hover {
+        -webkit-box-shadow: 0 0 4px 3px #e67e22 !important;
+        -ms-box-shadow: 0 0 4px 3px #e67e22 !important;
+        box-shadow: 0 0 4px 3px #e67e22 !important;
+    }
+
+    #backgroundCanvas {
+        height: 342px !important;
+        width: 270px !important;
+        margin-top: -32px;
+    }
+
+    #divPassBody {
+        -o-background-size: 270px 342px;
+        -webkit-background-size: 270px 342px;
+        -khtml-background-size: 270px 342px;
+        -moz-background-size: 270px 342px;
+        -ms-background-size: 270px 342px;
+        background-size: 270px 342px;
+    }
+
+    .panel {
+        margin-bottom: 0px;
+        border: none;
+    }
+</style>
+
+<script type="text/javascript">
+
+</script>
+
+<body>
+    <div style="height: 25px;"></div>
+    <div id="body" style="height: 600px; width: 1000px; border: dashed 0px;">
+        <div id="topPanel" style="height: 30px;">
+            <p id="MainTab1" class="peter-river-flat-button tabMain active">Настройки</p>
+            <p id="MainTab2" class="peter-river-flat-button tabMain">Дизайн</p>
+            <p id="MainTab3" class="peter-river-flat-button tabMain">Содержимое</p>
+            <p id="MainTab4" class="peter-river-flat-button tabMain" onclick="RemoveAllFieldBackPass(); AddFieldPassAgain(); ">Обратная сторона</p>
+            <p id="MainTab5" class="peter-river-flat-button tabMain">Экран блокировки</p>
+            <p id="MainTab6" class="peter-river-flat-button tabMain">Языки</p>
+            <p id="MainTab7" class="peter-river-flat-button tabMain">Распространение</p>
+            <p id="MainTab8" class="peter-river-flat-button tabMain saveTab" onclick="PostJsonData();">Сохранить пасс</p>
+        </div>
+        <div id="leftPanel" style="width: 350px; height: 650px; border: dashed 0px; float: left; display: block">
+            <div style="background-image: url(/Images/createCard/myImages/iphonePassDesigner.png); width: 320px; height: 613px; position: absolute;">
+                <div id="divPassBody" style="visibility: visible; height: 342px; width: 270px; margin-left: 25px; margin-top: 165px; position: absolute; display: block;">
+
+                    <div id="divFrontPass">
+
+                        <!--Pass background image-->
+                        <div id="divBackgroundImagePass" style="margin-top: 32px; position: absolute; display: block;">
+                            <span>
+                                <canvas id="backgroundCanvas" style="display: none;"></canvas>
+                                <br>
+                                <img id="backgroundImagePass" class="spanBackgroundImagePass" src="~/Images/createCard/myImages/backgroundImage2.jpg" />
+                            </span>
+                        </div>
+
+                        <!--Header area on pass-->
+                        <div id="divLogoImagePass" style="margin-left: 5px; margin-top: 5px; position: absolute; display: block;">
+                            <span>
+                                <img class="spanLogoImagePass" src="~/Images/logo&strip/cleverLogo.png" />
+                            </span>
+                        </div>
+                        <div id="divLogoTextPass" class="valueText" style="display: inline-block; left: 70px; position: relative; top: 13px; width: 150px; height: 20px; border: dashed 0px; font-size: 16px; color: white; overflow: hidden; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis; -moz-text-overflow: ellipsis; text-overflow: ellipsis;">@Model.LogoText</div>
+                        <div class="flexContainerHeaderFields" style="height: 12px; top: 12px;">
+                            <div id="divHeaderLabelPass3" class="labelTextHeader labelText"></div>
+                            <div id="divHeaderLabelPass2" class="labelTextHeader labelText"></div>
+                            <div id="divHeaderLabelPass1" class="labelTextHeader labelText">@ViewData["divHeaderLabelPass1"]</div>
+                        </div>
+                        <div class="flexContainerHeaderFields" style="height: 16px; top: 24px;">
+                            <div id="divHeaderValuePass3" class="valueTextHeader valueText"></div>
+                            <div id="divHeaderValuePass2" class="valueTextHeader valueText"></div>
+                            <div id="divHeaderValuePass1" class="valueTextHeader valueText">@ViewData["divHeaderValuePass1"]</div>
+                        </div>
+
+                        <!--Primary area on pass-->
+                        <div id="divStripImagePass" style="margin-top: 32px; position: absolute; display: block">
+                            <span>
+                                <img class="spanStripImagePass" src="~/Images/logo&strip/Tulips.jpg" />
+                            </span>
+                        </div>
+                        <div id="divThumbnailImagePass" style="position: absolute; display: block">
+                            <span>
+                                <img id="thumbnailImagePass" src="~/Images/createCard/Vitalik.png" />
+                            </span>
+                        </div>
+                        <div id="flexContainerPrimaryValues" class="flexContainerPrimaryFields" style="height: 70px; top: 48px;">
+                            <div id="divPrimaryValuePass1" class="valueTextPrimary valueText" style="margin-right: auto;">@ViewData["divPrimaryValuePass"]</div>
+                            <div id="divPrimaryValuePass2" class="valueTextPrimary valueText"></div>
+                        </div>
+                        <div id="flexContainerPrimaryLabels" class="flexContainerPrimaryFields" style="height: 36px; top: 122px;">
+                            <div id="divPrimaryLabelPass1" class="labelTextPrimary labelText" style="margin-right: auto;">@ViewData["divPrimaryLabelPass"]</div>
+                            <div id="divPrimaryLabelPass2" class="labelTextPrimary labelText"></div>
+                        </div>
+
+                        <!--Auxiliary area on pass-->
+                        <div id="auxiliaryAreaPass">
+                            <div id="flexContainerAuxiliaryLabels" class="flexContainerAuxiliaryFields" style="height: 12px; top: 168px;">
+                                <div id="divAuxiliaryLabelPass1" class="labelTextAuxiliary labelText" style="margin-right: auto;">@Model.FieldDetails.AuxiliaryFields[0].Label</div>
+                                <div id="divAuxiliaryLabelPass2" class="labelTextAuxiliary labelText">@Model.FieldDetails.AuxiliaryFields[1].Label</div>
+                                <div id="divAuxiliaryLabelPass3" class="labelTextAuxiliary labelText">@Model.FieldDetails.AuxiliaryFields[2].Label</div>
+                                <div id="divAuxiliaryLabelPass4" class="labelTextAuxiliary labelText">@Model.FieldDetails.AuxiliaryFields[3].Label</div>
+                                <div id="divAuxiliaryLabelPass5" class="labelTextAuxiliary labelText">@Model.FieldDetails.AuxiliaryFields[4].Label</div>
+                            </div>
+                            <div id="flexContainerAuxiliaryValues" class="flexContainerAuxiliaryFields" style="height: 16px; top: 181px;">
+                                <div id="divAuxiliaryValuePass1" class="valueTextAuxiliary valueText" style="margin-right: auto;">@Model.FieldDetails.AuxiliaryFields[0].Value</div>
+                                <div id="divAuxiliaryValuePass2" class="valueTextAuxiliary valueText">@Model.FieldDetails.AuxiliaryFields[1].Value</div>
+                                <div id="divAuxiliaryValuePass3" class="valueTextAuxiliary valueText">@Model.FieldDetails.AuxiliaryFields[2].Value</div>
+                                <div id="divAuxiliaryValuePass4" class="valueTextAuxiliary valueText">@Model.FieldDetails.AuxiliaryFields[3].Value</div>
+                                <div id="divAuxiliaryValuePass5" class="valueTextAuxiliary valueText">@Model.FieldDetails.AuxiliaryFields[4].Value</div>
+                            </div>
+                        </div>
+
+                        <!--Secondary area on pass-->
+                        <div id="secondaryAreaPass">
+                            <div id="flexContainerSecondaryLabels" class="flexContainerSecondaryFields">
+                                <div id="divSecondaryLabelPass1" class="labelTextSecondary labelText" style="margin-right: auto;"></div>
+                                <div id="divSecondaryLabelPass2" class="labelTextSecondary labelText"></div>
+                                <div id="divSecondaryLabelPass3" class="labelTextSecondary labelText"></div>
+                                <div id="divSecondaryLabelPass4" class="labelTextSecondary labelText"></div>
+                            </div>
+                            <div id="flexContainerSecondaryValues" class="flexContainerSecondaryFields" style="height: 16px;">
+                                <div id="divSecondaryValuePass1" class="valueTextSecondary valueText" style="margin-right: auto;"></div>
+                                <div id="divSecondaryValuePass2" class="valueTextSecondary valueText"></div>
+                                <div id="divSecondaryValuePass3" class="valueTextSecondary valueText"></div>
+                                <div id="divSecondaryValuePass4" class="valueTextSecondary valueText"></div>
+                            </div>
+                        </div>
+
+                        <!--Barcode area on pass-->
+                        <div id="divBarcodePass">
+                            <img id="aztecCodePass" class="barcodePass" src="~/Images/createCard/barcode/aztecPass.png" style="position: relative; width: 40%; top: 201px; left: 81px;" />
+                            <img id="qrCodePass" class="barcodePass active" src="~/Images/createCard/barcode/qrPass.png" style="max-width: 117px; height: 119px; max-height: 119px; position: relative; top: 197px; left: 77px;" />
+                            <img id="pdf417CodePass" class="barcodePass" src="~/Images/createCard/barcode/pdf417Pass.png" style="position: relative; top: 215px; left: 44px;" />
+                        </div>
+                    </div>
+
+
+                    <!--Back area on pass-->
+                    <div id="divbackPass" style="display: none;">
+                        <img src="~/Images/createCard/myImages/backPass.png" style="width: 100%; position: absolute;" />
+                        <div id="divBackOuter" style="width: 262px; min-height: 311px; max-height: 330px; overflow-y: auto; position: absolute; top: 38px; left: 4px; overflow: hidden; background: white;">
+                            <div id="divBackHack" style="width: 107%; overflow-y: auto; overflow-x: hidden; height: 290px; top: 5px; position: absolute;">
+                                <img src="~/Images/createCard/myImages/uutomatic_updates.png" style="width: 263px; position: absolute;" />
+                                <div id="divBackContentPass" style="min-height: 30px; width: 248px; border: 1px solid #E4DEDE; padding: 0 10px 8px; overflow: hidden; margin-top: 49px; margin-left: 7px; position: absolute; border-radius: 5px;">
+                                    <div id="divBackFieldContentPass1" class="divBackFieldContentPass">
+                                        <div id="labelFieldBackPass1" class="labelFieldBackPass"></div>
+                                        <div id="valueFieldBackPass1" class="valueFieldBackPass"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="clearPanel" style="width: 40px; height: 640px; float: left;"></div>
+        <div id="darkAreaLockScreen" onclick="DisNoneDarkAreaAndMap();"></div>
+
+        <!--Editing area-->
+        <div id="rightPanel" style="width: 610px; float: right; border: dashed 0px; display: block;">
+            <div class="tabbable" />
+            <div id="myTabContent" class="active">
+                <div id="contentMainTab1" class="tabMainContent active">
+                    @Html.Partial("PassSettingsTab")
+                </div>
+                <div id="contentMainTab2" class="tabMainContent">
+                    @Html.Partial("DesignTab")
+                </div>
+                <div id="contentMainTab3" class="tabMainContent">
+                    @Html.Partial("FrontContentTab")
+                </div>
+                <div id="contentMainTab4" class="tabMainContent">
+                    @Html.Partial("BackContentTab")
+                </div>
+                <div id="contentMainTab5" class="tabMainContent">
+                    @Html.Partial("LockScreenTab")
+                </div>
+                <div id="contentMainTab6" class="tabMainContent">
+                    @Html.Partial("LanguagesTab")
+                </div>
+                <div id="contentMainTab7" class="tabMainContent">
+                    @Html.Partial("DistributionTab")
+                </div>
+            </div>
+        </div>
+    </div>
+    @*</div>*@
+
+    <script type="text/javascript">
+
+    //On load window
+    function WindowOnLoad() {
+        var fileInput = document.getElementById('logoImageInput'),
+            stripFileInput = document.getElementById('stripImageInput'),
+            thumbnailFileInput = document.getElementById('thumbnailImageInput'),
+            backgroundFileInput = document.getElementById('backgroundImageInput');
+        fileInput.onchange = HandleChanges;
+        stripFileInput.onchange = HandleChanges;
+        thumbnailFileInput.onchange = HandleChanges;
+        backgroundFileInput.onchange = HandleChanges;
+        fileInput.value = '';
+        stripFileInput.value = '';
+        //fileInput.className = 'customFile';
+        //stripFileInput.className = 'customFile';
+        BlurBackgroundImage();
+
+        ChangeWidthHeaderTextFieldPass(1);
+        ChangeWidthAuxiliaryTextFieldPass(1);
+        ChangeWidthAuxiliaryTextFieldPass(2);
+        ChangWidthFlexContainerHeaderPass();
+        ChangesDependingPassType('coupon');
+    };
+    window.onload = WindowOnLoad();
+
+    //On ready window
+    jQuery(window).ready(function () {
+
+        //JSON deserialize
+        //Choice pass type (radiobutton)
+        @switch (Model.PassStyle)
+        {
+            case PassStyle.BoardingPass:
+                @:jQuery('#boardingPassImg').trigger('click');
+                break;
+            case PassStyle.Coupon:
+                @:jQuery('#couponImg').trigger('click');
+                break;
+            case PassStyle.EventTicket:
+                @:jQuery('#eventTicketImg').trigger('click');
+                break;
+            case PassStyle.Generic:
+                @:jQuery('#genericImg').trigger('click');
+                break;
+            case PassStyle.StoreCard:
+                @:jQuery('#storeCardImg').trigger('click');
+                break;
+        }
+
+        //Choice pass serial number type (radio button)
+        @switch (Model.PassSerialNumberType)
+        {
+            case PassSerialNumberType.AutoGgenerated:
+                @:jQuery('#optionsRadiosSerialNumber1').trigger('click');
+                break;
+            case PassSerialNumberType.Provided:
+                @:jQuery('#optionsRadiosSerialNumber2').trigger('click');
+                break;
+            case PassSerialNumberType.SameForEachPass:
+                @:jQuery('#optionsRadiosSerialNumber3').trigger('click');
+                break;
+        }
+
+        //Choice pass sertificate (select list)
+        //jQuery('#passCertificSelect').optSelected()
+
+        //Set colors
+        var divPassBodyColor = @Html.Raw(new JavaScriptSerializer().Serialize(ViewData["divPassBodyColor"]));
+        var labelTextColor = @Html.Raw(new JavaScriptSerializer().Serialize(ViewData["labelTextColor"]));
+        var valueTextColor = @Html.Raw(new JavaScriptSerializer().Serialize(ViewData["valueTextColor"]));
+        jQuery('#divPassBody').css('background-color', divPassBodyColor);
+        jQuery('.labelText').css('color', labelTextColor);
+        jQuery('.valueText').css('color', valueTextColor);
+
+        //Choice pass time zone (select list)
+
+        //Location details
+
+        //Choice pass link type (select list)
+        @switch (Model.DistributionDetails.PassLinkType)
+        {
+            case PassLinkType.Private:
+                @:jQuery('#distTypeSelect option[value="private"]').attr('selected', 'selected');
+                break;
+            case PassLinkType.Public:
+                @:jQuery('#distTypeSelect option[value="public"]').attr('selected', 'selected');
+                break;
+        }
+
+        //Choice void passes checkbox
+        @switch (Model.DistributionDetails.AllPassesAsExpired)
+        {
+            case true:
+                @:jQuery('#voidedCheckbox').attr('checked', 'checked');
+                break;
+            case false:
+                @:jQuery('#voidedCheckbox').removeAttr('checked');
+                break;
+        }
+
+        //Quantity restriction select list
+        @if (Model.DistributionDetails.QuantityRestriction != null)
+        {
+            @:jQuery('#distQuantitySelect').val('1').change();
+        }
+
+        //Date restriction select list
+        @if (Model.DistributionDetails.DateRestriction != null)
+        {
+            @:jQuery('#distDateRestrSelect').val('1').change();
+        }
+
+        //Issue password select list
+        @if (Model.DistributionDetails.PasswordToIssue != null)
+        {
+            @:jQuery('#distPasswdSelect').val('1').change();
+        }
+
+        //Password to update select list
+        @if (Model.DistributionDetails.PasswordToUpdate != null)
+        {
+            @:jQuery('#distPasswdUpdSelect').val('1').change();
+        }
+
+        //Choice barcode type
+        @switch (Model.BarcodeDetails.BarcodeType)
+        {
+            case GeneralBarcodeType.AztecCode:
+                @:jQuery('#aztecCode').trigger('click');
+                break;
+            case GeneralBarcodeType.QrCode:
+                @:jQuery('#qrCode').trigger('click');
+                break;
+            case GeneralBarcodeType.Pdf417Code:
+                @:jQuery('#pdf417Code').trigger('click');
+                break;
+        }
+
+        //Choice encoded message (select list)
+        @switch (Model.BarcodeDetails.EncodedMessage)
+        {
+            case EncodedMessage.EncodeThePassSerialNumber:
+                @:jQuery('#barcodeMessageSelect').val('encodeThePassSerialNumber').change();
+                break;
+            case EncodedMessage.EncodeThePassUniqueId:
+                @:jQuery('#barcodeMessageSelect').val('encodeThePassUniqueId').change();
+                break;
+            case EncodedMessage.EncodeTheUrlToUpdateThePass:
+                @:jQuery('#barcodeMessageSelect').val('encodeTheUrlToUpdateThePass').change();
+                break;
+            case EncodedMessage.ProvideWhenPassIsCreated:
+                @:jQuery('#barcodeMessageSelect').val('provideWhenPassIsCreated').change();
+                break;
+            case EncodedMessage.EncodeTheSameMessageOnEachPass:
+                @:jQuery('#barcodeMessageSelect').val('encodeTheSameMessageOnEachPass').change();
+                break;
+        }
+
+        //Choice barcode alternative text (select list)
+        @switch (Model.BarcodeDetails.AlternativeText)
+        {
+            case AlternativeText.DisplayTheBarcodeContent:
+                @:jQuery('#barcodeAltTextSelect').val('0').change();
+                break;
+            case AlternativeText.DisplayThePassSerialNumber:
+                @:jQuery('#barcodeAltTextSelect').val('displayThePassSerialNumber').change();
+                break;
+            case AlternativeText.DisplayThePassUniqueId:
+                @:jQuery('#barcodeAltTextSelect').val('displayThePassUniqueId').change();
+                break;
+            case AlternativeText.ProvideWhenPassIsCreated:
+                @:jQuery('#barcodeAltTextSelect').val('provideWhenPassIsCreated').change();
+                break;
+            case AlternativeText.DisplayTheSameMessageOnEachPass:
+                @:jQuery('#barcodeAltTextSelect').val('displayTheSameMessageOnEachPass').change();
+                break;
+            case AlternativeText.DoNotDisplayAnyAlternativeText:
+                @:jQuery('#barcodeAltTextSelect').val('doNotDisplayAnyAlternativeText').change();
+                break;
+        }
+
+        //Auxiliary fields
+        @for (var a = 0; a < 5; a++) {
+
+            //Marked fields checkboxes
+            if (Model.FieldDetails.AuxiliaryFields[a].IsMarkedField)
+            {
+                @:jQuery('#checkboxAuxiliary' + (@a + 1)).attr('checked', 'checked');
+                                                }
+            else
+            {
+                @:jQuery('#checkboxAuxiliary' + (@a + 1)).removeAttr('checked');
+                                                }
+            @:CheckAndUncheckFieldFront('checkboxAuxiliary' + (@a + 1));
+
+            //Dynamic and fixed radio button
+            if (Model.FieldDetails.AuxiliaryFields[a].IsDynamicLabel)
+            {
+                @:jQuery('#auxiliaryLabelRadios' + (@a + 1) + '2').trigger('click');
+                                                }
+            else
+            {
+                @:jQuery('#auxiliaryLabelRadios' + (@a + 1) + '1').trigger('click');
+                                                }
+            if (Model.FieldDetails.AuxiliaryFields[a].IsDynamicValue)
+            {
+                @:jQuery('#auxiliaryValueRadios' + (@a + 1) + '2').trigger('click');
+                                                }
+            else
+            {
+                @:jQuery('#auxiliaryValueRadios' + (@a + 1) + '1').trigger('click');
+                                                }
+
+            //Field data type (select list) (without DateTime case)
+            switch (Model.FieldDetails.AuxiliaryFields[a].Type)
+            {
+                case GeneralField.DataType.Text:
+                    @:jQuery('#selectDataTypeAuxiliary' + (@a + 1)).val('text').change();
+                    break;
+                case GeneralField.DataType.Number:
+                    @:jQuery('#selectDataTypeAuxiliary' + (@a + 1)).val('number').change();
+                     break;
+                case GeneralField.DataType.Currency:
+                    @:jQuery('#selectDataTypeAuxiliary' + (@a + 1)).val('currency').change();
+                    break;
+                case GeneralField.DataType.Date:
+                    @:jQuery('#selectDataTypeAuxiliary' + (@a + 1)).val('date').change();
+                    break;
+            }
+
+            //Number style type (select list)
+            switch (Model.FieldDetails.AuxiliaryFields[a].NumberStyle)
+            {
+                case GeneralField.NumberStyleType.Decimal:
+                    @:jQuery('#selectNumbStyleTypeAuxiliary' + (@a + 1)).val('decimal').change();
+                    break;
+                case GeneralField.NumberStyleType.Percent:
+                    @:jQuery('#selectNumbStyleTypeAuxiliary' + (@a + 1)).val('percent').change();
+                     break;
+                case GeneralField.NumberStyleType.Scientific:
+                    @:jQuery('#selectNumbStyleTypeAuxiliary' + (@a + 1)).val('scientific').change();
+                    break;
+                case GeneralField.NumberStyleType.SpellOut:
+                    @:jQuery('#selectNumbStyleTypeAuxiliary' + (@a + 1)).val('spellOut').change();
+                    break;
+            }
+
+            //Currency code (select list)
+            @:jQuery('#currencyCodeSelectAuxiliary' + (@a + 1)).val('@Model.FieldDetails.AuxiliaryFields[a].CurrencyCode').change();
+
+            //Number style type (select list) (without none case)
+            switch (Model.FieldDetails.AuxiliaryFields[a].DateStyle)
+            {
+                case GeneralField.DateStyleType.Short:
+                    @:jQuery('#selectDateStyleTypeAuxiliary' + (@a + 1)).val('short').change();
+                    break;
+                case GeneralField.DateStyleType.Medium:
+                    @:jQuery('#selectDateStyleTypeAuxiliary' + (@a + 1)).val('medium').change();
+                     break;
+                case GeneralField.DateStyleType.Long:
+                    @:jQuery('#selectDateStyleTypeAuxiliary' + (@a + 1)).val('long').change();
+                    break;
+                case GeneralField.DateStyleType.Full:
+                    @:jQuery('#selectDateStyleTypeAuxiliary' + (@a + 1)).val('full').change();
+                    break;
+            }
+
+            //Ignores time zone checkbox
+            if (Model.FieldDetails.AuxiliaryFields[a].IgnoresTimeZone)
+            {
+                @:jQuery('#checkboxIgnoreDataAuxiliary' + (@a + 1)).attr('checked', 'checked');
+            }
+            else
+            {
+                @:jQuery('#checkboxIgnoreDataAuxiliary' + (@a + 1)).removeAttr('checked');
+            }
+
+            //'Is relative' checkbox
+            if (Model.FieldDetails.AuxiliaryFields[a].IsRelative)
+            {
+                @:jQuery('#checkboxRelativeDataAuxiliary' + (@a + 1)).attr('checked', 'checked');
+            }
+            else
+            {
+                @:jQuery('#checkboxRelativeDataAuxiliary' + (@a + 1)).removeAttr('checked');
+            }
+        }
+
+
+
+
+    });
+
+    //Images inputs
+    function handleFileSelect(evt) {
+        var files = evt.target.files,
+            className = evt.target.id.replace('logo', 'spanLogo').replace('strip', 'spanStrip').replace('thumbnail', 'spanThumbnail').replace('background', 'spanBackground').replace('Input', 'Pass'),
+            divId = evt.target.id.replace('logo', 'divLogo').replace('strip', 'divStrip').replace('thumbnail', 'divThumbnail').replace('background', 'divBackground').replace('Input', 'Pass'),
+            span = document.createElement('span'),
+            reader = new FileReader();
+
+        // Only process image files.
+        if (!files[0].type.match('image.*')) {
+            return;
+        }
+        reader.onload = (function (theFile) {
+            return function (e) {
+
+                // Render thumbnail.
+                span = document.createElement('span');
+                span.innerHTML = ['<img class="' + className + '" src="', e.target.result,
+                    '" title="', escape(theFile.name), '"/>'].join('');
+                document.getElementById(divId).innerHTML = "";
+                document.getElementById(divId).insertBefore(span, null);
+            };
+        })(files);
+
+        // Read in the image file as a data URL.
+        reader.readAsDataURL(files[0]);
+        ChangeLeftPropertyLogoText();
+        if (divId == 'divBackgroundImagePass') {
+            BlurBackgroundImage();
+        };
+
+
+    }
+    document.getElementById('logoImageInput').addEventListener('change', handleFileSelect, false);
+    document.getElementById('stripImageInput').addEventListener('change', handleFileSelect, false);
+    document.getElementById('thumbnailImageInput').addEventListener('change', handleFileSelect, false);
+    document.getElementById('backgroundImageInput').addEventListener('change', handleFileSelect, false);
+
+    function HandleChanges(evt) {
+        var imgNameId = evt.target.id.replace('ImageInput', 'Name');
+        var file = document.getElementById(evt.target.id).value;
+        var reWin = /.*\\(.*)/;
+        var fileTitle = file.replace(reWin, "$1"); //выдираем название файла
+        var reUnix = /.*\/(.*)/;
+        fileTitle = fileTitle.replace(reUnix, "$1"); //выдираем название файла
+        document.getElementById(imgNameId).innerHTML = fileTitle;
+        RepositionRemoveIcon();
+        //var RegExExt = /.*\.(.*)/;
+        //var ext = fileTitle.replace(RegExExt, "$1"); //и его расширение
+    };
+
+    //Blur background image
+    function BlurBackgroundImage() {
+        stackBlurImage('backgroundImagePass', 'backgroundCanvas', 70, false);
+    };
+
+    //Remove image on pass
+    jQuery('.removeImage').click(function (evt) {
+        var itemId = evt.target.id.replace('remove', '');
+        console.log(itemId);
+        document.getElementById('div' + itemId + 'ImagePass').innerHTML = '';
+        itemId = itemId.toLowerCase();
+        document.getElementById(itemId + 'Name').innerHTML = 'Файл не выбран';
+        RepositionRemoveIcon();
+    });
+
+    //Reposition remove icon
+    function RepositionRemoveIcon() {
+        var max = Math.max(document.getElementById('logoName').offsetWidth, document.getElementById('stripName')
+            .offsetWidth, document.getElementById('thumbnailName').offsetWidth, document.getElementById('backgroundName').offsetWidth);
+        document.getElementById('removeLogo').style.marginLeft = max + 203 + 'px';
+        document.getElementById('removeStrip').style.marginLeft = max + 203 + 'px';
+        document.getElementById('removeThumbnail').style.marginLeft = max + 203 + 'px';
+        document.getElementById('removeBackground').style.marginLeft = max + 203 + 'px';
+    };
+
+    //Flippy effect
+    var j = jQuery.noConflict();
+    jQuery("#MainTab4").click(function () {
+        if (!jQuery("#MainTab4").hasClass("active")) {
+            j("#divPassBody").flippy({
+                color_target: "#ffffff",
+                content: j("#divbackPass"),
+                direction: "LEFT",
+                duration: "200"
+            });
+            j("#MainTab4").removeClass("flippy");
+            return true;
+        }
+
+    });
+
+    jQuery("#MainTab1, #MainTab2, #MainTab3, #MainTab5, #MainTab6, #MainTab7").click(function () {
+        if (jQuery("#MainTab4").hasClass("active")) {
+            j("#divPassBody").flippyReverse({
+                //content: j("#" + (this).id),
+                content: j("#divFrontPass"),
+                direction: "RIGHT",
+                duration: "350"
+            });
+        }
+        if (jQuery('.passTypeImg.selected').attr('data-pass') == 'eventTicket') {
+            setTimeout(function () { BlurBackgroundImage(); }, 150);
+        }
+    });
+
+    //Main content tabs
+    jQuery('#topPanel p.tabMain').click(function () {
+        var clickId = jQuery(this).attr('id');
+        if (clickId != jQuery('#topPanel p.active').attr('id')) {
+            jQuery('#topPanel p.active').removeClass('active');
+            jQuery(this).addClass('active');
+            jQuery('#rightPanel div').removeClass('active');
+            jQuery('#content' + clickId).addClass('active');
+        }
+    });
+
+    //Front content tabs
+    jQuery('#wrapper p.tabFrontContent').click(function () {
+        var clickId = jQuery(this).attr('id');
+        if (clickId != jQuery('#wrapper p.active').attr('id')) {
+            jQuery('#wrapper p.active').removeClass('active');
+            jQuery(this).addClass('active');
+            jQuery('#wrapper div').removeClass('active');
+            jQuery('#con_' + clickId).addClass('active');
+        }
+    });
+    jQuery('#MainTab3').click(function () {
+        jQuery('#wrapper p.active').removeClass('active');
+        jQuery('#wrapper div').removeClass('active');
+        jQuery('#con_tab0').addClass('active');
+    });
+
+    //Change type of barcode
+    jQuery('#divBarcodeFormat input').click(function () {
+        var clickId = jQuery(this).attr('id');
+        if (clickId != jQuery('#divBarcodeFormat input.active').attr('id')) {
+            jQuery('#divBarcodeFormat input.active').removeClass('active');
+            jQuery(this).addClass('active');
+            jQuery('#divBarcodePass img').removeClass('active');
+            jQuery('#' + clickId + 'Pass').addClass('active');
+        }
+    });
+
+    //Change text color
+    function ChangeLabelTextColor(color) {
+        var labelElements = document.getElementsByClassName("labelText");
+        for (var i = 0, labelElLength = labelElements.length; i < labelElLength; i++) {
+            labelElements[i].style.color = color;
+        }
+    }
+
+    function ChangeValueTextColor(color) {
+        var labelElements = document.getElementsByClassName("valueText");
+        for (var i = 0, labelElLength = labelElements.length; i < labelElLength; i++) {
+            labelElements[i].style.color = color;
+        }
+    }
+
+    //Add field to back content
+    function AddFieldBackContent() {
+        var lastChild = jQuery("#mainCollapsePanelBackContent").children().last(),
+            lastChildId = parseInt(lastChild.attr('id').toString().slice(-2).replace('t', ''), 10),
+            content = '',
+            aHref = '',
+            tempId = '',
+            tempName = '',
+            propCheckedFixedLabel = '',
+            propCheckedDynamicLabel = '',
+            propCheckedFixedValue = '',
+            propCheckedDynamicValue = '',
+            replacedHtml = '',
+            //stringContent = '/Content' + lastChildID + '/g',
+            stringContent = new RegExp('Content' + lastChildId, 'g'),
+            stringBack = new RegExp('Back' + lastChildId, 'g'),
+            stringInput = new RegExp('Input' + lastChildId, 'g'),
+            stringField = new RegExp('Field' + lastChildId, 'g'),
+            stringLabel = new RegExp('Label' + lastChildId, 'g'),
+            stringValue = new RegExp('Value' + lastChildId, 'g');
+        jQuery('<div/>', {
+            id: 'collapsePanelBackContent' + (lastChildId + 1)
+        }).appendTo('#mainCollapsePanelBackContent');
+
+        //Save property 'checked' radio buttons last field
+        propCheckedFixedLabel = jQuery('#collapseContentLabelBack' + lastChildId + '1').prop('checked');
+        propCheckedDynamicLabel = jQuery('#collapseContentLabelBack' + lastChildId + '2').prop('checked');
+        propCheckedFixedValue = jQuery('#collapseContentValueBack' + lastChildId + '1').prop('checked');
+        propCheckedDynamicValue = jQuery('#collapseContentValueBack' + lastChildId + '2').prop('checked');
+
+        //Copy content last field to new field
+        content = jQuery('#collapsePanelBackContent' + lastChildId).html();
+        jQuery('#collapsePanelBackContent' + (lastChildId + 1)).html(content);
+
+        //Change attributes in new field
+        replacedHtml = jQuery('#collapsePanelBackContent' + (lastChildId + 1)).html().replace(stringContent, 'Content' + (lastChildId + 1)).replace(stringBack, 'Back' + (lastChildId + 1))
+            .replace(stringInput, 'Input' + (lastChildId + 1)).replace(stringField, 'Field' + (lastChildId + 1))
+            .replace(stringLabel, 'Label' + (lastChildId + 1)).replace(stringValue, 'Value' + (lastChildId + 1));
+        jQuery('#collapsePanelBackContent' + (lastChildId + 1)).html(replacedHtml);
+
+        jQuery('#collapseContentLabelBack' + lastChildId + '1').prop('checked', propCheckedFixedLabel);
+        jQuery('#collapseContentLabelBack' + lastChildId + '2').prop('checked', propCheckedDynamicLabel);
+        jQuery('#collapseContentValueBack' + lastChildId + '1').prop('checked', propCheckedFixedValue);
+        jQuery('#collapseContentValueBack' + lastChildId + '2').prop('checked', propCheckedDynamicValue);
+
+        DisplayNoneRadioButtonPrompt('collapseContentLabelBack' + (lastChildId + 1) + '1');
+        DisplayNoneRadioButtonPrompt('collapseContentValueBack' + (lastChildId + 1) + '1');
+        AddFieldBackContentPass(lastChildId + 1);
+        jQuery("[data-toggle='tooltip']").tooltip();
+    }
+
+    //Add field to back content pass
+    function AddFieldBackContentPass(lastChildId) {
+        if (jQuery('#mainCollapsePanelBackContent').children().size() == 1 && jQuery('#mainCollapsePanelBackContent').attr('class') == 'displayNone') {
+            jQuery('#collapsePanelBackContent' + tempId).removeClass('displayNone');
+            jQuery('#divBackFieldContentPass' + tempId).removeClass('displayNone');
+        } else {
+            jQuery('<div/>', {
+                id: 'divBackFieldContentPass' + lastChildId,
+                class: 'divBackFieldContentPass'
+            }).appendTo('#divBackContentPass');
+            jQuery('<div/>', {
+                id: 'labelFieldBackPass' + lastChildId,
+                class: 'labelFieldBackPass'
+            }).appendTo('#divBackFieldContentPass' + lastChildId);
+            jQuery('<div/>', {
+                id: 'valueFieldBackPass' + lastChildId,
+                class: 'valueFieldBackPass'
+            }).appendTo('#divBackFieldContentPass' + lastChildId);
+        }
+    }
+
+    //Bind back inputs to pass fields
+    function BindBackInputToFieldPass(id, value) {
+        var imputId = id.slice(-2).replace('t', '');
+        document.getElementById('labelFieldBackPass' + imputId).innerHTML = value;
+    }
+
+    //Bind back textarea to pass fields
+    function BindBackTextareaToFieldPass(id, value) {
+        var imputId = id.slice(-2).replace('t', '');
+        document.getElementById('valueFieldBackPass' + imputId).innerHTML = value;
+    }
+
+    //Remove field from back content
+    function RemoveFieldFromBackContent(id) {
+        var tempId = id.slice(-2).replace('d', '');
+        if (jQuery('#mainCollapsePanelBackContent').children().size() == 1) {
+            jQuery('#collapsePanelBackContent' + tempId).addClass('displayNone');
+            jQuery('#divBackFieldContentPass' + tempId).addClass('displayNone');
+        } else {
+            jQuery('#collapsePanelBackContent' + tempId).remove();
+            jQuery('#divBackFieldContentPass' + tempId).remove();
+        }
+    }
+
+    //Remove all field in back content pass
+    function RemoveAllFieldBackPass() {
+        jQuery("#divBackContentPass").html("");
+    }
+
+    function AddFieldPassAgain() {
+        var childs = jQuery("#mainCollapsePanelBackContent").children().toArray(),
+            tempId = '';
+        for (var i = 0; i < childs.length; i++) {
+            tempId = childs[i].getAttribute('id').slice(-2).replace('t', '');
+            jQuery('<div/>', {
+                id: 'divBackFieldContentPass' + tempId,
+                class: 'divBackFieldContentPass'
+            }).appendTo('#divBackContentPass');
+            jQuery('<div/>', {
+                id: 'labelFieldBackPass' + tempId,
+                class: 'labelFieldBackPass',
+                text: jQuery('#inputBackFieldContent' + tempId).val()
+            }).appendTo('#divBackFieldContentPass' + tempId);
+            jQuery('<div/>', {
+                id: 'valueFieldBackPass' + tempId,
+                class: 'valueFieldBackPass',
+                text: jQuery('#textareaBackFieldContent' + tempId).val()
+            }).appendTo('#divBackFieldContentPass' + tempId);
+        }
+    }
+
+    ;
+
+    //Change width text fields on header pass area
+    function ChangeWidthHeaderTextFieldPass(someId) {
+        var tempId = someId.toString().slice(-1),
+            max = 0;
+        document.getElementById('divHeaderLabelPass' + tempId).style.width = 'auto';
+        document.getElementById('divHeaderValuePass' + tempId).style.width = 'auto';
+        max = Math.max(document.getElementById('divHeaderLabelPass' + tempId).offsetWidth, document.getElementById('divHeaderValuePass' + tempId).offsetWidth);
+        if (max > 0) {
+            document.getElementById('divHeaderLabelPass' + tempId).style.width = max + 'px';
+            document.getElementById('divHeaderValuePass' + tempId).style.width = max + 'px';
+        }
+        ChangWidthFlexContainerHeaderPass();
+    }
+
+
+
+    //Change width flex container on header text area
+    function ChangWidthFlexContainerHeaderPass() {
+        var tempWidth = 0,
+            maxWidth = 165;
+        jQuery('#divLogoTextPass').css('width', 'auto');
+        tempWidth = 270 - (jQuery('#divLogoImagePass').width() + jQuery('#divLogoTextPass').width()) - 14;
+        if (tempWidth < maxWidth) {
+            jQuery('.flexContainerHeaderFields').css('width', tempWidth + 'px');
+            jQuery('.flexContainerHeaderFields').css('left', 105 + (maxWidth - tempWidth) + 'px');
+        } else {
+            jQuery('.flexContainerHeaderFields').css('width', maxWidth + 'px');
+            jQuery('.flexContainerHeaderFields').css('left', 105 + 'px');
+        }
+    }
+
+    //Change 'left' property logo text on pass after resize or delete logo image
+    window.onload = ChangeLeftPropertyLogoText();
+
+    jQuery('#divLogoImagePass').bind("DOMSubtreeModified", function () {
+        ChangeLeftPropertyLogoText();
+    });
+
+    function ChangeLeftPropertyLogoText() {
+        var logoImageWidth = jQuery('#divLogoImagePass').width();
+        jQuery('#divLogoTextPass').css('left', (logoImageWidth + 8).toString() + 'px');
+        ChangWidthFlexContainerHeaderPass();
+    }
+
+    //Change width text fields on primary pass area
+    function ChangeWidthPrimaryTextFieldPass(someId) {
+        var tempId = someId.toString().slice(-1),
+            max = 0;
+        document.getElementById('divPrimaryLabelPass' + tempId).style.width = 'auto';
+        document.getElementById('divPrimaryValuePass' + tempId).style.width = 'auto';
+        max = Math.max(document.getElementById('divPrimaryLabelPass' + tempId).offsetWidth, document.getElementById('divPrimaryValuePass' + tempId).offsetWidth);
+        if (max > 0) {
+            document.getElementById('divPrimaryLabelPass' + tempId).style.width = max + 'px';
+            document.getElementById('divPrimaryValuePass' + tempId).style.width = max + 'px';
+        }
+    }
+
+    //Change width text fields on auxiliary pass area
+    function ChangeWidthAuxiliaryTextFieldPass(someId) {
+        var tempId = someId.toString().slice(-1),
+            max = 0;
+        document.getElementById('divAuxiliaryLabelPass' + tempId).style.width = 'auto';
+        document.getElementById('divAuxiliaryValuePass' + tempId).style.width = 'auto';
+        max = Math.max(document.getElementById('divAuxiliaryLabelPass' + tempId).offsetWidth, document.getElementById('divAuxiliaryValuePass' + tempId).offsetWidth);
+        if (max > 0) {
+            document.getElementById('divAuxiliaryLabelPass' + tempId).style.width = max + 'px';
+            document.getElementById('divAuxiliaryValuePass' + tempId).style.width = max + 'px';
+        }
+    }
+
+    //Change width text fields on secondary pass area
+    function ChangeWidthSecondaryTextFieldPass(someId) {
+        var tempId = someId.toString().slice(-1),
+            max = 0;
+        document.getElementById('divSecondaryLabelPass' + tempId).style.width = 'auto';
+        document.getElementById('divSecondaryValuePass' + tempId).style.width = 'auto';
+        max = Math.max(document.getElementById('divSecondaryLabelPass' + tempId).offsetWidth, document.getElementById('divSecondaryValuePass' + tempId).offsetWidth);
+        if (max > 0) {
+            document.getElementById('divSecondaryLabelPass' + tempId).style.width = max + 'px';
+            document.getElementById('divSecondaryValuePass' + tempId).style.width = max + 'px';
+        }
+    }
+
+    //Check and uncheck fieds on front pass
+    function CheckAndUncheckFieldFront(id) {
+        var tempId = id.replace('checkbox', 'div'),
+            number = tempId.slice(-1),
+            tempIdLabel = '',
+            tempIdValue = '';
+        tempIdLabel = tempId.replace(number, 'LabelPass' + number);
+        tempIdValue = tempId.replace(number, 'ValuePass' + number);
+        if (jQuery('#' + id).prop('checked')) {
+            jQuery('#' + tempIdLabel).css('display', 'block');
+            jQuery('#' + tempIdValue).css('display', 'block');
+        } else {
+            jQuery('#' + tempIdLabel).css('display', 'none');
+            jQuery('#' + tempIdValue).css('display', 'none');
+        }
+    }
+
+    ;
+
+    //Check and uncheck fieds on back pass
+    function CheckAndUncheckFieldBack(id) {
+        var tempId = id.toString().replace('checkbox', 'div'),
+            number = tempId.slice(-1);
+        tempId = tempId.replace(number, 'FieldContentPass' + number);
+        if (jQuery('#' + id).prop('checked')) {
+            jQuery('#' + tempId).css('display', 'block');
+        } else {
+            jQuery('#' + tempId).css('display', 'none');
+        }
+    }
+
+    //Check checkbox field after input text in front content
+    function CheckCheckboxAfterInput(id) {
+        var tempId = id.toString().replace('LabelTextInput', '').replace('ValueTextInput', '').replace('LabelCollapseInput', '')
+                        .replace('input', '').replace('textarea', '').replace('FieldContent', '');
+        tempId = tempId.toString().charAt(0).toUpperCase() + tempId.slice(1);
+        tempId = 'checkbox' + tempId;
+        if (!jQuery('#' + tempId).prop('checked')) {
+            jQuery('#' + tempId).attr('checked', 'checked');
+            CheckAndUncheckFieldFront(tempId);
+            CheckAndUncheckFieldBack(tempId);
+        }
+    }
+
+    //Display block dynamic radio button prompt
+    function DisplayRadioButtonPrompt(id) {
+        var idPrompt = id.toString().slice(0, -1);
+        document.getElementById(idPrompt + 'Prompt').style.display = 'block';
+    }
+
+    //Display none dynamic radio button prompt
+    function DisplayNoneRadioButtonPrompt(id) {
+        var idPrompt = id.toString().slice(0, -1);
+        document.getElementById(idPrompt + 'Prompt').style.display = 'none';
+    }
+
+
+    //Change placeholder text input
+    jQuery('input.radioInputFixOrDinamicLabel').change(function () {
+        var tempId = jQuery(this).attr('id').slice(0, -1).replace('Radios', 'TextInput'),
+            number = jQuery(this).attr('id').slice(-1);
+
+        if (number == '1') {
+            jQuery('#' + tempId).attr('placeholder', 'Обязательный');
+        } else if (number == '2') {
+            jQuery('#' + tempId).attr('placeholder', 'Необязательный');
+        }
+    });
+
+    jQuery('input.radioInputFixOrDinamicValue').change(function () {
+        var tempId = jQuery(this).attr('id').slice(0, -1).replace('Radios', 'TextInput'),
+            number = jQuery(this).attr('id').slice(-1);
+        if (number == '1') {
+            jQuery('#' + tempId).attr('placeholder', 'Обязательное');
+        } else if (number == '2') {
+            jQuery('#' + tempId).attr('placeholder', 'Необязательное');
+        }
+    });
+
+    //Display block serial number input on pass settings tab
+    function DisplayBlockSerialNumberInput() {
+        jQuery('#divSerialNumberSettingsTab').css('display', 'block');
+    };
+
+    //Display none serial number input on pass settings tab
+    function DisplayNoneSerialNumberInput() {
+        jQuery('#divSerialNumberSettingsTab').css('display', 'none');
+    };
+
+    //Display none checkbox on collapse area
+    function DisplayNoneCollapseCheckbox(name) {
+        var tempId = name.toString().replace('optionsRadios', 'divCheckbox');
+        jQuery('#' + tempId).css('display', 'none');
+    }
+
+    //Display block checkbox on collapse area
+    function DisplayBlockCollapseCheckbox(name) {
+        var tempId = name.toString().replace('optionsRadios', 'divCheckbox');
+        jQuery('#' + tempId).css('display', 'block');
+    }
+
+    //Display the desired select list on change data type select in front content tab
+    function DisplayBlockDesiredSelect(thisId) {
+        var thisValue = jQuery('#' + thisId + ' option:selected').val(),
+            numberFormatId = thisId.replace('select', 'divNumberFormat'),
+            currencyId = thisId.replace('select', 'divCurrency'),
+            dateFormatId = thisId.replace('select', 'divDateFormat');
+        jQuery('#' + numberFormatId).css('display', 'none');
+        jQuery('#' + currencyId).css('display', 'none');
+        jQuery('#' + dateFormatId).css('display', 'none');
+        switch (thisValue) {
+            case 'number':
+                jQuery('#' + numberFormatId).css('display', 'block');
+                break;
+            case 'currency':
+                jQuery('#' + currencyId).css('display', 'block');
+                break;
+            case 'date':
+                jQuery('#' + dateFormatId).css('display', 'block');
+                break;
+            case 'dateTime':
+                jQuery('#' + dateFormatId).css('display', 'block');
+                break;
+        }
+    };
+
+    //Add address field on lock screen
+    var GLOBAL_COUNT_ADDRESS_FIELD = 1;
+    function AddAddressField() {
+        GLOBAL_COUNT_ADDRESS_FIELD++;
+        if (GLOBAL_COUNT_ADDRESS_FIELD <= 10) {
+            var lastChild = jQuery("#mainCollapsePanelAddressContent").children().last(),
+                lastChildId = parseInt(lastChild.attr('id').toString().slice(-2).replace('t', ''), 10),
+                content = '',
+                replacedHtml = '',
+                stringContent = new RegExp('Content' + lastChildId, 'g'),
+                stringAddress = new RegExp('Address' + lastChildId, 'g'),
+                stringInput = new RegExp('Input' + lastChildId, 'g'),
+                stringMap = new RegExp('Map' + lastChildId, 'g'),
+                stringLock = new RegExp('Lock' + lastChildId, 'g'),
+                stringButton = new RegExp('Button' + lastChildId, 'g');
+            jQuery('<div/>', {
+                id: 'collapsePanelAddressContent' + (lastChildId + 1)
+            }).appendTo('#mainCollapsePanelAddressContent');
+
+            //Copy content last field to new field
+            content = jQuery('#collapsePanelAddressContent' + lastChildId).html();
+            jQuery('#collapsePanelAddressContent' + (lastChildId + 1)).html(content);
+
+            //Change attributes in new field
+            replacedHtml = jQuery('#collapsePanelAddressContent' + (lastChildId + 1)).html().replace(stringContent, 'Content' + (lastChildId + 1))
+                .replace(stringAddress, 'Address' + (lastChildId + 1)).replace(stringInput, 'Input' + (lastChildId + 1)).replace(stringMap, 'Map' + (lastChildId + 1))
+                .replace(stringLock, 'Lock' + (lastChildId + 1)).replace(stringButton, 'Button' + (lastChildId + 1));
+            jQuery('#collapsePanelAddressContent' + (lastChildId + 1)).html(replacedHtml);
+        }
+        jQuery("[data-toggle='tooltip']").tooltip();
+    };
+
+    //Add Language input text row on languages tab
+    function AddLanguageTextRow(thisId) {
+        var tempId = parseInt(thisId.slice(-3).replace('n', '').replace('o', ''), 10),
+            lastChild = jQuery('#divLanguageTextInputs' + tempId).children().last(),
+            lastChildId = parseInt(lastChild.attr('id').toString().slice(-2).replace('w', ''), 10),
+            content = '',
+            replacedHtml = '',
+            stringOriginal = new RegExp('Original' + lastChildId, 'g'),
+            stringLocal = new RegExp('Local' + lastChildId, 'g');
+        jQuery('<div/>', {
+            id: 'divTextInputsLanguage' + tempId + 'Row' + (lastChildId + 1)
+        }).appendTo('#divLanguageTextInputs' + tempId);
+
+        //Copy content last field to new field
+        content = jQuery('#divTextInputsLanguage' + tempId + 'Row' + lastChildId).html();
+        jQuery('#divTextInputsLanguage' + tempId + 'Row' + (lastChildId + 1)).html(content);
+
+        //Change attributes in new field
+        replacedHtml = jQuery('#divTextInputsLanguage' + tempId + 'Row' + (lastChildId + 1)).html().replace(stringOriginal, 'Original' + (lastChildId + 1))
+            .replace(stringLocal, 'Local' + (lastChildId + 1));
+        jQuery('#divTextInputsLanguage' + tempId + 'Row' + (lastChildId + 1)).html(replacedHtml);
+    }
+
+    //Add language field on language tab
+    function AddLanguageField() {
+        var lastChild = jQuery('#mainCollapsePanelLanguageContent').children().last(),
+            lastChildId = parseInt(lastChild.attr('id').toString().slice(-2).replace('t', ''), 10),
+            content = '',
+            replacedHtml = '',
+            stringContent = new RegExp('Content' + lastChildId, 'g'),
+            stringLanguage = new RegExp('Language' + lastChildId, 'g'),
+            stringInputs = new RegExp('Inputs' + lastChildId, 'g'),
+            stringButton = new RegExp('Button' + lastChildId, 'g');
+        jQuery('<div/>', {
+            id: 'collapsePanelLanguageContent' + (lastChildId + 1)
+        }).appendTo('#mainCollapsePanelLanguageContent');
+
+        //Copy last field content to new field
+        content = jQuery('#collapsePanelLanguageContent' + lastChildId).html();
+        jQuery('#collapsePanelLanguageContent' + (lastChildId + 1)).html(content);
+
+        //Change attributes in new field
+        replacedHtml = jQuery('#collapsePanelLanguageContent' + lastChildId).html().replace(stringContent, 'Content' + (lastChildId + 1))
+            .replace(stringLanguage, 'Language' + (lastChildId + 1)).replace(stringInputs, 'Inputs' + (lastChildId + 1)).replace(stringButton, 'Button' + (lastChildId + 1));
+        jQuery('#collapsePanelLanguageContent' + (lastChildId + 1)).html(replacedHtml);
+    }
+
+    //Display block or none distribution quantity input on distribution tab
+    function DisplayDistQuantityInput(tempValue) {
+        switch (tempValue) {
+            case '0':
+                jQuery('#divDistQuantityInput').css('display', 'none');
+                break;
+            case '1':
+                jQuery('#divDistQuantityInput').css('display', 'block');
+                break;
+        }
+    }
+
+    //Display block or none distribution date restriction input on distribution tab
+    function DisplayDistDateRestrInput(tempValue) {
+        switch (tempValue) {
+            case '0':
+                jQuery('#divDistDateRestrInput').css('display', 'none');
+                break;
+            case '1':
+                jQuery('#divDistDateRestrInput').css('display', 'block');
+                break;
+        }
+    }
+
+    //Display block or none distribution issue password input on distribution tab
+    function DisplayDistIssuePasswdInput(tempValue) {
+        switch (tempValue) {
+            case '0':
+                jQuery('#divDistIssuePasswdInput').css('display', 'none');
+                break;
+            case '1':
+                jQuery('#divDistIssuePasswdInput').css('display', 'block');
+                break;
+            case '2':
+                jQuery('#divDistIssuePasswdInput').css('display', 'none');
+                break;
+        }
+    }
+
+    //Display block or none distribution update password input on distribution tab
+    function DisplayDistUpdatePasswdInput(tempValue) {
+        switch (tempValue) {
+            case '0':
+                jQuery('#divDistUpdatePasswdInput').css('display', 'none');
+                break;
+            case '1':
+                jQuery('#divDistUpdatePasswdInput').css('display', 'block');
+                break;
+        }
+    }
+
+    //Display block or none barcode message textarea on front content tab
+    function DisplayBarcodeMessTextarea(tempValue) {
+        switch (tempValue) {
+            case 'encodeThePassSerialNumber':
+                jQuery('#divBarcodeMessageTextarea').css('display', 'none');
+                break;
+            case 'encodeThePassUniqueId':
+                jQuery('#divBarcodeMessageTextarea').css('display', 'none');
+                break;
+            case 'encodeTheUrlToUpdateThePass':
+                jQuery('#divBarcodeMessageTextarea').css('display', 'none');
+                break;
+            case 'provideWhenPassIsCreated':
+                jQuery('#divBarcodeMessageTextarea').css('display', 'none');
+                break;
+            case 'encodeTheSameMessageOnEachPass':
+                jQuery('#divBarcodeMessageTextarea').css('display', 'block');
+                break;
+        }
+    }
+
+    //Display block or none barcode alternative text input on front content tab
+    function DisplayBarcodeAltText(tempValue) {
+        switch (tempValue) {
+            case '0':
+                jQuery('#divAlternativeTextInput').css('display', 'none');
+                break;
+            case 'displayThePassSerialNumber':
+                jQuery('#divAlternativeTextInput').css('display', 'none');
+                break;
+            case 'displayThePassUniqueId':
+                jQuery('#divAlternativeTextInput').css('display', 'none');
+                break;
+            case 'provideWhenPassIsCreated':
+                jQuery('#divAlternativeTextInput').css('display', 'none');
+                break;
+            case 'displayTheSameMessageOnEachPass':
+                jQuery('#divAlternativeTextInput').css('display', 'block');
+                break;
+            case 'doNotDisplayAnyAlternativeText':
+                jQuery('#divAlternativeTextInput').css('display', 'none');
+                break;
+        }
+    }
+
+
+    //Google map on lock screen tab
+    var geocoder;
+    var MAP = [];
+    var markersArray = [];
+    MARKER_ARR = [];
+    var LATITUDE = 53.9;
+    var LONGITUDE = 27.56666670000004;
+    var TEMP_LAT;
+    var TEMP_LNG;
+    MAP.length = 10;
+    MARKER_ARR.length = 10;
+
+    //Initialization, create google map
+    function initialize(tempId) {
+        var idNumber = tempId.slice(-2).replace('s', '');
+        if (!MAP.hasOwnProperty(idNumber - 1)) {
+            tempId = tempId.replace('pButtonAddress', 'gMap');
+            geocoder = new google.maps.Geocoder();
+            var latlng = new google.maps.LatLng(LATITUDE, LONGITUDE);
+            var mapOptions = {
+                zoom: 11,
+                center: latlng
+            };
+            var map = new google.maps.Map(document.getElementById(tempId), mapOptions);
+            MAP[idNumber - 1] = map;
+            google.maps.event.addListener(map, 'click', function (event) {
+                placeMarker(event.latLng, tempId);
+            });
+        } else {
+            if (!(MARKER_ARR[idNumber - 1] == null)) {
+                markersArray.push(MARKER_ARR[idNumber - 1]);
+                var marker = new google.maps.Marker({
+                    map: MAP[idNumber - 1],
+                    position: MARKER_ARR[idNumber - 1].position
+                });
+                markersArray.push(marker);
+            }
+        }
+
+    }
+
+    //Call find address on map function after click button 'Найти'
+    function FindButtonCodeAddress(tempId) {
+        var varId = tempId.replace('ButtonFind', 'Input');
+        codeAddress(varId);
+    }
+
+    //Call find address on map function after click button 'Найти широту и долготу'
+    function LatLngButtonCodeAddress(tempId) {
+        var varId = tempId.replace('pButtonAddress', 'addressLabelCollapseInput');
+        var idNumber = tempId.slice(-2).replace('s', '');
+        jQuery('#addressInputLock' + idNumber).val(jQuery('#addressLabelCollapseInput' + idNumber).val());
+        if (jQuery('#addressLabelCollapseInput' + idNumber).val() != '') {
+            codeAddress(varId);
+        }
+    }
+
+    //Find address on map
+    function codeAddress(tempId) {
+        var idNumber = parseInt(tempId.slice(-2).replace('k', '').replace('t', ''), 10);
+        var address = document.getElementById(tempId).value;
+        geocoder.geocode({ 'address': address }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                deleteMapMarkers();
+                MAP[idNumber - 1].setCenter(results[0].geometry.location);
+                MAP[idNumber - 1].setZoom(17);
+                var marker = new google.maps.Marker({
+                    map: MAP[idNumber - 1],
+                    position: results[0].geometry.location
+                });
+                markersArray.push(marker);
+                MARKER_ARR[idNumber - 1] = marker;
+                tempId = tempId.replace('addressInputLock', 'latLngMapContent').replace('addressLabelCollapseInput', 'latLngMapContent');
+                document.getElementById(tempId).innerHTML = marker.position.lat() + '/' + marker.position.lng();
+                TEMP_LAT = marker.position.lat();
+                TEMP_LNG = marker.position.lng();
+            } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+            }
+        });
+    }
+
+    //Resize map
+    function ResizeMap(tempId) {
+        var idNumber = parseInt(tempId.slice(-2).replace('s', ''), 10);
+        google.maps.event.trigger(MAP[idNumber - 1], 'resize');
+        LatLngButtonCodeAddress(tempId);
+    }
+
+    //Place marker on map
+    function placeMarker(location, tempId) {
+        var idNumber = parseInt(tempId.slice(-2).replace('p', ''), 10);
+        deleteMapMarkers();
+        var marker = new google.maps.Marker({
+            position: location,
+            map: MAP[idNumber - 1]
+        });
+        markersArray.push(marker);
+        MARKER_ARR[idNumber - 1] = marker;
+        tempId = tempId.replace('gMap', 'latLngMapContent');
+        document.getElementById(tempId).innerHTML = location.lat() + '/' + location.lng();
+        TEMP_LAT = location.lat();
+        TEMP_LNG = location.lng();
+        //var infowindow = new google.maps.InfoWindow({
+        //    content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
+        //});
+        //infowindow.open(map, marker);
+    }
+
+    //Delete all markers on map
+    function deleteMapMarkers() {
+        for (var i = 0; i < markersArray.length; i++) {
+            markersArray[i].setMap(null);
+        }
+        markersArray.length = 0;
+    }
+
+    //Apply latitude and longitude button on lock screen tab
+    function LatLngApply(tempId) {
+        var latInputId,
+            lngInputId,
+            addressInputId,
+            addressInputMapId;
+        latInputId = tempId.replace('latLngApplyButton', 'latitudeInput');
+        lngInputId = tempId.replace('latLngApplyButton', 'longitudeInput');
+        addressInputId = tempId.replace('latLngApplyButton', 'addressLabelCollapseInput');
+        addressInputMapId = tempId.replace('latLngApplyButton', 'addressInputLock');
+        document.getElementById(latInputId).value = TEMP_LAT;
+        document.getElementById(lngInputId).value = TEMP_LNG;
+        document.getElementById(addressInputId).value = document.getElementById(addressInputMapId).value;
+        DisNoneDarkAreaAndMap();
+    }
+
+    //Display none dark area and map on lock screen
+    function DisNoneDarkAreaAndMap() {
+        jQuery('.gMapLockScreen').css('display', 'none');
+        jQuery('#darkAreaLockScreen').css('display', 'none');
+    }
+
+    //Display block dark area and map on lock screen
+    function DisBlockDarkAreaAndMap(tempId) {
+        var idNumber = parseInt(tempId.slice(-2).replace('s', ''), 10);
+        jQuery('#divGMap' + idNumber).css('display', 'block');
+        jQuery('#darkAreaLockScreen').css('display', 'block');
+    }
+
+    //Tooltip bootstrap
+    jQuery(function () {
+        jQuery("[data-toggle='tooltip']").tooltip();
+    });
+
+    jQuery(function () {
+        jQuery("[data-toggle='collapse']").collapse();
+    });
+
+    //Show date time pickers on distribution tab
+    function ShowDateTimePicker(thisId) {
+        jQuery('#' + thisId).appendDtpicker({
+            'locale': 'ru',
+            'todayButton': false,
+            'dateFormat': 'DD/MM/YY hh:mm',
+            'firstDayOfWeek': 1,
+            'closeOnSelected': true
+        });
+        jQuery('#' + thisId).handleDtpicker('show');
+    }
+
+    //Change barcode type function
+    jQuery('#divBarcodeFormat input').click(function () {
+        switch (jQuery(this).attr('id')) {
+            case 'aztecCode':
+                jQuery('#tab5').css('top', '358px').css('height', '126px');
+                if (jQuery('.passTypeImg.selected').attr('data-pass') == 'generic') {
+                    jQuery('#auxiliaryAreaPass').css('display', 'none');
+                    jQuery('#tab3').css('display', 'none');
+                }
+                break;
+            case 'qrCode':
+                jQuery('#tab5').css('top', '358px').css('height', '126px');
+                if (jQuery('.passTypeImg.selected').attr('data-pass') == 'generic') {
+                    jQuery('#auxiliaryAreaPass').css('display', 'none');
+                    jQuery('#tab3').css('display', 'none');
+                }
+                break;
+            case 'pdf417Code':
+                jQuery('#tab5').css('top', '377px').css('height', '102px');
+                if (jQuery('.passTypeImg.selected').attr('data-pass') == 'generic') {
+                    jQuery('#auxiliaryAreaPass').css('display', 'block');
+                    jQuery('#tab3').css('display', 'block');
+                }
+                break;
+        }
+        if (jQuery('.passTypeImg.selected').attr('data-pass') == 'eventTicket' && jQuery('#eventTicketType input:checked').attr('value') == 'option2') {
+            ChangesDependingPassType('eventTicket');
+        };
+    });
+
+    //Check and uncheck pass type radio button (images)
+    jQuery('.passTypeImg').click(function () {
+        var attrValue;
+        jQuery('.passTypeImg, selected').removeClass('selected');
+        jQuery(this).addClass('selected');
+        attrValue = jQuery(this).attr('data-pass');
+        jQuery('#divPassType input[checked = "checked"]').removeAttr('checked');
+        jQuery('#divPassType input[value = "' + attrValue + '"]').attr('checked', 'checked');
+        ChangesDependingPassType(attrValue);
+    });
+
+    //Change event ticket type radio button
+    jQuery('input[name=optionsEventTicketType]:radio').change(function () {
+        ChangesDependingPassType('eventTicket');
+    });
+
+    //Change the settings depending on the pass type
+    function ChangesDependingPassType(passType) {
+        switch (passType) {
+            case 'boardingPass':
+
+                //Images
+                jQuery('#divStripImage').css('display', 'none');
+                jQuery('#divStripImagePass').css('display', 'none');
+                jQuery('#divBackgroundImage').css('display', 'none');
+                jQuery('#backgroundCanvas').css('display', 'none');
+                jQuery('#divThumbnailImage').css('display', 'none');
+                jQuery('#divThumbnailImagePass').css('display', 'none');
+
+                //Auxiliary
+                jQuery('#divAuxiliaryLabelPass4').css('display', 'block');
+                jQuery('#divAuxiliaryLabelPass5').css('display', 'block');
+                jQuery('#divAuxiliaryValuePass4').css('display', 'block');
+                jQuery('#divAuxiliaryValuePass5').css('display', 'block');
+                jQuery('#flexContainerAuxiliaryLabels').css('top', '105px');
+                jQuery('#flexContainerAuxiliaryValues').css('top', '121px');
+                jQuery('#collapsePanelAuxiliaryContent4').css('display', 'block');
+                jQuery('#collapsePanelAuxiliaryContent5').css('display', 'block');
+                jQuery('#auxiliaryAreaPass').css('display', 'block');
+                jQuery('#tab3').css('display', 'block').css('height', '40px').css('top', '247px');
+
+                //Primary
+                jQuery('#collapsePanelPrimaryContent2').css('display', 'block');
+                jQuery('#divPrimaryValuePass2').css('display', 'block');
+                jQuery('#divPrimaryLabelPass2').css('display', 'block');
+                jQuery('#divPrimaryValuePass1').css('font-size', '25px');
+                jQuery('#divPrimaryLabelPass1').css('font-size', '10px').css('display', 'block');
+                jQuery('#divPrimaryLabelText1').css('display', 'block');
+                jQuery('#flexContainerPrimaryValues').css('top', '66px').css('height', '40px').css('width', '257px');
+                jQuery('#flexContainerPrimaryLabels').css('top', '55px').css('height', '13px').css('width', '257px');
+                jQuery('#tab2').css('height', '40px').css('top', '202px');
+
+                //Secondary
+                jQuery('#secondaryAreaPass').css('display', 'block');
+                jQuery('#flexContainerSecondaryLabels').css('top', '152px');
+                jQuery('#flexContainerSecondaryValues').css('top', '165px');
+                jQuery('.flexContainerSecondaryFields').css('width', '257px');
+                jQuery('#collapsePanelSecondaryContent3').css('display', 'block');
+                jQuery('#collapsePanelSecondaryContent4').css('display', 'block');
+                jQuery('#tab4').css('display', 'block').css('top', '293px').css('height', '40px');
+
+                //Others
+                jQuery('#divGroupingIdentifier').css('display', 'block');
+                jQuery('#divEventTicketTypeRadio').css('display', 'none');
+                break;
+            case 'coupon':
+
+                //Images
+                jQuery('#divStripImage').css('display', 'block');
+                jQuery('#divStripImagePass').css('display', 'block');
+                jQuery('#divBackgroundImage').css('display', 'none');
+                jQuery('#backgroundCanvas').css('display', 'none');
+                jQuery('#divThumbnailImage').css('display', 'none');
+                jQuery('#divThumbnailImagePass').css('display', 'none');
+                jQuery('.spanStripImagePass').css('max-height', '106px');
+
+                //Auxiliary
+                jQuery('#divAuxiliaryLabelPass4').css('display', 'none');
+                jQuery('#divAuxiliaryLabelPass5').css('display', 'none');
+                jQuery('#divAuxiliaryValuePass4').css('display', 'none');
+                jQuery('#divAuxiliaryValuePass5').css('display', 'none');
+                jQuery('#flexContainerAuxiliaryLabels').css('top', '168px');
+                jQuery('#flexContainerAuxiliaryValues').css('top', '181px');
+                jQuery('#collapsePanelAuxiliaryContent4').css('display', 'none');
+                jQuery('#collapsePanelAuxiliaryContent5').css('display', 'none');
+                jQuery('#auxiliaryAreaPass').css('display', 'block');
+                jQuery('#tab3').css('display', 'block').css('height', '43px').css('top', '309px');
+
+                //Primary
+                jQuery('#collapsePanelPrimaryContent2').css('display', 'none');
+                jQuery('#divPrimaryValuePass2').css('display', 'none');
+                jQuery('#divPrimaryLabelPass2').css('display', 'none');
+                jQuery('#divPrimaryValuePass1').css('font-size', '58px');
+                jQuery('#divPrimaryLabelPass1').css('font-size', '14px').css('display', 'block');
+                jQuery('#divPrimaryLabelText1').css('display', 'block');
+                jQuery('#flexContainerPrimaryValues').css('top', '48px').css('height', '70px').css('width', '257px');
+                jQuery('#flexContainerPrimaryLabels').css('top', '122px').css('height', '36px').css('width', '257px');
+                jQuery('#tab2').css('height', '94px').css('top', '202px');
+
+                //Secondary
+                jQuery('#secondaryAreaPass').css('display', 'none');
+                jQuery('#tab4').css('display', 'none').css('top', '309px').css('height', '43px');
+
+                //Others
+                jQuery('#divGroupingIdentifier').css('display', 'none');
+                jQuery('#divEventTicketTypeRadio').css('display', 'none');
+                break;
+            case 'storeCard':
+
+                //Images
+                jQuery('#divStripImage').css('display', 'block');
+                jQuery('#divStripImagePass').css('display', 'block');
+                jQuery('#divBackgroundImage').css('display', 'none');
+                jQuery('#backgroundCanvas').css('display', 'none');
+                jQuery('#divThumbnailImage').css('display', 'none');
+                jQuery('#divThumbnailImagePass').css('display', 'none');
+                jQuery('.spanStripImagePass').css('max-height', '106px');
+
+                //Auxiliary
+                jQuery('#divAuxiliaryLabelPass4').css('display', 'none');
+                jQuery('#divAuxiliaryLabelPass5').css('display', 'none');
+                jQuery('#divAuxiliaryValuePass4').css('display', 'none');
+                jQuery('#divAuxiliaryValuePass5').css('display', 'none');
+                jQuery('#flexContainerAuxiliaryLabels').css('top', '168px');
+                jQuery('#flexContainerAuxiliaryValues').css('top', '181px');
+                jQuery('#collapsePanelAuxiliaryContent4').css('display', 'none');
+                jQuery('#collapsePanelAuxiliaryContent5').css('display', 'none');
+                jQuery('#auxiliaryAreaPass').css('display', 'block');
+                jQuery('#tab3').css('display', 'block').css('height', '43px').css('top', '309px');
+
+                //Primary
+                jQuery('#collapsePanelPrimaryContent2').css('display', 'none');
+                jQuery('#divPrimaryValuePass2').css('display', 'none');
+                jQuery('#divPrimaryLabelPass2').css('display', 'none');
+                jQuery('#divPrimaryValuePass1').css('font-size', '58px');
+                jQuery('#divPrimaryLabelPass1').css('font-size', '14px').css('display', 'block');
+                jQuery('#divPrimaryLabelText1').css('display', 'block');
+                jQuery('#flexContainerPrimaryValues').css('top', '48px').css('height', '70px').css('width', '257px');
+                jQuery('#flexContainerPrimaryLabels').css('top', '122px').css('height', '36px').css('width', '257px');
+                jQuery('#tab2').css('height', '94px').css('top', '202px');
+
+                //Secondary
+                jQuery('#secondaryAreaPass').css('display', 'none');
+                jQuery('#tab4').css('display', 'none').css('top', '309px').css('height', '43px');
+
+                //Others
+                jQuery('#divGroupingIdentifier').css('display', 'none');
+                jQuery('#divEventTicketTypeRadio').css('display', 'none');
+                break;
+            case 'generic':
+
+                //Images
+                jQuery('#divStripImage').css('display', 'none');
+                jQuery('#divStripImagePass').css('display', 'none');
+                jQuery('#divBackgroundImage').css('display', 'none');
+                jQuery('#backgroundCanvas').css('display', 'none');
+                jQuery('#divThumbnailImage').css('display', 'block');
+                jQuery('#divThumbnailImagePass').css('display', 'block');
+                jQuery('#thumbnailImagePass').removeClass('eventTicket').addClass('generic');
+
+                //Auxiliary
+                jQuery('#divAuxiliaryLabelPass4').css('display', 'block');
+                jQuery('#divAuxiliaryLabelPass5').css('display', 'none');
+                jQuery('#divAuxiliaryValuePass4').css('display', 'block');
+                jQuery('#divAuxiliaryValuePass5').css('display', 'none');
+                jQuery('#flexContainerAuxiliaryLabels').css('top', '195px');
+                jQuery('#flexContainerAuxiliaryValues').css('top', '210px');
+                jQuery('#collapsePanelAuxiliaryContent4').css('display', 'block');
+                jQuery('#collapsePanelAuxiliaryContent5').css('display', 'none');
+                jQuery('#tab3').css('height', '36px').css('top', '337px');
+                if (!(jQuery('#divBarcodeFormat input.active').attr('id') == 'pdf417Code')) {
+                    jQuery('#auxiliaryAreaPass').css('display', 'none');
+                    jQuery('#tab3').css('display', 'none');
+                };
+
+                //Primary
+                jQuery('#collapsePanelPrimaryContent2').css('display', 'none');
+                jQuery('#divPrimaryValuePass2').css('display', 'none');
+                jQuery('#divPrimaryLabelPass2').css('display', 'none');
+                jQuery('#divPrimaryValuePass1').css('font-size', '25px');
+                jQuery('#divPrimaryLabelPass1').css('font-size', '10px').css('display', 'block');
+                jQuery('#divPrimaryLabelText1').css('display', 'block');
+                jQuery('#flexContainerPrimaryValues').css('top', '77px').css('height', '40px').css('width', '168px');
+                jQuery('#flexContainerPrimaryLabels').css('top', '66px').css('height', '13px').css('width', '168px');
+                jQuery('#tab2').css('height', '49px').css('top', '207px');
+
+                //Secondary
+                jQuery('#secondaryAreaPass').css('display', 'block');
+                jQuery('#flexContainerSecondaryLabels').css('top', '152px');
+                jQuery('#flexContainerSecondaryValues').css('top', '165px');
+                jQuery('.flexContainerSecondaryFields').css('width', '257px');
+                jQuery('#collapsePanelSecondaryContent3').css('display', 'none');
+                jQuery('#collapsePanelSecondaryContent4').css('display', 'none');
+                jQuery('#tab4').css('display', 'block').css('top', '293px').css('height', '40px');
+
+                //Others
+                jQuery('#divGroupingIdentifier').css('display', 'none');
+                jQuery('#divEventTicketTypeRadio').css('display', 'none');
+                break;
+            case 'eventTicket':
+                if (jQuery('#eventTicketType input:checked').attr('value') == 'option1') {
+
+                    //Images
+                    jQuery('#divStripImage').css('display', 'none');
+                    jQuery('#divStripImagePass').css('display', 'none');
+                    jQuery('#divBackgroundImage').css('display', 'block');
+                    jQuery('#backgroundCanvas').css('display', 'block');
+                    jQuery('#divThumbnailImage').css('display', 'block');
+                    jQuery('#divThumbnailImagePass').css('display', 'block');
+                    jQuery('#thumbnailImagePass').removeClass('generic').addClass('eventTicket');
+
+                    //Auxiliary
+                    jQuery('#divAuxiliaryLabelPass4').css('display', 'block');
+                    jQuery('#divAuxiliaryLabelPass5').css('display', 'none');
+                    jQuery('#divAuxiliaryValuePass4').css('display', 'block');
+                    jQuery('#divAuxiliaryValuePass5').css('display', 'none');
+                    jQuery('#flexContainerAuxiliaryLabels').css('top', '144px');
+                    jQuery('#flexContainerAuxiliaryValues').css('top', '160px');
+                    jQuery('#collapsePanelAuxiliaryContent4').css('display', 'block');
+                    jQuery('#collapsePanelAuxiliaryContent5').css('display', 'none');
+                    jQuery('#auxiliaryAreaPass').css('display', 'block');
+                    jQuery('#tab3').css('display', 'block').css('height', '40px').css('top', '286px');
+
+                    //Primary
+                    jQuery('#collapsePanelPrimaryContent2').css('display', 'none');
+                    jQuery('#divPrimaryValuePass2').css('display', 'none');
+                    jQuery('#divPrimaryLabelPass2').css('display', 'none');
+                    jQuery('#divPrimaryValuePass1').css('font-size', '18px');
+                    jQuery('#divPrimaryLabelPass1').css('font-size', '10px').css('display', 'block');
+                    jQuery('#divPrimaryLabelText1').css('display', 'block');
+                    jQuery('#flexContainerPrimaryValues').css('top', '66px').css('height', '25px').css('width', '168px');
+                    jQuery('#flexContainerPrimaryLabels').css('top', '55px').css('height', '13px').css('width', '168px');
+                    jQuery('#tab2').css('height', '34px').css('top', '202px');
+
+                    //Secondary
+                    jQuery('#secondaryAreaPass').css('display', 'block');
+                    jQuery('#flexContainerSecondaryLabels').css('top', '100px');
+                    jQuery('#flexContainerSecondaryValues').css('top', '114px');
+                    jQuery('.flexContainerSecondaryFields').css('width', '199px');
+                    jQuery('#collapsePanelSecondaryContent3').css('display', 'none');
+                    jQuery('#collapsePanelSecondaryContent4').css('display', 'none');
+                    jQuery('#tab4').css('display', 'block').css('top', '244px').css('height', '34px');
+
+                    //Others
+                    jQuery('#divGroupingIdentifier').css('display', 'block');
+                    jQuery('#divEventTicketTypeRadio').css('display', 'block');
+                } else if (jQuery('#eventTicketType input:checked').attr('value') == 'option2') {
+
+                    //Images
+                    jQuery('#divStripImage').css('display', 'block');
+                    jQuery('#divStripImagePass').css('display', 'block');
+                    jQuery('#divBackgroundImage').css('display', 'none');
+                    jQuery('#backgroundCanvas').css('display', 'none');
+                    jQuery('#divThumbnailImage').css('display', 'none');
+                    jQuery('#divThumbnailImagePass').css('display', 'none');
+                    jQuery('.spanStripImagePass').css('max-height', '74px');
+
+                    //Auxiliary
+                    jQuery('#divAuxiliaryLabelPass4').css('display', 'block');
+                    jQuery('#divAuxiliaryLabelPass5').css('display', 'none');
+                    jQuery('#divAuxiliaryValuePass4').css('display', 'block');
+                    jQuery('#divAuxiliaryValuePass5').css('display', 'none');
+                    jQuery('#collapsePanelAuxiliaryContent4').css('display', 'block');
+                    jQuery('#collapsePanelAuxiliaryContent5').css('display', 'none');
+                    jQuery('#auxiliaryAreaPass').css('display', 'block');
+                    if (jQuery('#divBarcodeFormat input.active').attr('id') == 'pdf417Code') {
+                        jQuery('#flexContainerAuxiliaryLabels').css('top', '184px');
+                        jQuery('#flexContainerAuxiliaryValues').css('top', '200px');
+                        jQuery('#tab3').css('display', 'block').css('height', '40px').css('top', '325px');
+                    } else {
+                        jQuery('#flexContainerAuxiliaryLabels').css('top', '176px');
+                        jQuery('#flexContainerAuxiliaryValues').css('top', '192px');
+                        jQuery('#tab3').css('display', 'block').css('height', '35px').css('top', '319px');
+                    };
+
+                    //Primary
+                    jQuery('#collapsePanelPrimaryContent2').css('display', 'none');
+                    jQuery('#divPrimaryValuePass2').css('display', 'none');
+                    jQuery('#divPrimaryLabelPass2').css('display', 'none');
+                    jQuery('#divPrimaryValuePass1').css('font-size', '57px');
+                    jQuery('#divPrimaryLabelPass1').css('display', 'none');
+                    jQuery('#divPrimaryLabelText1').css('display', 'none');
+                    jQuery('#flexContainerPrimaryValues').css('top', '49px').css('height', '65px').css('width', '257px');
+                    jQuery('#tab2').css('height', '64px').css('top', '202px');
+
+                    //Secondary
+                    jQuery('#secondaryAreaPass').css('display', 'block');
+                    jQuery('.flexContainerSecondaryFields').css('width', '199px');
+                    jQuery('#collapsePanelSecondaryContent3').css('display', 'block');
+                    jQuery('#collapsePanelSecondaryContent4').css('display', 'none');
+                    if (jQuery('#divBarcodeFormat input.active').attr('id') == 'pdf417Code') {
+                        jQuery('#flexContainerSecondaryLabels').css('top', '135px');
+                        jQuery('#flexContainerSecondaryValues').css('top', '149px');
+                        jQuery('#tab4').css('display', 'block').css('top', '277px').css('height', '40px');
+                    } else {
+                        jQuery('#flexContainerSecondaryLabels').css('top', '130px');
+                        jQuery('#flexContainerSecondaryValues').css('top', '144px');
+                        jQuery('#tab4').css('display', 'block').css('top', '274px').css('height', '35px');
+                    };
+
+                    //Others
+                    jQuery('#divGroupingIdentifier').css('display', 'block');
+                    jQuery('#divEventTicketTypeRadio').css('display', 'block');
+                }
+                break;
+        }
+    }
+
+    ////Hex to rgb conversion
+    //function HexToRgb(hex) {
+    //    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    //    return 'rgb(' + parseInt(result[1], 16) + ', ' + parseInt(result[2], 16) + ', ' + parseInt(result[3], 16) + ')';
+    //}
+
+    //JSON serialization
+    function PostJsonData() {
+        var jsonObj = {
+                LocationDetails: {
+                    Locations: []
+                },
+                DistributionDetails: {},
+                BarcodeDetails: {},
+                FieldDetails: {
+                    AuxiliaryFields: [],
+                    BackFields: [],
+                    HeaderFields: [],
+                    PrimaryFields: [],
+                    SecondaryFields: []
+                }
+            },
+            fieldsName = [
+                {'fieldName':'auxiliary', 'FieldName': 'Auxiliary', 'fieldCount': 5, 'arrName': jsonObj.FieldDetails.AuxiliaryFields},
+                {'fieldName':'back', 'FieldName': 'Back', 'fieldCount': jQuery('#mainCollapsePanelBackContent').children().length, 'arrName': jsonObj.FieldDetails.BackFields},
+                {'fieldName':'header', 'FieldName': 'Header', 'fieldCount': 3, 'arrName': jsonObj.FieldDetails.HeaderFields},
+                {'fieldName':'primary', 'FieldName': 'Primary', 'fieldCount': 2, 'arrName': jsonObj.FieldDetails.PrimaryFields},
+                {'fieldName':'secondary', 'FieldName': 'Secondary', 'fieldCount': 4, 'arrName': jsonObj.FieldDetails.SecondaryFields}
+            ]; 
+
+        //Standard Keys
+        jsonObj.OrganizationName = jQuery('#organizationNameInput').val();
+        jsonObj.TemplateName = jQuery('#templateNameInput').val();
+        //jsonObj.TemplateDescription = ?????????????????????????
+        jsonObj.PassStyle = jQuery('#divPassType input[checked = "checked"]').val();
+        jsonObj.PassDescription = jQuery('#passDescriptionTextarea').val();
+        jsonObj.PassSerialNumberType = jQuery('#serialNumber input:checked').val();
+        //if (jQuery('#serialNumber input:checked').attr('value') == 'option3') {
+        //    jsonObj.serialNumber = jQuery('#serialNumberInput').val();
+        //}
+        jsonObj.PassCertificate = jQuery('#passCertificSelect option:selected').val();
+        //jsonObj.TeamIdentifier = ??????????????????????????
+
+        //Visual Appearance Keys
+        jsonObj.BackgroundColor = jQuery('#backColorPicker').val();
+        jsonObj.LabelTextColor = jQuery('#labelColorPicker').val();
+        jsonObj.ValueTextColor = jQuery('#textColorPicker').val();
+        //jsonObj.SuppressStripShine = ????????????????????????????(only before IOS7)
+
+        //IOS 7
+        //WARNING! Optional for event tickets and boarding passes; otherwise not allowed
+        jsonObj.GroupingIdentifier = jQuery('#groupingIdentifierInput').val();
+        jsonObj.PassTimezone = jQuery('#passTz').val();//invalid value
+        jsonObj.LogoText = jQuery('#logoTextInput').val();
+
+        //Integration Details
+        //jsonObj.IntegrationDetails = ?????????????????????
+
+
+        //Location Details
+        jsonObj.LocationDetails.MaxDistance = jQuery('#maxDistanceInput').val();
+        for (var i = 0; i < jQuery('#mainCollapsePanelAddressContent').children().length; i++) {
+            jsonObj.LocationDetails.Locations.push( {
+                'Altitude': jQuery('#altitudeInput' + (i + 1)).val().replace('.',','),
+                'Latitude': jQuery('#latitudeInput' + (i + 1)).val().replace('.',','),
+                'Longitude': jQuery('#longitudeInput' + (i + 1)).val().replace('.',','),
+                'RelevantText': jQuery('#notificationInputAddress' + (i + 1)).val()
+            });
+        };//no deserialize
+
+        //Beacon Details
+        //jsonObj.BeaconDetails = ?????????????????????
+
+        //Distribution Details
+        jsonObj.DistributionDetails.PassLinkType = jQuery('#distTypeSelect option:selected').val();
+        //jsonObj.DistributionDetails.LimitPassPerUser = ???????????
+        jsonObj.DistributionDetails.AllPassesAsExpired = jQuery('#voidedCheckbox').is(':checked');
+        jsonObj.DistributionDetails.ExpirationDate = jQuery('#autoExpireInput').val();
+        if (jQuery('#distQuantitySelect :selected').val() == 1) {
+            jsonObj.DistributionDetails.QuantityRestriction = jQuery('#distQuantityInput').val();
+        }
+        if (jQuery('#distDateRestrSelect :selected').val() == 1) {
+            jsonObj.DistributionDetails.DateRestriction = jQuery('#distDateRestrInput').val();
+        }
+        if (jQuery('#distPasswdSelect :selected').val() == 1) {
+            jsonObj.DistributionDetails.PasswordToIssue = jQuery('#distIssuePasswdInput').val();
+        }
+        if (jQuery('#distPasswdUpdSelect :selected').val() == 1) {
+            jsonObj.DistributionDetails.PasswordToUpdate = jQuery('#distUpdatePasswdInput').val();
+        }
+
+        //Barcode Details
+        jsonObj.BarcodeDetails.BarcodeType = jQuery('#divBarcodeFormat input.active').attr('id');//не хватает одного пункта
+        jsonObj.BarcodeDetails.EncodedMessage = jQuery('#barcodeMessageSelect option:selected').val();
+        jsonObj.BarcodeDetails.TextToEncode = jQuery('#barcodeMessageTextarea').val();
+        jsonObj.BarcodeDetails.AlternativeText = jQuery('#barcodeAltTextSelect option:selected').val();
+        jsonObj.BarcodeDetails.TextToDisplay = jQuery('#alternativeTextInput').val();
+        //jsonObj.BarcodeDetails.EncodingFormat = ???????????????????
+
+        //Field Details
+        for (var j = 0; j < fieldsName.length; j++) {
+            for (var a = 0; a < fieldsName[j].fieldCount; a++) {
+                fieldsName[j].arrName.push({
+                    'IsMarkedField': jQuery('#checkbox' + fieldsName[j].FieldName + (a + 1)).is(':checked'),
+
+                    //Standard Field Dictionary Keys
+                    //'attributedValue': ????????,
+                    'ChangeMessage': jQuery('#notificationInput' + fieldsName[j].FieldName + (a + 1)).val(),
+                    //'dataDetectorTypes': чекбоксы
+                    'Key': jQuery('#' + fieldsName[j].fieldName + 'LabelCollapseInput' + (a + 1)).val(),
+                    'Label': jQuery('#' + fieldsName[j].fieldName + 'LabelTextInput' + (a + 1)).val(),
+                    'IsDynamicLabel': jQuery('#' + fieldsName[j].fieldName + 'LabelRadios' + (a + 1) + '2').is(':checked'),
+                    'Value': jQuery('#' + fieldsName[j].fieldName + 'ValueTextInput' + (a + 1)).val(),
+                    'IsDynamicValue': jQuery('#' + fieldsName[j].fieldName + 'ValueRadios' + (a + 1) + '2').is(':checked'),
+                    //'textAlignment': ????????
+                    'Type': jQuery('#selectDataType' + fieldsName[j].FieldName + (a + 1) +' option:selected').val(),
+
+                    //Number Style Keys
+                    'NumberStyle': jQuery('#selectNumbStyleType' + fieldsName[j].FieldName + (a + 1) +' option:selected').val(),
+                    'CurrencyCode': jQuery('#currencyCodeSelect' + fieldsName[j].FieldName + (a + 1)).val(),
+
+                    //Date Style Keys
+                    'DateStyle': jQuery('#selectDateStyleType' + fieldsName[j].FieldName + (a + 1) +' option:selected').val(),//without none value
+                    'IgnoresTimeZone': jQuery('#checkboxIgnoreData' + fieldsName[j].FieldName + (a + 1)).attr('checked') == 'checked',
+                    'IsRelative': jQuery('#checkboxRelativeData' + fieldsName[j].FieldName + (a + 1)).attr('checked') == 'checked'
+                
+                    //'timeStyle': чекбокс??????
+                });
+            }
+        }
+
+        jQuery.ajax({
+            type: "POST",
+            url: "/Home/GiveMeJson",
+            data: JSON.stringify(jsonObj),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+        });
+        alert(JSON.stringify(jsonObj));
+    }
+
+
+    //jQuery('#divGMap1').bind('style', function () {
+    //    debugger;
+    //    jQuery('#darkAreaLockScreen').css('display', 'block');
+    //});
+    </script>
+    <br />
+    <br />
+    <br />
+
+</body>

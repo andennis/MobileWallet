@@ -1,0 +1,356 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<style>
+    p {
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 49px;
+    }
+
+    .phonesImg {
+        height: 370px;
+        /*position:absolute;*/
+    }
+
+    .bubbleImg {
+        position: absolute;
+        width: 310px;
+        height: 208px;
+    }
+
+    .bubbleDescription {
+        position: absolute;
+        width: 310px;
+        height: 176px;
+        padding: 10px;
+        text-align: left;
+    }
+
+    .logo {
+        float: left;
+        margin: 0px 10px 10px 0px;
+        width: 80px;
+        height: 80px;
+    }
+
+    .pInsruction {
+        text-align: left;
+        font-size: 19px;
+        min-height: 80px;
+    }
+
+    .blockContent {
+        margin-right: auto;
+        margin-left: auto;
+        width: 1000px;
+        text-align: center;
+        color: white;
+        padding-bottom: 40px;
+        padding-top: 20px;
+    }
+
+    .imgIcon {
+        height: 50px;
+    }
+
+    .textBlock {
+        text-align: left;
+    }
+
+    .tdIcon {
+        height: 50px;
+        padding-right: 25px;
+    }
+
+    .tdText {
+        text-align: left;
+        vertical-align: middle;
+        padding-bottom: 13px;
+        padding-top: 13px;
+        font-size: 19px;
+    }
+
+    .tdTextLeft {
+        text-align: left;
+        vertical-align: middle;
+        padding-bottom: 13px;
+        padding-top: 13px;
+        padding-left: 40px;
+        font-size: 19px;
+    }
+
+    .tdTextRight {
+        text-align: left;
+        vertical-align: middle;
+        padding-bottom: 13px;
+        padding-top: 13px;
+        padding-right: 20px;
+        font-size: 19px;
+        height: 150px;
+    }
+
+    .tdImgLeft {
+        padding-top: 20px;
+        width: 383px;
+        padding-left: 49px;
+        text-align: left;
+    }
+
+    .tdImgRight {
+        padding-top: 20px;
+        width: 450px;
+    }
+
+    .tdText2 {
+        font-size: 19px;
+        text-align: center;
+    }
+
+    .tdCardStrategy {
+        padding-left: 20px;
+    }
+
+        .tdCardStrategy p {
+            font-size: 19px;
+        }
+</style>
+
+
+<div style="height: 850px; margin-right: auto; margin-left: auto; width: 1000px; text-align: center;">
+    <div>
+        <p style="font-weight: 700; color: #535559; font-size: 30px; line-height: 36px; padding-top: 30px;">Увеличение выручки Вашего бизнеса</p>
+        <p style="width: 900px; font-weight: 500; color: #87898F; font-size: 20px; line-height: 24px; padding-bottom: 20px;">
+            Легко взаимодействуйте с Вашими клиентами с помощью
+            мобильного телефона. Создавайте, управляйте дисконтными,
+            бонусными и другими мобильными картами и распространяйте
+            прямо на смартфоны клиентов
+        </p>
+    </div>
+    <div id="phonesImg">
+        <img class="phonesImg" src="~/Images/googlePhone.png" style="-moz-transform: rotate(-8deg); -ms-transform: rotate(-8deg); -o-transform: rotate(-8deg); -webkit-transform: rotate(-8deg); transform: rotate(-8deg); margin-top: 60px;" />
+        <img class="phonesImg" src="~/Images/iphonePassbook.png" style="margin-left: 20px; margin-right: 20px;" />
+        <img class="phonesImg" src="~/Images/sumsungPhone.png" style="-moz-transform: rotate(8deg); -ms-transform: rotate(8deg); -o-transform: rotate(8deg); -webkit-transform: rotate(8deg); transform: rotate(8deg); margin-top: 60px;" />
+    </div>
+    <div id="bubbleImg" style="position: relative;">
+        <img class="bubbleImg" src="~/Images/bubble.png" style="left: 2px;top: 8px;" />
+        <img class="bubbleImg" src="~/Images/bubbleIPhone.png" style="left: 344px; top: -4px;" />
+        <img class="bubbleImg" src="~/Images/bubble.png" style="left: 687px;top: 8px; -webkit-transform: scaleX(-1);" />
+        <div id="passwalletDescripton" class="bubbleDescription" style="left: 2px; top: 39px;">
+            <img class="logo" src="~/Images/passwalletLogo.png" />
+            <b>PassWallet</b> — это приложение для
+            платформ Android,
+            Windows Phone и Blackberry, которое позволяет
+            хранить в одном месте
+            электронные дисконтные
+            карты, купоны и билеты.
+        </div>
+        <div id="passbookDescripton" class="bubbleDescription" style="left: 344px; top: 27px;">
+            <img class="logo" src="~/Images/passbookLogo.png" />
+            <b>Passbook</b> — это приложение для
+            iPhone, которое позволяет
+            хранить в одном месте
+            электронные дисконтные
+            карты, купоны и билеты.<br />
+            <b>
+                Passbook есть в каждом
+                iPhone с момента покупки.
+            </b>
+        </div>
+        <div id="sumsungwalletDescripton" class="bubbleDescription" style="left: 687px;top: 39px;">
+            <img class="logo" src="/Images/sumsungwalletLogo.png">
+            <b>SumsungWallet</b> — это приложение для
+            Android, которое позволяет
+            хранить в одном месте
+            электронные дисконтные
+            карты, купоны и билеты.<br />
+            <b>
+                SumsungWallet есть в каждом
+                новом смартфоне Sumsung с момента покупки.
+            </b>
+        </div>
+    </div>
+</div>
+<div style="height: auto; background-color: #68c39f;">
+    <div class="blockContent">
+        <p>Как это работает?</p>
+        <table>
+            <tr>
+                <td class="tdIcon">
+                    <img class="imgIcon" src="~/Images/icons/bell.png" />
+                </td>
+                <td class="tdText">
+                    Вы доносите до ваших клиентов информацию о возможности
+                    получать электронные версии карт покупателя,
+                    купонов на скидку, билетов и т.п., удобным для вас способом,
+                    которым вы обычно с ними взаимодействуете.
+                </td>
+            </tr>
+            <tr>
+                <td class="tdIcon">
+                    <img class="imgIcon" src="~/Images/icons/email%201.png" />
+                </td>
+                <td class="tdText">
+                    Клиент получает присланное нашими серверами письмо с инструкцией,
+                    которая поможет ему добавить электронную карту к себе в Passbook или PassWallet.
+                </td>
+            </tr>
+            <tr>
+                <td class="tdIcon" style="padding-top: 20px;">
+                    <img class="imgIcon" src="~/Images/icons/Barcode.png" style="height:70px;" />
+                </td>
+                <td class="tdText">
+                    После этого, чтобы получить скидку или пройти
+                    на мероприятие, клиент просто предъявляет
+                    свой телефон с открытой картой, штрих-код на
+                    которой считывается другим смартфоном.
+                </td>
+            </tr>
+        </table>
+
+
+
+
+    </div>
+</div>
+<div style="height: auto; background-color: #449bb5;">
+    <div class="blockContent">
+        <p>Почему наше решение Вам подойдёт?</p>
+        <table>
+            <tr>
+                <td class="tdImgLeft" rowspan="2">
+                    <img src="~/Images/examplepass1.png" style="height: 310px;" />
+                </td>
+                <td class="tdTextRight">
+                    Ваши клиенты смогут забыть про поиск подарочных карт,
+                    купонов, пропусков и билетов в своем кошельке. Ведь с
+                    Passbook они все аккуратно собраны и всегда под рукой.
+                </td>
+
+            </tr>
+            <tr>
+                <td class="tdTextRight">
+                    Владелец «серебрянной» карты может узнать сумму,
+                    которую необходимо потратить для получения «золотой»,
+                    разве не сильный мотиватор для совершения еще большего числа покупок?
+                </td>
+            </tr>
+            <tr>
+                <td class="tdTextLeft" style="padding-top: 40px;">
+                    Passbook использует данные о времени и местонахождении,
+                    поэтому находясь неподалеку от магазина сети, ваш клиент
+                    может получать на свой телефон уведомления, приглашающее
+                    посетить магазин, о котором он, допустим еще не знает.
+                </td>
+                <td class="tdImgRight" rowspan="2">
+                    <img src="~/Images/pushUpExample.png" style="height: 300px;" />
+                </td>
+            </tr>
+            <tr>
+                <td class="tdTextLeft">
+                    Ваш клиент в любой момент может просто быть проинформирован
+                    об новых акциях, достав телефон из кармана и увидев уведомление
+                    сразу на экране блокировки!
+                </td>
+            </tr>
+            <tr>
+                <td class="tdText2" colspan="2" style="padding-top:30px;">
+                    <b>
+                        Проще говоря, это еще один
+                        эффективный инструмент для
+                        привлечения клиентов...
+                    </b>
+                </td>
+            </tr>
+            <tr>
+                <td class="tdText2" colspan="2" style="padding-bottom: 18px;">
+                    <b>... и мы хотим дать вам его!</b>
+                </td>
+            </tr>
+        </table>
+        <button>Попробовать создать элетронную карту</button>
+    </div>
+</div>
+<div style="height:auto;">
+    <div class="blockContent" style="color: #535559;">
+        <p>Выберите бизнес стратегию</p>
+        <table>
+            <tr>
+                <td class="tdCardStrategy" style="padding-left:0px;">
+                    <p>Купоны</p>
+                </td>
+                <td class="tdCardStrategy">
+                    <p>Карта клиента</p>
+                </td>
+                <td class="tdCardStrategy">
+                    <p>Накопительная карта</p>
+                </td>
+                <td class="tdCardStrategy">
+                    <p>Штамп карта</p>
+                </td>
+                <td class="tdCardStrategy">
+                    <p>Билет на событие</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="tdCardStrategy" style="padding-left:0px;">
+                    <a href="/promote-mobile-coupons/">
+                        <img alt="Купон" src="~/Images/SampleCard/couponTemplate.png" />
+                    </a>
+                </td>
+                <td class="tdCardStrategy">
+                    <a href="/promote-mobile-coupons/">
+                        <img alt="Карта клиента" src="~/Images/SampleCard/membershipcardTemplate.png" />
+                    </a>
+                </td>
+                <td class="tdCardStrategy">
+                    <a href="/promote-mobile-coupons/">
+                        <img alt="Карта клиента" src="~/Images/SampleCard/storecardTemplate.png" />
+                    </a>
+                </td>
+                <td class="tdCardStrategy">
+                    <a href="/promote-mobile-coupons/">
+                        <img alt="Карта клиента" src="~/Images/SampleCard/stampcardTemplate.png" />
+                    </a>
+                </td>
+                <td class="tdCardStrategy">
+                    <a href="/promote-mobile-coupons/">
+                        <img alt="Карта клиента" src="~/Images/SampleCard/eventticketTemplate.png" />
+                    </a>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+<div style="height: auto; background-color: #f5e653;">
+    <div class="blockContent" style="color: #535559;">
+        <p>Легко создавайте мобильные карты</p>
+        <table style="text-align:left;">
+            <tr>
+                <td rowspan="3">
+                    <img src="~/Images/createCardOnNotebook.png" />
+                </td>
+                <td>
+                    <h4>Онлайн дизайнер пассов поможет Вам создать мобильную карту и увидеть как ее содержимое выглядит в реальном времени</h4>
+                </td>
+            </tr>
+            <tr>               
+                <td>
+                    <h4><img src="~/Images/icons/tick%201.png" /> Выберите шаблон</h4>
+                    <h4><img src="~/Images/icons/tick%201.png" /> Загрузите свои картинки</h4>
+                    <h4><img src="~/Images/icons/tick%201.png" /> Введите свое содержимое</h4>
+                    <h4><img src="~/Images/icons/tick%201.png" /> Отправте на смартфоны клиентов</h4>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
