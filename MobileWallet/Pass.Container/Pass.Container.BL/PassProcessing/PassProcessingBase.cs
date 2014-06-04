@@ -21,14 +21,13 @@ namespace Pass.Container.BL.PassProcessing
             var reg = regRep.Find(passId, clientDevice.ClientDeviceId);
             if (reg != null)
             {
-                if (reg.Status != EntityStatus.Active)
-                {
-                    reg.Status = EntityStatus.Active;
-                    regRep.Update(reg);
-                    //_pcUnitOfWork.Save();
-                    return PassProcessingStatus.Succeed;
-                }
-                return PassProcessingStatus.AlreadyDone;
+                if (reg.Status == EntityStatus.Active)
+                    return PassProcessingStatus.AlreadyDone;
+                
+                reg.Status = EntityStatus.Active;
+                regRep.Update(reg);
+                //_pcUnitOfWork.Save();
+                return PassProcessingStatus.Succeed;
             }
 
             reg = new Registration()
@@ -45,7 +44,7 @@ namespace Pass.Container.BL.PassProcessing
         protected PassProcessingStatus RemovePassFromClientDevice(int passId, ClientDevice clientDevice)
         {
             IRepository<Registration> regRep = _pcUnitOfWork.GetRepository<Registration>();
-            var reg = regRep.Find(passId, clientDevice.ClientDeviceId);
+            var reg = regRep.Find(clientDevice.ClientDeviceId, passId);
             if (reg == null || reg.Status != EntityStatus.Active)
                 return PassProcessingStatus.AlreadyDone;
 

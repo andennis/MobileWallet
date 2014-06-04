@@ -20,26 +20,9 @@ namespace Pass.Container.BL.PassProcessing
         public PassProcessingAppleService(IPassContainerUnitOfWork pcUnitOfWork, IPassService passService)
             :base(pcUnitOfWork)
         {
-            //_config = config;
-            /*
-            _fsService = fsService;
-            _certService = certService;
-            */
-            //Repositories
-            /*
-            _repPassTemplate = _pcUnitOfWork.GetRepository<PassTemplate>();
-            _repTemplateNative = _pcUnitOfWork.GetRepository<PassTemplateNative>();
-            _repPassTemplateApple = _pcUnitOfWork.GetRepository<PassTemplateApple>();
-            _repPassField = _pcUnitOfWork.GetRepository<PassField>();
-            _repPassFieldValue = _pcUnitOfWork.GetRepository<PassFieldValue>();
-            _repRegistration = _pcUnitOfWork.GetRepository<Registration>();
-            */
             _repPass = _pcUnitOfWork.GetRepository<Repository.Core.Entities.Pass>();
             _repClientDeviceApple = _pcUnitOfWork.GetRepository<ClientDeviceApple>();
             _passService = passService;
-
-            //TODO ApplePassGenerator should be inicialized
-            //_passGenerator = new ApplePassGenerator(_config, );
         }
 
         public PassProcessingStatus RegisterDevice(string deviceLibraryIdentifier, string passTypeId, string serialNumber, string pushToken, string authToken)
