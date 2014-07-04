@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner"
   dslVersion="1.0.0.0"
   Id="a53e0939-3e57-42d8-a1d6-852d3d589578"
   name="MobileWalletModeling" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -82,26 +82,6 @@
           Id="3f4fc584-f967-4aa0-9ffc-bdd9f04639fa"
           LastKnownName="PassDistributionController"
           LastKnownLocation="PassDistributionWeb.uml" />
-      </annotatedElements>
-    </comment>
-    <comment
-      Id="1d36891a-3196-4789-adad-a8f254ee2a80">
-      <body>Distribution field can be associated with pass field by field name</body>
-      <annotatedElements>
-        <classMoniker
-          Id="ff480eac-deb7-42fa-a0dd-1045c2c1cfe8"
-          LastKnownName="DistributionField"
-          LastKnownLocation="PassManager.uml" />
-      </annotatedElements>
-    </comment>
-    <comment
-      Id="1dc42536-9dae-4ce3-a9f2-025ed075b252">
-      <body>One templete for each client type (Apple, Google, Samsung, etc.)</body>
-      <annotatedElements>
-        <classMoniker
-          Id="2871f6c0-aa1f-417a-bcc1-b966ca97f2cb"
-          LastKnownName="PassTemplate"
-          LastKnownLocation="PassContainer.uml" />
       </annotatedElements>
     </comment>
   </ownedCommentsInternal>
@@ -1287,292 +1267,52 @@
     </packageHasNamedElement>
     <packageHasNamedElement>
       <class
-        Id="8c785a7e-0a61-4196-9539-b2d72fac57ae"
-        name="PassNative"
-        isAbstract="false"
-        isLeaf="false"
-        isActiveClass="false">
-        <ownedAttributesInternal>
-          <property
-            Id="d40a1c02-f29e-49b3-b732-c4c821564064"
-            name="SerialNumber"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false" />
-          <property
-            Id="4e298277-3ccf-4c53-ac37-f438ce2f374d"
-            name="DeviceType"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false" />
-        </ownedAttributesInternal>
-      </class>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <class
-        Id="18029313-7cda-470a-99e1-ee51307ceb93"
-        name="PassApple"
-        isAbstract="false"
-        isLeaf="false"
-        isActiveClass="false">
-        <generalsInternal>
-          <generalization
-            Id="01cede08-3008-491f-8f80-7502cc1f08e3"
-            isSubstitutable="false">
-            <classMoniker
-              Id="8c785a7e-0a61-4196-9539-b2d72fac57ae"
-              LastKnownName="PassNative"
-              LastKnownLocation="PassModeling.uml" />
-          </generalization>
-        </generalsInternal>
-        <ownedAttributesInternal>
-          <property
-            Id="fb6142bc-20e5-4756-9b6b-c817646ff350"
-            name="PassTypeId"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false" />
-        </ownedAttributesInternal>
-      </class>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <class
-        Id="666fb51d-c1e6-42d0-b037-a0291a7a9681"
-        name="User"
-        isAbstract="false"
-        isLeaf="false"
-        isActiveClass="false">
-        <ownedAttributesInternal>
-          <property
-            Id="966bacb3-74ae-4051-a41d-0bbcf16f7b4e"
-            name="FirstName"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false" />
-          <property
-            Id="e149d9b0-6eb7-4bd5-9bb4-3a88bb860751"
-            name="LastName"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false" />
-          <property
-            Id="25b2baee-4c3a-4c19-b5fb-32eb6bb6b6f9"
-            name="UserName"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false" />
-          <property
-            Id="f6d2a9b2-fc46-4793-8291-7a83cf3c64dc"
-            name="Passwprd"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false" />
-        </ownedAttributesInternal>
-      </class>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <class
-        Id="d072fbeb-b95c-4cce-a3a5-0d32f0fe4c5f"
-        name="PassSiteUser"
+        Id="d9a45994-3957-4866-9c35-22ab63cd26ef"
+        name="ProjectCategory"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
         <targetEnds>
           <association
-            Id="fd077342-9ea2-4d51-b30e-c74f273fd7e8"
+            Id="9b8671ef-f760-4cae-a7b1-3c0a4a46190a"
             isDerived="false"
-            sourceEndRoleName="UserClientSite"
-            targetEndRoleName="User"
+            sourceEndRoleName="Category"
+            targetEndRoleName="Category"
             isLeaf="false"
             isAbstract="false">
             <classMoniker
-              Id="666fb51d-c1e6-42d0-b037-a0291a7a9681"
-              LastKnownName="User"
+              Id="d9a45994-3957-4866-9c35-22ab63cd26ef"
+              LastKnownName="ProjectCategory"
               LastKnownLocation="PassModeling.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="5ccba361-d153-434b-bc1f-cdb65900c99d"
-                  name="UserClientSite"
+                  Id="fe9a1b43-a070-4969-8739-1451bb51a55a"
+                  name="Category"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
                   isDerived="false"
                   isDerivedUnion="false"
-                  aggregation="None"
+                  aggregation="Composite"
                   isComposite="false"
-                  isNavigableOwned="false">
-                  <lowerValueInternal>
-                    <literalString
-                      Id="fccae5d9-c17c-4f9e-aa59-2fa97a5e4f75"
-                      name="Lower"
-                      value="*" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="826c27e3-654c-4f97-9e57-88575891949b"
-                      name="Upper"
-                      value="*" />
-                  </upperValueInternal>
-                </memberEnd>
+                  isNavigableOwned="false" />
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="f2cf4cb4-c846-44dd-a344-8e7b043f2fdb"
-                  name="User"
+                  Id="39402ba4-c296-4346-a098-b3fc49770a94"
+                  name="Category"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
                   isDerived="false"
                   isDerivedUnion="false"
                   aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
-            Id="c2759dbe-178d-43f8-87ea-bd4bbd401e67"
-            isDerived="false"
-            sourceEndRoleName="UserClientSite"
-            targetEndRoleName="ClientSite"
-            isLeaf="false"
-            isAbstract="false">
-            <classMoniker
-              Id="f1084e27-cff9-40e3-bf35-40bceecae378"
-              LastKnownName="PassSite"
-              LastKnownLocation="PassManager.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="f6bfd528-ab8a-4c93-93be-e7bf0779ea53"
-                  name="UserClientSite"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false">
-                  <lowerValueInternal>
-                    <literalString
-                      Id="70b9fb76-761f-4aea-afdd-707763c43a17"
-                      name="Lower"
-                      value="*" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="e03af02c-8b2c-487f-a181-f731c31ba6ac"
-                      name="Upper"
-                      value="*" />
-                  </upperValueInternal>
-                </memberEnd>
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="0eca1dcd-238c-461a-830b-e297689d785c"
-                  name="ClientSite"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
+                  isComposite="true" />
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
         </targetEnds>
-      </class>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <class
-        Id="69c83986-ccce-4b42-946b-3e6a7045b196"
-        name="PassCertificate"
-        isAbstract="false"
-        isLeaf="false"
-        isActiveClass="false">
-        <ownedAttributesInternal>
-          <property
-            Id="c1060374-ea44-40c4-b26f-ddf1e11b6618"
-            name="Name"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false" />
-          <property
-            Id="075ff4d8-41d2-43b1-a7b6-a4402c00e746"
-            name="ExpDate"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false" />
-          <property
-            Id="d924f4f3-a415-4374-89a0-2ea51872fb07"
-            name="Description"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false" />
-          <property
-            Id="a61441b2-1f5e-452a-85a3-f4e813f4e0a6"
-            name="CertificateId"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false" />
-        </ownedAttributesInternal>
       </class>
     </packageHasNamedElement>
   </packagedElements>

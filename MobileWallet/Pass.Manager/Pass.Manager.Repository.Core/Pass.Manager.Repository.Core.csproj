@@ -39,10 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\PassCertificateApple.cs" />
     <Compile Include="Entities\PassSite.cs" />
     <Compile Include="Entities\PassSiteUserState.cs" />
     <Compile Include="Entities\PassCertificate.cs" />
-    <Compile Include="Entities\PassClientType.cs" />
     <Compile Include="Entities\PassProject.cs" />
     <Compile Include="Entities\PassTemplate.cs" />
     <Compile Include="Entities\User.cs" />

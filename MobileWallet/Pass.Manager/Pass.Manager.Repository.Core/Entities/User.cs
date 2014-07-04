@@ -9,6 +9,6 @@ namespace Pass.Manager.Repository.Core.Entities
         public string Password { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public ICollection<PassSiteUser> ClientSites { get; set; }
+        public ICollection<PassSiteUser> PassSites { get; set; }
     }
 }

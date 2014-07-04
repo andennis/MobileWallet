@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="01a65276-9f7e-4364-a459-b86c5cca83a3" name="Main" linkedPackageId="6717a387-27d8-4958-b0d3-094d01f7e82c" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner" dslVersion="1.0.0.0" Id="01a65276-9f7e-4364-a459-b86c5cca83a3" name="Main" linkedPackageId="6717a387-27d8-4958-b0d3-094d01f7e82c" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <packagedElements>
     <logicalClassDesignerModelHasPackages>
       <package Id="0a88ff71-faaf-44bb-8cf1-d3375f1d9222" name="Pass.Container">
@@ -8,6 +8,10 @@
           <dependency Id="33304d3b-2479-4e12-af72-4b6643a464a5">
             <packageMoniker Id="5e9d0a14-b1b9-41a2-9d0f-4c7fa789da4b" LastKnownName="FileStorage" />
             <elementDefinition Id="03391160-31da-444a-9b1b-2ac8fdec0ae8" />
+          </dependency>
+          <dependency Id="df6292c2-5c6c-4d1a-b407-9e476e93fa9d">
+            <packageMoniker Id="ffcb4a49-1705-49b5-b62b-9976e0b2ce7e" LastKnownName="Pass.CertificateStorage" />
+            <elementDefinition Id="dcdcefdf-6fd9-491b-bb7c-0da066a4fef8" />
           </dependency>
         </suppliersInternal>
       </package>
@@ -67,9 +71,9 @@
       <package Id="49146655-c160-436f-9554-8669230ad3f7" name="Pass.Distribution.Web">
         <elementDefinition Id="902b90e0-4a71-48b2-86d2-253b9d2086cf" />
         <suppliersInternal>
-          <dependency Id="7e2686bb-5cff-44d2-9a9d-ca65a3615058">
-            <packageMoniker Id="0a88ff71-faaf-44bb-8cf1-d3375f1d9222" LastKnownName="Pass.Container" />
-            <elementDefinition Id="3b0f3e12-fc95-4144-928c-476576b5d778" />
+          <dependency Id="996a49ed-5479-4246-969d-32292ad54f24">
+            <packageMoniker Id="4266df7f-14ae-48ef-925a-737c9274afd6" LastKnownName="Pass.Manager" />
+            <elementDefinition Id="daf35d26-c740-4ab1-ab15-df6eb53a0d9d" />
           </dependency>
         </suppliersInternal>
       </package>
@@ -92,6 +96,17 @@
           <dependency Id="a809b03b-fb64-4952-9010-2b769d51b125">
             <packageMoniker Id="0a88ff71-faaf-44bb-8cf1-d3375f1d9222" LastKnownName="Pass.Container" />
             <elementDefinition Id="da93ec83-b696-4c06-80af-572f0ddaf39a" />
+          </dependency>
+        </suppliersInternal>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="ffcb4a49-1705-49b5-b62b-9976e0b2ce7e" name="Pass.CertificateStorage">
+        <elementDefinition Id="5a19875d-eae1-4bb5-a25f-472db9d8b9f1" />
+        <suppliersInternal>
+          <dependency Id="41a371d1-ffdf-438f-8101-c9d76f6382f0">
+            <packageMoniker Id="5e9d0a14-b1b9-41a2-9d0f-4c7fa789da4b" LastKnownName="FileStorage" />
+            <elementDefinition Id="de8b88cb-2e15-4ca0-810d-8c6ca1abf36a" />
           </dependency>
         </suppliersInternal>
       </package>

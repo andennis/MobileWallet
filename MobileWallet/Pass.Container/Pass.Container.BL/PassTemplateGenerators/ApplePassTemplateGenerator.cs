@@ -202,7 +202,6 @@ namespace Pass.Container.BL.PassTemplateGenerators
 
             return applePassTemplate;
         }
-
         private PassStructure GetPassStructure(GeneralPassTemplate passTemplate)
         {
             var passStructure = new PassStructure();
@@ -210,34 +209,38 @@ namespace Pass.Container.BL.PassTemplateGenerators
             if (passTemplate.FieldDetails == null)
                 return passStructure;
 
-            if (passTemplate.FieldDetails.AuxiliaryFields != null && passTemplate.FieldDetails.AuxiliaryFields.Count > 0)
+            if (passTemplate.FieldDetails.AuxiliaryFields != null && passTemplate.FieldDetails.AuxiliaryFields.Any())
             {
                 List<Field> auxiliaryFields = passTemplate.FieldDetails.AuxiliaryFields.Select(GetAppleField).ToList();
                 passStructure.AuxiliaryFields = auxiliaryFields;
             }
-            if (passTemplate.FieldDetails.BackFields != null && passTemplate.FieldDetails.BackFields.Count > 0)
+
+            if (passTemplate.FieldDetails.BackFields != null && passTemplate.FieldDetails.BackFields.Any())
             {
                 List<Field> backFields = passTemplate.FieldDetails.BackFields.Select(GetAppleField).ToList();
                 passStructure.BackFields = backFields;
             }
-            if (passTemplate.FieldDetails.HeaderFields != null && passTemplate.FieldDetails.HeaderFields.Count > 0)
+
+            if (passTemplate.FieldDetails.HeaderFields != null && passTemplate.FieldDetails.HeaderFields.Any())
             {
                 List<Field> headerFields = passTemplate.FieldDetails.HeaderFields.Select(GetAppleField).ToList();
                 passStructure.HeaderFields = headerFields;
             }
-            if (passTemplate.FieldDetails.PrimaryFields != null && passTemplate.FieldDetails.PrimaryFields.Count > 0)
+
+            if (passTemplate.FieldDetails.PrimaryFields != null && passTemplate.FieldDetails.PrimaryFields.Any())
             {
                 List<Field> primaryFields = passTemplate.FieldDetails.PrimaryFields.Select(GetAppleField).ToList();
                 passStructure.PrimaryFields = primaryFields;
             }
-            if (passTemplate.FieldDetails.SecondaryFields != null && passTemplate.FieldDetails.SecondaryFields.Count > 0)
+
+            if (passTemplate.FieldDetails.SecondaryFields != null && passTemplate.FieldDetails.SecondaryFields.Any())
             {
                 List<Field> secondaryFields = passTemplate.FieldDetails.SecondaryFields.Select(GetAppleField).ToList();
                 passStructure.SecondaryFields = secondaryFields;
             }
+
             return passStructure;
         }
-
         private Field GetAppleField(GeneralField templatefield)
         {
             var field = new Field();
@@ -302,7 +305,7 @@ namespace Pass.Container.BL.PassTemplateGenerators
         }
         #endregion
 
-        # region Enum converters
+        #region Enum converters
         private PassStructure.Transit GetAppleTransit(Transit? transit)
         {
             switch (transit)
@@ -333,7 +336,6 @@ namespace Pass.Container.BL.PassTemplateGenerators
             }
             return BarcodeType.Pdf417Code;
         }
-
         private Field.TextAlignmentType GetAppleTextAlligment(GeneralField.TextAlignmentType? textAlignmentType)
         {
             switch (textAlignmentType)
@@ -349,7 +351,6 @@ namespace Pass.Container.BL.PassTemplateGenerators
             }
             return Field.TextAlignmentType.PkTextAlignmentLeft;
         }
-
         private Field.NumberStyleType GetAppleNumberStyle(GeneralField.NumberStyleType? numberStyleType)
         {
             switch (numberStyleType)
@@ -365,7 +366,6 @@ namespace Pass.Container.BL.PassTemplateGenerators
             }
             return Field.NumberStyleType.PkNumberStyleDecimal;
         }
-
         private Field.DateStyleType GetAppleDateStyle(GeneralField.DateStyleType? dateStyleType)
         {
             switch (dateStyleType)
@@ -383,7 +383,6 @@ namespace Pass.Container.BL.PassTemplateGenerators
             }
             return Field.DateStyleType.PkDateStyleNone;
         }
-
         private List<Field.DataDetector> GetAppleDataDetectorTypes(IEnumerable<GeneralField.DataDetector> dataDetectors)
         {
             var appleDataDetectors =

@@ -32,8 +32,10 @@ namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTe
     {
         [EnumMember(Value = "PKBarcodeFormatPDF417")]
         Pdf417Code = 0,
+
         [EnumMember(Value = "PKBarcodeFormatAztec")]
         AztecCode = 1,
+
         [EnumMember(Value = "PKBarcodeFormatQR")]
         QrCode = 2
     }

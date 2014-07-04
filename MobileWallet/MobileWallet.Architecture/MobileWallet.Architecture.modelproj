@@ -111,12 +111,26 @@
       <SubType>Content</SubType>
       <DependentUpon>Pass.Container.Services.classdiagram</DependentUpon>
     </Content>
-    <Content Include="Pass.Manager.Entities.classdiagram">
+    <Content Include="Pass.Manager.Entities.Certificate.classdiagram">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Pass.Manager.Entities.classdiagram.layout">
+    <Content Include="Pass.Manager.Entities.Certificate.classdiagram.layout">
       <SubType>Content</SubType>
-      <DependentUpon>Pass.Manager.Entities.classdiagram</DependentUpon>
+      <DependentUpon>Pass.Manager.Entities.Certificate.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Pass.Manager.Entities.Project.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Pass.Manager.Entities.Project.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Pass.Manager.Entities.Project.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="Pass.Manager.Entities.User.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Pass.Manager.Entities.User.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Pass.Manager.Entities.User.classdiagram</DependentUpon>
     </Content>
     <Content Include="Pass.Manager.Services.classdiagram">
       <SubType>Content</SubType>

@@ -34,10 +34,13 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
     {
         [XmlEnum(Name = "pdf417Code")]
         Pdf417Code = 0,
+
         [XmlEnum(Name = "aztecCode")]
         AztecCode = 1,
+
         [XmlEnum(Name = "qrCode")]
         QrCode = 2,
+
         [XmlEnum(Name = "doNotDisplay")]
         DoNotDisplay = 3
     }
@@ -46,12 +49,16 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
     {
         [XmlEnum(Name = "encodeThePassSerialNumber")]
         EncodeThePassSerialNumber = 0,
+
         [XmlEnum(Name = "encodeThePassUniqueId")]
         EncodeThePassUniqueId = 1,
+
         [XmlEnum(Name = "encodeTheUrlToUpdateThePass")]
         EncodeTheUrlToUpdateThePass = 2,
+
         [XmlEnum(Name = "provideWhenPassIsCreated")]
         ProvideWhenPassIsCreated = 3,
+
         [XmlEnum(Name = "encodeTheSameMessageOnEachPass")]
         EncodeTheSameMessageOnEachPass = 4
     }
@@ -59,14 +66,19 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
     public enum AlternativeText
     {
         DisplayTheBarcodeContent = 0,
+
         [XmlEnum(Name = "displayThePassSerialNumber")]
         DisplayThePassSerialNumber = 1,
+
         [XmlEnum(Name = "displayThePassUniqueId")]
         DisplayThePassUniqueId = 2,
+
         [XmlEnum(Name = "provideWhenPassIsCreated")]
         ProvideWhenPassIsCreated = 3,
+
         [XmlEnum(Name = "displayTheSameMessageOnEachPass")]
         DisplayTheSameMessageOnEachPass = 4,
+
         [XmlEnum(Name = "doNotDisplayAnyAlternativeText")]
         DoNotDisplayAnyAlternativeText = 5
     }

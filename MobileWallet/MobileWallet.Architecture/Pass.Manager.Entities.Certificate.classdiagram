@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner" dslVersion="1.0.0.0" Id="658b3b8c-b188-4f12-9f3f-f0818fb31b98" name="Pass.Manager.Entities.Certificate" linkedPackageId="464cc913-c012-4847-b59f-e83481cc47ac" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="f6d1fb53-4db5-4999-8bdf-85a1e3341f58">
+      <profileInstance Id="2f9888fa-eff4-4993-b159-198f15bb64e1" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="60dd9f3a-8608-4e7d-8dc5-13721a77d74c">
+      <profileInstance Id="01a7c3eb-ab0d-4e0a-b8cb-e403d8273500" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="483853b7-b783-49c0-a4dc-d879e50eafda">
+      <profileInstance Id="5804f70e-405d-4176-9c36-6cf4896873da" name="TextTemplateBindings">
+        <elementDefinition Id="06d93c75-9f7e-465a-a217-2c5fb68015af" />
+      </profileInstance>
+      <elementDefinition Id="1764e76e-4606-4e41-927d-7dee20e9c500" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="db7a178c-b78e-444a-bcb9-22cd3e989851" name="PassSite" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="f1084e27-cff9-40e3-bf35-40bceecae378" />
+        <ownedAttributesInternal>
+          <property Id="66388282-056b-4de9-a58e-915a0584971d" name="Name" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="9d694d0d-5dc0-4dff-abd2-1f582c049fb3" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="a2668b88-774b-410d-a198-e0e063efa95e" name="PassCertificate" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="69c83986-ccce-4b42-946b-3e6a7045b196" />
+        <ownedAttributesInternal>
+          <property Id="fbf85a9f-63f9-424c-94d3-644e6d616515" name="Name" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="c1060374-ea44-40c4-b26f-ddf1e11b6618" />
+          </property>
+          <property Id="6e3aca83-99bd-499c-84c6-04fdf35b71a4" name="ExpDate" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="075ff4d8-41d2-43b1-a7b6-a4402c00e746" />
+          </property>
+          <property Id="c308d8b9-ab1a-4b7c-a7d9-9954565e643d" name="Description" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="d924f4f3-a415-4374-89a0-2ea51872fb07" />
+          </property>
+          <property Id="ee1c17af-a503-4ebf-89b7-924ed0cde96a" name="CertificateId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="a61441b2-1f5e-452a-85a3-f4e813f4e0a6" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="5a36846c-f390-4fa3-a4da-3cf1cdef8a73" name="PassCertificateApple" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="d7a4ceb7-456f-49ac-bbb8-f94c3b34e7bd" />
+        <generalsInternal>
+          <generalization Id="1a0b3ec6-6283-4138-8a65-15385c4b9af1" isSubstitutable="false">
+            <classMoniker Id="a2668b88-774b-410d-a198-e0e063efa95e" LastKnownName="PassCertificate" />
+            <elementDefinition Id="4b2e2ddb-d1b9-4b47-b85a-a320f7b8baca" />
+          </generalization>
+        </generalsInternal>
+        <ownedAttributesInternal>
+          <property Id="84f2a4b8-982f-41ea-b190-17517861032f" name="TeamId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="10abe977-43e2-4765-8b25-e56817ddb3f4" />
+          </property>
+          <property Id="6e041102-f00e-46a8-bae2-ca5ea238fe93" name="PassTypeId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="a7268655-4b83-4bd9-b9ba-c8a26e1f4a33" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="b9b58796-1fe1-46c6-9a41-48bc64b18d5c" name="PassSiteCertificate" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="1009581e-d257-45a2-b603-a8c36e6b9f7a" />
+        <targetEnds>
+          <association Id="340dbc28-59d8-4bec-b5be-8a11f66e48d4" isDerived="false" sourceEndRoleName="PassSiteCertificate" targetEndRoleName="PassSite" isLeaf="false" isAbstract="false">
+            <classMoniker Id="db7a178c-b78e-444a-bcb9-22cd3e989851" LastKnownName="PassSite" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="53f5faa3-d581-4fe5-85b0-9b8df8dfada0" name="PassSiteCertificate" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="f6bb13ba-c866-4366-b8b6-09081281ca43" name="Lower" value="*">
+                      <elementDefinition Id="a30feafb-a5d6-4988-b895-26262c457e2c" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="167972c2-a7cf-4a20-ae0e-795fcfcc9369" name="Upper" value="*">
+                      <elementDefinition Id="75ec4fbf-5894-4a21-badd-e451d677322d" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="7a69583f-c529-4fbe-8d3a-c82b9c0b3822" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e2dc49a6-3969-4d19-8f5d-eaea65524713" name="PassSite" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="3263622d-4c19-4bfc-a46a-4d518f0277ee" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="4e76952d-1f30-4d28-a668-046fb24bdfa4" />
+          </association>
+          <association Id="466b0365-a080-4837-a782-81282f7f51a5" isDerived="false" sourceEndRoleName="PassSiteCertificate" targetEndRoleName="PassCertificate" isLeaf="false" isAbstract="false">
+            <classMoniker Id="a2668b88-774b-410d-a198-e0e063efa95e" LastKnownName="PassCertificate" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="fde90e85-e629-4ce3-b87c-f754e4af50d8" name="PassSiteCertificate" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="de075842-03f2-447d-841a-1cff8a9edb00" name="Lower" value="*">
+                      <elementDefinition Id="add8bbb7-77b4-4f9c-8ab1-dfecd44c85bc" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="a6c4bd9f-3014-413d-b29d-b845055fff0e" name="Upper" value="*">
+                      <elementDefinition Id="b7f1aec6-0621-4631-88fb-94625c4bd98f" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="aa5cdadf-b52e-4eb7-9fad-58790c21b49a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a42ba1bd-03c7-4112-8bf1-6e7794e48bed" name="PassCertificate" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="69afae23-a14e-4f93-a9ea-682f859a4179" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="4a3cd6dc-cf1a-492e-8e31-d57882a55946" />
+          </association>
+        </targetEnds>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="464cc913-c012-4847-b59f-e83481cc47ac" name="MobileWalletModeling">
+    <elementDefinition Id="a53e0939-3e57-42d8-a1d6-852d3d589578" />
+  </package>
+</logicalClassDesignerModel>
