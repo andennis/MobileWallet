@@ -1,5 +1,6 @@
 ﻿using Common.Repository;
 using System;
+using System.Collections.Generic;
 
 namespace Pass.Manager.Repository.Core.Entities
 {
@@ -10,5 +11,6 @@ namespace Pass.Manager.Repository.Core.Entities
         public string Description { get; set; }
         public DateTime ExpDate { get; set; }
         public int CertificateStorageId { get; set; }
+        public ICollection<PassSiteCertificate> PassSites { get; set; }
     }
 }

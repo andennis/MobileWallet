@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pass.Manager.Repository.Core.Entities
+namespace Pass.Manager.Repository.Core
 {
-    public class PassTemplate : EntityVersionable
+    public interface IPassManagerUnitOfWork : IUnitOfWork
     {
-        public string Name { get; set; }
     }
 }
