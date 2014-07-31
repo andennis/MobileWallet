@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure.Annotations;
 using Pass.Manager.Repository.Core.Entities;
 
 namespace Pass.Manager.Repository.EF
@@ -38,7 +40,8 @@ namespace Pass.Manager.Repository.EF
             //User
             modelBuilder.Entity<User>().ToTable("User", DbScheme);
             modelBuilder.Entity<User>().Property(x => x.Version).IsConcurrencyToken();
-            modelBuilder.Entity<User>().Property(x => x.UserName).IsRequired().HasMaxLength(FieldLenName);
+            modelBuilder.Entity<User>().Property(x => x.UserName).IsRequired().HasMaxLength(FieldLenName)
+                .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("IX_User_Name") { IsUnique = true })); 
 
             //PassSiteUser
             modelBuilder.Entity<PassSiteUser>().ToTable("PassSiteUser", DbScheme);

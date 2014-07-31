@@ -79,5 +79,39 @@ namespace Pass.Manager.Repository.EF.Tests
 
         }
 
+        [Test]
+        public void UserTest()
+        {
+            var user1 = new User()
+            {
+                UserName = Guid.NewGuid().ToString(),
+                FirstName = "FN"+Guid.NewGuid().ToString(),
+                LastName = "LN" + Guid.NewGuid().ToString()
+            };
+            CreateEntity(user1);
+            Assert.Greater(user1.UserId, 0);
+
+            var user2 = ReadEntity<User>(user1.UserId);
+            Assert.NotNull(user2);
+            Assert.AreEqual(user1.UserName, user2.UserName);
+            Assert.AreEqual(user1.FirstName, user2.FirstName);
+            Assert.AreEqual(user1.LastName, user2.LastName);
+
+            user2.FirstName = user1.FirstName + "_New";
+            user2.LastName = user1.LastName + "_New";
+            UpdateEntity(user2);
+
+            var user3 = ReadEntity<User>(user1.UserId);
+            Assert.NotNull(user3);
+            Assert.AreEqual(user2.FirstName, user3.FirstName);
+            Assert.AreEqual(user2.LastName, user3.LastName);
+
+            DeleteEntity(user3);
+
+            var user4 = ReadEntity<User>(user1.UserId);
+            Assert.Null(user4);
+
+        }
+
     }
 }
