@@ -12,7 +12,7 @@ namespace Pass.Container.Repository.EF.Tests
         [Test]
         public void PassCrudOperationsTest()
         {
-            using (var unitOfWork = new PassContainerUnitOfWork(TestHelper.DbConfig))
+            using (var unitOfWork = TestHelper.GetPassContainerUnitOfWork())
             {
                 var repPassTemplate = unitOfWork.GetRepository<PassTemplate>();
                 var repTemplateNative = unitOfWork.GetRepository<PassTemplateNative>();
@@ -111,7 +111,7 @@ namespace Pass.Container.Repository.EF.Tests
         [Test]
         public void ClientDeviceCrudOperationsTest()
         {
-            using (var unitOfWork = new PassContainerUnitOfWork(TestHelper.DbConfig))
+            using (var unitOfWork = TestHelper.GetPassContainerUnitOfWork())
             {
                 var repClientDev = unitOfWork.GetRepository<ClientDevice>();
                 var cd1 = new ClientDeviceApple() {DeviceId = "Dev1", PushToken = "555"};

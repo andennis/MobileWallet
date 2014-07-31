@@ -17,7 +17,7 @@ namespace Pass.Container.Repository.EF.Tests
 
         public static IPassContainerUnitOfWork GetPassContainerUnitOfWork()
         {
-            return new PassContainerUnitOfWork(TestHelper.DbConfig);
+            return new PassContainerUnitOfWork(DbConfig);
         }
 
     }

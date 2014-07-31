@@ -32,10 +32,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,10 +51,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PassManagerRepositoryTests.cs" />
     <Compile Include="PassManagerUnitOfWorkTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.Repository.EF\Common.Repository.EF.csproj">
+      <Project>{925ec36b-df88-4cde-bc59-fe03c0173cae}</Project>
+      <Name>Common.Repository.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Common.Repository\Common.Repository.csproj">
+      <Project>{f36371d6-812f-49f5-9e9b-043265660647}</Project>
+      <Name>Common.Repository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pass.Manager.Repository.Core\Pass.Manager.Repository.Core.csproj">
       <Project>{6ae0452d-92cc-420b-99f4-7f9d7464b9a3}</Project>
       <Name>Pass.Manager.Repository.Core</Name>
@@ -58,6 +75,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

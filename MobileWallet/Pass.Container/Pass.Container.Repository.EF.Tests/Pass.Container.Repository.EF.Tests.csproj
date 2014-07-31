@@ -78,6 +78,10 @@
       <Project>{f36371d6-812f-49f5-9e9b-043265660647}</Project>
       <Name>Common.Repository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Pass.Manager\Pass.Manager.Repository.Core\Pass.Manager.Repository.Core.csproj">
+      <Project>{6ae0452d-92cc-420b-99f4-7f9d7464b9a3}</Project>
+      <Name>Pass.Manager.Repository.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pass.Container.Core\Pass.Container.Core.csproj">
       <Project>{062e8da0-3ef1-4481-8fcf-cfeb54a39771}</Project>
       <Name>Pass.Container.Core</Name>

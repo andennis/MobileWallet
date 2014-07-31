@@ -1,10 +1,5 @@
-﻿using Pass.Manager.Repository.Core.Entities;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
+using Pass.Manager.Repository.Core.Entities;
 
 namespace Pass.Manager.Repository.EF
 {
@@ -47,6 +42,7 @@ namespace Pass.Manager.Repository.EF
 
             //PassSiteUser
             modelBuilder.Entity<PassSiteUser>().ToTable("PassSiteUser", DbScheme);
+            modelBuilder.Entity<PassSiteUser>().HasKey(x => new {x.PassSiteId, x.UserId});
             modelBuilder.Entity<PassSiteUser>().Property(x => x.Version).IsConcurrencyToken();
             modelBuilder.Entity<PassSiteUser>().HasRequired(x => x.User).WithMany(x => x.PassSites).HasForeignKey(x => x.UserId);
             modelBuilder.Entity<PassSiteUser>().HasRequired(x => x.PassSite).WithMany(x => x.Users).HasForeignKey(x => x.PassSiteId);
@@ -63,6 +59,7 @@ namespace Pass.Manager.Repository.EF
 
             //PassSiteCertificate
             modelBuilder.Entity<PassSiteCertificate>().ToTable("PassSiteCertificate", DbScheme);
+            modelBuilder.Entity<PassSiteCertificate>().HasKey(x => new {x.PassSiteId, x.PassCertificateId});
             modelBuilder.Entity<PassSiteCertificate>().Property(x => x.Version).IsConcurrencyToken();
             modelBuilder.Entity<PassSiteCertificate>().HasRequired(x => x.PassSite).WithMany(x => x.Certificates).HasForeignKey(x => x.PassSiteId);
             modelBuilder.Entity<PassSiteCertificate>().HasRequired(x => x.PassCertificate).WithMany(x => x.PassSites).HasForeignKey(x => x.PassCertificateId);
