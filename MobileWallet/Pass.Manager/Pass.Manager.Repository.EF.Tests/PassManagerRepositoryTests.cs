@@ -110,7 +110,105 @@ namespace Pass.Manager.Repository.EF.Tests
 
             var user4 = ReadEntity<User>(user1.UserId);
             Assert.Null(user4);
+        }
 
+        [Test]
+        public void PassCertificateTest()
+        {
+            var cert1 = new PassCertificateApple()
+                       {
+                           Name = GetGuid(),
+                           ExpDate = DateTime.Now.Date,
+                           PassTypeId = "PType1",
+                           TeamId = "Team1",
+                           CertificateStorageId = 111
+                       };
+
+            CreateEntity(cert1);
+            Assert.Greater(cert1.PassCertificateId, 0);
+
+            var cert2 = ReadEntity<PassCertificateApple>(cert1.PassCertificateId);
+            Assert.NotNull(cert2);
+            Assert.AreEqual(cert1.Name, cert2.Name);
+            Assert.AreEqual(cert1.ExpDate, cert2.ExpDate);
+            Assert.AreEqual(cert1.PassTypeId, cert2.PassTypeId);
+            Assert.AreEqual(cert1.TeamId, cert2.TeamId);
+            Assert.AreEqual(cert1.CertificateStorageId, cert2.CertificateStorageId);
+
+            cert2.Name = cert1.Name + "_New";
+            cert2.ExpDate = DateTime.Now.Date.AddDays(1);
+            cert2.PassTypeId = cert1.PassTypeId + "_New";
+            cert2.TeamId = cert1.TeamId + "_New";
+            cert2.CertificateStorageId = 222;
+            UpdateEntity(cert2);
+
+            var cert3 = ReadEntity<PassCertificateApple>(cert1.PassCertificateId);
+            Assert.NotNull(cert3);
+            Assert.AreEqual(cert2.Name, cert3.Name);
+            Assert.AreEqual(cert2.ExpDate, cert3.ExpDate);
+            Assert.AreEqual(cert2.PassTypeId, cert3.PassTypeId);
+            Assert.AreEqual(cert2.TeamId, cert3.TeamId);
+            Assert.AreEqual(cert2.CertificateStorageId, cert3.CertificateStorageId);
+
+            DeleteEntity(cert3);
+
+            var cert4 = ReadEntity<PassCertificateApple>(cert1.PassCertificateId);
+            Assert.Null(cert4);
+        }
+
+        [Test]
+        public void PassSiteUserTest()
+        {
+            PassSite passSite = CreateEntity(TestHelper.GetNewPassSite());
+            User user = CreateEntity(TestHelper.GetNewUser());
+
+            var siteUser1 = new PassSiteUser()
+                           {
+                               PassSiteId = passSite.PassSiteId,
+                               UserId = user.UserId,
+                               Status = EntityStatus.InActive
+                           };
+            CreateEntity(siteUser1);
+            var siteUser2 = ReadEntity<PassSiteUser>(siteUser1.PassSiteId, siteUser1.UserId);
+            Assert.NotNull(siteUser2);
+            Assert.AreEqual(siteUser1.Status, siteUser2.Status);
+
+            siteUser2.Status = EntityStatus.Active;
+            UpdateEntity(siteUser2);
+
+            var siteUser3 = ReadEntity<PassSiteUser>(siteUser1.PassSiteId, siteUser1.UserId);
+            Assert.NotNull(siteUser3);
+            Assert.AreEqual(siteUser2.Status, siteUser3.Status);
+
+            DeleteEntity(siteUser3);
+            var siteUser4 = ReadEntity<PassSiteUser>(siteUser1.PassSiteId, siteUser1.UserId);
+            Assert.Null(siteUser4);
+
+            DeleteEntity(passSite);
+            DeleteEntity(user);
+        }
+
+        [Test]
+        public void PassSiteCertificateTest()
+        {
+            PassSite passSite = CreateEntity(TestHelper.GetNewPassSite());
+            PassCertificate cert = CreateEntity(TestHelper.GetNewAppleCertificate());
+
+            var siteCert1 = new PassSiteCertificate()
+            {
+                PassSiteId = passSite.PassSiteId,
+                PassCertificateId = cert.PassCertificateId,
+            };
+            CreateEntity(siteCert1);
+            var siteCert2 = ReadEntity<PassSiteCertificate>(siteCert1.PassSiteId, siteCert1.PassCertificateId);
+            Assert.NotNull(siteCert2);
+
+            DeleteEntity(siteCert2);
+            var siteUser3 = ReadEntity<PassSiteCertificate>(siteCert1.PassSiteId, siteCert1.PassCertificateId);
+            Assert.Null(siteUser3);
+
+            DeleteEntity(passSite);
+            DeleteEntity(cert);
         }
 
     }

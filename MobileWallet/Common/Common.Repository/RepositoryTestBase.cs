@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace Common.Repository
 {
     public abstract class RepositoryTestBase<TUnitOfWork>
@@ -6,17 +8,18 @@ namespace Common.Repository
     {
         protected abstract TUnitOfWork CreateUnitOfWork();
 
-        public void CreateEntity<TEntity>(TEntity entity) where TEntity : class, new()
+        protected TEntity CreateEntity<TEntity>(TEntity entity) where TEntity : class, new()
         {
             using (TUnitOfWork unitOfWork = CreateUnitOfWork())
             {
                 var entityRep = unitOfWork.GetRepository<TEntity>();
                 entityRep.Insert(entity);
                 unitOfWork.Save();
+                return entity;
             }
         }
 
-        public void UpdateEntity<TEntity>(TEntity entity) where TEntity : class, new()
+        protected void UpdateEntity<TEntity>(TEntity entity) where TEntity : class, new()
         {
             using (TUnitOfWork unitOfWork = CreateUnitOfWork())
             {
@@ -26,7 +29,7 @@ namespace Common.Repository
             }
         }
 
-        public void DeleteEntity<TEntity>(TEntity entity) where TEntity : class, new()
+        protected void DeleteEntity<TEntity>(TEntity entity) where TEntity : class, new()
         {
             using (TUnitOfWork unitOfWork = CreateUnitOfWork())
             {
@@ -36,13 +39,18 @@ namespace Common.Repository
             }
         }
 
-        public TEntity ReadEntity<TEntity>(params object[] keys) where TEntity : class, new()
+        protected TEntity ReadEntity<TEntity>(params object[] keys) where TEntity : class, new()
         {
             using (TUnitOfWork unitOfWork = CreateUnitOfWork())
             {
                 var entityRep = unitOfWork.GetRepository<TEntity>();
                 return entityRep.Find(keys);
             }
+        }
+
+        protected string GetGuid()
+        {
+            return Guid.NewGuid().ToString();
         }
 
     }

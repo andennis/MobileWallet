@@ -38,5 +38,36 @@ namespace Pass.Manager.Repository.EF.Tests
             }
         }
 
+        public static PassSite GetNewPassSite()
+        {
+            return new PassSite()
+            {
+                Name = Guid.NewGuid().ToString(),
+                Description = Guid.NewGuid().ToString()
+            };
+        }
+
+        public static User GetNewUser()
+        {
+            return new User()
+                   {
+                       UserName = Guid.NewGuid().ToString(),
+                       FirstName = "FN" + Guid.NewGuid().ToString(),
+                       LastName = "LN" + Guid.NewGuid().ToString()
+                   };
+        }
+
+        public static PassCertificateApple GetNewAppleCertificate()
+        {
+            return new PassCertificateApple()
+                   {
+                       Name = Guid.NewGuid().ToString(),
+                       ExpDate = DateTime.Now.Date,
+                       PassTypeId = "PType1",
+                       TeamId = "Team1",
+                       CertificateStorageId = 111
+                   };
+        }
+
     }
 }

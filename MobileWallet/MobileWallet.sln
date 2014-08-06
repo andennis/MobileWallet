@@ -95,6 +95,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pass.Manager.Repository.EF"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pass.Manager.Repository.EF.Tests", "Pass.Manager\Pass.Manager.Repository.EF.Tests\Pass.Manager.Repository.EF.Tests.csproj", "{55367F35-7BF8-41FC-847E-44CA3A8E14A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pass.Manager.Web", "Pass.Manager\Pass.Manager.Web\Pass.Manager.Web.csproj", "{87E61B3D-9E84-4C17-9FB2-BE2183DE3A4E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -431,6 +433,14 @@ Global
 		{55367F35-7BF8-41FC-847E-44CA3A8E14A9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{55367F35-7BF8-41FC-847E-44CA3A8E14A9}.Release|X64.ActiveCfg = Release|Any CPU
 		{55367F35-7BF8-41FC-847E-44CA3A8E14A9}.Release|x86.ActiveCfg = Release|Any CPU
+		{87E61B3D-9E84-4C17-9FB2-BE2183DE3A4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87E61B3D-9E84-4C17-9FB2-BE2183DE3A4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87E61B3D-9E84-4C17-9FB2-BE2183DE3A4E}.Debug|X64.ActiveCfg = Debug|Any CPU
+		{87E61B3D-9E84-4C17-9FB2-BE2183DE3A4E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{87E61B3D-9E84-4C17-9FB2-BE2183DE3A4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87E61B3D-9E84-4C17-9FB2-BE2183DE3A4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87E61B3D-9E84-4C17-9FB2-BE2183DE3A4E}.Release|X64.ActiveCfg = Release|Any CPU
+		{87E61B3D-9E84-4C17-9FB2-BE2183DE3A4E}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -472,5 +482,6 @@ Global
 		{6AE0452D-92CC-420B-99F4-7F9D7464B9A3} = {BFCA7B7D-8D87-4586-AF73-F88BCE8EC611}
 		{929E8294-E96D-4D40-B326-C62415356D3D} = {BFCA7B7D-8D87-4586-AF73-F88BCE8EC611}
 		{55367F35-7BF8-41FC-847E-44CA3A8E14A9} = {BFCA7B7D-8D87-4586-AF73-F88BCE8EC611}
+		{87E61B3D-9E84-4C17-9FB2-BE2183DE3A4E} = {BFCA7B7D-8D87-4586-AF73-F88BCE8EC611}
 	EndGlobalSection
 EndGlobal
