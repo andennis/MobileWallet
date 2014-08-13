@@ -31,12 +31,8 @@ namespace Pass.Notification.BL
             //-------------------------
             // APPLE NOTIFICATIONS
             //-------------------------
-            //var appleCert = File.ReadAllBytes(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../../Resources/PushSharp.Apns.Sandbox.p12"));
-            //push.RegisterAppleService(new ApplePushChannelSettings(true, appleCert, "CERTIFICATE PASSWORD HERE"));
-            push.RegisterAppleService(new ApplePushChannelSettings(true, certificate));
+            push.RegisterAppleService(new ApplePushChannelSettings(true, certificate, true));
             push.QueueNotification(new AppleNotification().ForDeviceToken(deviceToken));
-
-           
 
             //"Waiting for Queue to Finish..."
 
