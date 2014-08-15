@@ -3,10 +3,12 @@
     ViewBag.Title = "Pass Light";
 }
 
-<h1>Pass Light</h1>
-@Html.ActionLink("Log Off", "LogOff", "Account")
+<h1>Welcom to Pass Light</h1>
 
-<style>
-    div {border: 1px solid; border-color: green}
-</style>
-
+<nav class="navbar navbar-default" role="navigation">
+    <div class="collapse navbar-collapse" id="example-navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li>@(Html.ActionLinkExt<PassSiteController>(c => c.Index(), "Pass Sites"))</li>
+        </ul>
+    </div>
+</nav>

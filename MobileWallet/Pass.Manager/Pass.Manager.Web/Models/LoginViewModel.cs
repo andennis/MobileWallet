@@ -1,10 +1,12 @@
-﻿
+﻿using Pass.Manager.Web.Common;
+
 namespace Pass.Manager.Web.Models
 {
-    public class LoginViewModel
+    public class LoginViewModel : BaseViewModel
     {
+        public override string DisplayName { get { return "Login"; } }
         public string UserName { get; set; }
         public string Password { get; set; }
-        public bool RememberMe { get; set; }
+        //public bool RememberMe { get; set; }
     }
 }

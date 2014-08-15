@@ -1,36 +1,17 @@
-﻿@using Common.Web
-
-@model Pass.Manager.Web.Models.LoginViewModel
+﻿@model LoginViewModel
 
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = Model.DisplayName;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Login</h2>
-
-@using (Html.BeginForm(new { @class = "form-horizontal" }))
+@using (Html.BeginFormExt())
 {
     @Html.AntiForgeryToken()
-    <div>
-        @Html.TextBoxFormForExt(m => m.UserName, label: "User Name")
-
-        <div class="form-group">
-            @Html.LabelForExt(m => m.Password, "Password", new { @class = "control-label col-sm-3 col-md-2" })
-            <div class="col-sm-9 col-md-10">
-                @Html.PasswordForExt(m => m.Password, new { @class = "form-control" })
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <div class="checkbox">
-                    <label>
-                        @Html.CheckBoxForEx(m => m.RememberMe)Remember me
-                    </label>
-                </div>
-            </div>
-        </div>
+    <div class="container">
+        @Html.TextBoxFormForExt(m => m.UserName, "User Name")
+        @Html.PasswordFormForExt(m => m.Password)
 
         <div class="form-group">
             <div class="col-sm-offset-3 col-md-offset-2 col-sm-9 col-md-10">
