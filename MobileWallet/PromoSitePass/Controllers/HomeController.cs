@@ -41,12 +41,44 @@ namespace PromoSitePass.Controllers
             return View(passModel);
         }
 
+        public ActionResult CouponsStrategy()
+        {
+            return View();
+        }
+
+        public ActionResult MembershipStrategy()
+        {
+            return View();
+        }
+
+        public ActionResult StampStrategy()
+        {
+            return View();
+        }
+
+        public ActionResult EventTicketsStrategy()
+        {
+            return View();
+        }
+
+        public ActionResult TransitTicketsStrategy()
+        {
+            return View();
+        }
+
+        public ActionResult BusinessCardStrategy()
+        {
+            return View();
+        }
+
         public ActionResult EmptyCardDesigner()
         {
             var passModel = new GeneralPassTemplate
             {
                 PassStyle = PassStyle.Coupon,
-                BackgroundColor = Color.LightGray,
+                BackgroundColor = Color.FromArgb(0, 68, 96),
+                LabelTextColor = Color.FromArgb(0, 0, 0),
+                ValueTextColor = Color.FromArgb(255, 255, 255),
                 LogoText = "Clever",
                 LocationDetails = new LocationDetails(),
                 DistributionDetails = new DistributionDetails()
@@ -59,9 +91,27 @@ namespace PromoSitePass.Controllers
                 },
                 FieldDetails = new FieldDetails()
                 {
+                    HeaderFields = new List<GeneralField>()
+                    {
+                        new GeneralField(),
+                        new GeneralField(),
+                        new GeneralField()
+                    },
+                    PrimaryFields = new List<GeneralField>()
+                    {
+                        new GeneralField(),
+                        new GeneralField()
+                    },
                     AuxiliaryFields = new List<GeneralField>(5)
                     {
                         new GeneralField(),
+                        new GeneralField(),
+                        new GeneralField(),
+                        new GeneralField(),
+                        new GeneralField()
+                    },
+                    SecondaryFields = new List<GeneralField>()
+                    {
                         new GeneralField(),
                         new GeneralField(),
                         new GeneralField(),
@@ -70,15 +120,7 @@ namespace PromoSitePass.Controllers
                 }
             };
 
-            ViewData["divHeaderLabelPass1"] = "Баланс";
-            ViewData["divHeaderValuePass1"] = "2 100 000";
-            ViewData["divPrimaryValuePass"] = "-20%";
-            ViewData["divPrimaryLabelPass"] = "Cкидка на весь товар";
-            ViewData["divAuxiliaryLabelPass1"] = "Номер клиента";
-            ViewData["divAuxiliaryValuePass1"] = "02387";
-            ViewData["divAuxiliaryLabelPass2"] = "Период действия";
-            ViewData["divAuxiliaryValuePass2"] = "01.03 - 31.05.2014";
-            ViewData["divPassBodyColor"] = "#bdc3c7";
+
             return View("CreateCard", passModel);
         }
 
@@ -89,15 +131,15 @@ namespace PromoSitePass.Controllers
                 OrganizationName = "Clever",
                 PassDescription = "Купон для сети магазинов Clever",
                 PassStyle = PassStyle.Coupon,
-                BackgroundColor = Color.PaleTurquoise,
-                LabelTextColor = Color.Navy,
-                ValueTextColor = Color.FromArgb(235, 171, 12),
+                BackgroundColor = Color.FromArgb(0, 68, 96),
+                LabelTextColor = Color.FromArgb(0, 0, 0),
+                ValueTextColor = Color.FromArgb(255, 255, 255),
                 LogoText = "Clever",
                 LocationDetails = new LocationDetails(),
                 DistributionDetails = new DistributionDetails
                                       {
-                    QuantityRestriction = 1000
-                },
+                                          QuantityRestriction = 1000
+                                      },
                 BarcodeDetails = new BarcodeDetails()
                 {
                     BarcodeType = GeneralBarcodeType.QrCode,
@@ -107,6 +149,23 @@ namespace PromoSitePass.Controllers
                 },
                 FieldDetails = new FieldDetails
                 {
+                    HeaderFields = new List<GeneralField>()
+                    {
+                        new GeneralField(),
+                        new GeneralField(),
+                        new GeneralField()
+                    },
+                    PrimaryFields = new List<GeneralField>()
+                    {
+                        new GeneralField
+                        {
+                            IsMarkedField = true,
+                            Label = "-40%",
+                            Value = "на каждую вторую вещь",
+                            IsDynamicValue = true
+                        },
+                        new GeneralField()
+                    },
                     AuxiliaryFields = new List<GeneralField>(5)
                     {
                         new GeneralField
@@ -120,9 +179,16 @@ namespace PromoSitePass.Controllers
                         {
                             IsMarkedField = true,
                             Label = "Период действия",
-                            Value = "01.03 - 31.05.2014",
+                            Value = "01.09 - 31.09.2014",
                             IsDynamicValue = true
                         },
+                        new GeneralField(),
+                        new GeneralField(),
+                        new GeneralField()
+                    },
+                    SecondaryFields = new List<GeneralField>()
+                    {
+                        new GeneralField(),
                         new GeneralField(),
                         new GeneralField(),
                         new GeneralField()
@@ -130,36 +196,111 @@ namespace PromoSitePass.Controllers
                 }
             };
 
-            var divPassBodyColor = String.Format("#" + passModel.BackgroundColor.R.ToString("X2")
-                                    + passModel.BackgroundColor.G.ToString("X2") +
-                                    passModel.BackgroundColor.B.ToString("X2"));
-            var labelTextColor = String.Format("#" + passModel.LabelTextColor.R.ToString("X2")
-                                    + passModel.LabelTextColor.G.ToString("X2") +
-                                    passModel.LabelTextColor.B.ToString("X2"));
-            var valueTextColor = String.Format("#" + passModel.ValueTextColor.R.ToString("X2")
-                                    + passModel.ValueTextColor.G.ToString("X2") +
-                                    passModel.ValueTextColor.B.ToString("X2"));
-            ViewData["divPassBodyColor"] = divPassBodyColor;
-            ViewData["labelTextColor"] = labelTextColor;
-            ViewData["valueTextColor"] = valueTextColor;
-
-
-            ViewData["divLogoTextPass"] = "rtyrtryr";
-            ViewData["divHeaderLabelPass"] = "Баланс";
-            ViewData["divHeaderValuePass"] = "2 100 000";
-            ViewData["divPrimaryValuePass"] = "-20%";
-            ViewData["divPrimaryLabelPass"] = "Cкидка на весь товар";
-            //ViewData["divAuxiliaryLabelPass1"] = "Номер клиента";
-            //ViewData["divAuxiliaryValuePass1"] = "02387";
-            //ViewData["divAuxiliaryLabelPass2"] = "Период действия";
-            //ViewData["divAuxiliaryValuePass2"] = "01.03 - 31.05.2014";
+            //var divPassBodyColor = String.Format("#" + passModel.BackgroundColor.R.ToString("X2")
+            //                        + passModel.BackgroundColor.G.ToString("X2") +
+            //                        passModel.BackgroundColor.B.ToString("X2"));
+            //var labelTextColor = String.Format("#" + passModel.LabelTextColor.R.ToString("X2")
+            //                        + passModel.LabelTextColor.G.ToString("X2") +
+            //                        passModel.LabelTextColor.B.ToString("X2"));
+            //var valueTextColor = String.Format("#" + passModel.ValueTextColor.R.ToString("X2")
+            //                        + passModel.ValueTextColor.G.ToString("X2") +
+            //                        passModel.ValueTextColor.B.ToString("X2"));
             return View("CreateCard", passModel);
         }
 
-        public ActionResult CouponsStrategy()
+
+
+        public ActionResult MembershipStrategyCard()
         {
-            return View();
+            var passModel = new GeneralPassTemplate
+            {
+                OrganizationName = "Clever",
+                PassDescription = "Купон для сети магазинов Clever",
+                PassStyle = PassStyle.Generic,
+                BackgroundColor = Color.FromArgb(255, 215, 0),
+                LabelTextColor = Color.FromArgb(0, 96, 8),
+                ValueTextColor = Color.FromArgb(255, 255, 255),
+                LogoText = "Clever",
+                LocationDetails = new LocationDetails(),
+                DistributionDetails = new DistributionDetails
+                {
+                    QuantityRestriction = 1000
+                },
+                BarcodeDetails = new BarcodeDetails()
+                {
+                    BarcodeType = GeneralBarcodeType.QrCode,
+                    EncodedMessage = EncodedMessage.EncodeTheSameMessageOnEachPass,
+                    AlternativeText = AlternativeText.DisplayTheSameMessageOnEachPass,
+                    TextToDisplay = "http://www.passlight.com"
+                },
+                FieldDetails = new FieldDetails
+                {
+                    HeaderFields = new List<GeneralField>()
+                    {
+                        new GeneralField
+                        {
+                            IsMarkedField = true,
+                            Label = "БАЛЛЫ",
+                            Value = "300",
+                            IsDynamicValue = true
+                        },
+                        new GeneralField(),
+                        new GeneralField()
+                    },
+                    PrimaryFields = new List<GeneralField>()
+                    {
+                        new GeneralField
+                        {
+                            IsMarkedField = true,
+                            Label = "Ковганко Дмитрий",
+                            Value = "ИМЯ",
+                            IsDynamicValue = true
+                        },
+                        new GeneralField()
+                    },
+                    AuxiliaryFields = new List<GeneralField>(5)
+                    {
+                        new GeneralField(),
+                        new GeneralField(),
+                        new GeneralField(),
+                        new GeneralField(),
+                        new GeneralField()
+                    },
+                    SecondaryFields = new List<GeneralField>()
+                    {
+                       new GeneralField
+                        {
+                            IsMarkedField = true,
+                            Label = "НОМЕР КЛИЕНТА",
+                            Value = "00123",
+                            IsDynamicValue = true
+                        },
+                        new GeneralField
+                        {
+                            IsMarkedField = true,
+                            Label = "ТИП КАРТЫ",
+                            Value = "ЗОЛОТАЯ",
+                            IsDynamicValue = true
+                        },
+                        new GeneralField(),
+                        new GeneralField()
+                    }
+                }
+            };
+
+            //var divPassBodyColor = String.Format("#" + passModel.BackgroundColor.R.ToString("X2")
+            //                        + passModel.BackgroundColor.G.ToString("X2") +
+            //                        passModel.BackgroundColor.B.ToString("X2"));
+            //var labelTextColor = String.Format("#" + passModel.LabelTextColor.R.ToString("X2")
+            //                        + passModel.LabelTextColor.G.ToString("X2") +
+            //                        passModel.LabelTextColor.B.ToString("X2"));
+            //var valueTextColor = String.Format("#" + passModel.ValueTextColor.R.ToString("X2")
+            //                        + passModel.ValueTextColor.G.ToString("X2") +
+            //                        passModel.ValueTextColor.B.ToString("X2"));
+            return View("CreateCard", passModel);
         }
+
+
 
         public ActionResult FrontContentTab()
         {

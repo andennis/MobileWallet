@@ -27,7 +27,7 @@
             <!--Header collapse field 1-->
             <div id="collapsePanelHeaderContent1" class="panel">
                 <div class="collapseLinkContent">
-                    <input type="checkbox" name="checkboxG3" id="checkboxHeader1" class="checkboxCollapse" onchange="CheckAndUncheckFieldFront(id);" checked>
+                    <input type="checkbox" name="checkboxG3" id="checkboxHeader1" class="checkboxCollapse" onchange="CheckAndUncheckFieldFront(id);">
                     <label for="checkboxHeader1" class="checkboxCollapseLabel"></label>
                     <a data-toggle="collapse" data-parent="#mainCollapsePanelHeaderContent" href="#collapseContentHeader1">
                         <p class="labelInput">
@@ -35,7 +35,7 @@
                         </p>
                         <img src="~/Images/createCard/expand.png" class="expandImageCollapse" data-toggle="tooltip" title="Развернуть(свернуть) поле" />
                     </a>
-                    <input id="headerLabelCollapseInput1" class="form-control textInputNameContent" maxlength="20" placeholder="Обязательное" onkeyup="CheckCheckboxAfterInput(id);" />
+                    <input id="headerLabelCollapseInput1" class="form-control textInputNameContent" value="@Model.FieldDetails.HeaderFields[0].Key" maxlength="20" placeholder="Обязательное" onkeyup="CheckCheckboxAfterInput(id);" />
                 </div>
                 <div id="collapseContentHeader1" class="collapseContent collapse in">
                     <div id="divHeaderLabelText">
@@ -57,7 +57,7 @@
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="headerLabelTextInput1" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Необязательный" value="@ViewData["divHeaderLabelPass1"]" maxlength="30"
+                            <input id="headerLabelTextInput1" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Необязательный" value="@Model.FieldDetails.HeaderFields[0].Label" maxlength="30"
                                    onkeyup="document.getElementById('divHeaderLabelPass1').innerHTML = this.value; ChangeWidthHeaderTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="headerLabelRadios1Prompt" class="rdiosPrompt"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -87,7 +87,7 @@
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="headerValueTextInput1" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Необязательное" value="@ViewData["divHeaderValuePass1"]" maxlength="30"
+                            <input id="headerValueTextInput1" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Необязательное" value="@Model.FieldDetails.HeaderFields[0].Value" maxlength="30"
                                    onkeyup="document.getElementById('divHeaderValuePass1').innerHTML = this.value; ChangeWidthHeaderTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="headerValueRadios1Prompt" class="rdiosPrompt displayBlock"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -103,7 +103,7 @@
                             <span data-toggle="tooltip" title="Чтобы включить новое значение данных в сообщение, вставте &#37;&#64; туда, где бы Вы хотели, чтобы это новое значение появилось.
                              Например: Теперь баланс Вашей карты составляет &#37;&#64; рублей">Уведомление, отображаемое при изменении данных</span>
                         </p>
-                        <input id="notificationInputHeader1" class="form-control textInputNameContent" maxlength="40" placeholder="Не обязательное" />
+                        <input id="notificationInputHeader1" class="form-control textInputNameContent" value="@Model.FieldDetails.HeaderFields[0].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
                     </div>
                     <div class="divDataTypeCollapseField">
                         <p class="pDataTypeCollapseField"><span data-toggle="tooltip" title="tttttttа">Тип данных</span></p>
@@ -173,7 +173,7 @@
                         </p>
                         <img src="~/Images/createCard/expand.png" class="expandImageCollapse" data-toggle="tooltip" title="Развернуть(свернуть) поле" />
                     </a>
-                    <input id="headerLabelCollapseInput2" class="form-control textInputNameContent" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
+                    <input id="headerLabelCollapseInput2" class="form-control textInputNameContent" value="@Model.FieldDetails.HeaderFields[1].Key" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
                 </div>
                 <div id="collapseContentHeader2" class="collapseContent collapse">
                     <div id="divHeaderLabelText">
@@ -195,7 +195,7 @@
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="headerLabelTextInput2" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Обязательный" maxlength="30"
+                            <input id="headerLabelTextInput2" type="text" class="form-control LabelAndValueInputCollapse" value="@Model.FieldDetails.HeaderFields[1].Label" placeholder="Обязательный" maxlength="30"
                                    onkeyup="document.getElementById('divHeaderLabelPass2').innerHTML = this.value; ChangeWidthHeaderTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="headerLabelRadios2Prompt" class="rdiosPrompt"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -225,7 +225,7 @@
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="headerValueTextInput2" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Необязательное" maxlength="30"
+                            <input id="headerValueTextInput2" type="text" class="form-control LabelAndValueInputCollapse" value="@Model.FieldDetails.HeaderFields[1].Value" placeholder="Необязательное" maxlength="30"
                                    onkeyup="document.getElementById('divHeaderValuePass2').innerHTML = this.value; ChangeWidthHeaderTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="headerValueRadios2Prompt" class="rdiosPrompt displayBlock"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -241,7 +241,7 @@
                             <span data-toggle="tooltip" title="Чтобы включить новое значение данных в сообщение, вставте &#37;&#64; туда, где бы Вы хотели, чтобы это новое значение появилось.
                              Например: Теперь баланс Вашей карты составляет &#37;&#64; рублей">Уведомление, отображаемое при изменении данных</span>
                         </p>
-                        <input id="notificationInputHeader2" class="form-control textInputNameContent" maxlength="40" placeholder="Не обязательное" />
+                        <input id="notificationInputHeader2" class="form-control textInputNameContent" value="@Model.FieldDetails.HeaderFields[1].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
                     </div>
                     <div class="divDataTypeCollapseField">
                         <p class="pDataTypeCollapseField"><span data-toggle="tooltip" title="tttttttа">Тип данных</span></p>
@@ -311,7 +311,7 @@
                         </p>
                         <img src="~/Images/createCard/expand.png" class="expandImageCollapse" data-toggle="tooltip" title="Развернуть(свернуть) поле" />
                     </a>
-                    <input id="headerLabelCollapseInput3" class="form-control textInputNameContent" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
+                    <input id="headerLabelCollapseInput3" class="form-control textInputNameContent" value="@Model.FieldDetails.HeaderFields[2].Key" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
                 </div>
                 <div id="collapseContentHeader3" class="collapseContent collapse">
                     <div id="divHeaderLabelText">
@@ -333,7 +333,7 @@
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="headerLabelTextInput3" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Обязательный" maxlength="30"
+                            <input id="headerLabelTextInput3" type="text" class="form-control LabelAndValueInputCollapse" value="@Model.FieldDetails.HeaderFields[2].Label" placeholder="Обязательный" maxlength="30"
                                    onkeyup="document.getElementById('divHeaderLabelPass3').innerHTML = this.value; ChangeWidthHeaderTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="headerLabelRadios3Prompt" class="rdiosPrompt"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -363,7 +363,7 @@
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="headerValueTextInput3" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Необязательное" maxlength="30"
+                            <input id="headerValueTextInput3" type="text" class="form-control LabelAndValueInputCollapse" value="@Model.FieldDetails.HeaderFields[2].Value" placeholder="Необязательное" maxlength="30"
                                    onkeyup="document.getElementById('divHeaderValuePass3').innerHTML = this.value; ChangeWidthHeaderTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="headerValueRadios3Prompt" class="rdiosPrompt displayBlock"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -379,7 +379,7 @@
                             <span data-toggle="tooltip" title="Чтобы включить новое значение данных в сообщение, вставте &#37;&#64; туда, где бы Вы хотели, чтобы это новое значение появилось.
                              Например: Теперь баланс Вашей карты составляет &#37;&#64; рублей">Уведомление, отображаемое при изменении данных</span>
                         </p>
-                        <input id="notificationInputHeader3" class="form-control textInputNameContent" maxlength="40" placeholder="Не обязательное" />
+                        <input id="notificationInputHeader3" class="form-control textInputNameContent" value="@Model.FieldDetails.HeaderFields[2].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
                     </div>
                     <div class="divDataTypeCollapseField">
                         <p class="pDataTypeCollapseField"><span data-toggle="tooltip" title="tttttttа">Тип данных</span></p>
@@ -448,7 +448,7 @@
             <!--Primary collapse field 1-->
             <div id="collapsePanelPrimaryContent1" class="panel">
                 <div class="collapseLinkContent">
-                    <input type="checkbox" name="checkboxG3" id="checkboxPrimary1" class="checkboxCollapse" onchange="CheckAndUncheckFieldFront(id);" checked>
+                    <input type="checkbox" name="checkboxG3" id="checkboxPrimary1" class="checkboxCollapse" onchange="CheckAndUncheckFieldFront(id);">
                     <label for="checkboxPrimary1" class="checkboxCollapseLabel"></label>
                     <a data-toggle="collapse" data-parent="#mainCollapsePanelPrimaryContent" href="#collapseContentPrimary1">
                         <p class="labelInput">
@@ -456,7 +456,7 @@
                         </p>
                         <img src="~/Images/createCard/expand.png" class="expandImageCollapse" data-toggle="tooltip" title="Развернуть(свернуть) поле" />
                     </a>
-                    <input id="primaryLabelCollapseInput1" class="form-control textInputNameContent" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
+                    <input id="primaryLabelCollapseInput1" class="form-control textInputNameContent" value="@Model.FieldDetails.PrimaryFields[0].Key" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
                 </div>
                 <div id="collapseContentPrimary1" class="collapseContent collapse in">
                     <div id="divPrimaryLabelText1">
@@ -479,7 +479,7 @@
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="primaryLabelTextInput1" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Обязательный" value="@ViewData["divPrimaryLabelPass"]" maxlength="30"
+                            <input id="primaryLabelTextInput1" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Обязательный" value="@Model.FieldDetails.PrimaryFields[0].Label" maxlength="30"
                                    onkeyup="document.getElementById('divPrimaryLabelPass1').innerHTML = this.value; CheckCheckboxAfterInput(id);" />
                             <div id="primaryLabelRadiosPrompt" class="rdiosPrompt"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -509,7 +509,7 @@
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="primaryValueTextInput1" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Необязательное" value="@ViewData["divPrimaryValuePass"]" maxlength="30"
+                            <input id="primaryValueTextInput1" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Необязательное" value="@Model.FieldDetails.PrimaryFields[0].Value" maxlength="30"
                                    onkeyup="document.getElementById('divPrimaryValuePass1').innerHTML = this.value; CheckCheckboxAfterInput(id);" />
                             <div id="primaryValueRadiosPrompt" class="rdiosPrompt displayBlock"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -525,7 +525,7 @@
                             <span data-toggle="tooltip" title="Чтобы включить новое значение данных в сообщение, вставте &#37;&#64; туда, где бы Вы хотели, чтобы это новое значение появилось.
                              Например: Теперь баланс Вашей карты составляет &#37;&#64; рублей">Уведомление, отображаемое при изменении данных</span>
                         </p>
-                        <input id="notificationInputPrimary1" class="form-control textInputNameContent" maxlength="40" placeholder="Не обязательное" />
+                        <input id="notificationInputPrimary1" class="form-control textInputNameContent" value="@Model.FieldDetails.PrimaryFields[0].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
                     </div>
                     <div class="divDataTypeCollapseField">
                         <p class="pDataTypeCollapseField"><span data-toggle="tooltip" title="tttttttа">Тип данных</span></p>
@@ -595,7 +595,7 @@
                         </p>
                         <img src="~/Images/createCard/expand.png" class="expandImageCollapse" data-toggle="tooltip" title="Развернуть(свернуть) поле" />
                     </a>
-                    <input id="primaryLabelCollapseInput2" class="form-control textInputNameContent" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
+                    <input id="primaryLabelCollapseInput2" class="form-control textInputNameContent" value="@Model.FieldDetails.PrimaryFields[1].Key" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
                 </div>
                 <div id="collapseContentPrimary2" class="collapseContent collapse">
                     <div id="divPrimaryLabelText2">
@@ -618,7 +618,7 @@
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="primaryLabelTextInput2" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Обязательный" maxlength="30"
+                            <input id="primaryLabelTextInput2" type="text" class="form-control LabelAndValueInputCollapse" value="@Model.FieldDetails.PrimaryFields[1].Label" placeholder="Обязательный" maxlength="30"
                                    onkeyup="document.getElementById('divPrimaryLabelPass2').innerHTML = this.value; CheckCheckboxAfterInput(id); ChangeWidthPrimaryTextFieldPass(id);" />
                             <div id="primaryLabelRadiosPrompt" class="rdiosPrompt"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -648,7 +648,7 @@
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="primaryValueTextInput2" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Необязательное" maxlength="30"
+                            <input id="primaryValueTextInput2" type="text" class="form-control LabelAndValueInputCollapse" value="@Model.FieldDetails.PrimaryFields[1].Value" placeholder="Необязательное" maxlength="30"
                                    onkeyup="document.getElementById('divPrimaryValuePass2').innerHTML = this.value; CheckCheckboxAfterInput(id); ChangeWidthPrimaryTextFieldPass(id);" />
                             <div id="primaryValueRadiosPrompt" class="rdiosPrompt displayBlock"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -664,7 +664,7 @@
                             <span data-toggle="tooltip" title="Чтобы включить новое значение данных в сообщение, вставте &#37;&#64; туда, где бы Вы хотели, чтобы это новое значение появилось.
                              Например: Теперь баланс Вашей карты составляет &#37;&#64; рублей">Уведомление, отображаемое при изменении данных</span>
                         </p>
-                        <input id="notificationInputPrimary2" class="form-control textInputNameContent" maxlength="40" placeholder="Не обязательное" />
+                        <input id="notificationInputPrimary2" class="form-control textInputNameContent" value="@Model.FieldDetails.PrimaryFields[1].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
                     </div>
                     <div class="divDataTypeCollapseField">
                         <p class="pDataTypeCollapseField"><span data-toggle="tooltip" title="tttttttа">Тип данных</span></p>
@@ -733,7 +733,7 @@
             <!--Auxiliary collapse field 1-->
             <div id="collapsePanelAuxiliaryContent1" class="panel">
                 <div class="collapseLinkContent">
-                    <input type="checkbox" name="checkboxG3" id="checkboxAuxiliary1" class="checkboxCollapse" onchange="CheckAndUncheckFieldFront(id);" checked>
+                    <input type="checkbox" name="checkboxG3" id="checkboxAuxiliary1" class="checkboxCollapse" onchange="CheckAndUncheckFieldFront(id);" >
                     <label for="checkboxAuxiliary1" class="checkboxCollapseLabel"></label>
                     <a data-toggle="collapse" data-parent="#mainCollapsePanelAuxiliaryContent" href="#collapseContentAuxiliary1">
                         <p class="labelInput">
@@ -1438,7 +1438,7 @@
                         </p>
                         <img src="~/Images/createCard/expand.png" class="expandImageCollapse" data-toggle="tooltip" title="Развернуть(свернуть) поле" />
                     </a>
-                    <input id="secondaryLabelCollapseInput1" class="form-control textInputNameContent" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
+                    <input id="secondaryLabelCollapseInput1" class="form-control textInputNameContent" maxlength="20" value="@Model.FieldDetails.SecondaryFields[0].Key" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
                 </div>
                 <div id="collapseContentSecondary1" class="collapseContent collapse in">
                     <div id="divSecondaryLabelText1">
@@ -1460,7 +1460,7 @@
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="secondaryLabelTextInput1" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Обязательный" value="@ViewData["divSecondaryLabelPass1"]" maxlength="30"
+                            <input id="secondaryLabelTextInput1" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Обязательный" value="@Model.FieldDetails.SecondaryFields[0].Label" maxlength="30"
                                    onkeyup="document.getElementById('divSecondaryLabelPass1').innerHTML = this.value; ChangeWidthSecondaryTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="secondaryLabelRadios1Prompt" class="rdiosPrompt"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -1490,7 +1490,7 @@
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="secondaryValueTextInput1" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Необязательное" value="@ViewData["divSecondaryValuePass1"]" maxlength="30"
+                            <input id="secondaryValueTextInput1" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Необязательное" value="@Model.FieldDetails.SecondaryFields[0].Value" maxlength="30"
                                    onkeyup="document.getElementById('divSecondaryValuePass1').innerHTML = this.value; ChangeWidthSecondaryTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="secondaryValueRadios1Prompt" class="rdiosPrompt displayBlock"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -1506,7 +1506,7 @@
                             <span data-toggle="tooltip" title="Чтобы включить новое значение данных в сообщение, вставте &#37;&#64; туда, где бы Вы хотели, чтобы это новое значение появилось.
                              Например: Теперь баланс Вашей карты составляет &#37;&#64; рублей">Уведомление, отображаемое при изменении данных</span>
                         </p>
-                        <input id="notificationInputSecondary1" class="form-control textInputNameContent" maxlength="40" placeholder="Не обязательное" />
+                        <input id="notificationInputSecondary1" class="form-control textInputNameContent" value="@Model.FieldDetails.SecondaryFields[0].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
                     </div>
                     <div class="divDataTypeCollapseField">
                         <p class="pDataTypeCollapseField"><span data-toggle="tooltip" title="tttttttа">Тип данных</span></p>
@@ -1576,7 +1576,7 @@
                         </p>
                         <img src="~/Images/createCard/expand.png" class="expandImageCollapse" data-toggle="tooltip" title="Развернуть(свернуть) поле" />
                     </a>
-                    <input id="secondaryLabelCollapseInput2" class="form-control textInputNameContent" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
+                    <input id="secondaryLabelCollapseInput2" class="form-control textInputNameContent" maxlength="20" value="@Model.FieldDetails.SecondaryFields[1].Key" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
                 </div>
                 <div id="collapseContentSecondary2" class="collapseContent collapse">
                     <div id="divSecondaryLabelText2">
@@ -1598,7 +1598,7 @@
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="secondaryLabelTextInput2" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Обязательный" value="@ViewData["divSecondaryLabelPass2"]" maxlength="30"
+                            <input id="secondaryLabelTextInput2" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Обязательный" value="@Model.FieldDetails.SecondaryFields[1].Label" maxlength="30"
                                    onkeyup="document.getElementById('divSecondaryLabelPass2').innerHTML = this.value;; ChangeWidthSecondaryTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="secondaryLabelRadios2Prompt" class="rdiosPrompt"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -1628,7 +1628,7 @@
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="secondaryValueTextInput2" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Необязательное" value="@ViewData["divSecondaryValuePass2"]" maxlength="30"
+                            <input id="secondaryValueTextInput2" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Необязательное" value="@Model.FieldDetails.SecondaryFields[1].Value" maxlength="30"
                                    onkeyup="document.getElementById('divSecondaryValuePass2').innerHTML = this.value; ChangeWidthSecondaryTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="secondaryValueRadios2Prompt" class="rdiosPrompt displayBlock"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -1644,7 +1644,7 @@
                             <span data-toggle="tooltip" title="Чтобы включить новое значение данных в сообщение, вставте &#37;&#64; туда, где бы Вы хотели, чтобы это новое значение появилось.
                              Например: Теперь баланс Вашей карты составляет &#37;&#64; рублей">Уведомление, отображаемое при изменении данных</span>
                         </p>
-                        <input id="notificationInputSecondary2" class="form-control textInputNameContent" maxlength="40" placeholder="Не обязательное" />
+                        <input id="notificationInputSecondary2" class="form-control textInputNameContent" value="@Model.FieldDetails.SecondaryFields[1].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
                     </div>
                     <div class="divDataTypeCollapseField">
                         <p class="pDataTypeCollapseField"><span data-toggle="tooltip" title="tttttttа">Тип данных</span></p>
@@ -1714,7 +1714,7 @@
                         </p>
                         <img src="~/Images/createCard/expand.png" class="expandImageCollapse" data-toggle="tooltip" title="Развернуть(свернуть) поле" />
                     </a>
-                    <input id="secondaryLabelCollapseInput3" class="form-control textInputNameContent" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
+                    <input id="secondaryLabelCollapseInput3" class="form-control textInputNameContent" value="@Model.FieldDetails.SecondaryFields[2].Key" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
                 </div>
                 <div id="collapseContentSecondary3" class="collapseContent collapse">
                     <div id="divSecondaryLabelText3">
@@ -1736,7 +1736,7 @@
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="secondaryLabelTextInput3" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Обязательный" maxlength="30"
+                            <input id="secondaryLabelTextInput3" type="text" class="form-control LabelAndValueInputCollapse" value="@Model.FieldDetails.SecondaryFields[2].Label" placeholder="Обязательный" maxlength="30"
                                    onkeyup="document.getElementById('divSecondaryLabelPass3').innerHTML = this.value; ChangeWidthSecondaryTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="secondaryLabelRadios3Prompt" class="rdiosPrompt"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -1766,7 +1766,7 @@
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="secondaryValueTextInput3" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Необязательное" maxlength="30"
+                            <input id="secondaryValueTextInput3" type="text" class="form-control LabelAndValueInputCollapse" value="@Model.FieldDetails.SecondaryFields[2].Value" placeholder="Необязательное" maxlength="30"
                                    onkeyup="document.getElementById('divSecondaryValuePass3').innerHTML = this.value; ChangeWidthSecondaryTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="secondaryValueRadios3Prompt" class="rdiosPrompt displayBlock"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -1782,7 +1782,7 @@
                             <span data-toggle="tooltip" title="Чтобы включить новое значение данных в сообщение, вставте &#37;&#64; туда, где бы Вы хотели, чтобы это новое значение появилось.
                              Например: Теперь баланс Вашей карты составляет &#37;&#64; рублей">Уведомление, отображаемое при изменении данных</span>
                         </p>
-                        <input id="notificationInputSecondary3" class="form-control textInputNameContent" maxlength="40" placeholder="Не обязательное" />
+                        <input id="notificationInputSecondary3" class="form-control textInputNameContent" value="@Model.FieldDetails.SecondaryFields[2].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
                     </div>
                     <div class="divDataTypeCollapseField">
                         <p class="pDataTypeCollapseField"><span data-toggle="tooltip" title="tttttttа">Тип данных</span></p>
@@ -1852,7 +1852,7 @@
                         </p>
                         <img src="~/Images/createCard/expand.png" class="expandImageCollapse" data-toggle="tooltip" title="Развернуть(свернуть) поле" />
                     </a>
-                    <input id="secondaryLabelCollapseInput4" class="form-control textInputNameContent" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
+                    <input id="secondaryLabelCollapseInput4" class="form-control textInputNameContent" value="@Model.FieldDetails.SecondaryFields[3].Key" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
                 </div>
                 <div id="collapseContentSecondary4" class="collapseContent collapse">
                     <div id="divSecondaryLabelText4">
@@ -1874,7 +1874,7 @@
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="secondaryLabelTextInput4" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Обязательный" maxlength="40"
+                            <input id="secondaryLabelTextInput4" type="text" class="form-control LabelAndValueInputCollapse" value="@Model.FieldDetails.SecondaryFields[3].Label" placeholder="Обязательный" maxlength="40"
                                    onkeyup="document.getElementById('divSecondaryLabelPass4').innerHTML = this.value; ChangeWidthSecondaryTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="secondaryLabelRadios4Prompt" class="rdiosPrompt"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -1904,7 +1904,7 @@
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="secondaryValueTextInput4" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Необязательное" maxlength="40"
+                            <input id="secondaryValueTextInput4" type="text" class="form-control LabelAndValueInputCollapse" value="@Model.FieldDetails.SecondaryFields[3].Value" placeholder="Необязательное" maxlength="40"
                                    onkeyup="document.getElementById('divSecondaryValuePass4').innerHTML = this.value; ChangeWidthSecondaryTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="secondaryValueRadios4Prompt" class="rdiosPrompt displayBlock"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -1920,7 +1920,7 @@
                             <span data-toggle="tooltip" title="Чтобы включить новое значение данных в сообщение, вставте &#47;&#64; туда, где бы Вы хотели, чтобы это новое значение появилось.
                              Например: Теперь баланс Вашей карты составляет &#47;&#64; рублей">Уведомление, отображаемое при изменении данных</span>
                         </p>
-                        <input id="notificationInputSecondary4" class="form-control textInputNameContent" maxlength="40" placeholder="Не обязательное" />
+                        <input id="notificationInputSecondary4" class="form-control textInputNameContent" value="@Model.FieldDetails.SecondaryFields[3].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
                     </div>
                     <div class="divDataTypeCollapseField">
                         <p class="pDataTypeCollapseField"><span data-toggle="tooltip" title="tttttttа">Тип данных</span></p>

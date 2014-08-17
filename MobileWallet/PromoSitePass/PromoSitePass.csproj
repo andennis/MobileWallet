@@ -15,7 +15,7 @@
     <AssemblyName>PromoSitePass</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -164,6 +164,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\GeneralPassTemplate\BarcodeDetails.cs" />
     <Compile Include="Models\GeneralPassTemplate\BeaconDetails.cs" />
     <Compile Include="Models\GeneralPassTemplate\DistributionDetails.cs" />
@@ -179,6 +180,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\createCard\createCard.css" />
     <Content Include="Content\createCard\jquery.simple-dtpicker.css" />
     <Content Include="Content\createCard\bootstrap-theme.css" />
     <Content Include="Content\createCard\bootstrap.css" />
@@ -186,6 +188,7 @@
     <Content Include="Content\createCard\style.css" />
     <Content Include="Content\MainPage\component.css" />
     <Content Include="Content\MainPage\default.css" />
+    <Content Include="Content\MainPage\promoSite.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\bpicons\bpicons.svg" />
     <Content Include="fonts\bpicons\license.txt" />
@@ -197,6 +200,11 @@
     <Content Include="Content\Site.css" />
     <Content Include="Images\bubble.png" />
     <Content Include="Images\bubbleIPhone.png" />
+    <Content Include="Images\Contact\little18.svg" />
+    <Content Include="Images\Contact\social21.svg" />
+    <Content Include="Images\Contact\telephone1.svg" />
+    <Content Include="Images\Contact\vkcom.svg" />
+    <Content Include="Images\couponsStrategy\blueArrow.png" />
     <Content Include="Images\couponsStrategy\couponLayout.jpg" />
     <Content Include="Images\createCardOnNotebook.png" />
     <Content Include="Images\createCard\barcode\aztec.png" />
@@ -216,6 +224,11 @@
     <Content Include="Images\createCard\myImages\iphonePassDesigner.png" />
     <Content Include="Images\createCard\myImages\uutomatic_updates.png" />
     <Content Include="Images\createCard\picker.png" />
+    <Content Include="Images\createCard\Transit\air.svg" />
+    <Content Include="Images\createCard\Transit\arrowRight.svg" />
+    <Content Include="Images\createCard\Transit\boat.svg" />
+    <Content Include="Images\createCard\Transit\bus.svg" />
+    <Content Include="Images\createCard\Transit\train.svg" />
     <Content Include="Images\createCard\Vitalik.png" />
     <Content Include="Images\examplepass1.png" />
     <Content Include="Images\gooflePhone.png" />
@@ -233,21 +246,39 @@
     <Content Include="Images\icons\tick 2.png" />
     <Content Include="Images\iphonePassbook.png" />
     <Content Include="Images\logo&amp;strip\cleverLogo.png" />
+    <Content Include="Images\logo&amp;strip\storeStrip7.jpg" />
     <Content Include="Images\logo&amp;strip\Tulips.jpg" />
+    <Content Include="Images\MainPage\add101.svg" />
+    <Content Include="Images\MainPage\approval1 %281%29.svg" />
     <Content Include="Images\MainPage\ApprovalIcon.png" />
     <Content Include="Images\MainPage\blackIphone.png" />
+    <Content Include="Images\MainPage\blackIphone1.png" />
+    <Content Include="Images\MainPage\blackIphone2.png" />
+    <Content Include="Images\MainPage\blackIphone3.png" />
     <Content Include="Images\MainPage\blackIphoneInHand.png" />
+    <Content Include="Images\MainPage\EmailIcon.png" />
+    <Content Include="Images\MainPage\facebookLogo.jpg" />
     <Content Include="Images\MainPage\iphoneInHand.png" />
+    <Content Include="Images\MainPage\iphoneInHand2.png" />
+    <Content Include="Images\MainPage\macbookDesigner.png" />
+    <Content Include="Images\MainPage\megaphone9.svg" />
     <Content Include="Images\MainPage\MessagingIcon.png" />
     <Content Include="Images\MainPage\MessagingIcon1.png" />
     <Content Include="Images\MainPage\passbookLogo.png" />
     <Content Include="Images\MainPage\PassbookScreenshot1.png" />
     <Content Include="Images\MainPage\PassLightLogo.jpg" />
+    <Content Include="Images\MainPage\PassLightLogo.png" />
     <Content Include="Images\MainPage\passwalletLogo.png" />
     <Content Include="Images\MainPage\plusIcon.png" />
+    <Content Include="Images\MainPage\plusIconBlue.png" />
+    <Content Include="Images\MainPage\plusIconDarkBlue.png" />
     <Content Include="Images\MainPage\slide.png" />
     <Content Include="Images\MainPage\store1.jpg" />
+    <Content Include="Images\MainPage\TelephoneIcon.png" />
+    <Content Include="Images\MainPage\up21.svg" />
+    <Content Include="Images\MainPage\upArrow.svg" />
     <Content Include="Images\MainPage\UsersIcon.png" />
+    <Content Include="Images\MainPage\vkLogo.jpg" />
     <Content Include="Images\passbookLogo.png" />
     <Content Include="Images\passwalletLogo.png" />
     <Content Include="Images\pushUpExample.png" />
@@ -270,6 +301,7 @@
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\createCard\blur.js" />
     <Content Include="Scripts\createCard\bootstrap.js" />
+    <Content Include="Scripts\createCard\FastBlur.js" />
     <Content Include="Scripts\createCard\jquery-1.7.1.js" />
     <Content Include="Scripts\createCard\jquery-1.8.3.js" />
     <Content Include="Scripts\createCard\jquery-2.0.2.js" />
@@ -290,6 +322,7 @@
     <Content Include="Scripts\MainPage\cbpHorizontalMenu.js" />
     <Content Include="Scripts\MainPage\cbpTooltipMenu.js" />
     <Content Include="Scripts\MainPage\cbpTooltipMenu.min.js" />
+    <Content Include="Scripts\MainPage\mainPage.js" />
     <Content Include="Scripts\MainPage\modernizr.custom.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
@@ -330,9 +363,15 @@
     <Content Include="Views\Home\LockScreenTab.cshtml" />
     <Content Include="Views\Home\LanguagesTab.cshtml" />
     <Content Include="Views\Home\DistributionTab.cshtml" />
+    <Content Include="Views\Home\BusinessCardStrategy.cshtml" />
+    <Content Include="Views\Home\EventTicketsStrategy.cshtml" />
+    <Content Include="Views\Home\MembershipStrategy.cshtml" />
+    <Content Include="Views\Home\StampStrategy.cshtml" />
+    <Content Include="Views\Home\TransitTicketsStrategy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Contact\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -359,7 +398,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>1949</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/PromoSitePass</IISUrl>
+          <IISUrl>http://localhost:2277/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

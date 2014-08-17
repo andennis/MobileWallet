@@ -1,0 +1,509 @@
+﻿.mainBlock {
+    -moz-min-width: 711px;
+    -ms-min-width: 711px;
+    -o-min-width: 711px;
+    -webkit-min-width: 711px;
+    min-width: 711px;
+}
+
+.blockContent {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1000px;
+    -moz-min-width: 680px;
+    -ms-min-width: 680px;
+    -o-min-width: 680px;
+    -webkit-min-width: 680px;
+    min-width: 680px;
+    text-align: center;
+    color: white;
+}
+
+.mainHeader {
+    position: absolute;
+    color: white;
+    font-size: 50px;
+    text-align: left;
+    background-color: rgba(0,0,0,0.4);
+    line-height: 46px;
+    margin-left: 10px;
+    font-family: 'WOL_Reg','Segoe UI',Tahoma,Helvetica,sans-serif;
+    padding: 0 10px 4px 10px;
+}
+
+.mainHeaderSmall {
+    position: absolute;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: left;
+    line-height: 22px;
+    background-color: rgba(0,0,0,0.4);
+    margin-left: 10px;
+    font-family: 'WOL_SB','Segoe UI Semibold','Segoe UI',Tahoma,Helvetica,sans-serif;
+    padding: 0 10px 4px 10px;
+}
+
+.pHeader {
+    font-size: 5rem;
+    color: #535559;
+    padding: 10px 0;
+    margin: 0 0 10px 0;
+    font-family: 'WOL_Reg', 'Segoe UI', Tahoma, Helvetica, sans-serif;
+}
+
+#usedApp {
+    width: 100%;
+}
+
+    #usedApp td {
+        font-size: 24px;
+    }
+
+#divUsedApp div {
+    /*width: 341px;*/
+    background-color: rgba(0,0,0,0.7);
+    font-size: 1.8rem;
+    position: relative;
+    color: white;
+    /*margin-top: -203px;*/
+    padding: 6px 8px;
+    -ms-border-radius: 10px;
+    border-radius: 10px;
+    display: none;
+    line-height: 24px;
+    font-family: "Segoe UI", Helvetica, Arial, Sans-Serif;
+}
+
+#passbookPrompt {
+}
+
+#passwalletPrompt {
+}
+
+#divUsedApp span {
+    font-weight: bold;
+    color: #00bcf2;
+}
+
+.passbookLogoImg {
+    height: 95px;
+    margin: 17.5px 0 2.5px 0;
+}
+
+.passwalletLogoImg {
+    height: 100px;
+    margin: 15px 0 0 0;
+}
+
+.tdText {
+    text-align: justify;
+    vertical-align: middle;
+    padding: 2% 2%;
+    font-size: 1.8rem;
+    line-height: 24px;
+    width: 80px;
+    font-family: "Segoe UI", Helvetica, Arial, Sans-Serif;
+}
+
+.imgIcon {
+    width: 95%;
+}
+
+.tdIcon {
+    height: 50px;
+    padding: 2% 3% 2% 3%;
+    width: 15%;
+}
+
+.pTextBlock {
+    position: absolute;
+    text-align: left;
+}
+
+#howItWorkTable {
+    width: 100%;
+}
+
+.appLogoTd {
+    width: 18%;
+    vertical-align: top;
+}
+
+.appLogoPromptTd {
+    width: 32%;
+}
+
+.appLogoName {
+    font-size: 2.3rem;
+    margin: 3px 0 0 0;
+    font-family: "Segoe UI", Helvetica, Arial, Sans-Serif;
+}
+
+#advantageTable {
+    width: 100%;
+    font-size: 1.7rem;
+    color: #87898F;
+}
+
+.advantageImg {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.advTableTd {
+    width: 30%;
+    padding: 10px 0;
+    line-height: 24px;
+    font-family: "Segoe UI", Helvetica, Arial, Sans-Serif;
+    font-size: 1.8rem;
+}
+
+.plusIconTd {
+    width: 5%;
+}
+
+.plusIcon {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.passDesignerTd {
+    width: 45%;
+    font-family: 'WOL_SB','Segoe UI Semibold','Segoe UI',Tahoma,Helvetica,sans-serif;
+    font-size: 1.8rem;
+}
+
+.passDesignerTdImg {
+    width: 55%;
+}
+
+ul li a {
+    color: #535559;
+}
+
+.tickIcon {
+    height: 21px;
+}
+
+.tickText {
+    line-height: 24px;
+    font-family: "Segoe UI", Helvetica, Arial, Sans-Serif;
+    font-size: 1.8rem;
+}
+
+.stepImgTd {
+    width: 26%;
+}
+
+.stepImg {
+    width: 100%;
+}
+
+.stepTable {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+}
+
+.stepMembershipTable {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+}
+
+.stepImgMembershipTd {
+    width: 22%;
+}
+
+.stepArrowMembershipTd {
+    width: 4%;
+}
+
+.stepStampTable {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+}
+
+.stepImgStampTd {
+    width: 16%;
+}
+
+.stepArrowStampTd {
+    width: 4%;
+}
+
+.arrowImg {
+    width: 100%;
+    height: 7%;
+}
+
+.leftArrorImg {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    transform: scaleX(-1);
+    -webkit-filter: FlipH;
+    -moz-filter: FlipH;
+    -o-filter: FlipH;
+    -ms-filter: "FlipH";
+    filter: FlipH;
+}
+
+.spanStepNumber {
+    font-weight: bold;
+    color: #00bcf2;
+    font-size: 2.1rem;
+}
+
+.stepPromptTd {
+    color: white;
+    background-color: black;
+    -ms-opacity: 0.7;
+    opacity: 0.7;
+    font-size: 1.75rem;
+    -ms-border-radius: 10px;
+    border-radius: 10px;
+    padding: 8px 4px;
+    vertical-align: top;
+    line-height: 2.4rem;
+    font-family: "Segoe UI", Helvetica, Arial, Sans-Serif;
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.stampStepPromptTd {
+    font-size: 1.6rem !important;
+}
+
+.stepArrowTd {
+    width: 5.5%;
+}
+
+.promoStrategyImgTable {
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 4%;
+}
+
+.promoArrowImg {
+    width: 100%;
+}
+
+.promoArrowImgTd {
+    width: 5.5%;
+}
+
+.promoStratPromptTd {
+    color: white;
+    background-color: black;
+    -ms-opacity: 0.7;
+    -o-opacity: 0.7;
+    opacity: 0.7;
+    font-size: 1.75rem;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px;
+    padding: 8px 4px;
+    width: 26%;
+    font-family: "Segoe UI", Helvetica, Arial, Sans-Serif;
+}
+
+.stampStratPromptTd {
+    color: white;
+    background-color: black;
+    -ms-opacity: 0.7;
+    opacity: 0.7;
+    font-size: 1.65rem;
+    -ms-border-radius: 10px;
+    border-radius: 10px;
+    padding: 8px 4px;
+    width: 26%;
+}
+
+.bigButton {
+    background-color: #00b4f0;
+    padding: 7px 22px 11px 21px;
+    color: #FFF;
+    text-decoration: none;
+    font-size: 2.2rem;
+    font-family: 'WOL_SB','Segoe UI Semibold','Segoe UI',Tahoma,Helvetica,sans-serif;
+}
+
+    .bigButton:hover {
+        background-color: #0072c6;
+        color: white;
+        text-decoration: none;
+    }
+
+.pText {
+    font-size: 1.7rem;
+    color: #87898F;
+    font-family: "Segoe UI", Helvetica, Arial, Sans-Serif;
+}
+
+.upArrow {
+    position: absolute;
+    left: 15px;
+    top: 175px;
+    /*fill: #aeb6cb;*/
+    fill: white;
+    z-index: 100;
+}
+
+    .upArrow:hover {
+        fill: #ffd800;
+        cursor: pointer;
+    }
+
+.footerContact {
+    height: 230px;
+    width: 100%;
+    text-align: center;
+    background-color: #333333;
+    color: white;
+    padding-top: 30px;
+    font-size: 1.8rem;
+    line-height: 24px;
+    font-family: 'WOL_SB','Segoe UI Semibold','Segoe UI',Tahoma,Helvetica,sans-serif;
+}
+
+.bigContactButton {
+    background-color: #ffd800;
+    padding: 7px 22px 11px 21px;
+    color: #333333;
+    font-size: 2.2rem;
+    font-family: 'WOL_SB','Segoe UI Semibold','Segoe UI',Tahoma,Helvetica,sans-serif;
+}
+
+    .bigContactButton:hover {
+        background-color: #0072c6;
+        color: white;
+        text-decoration: none;
+    }
+
+.sendMessageBlock {
+    width: 500px;
+    float: left;
+}
+
+.headerMessageBlock {
+    font-family: 'WOL_SB','Segoe UI Semibold','Segoe UI',Tahoma,Helvetica,sans-serif;
+    font-size: 3rem;
+    color: #87898F;
+    margin: 0 0 10px 0;
+}
+
+.sendMessageForm {
+    height: 450px;
+    width: 500px;
+    text-align: center;
+    background-color: #f2f4f8;
+    background-color: #eceff1;
+    padding: 5px 20px;
+}
+
+.controlGroup {
+    padding-bottom: 15px;
+}
+
+.messageFormInput {
+    height: 45px;
+    max-width: 800px;
+    font-family: 'WOL_SB','Segoe UI Semibold','Segoe UI',Tahoma,Helvetica,sans-serif;
+    font-size: 1.8rem;
+    color: #87898F;
+    -ms-border-radius: 0;
+    border-radius: 0;
+}
+
+.form-control:-moz-placeholder {
+    color: #CED7DF;
+}
+
+.form-control::-moz-placeholder {
+    color: #CED7DF;
+}
+
+.form-control:-ms-input-placeholder {
+    color: #CED7DF;
+}
+
+.form-control::-webkit-input-placeholder {
+    color: #CED7DF;
+}
+
+.messageFormInput:focus {
+    border-color: #ffd800;
+    border-color: #1abc9c;
+    border-width: 2px;
+    -webkit-box-shadow: none;
+    -ms-box-shadow: none;
+    box-shadow: none;
+}
+
+.contactBlock {
+    width: 400px;
+    float: left;
+    color: black;
+}
+
+.sendEmailButton {
+    background-color: #ffd800;
+    background-color: #1abc9c;
+    width: 100%;
+    height: 50px;
+    padding: 7px 22px 11px 21px;
+    color: white;
+    font-size: 2.4rem;
+    font-family: 'WOL_SB','Segoe UI Semibold','Segoe UI',Tahoma,Helvetica,sans-serif;
+    max-width: 800px;
+    border: none;
+}
+
+    .sendEmailButton:hover {
+        background-color: #2fe2bf;
+    }
+
+.contactTable {
+    font-size: 2.6rem;
+    line-height: 1rem;
+    font-family: 'WOL_SB','Segoe UI Semibold','Segoe UI',Tahoma,Helvetica,sans-serif;
+    color: #87898F;
+    text-align: left;
+}
+
+.contactIcon {
+    padding: 11px 20px;
+}
+
+/*.vkIcon {
+    fill: #2B587A;
+}
+
+.emailIcon {
+    fill: #1abc9c;
+}
+
+.phoneIcon {
+    fill: #ffd800;
+}*/
+
+.vkIcon:hover {
+    fill: #2B587A;
+}
+
+.emailIcon:hover {
+    fill: #1abc9c;
+}
+
+.phoneIcon:hover {
+    fill: #ffd800;
+}
