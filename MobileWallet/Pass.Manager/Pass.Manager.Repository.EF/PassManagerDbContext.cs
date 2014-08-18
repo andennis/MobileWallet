@@ -18,7 +18,7 @@ namespace Pass.Manager.Repository.EF
         }
 
         public DbSet<PassSite> PassSites { get; set; }
-        public DbSet<PassProject> PassProject { get; set; }
+        public DbSet<PassProject> PassProjects { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<PassSiteUser> PassSiteUsers { get; set; }
         public DbSet<PassCertificate> PassCertificates { get; set; }
