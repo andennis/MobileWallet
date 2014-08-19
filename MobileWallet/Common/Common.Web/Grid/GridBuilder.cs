@@ -11,11 +11,9 @@ namespace Common.Web.Grid
 {
     public class GridBuilder<T> : IHtmlString where T : class
     {
-        private HtmlHelper _htmlHelper;
-        private IEnumerable<T> _dataSource;
-        private _GridViewModel _gridModel = new _GridViewModel();
-        private string _partialViewName;
-        private GridColumnFactory<T> _columnFactory = new GridColumnFactory<T>();
+        private readonly HtmlHelper _htmlHelper;
+        private readonly GridViewModel<T> _gridModel = new GridViewModel<T>();
+        private readonly string _partialViewName;
 
         public GridBuilder(HtmlHelper htmlHelper, string partialViewName)
             : this(htmlHelper, partialViewName, null)
@@ -25,9 +23,11 @@ namespace Common.Web.Grid
         {
             if (htmlHelper == null)
                 throw new ArgumentNullException("htmlHelper");
+            if (string.IsNullOrEmpty(partialViewName))
+                throw new ArgumentException("partialViewName is required", "partialViewName");
 
             _htmlHelper = htmlHelper;
-            _dataSource = dataSource;
+            _gridModel.DataSource = dataSource;
             _partialViewName = partialViewName;
         }
 
@@ -42,16 +42,25 @@ namespace Common.Web.Grid
             _gridModel.Title = title;
             return this;
         }
-
+        public GridBuilder<T> Width(string width)
+        {
+            _gridModel.Width = width;
+            return this;
+        }
+        public GridBuilder<T> Height(string height)
+        {
+            _gridModel.Height = height;
+            return this;
+        }
         public GridBuilder<T> BindTo(IEnumerable<T> dataSource)
         {
-            _dataSource = dataSource;
+            _gridModel.DataSource = dataSource;
             return this;
         }
 
         public GridBuilder<T> Columns(Action<GridColumnFactory<T>> configurator)
         {
-            configurator(_columnFactory);
+            configurator(_gridModel.ColumnFactory);
             return this;
         }
 

@@ -5,8 +5,8 @@ using System.Web;
 
 namespace Common.Web.Grid
 {
-    public class _GridRowViewModel
+    public class GridColumnViewModel
     {
-        public IList<object> RowData { get; set; }
+        public string Title { get; set; }
     }
 }

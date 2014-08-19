@@ -4,7 +4,7 @@
     <caption>@Model.Title</caption>
     <thead>
         <tr>
-            @foreach (_GridColumnViewModel col in Model.Columns)
+            @foreach (_GridColumnViewModel col in Model.ColumnFactory)
             {
                 <th>@col.Title</th>
             }

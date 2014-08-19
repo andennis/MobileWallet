@@ -75,9 +75,8 @@
     <Compile Include="Grid\GridBuilder.cs" />
     <Compile Include="Grid\GridColumnFactory.cs" />
     <Compile Include="Grid\GridControlExtension.cs" />
-    <Compile Include="Grid\_GridColumnViewModel.cs" />
-    <Compile Include="Grid\_GridRowViewModel.cs" />
-    <Compile Include="Grid\_GridViewModel.cs" />
+    <Compile Include="Grid\GridColumnViewModel.cs" />
+    <Compile Include="Grid\GridViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

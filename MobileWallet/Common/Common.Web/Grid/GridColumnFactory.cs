@@ -9,9 +9,16 @@ namespace Common.Web.Grid
 {
     public class GridColumnFactory<TModel> where TModel : class
     {
+        public GridColumnFactory()
+        {
+            this.Columns = new List<GridBoundColumnBuilder<TModel>>();
+        }
+        public IList<GridBoundColumnBuilder<TModel>> Columns { get; private set; }
+    
         public GridBoundColumnBuilder<TModel> Bound<TValue>(Expression<Func<TModel, TValue>> expression)
         {
             var builder = new GridBoundColumnBuilder<TModel>();
+            Columns.Add(builder);
             return builder;
         }
 
