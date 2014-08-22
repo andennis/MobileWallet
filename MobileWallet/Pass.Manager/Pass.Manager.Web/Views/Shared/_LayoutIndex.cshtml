@@ -1,9 +1,14 @@
-﻿@model Pass.Manager.Web.Common.IViewModel
+﻿@model IViewModel
 
 @{
     ViewBag.Title = Model.DisplayName;
-    //Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @RenderBody()
+
+@section Scripts
+{
+    @RenderSection("Scripts", false)
+}
 

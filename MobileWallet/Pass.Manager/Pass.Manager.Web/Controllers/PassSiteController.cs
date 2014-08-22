@@ -13,5 +13,21 @@ namespace Pass.Manager.Web.Controllers
         {
             return View(new PassSiteViewModel());
         }
+
+        public ActionResult AjaxHandler()
+        {
+            return Json(new
+            {
+                sEcho = 1,
+                iTotalRecords = 97,
+                iTotalDisplayRecords = 3,
+                aaData = new List<string[]>() {
+                    new string[] {"1", "Microsoft", "Redmond", "USA"},
+                    new string[] {"2", "Google", "Mountain View", "USA"},
+                    new string[] {"3", "Gowi", "Pancevo", "Serbia"}
+                    }
+            },
+            JsonRequestBehavior.AllowGet);
+        }
     }
 }
