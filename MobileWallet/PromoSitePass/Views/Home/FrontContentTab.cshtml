@@ -444,6 +444,19 @@
     <div id="con_tab2" class="tabFrontContent">
         <br />
         <div id="mainCollapsePanelPrimaryContent">
+            
+            <!--Transit type select-->
+            <p class="pTransitType">
+                <span data-toggle="tooltip" title="Выберите тип билета">Тип билета</span>
+            </p>
+            <select id="transitType" class="form-control transitTypeSelect" name="tt" onchange="displayTransitIcon(value)">
+                <option value="Air">Самолет</option>
+                <option value="Train">Поезд</option>
+                <option value="Bus">Автобус</option>
+                <option value="Boat">Корабль</option>
+                <option value="Generic" selected="selected">Универсальный</option>
+            </select>
+            <br />
 
             <!--Primary collapse field 1-->
             <div id="collapsePanelPrimaryContent1" class="panel">

@@ -453,6 +453,8 @@ ul li a {
     width: 400px;
     float: left;
     color: black;
+    margin-top: 70px;
+    margin-bottom: 70px;
 }
 
 .sendEmailButton {
@@ -480,12 +482,16 @@ ul li a {
     text-align: left;
 }
 
+.contactTable a {
+    color: #87898F;
+}
+
 .contactIcon {
     padding: 11px 20px;
 }
 
-/*.vkIcon {
-    fill: #2B587A;
+.vkIcon {
+    fill: #1abc9c;
 }
 
 .emailIcon {
@@ -493,17 +499,17 @@ ul li a {
 }
 
 .phoneIcon {
-    fill: #ffd800;
-}*/
-
-.vkIcon:hover {
-    fill: #2B587A;
-}
-
-.emailIcon:hover {
     fill: #1abc9c;
 }
 
+.vkIcon:hover {
+    fill: #2fe2bf;
+}
+
+.emailIcon:hover {
+    fill: #2fe2bf;
+}
+
 .phoneIcon:hover {
-    fill: #ffd800;
+    fill: #2fe2bf;
 }

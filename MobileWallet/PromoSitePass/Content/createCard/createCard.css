@@ -12,6 +12,67 @@ input {
     border: 1px solid #cccccc;
 }
 
+.headerBlockOnDesigner {
+    background-color: #f2f4f8;
+}
+
+.headerBlockContentDesigner {
+    height: 50px;
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 7px;
+}
+
+.headerLogoImg {
+    height: 40px;
+}
+
+.bodyPassDesigner {
+    height: 600px;
+    width: 1000px;
+    border: dashed 0px;
+}
+
+.mainTabs {
+    height: 30px;
+}
+
+.leftPanelDesigner {
+    width: 350px;
+    height: 650px;
+    border: dashed 0px;
+    float: left;
+    display: block;
+}
+
+.phoneBlockLeftPanel {
+    background-image: url(/Images/createCard/myImages/iphonePassDesigner.png);
+    width: 320px;
+    height: 613px;
+    position: absolute;
+}
+
+.passBodyBlock {
+    visibility: visible;
+    height: 342px;
+    width: 270px;
+    margin-left: 25px;
+    margin-top: 165px;
+    position: absolute;
+    display: block;
+}
+
+.backgroundImgPassBlock {
+    margin-top: 32px;
+    position: absolute;
+    display: block;
+}
+
+.backgroundImgCanvas {
+    display: none;
+}
+
 .passTypeImg {
     height: 110px;
     width: 90px;
@@ -84,6 +145,11 @@ input {
 
 .distributionContentSelect {
     width: 243px;
+    height: 28px;
+}
+
+.transitTypeSelect {
+    width: 155px;
     height: 28px;
 }
 
@@ -169,6 +235,13 @@ input {
     .saveTab.active {
         background: #16a085;
         color: white;
+    }
+
+    .logoImagePassBlock {
+        margin-left: 5px;
+         margin-top: 5px; 
+         position: absolute; 
+         display: block;
     }
 
 .spanLogoImagePass {
@@ -375,6 +448,16 @@ input {
     text-overflow: ellipsis;
 }
 
+.primaryFieldLabels {
+    height: 70px; 
+    top: 48px;
+}
+
+.primaryFieldValues {
+    height: 36px; 
+    top: 122px;
+}
+
 .valueTextPrimary {
     left: 0px;
     /*position: absolute;*/
@@ -413,6 +496,16 @@ input {
     padding-right: 10px;
 }
 
+.auxiliaryFieldLabels {
+    height: 12px; 
+    top: 168px;
+}
+
+.auxiliaryFieldValues {
+    height: 16px; 
+    top: 181px;
+}
+
 .labelTextSecondary {
     max-width: 244px;
     font-size: 10px;
@@ -433,6 +526,10 @@ input {
     -moz-text-overflow: ellipsis;
     text-overflow: ellipsis;
     padding-right: 10px;
+}
+
+.secondaryFieldValues {
+    height: 16px;
 }
 
 .barcodePass {
@@ -682,7 +779,7 @@ input {
 
 .expandImageCollapseLanguages {
     width: 19px;
-    margin-left: 533px;
+    margin-left: 531px;
     margin-top: -27px;
     cursor: move;
 }
@@ -781,7 +878,7 @@ label.checkboxCollapseLabel {
 }
 
 .form-control {
-    padding: 6px 8px;
+    padding: 4px 8px;
     height: 28px;
     line-height: 16px;
 }
@@ -831,6 +928,15 @@ label.checkboxCollapseLabel {
     padding: 5px 0px;
     font-weight: bold;
     color: #777981;
+}
+
+.pTransitType {
+    width: 165px;
+    float: left;
+    padding: 5px 0px;
+    font-weight: bold;
+    color: #777981;
+    padding-left: 28px;
 }
 
 .pDistributionCheckbox {
@@ -978,4 +1084,137 @@ label.checkboxCollapseLabel {
     position: absolute;
     top: 60px;
     left: 118px;
+}
+
+.transitIconPass {
+    position: absolute;
+    top: 63px;
+    left: 119px;
+    width: 32px;
+    height: 32px;
+}
+
+.airIconPass {
+    -webkit-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.logoTextPass {
+    display: inline-block; 
+    left: 70px; 
+    position: relative; 
+    top: 13px; 
+    width: 150px; 
+    height: 20px; 
+    border: dashed 0px; 
+    font-size: 16px; 
+    color: white; 
+    overflow: hidden; 
+    -ms-text-overflow: ellipsis; 
+    -o-text-overflow: ellipsis; 
+    -moz-text-overflow: ellipsis; 
+    text-overflow: ellipsis;
+}
+
+.headerFieldsLabels {
+    height: 12px; 
+    top: 12px;
+}
+
+.headerFieldsValues {
+    height: 16px; 
+    top: 24px;
+}
+
+.thumbnailImagePassBlock {
+    position: absolute;
+    display: block;
+}
+
+.leftAlignPassText {
+   margin-right: auto; 
+}
+
+.aztecCodeImgPass {
+    position: relative; 
+    width: 40%; 
+    top: 201px; 
+    left: 81px;
+}
+
+.qrCodeImgPass {
+    max-width: 117px; 
+    height: 119px; 
+    max-height: 119px; 
+    position: relative; 
+    top: 197px; 
+    left: 77px;
+}
+
+.pdf417CodeImgPass {
+    position: relative; 
+    top: 215px; 
+    left: 44px;
+}
+
+.backAreaPass {
+    display: none;
+   }
+
+.backPassBackgroundImg {
+    width: 100%; 
+    position: absolute;
+}
+
+.backPassBlock {
+    width: 262px; 
+    min-height: 311px; 
+    max-height: 330px; 
+    overflow-y: auto; 
+    position: absolute; 
+    top: 38px; left: 4px; 
+    overflow: hidden; 
+    background: white;
+}
+
+.backHackBlock {
+    width: 107%; 
+    overflow-y: auto; 
+    overflow-x: hidden; 
+    height: 290px; 
+    top: 5px; 
+    position: absolute;
+}
+
+.automaticUpdateImg {
+    width: 263px; 
+    position: absolute;
+}
+
+.backPassContentBlock {
+    min-height: 30px; 
+    width: 248px; 
+    border: 1px solid #E4DEDE; 
+    padding: 0 10px 8px; 
+    overflow: hidden; 
+    margin-top: 49px; 
+    margin-left: 7px; 
+    position: absolute; 
+    border-radius: 5px;
+}
+
+.clearPanel {
+    width: 40px; 
+    height: 640px; 
+    float: left;
+}
+
+.rightPanelDesigner {
+    width: 610px; 
+    float: right; 
+    border: dashed 0px; 
+    display: block;
 }

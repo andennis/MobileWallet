@@ -116,7 +116,62 @@ namespace PromoSitePass.Controllers
                         new GeneralField(),
                         new GeneralField(),
                         new GeneralField()
-                    }
+                    },
+                    TransitType = Transit.Generic
+                }
+            };
+
+
+            return View("CreateCard", passModel);
+        }
+
+        public ActionResult TransitStrategyCard()
+        {
+            var passModel = new GeneralPassTemplate
+            {
+                PassStyle = PassStyle.BoardingPass,
+                BackgroundColor = Color.FromArgb(0, 68, 96),
+                LabelTextColor = Color.FromArgb(0, 0, 0),
+                ValueTextColor = Color.FromArgb(255, 255, 255),
+                LogoText = "Clever",
+                LocationDetails = new LocationDetails(),
+                DistributionDetails = new DistributionDetails()
+                {
+                    QuantityRestriction = 1000
+                },
+                BarcodeDetails = new BarcodeDetails()
+                {
+                    BarcodeType = GeneralBarcodeType.QrCode
+                },
+                FieldDetails = new FieldDetails()
+                {
+                    HeaderFields = new List<GeneralField>()
+                    {
+                        new GeneralField(),
+                        new GeneralField(),
+                        new GeneralField()
+                    },
+                    PrimaryFields = new List<GeneralField>()
+                    {
+                        new GeneralField(),
+                        new GeneralField()
+                    },
+                    AuxiliaryFields = new List<GeneralField>(5)
+                    {
+                        new GeneralField(),
+                        new GeneralField(),
+                        new GeneralField(),
+                        new GeneralField(),
+                        new GeneralField()
+                    },
+                    SecondaryFields = new List<GeneralField>()
+                    {
+                        new GeneralField(),
+                        new GeneralField(),
+                        new GeneralField(),
+                        new GeneralField()
+                    },
+                    TransitType = Transit.Generic
                 }
             };
 
@@ -192,7 +247,8 @@ namespace PromoSitePass.Controllers
                         new GeneralField(),
                         new GeneralField(),
                         new GeneralField()
-                    }
+                    },
+                    TransitType = Transit.Generic
                 }
             };
 
@@ -284,7 +340,8 @@ namespace PromoSitePass.Controllers
                         },
                         new GeneralField(),
                         new GeneralField()
-                    }
+                    },
+                    TransitType = Transit.Generic
                 }
             };
 
