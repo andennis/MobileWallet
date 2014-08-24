@@ -5,17 +5,21 @@
 }
 
 <div class="container">
-    <table id="myDataTable" class="display">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Company name</th>
-                <th>Address</th>
-                <th>Town</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+    <table id="myDataTable"></table>
+    
+</div>
+<br/>
+<div class="container">
+    @(Html.Grid<PassSiteViewModel>()
+        .Name("myDataTable2")
+        .DataSource(ds => ds.Read(@Url.Action("AjaxHandler2")))
+        .Columns(c =>
+                 {
+                     c.Bound(p => p.PassSiteId).Title("ID");
+                     c.Bound(p => p.Name);
+                     c.Bound(p => p.Description);
+                 }))
+        
 </div>
 
 @section Scripts
@@ -23,23 +27,22 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#myDataTable').dataTable({
-                "bServerSide": true,
-                "sAjaxSource": "AjaxHandler",
-                "bProcessing": true,
-                "aoColumns": [
-                                {
-                                    "sName": "ID",
-                                    "bSearchable": false,
-                                    "bSortable": false,
-                                    "fnRender": function (oObj) {
-                                        return '<a href=\"Details/' +
-                                        oObj.aData[0] + '\">View</a>';
-                                    }
-                                },
-                                { "sName": "COMPANY_NAME" },
-                                { "sName": "ADDRESS" },
-                                { "sName": "TOWN" }
+                bServerSide: true,
+                sAjaxSource: "@Url.Action("AjaxHandler")",
+                bProcessing: true,
+                bFilter: false,
+                //bPaginate: false,
+                //bInfo: false,
+                oLanguage: {
+                    sZeroRecords: "No data",
+                },
+                aoColumns: [
+                                { mData: "Id", sTitle: "MyId" },
+                                { mData: "Name", sTitle: "MyName" },
+                                { mData: "Address", sTitle: "MyAddress" },
+                                { mData: "Town", sTitle: "MyTown" }
                 ]
+                
             });
         })
     </script>

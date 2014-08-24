@@ -10,9 +10,9 @@ namespace Common.Web.Grid
 {
     public static class GridControlExtension
     {
-        public static GridBuilder<TModel> Grid<TModel>(this HtmlHelper html, string partialViewName) where TModel : class
+        public static GridBuilder<TModel> Grid<TModel>(this HtmlHelper html) where TModel : class
         {
-            return new GridBuilder<TModel>(html, partialViewName);;
+            return new GridBuilder<TModel>(html);
         }
     }
 }

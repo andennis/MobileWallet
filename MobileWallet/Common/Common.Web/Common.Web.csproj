@@ -71,11 +71,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FormControlExtensions.cs" />
+    <Compile Include="Grid\GridDataRequest.cs" />
+    <Compile Include="Grid\GridDataResponse.cs" />
     <Compile Include="Grid\GridBoundColumnBuilder.cs" />
     <Compile Include="Grid\GridBuilder.cs" />
     <Compile Include="Grid\GridColumnFactory.cs" />
     <Compile Include="Grid\GridControlExtension.cs" />
     <Compile Include="Grid\GridColumnViewModel.cs" />
+    <Compile Include="Grid\GridDataSourceFactory.cs" />
     <Compile Include="Grid\GridViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

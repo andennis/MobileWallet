@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using Common.Extensions;
 
 namespace Common.Web.Grid
 {
@@ -17,7 +18,7 @@ namespace Common.Web.Grid
     
         public GridBoundColumnBuilder<TModel> Bound<TValue>(Expression<Func<TModel, TValue>> expression)
         {
-            var builder = new GridBoundColumnBuilder<TModel>();
+            var builder = new GridBoundColumnBuilder<TModel>(expression.GetMethodOrPropertyName());
             Columns.Add(builder);
             return builder;
         }
