@@ -48,6 +48,12 @@
     <Reference Include="AutoMapper.Net4">
       <HintPath>..\..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
+    <Reference Include="FluentValidation">
+      <HintPath>..\..\packages\FluentValidation.5.1.0.0\lib\Net40\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation.Mvc">
+      <HintPath>..\..\packages\FluentValidation.MVC4.5.1.0.0\lib\Net40\FluentValidation.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.Unity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -156,6 +162,7 @@
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PassSiteViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\LoginViewModelValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -278,7 +285,6 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutIndex.cshtml" />
     <Content Include="Views\PassSite\Index.cshtml" />
-    <Content Include="Views\Shared\_GridView.cshtml" />
     <Content Include="Views\User\CreateUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -290,9 +296,21 @@
       <Project>{93dd94d6-4255-4d24-adbc-ba3eaa87ddb0}</Project>
       <Name>Common.Web</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Pass.Manager.BL\Pass.Manager.BL.csproj">
+      <Project>{24182974-603e-417f-8ba6-034038ec1b89}</Project>
+      <Name>Pass.Manager.BL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pass.Manager.Core\Pass.Manager.Core.csproj">
       <Project>{DC28CC0D-F87E-4D65-8812-3BAF31C9C359}</Project>
       <Name>Pass.Manager.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pass.Manager.Repository.Core\Pass.Manager.Repository.Core.csproj">
+      <Project>{6ae0452d-92cc-420b-99f4-7f9d7464b9a3}</Project>
+      <Name>Pass.Manager.Repository.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pass.Manager.Repository.EF\Pass.Manager.Repository.EF.csproj">
+      <Project>{929e8294-e96d-4d40-b326-c62415356d3d}</Project>
+      <Name>Pass.Manager.Repository.EF</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

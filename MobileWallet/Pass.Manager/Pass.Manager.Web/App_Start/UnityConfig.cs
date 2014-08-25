@@ -1,5 +1,6 @@
 using System;
 using Microsoft.Practices.Unity;
+using Microsoft.Practices.Unity.Configuration;
 
 namespace Pass.Manager.Web
 {
@@ -19,7 +20,7 @@ namespace Pass.Manager.Web
 
         private static void RegisterTypes(IUnityContainer container)
         {
-
+            container.LoadConfiguration("PassManager");
         }
     }
 }

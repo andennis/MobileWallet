@@ -2,10 +2,10 @@
 
 @{
     ViewBag.Title = Model.DisplayName;
-    //Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Login</h2>
+@Html.ValidationSummary()
 @using (Html.BeginFormExt())
 {
     @Html.AntiForgeryToken()
