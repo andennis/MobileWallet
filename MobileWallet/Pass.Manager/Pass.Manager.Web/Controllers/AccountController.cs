@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using System.Web.Security;
+using Pass.Manager.Core;
 using Pass.Manager.Web.Models;
 
 namespace Pass.Manager.Web.Controllers
@@ -7,6 +8,13 @@ namespace Pass.Manager.Web.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private readonly IUserService _userService;
+
+        public AccountController(IUserService userService)
+        {
+            _userService = userService;
+        }
+
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {

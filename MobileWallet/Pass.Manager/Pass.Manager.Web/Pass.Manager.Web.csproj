@@ -283,6 +283,10 @@
       <Project>{93dd94d6-4255-4d24-adbc-ba3eaa87ddb0}</Project>
       <Name>Common.Web</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Pass.Manager.Core\Pass.Manager.Core.csproj">
+      <Project>{DC28CC0D-F87E-4D65-8812-3BAF31C9C359}</Project>
+      <Name>Pass.Manager.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
