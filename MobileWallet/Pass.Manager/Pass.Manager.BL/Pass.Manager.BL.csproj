@@ -39,7 +39,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PassManagerConfig.cs" />
+    <Compile Include="PassManagerException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.Configuration\Common.Configuration.csproj">
+      <Project>{DFABDFCC-3B69-434A-BD2A-6838CD7608A8}</Project>
+      <Name>Common.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Common.Extensions\Common.Extensions.csproj">
+      <Project>{1628E173-1BE9-4DFC-BCBE-93334DE8EE46}</Project>
+      <Name>Common.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Common.Repository\Common.Repository.csproj">
+      <Project>{F36371D6-812F-49F5-9E9B-043265660647}</Project>
+      <Name>Common.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Common.Utils\Common.Utils.csproj">
+      <Project>{F1CAD860-50FC-456C-96CD-1332CC48D03F}</Project>
+      <Name>Common.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pass.Manager.Core\Pass.Manager.Core.csproj">
+      <Project>{DC28CC0D-F87E-4D65-8812-3BAF31C9C359}</Project>
+      <Name>Pass.Manager.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pass.Manager.Repository.Core\Pass.Manager.Repository.Core.csproj">
+      <Project>{6AE0452D-92CC-420B-99F4-7F9D7464B9A3}</Project>
+      <Name>Pass.Manager.Repository.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
