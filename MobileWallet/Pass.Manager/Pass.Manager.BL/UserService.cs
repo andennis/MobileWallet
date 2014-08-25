@@ -51,9 +51,6 @@ namespace Pass.Manager.BL
         public UserInfo Read(int userId)
         {
             User user = _repUser.Find(userId);
-            if (user == null)
-                throw new PassManagerException(string.Format("Usaer ID:{0} not found", userId));
-
             return ConvertTo(user);
         }
 
@@ -62,9 +59,7 @@ namespace Pass.Manager.BL
             User user = _repUser.Query()
                 .Filter(x => x.UserName == userName)
                 .Get().FirstOrDefault();
-            if (user == null)
-                throw new PassManagerException(string.Format("Usaer name:{0} not found", userName));
-
+           
             return ConvertTo(user);
         }
 
@@ -91,7 +86,7 @@ namespace Pass.Manager.BL
         {
             User user = _repUser.Find(userId);
             if (user == null)
-                throw new PassManagerException(string.Format("Usaer ID:{0} not found", userId));
+                throw new PassManagerException(string.Format("User ID:{0} not found", userId));
 
             _repUser.Delete(user);
             _pmUnitOfWork.Save();
@@ -99,6 +94,9 @@ namespace Pass.Manager.BL
 
         private UserInfo ConvertTo(User user)
         {
+            if (user == null)
+                return null;
+
             var userInfo = new UserInfo()
                            {
                                UserId = user.UserId,

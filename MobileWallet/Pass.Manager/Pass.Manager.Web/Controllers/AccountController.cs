@@ -1,6 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using System.Web.Security;
+using Common.Extensions;
 using Pass.Manager.Core;
+using Pass.Manager.Core.Entities;
 using Pass.Manager.Web.Models;
 
 namespace Pass.Manager.Web.Controllers
@@ -18,33 +21,32 @@ namespace Pass.Manager.Web.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            return View(new LoginViewModel(){UserName = ""});
+            return View(new LoginViewModel() { UserName = "" });
         }
 
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginViewModel model, string returnUrl)
+        public ActionResult Login(LoginViewModel loginViewModel, string returnUrl)
         {
-            if (ModelState.IsValid)
+            try
             {
-                FormsAuthentication.SetAuthCookie(model.UserName, false);
-                return RedirectToLocal(returnUrl);
-                /*
-                var user = GetUser()
-                if (user != null)
+                if (ModelState.IsValid)
                 {
-                    return RedirectToLocal(returnUrl);
+                    UserInfo user = _userService.Read(loginViewModel.UserName);
+                    if (user != null && loginViewModel.Password == user.Password.ConvertToUnsecureString())
+                    {
+                        FormsAuthentication.SetAuthCookie(loginViewModel.UserName, false);
+                        return RedirectToLocal(returnUrl);
+                    }
                 }
-                else
-                {
-                    ModelState.AddModelError("", "Invalid username or password.");
-                }
-                */
             }
-
-            // If we got this far, something failed, redisplay form
-            return View(model);
+            catch
+            {
+                ModelState.AddModelError("", "Invalid username or password.");
+            }
+            
+            return View(loginViewModel);
         }
 
         public ActionResult LogOff()

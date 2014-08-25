@@ -148,9 +148,11 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PassSiteController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CreateUserViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PassSiteViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -277,8 +279,13 @@
     <Content Include="Views\Shared\_LayoutIndex.cshtml" />
     <Content Include="Views\PassSite\Index.cshtml" />
     <Content Include="Views\Shared\_GridView.cshtml" />
+    <Content Include="Views\User\CreateUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.Extensions\Common.Extensions.csproj">
+      <Project>{1628E173-1BE9-4DFC-BCBE-93334DE8EE46}</Project>
+      <Name>Common.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Common\Common.Web\Common.Web.csproj">
       <Project>{93dd94d6-4255-4d24-adbc-ba3eaa87ddb0}</Project>
       <Name>Common.Web</Name>
