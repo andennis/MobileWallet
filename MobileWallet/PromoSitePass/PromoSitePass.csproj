@@ -163,6 +163,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\GeneralPassTemplate\BarcodeDetails.cs" />
@@ -368,6 +369,14 @@
     <Content Include="Views\Home\MembershipStrategy.cshtml" />
     <Content Include="Views\Home\StampStrategy.cshtml" />
     <Content Include="Views\Home\TransitTicketsStrategy.cshtml" />
+    <Content Include="Views\Home\_BackContentTab.cshtml" />
+    <Content Include="Views\Home\_DesignTab.cshtml" />
+    <Content Include="Views\Home\_DistributionTab.cshtml" />
+    <Content Include="Views\Home\_FrontContentTab.cshtml" />
+    <Content Include="Views\Home\_LanguagesTab.cshtml" />
+    <Content Include="Views\Home\_LockScreenTab.cshtml" />
+    <Content Include="Views\Home\_PassDesigner.cshtml" />
+    <Content Include="Views\Home\_PassSettingsTab.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

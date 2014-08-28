@@ -1,11 +1,11 @@
-﻿#body {
+﻿.passDesignerBody {
+    text-align: left;
+}
+
+#body {
     background-color: white;
     margin-left: auto;
     margin-right: auto;
-}
-
-body {
-    text-align: left;
 }
 
 input {
