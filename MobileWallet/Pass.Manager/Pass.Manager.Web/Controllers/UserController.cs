@@ -46,6 +46,7 @@ namespace Pass.Manager.Web.Controllers
                                             Password = createUserViewModel.Password.ConvertToSecureString()
                                         };
                         _userService.Create(user);
+                        ModelState.Add("User was created.", new ModelState());
                     }
                 }
             }
@@ -53,7 +54,7 @@ namespace Pass.Manager.Web.Controllers
             {
                 ModelState.AddModelError("", "Create user has failed.");
             }
-            return View();
+            return View(createUserViewModel);
         }
     }
 }

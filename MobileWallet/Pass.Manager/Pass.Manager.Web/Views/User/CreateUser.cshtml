@@ -1,8 +1,27 @@
 ﻿@model CreateUserViewModel
 
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    ViewBag.Title = "Create user";
 }
 
 <h2>Create user</h2>
+
+@Html.ValidationSummary()
+@using (Html.BeginFormExt())
+{
+    @Html.AntiForgeryToken()
+    <div class="container">
+        @Html.TextBoxFormForExt(m => m.UserName, "User Name")
+        @Html.PasswordFormForExt(m => m.Password)
+        @Html.PasswordFormForExt(m => m.ConfirmPassword)
+        @Html.TextBoxFormForExt(m => m.FirstName, "First Name")
+        @Html.TextBoxFormForExt(m => m.LastName, "Last Name")
+        
+
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-md-offset-2 col-sm-9 col-md-10">
+                <button class="btn-default btn" type="submit">Submit</button>
+            </div>
+        </div>
+    </div>
+}
