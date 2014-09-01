@@ -18,4 +18,3 @@
 /// <reference path="createcard/mcolorpicker.js" />
 /// <reference path="createcard/min.blur.js" />
 /// <reference path="createcard/stackblur.js" />
-/// <reference path="mainpage/mainpage.js" />
