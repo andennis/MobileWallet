@@ -12,7 +12,7 @@
 <div class="container">
     @(Html.Grid<PassSiteViewModel>()
         .Name("myDataTable2")
-        .DataSource(ds => ds.Read(@Url.Action("AjaxHandler2")))
+        .DataSource(ds => ds.Read(@Url.Action("GridSearch")))
         .Columns(c =>
                  {
                      c.Bound(p => p.PassSiteId).Title("ID");

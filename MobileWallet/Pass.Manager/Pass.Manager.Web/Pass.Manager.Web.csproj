@@ -152,6 +152,7 @@
     <Compile Include="Common\BaseViewModel.cs" />
     <Compile Include="Common\IViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Common\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PassSiteController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -293,6 +294,10 @@
       <Project>{1628E173-1BE9-4DFC-BCBE-93334DE8EE46}</Project>
       <Name>Common.Extensions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Common\Common.Repository\Common.Repository.csproj">
+      <Project>{f36371d6-812f-49f5-9e9b-043265660647}</Project>
+      <Name>Common.Repository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Common\Common.Web\Common.Web.csproj">
       <Project>{93dd94d6-4255-4d24-adbc-ba3eaa87ddb0}</Project>
       <Name>Common.Web</Name>
@@ -320,7 +325,9 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Base\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

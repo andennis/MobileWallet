@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Pass.Manager.Core;
 using Common.Repository;
@@ -33,12 +34,19 @@ namespace Pass.Manager.BL
         {
             return _repository.Find(entityId);
         }
-        public virtual IEnumerable<TEntity> Search(SearchContext searchContext, Expression<Func<TEntity, bool>> searchExpression)
+        public virtual SearchResult<TEntity> Search(SearchContext searchContext, Expression<Func<TEntity, bool>> searchExpression)
         {
             int totalCount;
-            return _repository.Query()
+            IEnumerable<TEntity> data = _repository.Query()
                 .Filter(searchExpression)
                 .GetPage(searchContext.PageIndex, searchContext.PageSize, out totalCount);
+
+            return new SearchResult<TEntity>()
+            {
+                Data = data,
+                TotalCount = totalCount
+            };
+
         }
     }
 }

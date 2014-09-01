@@ -4,13 +4,20 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Common.Web.Grid;
+using Pass.Manager.Core;
+using Pass.Manager.Repository.Core.Entities;
 using Pass.Manager.Web.Common;
 using Pass.Manager.Web.Models;
 
 namespace Pass.Manager.Web.Controllers
 {
-    public class PassSiteController : Controller
+    public class PassSiteController : BaseController<PassSite>
     {
+        public PassSiteController(IPassSiteService passService)
+            : base(passService)
+        {
+        }
+
         public ActionResult Index()
         {
             return View(new PassSiteViewModel());
@@ -47,5 +54,6 @@ namespace Pass.Manager.Web.Controllers
                        };
             return Json(GridDataResponse.Create(request, data, 3), JsonRequestBehavior.AllowGet);
         }
+
     }
 }

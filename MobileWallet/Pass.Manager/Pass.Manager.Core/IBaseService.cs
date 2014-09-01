@@ -10,6 +10,6 @@ namespace Pass.Manager.Core
         void Update(TEntity entity);
         void Delete(int entityId);
         TEntity Get(int entityId);
-        IEnumerable<TEntity> Search(SearchContext searchContext, Expression<Func<TEntity, bool>> searchExpression);
+        SearchResult<TEntity> Search(SearchContext searchContext, Expression<Func<TEntity, bool>> searchExpression);
     }
 }
