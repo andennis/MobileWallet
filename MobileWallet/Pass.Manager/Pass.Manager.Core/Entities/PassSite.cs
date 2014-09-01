@@ -1,10 +1,13 @@
 ﻿using Common.Repository;
+using Pass.Manager.Core.Entities;
 using System.Collections.Generic;
 
 namespace Pass.Manager.Repository.Core.Entities
 {
-    public class PassSite : EntityVersionable
+    public class PassSite : EntityVersionable, IEntityWithID
     {
+        public int EntityID { get { return PassSiteId; } }
+
         public int PassSiteId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

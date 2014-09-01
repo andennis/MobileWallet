@@ -41,10 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\IEntityWithID.cs" />
+    <Compile Include="Entities\PassCertificate.cs" />
+    <Compile Include="Entities\PassCertificateApple.cs" />
+    <Compile Include="Entities\PassProject.cs" />
+    <Compile Include="Entities\PassSite.cs" />
+    <Compile Include="Entities\PassSiteCertificate.cs" />
+    <Compile Include="Entities\PassSiteUser.cs" />
+    <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserInfo.cs" />
+    <Compile Include="IBaseService.cs" />
     <Compile Include="IPassManagerConfig.cs" />
+    <Compile Include="IPassSiteService.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common.Repository\Common.Repository.csproj">
