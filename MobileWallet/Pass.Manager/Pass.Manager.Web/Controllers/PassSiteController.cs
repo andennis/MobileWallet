@@ -11,7 +11,7 @@ using Pass.Manager.Web.Models;
 
 namespace Pass.Manager.Web.Controllers
 {
-    public class PassSiteController : BaseController<PassSite>
+    public class PassSiteController : BaseEntityController<PassSiteViewModel, PassSite>
     {
         public PassSiteController(IPassSiteService passService)
             : base(passService)

@@ -5,14 +5,17 @@ using System.Web.Mvc;
 using Common.Web.Grid;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
+using AutoMapper;
 
 namespace Pass.Manager.Web.Common
 {
-    public class BaseController<TEntity> : Controller where TEntity : class, IEntityWithID
+    public class BaseEntityController<TEntityModelView, TEntity> : Controller 
+        where TEntityModelView : class 
+        where TEntity : class, IEntityWithID
     {
         private readonly IBaseService<TEntity> _service;
 
-        public BaseController(IBaseService<TEntity> service)
+        public BaseEntityController(IBaseService<TEntity> service)
         {
             _service = service;
         }
@@ -21,7 +24,8 @@ namespace Pass.Manager.Web.Common
         public virtual ActionResult GridSearch(GridDataRequest request)
         {
             SearchResult<TEntity> result = _service.Search(GridRequestToSearchContext(request), x => true);
-            return Json(GridDataResponse.Create(request, result.Data, result.TotalCount), JsonRequestBehavior.AllowGet);
+            IEnumerable<TEntityModelView> resultView = Mapper.Map<IEnumerable<TEntity>, IEnumerable<TEntityModelView>>(result.Data);
+            return Json(GridDataResponse.Create(request, resultView, result.TotalCount), JsonRequestBehavior.AllowGet);
         }
 
         private SearchContext GridRequestToSearchContext(GridDataRequest request)

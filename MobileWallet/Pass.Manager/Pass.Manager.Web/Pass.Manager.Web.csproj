@@ -143,6 +143,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -152,7 +153,7 @@
     <Compile Include="Common\BaseViewModel.cs" />
     <Compile Include="Common\IViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Common\BaseController.cs" />
+    <Compile Include="Common\BaseEntityController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PassSiteController.cs" />
     <Compile Include="Controllers\UserController.cs" />
