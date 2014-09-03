@@ -5,6 +5,7 @@ using System.Security;
 using System.Web;
 using System.Web.Mvc;
 using Common.Extensions;
+using Common.Utils;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Web.Models;
@@ -38,12 +39,12 @@ namespace Pass.Manager.Web.Controllers
                 {
                     if (createUserViewModel.Password == createUserViewModel.ConfirmPassword)
                     {
-                        var user = new UserInfo
+                        var user = new User
                                         {
                                             UserName = createUserViewModel.UserName,
                                             FirstName = createUserViewModel.FirstName,
                                             LastName = createUserViewModel.LastName,
-                                            Password = createUserViewModel.Password.ConvertToSecureString()
+                                            Password = Crypto.CalculateHash(createUserViewModel.UserName, createUserViewModel.Password)
                                         };
                         _userService.Create(user);
                         ModelState.Add("User was created.", new ModelState());

@@ -9,27 +9,32 @@ using System.Linq;
 
 namespace Pass.Manager.BL
 {
-    public abstract class BaseService<TEntity> : IBaseService<TEntity> where TEntity : class, IEntityWithID
+    public abstract class BaseService<TEntity> : IBaseService<TEntity> where TEntity : class, IEntityWithID, new()
     {
         protected IRepository<TEntity> _repository;
+        protected IUnitOfWork _unitOfWork;
 
-        protected BaseService(IRepository<TEntity> repository)
+        protected BaseService(IUnitOfWork unitOfWork)
         {
-            _repository = repository;
+            _unitOfWork = unitOfWork;
+            _repository = _unitOfWork.GetRepository<TEntity>();
         }
 
         public virtual int Create(TEntity entity)
         {
             _repository.Insert(entity);
+            _unitOfWork.Save();
             return entity.EntityID;
         }
         public virtual void Update(TEntity entity)
         {
             _repository.Update(entity);
+            _unitOfWork.Save();
         }
         public virtual void Delete(int entityId)
         {
             _repository.Delete(entityId);
+            _unitOfWork.Save();
         }
         public virtual TEntity Get(int entityId)
         {

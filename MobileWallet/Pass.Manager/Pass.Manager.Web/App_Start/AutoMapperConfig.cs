@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Pass.Manager.Repository.Core.Entities;
+using Pass.Manager.Core.Entities;
 using Pass.Manager.Web.Models;
 using System;
 using System.Collections.Generic;

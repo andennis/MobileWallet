@@ -67,6 +67,18 @@ namespace Common.Utils
             }
         }
 
+        public static string CalculateHash(string salt, string inputStr)
+        {
+            byte[] plainTextBytes = Encoding.UTF8.GetBytes(inputStr);
+            byte[] saltBytes = Encoding.UTF8.GetBytes(salt);
+
+            byte[] concat = new byte[plainTextBytes.Length + saltBytes.Length];
+            Buffer.BlockCopy(plainTextBytes, 0, concat, 0, plainTextBytes.Length);
+            Buffer.BlockCopy(saltBytes, 0, concat, plainTextBytes.Length, saltBytes.Length);
+
+            return CalculateHash(concat);
+        }
+
         public static string CalculateHash(byte[] data)
         {
             var hashText = new StringBuilder();

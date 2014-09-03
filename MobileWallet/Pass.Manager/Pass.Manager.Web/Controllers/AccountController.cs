@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Security;
 using Common.Extensions;
+using Common.Utils;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Web.Models;
@@ -33,8 +34,8 @@ namespace Pass.Manager.Web.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    UserInfo user = _userService.Read(loginViewModel.UserName);
-                    if (user != null && loginViewModel.Password == user.Password.ConvertToUnsecureString())
+                    User user = _userService.Get(loginViewModel.UserName);
+                    if (user != null && loginViewModel.Password == Crypto.CalculateHash(user.UserName, user.Password))
                     {
                         FormsAuthentication.SetAuthCookie(loginViewModel.UserName, false);
                         return RedirectToLocal(returnUrl);

@@ -299,6 +299,10 @@
       <Project>{f36371d6-812f-49f5-9e9b-043265660647}</Project>
       <Name>Common.Repository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Common\Common.Utils\Common.Utils.csproj">
+      <Project>{F1CAD860-50FC-456C-96CD-1332CC48D03F}</Project>
+      <Name>Common.Utils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Common\Common.Web\Common.Web.csproj">
       <Project>{93dd94d6-4255-4d24-adbc-ba3eaa87ddb0}</Project>
       <Name>Common.Web</Name>

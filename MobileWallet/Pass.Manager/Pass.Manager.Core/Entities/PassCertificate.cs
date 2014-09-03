@@ -1,8 +1,8 @@
-﻿using Common.Repository;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Common.Repository;
 
-namespace Pass.Manager.Repository.Core.Entities
+namespace Pass.Manager.Core.Entities
 {
     public class PassCertificate : EntityVersionable
     {

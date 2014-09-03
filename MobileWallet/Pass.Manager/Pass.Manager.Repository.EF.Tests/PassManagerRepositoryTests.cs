@@ -1,8 +1,8 @@
 ﻿using System;
 using Common.Repository;
 using NUnit.Framework;
+using Pass.Manager.Core.Entities;
 using Pass.Manager.Repository.Core;
-using Pass.Manager.Repository.Core.Entities;
 
 namespace Pass.Manager.Repository.EF.Tests
 {

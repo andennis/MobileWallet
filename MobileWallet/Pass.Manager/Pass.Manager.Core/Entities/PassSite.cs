@@ -1,8 +1,7 @@
-﻿using Common.Repository;
-using Pass.Manager.Core.Entities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Common.Repository;
 
-namespace Pass.Manager.Repository.Core.Entities
+namespace Pass.Manager.Core.Entities
 {
     public class PassSite : EntityVersionable, IEntityWithID
     {

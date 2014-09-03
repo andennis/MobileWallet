@@ -1,4 +1,4 @@
-﻿using Pass.Manager.Repository.Core.Entities;
+﻿using Pass.Manager.Core.Entities;
 
 namespace Pass.Manager.Core
 {

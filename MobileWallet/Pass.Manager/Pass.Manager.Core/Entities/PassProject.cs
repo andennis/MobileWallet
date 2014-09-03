@@ -1,6 +1,6 @@
 ﻿using Common.Repository;
 
-namespace Pass.Manager.Repository.Core.Entities
+namespace Pass.Manager.Core.Entities
 {
     public class PassProject : EntityVersionable
     {

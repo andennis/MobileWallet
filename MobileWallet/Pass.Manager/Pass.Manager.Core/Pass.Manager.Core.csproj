@@ -49,7 +49,6 @@
     <Compile Include="Entities\PassSiteCertificate.cs" />
     <Compile Include="Entities\PassSiteUser.cs" />
     <Compile Include="Entities\User.cs" />
-    <Compile Include="Entities\UserInfo.cs" />
     <Compile Include="IBaseService.cs" />
     <Compile Include="IPassManagerConfig.cs" />
     <Compile Include="IPassSiteService.cs" />

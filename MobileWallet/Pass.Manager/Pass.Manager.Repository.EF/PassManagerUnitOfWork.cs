@@ -1,7 +1,7 @@
 ﻿using Common.Repository;
 using Common.Repository.EF;
+using Pass.Manager.Core.Entities;
 using Pass.Manager.Repository.Core;
-using Pass.Manager.Repository.Core.Entities;
 using System;
 using System.Collections.Generic;
 

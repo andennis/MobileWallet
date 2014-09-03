@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Common.Web.Grid;
 using Pass.Manager.Core;
-using Pass.Manager.Repository.Core.Entities;
+using Pass.Manager.Core.Entities;
 using Pass.Manager.Web.Common;
 using Pass.Manager.Web.Models;
 
