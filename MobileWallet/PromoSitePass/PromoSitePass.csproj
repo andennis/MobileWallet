@@ -160,6 +160,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PassDesignerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -312,6 +313,7 @@
     <Content Include="Scripts\createCard\knockout-2.3.0.js" />
     <Content Include="Scripts\createCard\mColorPicker.js" />
     <Content Include="Scripts\createCard\min.blur.js" />
+    <Content Include="Scripts\createCard\passDesigner.js" />
     <Content Include="Scripts\createCard\StackBlur.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -320,11 +322,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\MainPage\cbpHorizontalMenu.js" />
-    <Content Include="Scripts\MainPage\cbpTooltipMenu.js" />
-    <Content Include="Scripts\MainPage\cbpTooltipMenu.min.js" />
-    <Content Include="Scripts\MainPage\mainPage.js" />
-    <Content Include="Scripts\MainPage\modernizr.custom.js" />
+    <Content Include="Scripts\MainPage\promoSite.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -357,26 +355,19 @@
     <Content Include="Views\Home\CreateCard.cshtml" />
     <Content Include="Views\Home\MainPage.cshtml" />
     <Content Include="Views\Home\CouponsStrategy.cshtml" />
-    <Content Include="Views\Home\FrontContentTab.cshtml" />
-    <Content Include="Views\Home\BackContentTab.cshtml" />
-    <Content Include="Views\Home\DesignTab.cshtml" />
-    <Content Include="Views\Home\PassSettingsTab.cshtml" />
-    <Content Include="Views\Home\LockScreenTab.cshtml" />
-    <Content Include="Views\Home\LanguagesTab.cshtml" />
-    <Content Include="Views\Home\DistributionTab.cshtml" />
     <Content Include="Views\Home\BusinessCardStrategy.cshtml" />
     <Content Include="Views\Home\EventTicketsStrategy.cshtml" />
     <Content Include="Views\Home\MembershipStrategy.cshtml" />
     <Content Include="Views\Home\StampStrategy.cshtml" />
     <Content Include="Views\Home\TransitTicketsStrategy.cshtml" />
-    <Content Include="Views\Home\_BackContentTab.cshtml" />
-    <Content Include="Views\Home\_DesignTab.cshtml" />
-    <Content Include="Views\Home\_DistributionTab.cshtml" />
-    <Content Include="Views\Home\_FrontContentTab.cshtml" />
-    <Content Include="Views\Home\_LanguagesTab.cshtml" />
-    <Content Include="Views\Home\_LockScreenTab.cshtml" />
-    <Content Include="Views\Home\_PassDesigner.cshtml" />
-    <Content Include="Views\Home\_PassSettingsTab.cshtml" />
+    <Content Include="Views\PassDesigner\_BackContentTab.cshtml" />
+    <Content Include="Views\PassDesigner\_DesignTab.cshtml" />
+    <Content Include="Views\PassDesigner\_DistributionTab.cshtml" />
+    <Content Include="Views\PassDesigner\_FrontContentTab.cshtml" />
+    <Content Include="Views\PassDesigner\_LanguagesTab.cshtml" />
+    <Content Include="Views\PassDesigner\_LockScreenTab.cshtml" />
+    <Content Include="Views\PassDesigner\_PassDesigner.cshtml" />
+    <Content Include="Views\PassDesigner\_PassSettingsTab.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
