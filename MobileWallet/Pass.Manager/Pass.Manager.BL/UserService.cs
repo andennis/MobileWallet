@@ -11,21 +11,9 @@ namespace Pass.Manager.BL
 {
     public class UserService: BaseService<User>, IUserService
     {
-        private readonly IPassManagerUnitOfWork _pmUnitOfWork;
-
         public UserService(IPassManagerUnitOfWork unitOfWork)
             : base(unitOfWork)
         {
-            _pmUnitOfWork = unitOfWork;
-        }
-       
-        public override int Create(User user)
-        {
-            user.Password = Crypto.CalculateHash(user.UserName, user.Password);
-            base.Create(user);
-            _pmUnitOfWork.Save();
-
-            return user.UserId;
         }
 
         public User Get(string userName)

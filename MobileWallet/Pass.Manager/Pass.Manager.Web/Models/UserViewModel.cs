@@ -8,8 +8,8 @@ using Pass.Manager.Web.Common;
 
 namespace Pass.Manager.Web.Models
 {
-    [Validator(typeof(CreateUserViewModel))]
-    public class CreateUserViewModel : BaseViewModel
+    [Validator(typeof(UserViewModel))]
+    public class UserViewModel : BaseViewModel
     {
         public override string DisplayName { get { return "Create user"; } }
         public string UserName { get; set; }

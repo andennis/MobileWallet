@@ -2,12 +2,8 @@
 
 namespace Pass.Manager.Core
 {
-    public interface IUserService
+    public interface IUserService : IBaseService<User>
     {
-        int Create(User userInfo);
-        User Get(int userId);
         User Get(string userName);
-        void Update(User userInfo);
-        void Delete(int userId);
     }
 }

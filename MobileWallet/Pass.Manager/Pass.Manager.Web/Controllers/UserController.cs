@@ -8,46 +8,55 @@ using Common.Extensions;
 using Common.Utils;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
+using Pass.Manager.Web.Common;
 using Pass.Manager.Web.Models;
 
 namespace Pass.Manager.Web.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseEntityController<UserViewModel, User>
     {
         private readonly IUserService _userService;
 
         public UserController(IUserService userService)
+            : base(userService)
         {
             _userService = userService;
         }
 
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult CreateUser(string returnUrl)
+        public ActionResult Manage(string returnUrl)
         {
-            return View(new CreateUserViewModel());
+            return View(new UserViewModel());
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult Create(string returnUrl)
+        {
+            return View(new UserViewModel());
         }
 
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateUser(CreateUserViewModel createUserViewModel, string returnUrl)
+        public ActionResult Create(UserViewModel userViewModel, string returnUrl)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    if (createUserViewModel.Password == createUserViewModel.ConfirmPassword)
+                    if (userViewModel.Password == userViewModel.ConfirmPassword)
                     {
                         var user = new User
                                         {
-                                            UserName = createUserViewModel.UserName,
-                                            FirstName = createUserViewModel.FirstName,
-                                            LastName = createUserViewModel.LastName,
-                                            Password = Crypto.CalculateHash(createUserViewModel.UserName, createUserViewModel.Password)
+                                            UserName = userViewModel.UserName,
+                                            FirstName = userViewModel.FirstName,
+                                            LastName = userViewModel.LastName,
+                                            Password = Crypto.CalculateHash(userViewModel.UserName, userViewModel.Password)
                                         };
                         _userService.Create(user);
-                        ModelState.Add("User was created.", new ModelState());
+                        ViewBag.CreateUserResult = "User was created.";
                     }
                 }
             }
@@ -55,7 +64,7 @@ namespace Pass.Manager.Web.Controllers
             {
                 ModelState.AddModelError("", "Create user has failed.");
             }
-            return View(createUserViewModel);
+            return View(userViewModel);
         }
     }
 }

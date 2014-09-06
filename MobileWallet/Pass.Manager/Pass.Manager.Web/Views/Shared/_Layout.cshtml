@@ -15,7 +15,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-offset-11 col-md-12">
-                    @(Html.ActionLinkExt<UserController>(c => c.CreateUser(VirtualPath), "Create User"))
+                    @(Html.ActionLinkExt<UserController>(c => c.Create(VirtualPath), "Create User"))
                     @(Html.ActionLinkExt<AccountController>(c => c.LogOff(), "Log Off"))
                 </div>
             </div>
