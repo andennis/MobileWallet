@@ -50,13 +50,14 @@ namespace Pass.Manager.BL
             int totalCount;
             IEnumerable<TEntity> data = _repository.Query()
                 .Filter(searchExpression)
-                .OrderBy(orderBy)
-                .GetPage(searchContext.PageIndex, searchContext.PageSize, out totalCount);
+                .Get();
+                //.OrderBy(orderBy)
+                //.GetPage(searchContext.PageIndex, searchContext.PageSize, out totalCount);
 
             return new SearchResult<TEntity>()
             {
                 Data = data,
-                TotalCount = totalCount
+                TotalCount = data.Count()
             };
 
         }

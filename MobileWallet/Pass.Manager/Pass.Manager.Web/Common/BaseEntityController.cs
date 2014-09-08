@@ -32,8 +32,8 @@ namespace Pass.Manager.Web.Common
         {
             return new SearchContext()
                    {
-                       PageIndex = request.iDisplayStart,
-                       PageSize = request.iDisplayLength
+                       PageIndex = request.start,
+                       PageSize = request.length
                    };
         }
     }

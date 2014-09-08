@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using Common.Extensions;
+using Common.Extensions.JsonNetConverters;
+using Newtonsoft.Json;
 
 namespace Common.Web.Grid
 {
@@ -99,19 +102,30 @@ namespace Common.Web.Grid
 
         private string GetGridInitializationScript()
         {
-            var columns = _gridModel.ColumnFactory.Columns.Select(x => new {mData = x.ColName, sTitle = x.ColTitle});
+            var tblColumns = _gridModel.ColumnFactory.Columns
+                .Select(x => new GridColumn
+                             {
+                                 Name = x.ColName, 
+                                 Title = x.ColTitle, 
+                                 Visible = x.IsVisible,
+                                 Render = GetRenderJsFuncByClientTemplate(x.ColClientTemplate)
+                             });
             
             var tableSettings = new
                                 {
-                                    bServerSide = true,
-                                    sAjaxSource = _gridModel.DataSourceFactory.Action,
-                                    bProcessing = true,
-                                    bFilter = false,
-                                    bSort = _gridModel.Sortable,
-                                    bPaginate = _gridModel.Pageable,
-                                    bInfo = false,
-                                    oLanguage = new { sZeroRecords = "No data"},
-                                    aoColumns = columns
+                                    serverSide = true,
+                                    ajax = new GridAjaxRequest()
+                                           {
+                                               Url = _gridModel.DataSourceFactory.Action, 
+                                               Data = _gridModel.DataSourceFactory.DataHandler
+                                           },
+                                    processing = true,
+                                    searching = false,
+                                    ordering = _gridModel.Sortable,
+                                    paging = _gridModel.Pageable,
+                                    info = false,
+                                    language = new { infoEmpty = "No records available" },
+                                    columns = tblColumns
                                 };
 
             var scriptTag = new TagBuilder("script");
@@ -121,6 +135,18 @@ namespace Common.Web.Grid
             })";
 
             return scriptTag.ToString();
+        }
+
+        private string GetRenderJsFuncByClientTemplate(string clientTemplate)
+        {
+            if (string.IsNullOrEmpty(clientTemplate))
+                return null;
+
+            clientTemplate = Regex.Replace(clientTemplate, @"#=\s*(\S+?)\s*#", "'+row.$1+'");
+
+            return @"function(data, type, row) {
+                            return '"+clientTemplate+@"';
+                        }";
         }
     }
 }

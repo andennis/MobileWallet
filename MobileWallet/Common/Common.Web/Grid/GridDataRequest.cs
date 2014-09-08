@@ -3,6 +3,10 @@ namespace Common.Web.Grid
 {
     public class GridDataRequest
     {
+        public int draw { get; set; }
+        public int start { get; set; }
+        public int length { get; set; }
+        /*
         /// <summary>
         /// Request sequence number sent by DataTable,
         /// same value must be returned in response
@@ -38,5 +42,6 @@ namespace Common.Web.Grid
         /// Comma separated list of column names
         /// </summary>
         public string sColumns { get; set; }
+        */
     }
 }

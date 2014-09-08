@@ -36,6 +36,9 @@
       <Private>True</Private>
       <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -71,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FormControlExtensions.cs" />
+    <Compile Include="Grid\GridColumn.cs" />
     <Compile Include="Grid\GridDataRequest.cs" />
     <Compile Include="Grid\GridDataResponse.cs" />
     <Compile Include="Grid\GridBoundColumnBuilder.cs" />
@@ -80,6 +84,7 @@
     <Compile Include="Grid\GridColumnViewModel.cs" />
     <Compile Include="Grid\GridDataSourceFactory.cs" />
     <Compile Include="Grid\GridViewModel.cs" />
+    <Compile Include="Grid\GridAjaxRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

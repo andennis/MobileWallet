@@ -4,7 +4,11 @@ namespace Common.Extensions
 {
     public static class JsonExtensions
     {
-        private readonly static JsonSerializerSettings _serializerSettings = new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore };
+        private readonly static JsonSerializerSettings _serializerSettings = new JsonSerializerSettings()
+                                                                             {
+                                                                                 NullValueHandling = NullValueHandling.Ignore, 
+                                                                                 Formatting = Formatting.Indented
+                                                                             };
 
         public static string ObjectToJson(this object obj)
         {

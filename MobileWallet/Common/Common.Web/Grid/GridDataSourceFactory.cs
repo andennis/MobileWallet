@@ -9,13 +9,18 @@ namespace Common.Web.Grid
 {
     public class GridDataSourceFactory<TModel> where TModel : class
     {
-        private string _url;
-
-        public void Read(string url)
+        public GridDataSourceFactory<TModel> Read(string url)
         {
-            _url = url;
+            Action = url;
+            return this;
         }
 
-        internal string Action { get { return _url; }}
+        public void Data(string dataHandler)
+        {
+            DataHandler = dataHandler;
+        }
+
+        internal string Action { get; set; }
+        internal string DataHandler { get; set; }
     }
 }

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using Common.Extensions;
 
 namespace Common.Web.Grid
@@ -19,6 +16,15 @@ namespace Common.Web.Grid
         public GridBoundColumnBuilder<TModel> Bound<TValue>(Expression<Func<TModel, TValue>> expression)
         {
             var builder = new GridBoundColumnBuilder<TModel>(expression.GetMethodOrPropertyName());
+            Columns.Add(builder);
+            return builder;
+        }
+
+        public GridBoundColumnBuilder<TModel> BoundLink<TValue, TId>(Expression<Func<TModel, TValue>> expression, string url, Expression<Func<TModel, TId>> expressionId)
+        {
+            var builder = new GridBoundColumnBuilder<TModel>(expression.GetMethodOrPropertyName());
+            string idColName = expressionId.GetMethodOrPropertyName();
+            builder.ClientTemplate(string.Format("<a id=\"{0}.#={1}#\" href=\"{2}/#={1}#\">#={0}#</a>", builder.ColName, idColName, url));
             Columns.Add(builder);
             return builder;
         }

@@ -25,6 +25,7 @@ namespace Pass.Manager.Web.Controllers
 
         private class MyClass
         {
+            public int DT_RowId { get; set; }
             public int Id { get; set; }
             public string Name { get; set; }
             public string Address { get; set; }
@@ -32,7 +33,7 @@ namespace Pass.Manager.Web.Controllers
         }
 
         [AjaxOnly]
-        public ActionResult AjaxHandler2(GridDataRequest request)
+        public ActionResult AjaxHandler2(GridDataRequest request, string p1)
         {
             var data = new List<PassSiteViewModel>()
                        {
@@ -44,13 +45,13 @@ namespace Pass.Manager.Web.Controllers
         }
 
         [AjaxOnly]
-        public ActionResult AjaxHandler(GridDataRequest request)
+        public ActionResult AjaxHandler(GridDataRequest request, string p1)
         {
             var data = new List<MyClass>()
                        {
-                           new MyClass(){ Id = 1,  Name = "Microsoft", Address = "Redmond", Town = "USA"},
-                           new MyClass(){Id = 2, Name = "Google", Address = "Mountain View", Town = "USA"},
-                           new MyClass() { Id = 3, Name = "Gowi", Address = "Pancevo", Town = "Serbia"}
+                           new MyClass(){ DT_RowId = 1, Id = 1,  Name = "Microsoft", Address = "Redmond", Town = "USA"},
+                           new MyClass(){ DT_RowId = 2, Id = 2, Name = "Google", Address = "Mountain View", Town = "USA"},
+                           new MyClass() { DT_RowId = 3, Id = 3, Name = "Gowi", Address = "Pancevo", Town = "Serbia"}
                        };
             return Json(GridDataResponse.Create(request, data, 3), JsonRequestBehavior.AllowGet);
         }

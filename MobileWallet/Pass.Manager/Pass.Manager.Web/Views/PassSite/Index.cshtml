@@ -3,20 +3,21 @@
 @{
     Layout = "~/Views/Shared/_LayoutIndex.cshtml";
 }
-
+<h3>Table1</h3>
 <div class="container">
     <table id="myDataTable"></table>
-    
 </div>
 <br/>
+
+<h3>Table3</h3>
 <div class="container">
     @(Html.Grid<PassSiteViewModel>()
-        .Name("myDataTable2")
-        .DataSource(ds => ds.Read(@Url.Action("GridSearch")))
+        .Name("myDataTable3")
+                .DataSource(ds => ds.Read(@Url.Action("AjaxHandler2")).Data("{ p1: \"888\" }"))
         .Columns(c =>
                  {
                      c.Bound(p => p.PassSiteId).Title("ID");
-                     c.Bound(p => p.Name);
+                     c.BoundLink(p => p.Name, Url.Action("Edit"), id => id.PassSiteId);
                      c.Bound(p => p.Description);
                  }))
         
@@ -25,25 +26,36 @@
 @section Scripts
 {
     <script type="text/javascript">
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#myDataTable').dataTable({
-                bServerSide: true,
-                sAjaxSource: "@Url.Action("AjaxHandler")",
-                bProcessing: true,
-                bFilter: false,
-                //bPaginate: false,
-                //bInfo: false,
-                oLanguage: {
-                    sZeroRecords: "No data",
+                "paging": false,
+                "searching": false,
+                "ordering": true,
+                "info": false,
+                "serverSide": true,
+                "ajax": {
+                    url: "@Url.Action("AjaxHandler")",
+                    data: myDataTable3DataHandler //function () { return { p1: "hello" }; }
                 },
-                aoColumns: [
-                                { mData: "Id", sTitle: "MyId" },
-                                { mData: "Name", sTitle: "MyName" },
-                                { mData: "Address", sTitle: "MyAddress" },
-                                { mData: "Town", sTitle: "MyTown" }
+                "processing": true,
+                "columns": [
+                    {
+                        data: "Id",
+                        title: "MyId",
+                        render: function(data, type, row) {
+                            return data + ' (' + row.Id + ')';
+                        }
+                    },
+                    { data: "Name", title: "MyName", orderable: true},
+                    { data: "Address", title: "MyAddress" },
+                    { data: "Town", title: "MyTown" }
                 ]
-                
+
             });
         })
+
+        function myDataTable3DataHandler() {
+            return { p1: "777" };
+        }
     </script>
 }
