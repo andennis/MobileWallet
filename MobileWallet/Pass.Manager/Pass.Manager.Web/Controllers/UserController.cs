@@ -28,7 +28,7 @@ namespace Pass.Manager.Web.Controllers
         [ValidateAntiForgeryToken]
         public override ActionResult Create(UserViewModel userViewModel)
         {
-            ValidationResult validationResult = new CreateUserViewModelValidator().Validate(userViewModel);
+            ValidationResult validationResult = new UserPasswordValidator().Validate(userViewModel);
             foreach (ValidationFailure error in validationResult.Errors)
                 ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
 
