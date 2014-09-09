@@ -10,6 +10,8 @@ namespace Pass.Manager.Web
         {
             Mapper.CreateMap<PassSite, PassSiteViewModel>();
             Mapper.CreateMap<PassSiteViewModel, PassSite>();
+            Mapper.CreateMap<User, UserViewModel>();
+            Mapper.CreateMap<UserViewModel, User>();
         }
     }
 }

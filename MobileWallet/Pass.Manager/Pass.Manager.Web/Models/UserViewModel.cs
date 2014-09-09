@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-using FluentValidation.Attributes;
+﻿using FluentValidation.Attributes;
 using Pass.Manager.Web.Common;
+using Pass.Manager.Web.Validators;
 
 namespace Pass.Manager.Web.Models
 {
-    [Validator(typeof(UserViewModel))]
+    [Validator(typeof(UserViewModelValidator))]
     public class UserViewModel : BaseViewModel
     {
         public override string DisplayName { get { return "Create user"; } }
+
+        public int UserId { get; set; }
         public string UserName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

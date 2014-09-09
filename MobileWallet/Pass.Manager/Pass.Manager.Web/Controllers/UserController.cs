@@ -4,67 +4,45 @@ using System.Linq;
 using System.Security;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using Common.Extensions;
 using Common.Utils;
+using FluentValidation.Results;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Web.Common;
 using Pass.Manager.Web.Models;
+using Pass.Manager.Web.Validators;
 
 namespace Pass.Manager.Web.Controllers
 {
     public class UserController : BaseEntityController<UserViewModel, User>
     {
-        private readonly IUserService _userService;
-
         public UserController(IUserService userService)
             : base(userService)
         {
-            _userService = userService;
-        }
-
-        [HttpGet]
-        [AllowAnonymous]
-        public ActionResult Manage(string returnUrl)
-        {
-            return View(new UserViewModel());
-        }
-
-        [HttpGet]
-        [AllowAnonymous]
-        public ActionResult Create(string returnUrl)
-        {
-            return View(new UserViewModel());
         }
 
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(UserViewModel userViewModel, string returnUrl)
+        public override ActionResult Create(UserViewModel userViewModel)
         {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    if (userViewModel.Password == userViewModel.ConfirmPassword)
-                    {
-                        var user = new User
-                                        {
-                                            UserName = userViewModel.UserName,
-                                            FirstName = userViewModel.FirstName,
-                                            LastName = userViewModel.LastName,
-                                            Password = Crypto.CalculateHash(userViewModel.UserName, userViewModel.Password)
-                                        };
-                        _userService.Create(user);
-                        ViewBag.CreateUserResult = "User was created.";
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                ModelState.AddModelError("", "Create user has failed.");
-            }
-            return View(userViewModel);
+            ValidationResult validationResult = new CreateUserViewModelValidator().Validate(userViewModel);
+            foreach (ValidationFailure error in validationResult.Errors)
+                ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+
+            userViewModel.Password = Crypto.CalculateHash(userViewModel.UserName, userViewModel.Password);
+            return base.Create(userViewModel);
         }
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public override ActionResult Edit(UserViewModel userViewModel)
+        //{
+        //    User user = _userService.Get(userViewModel.UserId);
+        //    userViewModel.Password = user.Password;
+        //    return base.Edit(userViewModel);
+        //}
     }
 }

@@ -164,6 +164,7 @@
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PassSiteViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\CreateUserViewModelValidator.cs" />
     <Compile Include="Validators\PassSiteViewModelValidator.cs" />
     <Compile Include="Validators\UserViewModelValidator.cs" />
     <Compile Include="Validators\LoginViewModelValidator.cs" />
@@ -879,7 +880,7 @@
     <Content Include="Views\Shared\_LayoutIndex.cshtml" />
     <Content Include="Views\PassSite\Index.cshtml" />
     <Content Include="Views\User\Create.cshtml" />
-    <Content Include="Views\User\Manage.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
     <Content Include="Scripts\kendo\2014.2.716\kendo.window.min.js.map" />
     <Content Include="Scripts\kendo\2014.2.716\kendo.view.min.js.map" />
     <Content Include="Scripts\kendo\2014.2.716\kendo.validator.min.js.map" />
@@ -949,6 +950,8 @@
     <Content Include="Views\PassSite\Create.cshtml" />
     <Content Include="Views\PassSite\Edit.cshtml" />
     <Content Include="Views\PassSite\_Form.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\_Form.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common.Extensions\Common.Extensions.csproj">
