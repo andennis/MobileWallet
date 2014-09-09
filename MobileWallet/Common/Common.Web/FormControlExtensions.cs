@@ -50,6 +50,15 @@ namespace Common.Web
         }
         #endregion
 
+        #region Partial
+
+        public static MvcHtmlString PartialEx(this HtmlHelper html, string partialViewName, object model = null, ViewDataDictionary viewData = null)
+        {
+            return html.Partial(partialViewName, model, viewData);
+        }
+
+        #endregion
+
         #region TextBox
         public static MvcHtmlString TextBoxForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, object htmlAttributes = null)
         {
@@ -58,6 +67,17 @@ namespace Common.Web
         public static MvcHtmlString TextBoxFormForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string labelText = null)
         {
             return html.LabelWithControl(expression, labelText, null, () => html.TextBoxFor(expression, _initControlAttributes));
+        }
+        #endregion
+
+        #region TextArea
+        public static MvcHtmlString TextAreaForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, object htmlAttributes = null)
+        {
+            return html.TextAreaFor(expression, htmlAttributes);
+        }
+        public static MvcHtmlString TextAreaFormForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string labelText = null)
+        {
+            return html.LabelWithControl(expression, labelText, null, () => html.TextAreaFor(expression, _initControlAttributes));
         }
         #endregion
 
@@ -86,7 +106,6 @@ namespace Common.Web
         #endregion
 
         #region ActionLink
-
         public static MvcHtmlString ActionLinkExt<TController>(this HtmlHelper html, Expression<Func<TController, ActionResult>> action, 
             string linkText, object routeValues = null, object htmlAttributes = null)
             where TController : Controller
@@ -98,7 +117,6 @@ namespace Common.Web
         {
             return html.ActionLink(linkText, actionName, controllerName, routeValues, htmlAttributes);
         }
-
         #endregion
 
         private class ActionInfo

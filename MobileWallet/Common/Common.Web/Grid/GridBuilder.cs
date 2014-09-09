@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Mvc.Html;
 using Common.Extensions;
-using Common.Extensions.JsonNetConverters;
-using Newtonsoft.Json;
 
 namespace Common.Web.Grid
 {
@@ -84,8 +79,7 @@ namespace Common.Web.Grid
             var sb = new StringBuilder();
             var tableTag = new TagBuilder("table");
             tableTag.GenerateId(_gridModel.Name);
-
-            string style;
+            tableTag.AddCssClass("table table-bordered table-striped");
 
             if (!string.IsNullOrEmpty(_gridModel.Width))
                 tableTag.Attributes.Add("style", "width:" + _gridModel.Width + ";");
@@ -108,6 +102,7 @@ namespace Common.Web.Grid
                                  Name = x.ColName, 
                                  Title = x.ColTitle, 
                                  Visible = x.IsVisible,
+                                 Width = x.ColWidth,
                                  Render = GetRenderJsFuncByClientTemplate(x.ColClientTemplate)
                              });
             

@@ -11,8 +11,8 @@ namespace Pass.Manager.BL
 {
     public abstract class BaseService<TEntity> : IBaseService<TEntity> where TEntity : class, IEntityWithID, new()
     {
-        protected IRepository<TEntity> _repository;
-        protected IUnitOfWork _unitOfWork;
+        protected readonly IRepository<TEntity> _repository;
+        protected readonly IUnitOfWork _unitOfWork;
 
         protected BaseService(IUnitOfWork unitOfWork)
         {
@@ -41,18 +41,12 @@ namespace Pass.Manager.BL
             return _repository.Find(entityId);
         }
         public virtual SearchResult<TEntity> Search(SearchContext searchContext, 
-            Expression<Func<TEntity, bool>> searchExpression = null, 
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null)
+            Expression<Func<TEntity, bool>> searchExpression = null)
         {
-            if (orderBy == null)
-                orderBy = q => q.OrderBy(x => x.EntityID);
-
             int totalCount;
             IEnumerable<TEntity> data = _repository.Query()
                 .Filter(searchExpression)
                 .Get();
-                //.OrderBy(orderBy)
-                //.GetPage(searchContext.PageIndex, searchContext.PageSize, out totalCount);
 
             return new SearchResult<TEntity>()
             {

@@ -9,7 +9,7 @@
 @using (Html.BeginFormExt())
 {
     @Html.AntiForgeryToken()
-    <div class="container">
+    <div class="container well">
         @Html.TextBoxFormForExt(m => m.UserName, "User Name")
         @Html.PasswordFormForExt(m => m.Password)
 

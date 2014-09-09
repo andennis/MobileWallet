@@ -1,11 +1,15 @@
 ﻿@model IViewModel
 
 @{
-    ViewBag.Title = Model.DisplayName;
+    //ViewBag.Title = Model.DisplayName;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@RenderBody()
+<div class="container">
+    @Html.ActionLinkExt("Add New", "Create")
+    @RenderBody()
+</div>
+    
 
 @section Scripts
 {

@@ -164,6 +164,7 @@
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PassSiteViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\PassSiteViewModelValidator.cs" />
     <Compile Include="Validators\UserViewModelValidator.cs" />
     <Compile Include="Validators\LoginViewModelValidator.cs" />
   </ItemGroup>
@@ -943,6 +944,11 @@
     <Content Include="Scripts\kendo\2014.2.716\kendo.autocomplete.min.js.map" />
     <Content Include="Scripts\kendo\2014.2.716\kendo.angular.min.js.map" />
     <Content Include="Scripts\kendo\2014.2.716\jquery.min.map" />
+    <Content Include="Views\Shared\_LayoutCreate.cshtml" />
+    <Content Include="Views\Shared\_LayoutEdit.cshtml" />
+    <Content Include="Views\PassSite\Create.cshtml" />
+    <Content Include="Views\PassSite\Edit.cshtml" />
+    <Content Include="Views\PassSite\_Form.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common.Extensions\Common.Extensions.csproj">

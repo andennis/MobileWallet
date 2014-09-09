@@ -14,6 +14,9 @@ namespace Common.Web.Grid
         [JsonProperty(PropertyName = "visible")]
         public bool Visible { get; set; }
 
+        [JsonProperty(PropertyName = "width")]
+        public string Width { get; set; }
+
         [JsonConverter(typeof(JsonValueWithoutQuotesConverter))]
         [JsonProperty(PropertyName = "render")]
         public string Render { get; set; }

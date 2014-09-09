@@ -10,11 +10,17 @@ namespace Common.Web.Grid
             IsVisible = true;
         }
 
+        internal string ColWidth { get; private set; }
         internal string ColName { get; private set; }
         internal string ColTitle { get; set; }
         internal bool IsVisible { get; set; }
         internal string ColClientTemplate { get; set; }
 
+        public GridBoundColumnBuilder<TModel> Width(string width)
+        {
+            ColWidth = width;
+            return this;
+        }
         public GridBoundColumnBuilder<TModel> Title(string title)
         {
             ColTitle = title;

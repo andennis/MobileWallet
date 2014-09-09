@@ -15,13 +15,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-offset-11 col-md-12">
-                    @(Html.ActionLinkExt<UserController>(c => c.Create(VirtualPath), "Create User"))
                     @(Html.ActionLinkExt<AccountController>(c => c.LogOff(), "Log Off"))
                 </div>
             </div>
         </div>
-
-        @RenderBody()
+        <div class="container well">
+            @RenderBody()    
+        </div>
+        
     </div>
 
     @RenderSection("Scripts", false)

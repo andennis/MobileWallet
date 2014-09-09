@@ -18,11 +18,6 @@ namespace Pass.Manager.Web.Controllers
         {
         }
 
-        public ActionResult Index()
-        {
-            return View(new PassSiteViewModel());
-        }
-
         private class MyClass
         {
             public int DT_RowId { get; set; }

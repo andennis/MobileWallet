@@ -1,32 +1,24 @@
-﻿@model PassSiteViewModel
-
-@{
+﻿@{
     Layout = "~/Views/Shared/_LayoutIndex.cshtml";
 }
-<h3>Table1</h3>
-<div class="container">
-    <table id="myDataTable"></table>
-</div>
-<br/>
 
-<h3>Table3</h3>
-<div class="container">
-    @(Html.Grid<PassSiteViewModel>()
-        .Name("myDataTable3")
-                .DataSource(ds => ds.Read(@Url.Action("AjaxHandler2")).Data("{ p1: \"888\" }"))
-        .Columns(c =>
-                 {
-                     c.Bound(p => p.PassSiteId).Title("ID");
-                     c.BoundLink(p => p.Name, Url.Action("Edit"), id => id.PassSiteId);
-                     c.Bound(p => p.Description);
-                 }))
+@(Html.Grid<PassSiteViewModel>()
+    .Name("grdPassSites")
+    .Pageable()
+    .DataSource(ds => ds.Read(@Url.Action("GridSearch")))
+    .Columns(c =>
+                {
+                    c.Bound(p => p.PassSiteId).Title("ID").Width("100px");
+                    c.BoundLink(p => p.Name, Url.Action("Edit"), id => id.PassSiteId);
+                    c.Bound(p => p.Description);
+                }))
         
-</div>
-
 @section Scripts
 {
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
+
+          @*  
             $('#myDataTable').dataTable({
                 "paging": false,
                 "searching": false,
@@ -52,10 +44,13 @@
                 ]
 
             });
+        *@        
         })
-
+        
+        /*
         function myDataTable3DataHandler() {
             return { p1: "777" };
         }
+        */
     </script>
 }
