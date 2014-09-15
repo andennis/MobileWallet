@@ -8,13 +8,13 @@ using AutoMapper;
 
 namespace Pass.Manager.Web.Common
 {
-    public class BaseEntityController<TEntityModelView, TEntity> : Controller
+    public abstract class BaseEntityController<TEntityModelView, TEntity> : Controller
         where TEntityModelView : class, IViewModel, new() 
         where TEntity : class, IEntityWithID
     {
         private readonly IBaseService<TEntity> _service;
 
-        public BaseEntityController(IBaseService<TEntity> service)
+        protected BaseEntityController(IBaseService<TEntity> service)
         {
             _service = service;
         }

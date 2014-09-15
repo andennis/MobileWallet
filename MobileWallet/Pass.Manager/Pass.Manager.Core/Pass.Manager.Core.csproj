@@ -45,6 +45,7 @@
     <Compile Include="Entities\PassCertificate.cs" />
     <Compile Include="Entities\PassCertificateApple.cs" />
     <Compile Include="Entities\PassProject.cs" />
+    <Compile Include="Entities\PassProjectType.cs" />
     <Compile Include="Entities\PassSite.cs" />
     <Compile Include="Entities\PassSiteCertificate.cs" />
     <Compile Include="Entities\PassSiteUser.cs" />

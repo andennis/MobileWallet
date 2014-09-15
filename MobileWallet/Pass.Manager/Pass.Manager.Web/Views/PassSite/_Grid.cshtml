@@ -1,0 +1,11 @@
+﻿@(Html.Grid<PassSiteViewModel>()
+    .Name("grdPassSites")
+    .Pageable()
+    .DataSource(ds => ds.Read(@Url.Action("GridSearch")))
+    .Columns(c =>
+                {
+                    c.Bound(p => p.PassSiteId).Title("ID").Width("100px");
+                    c.BoundLink(p => p.Name, Url.Action("Edit"), id => id.PassSiteId);
+                    c.Bound(p => p.Description);
+                }))
+

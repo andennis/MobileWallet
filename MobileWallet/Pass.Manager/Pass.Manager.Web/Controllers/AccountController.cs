@@ -63,10 +63,8 @@ namespace Pass.Manager.Web.Controllers
             {
                 return Redirect(returnUrl);
             }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
+
+            return RedirectToAction("Index", "Home");
         }
 
     }

@@ -877,7 +877,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutIndex.cshtml" />
-    <Content Include="Views\PassSite\Index.cshtml" />
+    <Content Include="Views\Shared\Index.cshtml" />
     <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Scripts\kendo\2014.2.716\kendo.window.min.js.map" />
@@ -951,6 +951,7 @@
     <Content Include="Views\PassSite\_Form.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\_Form.cshtml" />
+    <Content Include="Views\PassSite\_Grid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common.Extensions\Common.Extensions.csproj">

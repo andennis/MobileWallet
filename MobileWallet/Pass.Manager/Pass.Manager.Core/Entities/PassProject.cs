@@ -9,6 +9,7 @@ namespace Pass.Manager.Core.Entities
         public string Description { get; set; }
         public int PassTemplateId { get; set; }
         public int PassSiteId { get; set; }
+        public PassProjectType ProjectType { get; set; }
         public PassSite PassSite { get; set; }
     }
 }

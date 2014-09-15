@@ -7,7 +7,11 @@ namespace Pass.Manager.Web.Models
     [Validator(typeof(UserViewModelValidator))]
     public class UserViewModel : BaseViewModel
     {
-        public override string DisplayName { get { return "Create user"; } }
+        public override string DisplayName { get { return "User"; } }
+        public override int EntityId
+        {
+            get { return UserId; }
+        }
 
         public int UserId { get; set; }
         public string UserName { get; set; }
@@ -15,10 +19,5 @@ namespace Pass.Manager.Web.Models
         public string LastName { get; set; }
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
-
-        public override int EntityId
-        {
-            get { return UserId; }
-        }
     }
 }

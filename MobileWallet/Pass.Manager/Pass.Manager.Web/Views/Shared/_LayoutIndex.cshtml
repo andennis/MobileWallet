@@ -5,8 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container">
-    @Html.ActionLinkExt("Add New", "Create")
+<div class="container-fluid">
+    @Html.ActionLinkExt("Add New", "Create", htmlAttributes: new { @class = "btn btn-default" })
     @RenderBody()
 </div>
     
