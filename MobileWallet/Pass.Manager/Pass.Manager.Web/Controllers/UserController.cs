@@ -23,16 +23,9 @@ namespace Pass.Manager.Web.Controllers
         {
         }
 
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         public override ActionResult Create(UserViewModel userViewModel)
         {
-            ValidationResult validationResult = new UserPasswordValidator().Validate(userViewModel);
-            foreach (ValidationFailure error in validationResult.Errors)
-                ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
-
-            userViewModel.Password = Crypto.CalculateHash(userViewModel.UserName, userViewModel.Password);
+            userViewModel.Password = Crypto.CalculateHash(userViewModel.UserName.ToLower(), userViewModel.Password);
             return base.Create(userViewModel);
         }
 

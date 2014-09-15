@@ -18,6 +18,7 @@ namespace Pass.Manager.Web.Controllers
         {
         }
 
+        /*
         private class MyClass
         {
             public int DT_RowId { get; set; }
@@ -50,6 +51,7 @@ namespace Pass.Manager.Web.Controllers
                        };
             return Json(GridDataResponse.Create(request, data, 3), JsonRequestBehavior.AllowGet);
         }
+        */
 
     }
 }

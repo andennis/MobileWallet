@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 using Common.Web.Grid;
-using Microsoft.Ajax.Utilities;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
 using AutoMapper;
@@ -10,7 +9,7 @@ using AutoMapper;
 namespace Pass.Manager.Web.Common
 {
     public class BaseEntityController<TEntityModelView, TEntity> : Controller
-        where TEntityModelView : class, new()
+        where TEntityModelView : class, IViewModel, new() 
         where TEntity : class, IEntityWithID
     {
         private readonly IBaseService<TEntity> _service;
@@ -59,7 +58,8 @@ namespace Pass.Manager.Web.Common
         {
             if (ModelState.IsValid)
             {
-                TEntity entity = Mapper.Map<TEntityModelView, TEntity>(model);
+                TEntity entity = _service.Get(model.EntityId);
+                entity = Mapper.Map<TEntityModelView, TEntity>(model, entity);
                 _service.Update(entity);
                 return RedirectToAction("Index");
             }

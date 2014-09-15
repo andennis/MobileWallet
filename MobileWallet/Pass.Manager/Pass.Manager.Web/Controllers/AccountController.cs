@@ -35,7 +35,7 @@ namespace Pass.Manager.Web.Controllers
                 if (ModelState.IsValid)
                 {
                     //User user = _userService.Get(loginViewModel.UserName);
-                    //if (user != null && loginViewModel.Password == Crypto.CalculateHash(user.UserName, user.Password))
+                    //if (user != null && loginViewModel.Password == Crypto.CalculateHash(user.UserName.ToLower(), user.Password))
                     {
                         FormsAuthentication.SetAuthCookie(loginViewModel.UserName, false);
                         return RedirectToLocal(returnUrl);

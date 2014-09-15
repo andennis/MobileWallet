@@ -15,5 +15,10 @@ namespace Pass.Manager.Web.Models
         public string LastName { get; set; }
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
+
+        public override int EntityId
+        {
+            get { return UserId; }
+        }
     }
 }
