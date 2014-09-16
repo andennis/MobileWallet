@@ -7,7 +7,7 @@ using Pass.Manager.Web.Models;
 
 namespace Pass.Manager.Web.Validators
 {
-    public class UserPasswordValidator : AbstractValidator<UserViewModel>
+    public class UserPasswordValidator : AbstractValidator<UserPasswordViewModel>
     {
         public UserPasswordValidator()
         {

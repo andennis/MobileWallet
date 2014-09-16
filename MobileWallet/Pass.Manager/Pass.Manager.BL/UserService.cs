@@ -16,6 +16,12 @@ namespace Pass.Manager.BL
         {
         }
 
+        public void ChangePassword(User user)
+        {
+            user.Password = Crypto.CalculateHash(user.UserName.ToLower(), user.Password);
+            base.Update(user);
+        }
+
         public User Get(string userName)
         {
             User user = _repository.Query()

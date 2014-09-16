@@ -160,10 +160,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserPasswordViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PassSiteViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\UserPasswordValidator.cs" />
     <Compile Include="Validators\PassSiteViewModelValidator.cs" />
     <Compile Include="Validators\UserViewModelValidator.cs" />
     <Compile Include="Validators\LoginViewModelValidator.cs" />
@@ -878,8 +880,6 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutIndex.cshtml" />
     <Content Include="Views\Shared\Index.cshtml" />
-    <Content Include="Views\User\Create.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
     <Content Include="Scripts\kendo\2014.2.716\kendo.window.min.js.map" />
     <Content Include="Scripts\kendo\2014.2.716\kendo.view.min.js.map" />
     <Content Include="Scripts\kendo\2014.2.716\kendo.validator.min.js.map" />
@@ -949,9 +949,10 @@
     <Content Include="Views\Shared\Create.cshtml" />
     <Content Include="Views\Shared\Edit.cshtml" />
     <Content Include="Views\PassSite\_Form.cshtml" />
-    <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\_Form.cshtml" />
     <Content Include="Views\PassSite\_Grid.cshtml" />
+    <Content Include="Views\User\_Grid.cshtml" />
+    <Content Include="Views\User\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common.Extensions\Common.Extensions.csproj">

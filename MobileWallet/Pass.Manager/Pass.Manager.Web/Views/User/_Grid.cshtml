@@ -1,0 +1,11 @@
+﻿@(Html.Grid<UserViewModel>()
+.Name("grdUsers")
+.Pageable()
+.DataSource(ds => ds.Read(@Url.Action("GridSearch")))
+.Columns(c =>
+            {
+                c.BoundLink(p => p.UserName, Url.Action("Edit"), id => id.UserId);
+                c.Bound(p => p.FirstName).Title("First Name").Width("100px");
+                c.Bound(p => p.LastName).Title("Last Name").Width("100px");
+                c.BoundLink("Change password", Url.Action("ChangePassword"), id => id.UserId).Width("100px");
+            }))

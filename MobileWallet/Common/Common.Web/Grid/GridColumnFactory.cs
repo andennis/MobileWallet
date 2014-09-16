@@ -29,5 +29,14 @@ namespace Common.Web.Grid
             return builder;
         }
 
+        public GridBoundColumnBuilder<TModel> BoundLink<TId>(string text, string url, Expression<Func<TModel, TId>> expressionId, string colName = "")
+        {
+            var builder = new GridBoundColumnBuilder<TModel>(colName);
+            string idColName = expressionId.GetMethodOrPropertyName();
+            builder.ClientTemplate(string.Format("<a href=\"{1}/#={0}#\">{2}</a>", idColName, url, text));
+            Columns.Add(builder);
+            return builder;
+        }
+
     }
 }

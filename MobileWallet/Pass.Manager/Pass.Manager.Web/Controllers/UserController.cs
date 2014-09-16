@@ -18,24 +18,37 @@ namespace Pass.Manager.Web.Controllers
 {
     public class UserController : BaseEntityController<UserViewModel, User>
     {
+        private readonly IUserService _userService;
+
         public UserController(IUserService userService)
             : base(userService)
         {
+            _userService = userService;
         }
 
-        public override ActionResult Create(UserViewModel userViewModel)
+        [HttpGet]
+        public virtual ActionResult ChangePassword(int id)
         {
-            userViewModel.Password = Crypto.CalculateHash(userViewModel.UserName.ToLower(), userViewModel.Password);
-            return base.Create(userViewModel);
+            User user = _userService.Get(id);
+            UserPasswordViewModel model = Mapper.Map<User, UserPasswordViewModel>(user);
+            model.Password = string.Empty;
+            model.ConfirmPassword = string.Empty;
+            return View(model);
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public override ActionResult Edit(UserViewModel userViewModel)
-        //{
-        //    User user = _userService.Get(userViewModel.UserId);
-        //    userViewModel.Password = user.Password;
-        //    return base.Edit(userViewModel);
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult ChangePassword(UserPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                User user = _userService.Get(model.UserId);
+                user.Password = model.Password;
+                _userService.ChangePassword(user);
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
+        }
     }
 }
