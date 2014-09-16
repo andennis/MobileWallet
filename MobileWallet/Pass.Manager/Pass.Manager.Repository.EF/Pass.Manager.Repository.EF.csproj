@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MigrationsContextFactory.cs" />
+    <Compile Include="Migrations\201409160944449_InitialCreate.cs" />
+    <Compile Include="Migrations\201409160944449_InitialCreate.Designer.cs">
+      <DependentUpon>201409160944449_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PassManagerDbContext.cs" />
     <Compile Include="PassManagerUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,6 +79,11 @@
       <Project>{6ae0452d-92cc-420b-99f4-7f9d7464b9a3}</Project>
       <Name>Pass.Manager.Repository.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201409160944449_InitialCreate.resx">
+      <DependentUpon>201409160944449_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
