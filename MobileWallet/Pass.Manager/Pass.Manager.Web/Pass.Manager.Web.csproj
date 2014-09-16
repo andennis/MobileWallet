@@ -953,6 +953,7 @@
     <Content Include="Views\PassSite\_Grid.cshtml" />
     <Content Include="Views\User\_Grid.cshtml" />
     <Content Include="Views\User\ChangePassword.cshtml" />
+    <Content Include="Views\User\EditProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common.Extensions\Common.Extensions.csproj">

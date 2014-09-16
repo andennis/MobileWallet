@@ -27,7 +27,7 @@ namespace Pass.Manager.Web.Controllers
         }
 
         [HttpGet]
-        public virtual ActionResult ChangePassword(int id)
+        public ActionResult ChangePassword(int id)
         {
             User user = _userService.Get(id);
             UserPasswordViewModel model = Mapper.Map<User, UserPasswordViewModel>(user);
@@ -38,7 +38,7 @@ namespace Pass.Manager.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult ChangePassword(UserPasswordViewModel model)
+        public ActionResult ChangePassword(UserPasswordViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -50,5 +50,27 @@ namespace Pass.Manager.Web.Controllers
 
             return View(model);
         }
+
+        [HttpGet]
+        public ActionResult EditProfile(string userName)
+        {
+            User user = _userService.Get(userName);
+            UserViewModel model = Mapper.Map<User, UserViewModel>(user);
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditProfile(UserViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                User user = _userService.Get(model.EntityId);
+                user = Mapper.Map<UserViewModel, User>(model, user);
+                _userService.Update(user);
+            }
+            return View(model);
+        }
+
     }
 }

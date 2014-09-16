@@ -4,3 +4,8 @@
 @Html.TextBoxFormForExt(m => m.UserName)
 @Html.TextBoxFormForExt(m => m.FirstName)
 @Html.TextBoxFormForExt(m => m.LastName)
+
+@if (!Model.IsNew)
+{
+    @Html.ActionLinkExt("Change password", "ChangePassword", "User", new { id = Model.UserId })
+}

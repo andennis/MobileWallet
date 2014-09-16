@@ -15,11 +15,38 @@
 <body>
     <div class="container body-content">
         <div class="container">
-            <div class="row">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <nav>
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">                            
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, @User.Identity.Name</a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>@Html.ActionLinkExt("My Account", "EditProfile", "User", new {userName = User.Identity.Name})</li>
+                                    <li>@Html.ActionLinkExt("Logout", "LogOff", "Account")</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            }
+            else
+            {
                 <div class="col-md-offset-11 col-md-12">
-                    @(Html.ActionLinkExt<AccountController>(c => c.LogOff(), "Log Off"))
+                    @Html.ActionLinkExt("Login", "Login", "Account")
                 </div>
-            </div>
+            }
         </div>
         <div class="container well">
             @RenderBody()    

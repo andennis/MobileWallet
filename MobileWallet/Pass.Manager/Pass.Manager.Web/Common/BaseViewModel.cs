@@ -10,7 +10,7 @@ namespace Pass.Manager.Web.Common
         public virtual int EntityId { get { return 0; } }
         public virtual bool IsNew
         {
-            get { return EntityId > 0; }
+            get { return EntityId <= 0; }
         }
     }
 }
