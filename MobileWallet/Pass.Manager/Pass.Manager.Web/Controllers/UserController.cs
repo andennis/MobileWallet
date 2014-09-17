@@ -58,7 +58,7 @@ namespace Pass.Manager.Web.Controllers
             UserViewModel model = Mapper.Map<User, UserViewModel>(user);
             return View(model);
         }
-
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditProfile(UserViewModel model)
@@ -71,6 +71,6 @@ namespace Pass.Manager.Web.Controllers
             }
             return View(model);
         }
-
+        
     }
 }
