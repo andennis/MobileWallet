@@ -2,8 +2,10 @@
 
 namespace Pass.Manager.Core.Entities
 {
-    public class PassProject : EntityVersionable
+    public class PassProject : EntityVersionable, IEntityWithID
     {
+        public int EntityID { get { return PassProjectId; } }
+
         public int PassProjectId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

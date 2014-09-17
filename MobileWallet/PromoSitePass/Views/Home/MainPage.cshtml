@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Main Page";
+    ViewBag.Title = "Passlight";
 }
 <link href="~/Content/MainPage/promoSite.css" rel="stylesheet" />
 <script src="~/Scripts/createCard/jquery-1.8.3.js">
@@ -7,24 +7,24 @@
 <script src="~/Scripts/MainPage/promoSite.js">
 </script>
 
-<div class="mainBlock" style="height: 525px; margin-right: auto; margin-left: auto; width: 1000px;">
-    <img src="/Images/MainPage/store1.jpg" style="position: absolute;left: 0px;width: 100%;height: 525px;z-index: -1;" />
-    <img src="/Images/MainPage/iphoneInHand2.png" style=" z-index: 1; height: 450px; margin-top: 75px; margin-left: 610px; position: absolute" />
-    <p class="mainHeader" style=" width: 637px; margin-top: 80px; ">СИСТЕМА ЛОЯЛЬНОСТИ В</p>
-    <p class="mainHeader" style=" width: 517px; margin-top: 145px;">СМАРТФОНАХ ВАШИХ</p>
-    <p class="mainHeader" style=" width: 276px; margin-top: 210px;">КЛИЕНТОВ</p>
-    <p class="mainHeaderSmall" style=" width: 301px; margin-top: 285px;">
+<div class="mainBlock topBlock">
+    <img src="/Images/MainPage/store1.jpg" class="storeImg" />
+    <img src="/Images/MainPage/iphoneInHand2.png" class="iphoneInHandImg" />
+    <p class="mainHeader mainHeader1">СИСТЕМА ЛОЯЛЬНОСТИ В</p>
+    <p class="mainHeader mainHeader2">СМАРФОНАХ ВАШИХ</p>
+    <p class="mainHeader mainHeader3">КЛИЕНТОВ</p>
+    <p class="mainHeaderSmall mainHeaderSmall1">
         Создавайте дисконтные, бонусные
     </p>
-    <p class="mainHeaderSmall" style="width: 242px; margin-top: 320px;">
+    <p class="mainHeaderSmall mainHeaderSmall2">
         и другие мобильные карты
     </p>
-    <p class="mainHeaderSmall" style=" width: 428px; margin-top: 355px; ">
+    <p class="mainHeaderSmall mainHeaderSmall3">
         и распространяйте прямо на смартфоны клиентов
     </p>
 </div>
-<div class="mainBlock" id="divUsedApp" style="height: 270px; margin-right: auto; margin-left: auto; max-width: 1000px; text-align: center; padding: 5px 0 0 0;">
-    <p class="pHeader" style="margin: 0 0 !important; padding: 10px 0 5px 0;">Используемые приложения</p>
+<div class="mainBlock appLogoBlock" id="divUsedApp">
+    <p class="pHeader pHeaderAppLogo">Используемые приложения</p>
     <table id="usedApp">
         <tbody>
             <tr>
@@ -65,16 +65,15 @@
         </tbody>
     </table>
 </div>
-<div class="mainBlock" style="background-color: #00bcf2; padding: 20px 0 30px 0; height: auto;">
-    <div class="blockContent" style="max-width: 900px;">
-        <p class="pHeader" style="padding: 0px 0px; color: white;">
+<div class="mainBlock howItWorkBlock">
+    <div class="blockContent howItWorkBlockContent">
+        <p class="pHeader pHeaderHowItWorkBlock">
             Как это работает?
         </p>
         <table id="howItWorkTable">
             <tr>
                 <td class="tdIcon">
                     <img class="imgIcon" src="~/Images/MainPage/MessagingIcon1.png" />
-                    @*<img class="imgIcon" src="~/Images/MainPage/megaphone9.svg" alt="megaphone">*@
                 </td>
                 <td class="tdText">
                     Вы доносите до ваших клиентов информацию о возможности
@@ -86,18 +85,16 @@
             <tr>
                 <td class="tdIcon">
                     <img class="imgIcon" src="~/Images/MainPage/UsersIcon.png" />
-                    @*<img class="imgIcon" src="~/Images/MainPage/add101.svg" alt="add">*@
                 </td>
                 <td class="tdText">
                     Клиент добавляет электронную карту к себе в Passbook или PassWallet (путем считывания QR-кода или пройдя по ссылке).
                 </td>
             </tr>
             <tr>
-                <td class="tdIcon" style="">
+                <td class="tdIcon">
                     <img class="imgIcon" src="~/Images/MainPage/ApprovalIcon.png" />
-                    @*<img class="imgIcon" src="~/Images/MainPage/approval1 (1).svg" alt="approval">*@
                 </td>
-                <td class="tdText" style="">
+                <td class="tdText">
                     После этого, чтобы получить скидку или пройти
                     на мероприятие, клиент просто предъявляет
                     свой телефон с открытой картой, штрих-код на
@@ -107,50 +104,50 @@
         </table>
     </div>
 </div>
-<div class="mainBlock" style="height: auto; min-height: 710px; margin-right: auto; margin-left: auto; max-width: 1000px; text-align: center; padding: 20px 0 30px 0; ">
+<div class="mainBlock advantageBlock">
     <p class="pHeader">Почему наше решение Вам подойдет?</p>
     <table id="advantageTable">
         <tbody>
             <tr>
-                <td id="advTableTd1" class="advTableTd" style="text-align: right;" onmousemove="">
+                <td id="advTableTd1" class="advTableTd advTableLeftTd">
                     Ваши клиенты смогут забыть про поиск подарочных карт,
                     купонов, пропусков и билетов в своем кошельке. Ведь теперь
                     они все аккуратно собраны в телефоне и всегда под рукой.
                 </td>
                 <td class="plusIconTd">
                     <img id="plusIcon1" src="~/Images/MainPage/plusIcon.png" class="plusIcon" />
-                    <img id="bluePlusIcon1" src="~/Images/MainPage/plusIconBlue.png" class="plusIcon" style="display: none;" />
+                    <img id="bluePlusIcon1" src="~/Images/MainPage/plusIconBlue.png" class="plusIcon displayNone" />
                 </td>
                 <td rowspan="2">
-                    <img id="advantageImg1" class="advantageImg" src="~/Images/MainPage/blackIphone1.png" style="width:85%;" />
-                    <img id="advantageImg2" class="advantageImg" src="~/Images/MainPage/blackIphone2.png" style="width: 85%; display: none;" />
-                    <img id="advantageImg3" class="advantageImg" src="~/Images/MainPage/blackIphone3.png" style="width: 85%; display: none;" />
+                    <img id="advantageImg1" class="advantageImg" src="~/Images/MainPage/blackIphone1.png" />
+                    <img id="advantageImg2" class="advantageImg displayNone" src="~/Images/MainPage/blackIphone2.png" />
+                    <img id="advantageImg3" class="advantageImg displayNone" src="~/Images/MainPage/blackIphone3.png" />
                 </td>
                 <td class="plusIconTd">
                     <img id="plusIcon2" src="~/Images/MainPage/plusIcon.png" class="plusIcon" />
-                    <img id="bluePlusIcon2" src="~/Images/MainPage/plusIconBlue.png" class="plusIcon" style="display: none;" />
+                    <img id="bluePlusIcon2" src="~/Images/MainPage/plusIconBlue.png" class="plusIcon displayNone" />
                 </td>
-                <td id="advTableTd2" class="advTableTd" style="text-align: left;">
+                <td id="advTableTd2" class="advTableTd advTableRightTd">
                     Владелец «серебрянной» карты может узнать сумму,
                     которую необходимо потратить для получения «золотой»,
                     разве не сильный мотиватор для совершения еще большего числа покупок?
                 </td>
             </tr>
             <tr>
-                <td id="advTableTd3" class="advTableTd" style="text-align: right;">
+                <td id="advTableTd3" class="advTableTd advTableLeftTd">
                     Ваш клиент в любой момент может просто быть проинформирован
                     об новых акциях, достав телефон из кармана и увидев уведомление
                     сразу на экране блокировки!
                 </td>
                 <td class="plusIconTd">
                     <img id="plusIcon3" src="~/Images/MainPage/plusIcon.png" class="plusIcon" />
-                    <img id="bluePlusIcon3" src="~/Images/MainPage/plusIconBlue.png" class="plusIcon" style="display: none;" />
+                    <img id="bluePlusIcon3" src="~/Images/MainPage/plusIconBlue.png" class="plusIcon displayNone" />
                 </td>
                 <td class="plusIconTd">
                     <img id="plusIcon4" src="~/Images/MainPage/plusIcon.png" class="plusIcon" />
-                    <img id="bluePlusIcon4" src="~/Images/MainPage/plusIconBlue.png" class="plusIcon" style="display: none;" />
+                    <img id="bluePlusIcon4" src="~/Images/MainPage/plusIconBlue.png" class="plusIcon displayNone" />
                 </td>
-                <td id="advTableTd4" class="advTableTd" style="text-align: left;">
+                <td id="advTableTd4" class="advTableTd advTableRightTd">
                     Passbook использует данные о местонахождении,
                     поэтому находясь неподалеку от магазина сети, ваш клиент
                     может получать на свой телефон уведомления, приглашающее
@@ -160,39 +157,38 @@
         </tbody>
     </table>
 </div>
-<div class="mainBlock" style="height: auto; background-color: #ffd800; padding: 20px 0 35px 0;">
-    <div class="blockContent" style="color: #535559;">
-        <p class="pHeader" style="line-height: 53px;">Легко создавайте мобильные карты (пассы)</p>
-        <table id="passDesignerTable" style="text-align:left;">
+<div class="mainBlock passDesignerPromoBlock">
+    <div class="blockContent passDesignerPromoContent">
+        <p class="pHeader pHeaderPassDesigner">Легко создавайте мобильные карты (пассы)</p>
+        <table id="passDesignerTable" class="passDesignerTable">
             <tr>
                 <td class="passDesignerTdImg" rowspan="3">
-                    @*<img src="~/Images/createCardOnNotebook.png" style="width: 95%;" />*@
-                    <img src="~/Images/MainPage/macbookDesigner.png" style="width: 95%;" />
+                    <img src="~/Images/MainPage/macbookDesigner.png" class="mackbookDesignerImg" />
                 </td>
                 <td class="passDesignerTd">
-                    <p style="line-height: 24px; font-family: Segoe UI, Helvetica, Arial, Sans-Serif; font-size: 1.8rem; margin-bottom: 0px;">
+                    <p class="passDesignerDescription">
                         Онлайн дизайнер пассов поможет Вам создать мобильную карту и увидеть
                         как ее содержимое выглядит в реальном времени
                     </p>
                 </td>
             </tr>
             <tr>
-                <td class="passDesignerTd" style="padding: 19px 0px;">
+                <td class="passDesignerTd passDesignerInstruction">
                     <p class="tickText"><img class="tickIcon" src="~/Images/icons/tick%201.png" /> Выберите шаблон (бизнес стратегию)</p>
                     <p class="tickText"><img class="tickIcon" src="~/Images/icons/tick%201.png" /> Загрузите свои картинки</p>
                     <p class="tickText"><img class="tickIcon" src="~/Images/icons/tick%201.png" /> Введите свое содержимое</p>
                     <p class="tickText"><img class="tickIcon" src="~/Images/icons/tick%201.png" /> Отправте на смартфоны клиентов</p>
                 </td>
             </tr>
-            <tr style="height: 80px;">
-                <td class="passDesignerTd" style="vertical-align: top;">
-                    <a class="bigButton" href="~/Home/EmptyCardDesigner" target="_blank">Cоздать мобильную карту</a>
+            <tr class="bigButtonTr">
+                <td class="passDesignerTd bigButtonTd">
+                    <a class="bigButton" href="~/PassDesigner/EmptyCardDesigner" target="_blank">Cоздать мобильную карту</a>
                 </td>
             </tr>
         </table>
     </div>
 </div>
-<div style="position: relative; width: 100%; max-width: 1000px; margin-left: auto; margin-right: auto;">
+<div class="upArrowBlock">
     <?xml version="1.0" encoding="iso-8859-1" ?>
     <svg id="up" class="upArrow" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
          width="40.007px" height="40.007px" viewBox="0 0 40.007 40.007" style="enable-background:new 0 0 40.007 40.007;"
@@ -218,7 +214,7 @@
     <a class="bigContactButton" href="~/Home/Contact">Наши контакты</a>
     <br />
     <br />
-    <p style=" font-size: 1.4rem; margin-top: 10px; ">2014 Passlight</p>
+    <p class="footer">2014 Passlight</p>
 </div>
 
 

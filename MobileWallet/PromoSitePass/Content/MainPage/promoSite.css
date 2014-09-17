@@ -19,6 +19,29 @@
     color: white;
 }
 
+.storeImg {
+    position: absolute;
+    left: 0px;
+    width: 100%;
+    height: 525px;
+    z-index: -1;
+}
+
+.iphoneInHandImg {
+    z-index: 1;
+    height: 450px;
+    margin-top: 75px;
+    margin-left: 610px;
+    position: absolute;
+}
+
+.topBlock {
+    height: 525px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 1000px;
+}
+
 .mainHeader {
     position: absolute;
     color: white;
@@ -29,6 +52,21 @@
     margin-left: 10px;
     font-family: 'WOL_Reg','Segoe UI',Tahoma,Helvetica,sans-serif;
     padding: 0 10px 4px 10px;
+}
+
+.mainHeader1 {
+    width: 637px;
+    margin-top: 80px;
+}
+
+.mainHeader2 {
+    width: 517px;
+    margin-top: 145px;
+}
+
+.mainHeader3 {
+    width: 276px;
+    margin-top: 210px;
 }
 
 .mainHeaderSmall {
@@ -44,6 +82,30 @@
     padding: 0 10px 4px 10px;
 }
 
+.mainHeaderSmall1 {
+    width: 301px;
+    margin-top: 285px;
+}
+
+.mainHeaderSmall2 {
+    width: 242px;
+    margin-top: 320px;
+}
+
+.mainHeaderSmall3 {
+    width: 428px;
+    margin-top: 355px;
+}
+
+.appLogoBlock {
+    height: 270px;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1000px;
+    text-align: center;
+    padding: 5px 0 0 0;
+}
+
 .pHeader {
     font-size: 5rem;
     color: #535559;
@@ -51,6 +113,38 @@
     margin: 0 0 10px 0;
     font-family: 'WOL_Reg', 'Segoe UI', Tahoma, Helvetica, sans-serif;
 }
+
+.pHeaderAppLogo {
+    margin: 0 0 !important;
+    padding: 10px 0 5px 0;
+}
+
+.howItWorkBlock {
+    background-color: #00bcf2;
+    padding: 20px 0 30px 0;
+    height: auto;
+}
+
+.howItWorkBlockContent {
+    max-width: 900px;
+}
+
+.pHeaderHowItWorkBlock {
+    padding: 0px 0px;
+    color: white;
+}
+
+.advantageBlock {
+    height: auto;
+    min-height: 710px;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 1000px;
+    text-align: center;
+    padding: 20px 0 30px 0;
+}
+
+
 
 #usedApp {
     width: 100%;
@@ -149,6 +243,7 @@
 .advantageImg {
     margin-left: auto;
     margin-right: auto;
+    width: 85%;
 }
 
 .advTableTd {
@@ -157,6 +252,14 @@
     line-height: 24px;
     font-family: "Segoe UI", Helvetica, Arial, Sans-Serif;
     font-size: 1.8rem;
+}
+
+.advTableLeftTd {
+    text-align: right;
+}
+
+.advTableRightTd {
+    text-align: left;
 }
 
 .plusIconTd {
@@ -169,6 +272,47 @@
     margin-right: auto;
 }
 
+.passDesignerPromoBlock {
+    height: auto;
+    background-color: #ffd800;
+    padding: 20px 0 35px 0;
+}
+
+.passDesignerPromoContent {
+    color: #535559;
+}
+
+.pHeaderPassDesigner {
+    line-height: 53px;
+}
+
+.passDesignerTable {
+    text-align: left;
+}
+
+.mackbookDesignerImg {
+    width: 95%;
+}
+
+.passDesignerDescription {
+    line-height: 24px;
+    font-family: Segoe UI, Helvetica, Arial, Sans-Serif;
+    font-size: 1.8rem;
+    margin-bottom: 0px;
+}
+
+.passDesignerInstruction {
+    padding: 19px 0px;
+}
+
+.bigButtonTr {
+    height: 80px;
+}
+
+.bigButtonTd {
+    vertical-align: top;
+}
+
 .passDesignerTd {
     width: 45%;
     font-family: 'WOL_SB','Segoe UI Semibold','Segoe UI',Tahoma,Helvetica,sans-serif;
@@ -177,6 +321,23 @@
 
 .passDesignerTdImg {
     width: 55%;
+}
+
+.upArrowBlock {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer {
+    font-size: 1.4rem;
+    margin-top: 10px;
+}
+
+.displayNone {
+    display: none;
 }
 
 ul li a {
@@ -482,9 +643,9 @@ ul li a {
     text-align: left;
 }
 
-.contactTable a {
-    color: #87898F;
-}
+    .contactTable a {
+        color: #87898F;
+    }
 
 .contactIcon {
     padding: 11px 20px;

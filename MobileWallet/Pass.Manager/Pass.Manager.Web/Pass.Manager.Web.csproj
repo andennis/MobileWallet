@@ -15,7 +15,7 @@
     <AssemblyName>Pass.Manager.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -155,16 +155,19 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Common\BaseEntityController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PassProjectController.cs" />
     <Compile Include="Controllers\PassSiteController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\PassProjectViewModel.cs" />
     <Compile Include="Models\UserPasswordViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PassSiteViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\PassProjectViewModelValidator.cs" />
     <Compile Include="Validators\UserPasswordValidator.cs" />
     <Compile Include="Validators\PassSiteViewModelValidator.cs" />
     <Compile Include="Validators\UserViewModelValidator.cs" />
@@ -954,6 +957,7 @@
     <Content Include="Views\User\_Grid.cshtml" />
     <Content Include="Views\User\ChangePassword.cshtml" />
     <Content Include="Views\User\EditProfile.cshtml" />
+    <Content Include="Views\PassProject\_Form.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common.Extensions\Common.Extensions.csproj">
@@ -1014,7 +1018,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>36782</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/Pass.Manager.Web</IISUrl>
+          <IISUrl>http://localhost:36782/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

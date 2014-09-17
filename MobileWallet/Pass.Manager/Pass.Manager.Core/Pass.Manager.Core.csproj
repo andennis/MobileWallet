@@ -52,6 +52,7 @@
     <Compile Include="Entities\User.cs" />
     <Compile Include="IBaseService.cs" />
     <Compile Include="IPassManagerConfig.cs" />
+    <Compile Include="IPassProjectService.cs" />
     <Compile Include="IPassSiteService.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
