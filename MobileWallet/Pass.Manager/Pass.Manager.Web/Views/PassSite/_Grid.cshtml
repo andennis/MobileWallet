@@ -1,7 +1,6 @@
 ﻿@(Html.Grid<PassSiteViewModel>()
     .Name("grdPassSites")
     .Pageable()
-    .AutoBind(true)
     .DataSource(ds => ds.Read(@Url.Action("GridSearch")))
     .Columns(c =>
                 {

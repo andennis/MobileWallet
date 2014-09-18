@@ -6,10 +6,12 @@
 
 @if (!Model.IsNew)
 {
-    @Html.ActionLinkExt("Add New Project", "CreateProject", "PassProject", new { passSiteId = Model.PassSiteId }, htmlAttributes: new { @class = "btn btn-default" })    
-    @(Html.Grid<PassProjectViewModel>()
+    <div class="container-fluid">
+        @Html.ActionLinkExt("Add Project", "CreateProject", "PassProject", new { passSiteId = Model.PassSiteId }, htmlAttributes: new { @class = "btn btn-default" })
+        @(Html.Grid<PassProjectViewModel>()
           .Name("grdPassProjects")
           .Pageable()
+          .AutoBind(false)
           .DataSource(ds => ds.Read(@Url.Action("PassProjects")).Data("window.PassSite.PassProjectDataHandler"))
           .Columns(c =>
                    {
@@ -18,6 +20,7 @@
                        c.Bound(p => p.Description);
                        c.Bound(p => p.ProjectType);
                    }))
+    </div>
 }
 
 <script type="text/javascript" src="@Url.Content("~/Scripts/FormHelpers/PassSiteHelper.js")"></script>

@@ -9,7 +9,7 @@ namespace Common.Web.Grid
             ColumnFactory = new GridColumnFactory<TModel>();
             DataSourceFactory = new GridDataSourceFactory<TModel>();
 
-            IsAutoBind = false;
+            IsAutoBind = true;
         }
 
         public string Name { get; set; }

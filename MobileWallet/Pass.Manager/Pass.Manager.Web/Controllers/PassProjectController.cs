@@ -18,19 +18,19 @@ namespace Pass.Manager.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult CreateProject(string passSiteId)
+        public ActionResult CreateProject(int passSiteId)
         {
-            return View("Create", new PassProjectViewModel() { PassSiteId = int.Parse(passSiteId) });
+            return View("Create", new PassProjectViewModel() { PassSiteId = passSiteId });
         }
 
-        public static List<SelectListItem> GetPassProjectTypes()
+        public static IEnumerable<SelectListItem> GetPassProjectTypes()
         {
             var types = Enum.GetValues(typeof (PassProjectType)).Cast<PassProjectType>();
-            List<SelectListItem> listItems = types.Select(type => new SelectListItem
+            IEnumerable<SelectListItem> listItems = types.Select(type => new SelectListItem
                                                                   {
                                                                       Text = type.ToString(),
-                                                                      Value = type.ToString()
-                                                                  }).ToList();
+                                                                      Value = ((int)type).ToString()
+                                                                  });
             return listItems;
         }
     }
