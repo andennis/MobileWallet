@@ -4,10 +4,10 @@
 
 <h3>Edit @Model.DisplayName</h3>
 @Html.ValidationSummary()
-@using (Html.BeginFormExt())
+@using (Html.BeginFormExt("Edit"))
 {
     @Html.AntiForgeryToken()
-    <div class="container">
+    <div class="container-fluid">
         @RenderBody()    
         
         <div class="form-group">

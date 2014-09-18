@@ -70,7 +70,7 @@ namespace Common.Web
         }
         #endregion
 
-        #region DropDownListFor
+        #region DropDownList
         public static MvcHtmlString DropDownListForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems,  object htmlAttributes = null)
         {
             return html.DropDownListFor(expression, listItems, htmlAttributes);
@@ -80,6 +80,15 @@ namespace Common.Web
         {
             return html.LabelWithControl(expression, labelText, null, () => html.DropDownListFor(expression, listItems, optionLabel, _initControlAttributes));
         }
+
+        public static MvcHtmlString DropDownListFormForExt<TModel, TEnumProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TEnumProperty>> expression,
+            string labelText = null, string optionLabel = null)
+            where TEnumProperty : struct 
+        {
+            SelectList listItems = EnumHelper.ToSelectList<TEnumProperty>();
+            return html.DropDownListFormForExt(expression, listItems, labelText, optionLabel);
+        }
+        
         #endregion
 
         #region TextArea

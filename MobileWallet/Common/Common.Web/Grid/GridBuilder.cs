@@ -125,7 +125,7 @@ namespace Common.Web.Grid
                                     ordering = _gridModel.Sortable,
                                     paging = _gridModel.Pageable,
                                     info = false,
-                                    language = new { infoEmpty = "No records available" },
+                                    language = new { emptyTable = "No data available" },
                                     columns = tblColumns
                                 };
 

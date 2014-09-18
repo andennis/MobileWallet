@@ -6,7 +6,7 @@
 
 @if (!Model.IsNew)
 {
-    <div class="container-fluid">
+    <div class="row">
         @Html.ActionLinkExt("Add Project", "CreateProject", "PassProject", new { passSiteId = Model.PassSiteId }, htmlAttributes: new { @class = "btn btn-default" })
         @(Html.Grid<PassProjectViewModel>()
           .Name("grdPassProjects")
