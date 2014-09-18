@@ -1,7 +1,8 @@
 ﻿@model PassProjectViewModel
-           
+       
 @Html.HiddenForExt(m => m.PassProjectId)
 @Html.TextBoxFormForExt(m => m.Name)
 @Html.TextAreaFormForExt(m => m.Description)
+@Html.DropDownListForExt(m => m.ProjectType, PassProjectController.GetPassProjectTypes() , "Project Type")
 @Html.HiddenForExt(m => m.PassTemplateId)
 @Html.HiddenForExt(m => m.PassSiteId)

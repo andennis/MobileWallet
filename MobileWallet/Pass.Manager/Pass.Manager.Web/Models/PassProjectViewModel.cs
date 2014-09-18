@@ -1,4 +1,5 @@
 ﻿using FluentValidation.Attributes;
+using Pass.Manager.Core.Entities;
 using Pass.Manager.Web.Common;
 using Pass.Manager.Web.Validators;
 
@@ -13,6 +14,7 @@ namespace Pass.Manager.Web.Models
         public string Description { get; set; }
         public int PassTemplateId { get; set; }
         public int PassSiteId { get; set; }
+        public PassProjectType ProjectType { get; set; }
 
         public override int EntityId
         {

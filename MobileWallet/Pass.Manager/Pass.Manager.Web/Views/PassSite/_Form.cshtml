@@ -4,16 +4,21 @@
 @Html.TextBoxFormForExt(m => m.Name)
 @Html.TextAreaFormForExt(m => m.Description)
 
-@(Html.Grid<PassProjectViewModel>()
-    .Name("grdPassProjects")
-    .Pageable()
-    .DataSource(ds => ds.Read(@Url.Action("PassProjects")).Data("window.PassSite.PassProjectDataHandler"))
-    .Columns(c =>
-                {
-                    c.Bound(p => p.PassProjectId).Title("ID").Width("100px");
-                    c.BoundLink(p => p.Name, Url.Action("Edit", "PassProject"), id => id.PassProjectId);
-                    c.Bound(p => p.Description);
-                }))
+@if (!Model.IsNew)
+{
+    @Html.ActionLinkExt("Add New Project", "CreateProject", "PassProject", new { passSiteId = Model.PassSiteId }, htmlAttributes: new { @class = "btn btn-default" })    
+    @(Html.Grid<PassProjectViewModel>()
+          .Name("grdPassProjects")
+          .Pageable()
+          .DataSource(ds => ds.Read(@Url.Action("PassProjects")).Data("window.PassSite.PassProjectDataHandler"))
+          .Columns(c =>
+                   {
+                       c.Bound(p => p.PassProjectId).Title("ID").Width("100px");
+                       c.BoundLink(p => p.Name, Url.Action("Edit", "PassProject"), id => id.PassProjectId);
+                       c.Bound(p => p.Description);
+                       c.Bound(p => p.ProjectType);
+                   }))
+}
 
 <script type="text/javascript" src="@Url.Content("~/Scripts/FormHelpers/PassSiteHelper.js")"></script>
 
