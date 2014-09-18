@@ -1,9 +1,11 @@
 ﻿@(Html.Grid<UserViewModel>()
 .Name("grdUsers")
 .Pageable()
+.AutoBind(true)
 .DataSource(ds => ds.Read(@Url.Action("GridSearch")))
 .Columns(c =>
             {
+                c.Bound(p => p.UserId).Title("ID").Width("50px");
                 c.BoundLink(p => p.UserName, Url.Action("Edit"), id => id.UserId);
                 c.Bound(p => p.FirstName).Title("First Name");
                 c.Bound(p => p.LastName).Title("Last Name");

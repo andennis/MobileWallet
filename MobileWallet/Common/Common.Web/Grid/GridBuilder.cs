@@ -67,6 +67,11 @@ namespace Common.Web.Grid
             _gridModel.Sortable = true;
             return this;
         }
+        public GridBuilder<T> AutoBind(bool autoBind)
+        {
+            _gridModel.IsAutoBind = autoBind;
+            return this;
+        }
 
         public string ToHtmlString()
         {
@@ -109,6 +114,7 @@ namespace Common.Web.Grid
             var tableSettings = new
                                 {
                                     serverSide = true,
+                                    deferLoading = _gridModel.IsAutoBind ? (int?) null : 0,
                                     ajax = new GridAjaxRequest()
                                            {
                                                Url = _gridModel.DataSourceFactory.Action, 
