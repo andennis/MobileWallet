@@ -11,5 +11,8 @@ namespace Common.Web.Grid
         [JsonConverter(typeof(JsonValueWithoutQuotesConverter))]
         [JsonProperty(PropertyName = "data")]
         public string Data { get; set; }
+
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; set; }
     }
 }

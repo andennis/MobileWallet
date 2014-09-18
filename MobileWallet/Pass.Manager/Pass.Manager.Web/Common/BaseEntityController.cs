@@ -75,7 +75,7 @@ namespace Pass.Manager.Web.Common
             return Json(GridDataResponse.Create(request, resultView, result.TotalCount), JsonRequestBehavior.AllowGet);
         }
 
-        private SearchContext GridRequestToSearchContext(GridDataRequest request)
+        protected SearchContext GridRequestToSearchContext(GridDataRequest request)
         {
             return new SearchContext()
                    {

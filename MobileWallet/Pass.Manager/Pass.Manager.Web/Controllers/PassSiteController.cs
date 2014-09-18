@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using Common.Web.Grid;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
@@ -13,9 +14,20 @@ namespace Pass.Manager.Web.Controllers
 {
     public class PassSiteController : BaseEntityController<PassSiteViewModel, PassSite>
     {
-        public PassSiteController(IPassSiteService passService)
-            : base(passService)
+        private readonly IPassProjectService _projectService;
+
+        public PassSiteController(IPassSiteService siteService, IPassProjectService projectService)
+            : base(siteService)
         {
+            _projectService = projectService;
+        }
+
+        [AjaxOnly]
+        public ActionResult PassProjects(GridDataRequest request, int? passSiteId)
+        {
+            SearchResult<PassProject> result = _projectService.Search(GridRequestToSearchContext(request), x => x.PassSiteId == passSiteId);
+            IEnumerable<PassProjectViewModel> resultView = Mapper.Map<IEnumerable<PassProject>, IEnumerable<PassProjectViewModel>>(result.Data);
+            return Json(GridDataResponse.Create(request, resultView, result.TotalCount), JsonRequestBehavior.AllowGet);
         }
 
         /*

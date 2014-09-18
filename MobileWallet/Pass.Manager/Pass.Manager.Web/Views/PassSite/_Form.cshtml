@@ -3,3 +3,23 @@
 @Html.HiddenForExt(m => m.PassSiteId)
 @Html.TextBoxFormForExt(m => m.Name)
 @Html.TextAreaFormForExt(m => m.Description)
+
+@(Html.Grid<PassProjectViewModel>()
+    .Name("grdPassProjects")
+    .Pageable()
+    .DataSource(ds => ds.Read(@Url.Action("PassProjects")).Data("window.PassSite.PassProjectDataHandler"))
+    .Columns(c =>
+                {
+                    c.Bound(p => p.PassProjectId).Title("ID").Width("100px");
+                    c.BoundLink(p => p.Name, Url.Action("Edit", "PassProject"), id => id.PassProjectId);
+                    c.Bound(p => p.Description);
+                }))
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/FormHelpers/PassSiteHelper.js")"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        window.PassSite.Init(@Model.PassSiteId);
+        window.grid.Reload("#grdPassProjects");
+    })
+</script>
