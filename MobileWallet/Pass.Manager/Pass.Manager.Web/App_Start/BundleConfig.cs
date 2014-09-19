@@ -30,7 +30,8 @@ namespace Pass.Manager.Web
                 "~/Scripts/DataTables-1.10.2/jquery.dataTables.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
-                "~/Scripts/Grid.js"));
+                "~/Scripts/Grid.js",
+                "~/Scripts/Action.js"));
 
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862

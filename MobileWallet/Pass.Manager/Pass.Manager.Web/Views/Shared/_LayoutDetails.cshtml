@@ -1,0 +1,26 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>
+    @RenderSection("Title")
+</h3>
+@Html.ValidationSummary()
+@using (Html.BeginFormExt())
+{
+    @Html.AntiForgeryToken()
+    <div class="container-fluid">
+        @RenderBody()
+        <div class="form-group">
+            @RenderSection("Actions")
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    /*
+    $(document).ready(function() {
+            window.action.Init($("form"));
+        })
+        */
+</script>

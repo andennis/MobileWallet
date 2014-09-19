@@ -23,15 +23,5 @@ namespace Pass.Manager.Web.Controllers
             return View("Create", new PassProjectViewModel() { PassSiteId = passSiteId });
         }
 
-        public static IEnumerable<SelectListItem> GetPassProjectTypes()
-        {
-            var types = Enum.GetValues(typeof (PassProjectType)).Cast<PassProjectType>();
-            IEnumerable<SelectListItem> listItems = types.Select(type => new SelectListItem
-                                                                  {
-                                                                      Text = type.ToString(),
-                                                                      Value = ((int)type).ToString()
-                                                                  });
-            return listItems;
-        }
     }
 }
