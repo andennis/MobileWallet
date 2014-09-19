@@ -1,7 +1,7 @@
 ﻿(function (action, $) {
     action.Init = function ($form) {
 
-        $(":submit", $from).click(function (e) {
+        $(":submit", $form).click(function (e) {
             e.preventDefault();
             var actionUrl = $(this).data("action");
             if (actionUrl)
@@ -12,7 +12,7 @@
             }
         });
 
-        $(":not(:submit):data(action)", $from).click(function(e) {
+        $(":not(:submit)[data-action]", $form).click(function(e) {
             e.preventDefault();
             window.location.href = $(this).data("action");
         });

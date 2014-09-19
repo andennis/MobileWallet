@@ -11,6 +11,6 @@
 
 @section Actions
 {
-    <button type="submit" class="btn btn-default btn-primary">Save</button>
-    @Html.ActionLinkExt("Cancel", "Index", htmlAttributes: new {@class = "btn btn-default"})
+    @Html.FormActionSubmit("buttonCreate", "Save", Url.Action("Edit"))
+    @Html.FormActionButton("buttonCancel", "Cancel", Url.Action("Index"))
 }

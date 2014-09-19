@@ -40,13 +40,38 @@ namespace Common.Web
         public static MvcForm BeginFormExt(this HtmlHelper html)
         {
             string controllerName = (string)html.ViewContext.RouteData.Values["controller"];
-            string actionName = (string)html.ViewContext.RouteData.Values["action"];
+            string actionName = (string)html.ViewContext.RouteData.Values["actionUrl"];
             return html.BeginFormExt(actionName, controllerName);
         }
         */
         public static MvcForm BeginFormExt(this HtmlHelper html, string actionName = null, string controllerName = null)
         {
             return html.BeginForm(actionName, controllerName, FormMethod.Post, _initFormAttributes);
+        }
+        #endregion
+
+        #region FormAction
+        public static MvcHtmlString FormActionSubmit<TModel>(this HtmlHelper<TModel> html, string name, string caption, string actionUrl)
+        {
+            var tb = new TagBuilder("input");
+            tb.Attributes.Add("id", name);
+            tb.Attributes.Add("type", "submit");
+            tb.Attributes.Add("data-action", actionUrl);
+            tb.Attributes.Add("value", caption);
+            tb.AddCssClass("btn btn-default btn-primary");
+
+            return new MvcHtmlString(tb.ToString());
+        }
+        public static MvcHtmlString FormActionButton<TModel>(this HtmlHelper<TModel> html, string name, string caption, string actionUrl)
+        {
+            var tb = new TagBuilder("input");
+            tb.Attributes.Add("id", name);
+            tb.Attributes.Add("type", "button");
+            tb.Attributes.Add("data-action", actionUrl);
+            tb.Attributes.Add("value", caption);
+            tb.AddCssClass("btn btn-default");
+
+            return new MvcHtmlString(tb.ToString());
         }
         #endregion
 
@@ -190,4 +215,5 @@ namespace Common.Web
         }
 
     }
+
 }
