@@ -23,5 +23,16 @@ namespace Pass.Manager.Web.Controllers
             return View("Create", new PassProjectViewModel() { PassSiteId = passSiteId });
         }
 
+        public override ActionResult Create(PassProjectViewModel model)
+        {
+            model.RedirectUrl = Url.Action("Edit", "PassSite", new {id = model.PassSiteId});
+            return base.Create(model);
+        }
+
+        public override ActionResult Edit(PassProjectViewModel model)
+        {
+            model.RedirectUrl = Url.Action("Edit", "PassSite", new { id = model.PassSiteId });
+            return base.Edit(model);
+        }
     }
 }

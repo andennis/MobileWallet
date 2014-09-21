@@ -1,0 +1,21 @@
+﻿@model PassProjectViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutDetails.cshtml";
+}
+
+@section Title
+{
+    Edit @Model.DisplayName
+}
+
+
+@Html.PartialEx("_Form", Model)
+
+@section Actions
+{
+    @Html.FormActionSubmit("buttonCreate", "Save", Url.Action("Edit"))
+    @Html.FormActionButton("buttonCancel", "Cancel", Url.Action("Edit", "PassSite", new { id = Model.PassSiteId }))
+}
+
+

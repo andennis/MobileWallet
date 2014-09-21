@@ -12,5 +12,7 @@ namespace Pass.Manager.Web.Common
         {
             get { return EntityId <= 0; }
         }
+
+        public virtual string RedirectUrl { get; set; }
     }
 }

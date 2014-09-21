@@ -6,6 +6,7 @@ namespace Pass.Manager.Web.Common
     {
         int EntityId { get; }
         bool IsNew { get; }
-        string DisplayName { get; } 
+        string DisplayName { get; }
+        string RedirectUrl { get; set; }
     }
 }

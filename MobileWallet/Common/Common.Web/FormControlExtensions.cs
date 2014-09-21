@@ -51,14 +51,15 @@ namespace Common.Web
         #endregion
 
         #region FormAction
-        public static MvcHtmlString FormActionSubmit<TModel>(this HtmlHelper<TModel> html, string name, string caption, string actionUrl)
+        public static MvcHtmlString FormActionSubmit<TModel>(this HtmlHelper<TModel> html, string name, string caption, string actionUrl = null)
         {
             var tb = new TagBuilder("input");
             tb.Attributes.Add("id", name);
             tb.Attributes.Add("type", "submit");
-            tb.Attributes.Add("data-action", actionUrl);
             tb.Attributes.Add("value", caption);
             tb.AddCssClass("btn btn-default btn-primary");
+            if (actionUrl != null)
+                tb.Attributes.Add("data-action", actionUrl);
 
             return new MvcHtmlString(tb.ToString());
         }
@@ -67,9 +68,9 @@ namespace Common.Web
             var tb = new TagBuilder("input");
             tb.Attributes.Add("id", name);
             tb.Attributes.Add("type", "button");
-            tb.Attributes.Add("data-action", actionUrl);
             tb.Attributes.Add("value", caption);
             tb.AddCssClass("btn btn-default");
+            tb.Attributes.Add("data-action", actionUrl);
 
             return new MvcHtmlString(tb.ToString());
         }

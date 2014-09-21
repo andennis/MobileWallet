@@ -8,7 +8,8 @@ using AutoMapper;
 
 namespace Pass.Manager.Web.Common
 {
-    public abstract class BaseEntityController<TEntityModelView, TEntity> : Controller
+    [Authorize]
+    public abstract class BaseEntityController<TEntityModelView, TEntity> : BaseController
         where TEntityModelView : class, IViewModel, new() 
         where TEntity : class, IEntityWithID
     {
@@ -38,7 +39,7 @@ namespace Pass.Manager.Web.Common
             {
                 TEntity entity = Mapper.Map<TEntityModelView, TEntity>(model);
                 _service.Create(entity);
-                return RedirectToAction("Index");
+                return RedirectTo(model);
             }
 
             return View(new TEntityModelView());
@@ -61,7 +62,7 @@ namespace Pass.Manager.Web.Common
                 TEntity entity = _service.Get(model.EntityId);
                 entity = Mapper.Map<TEntityModelView, TEntity>(model, entity);
                 _service.Update(entity);
-                return RedirectToAction("Index");
+                return RedirectTo(model);
             }
 
             return View(model);

@@ -149,6 +149,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Common\AjaxOnlyAttribute.cs" />
+    <Compile Include="Common\BaseController.cs" />
     <Compile Include="Common\BaseViewModel.cs" />
     <Compile Include="Common\IViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -961,6 +962,8 @@
     <Content Include="Views\User\EditProfile.cshtml" />
     <Content Include="Views\PassProject\_Form.cshtml" />
     <Content Include="Views\Shared\_LayoutDetails.cshtml" />
+    <Content Include="Views\PassProject\Create.cshtml" />
+    <Content Include="Views\PassProject\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common.Extensions\Common.Extensions.csproj">

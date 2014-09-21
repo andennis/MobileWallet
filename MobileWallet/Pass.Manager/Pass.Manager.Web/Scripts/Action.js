@@ -3,18 +3,19 @@
 
         $(":submit", $form).click(function (e) {
             e.preventDefault();
+            var form = $(this).closest("form");
             var actionUrl = $(this).data("action");
             if (actionUrl)
-            {
-                var form = $(this).closest("form");
                 form.attr("action", actionUrl);
-                form.submit();
-            }
+
+            form.submit();
         });
 
         $(":not(:submit)[data-action]", $form).click(function(e) {
             e.preventDefault();
-            window.location.href = $(this).data("action");
+            var actionUrl = $(this).data("action");
+            if (actionUrl)
+                window.location.href = actionUrl;
         });
     }
 
