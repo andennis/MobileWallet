@@ -108,7 +108,7 @@ namespace Common.Web.Grid
                                  Title = x.ColTitle, 
                                  Visible = x.IsVisible,
                                  Width = x.ColWidth,
-                                 Render = GetRenderJsFuncByClientTemplate(x.ColClientTemplate)
+                                 Render = GetRenderJsFuncByClientTemplate(x)
                              });
             
             var tableSettings = new
@@ -136,6 +136,27 @@ namespace Common.Web.Grid
             })";
 
             return scriptTag.ToString();
+        }
+
+        private string GetRenderJsFuncByClientTemplate(GridBoundColumnBuilder<T> colBuilder)
+        {
+            if (!string.IsNullOrEmpty(colBuilder.ColClientTemplate) && !string.IsNullOrEmpty(colBuilder.ColClientTemplateId))
+                throw new Exception(string.Format("Grid column ('{0}') template defenition contains both client tamplate and client tamplate ID. There should be only one defined", 
+                    colBuilder.ColName));
+
+            if (!string.IsNullOrEmpty(colBuilder.ColClientTemplate))
+                return GetRenderJsFuncByClientTemplate(colBuilder.ColClientTemplate);
+
+            if (!string.IsNullOrEmpty(colBuilder.ColClientTemplateId))
+                return GetRenderJsFuncByClientTemplateId(colBuilder.ColClientTemplateId);
+
+            return null;
+        }
+
+        private string GetRenderJsFuncByClientTemplateId(string clientTemplateId)
+        {
+            //TODO implement template generation
+            return null;
         }
 
         private string GetRenderJsFuncByClientTemplate(string clientTemplate)

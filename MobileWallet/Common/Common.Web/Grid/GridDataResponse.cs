@@ -5,9 +5,16 @@ namespace Common.Web.Grid
 {
     public class GridDataResponse
     {
+        //[JsonProperty(PropertyName = "draw")]
         public int draw { get; set; }
+
+        //[JsonProperty(PropertyName = "recordsTotal")]
         public int recordsTotal { get; set; }
+
+        //[JsonProperty(PropertyName = "recordsFiltered")]
         public int recordsFiltered { get; set; }
+
+        //[JsonProperty(PropertyName = "data")]
         public IEnumerable<object> data { get; set; }
 
         public static GridDataResponse Create(GridDataRequest request, IEnumerable<object> data, int totalRecordsCount = 0)

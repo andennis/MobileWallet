@@ -81,7 +81,6 @@
     <Compile Include="Grid\GridBuilder.cs" />
     <Compile Include="Grid\GridColumnFactory.cs" />
     <Compile Include="Grid\GridControlExtension.cs" />
-    <Compile Include="Grid\GridColumnViewModel.cs" />
     <Compile Include="Grid\GridDataSourceFactory.cs" />
     <Compile Include="Grid\GridViewModel.cs" />
     <Compile Include="Grid\GridAjaxRequest.cs" />

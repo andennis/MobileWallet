@@ -15,6 +15,7 @@ namespace Common.Web.Grid
         internal string ColTitle { get; set; }
         internal bool IsVisible { get; set; }
         internal string ColClientTemplate { get; set; }
+        internal string ColClientTemplateId { get; set; }
 
         public GridBoundColumnBuilder<TModel> Width(string width)
         {
@@ -39,6 +40,11 @@ namespace Common.Web.Grid
             return this;
         }
 
+        public GridBoundColumnBuilder<TModel> ClientTemplateId(string templateId)
+        {
+            ColClientTemplateId = templateId;
+            return this;
+        }
         
     }
 }
