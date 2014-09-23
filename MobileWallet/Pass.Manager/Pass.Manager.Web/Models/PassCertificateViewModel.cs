@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using Common.Repository;
+using Pass.Manager.Core.Entities;
+using Pass.Manager.Web.Common;
 
-namespace Pass.Manager.Core.Entities
+namespace Pass.Manager.Web.Models
 {
-    public class PassCertificate : EntityVersionable, IEntityWithID
+    public class PassCertificateViewModel : BaseViewModel
     {
+        public override string DisplayName { get { return "Pass Certificate"; } }
         public int EntityID { get { return PassCertificateId; } }
 
         public int PassCertificateId { get; set; }
@@ -13,6 +15,5 @@ namespace Pass.Manager.Core.Entities
         public string Description { get; set; }
         public DateTime ExpDate { get; set; }
         public int CertificateStorageId { get; set; }
-        public ICollection<PassSiteCertificate> PassSites { get; set; }
     }
 }

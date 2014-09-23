@@ -155,12 +155,14 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Common\BaseEntityController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PassCertificateController.cs" />
     <Compile Include="Controllers\PassProjectController.cs" />
     <Compile Include="Controllers\PassSiteController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\PassCertificateViewModel.cs" />
     <Compile Include="Models\PassProjectViewModel.cs" />
     <Compile Include="Models\UserPasswordViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
@@ -964,6 +966,8 @@
     <Content Include="Views\Shared\_LayoutDetails.cshtml" />
     <Content Include="Views\PassProject\Create.cshtml" />
     <Content Include="Views\PassProject\Edit.cshtml" />
+    <Content Include="Views\PassCertificate\_Form.cshtml" />
+    <Content Include="Views\PassCertificate\_Grid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common.Extensions\Common.Extensions.csproj">

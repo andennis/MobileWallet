@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseService.cs" />
+    <Compile Include="PassCertificateService.cs" />
     <Compile Include="PassManagerConfig.cs" />
     <Compile Include="PassManagerException.cs" />
     <Compile Include="PassProjectService.cs" />

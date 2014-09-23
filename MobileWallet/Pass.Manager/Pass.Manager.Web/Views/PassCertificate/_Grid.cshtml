@@ -1,0 +1,12 @@
+﻿@(Html.Grid<PassCertificateViewModel>()
+    .Name("grdPassSites")
+    .Pageable()
+    .DataSource(ds => ds.Read(@Url.Action("GridSearch")))
+    .Columns(c =>
+                {
+                    c.Bound(p => p.PassCertificateId).Title("ID").Width("100px");
+                    c.BoundLink(p => p.Name, Url.Action("Edit"), id => id.PassCertificateId);
+                    c.Bound(p => p.Description);
+                    c.Bound(p => p.ExpDate);
+                }))
+
