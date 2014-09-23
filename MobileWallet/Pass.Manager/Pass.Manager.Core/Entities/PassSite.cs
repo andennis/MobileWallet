@@ -3,9 +3,9 @@ using Common.Repository;
 
 namespace Pass.Manager.Core.Entities
 {
-    public class PassSite : EntityVersionable, IEntityWithID
+    public class PassSite : EntityVersionable, IEntityWithId
     {
-        public int EntityID { get { return PassSiteId; } }
+        public int EntityId { get { return PassSiteId; } }
 
         public int PassSiteId { get; set; }
         public string Name { get; set; }

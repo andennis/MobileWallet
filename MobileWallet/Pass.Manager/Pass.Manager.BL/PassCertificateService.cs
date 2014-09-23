@@ -4,7 +4,7 @@ using Pass.Manager.Repository.Core;
 
 namespace Pass.Manager.BL
 {
-    public class PassCertificateService: BaseService<PassCertificate>, IPassCertificateService
+    public class PassCertificateService: BaseService<PassCertificateApple>, IPassCertificateService
     {
         public PassCertificateService(IPassManagerUnitOfWork unitOfWork)
             : base(unitOfWork)

@@ -162,6 +162,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\PassCertificateAppleViewModel.cs" />
     <Compile Include="Models\PassCertificateViewModel.cs" />
     <Compile Include="Models\PassProjectViewModel.cs" />
     <Compile Include="Models\UserPasswordViewModel.cs" />

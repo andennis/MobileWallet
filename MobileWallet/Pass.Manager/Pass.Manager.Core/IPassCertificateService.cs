@@ -2,7 +2,7 @@
 
 namespace Pass.Manager.Core
 {
-    public interface IPassCertificateService : IBaseService<PassCertificate>
+    public interface IPassCertificateService : IBaseService<PassCertificateApple>
     {
     }
 }

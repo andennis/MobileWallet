@@ -11,7 +11,7 @@ namespace Pass.Manager.Web.Common
     [Authorize]
     public abstract class BaseEntityController<TEntityModelView, TEntity> : BaseController
         where TEntityModelView : class, IViewModel, new() 
-        where TEntity : class, IEntityWithID
+        where TEntity : class, IEntityWithId
     {
         private readonly IBaseService<TEntity> _service;
 

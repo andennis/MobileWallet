@@ -19,8 +19,8 @@ namespace Pass.Manager.Web
             Mapper.CreateMap<PassProject, PassProjectViewModel>();
             Mapper.CreateMap<PassProjectViewModel, PassProject>();
 
-            Mapper.CreateMap<PassCertificate, PassCertificateViewModel>();
-            Mapper.CreateMap<PassCertificateViewModel, PassCertificate>();
+            Mapper.CreateMap<PassCertificateApple, PassCertificateAppleViewModel>();
+            Mapper.CreateMap<PassCertificateAppleViewModel, PassCertificateApple>();
         }
     }
 }

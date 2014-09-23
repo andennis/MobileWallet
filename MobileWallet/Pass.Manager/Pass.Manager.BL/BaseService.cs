@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace Pass.Manager.BL
 {
-    public abstract class BaseService<TEntity> : IBaseService<TEntity> where TEntity : class, IEntityWithID, new()
+    public abstract class BaseService<TEntity> : IBaseService<TEntity> where TEntity : class, IEntityWithId, new()
     {
         protected readonly IRepository<TEntity> _repository;
         protected readonly IUnitOfWork _unitOfWork;
@@ -24,7 +24,7 @@ namespace Pass.Manager.BL
         {
             _repository.Insert(entity);
             _unitOfWork.Save();
-            return entity.EntityID;
+            return entity.EntityId;
         }
         public virtual void Update(TEntity entity)
         {

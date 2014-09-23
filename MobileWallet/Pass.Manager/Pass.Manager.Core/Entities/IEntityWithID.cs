@@ -1,7 +1,7 @@
 ﻿namespace Pass.Manager.Core.Entities
 {
-    public interface IEntityWithID
+    public interface IEntityWithId
     {
-        int EntityID { get; }
+        int EntityId { get; }
     }
 }

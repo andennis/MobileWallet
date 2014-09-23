@@ -1,7 +1,10 @@
-﻿@model PassCertificateViewModel
+﻿@model PassCertificateAppleViewModel
            
 @Html.HiddenForExt(m => m.PassCertificateId)
 @Html.TextBoxFormForExt(m => m.Name)
+@Html.TextBoxFormForExt(m => m.TeamId)
+@Html.TextBoxFormForExt(m => m.PassTypeId)
 @Html.TextBoxFormForExt(m => m.Description)
 @Html.LabelForExt(m => m.ExpDate, "Expiration Date")
+@Html.HiddenForExt(m => m.ExpDate) @*temp solution for ExpDate*@
 @Html.HiddenForExt(m => m.CertificateStorageId)
