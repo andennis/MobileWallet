@@ -80,6 +80,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -156,12 +157,22 @@
     <Compile Include="Common\BaseEntityController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PassCertificateController.cs" />
+    <Compile Include="Controllers\PassDesignerController.cs" />
     <Compile Include="Controllers\PassProjectController.cs" />
     <Compile Include="Controllers\PassSiteController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\HtmlHelpers.cs" />
+    <Compile Include="Models\GeneralPassTemplate\BarcodeDetails.cs" />
+    <Compile Include="Models\GeneralPassTemplate\BeaconDetails.cs" />
+    <Compile Include="Models\GeneralPassTemplate\DistributionDetails.cs" />
+    <Compile Include="Models\GeneralPassTemplate\FieldDetails.cs" />
+    <Compile Include="Models\GeneralPassTemplate\GeneralPassTemplate.cs" />
+    <Compile Include="Models\GeneralPassTemplate\IntegrationDetails.cs" />
+    <Compile Include="Models\GeneralPassTemplate\LanguageDetails.cs" />
+    <Compile Include="Models\GeneralPassTemplate\LocationDetails.cs" />
     <Compile Include="Models\PassCertificateAppleViewModel.cs" />
     <Compile Include="Models\PassCertificateViewModel.cs" />
     <Compile Include="Models\PassProjectViewModel.cs" />
@@ -181,6 +192,12 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\createCard\bootstrap-theme.css" />
+    <Content Include="Content\createCard\bootstrap.css" />
+    <Content Include="Content\createCard\createCard.css" />
+    <Content Include="Content\createCard\jquery.simple-dtpicker.css" />
+    <Content Include="Content\createCard\skeleton.css" />
+    <Content Include="Content\createCard\style.css" />
     <Content Include="Content\DataTables-1.10.2\css\dataTables.autoFill.css" />
     <Content Include="Content\DataTables-1.10.2\css\dataTables.autoFill.min.css" />
     <Content Include="Content\DataTables-1.10.2\css\dataTables.bootstrap.css" />
@@ -415,6 +432,33 @@
     <Content Include="Content\kendo\2014.2.716\images\kendoui.woff" />
     <Content Include="Content\kendo\2014.2.716\images\kendoui.ttf" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
+    <Content Include="Images\createCard\barcode\aztec.png" />
+    <Content Include="Images\createCard\barcode\aztecPass.png" />
+    <Content Include="Images\createCard\barcode\pdf.png" />
+    <Content Include="Images\createCard\barcode\pdf417Pass.png" />
+    <Content Include="Images\createCard\barcode\qr.png" />
+    <Content Include="Images\createCard\barcode\qrPass.png" />
+    <Content Include="Images\createCard\color.png" />
+    <Content Include="Images\createCard\csscheckbox.png" />
+    <Content Include="Images\createCard\expand.png" />
+    <Content Include="Images\createCard\meta100.png" />
+    <Content Include="Images\createCard\myImages\backgroundImage.jpg" />
+    <Content Include="Images\createCard\myImages\backgroundImage1.jpg" />
+    <Content Include="Images\createCard\myImages\backgroundImage2.jpg" />
+    <Content Include="Images\createCard\myImages\backPass.png" />
+    <Content Include="Images\createCard\myImages\iphonePassDesigner.png" />
+    <Content Include="Images\createCard\myImages\uutomatic_updates.png" />
+    <Content Include="Images\createCard\PassLightLogo.png" />
+    <Content Include="Images\createCard\picker.png" />
+    <Content Include="Images\createCard\Transit\air.svg" />
+    <Content Include="Images\createCard\Transit\arrowRight.svg" />
+    <Content Include="Images\createCard\Transit\boat.svg" />
+    <Content Include="Images\createCard\Transit\bus.svg" />
+    <Content Include="Images\createCard\Transit\train.svg" />
+    <Content Include="Images\createCard\Vitalik.png" />
+    <Content Include="Images\logo&amp;strip\cleverLogo.png" />
+    <Content Include="Images\logo&amp;strip\storeStrip7.jpg" />
+    <Content Include="Images\logo&amp;strip\Tulips.jpg" />
     <Content Include="Scripts\Action.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -969,6 +1013,14 @@
     <Content Include="Views\PassProject\Edit.cshtml" />
     <Content Include="Views\PassCertificate\_Form.cshtml" />
     <Content Include="Views\PassCertificate\_Grid.cshtml" />
+    <Content Include="Views\PassDesigner\_BackContentTab.cshtml" />
+    <Content Include="Views\PassDesigner\_DesignTab.cshtml" />
+    <Content Include="Views\PassDesigner\_DistributionTab.cshtml" />
+    <Content Include="Views\PassDesigner\_FrontContentTab.cshtml" />
+    <Content Include="Views\PassDesigner\_LanguagesTab.cshtml" />
+    <Content Include="Views\PassDesigner\_LockScreenTab.cshtml" />
+    <Content Include="Views\PassDesigner\_PassDesigner.cshtml" />
+    <Content Include="Views\PassDesigner\_PassSettingsTab.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common.Extensions\Common.Extensions.csproj">
