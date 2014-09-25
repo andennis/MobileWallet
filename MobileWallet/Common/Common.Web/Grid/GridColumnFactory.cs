@@ -37,15 +37,14 @@ namespace Common.Web.Grid
             Columns.Add(builder);
             return builder;
         }
-
-        /*
+        
         public GridBoundColumnBuilder<TModel> BoundDateTime(Expression<Func<TModel, DateTime>> expression, string dateTimeFormat = "L")
         {
             var builder = new GridBoundColumnBuilder<TModel>(expression.GetMethodOrPropertyName());
+            builder.ClientTemplate(string.Format("moment(\"#={0}#\").format(\"{1}\")", builder.ColName, dateTimeFormat));
             Columns.Add(builder);
             return builder;
         }
-        */
 
     }
 }

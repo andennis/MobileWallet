@@ -30,7 +30,8 @@ namespace Pass.Manager.Web
                 "~/Scripts/DataTables-1.10.2/jquery.dataTables.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/moment").Include(
-                "~/Scripts/moment.js"));
+                "~/Scripts/moment.js",
+                "~/Scripts/moment-with-locales.js"));
 
             
             bundles.Add(new StyleBundle("~/content/kendo").Include(
