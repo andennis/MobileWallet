@@ -15,14 +15,14 @@ namespace Common.Web.Grid
     
         public GridBoundColumnBuilder<TModel> Bound<TValue>(Expression<Func<TModel, TValue>> expression)
         {
-            var builder = new GridBoundColumnBuilder<TModel>(expression.GetMethodOrPropertyName());
+            var builder = new GridBoundColumnBuilder<TModel>(expression.GetMethodOrPropertyName(), typeof(TValue));
             Columns.Add(builder);
             return builder;
         }
 
         public GridBoundColumnBuilder<TModel> BoundLink<TValue, TId>(Expression<Func<TModel, TValue>> expression, string url, Expression<Func<TModel, TId>> expressionId)
         {
-            var builder = new GridBoundColumnBuilder<TModel>(expression.GetMethodOrPropertyName());
+            var builder = new GridBoundColumnBuilder<TModel>(expression.GetMethodOrPropertyName(), typeof(TValue));
             string idColName = expressionId.GetMethodOrPropertyName();
             builder.ClientTemplate(string.Format("<a id=\"{0}.#={1}#\" href=\"{2}/#={1}#\">#={0}#</a>", builder.ColName, idColName, url));
             Columns.Add(builder);
@@ -38,13 +38,5 @@ namespace Common.Web.Grid
             return builder;
         }
         
-        public GridBoundColumnBuilder<TModel> BoundDateTime(Expression<Func<TModel, DateTime>> expression, string dateTimeFormat = "L")
-        {
-            var builder = new GridBoundColumnBuilder<TModel>(expression.GetMethodOrPropertyName());
-            builder.ClientTemplate(string.Format("moment(\"#={0}#\").format(\"{1}\")", builder.ColName, dateTimeFormat));
-            Columns.Add(builder);
-            return builder;
-        }
-
     }
 }

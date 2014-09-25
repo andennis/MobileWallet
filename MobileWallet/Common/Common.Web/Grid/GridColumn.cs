@@ -17,6 +17,11 @@ namespace Common.Web.Grid
         [JsonProperty(PropertyName = "width")]
         public string Width { get; set; }
 
+        /*
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; set; }
+        */
+
         [JsonConverter(typeof(JsonValueWithoutQuotesConverter))]
         [JsonProperty(PropertyName = "render")]
         public string Render { get; set; }

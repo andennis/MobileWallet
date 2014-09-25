@@ -108,7 +108,8 @@ namespace Common.Web.Grid
                                  Title = x.ColTitle, 
                                  Visible = x.IsVisible,
                                  Width = x.ColWidth,
-                                 Render = GetRenderJsFuncByClientTemplate(x)
+                                 //Type = GetColumnTypeName(x.ColType),
+                                 Render = GetRenderJsFunc(x)
                              });
             
             var tableSettings = new
@@ -138,6 +139,13 @@ namespace Common.Web.Grid
             return scriptTag.ToString();
         }
 
+        /*
+        private string GetColumnTypeName(Type type)
+        {
+            return type == typeof (DateTime) ? "date" : null;
+        }
+        */
+
         private string GetRenderJsFuncByClientTemplate(GridBoundColumnBuilder<T> colBuilder)
         {
             if (!string.IsNullOrEmpty(colBuilder.ColClientTemplate) && !string.IsNullOrEmpty(colBuilder.ColClientTemplateId))
@@ -159,6 +167,13 @@ namespace Common.Web.Grid
             return null;
         }
 
+        private string GetRenderJsFunc(GridBoundColumnBuilder<T> colBuilder)
+        {
+            return (colBuilder.ColType == typeof (DateTime)) 
+                ? GetRenderJsFuncDateTimeFormat(colBuilder.ColFormat) 
+                : GetRenderJsFuncByClientTemplate(colBuilder);
+        }
+
         private string GetRenderJsFuncByClientTemplate(string clientTemplate)
         {
             if (string.IsNullOrEmpty(clientTemplate))
@@ -169,6 +184,23 @@ namespace Common.Web.Grid
                             var result = template(row);
                             return result;
                         }";
+        }
+
+        private string GetRenderJsFuncDateTimeFormat(string dateTimeFormat)
+        {
+            if (string.IsNullOrEmpty(dateTimeFormat))
+                return null;
+
+            return @"function(data, type, row) {
+                        var date = eval(data.replace(/\/Date\((\d+)\)\//gi, ""new Date($1)""));
+                        return kendo.toString(date, """+dateTimeFormat+ @""");
+                     }";
+            /*
+            return @"function(data, type, row) {
+                        var date = moment(data).toDate();
+                        return moment(data).format('" + dateTimeFormat + @"');
+                     }";
+            */
         }
 
         /*
