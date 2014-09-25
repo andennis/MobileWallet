@@ -462,6 +462,13 @@
     <Content Include="Scripts\Action.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\createCard\bootstrap.js" />
+    <Content Include="Scripts\createCard\jquery-1.8.3.js" />
+    <Content Include="Scripts\createCard\jquery.flippy.js" />
+    <Content Include="Scripts\createCard\jquery.simple-dtpicker.js" />
+    <Content Include="Scripts\createCard\mColorPicker.js" />
+    <Content Include="Scripts\createCard\passDesigner.js" />
+    <Content Include="Scripts\createCard\StackBlur.js" />
     <Content Include="Scripts\DataTables-1.10.2\dataTables.autoFill.js" />
     <Content Include="Scripts\DataTables-1.10.2\dataTables.autoFill.min.js" />
     <Content Include="Scripts\DataTables-1.10.2\dataTables.bootstrap.js" />
@@ -916,6 +923,10 @@
     <Content Include="Scripts\kendo\2014.2.716\kendo.view.min.js" />
     <Content Include="Scripts\kendo\2014.2.716\kendo.window.min.js" />
     <Content Include="Scripts\modernizr-2.7.2.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -1057,7 +1068,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

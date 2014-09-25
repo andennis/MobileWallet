@@ -38,5 +38,14 @@ namespace Common.Web.Grid
             return builder;
         }
 
+        /*
+        public GridBoundColumnBuilder<TModel> BoundDateTime(Expression<Func<TModel, DateTime>> expression, string dateTimeFormat = "L")
+        {
+            var builder = new GridBoundColumnBuilder<TModel>(expression.GetMethodOrPropertyName());
+            Columns.Add(builder);
+            return builder;
+        }
+        */
+
     }
 }

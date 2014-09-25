@@ -164,11 +164,25 @@ namespace Common.Web.Grid
             if (string.IsNullOrEmpty(clientTemplate))
                 return null;
 
+            return @"function(data, type, row) {
+                            var template = kendo.template('"+clientTemplate+ @"');
+                            var result = template(row);
+                            return result;
+                        }";
+        }
+
+        /*
+        private string GetRenderJsFuncByClientTemplate(string clientTemplate)
+        {
+            if (string.IsNullOrEmpty(clientTemplate))
+                return null;
+
             clientTemplate = Regex.Replace(clientTemplate, @"#=\s*(\S+?)\s*#", "'+row.$1+'");
 
             return @"function(data, type, row) {
                             return '"+clientTemplate+@"';
                         }";
         }
+        */
     }
 }

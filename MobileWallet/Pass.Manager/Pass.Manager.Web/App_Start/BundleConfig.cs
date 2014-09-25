@@ -21,13 +21,24 @@ namespace Pass.Manager.Web
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                 "~/Scripts/bootstrap.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new StyleBundle("~/content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/DataTables-1.10.2/css/jquery.dataTables.css",
                       "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/datatables").Include(
                 "~/Scripts/DataTables-1.10.2/jquery.dataTables.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/moment").Include(
+                "~/Scripts/moment.js"));
+
+            
+            bundles.Add(new StyleBundle("~/content/kendo").Include(
+                      "~/Content/kendo/2014.2.716/kendo.common.min.css",
+                      "~/Content/kendo/2014.2.716/kendo.default.min.css"));
+            bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
+                "~/Scripts/kendo/2014.2.716/kendo.core.min.js"));
+
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                 "~/Scripts/Grid.js",
