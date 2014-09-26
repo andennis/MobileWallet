@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using Common.Extensions;
@@ -146,6 +145,13 @@ namespace Common.Web.Grid
         }
         */
 
+        private string GetRenderJsFunc(GridBoundColumnBuilder<T> colBuilder)
+        {
+            return (colBuilder.ColType == typeof(DateTime))
+                ? GetRenderJsFuncDateTimeFormat(colBuilder.ColFormat)
+                : GetRenderJsFuncByClientTemplate(colBuilder);
+        }
+
         private string GetRenderJsFuncByClientTemplate(GridBoundColumnBuilder<T> colBuilder)
         {
             if (!string.IsNullOrEmpty(colBuilder.ColClientTemplate) && !string.IsNullOrEmpty(colBuilder.ColClientTemplateId))
@@ -163,15 +169,14 @@ namespace Common.Web.Grid
 
         private string GetRenderJsFuncByClientTemplateId(string clientTemplateId)
         {
-            //TODO implement template generation
-            return null;
-        }
+            if (string.IsNullOrEmpty(clientTemplateId))
+                return null;
 
-        private string GetRenderJsFunc(GridBoundColumnBuilder<T> colBuilder)
-        {
-            return (colBuilder.ColType == typeof (DateTime)) 
-                ? GetRenderJsFuncDateTimeFormat(colBuilder.ColFormat) 
-                : GetRenderJsFuncByClientTemplate(colBuilder);
+            return @"function(data, type, row) {
+                            var templateContent = $(""#"+clientTemplateId+ @""").html();
+                            var template = kendo.template(templateContent);
+                            return template(row);
+                        }";
         }
 
         private string GetRenderJsFuncByClientTemplate(string clientTemplate)
@@ -181,8 +186,7 @@ namespace Common.Web.Grid
 
             return @"function(data, type, row) {
                             var template = kendo.template('"+clientTemplate+ @"');
-                            var result = template(row);
-                            return result;
+                            return template(row);
                         }";
         }
 

@@ -4,7 +4,7 @@ namespace Common.Web.Grid
 {
     public class GridBoundColumnBuilder<TModel> where TModel : class
     {
-        public GridBoundColumnBuilder(string colName)
+        public GridBoundColumnBuilder(string colName = null)
             :this(colName, typeof(string))
         {
         }
@@ -45,18 +45,33 @@ namespace Common.Web.Grid
             return this;
         }
 
+        /// <summary>
+        /// Date time format description: http://docs.telerik.com/kendo-ui/framework/globalization/dateformatting
+        /// </summary>
+        /// <param name="format"></param>
+        /// <returns></returns>
         public GridBoundColumnBuilder<TModel> Format(string format)
         {
             ColFormat = format;
             return this;
         }
 
+        /// <summary>
+        /// The guide to build client template: http://docs.telerik.com/kendo-ui/framework/templates/overview
+        /// </summary>
+        /// <param name="template"></param>
+        /// <returns></returns>
         public GridBoundColumnBuilder<TModel> ClientTemplate(string template)
         {
             ColClientTemplate = template;
             return this;
         }
 
+        /// <summary>
+        /// The guide to build client template: http://docs.telerik.com/kendo-ui/framework/templates/overview
+        /// </summary>
+        /// <param name="templateId"></param>
+        /// <returns></returns>
         public GridBoundColumnBuilder<TModel> ClientTemplateId(string templateId)
         {
             ColClientTemplateId = templateId;

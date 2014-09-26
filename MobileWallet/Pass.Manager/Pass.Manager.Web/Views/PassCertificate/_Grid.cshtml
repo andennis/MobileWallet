@@ -10,5 +10,12 @@
                     c.Bound(p => p.PassTypeId);
                     c.Bound(p => p.Description);
                     c.Bound(p => p.ExpDate);
+                    //c.Bound().Title("Test").ClientTemplateId("myTemp");
                 }))
+<!--
+<script id="myTemp" type="text/x-kendo-template">
+    # var date = eval(ExpDate.replace(/\/Date\((\d+)\)\//gi, "new Date($1)")); #
+    <a id="cert#=PassCertificateId#" href="\\#">#=kendo.toString(date, 'd')#</a>
 
+</script>
+-->
