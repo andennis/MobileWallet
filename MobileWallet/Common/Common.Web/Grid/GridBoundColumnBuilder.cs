@@ -1,15 +1,20 @@
 ﻿using System;
+using System.Web.Mvc;
 
 namespace Common.Web.Grid
 {
     public class GridBoundColumnBuilder<TModel> where TModel : class
     {
-        public GridBoundColumnBuilder(string colName = null)
-            :this(colName, typeof(string))
+        private readonly HtmlHelper _htmlHelper;
+
+        public GridBoundColumnBuilder(HtmlHelper htmlHelper, string colName = null)
+            : this(htmlHelper, colName, typeof(string))
         {
         }
-        public GridBoundColumnBuilder(string colName, Type colType)
+        public GridBoundColumnBuilder(HtmlHelper htmlHelper, string colName, Type colType)
         {
+            _htmlHelper = htmlHelper;
+
             ColName = colName;
             ColType = colType;
             ColTitle = colName;
@@ -77,6 +82,6 @@ namespace Common.Web.Grid
             ColClientTemplateId = templateId;
             return this;
         }
-        
+
     }
 }

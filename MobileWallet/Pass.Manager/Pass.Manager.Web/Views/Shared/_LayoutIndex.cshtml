@@ -14,5 +14,11 @@
 @section Scripts
 {
     @RenderSection("Scripts", false)
+
+    <script type="text/javascript">
+            $(document).ready(function () {
+                window.grid.Init($("table.pm-grid"));
+            })
+    </script>
 }
 

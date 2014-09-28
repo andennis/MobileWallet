@@ -1,5 +1,5 @@
 ﻿(function (action, $) {
-    action.Init = function ($form) {
+    action.InitForm = function ($form) {
 
         $(":submit", $form).click(function (e) {
             e.preventDefault();

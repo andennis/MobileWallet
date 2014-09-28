@@ -10,7 +10,7 @@ namespace Common.Web.Grid
     public class GridBuilder<T> : IHtmlString where T : class
     {
         private readonly HtmlHelper _htmlHelper;
-        private readonly GridViewModel<T> _gridModel = new GridViewModel<T>();
+        private readonly GridViewModel<T> _gridModel;
 
         public GridBuilder(HtmlHelper htmlHelper)
         {
@@ -18,6 +18,7 @@ namespace Common.Web.Grid
                 throw new ArgumentNullException("htmlHelper");
 
             _htmlHelper = htmlHelper;
+            _gridModel = new GridViewModel<T>(htmlHelper);
         }
 
         public GridBuilder<T> Name(string name)
@@ -33,6 +34,12 @@ namespace Common.Web.Grid
         public GridBuilder<T> Height(string height)
         {
             _gridModel.Height = height;
+            return this;
+        }
+
+        public GridBuilder<T> CssClass(string cssClass)
+        {
+            _gridModel.CssClass = cssClass;
             return this;
         }
 
@@ -72,6 +79,12 @@ namespace Common.Web.Grid
             return this;
         }
 
+        public GridBuilder<T> Events(Action<GridEventBuilder> configurator)
+        {
+            configurator(_gridModel.EventBuilder);
+            return this;
+        }
+
         public string ToHtmlString()
         {
             return RenderGrid();
@@ -83,7 +96,10 @@ namespace Common.Web.Grid
             var sb = new StringBuilder();
             var tableTag = new TagBuilder("table");
             tableTag.GenerateId(_gridModel.Name);
+
             tableTag.AddCssClass("table table-bordered table-striped");
+            if (!string.IsNullOrEmpty(_gridModel.CssClass))
+                tableTag.AddCssClass(_gridModel.CssClass);
 
             if (!string.IsNullOrEmpty(_gridModel.Width))
                 tableTag.Attributes.Add("style", "width:" + _gridModel.Width + ";");
@@ -129,10 +145,18 @@ namespace Common.Web.Grid
                                     columns = tblColumns
                                 };
 
+            var events = new StringBuilder();
+            if (!string.IsNullOrEmpty(_gridModel.EventBuilder.DataReadingHandler))
+                events.AppendFormat(".on('preXhr.dt', function(e, settings, data){{{0}(e, data)}})", _gridModel.EventBuilder.DataReadingHandler);
+            if (!string.IsNullOrEmpty(_gridModel.EventBuilder.DataBindingHandler))
+                events.AppendFormat(".on('xhr.dt', function(e, settings, json){{{0}(e, json)}})", _gridModel.EventBuilder.DataBindingHandler);
+            if (!string.IsNullOrEmpty(_gridModel.EventBuilder.DataBoundHandler))
+                events.AppendFormat(".on('draw.dt', function(e, settings){{{0}(e)}})", _gridModel.EventBuilder.DataBoundHandler);
+
             var scriptTag = new TagBuilder("script");
             //scriptTag.Attributes.Add("type", "text/javascript");
             scriptTag.InnerHtml = @"$(document).ready(function () {
-                $('#" + _gridModel.Name + @"').dataTable(" + tableSettings.ObjectToJson() + @");
+                $('#" + _gridModel.Name + @"')"+events+@".dataTable(" + tableSettings.ObjectToJson() + @");
             })";
 
             return scriptTag.ToString();

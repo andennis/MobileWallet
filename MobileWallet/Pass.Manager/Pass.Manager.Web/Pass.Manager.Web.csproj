@@ -149,6 +149,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="Common\AjaxActionResponse.cs" />
     <Compile Include="Common\AjaxOnlyAttribute.cs" />
     <Compile Include="Common\BaseController.cs" />
     <Compile Include="Common\BaseViewModel.cs" />
@@ -449,6 +450,7 @@
     <Content Include="Images\createCard\myImages\iphonePassDesigner.png" />
     <Content Include="Images\createCard\myImages\uutomatic_updates.png" />
     <Content Include="Images\createCard\PassLightLogo.png" />
+    <Content Include="Images\PassLightLogo.png" />
     <Content Include="Images\createCard\picker.png" />
     <Content Include="Images\createCard\Transit\air.svg" />
     <Content Include="Images\createCard\Transit\arrowRight.svg" />

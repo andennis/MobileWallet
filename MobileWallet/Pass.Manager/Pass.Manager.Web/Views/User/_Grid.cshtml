@@ -1,5 +1,6 @@
 ﻿@(Html.Grid<UserViewModel>()
 .Name("grdUsers")
+.CssClass("pm-grid")
 .Pageable()
 .DataSource(ds => ds.Read(@Url.Action("GridSearch")))
 .Columns(c =>
@@ -8,4 +9,5 @@
                 c.BoundLink(p => p.UserName, Url.Action("Edit"), id => id.UserId);
                 c.Bound(p => p.FirstName).Title("First Name");
                 c.Bound(p => p.LastName).Title("Last Name");
+                c.Bound(p => p.UserId).Title("Action").GridAjaxAction("Delete", Url.Action("Delete"));
             }))

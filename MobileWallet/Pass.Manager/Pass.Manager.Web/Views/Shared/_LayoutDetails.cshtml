@@ -17,8 +17,13 @@
     </div>
 }
 
-<script type="text/javascript">
-    $(document).ready(function() {
-            window.action.Init($("form"));
+@section Scripts
+{
+    @RenderSection("Scripts", false)
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            window.action.InitForm($("form"));
         })
-</script>
+    </script>    
+}

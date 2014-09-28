@@ -76,6 +76,14 @@ namespace Pass.Manager.Web.Common
             return Json(GridDataResponse.Create(request, resultView, result.TotalCount), JsonRequestBehavior.AllowGet);
         }
 
+        [AjaxOnly]
+        [HttpPost]
+        public virtual ActionResult Delete(int id)
+        {
+            _service.Delete(id);
+            return JsonEx();
+        }
+
         protected SearchContext GridRequestToSearchContext(GridDataRequest request)
         {
             return new SearchContext()

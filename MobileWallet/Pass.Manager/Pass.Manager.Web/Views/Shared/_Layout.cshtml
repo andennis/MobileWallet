@@ -16,47 +16,67 @@
     @*Scripts.Render("~/bundles/moment")*@
     @Scripts.Render("~/bundles/app")
 </head>
-<body>
-    <div class="container body-content">
-        <div class="container">
-            @if (User.Identity.IsAuthenticated)
-            {
-                <nav>
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav navbar-right">                            
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, @User.Identity.Name</a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>@Html.ActionLinkExt("My Account", "EditProfile", "User", new {userName = User.Identity.Name})</li>
-                                    <li>@Html.ActionLinkExt("Logout", "LogOff", "Account")</li>
+    <body>
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="@Url.Action("Index", "Home")"><img src="@Url.Content("~/Images/PassLightLogo.png")" width="150" height="40" /></a>
+                </div>
+
+                <div class="col-md-offset-6 col-md-3">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <nav>
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, @User.Identity.Name</a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>@Html.ActionLinkExt("My Account", "EditProfile", "User", new { userName = User.Identity.Name })</li>
+                                            <li>@Html.ActionLinkExt("Logout", "LogOff", "Account")</li>
+                                        </ul>
+                                    </li>
                                 </ul>
-                            </li>
+                            </div>
+                        </nav>
+                    }
+                    else
+                    {
+                        <div class="col-md-offset-10 col-md-2">
+                            @Html.ActionLinkExt("Login", "Login", "Account")
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li>@(Html.ActionLinkExt<PassSiteController>(c => c.Index(), "Sites"))</li>
+                            <li>@(Html.ActionLinkExt<UserController>(c => c.Index(), "Users"))</li>
+                            <li>@(Html.ActionLinkExt<PassCertificateController>(c => c.Index(), "Certificates"))</li>
                         </ul>
                     </div>
                 </nav>
-            }
-            else
-            {
-                <div class="col-md-offset-11 col-md-12">
-                    @Html.ActionLinkExt("Login", "Login", "Account")
-                </div>
-            }
+            </div>
         </div>
-        <div class="container well">
-            @RenderBody()    
+        
+        <div class="container body-content">
+            <div class="well">
+                @RenderBody()    
+            </div>
         </div>
-    </div>
 
-    @RenderSection("Scripts", false)
-</body>
+        @RenderSection("Scripts", false)
+    </body>
 </html>
