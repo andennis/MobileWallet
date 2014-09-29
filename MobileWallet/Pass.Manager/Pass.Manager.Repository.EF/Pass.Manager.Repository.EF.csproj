@@ -53,6 +53,14 @@
     <Compile Include="Migrations\201409160944449_InitialCreate.Designer.cs">
       <DependentUpon>201409160944449_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201409292255340_M1.cs" />
+    <Compile Include="Migrations\201409292255340_M1.Designer.cs">
+      <DependentUpon>201409292255340_M1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409292257370_M2.cs" />
+    <Compile Include="Migrations\201409292257370_M2.Designer.cs">
+      <DependentUpon>201409292257370_M2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PassManagerDbContext.cs" />
     <Compile Include="PassManagerUnitOfWork.cs" />
@@ -83,6 +91,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201409160944449_InitialCreate.resx">
       <DependentUpon>201409160944449_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409292255340_M1.resx">
+      <DependentUpon>201409292255340_M1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409292257370_M2.resx">
+      <DependentUpon>201409292257370_M2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
