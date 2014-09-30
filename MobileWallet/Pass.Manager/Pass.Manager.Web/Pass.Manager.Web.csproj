@@ -1034,6 +1034,9 @@
     <Content Include="Views\PassDesigner\_LockScreenTab.cshtml" />
     <Content Include="Views\PassDesigner\_PassDesigner.cshtml" />
     <Content Include="Views\PassDesigner\_PassSettingsTab.cshtml" />
+    <Content Include="Views\PassSite\Tabs\_Projects.cshtml" />
+    <Content Include="Views\PassSite\Tabs\_Certificates.cshtml" />
+    <Content Include="Views\PassSite\Tabs\_Users.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common.Extensions\Common.Extensions.csproj">

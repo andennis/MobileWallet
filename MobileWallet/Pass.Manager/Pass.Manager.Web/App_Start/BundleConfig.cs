@@ -33,12 +33,14 @@ namespace Pass.Manager.Web
                 "~/Scripts/moment.js"/*,
                 "~/Scripts/moment-with-locales.js"*/));
 
-            
+            //Kendo
             bundles.Add(new StyleBundle("~/content/kendo").Include(
                       "~/Content/kendo/2014.2.716/kendo.common.min.css",
                       "~/Content/kendo/2014.2.716/kendo.default.min.css"));
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
-                "~/Scripts/kendo/2014.2.716/kendo.core.min.js"));
+                "~/Scripts/kendo/2014.2.716/kendo.core.min.js",
+                "~/Scripts/kendo/2014.2.716/kendo.data.min.js",
+                "~/Scripts/kendo/2014.2.716/kendo.tabstrip.min.js"));
 
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(

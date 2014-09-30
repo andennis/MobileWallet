@@ -4,7 +4,7 @@
     helper.Init = function(passSiteId) {
         _passSiteId = passSiteId;
     }
-    helper.PassProjectDataHandler = function() {
-        return { passSiteId: _passSiteId };
+    helper.PassProjectDataHandler = function () {
+        return { passSiteId: $("#PassSiteId").val() };
     }
 }(window.PassSite = window.PassSite || {}, jQuery));

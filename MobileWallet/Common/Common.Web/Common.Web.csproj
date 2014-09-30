@@ -88,6 +88,12 @@
     <Compile Include="Grid\GridViewModel.cs" />
     <Compile Include="Grid\GridAjaxRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tab\TabControlExtension.cs" />
+    <Compile Include="Tab\TabStripBuilder.cs" />
+    <Compile Include="Tab\TabStripEventBuilder.cs" />
+    <Compile Include="Tab\TabStripItem.cs" />
+    <Compile Include="Tab\TabStripItemBuilder.cs" />
+    <Compile Include="Tab\TabStripItemFactory.cs" />
     <Compile Include="UrlHelperExtensions.cs" />
   </ItemGroup>
   <ItemGroup>

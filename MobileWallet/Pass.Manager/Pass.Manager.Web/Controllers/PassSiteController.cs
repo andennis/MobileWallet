@@ -30,40 +30,18 @@ namespace Pass.Manager.Web.Controllers
             return Json(GridDataResponse.Create(request, resultView, result.TotalCount), JsonRequestBehavior.AllowGet);
         }
 
-        /*
-        private class MyClass
+        public ActionResult TabProjects(int id)
         {
-            public int DT_RowId { get; set; }
-            public int Id { get; set; }
-            public string Name { get; set; }
-            public string Address { get; set; }
-            public string Town { get; set; }
+            return PartialView("Tabs/_Projects", id);
         }
-
-        [AjaxOnly]
-        public ActionResult AjaxHandler2(GridDataRequest request, string p1)
+        public ActionResult TabCertificates(int id)
         {
-            var data = new List<PassSiteViewModel>()
-                       {
-                           new PassSiteViewModel(){ PassSiteId = 1,  Name = "Microsoft", Description= "Redmond"},
-                           new PassSiteViewModel(){PassSiteId = 2, Name = "Google", Description = "Mountain View"},
-                           new PassSiteViewModel() { PassSiteId = 3, Name = "Gowi", Description = "Pancevo"}
-                       };
-            return Json(GridDataResponse.Create(request, data, 3), JsonRequestBehavior.AllowGet);
+            return PartialView("Tabs/_Certificates", id);
         }
-
-        [AjaxOnly]
-        public ActionResult AjaxHandler(GridDataRequest request, string p1)
+        public ActionResult TabUsers(int id)
         {
-            var data = new List<MyClass>()
-                       {
-                           new MyClass(){ DT_RowId = 1, Id = 1,  Name = "Microsoft", Address = "Redmond", Town = "USA"},
-                           new MyClass(){ DT_RowId = 2, Id = 2, Name = "Google", Address = "Mountain View", Town = "USA"},
-                           new MyClass() { DT_RowId = 3, Id = 3, Name = "Gowi", Address = "Pancevo", Town = "Serbia"}
-                       };
-            return Json(GridDataResponse.Create(request, data, 3), JsonRequestBehavior.AllowGet);
+            return PartialView("Tabs/_Users", id);
         }
-        */
 
     }
 }

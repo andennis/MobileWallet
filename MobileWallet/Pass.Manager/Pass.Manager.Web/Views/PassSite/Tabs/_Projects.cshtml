@@ -1,0 +1,18 @@
+﻿@model int
+
+@Html.ActionLinkExt("Add Project", "CreateProject", "PassProject", new { passSiteId = Model }, htmlAttributes: new { @class = "btn btn-default" })
+@(Html.Grid<PassProjectViewModel>()
+              .Name("grdPassProjects")
+              .CssClass("pm-grid")
+              .Pageable()
+              .AutoBind(false)
+              .DataSource(ds => ds.Read(@Url.Action("PassProjects")).Data("window.PassSite.PassProjectDataHandler"))
+              .Columns(c =>
+              {
+                  c.Bound(p => p.PassProjectId).Title("ID").Width("100px");
+                  c.BoundLink(p => p.Name, Url.Action("Edit", "PassProject"), id => id.PassProjectId);
+                  c.Bound(p => p.Description);
+                  c.Bound(p => p.ProjectType);
+                  c.Bound(p => p.PassProjectId).Title("Action").GridAjaxAction("Delete", Url.Action("Delete", "PassProject"));
+              }))
+
