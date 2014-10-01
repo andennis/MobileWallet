@@ -25,6 +25,29 @@ namespace Pass.Manager.BL
             };
 
         }
-        
+
+        public PassSiteUser GetUser(int passSiteId, int userId)
+        {
+            var rep = _unitOfWork.GetRepository<PassSiteUser>();
+            return rep.Query()
+                .Filter(x => x.PassSiteId == passSiteId && x.UserId == userId)
+                .Include(x => x.User)
+                .Get().First();
+        }
+
+        public void UpdateUser(PassSiteUser siteUser)
+        {
+            var rep = _unitOfWork.GetRepository<PassSiteUser>();
+            rep.Update(siteUser);
+            _unitOfWork.Save();
+        }
+
+        public void RemoveUser(int passSiteId, int userId)
+        {
+            var rep = _unitOfWork.GetRepository<PassSiteUser>();
+            PassSiteUser siteUser = rep.Find(passSiteId, userId);
+            rep.Delete(siteUser);
+            _unitOfWork.Save();
+        }
     }
 }

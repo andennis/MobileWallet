@@ -6,6 +6,7 @@ namespace Pass.Manager.Core.Entities
     {
         public int PassSiteId { get; set; }
         public int UserId { get; set; }
+        public PassSiteUserState UserState { get; set; }
         public EntityStatus Status { get; set; }
         public PassSite PassSite { get; set; }
         public User User { get; set; }

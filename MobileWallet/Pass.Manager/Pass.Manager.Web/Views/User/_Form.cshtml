@@ -1,6 +1,10 @@
 ﻿@model UserViewModel
            
 @Html.HiddenForExt(m => m.UserId)
+@if (!Model.IsNew)
+{
+    Html.DisplayFormForExt(m => m.UserId, "ID");
+}
 @Html.TextBoxFormForExt(m => m.UserName)
 @Html.TextBoxFormForExt(m => m.FirstName)
 @Html.TextBoxFormForExt(m => m.LastName)

@@ -27,6 +27,16 @@ namespace Pass.Manager.Web
                 .ForMember(dst => dst.FirstName, x => x.MapFrom(src => src.User.FirstName))
                 .ForMember(dst => dst.LastName, x => x.MapFrom(src => src.User.LastName))
                 .ForMember(dst => dst.UserName, x => x.MapFrom(src => src.User.UserName));
+            Mapper.CreateMap<PassSiteUserViewModel, PassSiteUser>();
+            Mapper.CreateMap<PassSiteUserViewModel, User>();
+            /*
+                .ForMember(dst => dst.User, x => x.MapFrom(src => new User()
+                                                                  {
+                                                                      UserName = src.UserName,
+                                                                      FirstName = src.FirstName,
+                                                                      LastName = src.LastName,
+                                                                  }));*/
+
             //Mapper.CreateMap<PassSiteUserViewModel, PassSiteUser>();
         }
     }

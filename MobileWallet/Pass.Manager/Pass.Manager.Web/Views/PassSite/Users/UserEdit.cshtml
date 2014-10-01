@@ -1,0 +1,24 @@
+﻿@model PassSiteUserViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutDetails.cshtml";
+}
+
+@section Title
+{
+    Edit @Model.DisplayName
+}
+
+@Html.HiddenForExt(m => m.PassSiteId)
+@Html.HiddenForExt(m => m.UserId)
+@Html.DisplayFormForExt(m => m.UserId, "User ID")
+@Html.TextBoxFormForExt(m => m.UserName, "Name")
+@Html.TextBoxFormForExt(m => m.FirstName, "First Name")
+@Html.TextBoxFormForExt(m => m.LastName, "Last Name")
+@Html.DropDownListFormForExt(m => m.UserState, "State")
+
+@section Actions
+{
+    @Html.FormActionSubmit("buttonSave", "Save")
+    @Html.FormActionButton("buttonCancel", "Cancel", Url.Action("Edit", new { id = Model.PassSiteId }))
+}

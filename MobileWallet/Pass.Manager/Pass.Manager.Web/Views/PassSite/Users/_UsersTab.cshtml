@@ -1,4 +1,5 @@
-﻿@Html.ActionLinkExt("Add User", "AddUser", "PassSite", new { passSiteId = Model }, htmlAttributes: new { @class = "btn btn-default" })
+﻿@model int
+@Html.ActionLinkExt("Add User", "AddUser", "PassSite", new { passSiteId = Model }, htmlAttributes: new { @class = "btn btn-default" })
 @(Html.Grid<PassSiteUserViewModel>()
     .Name("grdUsers")
     .CssClass("pm-grid")
@@ -8,9 +9,10 @@
     .Columns(c =>
     {
         c.Bound(m => m.UserId).Title("ID").Width("100px");
-        c.BoundLink(m => m.UserName, Url.Action("Edit", "User"), id => id.UserId).Title("Login");
+        c.BoundLink(m => m.UserName, Url.Action("UserEdit", new { passSiteId = Model }), id => id.UserId).Title("Login");
         c.Bound(m => m.FullName).Title("Name");
-        c.Bound(m => m.UserId).Title("Action").GridAjaxAction("Remove", Url.Action("RemoveUser"));
+        c.Bound(m => m.UserState).Title("State");
+        c.Bound(m => m.UserId).Title("Action").GridAjaxAction("Remove", Url.Action("RemoveUser", new { passSiteId = Model }));
     }))
 
 <script type="text/javascript">

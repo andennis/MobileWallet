@@ -86,6 +86,17 @@ namespace Common.Web
         #endregion
 
         #region TextBox
+        public static MvcHtmlString DisplayForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, object htmlAttributes = null)
+        {
+            return html.DisplayFor(expression, htmlAttributes);
+        }
+        public static MvcHtmlString DisplayFormForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string labelText = null)
+        {
+            return html.LabelWithControl(expression, labelText, null, () => html.DisplayFor(expression, _initControlAttributes));
+        }
+        #endregion
+
+        #region TextBox
         public static MvcHtmlString TextBoxForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, object htmlAttributes = null)
         {
             return html.TextBoxFor(expression, htmlAttributes);

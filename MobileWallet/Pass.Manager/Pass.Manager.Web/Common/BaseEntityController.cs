@@ -29,7 +29,9 @@ namespace Pass.Manager.Web.Common
         [HttpGet]
         public virtual ActionResult Create()
         {
-            return View(new TEntityModelView());
+            var model = new TEntityModelView();
+            SetDefaultReturnUrl(model);
+            return View(model);
         }
 
         [HttpPost]
@@ -51,6 +53,7 @@ namespace Pass.Manager.Web.Common
         {
             TEntity entity = _service.Get(id);
             TEntityModelView model = Mapper.Map<TEntity, TEntityModelView>(entity);
+            SetDefaultReturnUrl(model);
             return View(model);
         }
 
@@ -93,5 +96,6 @@ namespace Pass.Manager.Web.Common
                        PageSize = request.length
                    };
         }
+
     }
 }

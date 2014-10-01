@@ -2,6 +2,7 @@
 @model PassSiteViewModel
            
 @Html.HiddenForExt(m => m.PassSiteId)
+@Html.DisplayFormForExt(m => m.PassSiteId, "ID")
 @Html.TextBoxFormForExt(m => m.Name)
 @Html.TextAreaFormForExt(m => m.Description)
 

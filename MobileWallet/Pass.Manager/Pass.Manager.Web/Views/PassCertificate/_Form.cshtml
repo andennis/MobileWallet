@@ -1,6 +1,10 @@
 ﻿@model PassCertificateAppleViewModel
            
 @Html.HiddenForExt(m => m.PassCertificateId)
+@if (!Model.IsNew)
+{
+    Html.DisplayFormForExt(m => m.PassCertificateId, "ID");
+}
 @Html.TextBoxFormForExt(m => m.Name)
 @Html.TextBoxFormForExt(m => m.TeamId)
 @Html.TextBoxFormForExt(m => m.PassTypeId)
