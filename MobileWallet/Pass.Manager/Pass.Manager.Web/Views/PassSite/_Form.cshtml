@@ -7,32 +7,12 @@
 
 @if (!Model.IsNew)
 {
-    @*
-    <div class="row">
-        @Html.ActionLinkExt("Add Project", "CreateProject", "PassProject", new { passSiteId = Model.PassSiteId }, htmlAttributes: new { @class = "btn btn-default" })
-        @(Html.Grid<PassProjectViewModel>()
-              .Name("grdPassProjects")
-              .CssClass("pm-grid")
-              .Pageable()
-              .AutoBind(false)
-              .DataSource(ds => ds.Read(@Url.Action("PassProjects")).Data("window.PassSite.PassProjectDataHandler"))
-              .Columns(c =>
-              {
-                  c.Bound(p => p.PassProjectId).Title("ID").Width("100px");
-                  c.BoundLink(p => p.Name, Url.Action("Edit", "PassProject"), id => id.PassProjectId);
-                  c.Bound(p => p.Description);
-                  c.Bound(p => p.ProjectType);
-                  c.Bound(p => p.PassProjectId).Title("Action").GridAjaxAction("Delete", Url.Action("Delete", "PassProject"));
-              }))
-    </div>
-    *@
-    
     <div class="row">
         @(Html.TabStrip()
             .Name("siteTabs")
             .Items(tab =>
             {
-                tab.Add().Text("Projects").LoadContentFrom(Url.Action("TabProjects", new{id = Model.PassSiteId})).Selected(true);
+                tab.Add().Text("Projects").LoadContentFrom(Url.Action("TabProjects", new{ id = Model.PassSiteId })).Selected(true);
                 tab.Add().Text("Certificates").LoadContentFrom(Url.Action("TabCertificates", new { id = Model.PassSiteId }));
                 tab.Add().Text("Users").LoadContentFrom(Url.Action("TabUsers", new { id = Model.PassSiteId }));
             }))
@@ -41,12 +21,3 @@
 
 <script type="text/javascript" src="@Url.Content("~/Scripts/FormHelpers/PassSiteHelper.js")"></script>
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        window.PassSite.Init(@Model.PassSiteId);
-
-        var grid = $("#grdPassProjects");
-        window.grid.Init(grid);
-        window.grid.Reload(grid);
-    })
-</script>

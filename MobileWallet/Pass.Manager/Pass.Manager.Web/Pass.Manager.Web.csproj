@@ -177,6 +177,7 @@
     <Compile Include="Models\PassCertificateAppleViewModel.cs" />
     <Compile Include="Models\PassCertificateViewModel.cs" />
     <Compile Include="Models\PassProjectViewModel.cs" />
+    <Compile Include="Models\PassSiteUserViewModel.cs" />
     <Compile Include="Models\UserPasswordViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
@@ -1062,10 +1063,6 @@
     <ProjectReference Include="..\Pass.Manager.Core\Pass.Manager.Core.csproj">
       <Project>{DC28CC0D-F87E-4D65-8812-3BAF31C9C359}</Project>
       <Name>Pass.Manager.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pass.Manager.Repository.Core\Pass.Manager.Repository.Core.csproj">
-      <Project>{6ae0452d-92cc-420b-99f4-7f9d7464b9a3}</Project>
-      <Name>Pass.Manager.Repository.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pass.Manager.Repository.EF\Pass.Manager.Repository.EF.csproj">
       <Project>{929e8294-e96d-4d40-b326-c62415356d3d}</Project>

@@ -15,3 +15,9 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.k-state-active
+{
+    border-color: inherit !important;
+    
+}

@@ -1,1 +1,22 @@
-﻿
+﻿@Html.ActionLinkExt("Add User", "AddUser", "PassSite", new { passSiteId = Model }, htmlAttributes: new { @class = "btn btn-default" })
+@(Html.Grid<PassSiteUserViewModel>()
+    .Name("grdUsers")
+    .CssClass("pm-grid")
+    .Pageable()
+    .AutoBind(false)
+    .DataSource(ds => ds.Read(@Url.Action("Users")).Data("window.PassSite.UserDataHandler"))
+    .Columns(c =>
+    {
+        c.Bound(m => m.UserId).Title("ID").Width("100px");
+        c.BoundLink(m => m.UserName, Url.Action("Edit", "User"), id => id.UserId).Title("Login");
+        c.Bound(m => m.FullName).Title("Name");
+        c.Bound(m => m.UserId).Title("Action").GridAjaxAction("Remove", Url.Action("RemoveUser"));
+    }))
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var grid = $("#grdUsers");
+        window.grid.Init(grid);
+        window.grid.Reload(grid);
+    })
+</script>

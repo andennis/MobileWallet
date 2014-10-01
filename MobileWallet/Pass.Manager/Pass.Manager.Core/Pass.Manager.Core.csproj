@@ -53,10 +53,12 @@
     <Compile Include="IBaseService.cs" />
     <Compile Include="IPassCertificateService.cs" />
     <Compile Include="IPassManagerConfig.cs" />
+    <Compile Include="IPassManagerUnitOfWork.cs" />
     <Compile Include="IPassProjectService.cs" />
     <Compile Include="IPassSiteService.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IPassSiteRepository.cs" />
     <Compile Include="SearchContext.cs" />
     <Compile Include="SearchResult.cs" />
   </ItemGroup>

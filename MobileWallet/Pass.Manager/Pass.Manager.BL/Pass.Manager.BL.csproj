@@ -69,10 +69,6 @@
       <Project>{DC28CC0D-F87E-4D65-8812-3BAF31C9C359}</Project>
       <Name>Pass.Manager.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Pass.Manager.Repository.Core\Pass.Manager.Repository.Core.csproj">
-      <Project>{6AE0452D-92CC-420B-99F4-7F9D7464B9A3}</Project>
-      <Name>Pass.Manager.Repository.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

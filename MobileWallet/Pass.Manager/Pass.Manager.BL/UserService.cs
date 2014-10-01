@@ -5,7 +5,6 @@ using Common.Repository;
 using Common.Utils;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
-using Pass.Manager.Repository.Core;
 
 namespace Pass.Manager.BL
 {

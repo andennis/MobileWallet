@@ -71,6 +71,7 @@ namespace Common.Web.Tab
                     Name = x.Text,
                     Content = x.Content,
                     ContentUrl = x.LoadContentUrl
+                    //CssClass = x.Selected ? "k-state-active" : string.Empty
                 });
 
             var tabStripSettings = new
@@ -78,15 +79,31 @@ namespace Common.Web.Tab
                 dataTextField = "Name",
                 dataContentField = "Content",
                 dataContentUrlField = "ContentUrl",
+                //dataSpriteCssClass = "CssClass",
                 dataSource = dsItems
             };
 
+            if (_selectedIndex == 0)
+                _selectedIndex = GetSelectedTabIndex(_tabStripItemFactory.Items);
+
             var scriptTag = new TagBuilder("script");
             scriptTag.InnerHtml = @"$(document).ready(function () {
-                $('#" + _name + @"').kendoTabStrip(" + tabStripSettings.ObjectToJson() + @");
+                $('#" + _name + @"').kendoTabStrip(" + tabStripSettings.ObjectToJson() + @").data(""kendoTabStrip"").select(" + _selectedIndex + @");
             })";
 
             return scriptTag.ToString();
+        }
+
+        private int GetSelectedTabIndex(IEnumerable<TabStripItem> items)
+        {
+            for (int i = 0; i < _tabStripItemFactory.Items.Count(); i++)
+            {
+                if (_tabStripItemFactory.Items[i].Selected)
+                {
+                    return i;
+                }
+            }
+            return _selectedIndex;
         }
 
     }

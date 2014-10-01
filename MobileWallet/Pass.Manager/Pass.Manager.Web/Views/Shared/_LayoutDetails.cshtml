@@ -5,9 +5,9 @@
 <h3>
     @RenderSection("Title")
 </h3>
-@Html.ValidationSummary()
 @using (Html.BeginFormExt())
 {
+    @Html.ValidationSummary()
     @Html.AntiForgeryToken()
     <div class="container-fluid">
         @RenderBody()

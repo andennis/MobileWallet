@@ -1,16 +1,17 @@
 ﻿using Common.Repository;
 using Common.Repository.EF;
+using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
-using Pass.Manager.Repository.Core;
 using System;
 using System.Collections.Generic;
+using Pass.Manager.Core.Repositories;
 
 namespace Pass.Manager.Repository.EF
 {
     public class PassManagerUnitOfWork : UnitOfWork, IPassManagerUnitOfWork
     {
         private readonly HashSet<Type> _allowedRepositoryEntities;
-
+        private IPassSiteRepository _passSiteRepository;
         public PassManagerUnitOfWork(IDbConfig dbConfig)
             : base(new PassManagerDbContext(dbConfig.ConnectionString))
         {
@@ -33,5 +34,22 @@ namespace Pass.Manager.Repository.EF
                 return _allowedRepositoryEntities;
             }
         }
+
+        public override IRepository<TEntity> GetRepository<TEntity>()
+        {
+            if (typeof(TEntity) == typeof(PassSite))
+                return (IRepository<TEntity>)this.PassSiteRepository;
+
+            return base.GetRepository<TEntity>();
+        }
+
+        public IPassSiteRepository PassSiteRepository
+        {
+            get
+            {
+                return _passSiteRepository ?? (_passSiteRepository = new PassSiteRepository(_dbContext));
+            }
+        }
+
     }
 }

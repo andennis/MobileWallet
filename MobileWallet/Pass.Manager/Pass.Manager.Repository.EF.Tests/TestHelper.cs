@@ -1,7 +1,7 @@
 ﻿using System;
 using Common.Repository;
+using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
-using Pass.Manager.Repository.Core;
 
 namespace Pass.Manager.Repository.EF.Tests
 {

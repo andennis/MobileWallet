@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using AutoMapper;
 using Common.Web.Grid;
@@ -22,14 +19,6 @@ namespace Pass.Manager.Web.Controllers
             _projectService = projectService;
         }
 
-        [AjaxOnly]
-        public ActionResult PassProjects(GridDataRequest request, int? passSiteId)
-        {
-            SearchResult<PassProject> result = _projectService.Search(GridRequestToSearchContext(request), x => x.PassSiteId == passSiteId);
-            IEnumerable<PassProjectViewModel> resultView = Mapper.Map<IEnumerable<PassProject>, IEnumerable<PassProjectViewModel>>(result.Data);
-            return Json(GridDataResponse.Create(request, resultView, result.TotalCount), JsonRequestBehavior.AllowGet);
-        }
-
         public ActionResult TabProjects(int id)
         {
             return PartialView("Tabs/_Projects", id);
@@ -41,6 +30,23 @@ namespace Pass.Manager.Web.Controllers
         public ActionResult TabUsers(int id)
         {
             return PartialView("Tabs/_Users", id);
+        }
+
+        [AjaxOnly]
+        public ActionResult Projects(GridDataRequest request, int? passSiteId)
+        {
+            SearchResult<PassProject> result = _projectService.Search(GridRequestToSearchContext(request), x => x.PassSiteId == passSiteId);
+            IEnumerable<PassProjectViewModel> resultView = Mapper.Map<IEnumerable<PassProject>, IEnumerable<PassProjectViewModel>>(result.Data);
+            return Json(GridDataResponse.Create(request, resultView, result.TotalCount), JsonRequestBehavior.AllowGet);
+        }
+
+        [AjaxOnly]
+        public ActionResult Users(GridDataRequest request, int? passSiteId)
+        {
+             
+            SearchResult<PassProject> result = _projectService.Search(GridRequestToSearchContext(request), x => x.PassSiteId == passSiteId);
+            IEnumerable<PassProjectViewModel> resultView = Mapper.Map<IEnumerable<PassProject>, IEnumerable<PassProjectViewModel>>(result.Data);
+            return Json(GridDataResponse.Create(request, resultView, result.TotalCount), JsonRequestBehavior.AllowGet);
         }
 
     }

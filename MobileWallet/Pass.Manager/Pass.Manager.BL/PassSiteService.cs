@@ -1,6 +1,5 @@
 ﻿using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
-using Pass.Manager.Repository.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;

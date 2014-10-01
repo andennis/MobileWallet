@@ -64,6 +64,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PassManagerDbContext.cs" />
     <Compile Include="PassManagerUnitOfWork.cs" />
+    <Compile Include="PassSiteRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -82,10 +83,6 @@
     <ProjectReference Include="..\Pass.Manager.Core\Pass.Manager.Core.csproj">
       <Project>{dc28cc0d-f87e-4d65-8812-3baf31c9c359}</Project>
       <Name>Pass.Manager.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pass.Manager.Repository.Core\Pass.Manager.Repository.Core.csproj">
-      <Project>{6ae0452d-92cc-420b-99f4-7f9d7464b9a3}</Project>
-      <Name>Pass.Manager.Repository.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
