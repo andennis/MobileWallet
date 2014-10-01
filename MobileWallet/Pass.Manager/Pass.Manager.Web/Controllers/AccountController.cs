@@ -1,10 +1,6 @@
-﻿using System;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Security;
-using Common.Extensions;
-using Common.Utils;
 using Pass.Manager.Core;
-using Pass.Manager.Core.Entities;
 using Pass.Manager.Web.Models;
 
 namespace Pass.Manager.Web.Controllers

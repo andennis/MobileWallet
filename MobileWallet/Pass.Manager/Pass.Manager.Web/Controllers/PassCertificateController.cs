@@ -7,7 +7,7 @@ using Pass.Manager.Web.Models;
 
 namespace Pass.Manager.Web.Controllers
 {
-    public class PassCertificateController : BaseEntityController<PassCertificateAppleViewModel, PassCertificateApple>
+    public class PassCertificateController : BaseEntityController<PassCertificateAppleViewModel, PassCertificateApple, IPassCertificateService>
     {
         public PassCertificateController(IPassCertificateService certificateService)
             : base(certificateService)

@@ -105,6 +105,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pass.Notification.BL", "Pas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Web.Tests", "Common.Web.Tests\Common.Web.Tests.csproj", "{8EB44C54-AAB5-446B-ABEF-C3212D4C6B5D}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Pass.Manager.DB.SqlServer", "Pass.Manager\Pass.Manager.DB.SqlServer\Pass.Manager.DB.SqlServer.sqlproj", "{0EF9068C-2F5F-4EFA-946D-4046D234FA0B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -481,6 +483,16 @@ Global
 		{8EB44C54-AAB5-446B-ABEF-C3212D4C6B5D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8EB44C54-AAB5-446B-ABEF-C3212D4C6B5D}.Release|X64.ActiveCfg = Release|Any CPU
 		{8EB44C54-AAB5-446B-ABEF-C3212D4C6B5D}.Release|x86.ActiveCfg = Release|Any CPU
+		{0EF9068C-2F5F-4EFA-946D-4046D234FA0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EF9068C-2F5F-4EFA-946D-4046D234FA0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EF9068C-2F5F-4EFA-946D-4046D234FA0B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{0EF9068C-2F5F-4EFA-946D-4046D234FA0B}.Debug|X64.ActiveCfg = Debug|Any CPU
+		{0EF9068C-2F5F-4EFA-946D-4046D234FA0B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0EF9068C-2F5F-4EFA-946D-4046D234FA0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EF9068C-2F5F-4EFA-946D-4046D234FA0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EF9068C-2F5F-4EFA-946D-4046D234FA0B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{0EF9068C-2F5F-4EFA-946D-4046D234FA0B}.Release|X64.ActiveCfg = Release|Any CPU
+		{0EF9068C-2F5F-4EFA-946D-4046D234FA0B}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -527,5 +539,6 @@ Global
 		{93DD94D6-4255-4D24-ADBC-BA3EAA87DDB0} = {185AC291-63C8-48A7-B14C-288547273DA3}
 		{7B2EC480-9F20-4379-BF24-89162DD4CAE5} = {4DB7EAF9-FDDE-4B8B-BC82-696E8E249F4B}
 		{8EB44C54-AAB5-446B-ABEF-C3212D4C6B5D} = {185AC291-63C8-48A7-B14C-288547273DA3}
+		{0EF9068C-2F5F-4EFA-946D-4046D234FA0B} = {BFCA7B7D-8D87-4586-AF73-F88BCE8EC611}
 	EndGlobalSection
 EndGlobal

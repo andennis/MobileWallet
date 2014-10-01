@@ -9,13 +9,14 @@ using AutoMapper;
 namespace Pass.Manager.Web.Common
 {
     [Authorize]
-    public abstract class BaseEntityController<TEntityModelView, TEntity> : BaseController
+    public abstract class BaseEntityController<TEntityModelView, TEntity, TService> : BaseController
         where TEntityModelView : class, IViewModel, new() 
         where TEntity : class, IEntityWithId
+        where TService : class, IBaseService<TEntity>
     {
-        private readonly IBaseService<TEntity> _service;
+        protected readonly TService _service;
 
-        protected BaseEntityController(IBaseService<TEntity> service)
+        protected BaseEntityController(TService service)
         {
             _service = service;
         }

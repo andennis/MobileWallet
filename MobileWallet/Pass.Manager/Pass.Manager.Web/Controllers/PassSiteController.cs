@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using AutoMapper;
 using Common.Web.Grid;
@@ -9,7 +10,7 @@ using Pass.Manager.Web.Models;
 
 namespace Pass.Manager.Web.Controllers
 {
-    public class PassSiteController : BaseEntityController<PassSiteViewModel, PassSite>
+    public class PassSiteController : BaseEntityController<PassSiteViewModel, PassSite, IPassSiteService>
     {
         private readonly IPassProjectService _projectService;
 
@@ -33,7 +34,7 @@ namespace Pass.Manager.Web.Controllers
         }
 
         [AjaxOnly]
-        public ActionResult Projects(GridDataRequest request, int? passSiteId)
+        public ActionResult Projects(GridDataRequest request, int passSiteId)
         {
             SearchResult<PassProject> result = _projectService.Search(GridRequestToSearchContext(request), x => x.PassSiteId == passSiteId);
             IEnumerable<PassProjectViewModel> resultView = Mapper.Map<IEnumerable<PassProject>, IEnumerable<PassProjectViewModel>>(result.Data);
@@ -41,11 +42,10 @@ namespace Pass.Manager.Web.Controllers
         }
 
         [AjaxOnly]
-        public ActionResult Users(GridDataRequest request, int? passSiteId)
+        public ActionResult Users(GridDataRequest request, int passSiteId)
         {
-             
-            SearchResult<PassProject> result = _projectService.Search(GridRequestToSearchContext(request), x => x.PassSiteId == passSiteId);
-            IEnumerable<PassProjectViewModel> resultView = Mapper.Map<IEnumerable<PassProject>, IEnumerable<PassProjectViewModel>>(result.Data);
+            SearchResult<PassSiteUser> result = _service.GetUsers(GridRequestToSearchContext(request), passSiteId);
+            IEnumerable<PassSiteUserViewModel> resultView = Mapper.Map<IEnumerable<PassSiteUser>, IEnumerable<PassSiteUserViewModel>>(result.Data);
             return Json(GridDataResponse.Create(request, resultView, result.TotalCount), JsonRequestBehavior.AllowGet);
         }
 

@@ -21,6 +21,13 @@ namespace Pass.Manager.Web
 
             Mapper.CreateMap<PassCertificateApple, PassCertificateAppleViewModel>();
             Mapper.CreateMap<PassCertificateAppleViewModel, PassCertificateApple>();
+
+            Mapper.CreateMap<PassSiteUser, PassSiteUserViewModel>()
+                .ForMember(dst => dst.UserId, x => x.MapFrom(src => src.User.UserId))
+                .ForMember(dst => dst.FirstName, x => x.MapFrom(src => src.User.FirstName))
+                .ForMember(dst => dst.LastName, x => x.MapFrom(src => src.User.LastName))
+                .ForMember(dst => dst.UserName, x => x.MapFrom(src => src.User.UserName));
+            //Mapper.CreateMap<PassSiteUserViewModel, PassSiteUser>();
         }
     }
 }

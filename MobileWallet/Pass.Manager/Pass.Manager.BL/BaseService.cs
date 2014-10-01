@@ -43,7 +43,8 @@ namespace Pass.Manager.BL
         public virtual SearchResult<TEntity> Search(SearchContext searchContext, 
             Expression<Func<TEntity, bool>> searchExpression = null)
         {
-            int totalCount;
+            //TODO resolve the problem with paging
+            //int totalCount;
             IEnumerable<TEntity> data = _repository.Query()
                 .Filter(searchExpression)
                 .Get();

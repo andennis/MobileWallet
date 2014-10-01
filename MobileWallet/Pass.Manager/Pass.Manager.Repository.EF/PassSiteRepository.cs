@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.Repositories;
 using Common.Repository.EF;
