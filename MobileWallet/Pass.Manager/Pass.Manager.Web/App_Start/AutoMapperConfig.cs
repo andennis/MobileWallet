@@ -35,9 +35,8 @@ namespace Pass.Manager.Web
                                                                       UserName = src.UserName,
                                                                       FirstName = src.FirstName,
                                                                       LastName = src.LastName,
-                                                                  }));*/
-
-            //Mapper.CreateMap<PassSiteUserViewModel, PassSiteUser>();
+                                                                  }));
+            */
         }
     }
 }

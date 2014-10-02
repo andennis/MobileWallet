@@ -6,7 +6,7 @@
     .CssClass("pm-grid")
     .Pageable()
     .AutoBind(false)
-    .DataSource(ds => ds.Read(@Url.Action("Projects")).Data("window.PassSite.PassProjectDataHandler"))
+    .DataSource(ds => ds.Read(@Url.Action("GridSearch", "PassProject")).Data("window.PassSite.PassProjectDataHandler"))
     .Columns(c =>
     {
         c.Bound(p => p.PassProjectId).Title("ID").Width("100px");

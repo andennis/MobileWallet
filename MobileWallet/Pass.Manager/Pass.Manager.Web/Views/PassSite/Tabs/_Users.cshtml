@@ -1,18 +1,18 @@
 ﻿@model int
-@Html.ActionLinkExt("Add User", "AddUser", "PassSite", new { passSiteId = Model }, htmlAttributes: new { @class = "btn btn-default" })
+@Html.ActionLinkExt("Add User", "AddUser", "PassSiteUser", new { passSiteId = Model }, htmlAttributes: new { @class = "btn btn-default" })
 @(Html.Grid<PassSiteUserViewModel>()
     .Name("grdUsers")
     .CssClass("pm-grid")
     .Pageable()
     .AutoBind(false)
-    .DataSource(ds => ds.Read(@Url.Action("Users")).Data("window.PassSite.UserDataHandler"))
+    .DataSource(ds => ds.Read(@Url.Action("GridSearch", "PassSiteUser")).Data("window.PassSite.UserDataHandler"))
     .Columns(c =>
     {
         c.Bound(m => m.UserId).Title("ID").Width("100px");
-        c.BoundLink(m => m.UserName, Url.Action("UserEdit", new { passSiteId = Model }), id => id.UserId).Title("Login");
+        c.BoundLink(m => m.UserName, Url.Action("Edit", "PassSiteUser"), m => m.PassSiteUserId ).Title("Login");
         c.Bound(m => m.FullName).Title("Name");
         c.Bound(m => m.UserState).Title("State");
-        c.Bound(m => m.UserId).Title("Action").GridAjaxAction("Remove", Url.Action("RemoveUser", new { passSiteId = Model }));
+        c.Bound(m => m.PassSiteUserId).Title("Action").GridAjaxAction("Remove", Url.Action("Delete", "PassSiteUser"));
     }))
 
 <script type="text/javascript">

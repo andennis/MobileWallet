@@ -1,4 +1,6 @@
-﻿@{
+﻿@model BaseViewModel
+
+@{
     Layout = "~/Views/Shared/_LayoutDetails.cshtml";
 }
 
@@ -12,5 +14,5 @@
 @section Actions
 {
     @Html.FormActionSubmit("buttonCreate", "Create")
-    @Html.FormActionButton("buttonCancel", "Cancel", Url.Action("Index"))
+    @Html.FormActionButton("buttonCancel", "Cancel", !string.IsNullOrEmpty(Model.RedirectUrl) ? Model.RedirectUrl : Url.Action("Index"))
 }

@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using Pass.Manager.Core;
 using Common.Repository;
-using System.Linq.Expressions;
 using System.Linq;
+using Pass.Manager.Core.SearchFilters;
 
 namespace Pass.Manager.BL
 {
-    public abstract class BaseService<TEntity> : IBaseService<TEntity> where TEntity : class, new()
+    public abstract class BaseService<TEntity, TSearchFilter> : IBaseService<TEntity, TSearchFilter> 
+        where TEntity : class, new()
+        where TSearchFilter : SearchFilterBase
     {
         protected readonly IRepository<TEntity> _repository;
         protected readonly IUnitOfWork _unitOfWork;
@@ -38,10 +41,14 @@ namespace Pass.Manager.BL
         {
             return _repository.Find(entityId);
         }
-        public virtual SearchResult<TEntity> Search(SearchContext searchContext, 
-            Expression<Func<TEntity, bool>> searchExpression = null)
+        public virtual SearchResult<TEntity> Search(SearchContext searchContext, TSearchFilter searchFilter = null)
         {
-            //TODO resolve the problem with paging
+            return Search(searchContext, x => true);
+        }
+
+        protected SearchResult<TEntity> Search(SearchContext searchContext, Expression<Func<TEntity, bool>> searchExpression = null)
+        {
+            //TODO paging
             //int totalCount;
             IEnumerable<TEntity> data = _repository.Query()
                 .Filter(searchExpression)
@@ -54,5 +61,6 @@ namespace Pass.Manager.BL
             };
 
         }
+
     }
 }

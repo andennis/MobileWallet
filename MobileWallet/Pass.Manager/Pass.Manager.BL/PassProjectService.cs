@@ -1,18 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Pass.Manager.Core;
+﻿using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
+using Pass.Manager.Core.SearchFilters;
 
 namespace Pass.Manager.BL
 {
-    class PassProjectService : BaseService<PassProject>, IPassProjectService
+    class PassProjectService : BaseService<PassProject, PassProjectFilter>, IPassProjectService
     {
         public PassProjectService (IPassManagerUnitOfWork unitOfWork)
             : base(unitOfWork)
         { 
+        }
+
+        public override SearchResult<PassProject> Search(SearchContext searchContext, PassProjectFilter searchFilter = null)
+        {
+            return Search(searchContext, x => x.PassSiteId == searchFilter.PassSiteId);
         }
     }
 }

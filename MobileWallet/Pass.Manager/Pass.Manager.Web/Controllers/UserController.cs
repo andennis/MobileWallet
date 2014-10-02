@@ -2,12 +2,13 @@
 using AutoMapper;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
+using Pass.Manager.Core.SearchFilters;
 using Pass.Manager.Web.Common;
 using Pass.Manager.Web.Models;
 
 namespace Pass.Manager.Web.Controllers
 {
-    public class UserController : BaseEntityController<UserViewModel, User, IUserService>
+    public class UserController : BaseEntityController<UserViewModel, User, IUserService, SearchFilterBase>
     {
         private readonly IUserService _userService;
 

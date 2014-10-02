@@ -4,14 +4,16 @@ using System.Web.Mvc;
 using Common.Web.Grid;
 using Pass.Manager.Core;
 using AutoMapper;
+using Pass.Manager.Core.SearchFilters;
 
 namespace Pass.Manager.Web.Common
 {
     [Authorize]
-    public abstract class BaseEntityController<TEntityModelView, TEntity, TService> : BaseController
+    public abstract class BaseEntityController<TEntityModelView, TEntity, TService, TSearchFilter> : BaseController
         where TEntityModelView : class, IViewModel, new() 
         where TEntity : class
-        where TService : class, IBaseService<TEntity>
+        where TService : class, IBaseService<TEntity, TSearchFilter>
+        where TSearchFilter : SearchFilterBase
     {
         protected readonly TService _service;
 
@@ -72,9 +74,9 @@ namespace Pass.Manager.Web.Common
         }
 
         [AjaxOnly]
-        public virtual ActionResult GridSearch(GridDataRequest request)
+        public virtual ActionResult GridSearch(GridDataRequest request, TSearchFilter searchFilter = null)
         {
-            SearchResult<TEntity> result = _service.Search(GridRequestToSearchContext(request));
+            SearchResult<TEntity> result = _service.Search(GridRequestToSearchContext(request), searchFilter);
             IEnumerable<TEntityModelView> resultView = Mapper.Map<IEnumerable<TEntity>, IEnumerable<TEntityModelView>>(result.Data);
             return Json(GridDataResponse.Create(request, resultView, result.TotalCount), JsonRequestBehavior.AllowGet);
         }

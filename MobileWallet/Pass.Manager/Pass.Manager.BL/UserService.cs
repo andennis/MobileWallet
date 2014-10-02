@@ -1,14 +1,12 @@
-﻿using System;
-using System.Linq;
-using Common.Extensions;
-using Common.Repository;
+﻿using System.Linq;
 using Common.Utils;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
+using Pass.Manager.Core.SearchFilters;
 
 namespace Pass.Manager.BL
 {
-    public class UserService: BaseService<User>, IUserService
+    public class UserService : BaseService<User, SearchFilterBase>, IUserService
     {
         public UserService(IPassManagerUnitOfWork unitOfWork)
             : base(unitOfWork)

@@ -4,6 +4,7 @@ namespace Pass.Manager.Core.Entities
 {
     public class PassSiteUser : EntityVersionable
     {
+        public int PassSiteUserId { get; set; }
         public int PassSiteId { get; set; }
         public int UserId { get; set; }
         public PassSiteUserState UserState { get; set; }

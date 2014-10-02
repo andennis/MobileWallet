@@ -1,11 +1,11 @@
 ﻿(function (helper, $) {
 
     helper.PassProjectDataHandler = function () {
-        return { passSiteId: $("#PassSiteId").val() };
+        return { PassSiteId: $("#PassSiteId").val() };
     }
 
     helper.UserDataHandler = function () {
-        return { passSiteId: $("#PassSiteId").val() };
+        return { PassSiteId: $("#PassSiteId").val() };
     }
 
 }(window.PassSite = window.PassSite || {}, jQuery));

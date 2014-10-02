@@ -1,12 +1,13 @@
 ﻿using System.Web.Mvc;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
+using Pass.Manager.Core.SearchFilters;
 using Pass.Manager.Web.Common;
 using Pass.Manager.Web.Models;
 
 namespace Pass.Manager.Web.Controllers
 {
-    public class PassProjectController : BaseEntityController<PassProjectViewModel, PassProject, IPassProjectService>
+    public class PassProjectController : BaseEntityController<PassProjectViewModel, PassProject, IPassProjectService, PassProjectFilter>
     {
         public PassProjectController(IPassProjectService passService)
             : base(passService)
@@ -16,19 +17,10 @@ namespace Pass.Manager.Web.Controllers
         [HttpGet]
         public ActionResult CreateProject(int passSiteId)
         {
-            return View("Create", new PassProjectViewModel() { PassSiteId = passSiteId });
+            var model = new PassProjectViewModel() {PassSiteId = passSiteId};
+            SetDefaultReturnUrl(model);
+            return View("Create", model);
         }
 
-        public override ActionResult Create(PassProjectViewModel model)
-        {
-            model.RedirectUrl = Url.Action("Edit", "PassSite", new {id = model.PassSiteId});
-            return base.Create(model);
-        }
-
-        public override ActionResult Edit(PassProjectViewModel model)
-        {
-            model.RedirectUrl = Url.Action("Edit", "PassSite", new { id = model.PassSiteId });
-            return base.Edit(model);
-        }
     }
 }

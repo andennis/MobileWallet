@@ -1025,7 +1025,6 @@
     <Content Include="Views\PassProject\_Form.cshtml" />
     <Content Include="Views\Shared\_LayoutDetails.cshtml" />
     <Content Include="Views\PassProject\Create.cshtml" />
-    <Content Include="Views\PassProject\Edit.cshtml" />
     <Content Include="Views\PassCertificate\_Form.cshtml" />
     <Content Include="Views\PassCertificate\_Grid.cshtml" />
     <Content Include="Views\PassDesigner\_BackContentTab.cshtml" />
@@ -1038,8 +1037,9 @@
     <Content Include="Views\PassDesigner\_PassSettingsTab.cshtml" />
     <Content Include="Views\PassSite\Tabs\_Projects.cshtml" />
     <Content Include="Views\PassSite\Tabs\_Certificates.cshtml" />
-    <Content Include="Views\PassSite\Users\_UsersTab.cshtml" />
-    <Content Include="Views\PassSite\Users\UserEdit.cshtml" />
+    <Content Include="Views\PassSite\Tabs\_Users.cshtml" />
+    <Content Include="Views\PassSiteUser\_Form.cshtml" />
+    <Content Include="Views\PassSiteUser\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common.Extensions\Common.Extensions.csproj">
@@ -1079,9 +1079,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\PassSiteUser\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
