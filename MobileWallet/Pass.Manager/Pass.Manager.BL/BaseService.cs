@@ -3,13 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Pass.Manager.Core;
 using Common.Repository;
-using Pass.Manager.Core.Entities;
 using System.Linq.Expressions;
 using System.Linq;
 
 namespace Pass.Manager.BL
 {
-    public abstract class BaseService<TEntity> : IBaseService<TEntity> where TEntity : class, IEntityWithId, new()
+    public abstract class BaseService<TEntity> : IBaseService<TEntity> where TEntity : class, new()
     {
         protected readonly IRepository<TEntity> _repository;
         protected readonly IUnitOfWork _unitOfWork;
@@ -20,11 +19,10 @@ namespace Pass.Manager.BL
             _repository = _unitOfWork.GetRepository<TEntity>();
         }
 
-        public virtual int Create(TEntity entity)
+        public virtual void Create(TEntity entity)
         {
             _repository.Insert(entity);
             _unitOfWork.Save();
-            return entity.EntityId;
         }
         public virtual void Update(TEntity entity)
         {

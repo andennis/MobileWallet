@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using Common.Web.Grid;
 using Pass.Manager.Core;
-using Pass.Manager.Core.Entities;
 using AutoMapper;
 
 namespace Pass.Manager.Web.Common
@@ -11,7 +10,7 @@ namespace Pass.Manager.Web.Common
     [Authorize]
     public abstract class BaseEntityController<TEntityModelView, TEntity, TService> : BaseController
         where TEntityModelView : class, IViewModel, new() 
-        where TEntity : class, IEntityWithId
+        where TEntity : class
         where TService : class, IBaseService<TEntity>
     {
         protected readonly TService _service;
