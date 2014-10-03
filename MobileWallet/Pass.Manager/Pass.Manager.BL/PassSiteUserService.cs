@@ -18,6 +18,18 @@ namespace Pass.Manager.BL
             return _repository.Query().Filter(x => x.PassSiteUserId == entityId).Include(x => x.User).Get().First();
         }
 
+        public IEnumerable<User> GetUnassignedUsers(int passSiteId)
+        {
+            return _unitOfWork.GetRepository<User>().Query().Get();
+            /*
+            return _repository.Query()
+                .Filter(x => x.PassSiteId != passSiteId)
+                .Include(x => x.User)
+                .Get()
+                .Select(x => x.User);
+            */
+        }
+
         public override SearchResult<PassSiteUser> Search(SearchContext searchContext, PassSiteUserFilter searchFilter = null)
         {
             IEnumerable<PassSiteUser> data = _repository.Query()

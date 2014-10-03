@@ -2,10 +2,18 @@
 
 @Html.HiddenForExt(m => m.PassSiteUserId)
 @Html.HiddenForExt(m => m.PassSiteId)
-@Html.HiddenForExt(m => m.UserId)
+@if (Model.IsNew)
+{
+    @Html.DropDownListFormForExt(x => x.UserId, Model.Users, "User", "- Select User -")
+}
+else
+{
+    @Html.HiddenForExt(m => m.UserId)
+}
 @Html.DisplayFormForExt(m => m.UserId, "User ID")
 @Html.TextBoxFormForExt(m => m.UserName, "Name")
 @Html.TextBoxFormForExt(m => m.FirstName, "First Name")
 @Html.TextBoxFormForExt(m => m.LastName, "Last Name")
+
 @Html.DropDownListFormForExt(m => m.UserState, "State")
 

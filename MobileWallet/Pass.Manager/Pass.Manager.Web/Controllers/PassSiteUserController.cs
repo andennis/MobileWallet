@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using AutoMapper;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
@@ -13,13 +14,14 @@ namespace Pass.Manager.Web.Controllers
         public PassSiteUserController(IPassSiteUserService siteUserService)
             : base(siteUserService)
         {
-            
         }
 
         public ActionResult AddUser(int passSiteId)
         {
             var model = new PassSiteUserViewModel() { PassSiteId = passSiteId };
             SetDefaultReturnUrl(model);
+            var users =_service.GetUnassignedUsers(passSiteId).Select(x => new SelectListItem {Value = x.UserId.ToString(), Text = x.UserName});
+            model.Users = new SelectList(users, "Value", "Text");
             return View("Create", model);
         }
 
