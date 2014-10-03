@@ -73,6 +73,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EnumHelper.cs" />
+    <Compile Include="FileUpload\FileUploadBuilder.cs" />
+    <Compile Include="FileUpload\FileUploadEventBuilder.cs" />
+    <Compile Include="FileUpload\FileUploadExtension.cs" />
     <Compile Include="FormControlExtensions.cs" />
     <Compile Include="GridActionExtension.cs" />
     <Compile Include="Grid\GridActionLinkBuilder.cs" />
