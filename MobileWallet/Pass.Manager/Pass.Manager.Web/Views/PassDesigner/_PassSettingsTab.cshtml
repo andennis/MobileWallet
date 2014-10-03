@@ -83,14 +83,14 @@
 <p class="labelInput labelInputPassSettings">
     <span data-toggle="tooltip" title="Каждому созданному Вами шаблону пасса требуется уникальное название. Название шаблона не может быть изменено после сохранения пасса">Название шаблона<span class="spanRed">*</span></span>
 </p>
-<input id="templateNameInput" class="form-control textInputNameContent" maxlength="20" value="@Model.TemplateName" placeholder="Обязательное"/>
+<input id="templateNameInput" class="form-control textInputPassSetting" maxlength="20" value="@Model.TemplateName" placeholder="Обязательное"/>
 <br>
 
 <!--Pass Certificate select-->
 <p class="labelInput labelInputPassSettings">
     <span data-toggle="tooltip" title="Компания Apple требует, чтобы все пассы были подписаны специальным цифровым сертификатом. Сертификат пасса не может быть изменен после сохранения пасса">Сертификат пасса<span class="spanRed">*</span></span>
 </p>
-<select id="passCertificSelect" class="form-control textInputNameContent">
+<select id="passCertificSelect" class="form-control textInputPassSetting">
     <optgroup label="Ваш сертификат">
         <option>Нет</option>
     </optgroup>
@@ -104,14 +104,14 @@
 <p class="labelInput labelInputPassSettings">
     <span data-toggle="tooltip" title="Название Вашей организации будет отображаться в уведомлении об изменении при каждом обновлении пасса">Название организации<span class="spanRed">*</span></span>
 </p>
-<input id="organizationNameInput" class="form-control textInputNameContent" maxlength="20" value="@Model.OrganizationName" placeholder="Обязательное"/>
+<input id="organizationNameInput" class="form-control textInputPassSetting" maxlength="20" value="@Model.OrganizationName" placeholder="Обязательное"/>
 <br>
 
 <!--Pass description text area-->
 <p class="labelInput labelInputPassSettings">
     <span data-toggle="tooltip" title="Каждому пассу необходимо дать краткое описание специальных возможностей">Описание пасса<span class="spanRed">*</span></span>
 </p>
-<textarea id="passDescriptionTextarea" class="form-control textInputNameContent" maxlength="20" placeholder="Обязательное" rows="3">@Model.PassDescription</textarea>
+<textarea id="passDescriptionTextarea" class="form-control textInputPassSetting" maxlength="20" placeholder="Обязательное" rows="3">@Model.PassDescription</textarea>
 <br>
 
 <!--Grouping identifier input-->
@@ -119,7 +119,7 @@
     <p class="labelInput labelInputPassSettings">
         <span data-toggle="tooltip" title="Пассы с одинаковым названием группы будут отображаться сгруппированными в Passbook-е пользователя">Название группы</span>
     </p>
-    <input id="groupingIdentifierInput" class="form-control textInputNameContent" value="@Model.GroupingIdentifier" maxlength="20" placeholder="Необязательное" />
+    <input id="groupingIdentifierInput" class="form-control textInputPassSetting" value="@Model.GroupingIdentifier" maxlength="20" placeholder="Необязательное" />
     <br>
 </div>
 
@@ -152,7 +152,7 @@
     <p class="labelInput labelInputPassSettings">
         <span data-toggle="tooltip" title="Укажите число или код, который будет использоваться для распознания пасса">Серийный номер<span class="spanRed">*</span></span>
     </p>
-    <input id="serialNumberInput" class="form-control textInputNameContent" maxlength="40" placeholder="Обязательное" />
+    <input id="serialNumberInput" class="form-control textInputPassSetting" maxlength="40" placeholder="Обязательное" />
 </div>
 <br>
 <br>
@@ -161,7 +161,7 @@
 <p class="labelInput labelInputPassSettings">
     <span data-toggle="tooltip" title="Если пасс будет использоваться в отличном от Вашего часовом поясе, то Вы можете настроить часовой пояс сдесь">Часовой пояс</span>
 </p>
-<select id="passTz" class="form-control textInputNameContent">
+<select id="passTz" class="form-control textInputPassSetting">
     <option value="Z">Z</option>
     <option value="+01:00">+01:00</option>
     <option value="+02:00" selected>+02:00</option>

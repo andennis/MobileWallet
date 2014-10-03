@@ -1,6 +1,5 @@
 ﻿//On load window
 function WindowOnLoad() {
-    debugger;
     var fileInput = document.getElementById('logoImageInput'),
     stripFileInput = document.getElementById('stripImageInput'),
     thumbnailFileInput = document.getElementById('thumbnailImageInput'),
@@ -125,6 +124,7 @@ function RepositionRemoveIcon() {
 //Flippy effect
 var j = jQuery.noConflict();
 jQuery("#MainTab4").click(function () {
+    jQuery('.frontTabPassBlock').css('display', 'none');
     if (!jQuery("#MainTab4").hasClass("active")) {
         j("#divPassBody").flippy({
             color_target: "#ffffff",
@@ -139,6 +139,11 @@ jQuery("#MainTab4").click(function () {
 });
 
 jQuery("#MainTab1, #MainTab2, #MainTab3, #MainTab5, #MainTab6, #MainTab7").click(function () {
+    if (jQuery(this).attr('id') == 'MainTab3') {
+        jQuery('.frontTabPassBlock').css('display', 'block');
+    } else {
+        jQuery('.frontTabPassBlock').css('display', 'none');
+    }
     if (jQuery("#MainTab4").hasClass("active")) {
         j("#divPassBody").flippyReverse({
             //content: j("#" + (this).id),
@@ -164,17 +169,17 @@ jQuery('#topPanel p.tabMain').click(function () {
 });
 
 //Front content tabs
-jQuery('#wrapper p.tabFrontContent').click(function () {
+jQuery('.linkTabFrontContent').click(function () {
     var clickId = jQuery(this).attr('id');
-    if (clickId != jQuery('#wrapper p.active').attr('id')) {
-        jQuery('#wrapper p.active').removeClass('active');
+    if (clickId != jQuery('.linkTabFrontContent.active').attr('id')) {
+        jQuery('.linkTabFrontContent.active').removeClass('active');
         jQuery(this).addClass('active');
         jQuery('#wrapper div').removeClass('active');
         jQuery('#con_' + clickId).addClass('active');
     }
 });
 jQuery('#MainTab3').click(function () {
-    jQuery('#wrapper p.active').removeClass('active');
+    jQuery('.linkTabFrontContent.active').removeClass('active');
     jQuery('#wrapper div').removeClass('active');
     jQuery('#con_tab0').addClass('active');
 });
@@ -896,21 +901,21 @@ function ShowDateTimePicker(thisId) {
 jQuery('#divBarcodeFormat input').click(function () {
     switch (jQuery(this).attr('id')) {
         case 'aztecCode':
-            jQuery('#tab5').css('top', '358px').css('height', '126px');
+            jQuery('#tab5').css('top', '378px').css('height', '126px');
             if (jQuery('.passTypeImg.selected').attr('data-pass') == 'generic') {
                 jQuery('#auxiliaryAreaPass').css('display', 'none');
                 jQuery('#tab3').css('display', 'none');
             }
             break;
         case 'qrCode':
-            jQuery('#tab5').css('top', '358px').css('height', '126px');
+            jQuery('#tab5').css('top', '378px').css('height', '126px');
             if (jQuery('.passTypeImg.selected').attr('data-pass') == 'generic') {
                 jQuery('#auxiliaryAreaPass').css('display', 'none');
                 jQuery('#tab3').css('display', 'none');
             }
             break;
         case 'pdf417Code':
-            jQuery('#tab5').css('top', '377px').css('height', '102px');
+            jQuery('#tab5').css('top', '397px').css('height', '102px');
             if (jQuery('.passTypeImg.selected').attr('data-pass') == 'generic') {
                 jQuery('#auxiliaryAreaPass').css('display', 'block');
                 jQuery('#tab3').css('display', 'block');
@@ -961,7 +966,7 @@ function ChangesDependingPassType(passType) {
             jQuery('#collapsePanelAuxiliaryContent4').css('display', 'block');
             jQuery('#collapsePanelAuxiliaryContent5').css('display', 'block');
             jQuery('#auxiliaryAreaPass').css('display', 'block');
-            jQuery('#tab3').css('display', 'block').css('height', '40px').css('top', '247px');
+            jQuery('#tab3').css('display', 'block').css('height', '40px').css('top', '267px');
 
             //Primary
             jQuery('#collapsePanelPrimaryContent2').css('display', 'block');
@@ -974,7 +979,7 @@ function ChangesDependingPassType(passType) {
             jQuery('#divPrimaryLabelText1').css('display', 'block');
             jQuery('#flexContainerPrimaryValues').css('top', '66px').css('height', '40px').css('width', '257px');
             jQuery('#flexContainerPrimaryLabels').css('top', '55px').css('height', '13px').css('width', '257px');
-            jQuery('#tab2').css('height', '40px').css('top', '202px');
+            jQuery('#tab2').css('height', '40px').css('top', '222px');
             jQuery('#transitIconsBlock').css('display', 'block');
 
             //Secondary
@@ -984,7 +989,7 @@ function ChangesDependingPassType(passType) {
             jQuery('.flexContainerSecondaryFields').css('width', '257px');
             jQuery('#collapsePanelSecondaryContent3').css('display', 'block');
             jQuery('#collapsePanelSecondaryContent4').css('display', 'block');
-            jQuery('#tab4').css('display', 'block').css('top', '293px').css('height', '40px');
+            jQuery('#tab4').css('display', 'block').css('top', '313px').css('height', '40px');
 
             //Others
             jQuery('#divGroupingIdentifier').css('display', 'block');
@@ -1011,7 +1016,7 @@ function ChangesDependingPassType(passType) {
             jQuery('#collapsePanelAuxiliaryContent4').css('display', 'none');
             jQuery('#collapsePanelAuxiliaryContent5').css('display', 'none');
             jQuery('#auxiliaryAreaPass').css('display', 'block');
-            jQuery('#tab3').css('display', 'block').css('height', '43px').css('top', '309px');
+            jQuery('#tab3').css('display', 'block').css('height', '43px').css('top', '329px');
 
             //Primary
             jQuery('#collapsePanelPrimaryContent2').css('display', 'none');
@@ -1023,12 +1028,12 @@ function ChangesDependingPassType(passType) {
             jQuery('#divPrimaryLabelText1').css('display', 'block');
             jQuery('#flexContainerPrimaryValues').css('top', '48px').css('height', '70px').css('width', '257px');
             jQuery('#flexContainerPrimaryLabels').css('top', '122px').css('height', '36px').css('width', '257px');
-            jQuery('#tab2').css('height', '94px').css('top', '202px');
+            jQuery('#tab2').css('height', '94px').css('top', '222px');
             jQuery('#transitIconsBlock').css('display', 'none');
 
             //Secondary
             jQuery('#secondaryAreaPass').css('display', 'none');
-            jQuery('#tab4').css('display', 'none').css('top', '309px').css('height', '43px');
+            jQuery('#tab4').css('display', 'none').css('top', '329px').css('height', '43px');
 
             //Others
             jQuery('#divGroupingIdentifier').css('display', 'none');
@@ -1055,7 +1060,7 @@ function ChangesDependingPassType(passType) {
             jQuery('#collapsePanelAuxiliaryContent4').css('display', 'none');
             jQuery('#collapsePanelAuxiliaryContent5').css('display', 'none');
             jQuery('#auxiliaryAreaPass').css('display', 'block');
-            jQuery('#tab3').css('display', 'block').css('height', '43px').css('top', '309px');
+            jQuery('#tab3').css('display', 'block').css('height', '43px').css('top', '329px');
 
             //Primary
             jQuery('#collapsePanelPrimaryContent2').css('display', 'none');
@@ -1067,12 +1072,12 @@ function ChangesDependingPassType(passType) {
             jQuery('#divPrimaryLabelText1').css('display', 'block');
             jQuery('#flexContainerPrimaryValues').css('top', '48px').css('height', '70px').css('width', '257px');
             jQuery('#flexContainerPrimaryLabels').css('top', '122px').css('height', '36px').css('width', '257px');
-            jQuery('#tab2').css('height', '94px').css('top', '202px');
+            jQuery('#tab2').css('height', '94px').css('top', '222px');
             jQuery('#transitIconsBlock').css('display', 'none');
 
             //Secondary
             jQuery('#secondaryAreaPass').css('display', 'none');
-            jQuery('#tab4').css('display', 'none').css('top', '309px').css('height', '43px');
+            jQuery('#tab4').css('display', 'none').css('top', '329px').css('height', '43px');
 
             //Others
             jQuery('#divGroupingIdentifier').css('display', 'none');
@@ -1098,7 +1103,7 @@ function ChangesDependingPassType(passType) {
             jQuery('#flexContainerAuxiliaryValues').css('top', '210px');
             jQuery('#collapsePanelAuxiliaryContent4').css('display', 'block');
             jQuery('#collapsePanelAuxiliaryContent5').css('display', 'none');
-            jQuery('#tab3').css('height', '36px').css('top', '337px');
+            jQuery('#tab3').css('height', '36px').css('top', '357px');
             if (!(jQuery('#divBarcodeFormat input.active').attr('id') == 'pdf417Code')) {
                 jQuery('#auxiliaryAreaPass').css('display', 'none');
                 jQuery('#tab3').css('display', 'none');
@@ -1114,7 +1119,7 @@ function ChangesDependingPassType(passType) {
             jQuery('#divPrimaryLabelText1').css('display', 'block');
             jQuery('#flexContainerPrimaryValues').css('top', '77px').css('height', '40px').css('width', '168px');
             jQuery('#flexContainerPrimaryLabels').css('top', '66px').css('height', '13px').css('width', '168px');
-            jQuery('#tab2').css('height', '49px').css('top', '207px');
+            jQuery('#tab2').css('height', '49px').css('top', '227px');
             jQuery('#transitIconsBlock').css('display', 'none');
 
             //Secondary
@@ -1124,7 +1129,7 @@ function ChangesDependingPassType(passType) {
             jQuery('.flexContainerSecondaryFields').css('width', '257px');
             jQuery('#collapsePanelSecondaryContent3').css('display', 'none');
             jQuery('#collapsePanelSecondaryContent4').css('display', 'none');
-            jQuery('#tab4').css('display', 'block').css('top', '293px').css('height', '40px');
+            jQuery('#tab4').css('display', 'block').css('top', '313px').css('height', '40px');
 
             //Others
             jQuery('#divGroupingIdentifier').css('display', 'none');
@@ -1152,7 +1157,7 @@ function ChangesDependingPassType(passType) {
                 jQuery('#collapsePanelAuxiliaryContent4').css('display', 'block');
                 jQuery('#collapsePanelAuxiliaryContent5').css('display', 'none');
                 jQuery('#auxiliaryAreaPass').css('display', 'block');
-                jQuery('#tab3').css('display', 'block').css('height', '40px').css('top', '286px');
+                jQuery('#tab3').css('display', 'block').css('height', '40px').css('top', '306px');
 
                 //Primary
                 jQuery('#collapsePanelPrimaryContent2').css('display', 'none');
@@ -1164,7 +1169,7 @@ function ChangesDependingPassType(passType) {
                 jQuery('#divPrimaryLabelText1').css('display', 'block');
                 jQuery('#flexContainerPrimaryValues').css('top', '66px').css('height', '25px').css('width', '168px');
                 jQuery('#flexContainerPrimaryLabels').css('top', '55px').css('height', '13px').css('width', '168px');
-                jQuery('#tab2').css('height', '34px').css('top', '202px');
+                jQuery('#tab2').css('height', '34px').css('top', '222px');
 
                 //Secondary
                 jQuery('#secondaryAreaPass').css('display', 'block');
@@ -1173,7 +1178,7 @@ function ChangesDependingPassType(passType) {
                 jQuery('.flexContainerSecondaryFields').css('width', '199px');
                 jQuery('#collapsePanelSecondaryContent3').css('display', 'none');
                 jQuery('#collapsePanelSecondaryContent4').css('display', 'none');
-                jQuery('#tab4').css('display', 'block').css('top', '244px').css('height', '34px');
+                jQuery('#tab4').css('display', 'block').css('top', '264px').css('height', '34px');
 
                 //Others
                 jQuery('#divGroupingIdentifier').css('display', 'block');
@@ -1200,11 +1205,11 @@ function ChangesDependingPassType(passType) {
                 if (jQuery('#divBarcodeFormat input.active').attr('id') == 'pdf417Code') {
                     jQuery('#flexContainerAuxiliaryLabels').css('top', '184px');
                     jQuery('#flexContainerAuxiliaryValues').css('top', '200px');
-                    jQuery('#tab3').css('display', 'block').css('height', '40px').css('top', '325px');
+                    jQuery('#tab3').css('display', 'block').css('height', '40px').css('top', '345px');
                 } else {
                     jQuery('#flexContainerAuxiliaryLabels').css('top', '176px');
                     jQuery('#flexContainerAuxiliaryValues').css('top', '192px');
-                    jQuery('#tab3').css('display', 'block').css('height', '35px').css('top', '319px');
+                    jQuery('#tab3').css('display', 'block').css('height', '35px').css('top', '339px');
                 };
 
                 //Primary
@@ -1216,7 +1221,7 @@ function ChangesDependingPassType(passType) {
                 jQuery('#divPrimaryLabelPass1').css('color', jQuery('#labelColorPicker').val());
                 jQuery('#divPrimaryLabelText1').css('display', 'none');
                 jQuery('#flexContainerPrimaryValues').css('top', '49px').css('height', '65px').css('width', '257px');
-                jQuery('#tab2').css('height', '64px').css('top', '202px');
+                jQuery('#tab2').css('height', '64px').css('top', '222px');
                 jQuery('#transitIconsBlock').css('display', 'none');
 
                 //Secondary
@@ -1227,11 +1232,11 @@ function ChangesDependingPassType(passType) {
                 if (jQuery('#divBarcodeFormat input.active').attr('id') == 'pdf417Code') {
                     jQuery('#flexContainerSecondaryLabels').css('top', '135px');
                     jQuery('#flexContainerSecondaryValues').css('top', '149px');
-                    jQuery('#tab4').css('display', 'block').css('top', '277px').css('height', '40px');
+                    jQuery('#tab4').css('display', 'block').css('top', '297px').css('height', '40px');
                 } else {
                     jQuery('#flexContainerSecondaryLabels').css('top', '130px');
                     jQuery('#flexContainerSecondaryValues').css('top', '144px');
-                    jQuery('#tab4').css('display', 'block').css('top', '274px').css('height', '35px');
+                    jQuery('#tab4').css('display', 'block').css('top', '294px').css('height', '35px');
                 };
 
                 //Others

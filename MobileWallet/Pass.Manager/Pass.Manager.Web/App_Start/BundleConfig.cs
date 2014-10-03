@@ -49,7 +49,7 @@ namespace Pass.Manager.Web
 
 
             bundles.Add(new ScriptBundle("~/bundles/passDesigner").Include(
-                       "~/Scripts/createCard/jquery-1.8.3.js",
+                       "~/Scripts/createCard/jquery-2.1.1.js",
                        "~/Scripts/createCard/bootstrap.js",
                        "~/Scripts/createCard/jquery.flippy.js",
                        "~/Scripts/createCard/mColorPicker.js",
