@@ -46,7 +46,7 @@ namespace Pass.Manager.Web.Common
                 return RedirectTo(model);
             }
 
-            return View(new TEntityModelView());
+            return View(model);
         }
 
         [HttpGet]
@@ -71,6 +71,14 @@ namespace Pass.Manager.Web.Common
             }
 
             return View(model);
+        }
+
+        [AjaxOnly]
+        public virtual ActionResult Get(int id)
+        {
+            TEntity entity = _service.Get(id);
+            TEntityModelView model = Mapper.Map<TEntity, TEntityModelView>(entity);
+            return JsonEx(model, JsonRequestBehavior.AllowGet);
         }
 
         [AjaxOnly]

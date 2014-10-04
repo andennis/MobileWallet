@@ -3,7 +3,7 @@
 @Html.HiddenForExt(m => m.PassProjectId)
 @if (!Model.IsNew)
 {
-    Html.DisplayFormForExt(m => m.PassProjectId, "ID");
+    Html.TextBlockFormForExt(m => m.PassProjectId, "ID");
 }
 @Html.TextBoxFormForExt(m => m.Name)
 @Html.DropDownListFormForExt(m => m.ProjectType, "Project Type", "- Select Project Type -")

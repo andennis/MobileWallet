@@ -3,7 +3,7 @@
 @Html.HiddenForExt(m => m.UserId)
 @if (!Model.IsNew)
 {
-    Html.DisplayFormForExt(m => m.UserId, "ID");
+    Html.TextBlockFormForExt(m => m.UserId, "ID");
 }
 @Html.TextBoxFormForExt(m => m.UserName)
 @Html.TextBoxFormForExt(m => m.FirstName)

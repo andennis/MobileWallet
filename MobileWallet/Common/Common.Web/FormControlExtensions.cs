@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using Common.Extensions;
@@ -35,14 +37,6 @@ namespace Common.Web
             ActionInfo actionInfo = GetActionInfo(action);
             return html.BeginFormExt(actionInfo.Action, actionInfo.Controller);
         }
-        /*
-        public static MvcForm BeginFormExt(this HtmlHelper html)
-        {
-            string controllerName = (string)html.ViewContext.RouteData.Values["controller"];
-            string actionName = (string)html.ViewContext.RouteData.Values["actionUrl"];
-            return html.BeginFormExt(actionName, controllerName);
-        }
-        */
         public static MvcForm BeginFormExt(this HtmlHelper html, string actionName = null, string controllerName = null)
         {
             return html.BeginForm(actionName, controllerName, FormMethod.Post, _initFormAttributes);
@@ -85,14 +79,21 @@ namespace Common.Web
         #endregion
 
         #region TextBox
-        public static MvcHtmlString DisplayForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, object htmlAttributes = null)
+        public static MvcHtmlString TextBlockForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression/*, object htmlAttributes = null*/)
         {
-            return html.DisplayFor(expression, htmlAttributes);
+            return html.TextBlock(expression);
         }
-        public static MvcHtmlString DisplayFormForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string labelText = null)
+        public static MvcHtmlString TextBlockFormForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string labelText = null)
         {
-            return html.LabelWithControl(expression, labelText, null, () => html.DisplayFor(expression, _initControlAttributes));
+            return html.LabelWithControl(expression, labelText, null, () => html.TextBlock(expression));
         }
+
+        private static MvcHtmlString TextBlock<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression)
+        {
+            //var attr = _initControlAttributes.Union(new Dictionary<string, object>() {{"readonly", "readonly"}});
+            return html.TextBoxFor(expression, new{@class = "form-control", @readonly = "readonly"});
+        }
+
         #endregion
 
         #region TextBox

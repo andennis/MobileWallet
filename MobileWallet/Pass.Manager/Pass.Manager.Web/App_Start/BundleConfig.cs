@@ -44,6 +44,7 @@ namespace Pass.Manager.Web
 
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
+                "~/Scripts/FormAutoFill/jquery.formautofill.js",
                 "~/Scripts/Grid.js",
                 "~/Scripts/Action.js"));
 

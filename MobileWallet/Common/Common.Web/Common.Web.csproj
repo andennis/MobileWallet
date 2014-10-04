@@ -91,6 +91,7 @@
     <Compile Include="Grid\GridViewModel.cs" />
     <Compile Include="Grid\GridAjaxRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelectTypedList.cs" />
     <Compile Include="Tab\TabControlExtension.cs" />
     <Compile Include="Tab\TabStripBuilder.cs" />
     <Compile Include="Tab\TabStripEventBuilder.cs" />

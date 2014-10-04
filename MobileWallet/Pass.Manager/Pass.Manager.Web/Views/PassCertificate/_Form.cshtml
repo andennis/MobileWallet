@@ -3,7 +3,7 @@
 @Html.HiddenForExt(m => m.PassCertificateId)
 @if (!Model.IsNew)
 {
-    Html.DisplayFormForExt(m => m.PassCertificateId, "ID");
+    Html.TextBlockFormForExt(m => m.PassCertificateId, "ID");
 }
 @Html.TextBoxFormForExt(m => m.Name)
 @Html.TextBoxFormForExt(m => m.TeamId)

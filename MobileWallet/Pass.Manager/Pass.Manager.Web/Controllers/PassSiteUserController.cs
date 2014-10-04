@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
+using Common.Web;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.SearchFilters;
@@ -20,8 +21,7 @@ namespace Pass.Manager.Web.Controllers
         {
             var model = new PassSiteUserViewModel() { PassSiteId = passSiteId };
             SetDefaultReturnUrl(model);
-            var users =_service.GetUnassignedUsers(passSiteId).Select(x => new SelectListItem {Value = x.UserId.ToString(), Text = x.UserName});
-            model.Users = new SelectList(users, "Value", "Text");
+            model.Users = new SelectTListTyped<User, int, string>(_service.GetUnassignedUsers(passSiteId), x => x.UserId, x => x.UserName);
             return View("Create", model);
         }
 

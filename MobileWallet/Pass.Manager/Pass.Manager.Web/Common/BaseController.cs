@@ -26,7 +26,7 @@ namespace Pass.Manager.Web.Common
         {
             return JsonEx(data, JsonRequestBehavior.DenyGet, success, message);
         }
-        protected virtual JsonResult JsonEx(object data, JsonRequestBehavior behavior, bool success = true, string message = null)
+        public virtual JsonResult JsonEx(object data, JsonRequestBehavior behavior, bool success = true, string message = null)
         {
             var ajaxResp = new AjaxActionResponse()
                            {
