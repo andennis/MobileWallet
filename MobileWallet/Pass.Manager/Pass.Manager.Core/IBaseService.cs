@@ -1,5 +1,4 @@
-﻿
-using Pass.Manager.Core.SearchFilters;
+﻿using Pass.Manager.Core.SearchFilters;
 
 namespace Pass.Manager.Core
 {

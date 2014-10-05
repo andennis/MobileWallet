@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="PassManagerRepositoryTests.cs" />
     <Compile Include="PassManagerUnitOfWorkTests.cs" />
+    <Compile Include="PassSiteUserRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestHelper.cs" />
   </ItemGroup>

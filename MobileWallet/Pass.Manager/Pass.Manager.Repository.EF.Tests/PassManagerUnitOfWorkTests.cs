@@ -25,6 +25,8 @@ namespace Pass.Manager.Repository.EF.Tests
                 Assert.IsNotNull(unitOfWork.GetRepository<PassCertificateApple>());
                 Assert.IsNotNull(unitOfWork.GetRepository<PassSiteCertificate>());
 
+                throw new NotImplementedException("Check custom repositories");
+
                 Assert.Throws<Exception>(() => unitOfWork.GetRepository<UnknownEntity>());
             }
         }

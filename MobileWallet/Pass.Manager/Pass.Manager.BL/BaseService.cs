@@ -9,14 +9,15 @@ using Pass.Manager.Core.SearchFilters;
 
 namespace Pass.Manager.BL
 {
-    public abstract class BaseService<TEntity, TSearchFilter> : IBaseService<TEntity, TSearchFilter> 
+    public abstract class BaseService<TEntity, TSearchFilter, TUnitOfWork> : IBaseService<TEntity, TSearchFilter>
         where TEntity : class, new()
         where TSearchFilter : SearchFilterBase
+        where TUnitOfWork : IUnitOfWork
     {
         protected readonly IRepository<TEntity> _repository;
-        protected readonly IUnitOfWork _unitOfWork;
+        protected readonly TUnitOfWork _unitOfWork;
 
-        protected BaseService(IUnitOfWork unitOfWork)
+        protected BaseService(TUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
             _repository = _unitOfWork.GetRepository<TEntity>();

@@ -16,6 +16,8 @@ namespace FileStorage.Repository.EF
             :base(new FileStorageDbContext(dbConfig.ConnectionString))
         {
             _allowedRepositoryEntities = new HashSet<Type>() {typeof (FolderItem), typeof(StorageItem)};
+
+            RegisterCustomRepository(FileStorageRepository);
         }
 
         protected override HashSet<Type> AllowedRepositoryEntities
@@ -24,14 +26,6 @@ namespace FileStorage.Repository.EF
             {
                 return _allowedRepositoryEntities;
             }
-        }
-
-        public override IRepository<TEntity> GetRepository<TEntity>()
-        {
-            if (typeof(TEntity) == typeof(FolderItem))
-                return (IRepository<TEntity>)this.FileStorageRepository;
-
-            return base.GetRepository<TEntity>();
         }
 
         public IFileStorageRepository FileStorageRepository

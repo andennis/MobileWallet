@@ -4,7 +4,7 @@ using Pass.Manager.Core.SearchFilters;
 
 namespace Pass.Manager.BL
 {
-    public class PassCertificateService : BaseService<PassCertificateApple, SearchFilterBase>, IPassCertificateService
+    public class PassCertificateService : BaseService<PassCertificateApple, SearchFilterBase, IPassManagerUnitOfWork>, IPassCertificateService
     {
         public PassCertificateService(IPassManagerUnitOfWork unitOfWork)
             : base(unitOfWork)

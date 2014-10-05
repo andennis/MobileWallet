@@ -2,19 +2,20 @@
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure.Annotations;
 using CertificateStorage.Repository.Core.Entities;
+using Common.Repository.EF;
 
 namespace CertificateStorage.Repository.EF
 {
-    public class CertificateStorageDbContext : DbContext
+    public class CertificateStorageDbContext : DbContextBase
     {
-        public const string DbScheme = "cer";
-
         public CertificateStorageDbContext(string nameOrConnectionString)
             :base(nameOrConnectionString)
         {
             //Database.SetInitializer<PassCertificateStorageDbContext>(null);
             //this.Configuration.LazyLoadingEnabled = false;
         }
+
+        public override string DbScheme { get { return "cer"; } } 
 
         public DbSet<Certificate> FolderItems { get; set; }
 

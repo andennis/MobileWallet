@@ -1,11 +1,11 @@
 ﻿using System.Data.Entity;
+using Common.Repository.EF;
 using Pass.Container.Repository.Core.Entities;
 
 namespace Pass.Container.Repository.EF
 {
-    public class PassContainerDbContext : DbContext
+    public class PassContainerDbContext : DbContextBase
     {
-        public const string DbScheme = "pscn";
         private const int FieldLenPassTypeId = 128;
         private const int FieldLenName = 512;
 
@@ -15,6 +15,8 @@ namespace Pass.Container.Repository.EF
             //Database.SetInitializer<PassContainerDbContext>(null);
             //this.Configuration.LazyLoadingEnabled = false;
         }
+
+        public override string DbScheme { get { return "pscn"; } }
 
         public DbSet<Core.Entities.Pass> Passes { get; set; }
         public DbSet<PassTemplate> PassTemplates { get; set; }

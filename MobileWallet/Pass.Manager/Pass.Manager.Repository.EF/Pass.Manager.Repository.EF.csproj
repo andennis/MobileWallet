@@ -73,6 +73,7 @@
     <Compile Include="PassManagerDbContext.cs" />
     <Compile Include="PassManagerUnitOfWork.cs" />
     <Compile Include="PassSiteRepository.cs" />
+    <Compile Include="PassSiteUserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -9,13 +9,15 @@ namespace Common.Repository.EF
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         private readonly DbSet<TEntity> _dbSet;
-        private readonly DbContext _dbContext;
+        private readonly DbContextBase _dbContext;
 
-        public Repository(DbContext dbContext)
+        public Repository(DbContextBase dbContext)
         {
             _dbContext = dbContext;
             _dbSet = dbContext.Set<TEntity>();
         }
+
+        protected string DbScheme { get { return _dbContext.DbScheme; } }
 
         public virtual TEntity Find(params object[] keyValues)
         {

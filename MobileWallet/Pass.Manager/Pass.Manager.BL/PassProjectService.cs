@@ -4,7 +4,7 @@ using Pass.Manager.Core.SearchFilters;
 
 namespace Pass.Manager.BL
 {
-    class PassProjectService : BaseService<PassProject, PassProjectFilter>, IPassProjectService
+    class PassProjectService : BaseService<PassProject, PassProjectFilter, IPassManagerUnitOfWork>, IPassProjectService
     {
         public PassProjectService (IPassManagerUnitOfWork unitOfWork)
             : base(unitOfWork)

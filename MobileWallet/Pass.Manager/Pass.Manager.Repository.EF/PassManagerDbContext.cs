@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure.Annotations;
+using Common.Repository.EF;
 using Pass.Manager.Core.Entities;
 
 namespace Pass.Manager.Repository.EF
 {
-    public class PassManagerDbContext : DbContext
+    public class PassManagerDbContext : DbContextBase
     {
-        private const string DbScheme = "pm";
         private const int FieldLenName = 512;
 
         public PassManagerDbContext(string nameOrConnectionString)
@@ -16,6 +16,8 @@ namespace Pass.Manager.Repository.EF
             //Database.SetInitializer<PassManagerDbContext>(null);
             //this.Configuration.LazyLoadingEnabled = false;
         }
+
+        public override string DbScheme { get { return "pm"; } }
 
         public DbSet<PassSite> PassSites { get; set; }
         public DbSet<PassProject> PassProjects { get; set; }

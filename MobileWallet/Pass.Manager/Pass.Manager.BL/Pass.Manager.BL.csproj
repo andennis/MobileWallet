@@ -58,6 +58,10 @@
       <Project>{1628E173-1BE9-4DFC-BCBE-93334DE8EE46}</Project>
       <Name>Common.Extensions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Common\Common.Repository.EF\Common.Repository.EF.csproj">
+      <Project>{925EC36B-DF88-4CDE-BC59-FE03C0173CAE}</Project>
+      <Name>Common.Repository.EF</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Common\Common.Repository\Common.Repository.csproj">
       <Project>{F36371D6-812F-49F5-9E9B-043265660647}</Project>
       <Name>Common.Repository</Name>
@@ -69,6 +73,10 @@
     <ProjectReference Include="..\Pass.Manager.Core\Pass.Manager.Core.csproj">
       <Project>{DC28CC0D-F87E-4D65-8812-3BAF31C9C359}</Project>
       <Name>Pass.Manager.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pass.Manager.Repository.EF\Pass.Manager.Repository.EF.csproj">
+      <Project>{929E8294-E96D-4D40-B326-C62415356D3D}</Project>
+      <Name>Pass.Manager.Repository.EF</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -9,10 +9,10 @@ namespace Common.Repository.EF
 {
     public abstract class UnitOfWork : IUnitOfWork
     {
-        protected readonly DbContext _dbContext;
+        protected readonly DbContextBase _dbContext;
         protected readonly IDictionary<Type, object> _repositories = new Dictionary<Type, object>();
 
-        protected UnitOfWork(DbContext dbContext)
+        protected UnitOfWork(DbContextBase dbContext)
         {
             if (dbContext == null)
                 throw new ArgumentNullException("dbContext");
@@ -21,6 +21,16 @@ namespace Common.Repository.EF
         }
 
         protected abstract HashSet<Type> AllowedRepositoryEntities { get; }
+
+        protected void RegisterCustomRepository<TEntity>(IRepository<TEntity> repository) where TEntity : class
+        {
+            Type entityType = typeof (TEntity);
+            if (_repositories.ContainsKey(entityType))
+                throw new Exception(string.Format("Repository has already been registered for the the entity type: {0}", entityType.Name));
+
+            var lazyRep = new Lazy<IRepository<TEntity>>(() => repository);
+            _repositories.Add(entityType, lazyRep);
+        }
 
         #region Dispose
         private bool _disposed;
@@ -39,20 +49,26 @@ namespace Common.Repository.EF
         }
         #endregion
 
-        public virtual IRepository<TEntity> GetRepository<TEntity>() where TEntity : class, new()
+        public virtual IRepository<TEntity> GetRepository<TEntity>() where TEntity : class
         {
-            Type type = typeof(TEntity);
-            if (!AllowedRepositoryEntities.Contains(type))
-                throw new Exception(string.Format("Repository<{0}> has not been registered for the UnitOfType", type.Name));
+            Type entityType = typeof(TEntity);
+            if (!AllowedRepositoryEntities.Contains(entityType))
+                throw new Exception(string.Format("Repository<{0}> has not been registered for the UnitOfType", entityType.Name));
 
             object repository;
-            if (_repositories.TryGetValue(type, out repository))
+            if (_repositories.TryGetValue(entityType, out repository))
+            {
+                var lazyRep = repository as Lazy<IRepository<TEntity>>;
+                if (lazyRep != null)
+                    return lazyRep.Value;
+
                 return (IRepository<TEntity>)repository;
+            }
 
             var repositoryType = typeof(Repository<>);
-            _repositories.Add(type, Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), _dbContext));
+            _repositories.Add(entityType, Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), _dbContext));
 
-            return (IRepository<TEntity>)_repositories[type];
+            return (IRepository<TEntity>)_repositories[entityType];
         }
 
         public void Save()

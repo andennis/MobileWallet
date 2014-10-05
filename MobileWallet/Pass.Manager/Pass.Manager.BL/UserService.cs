@@ -6,7 +6,7 @@ using Pass.Manager.Core.SearchFilters;
 
 namespace Pass.Manager.BL
 {
-    public class UserService : BaseService<User, SearchFilterBase>, IUserService
+    public class UserService : BaseService<User, SearchFilterBase, IPassManagerUnitOfWork>, IUserService
     {
         public UserService(IPassManagerUnitOfWork unitOfWork)
             : base(unitOfWork)

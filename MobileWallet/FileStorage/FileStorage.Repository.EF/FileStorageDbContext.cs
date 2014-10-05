@@ -1,18 +1,19 @@
 ﻿using System.Data.Entity;
+using Common.Repository.EF;
 using FileStorage.Repository.Core.Entities;
 
 namespace FileStorage.Repository.EF
 {
-    public sealed class FileStorageDbContext : DbContext
+    public sealed class FileStorageDbContext : DbContextBase
     {
-        public const string DbScheme = "fs";
-
         public FileStorageDbContext(string nameOrConnectionString)
             :base(nameOrConnectionString)
         {
             //Database.SetInitializer<FileStorageDbContext>(null);
             //this.Configuration.LazyLoadingEnabled = false;
         }
+
+        public override string DbScheme { get { return "fs"; } }
 
         public DbSet<FolderItem> FolderItems { get; set; }
         public DbSet<StorageItem> StorageItems { get; set; }

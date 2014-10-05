@@ -27,19 +27,13 @@ namespace Pass.Container.Repository.EF
                                                  typeof(ClientDeviceApple), 
                                                  typeof(Registration)
                                              };
+
+            RegisterCustomRepository(PassRepository);
         }
 
         protected override HashSet<Type> AllowedRepositoryEntities
         {
             get { return _allowedRepositoryEntities; }
-        }
-
-        public override IRepository<TEntity> GetRepository<TEntity>()
-        {
-            if (typeof(TEntity) == typeof(Core.Entities.Pass))
-                return (IRepository<TEntity>)this.PassRepository;
-
-            return base.GetRepository<TEntity>();
         }
 
         public IPassRepository PassRepository

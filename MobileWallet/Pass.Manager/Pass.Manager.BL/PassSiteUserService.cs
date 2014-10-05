@@ -6,7 +6,7 @@ using Pass.Manager.Core.SearchFilters;
 
 namespace Pass.Manager.BL
 {
-    public class PassSiteUserService : BaseService<PassSiteUser, PassSiteUserFilter>, IPassSiteUserService
+    public class PassSiteUserService : BaseService<PassSiteUser, PassSiteUserFilter, IPassManagerUnitOfWork>, IPassSiteUserService
     {
         public PassSiteUserService(IPassManagerUnitOfWork unitOfWork)
             : base(unitOfWork)
@@ -20,14 +20,7 @@ namespace Pass.Manager.BL
 
         public IEnumerable<User> GetUnassignedUsers(int passSiteId)
         {
-            return _unitOfWork.GetRepository<User>().Query().Get();
-            /*
-            return _repository.Query()
-                .Filter(x => x.PassSiteId != passSiteId)
-                .Include(x => x.User)
-                .Get()
-                .Select(x => x.User);
-            */
+            return _unitOfWork.PassSiteUserRepository.GetUnassignedUsers(passSiteId);
         }
 
         public override SearchResult<PassSiteUser> Search(SearchContext searchContext, PassSiteUserFilter searchFilter = null)
