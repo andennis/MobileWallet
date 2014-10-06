@@ -9,6 +9,6 @@
 @Html.TextBoxFormForExt(m => m.TeamId)
 @Html.TextBoxFormForExt(m => m.PassTypeId)
 @Html.TextBoxFormForExt(m => m.Description)
-@Html.LabelForExt(m => m.ExpDate, "Expiration Date")
+@Html.TextBlockFormForExt(m => m.ExpDate, "Expiration Date", "d")
 @Html.HiddenForExt(m => m.ExpDate) @*temp solution for ExpDate*@
 @Html.HiddenForExt(m => m.CertificateStorageId)

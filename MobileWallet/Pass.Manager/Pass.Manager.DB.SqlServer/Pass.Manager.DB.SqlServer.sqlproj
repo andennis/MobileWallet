@@ -62,6 +62,7 @@
     <Folder Include="Properties" />
     <Folder Include="Tables\" />
     <Folder Include="Security\" />
+    <Folder Include="Stored Procedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\pm.PassCertificate.sql" />
@@ -72,5 +73,6 @@
     <Build Include="Tables\pm.User.sql" />
     <Build Include="Tables\pm.PassCertificateApple.sql" />
     <Build Include="Security\pm.sql" />
+    <Build Include="Stored Procedures\pm.PassSiteUser_GetUnassignedUsers.sql" />
   </ItemGroup>
 </Project>

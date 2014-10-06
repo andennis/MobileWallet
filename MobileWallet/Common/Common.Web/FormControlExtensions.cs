@@ -79,19 +79,24 @@ namespace Common.Web
         #endregion
 
         #region TextBox
-        public static MvcHtmlString TextBlockForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression/*, object htmlAttributes = null*/)
+        public static MvcHtmlString TextBlockForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string format = null/*, object htmlAttributes = null*/)
         {
-            return html.TextBlock(expression);
+            return html.TextBlockFor(expression, format);
         }
-        public static MvcHtmlString TextBlockFormForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string labelText = null)
+        public static MvcHtmlString TextBlockFormForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string labelText = null, string format = null)
         {
-            return html.LabelWithControl(expression, labelText, null, () => html.TextBlock(expression));
+            return html.LabelWithControl(expression, labelText, null, () => html.TextBlockFor(expression, format));
         }
 
-        private static MvcHtmlString TextBlock<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression)
+        private static MvcHtmlString TextBlockFor<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string format = null)
         {
-            //var attr = _initControlAttributes.Union(new Dictionary<string, object>() {{"readonly", "readonly"}});
-            return html.TextBoxFor(expression, new{@class = "form-control", @readonly = "readonly"});
+            if (typeof(TProperty) == typeof(DateTime))
+                if (string.IsNullOrEmpty(format))
+                    format = "d";
+
+            string dataFmt = (!string.IsNullOrEmpty(format) ? string.Format("{{0:{0}}}", format) : null);
+            var attributes = _initControlAttributes.Union(new Dictionary<string, object>() { { "readonly", "readonly" } }).ToDictionary(key => key.Key, val => val.Value);
+            return html.TextBoxFor(expression, dataFmt, attributes);
         }
 
         #endregion
