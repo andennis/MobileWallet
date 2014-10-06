@@ -22,5 +22,12 @@ namespace Pass.Manager.Web.Controllers
             return View("Create", model);
         }
 
+        public ActionResult PassDesigner(int passProjectId)
+        {
+            PassProject prj = _service.Get(passProjectId);
+            //Do something
+            return RedirectToAction("EmptyCardDesigner", "PassDesigner", new { passProjectId });
+        }
+
     }
 }

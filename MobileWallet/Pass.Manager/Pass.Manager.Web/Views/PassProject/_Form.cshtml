@@ -11,5 +11,5 @@
 @Html.HiddenForExt(m => m.PassTemplateId)
 @Html.HiddenForExt(m => m.PassSiteId)
 <div class="col-md-offset-2 col-md-10">
-    @Html.ActionLinkExt("Pass Designer", "CouponsStrategyCard", "PassDesigner", new { passProjectId = Model.PassProjectId})
+    @Html.ActionLinkExt("Pass Designer", "PassDesigner", routeValues: new { passProjectId = Model.PassProjectId })
 </div>
