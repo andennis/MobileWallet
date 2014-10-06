@@ -20,5 +20,17 @@ namespace Pass.Manager.Web.Controllers
             //TODO temp solution to specify ExpDate
             return View(new PassCertificateAppleViewModel(){ExpDate = DateTime.Today});
         }
+
+        public ActionResult Upload()
+        {
+            //TODO temp solution to specify ExpDate
+            return View(new PassCertificateAppleViewModel() { ExpDate = DateTime.Today });
+        }
+
+        public ActionResult Remove()
+        {
+            //TODO temp solution to specify ExpDate
+            return View(new PassCertificateAppleViewModel() { ExpDate = DateTime.Today });
+        }
     }
 }

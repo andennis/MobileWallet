@@ -1,4 +1,5 @@
-﻿@model PassCertificateAppleViewModel
+﻿@using Common.Web.FileUpload
+@model PassCertificateAppleViewModel
            
 @Html.HiddenForExt(m => m.PassCertificateId)
 @if (!Model.IsNew)
@@ -12,3 +13,5 @@
 @Html.TextBlockFormForExt(m => m.ExpDate, "Expiration Date", "d")
 @Html.HiddenForExt(m => m.ExpDate) @*temp solution for ExpDate*@
 @Html.HiddenForExt(m => m.CertificateStorageId)
+
+@Html.FileUpload().Name("files").SaveAction(Url.Action("Upload")).RemoveAction("Remove").AutoUpload(true);

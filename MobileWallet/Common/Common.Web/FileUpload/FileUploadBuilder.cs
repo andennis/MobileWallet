@@ -10,19 +10,38 @@ namespace Common.Web.FileUpload
 {
     public class FileUploadBuilder : IHtmlString
     {
-        private string _name;
+        private FileUploadConfig _fileUploadConfig;
         private readonly FileUploadEventBuilder _fileUploadEventBuilder;
         private readonly IDictionary<string, object> _events;
 
         public FileUploadBuilder()
         {
+            _fileUploadConfig = new FileUploadConfig();
             _events = new Dictionary<string, object>();
             _fileUploadEventBuilder = new FileUploadEventBuilder(_events);
         }
 
         public FileUploadBuilder Name(string name)
         {
-            _name = name;
+            _fileUploadConfig.Name = name;
+            return this;
+        }
+
+        public FileUploadBuilder SaveAction(string saveUrl)
+        {
+            _fileUploadConfig.SaveAction = saveUrl;
+            return this;
+        }
+
+         public FileUploadBuilder RemoveAction(string removeUrl)
+        {
+            _fileUploadConfig.RemoveAction = removeUrl;
+            return this;
+        }
+
+         public FileUploadBuilder AutoUpload(bool autoUpload)
+        {
+            _fileUploadConfig.AutoUpload = autoUpload;
             return this;
         }
 
@@ -41,7 +60,7 @@ namespace Common.Web.FileUpload
         {
             var sb = new StringBuilder();
             var mainTag = new TagBuilder("div");
-            mainTag.GenerateId(_name);
+            mainTag.GenerateId(_fileUploadConfig.Name);
             sb.AppendLine(mainTag.ToString());
             sb.AppendLine(GetInitializationScript());
 
@@ -50,18 +69,26 @@ namespace Common.Web.FileUpload
 
         private string GetInitializationScript()
         {
-           string test = @"<form method='post'action='/kendo-ui/upload/submit'>
-                <div class='demo-section k-header'>
-                    <input name='files' id='files' type='file' />
-                    <input type='submit' value='Submit' class='k-button' />
-                </div>
-            </form>";
-
+            var sb = new StringBuilder();
+            var inputTag = new TagBuilder("input");
+            inputTag.GenerateId("files");
+            inputTag.Attributes.Add("name", _fileUploadConfig.Name);
+            inputTag.Attributes.Add("type", "file");
+            sb.AppendLine(inputTag.ToString());
+           
             var scriptTag = new TagBuilder("script");
-            scriptTag.InnerHtml = test + @"$(document).ready(function () {
-                $('#" + _name + @"').kendoUpload();});";
+            scriptTag.InnerHtml =  @"$(document).ready(function () {
+                $('#" + _fileUploadConfig.Name + @"').kendoUpload({ 
+                    async: {
+                            saveUrl: '"+ _fileUploadConfig.SaveAction + @"',
+                            removeUrl: '" + _fileUploadConfig.RemoveAction + @"',
+                            autoUpload: true
+                    }
+                  });});";
 
-            return scriptTag.ToString();
+            sb.AppendLine(scriptTag.ToString());
+
+            return sb.ToString();
         }
     }
 }
