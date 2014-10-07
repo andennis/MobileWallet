@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using Common.Extensions;
+using Common.Web.FileUpload;
 
 namespace Common.Web
 {
@@ -179,6 +180,14 @@ namespace Common.Web
         public static MvcHtmlString ActionLinkExt(this HtmlHelper html, string linkText, string actionName, string controllerName = null, object routeValues = null, object htmlAttributes = null)
         {
             return html.ActionLink(linkText, actionName, controllerName, routeValues, htmlAttributes);
+        }
+        #endregion
+
+        #region FileUpload
+        public static MvcHtmlString FileUploadEx(this HtmlHelper html, string name, string saveUrl, string removeUrl)
+        {
+            string htmlStr = html.FileUpload().Name(name).SaveAction(saveUrl).RemoveAction(removeUrl).AutoUpload(true).ToHtmlString();
+            return new MvcHtmlString(htmlStr);
         }
         #endregion
 

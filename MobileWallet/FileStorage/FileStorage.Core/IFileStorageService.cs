@@ -14,9 +14,16 @@ namespace FileStorage.Core
         int Put(string fileOrDirPath, bool move = false);
         int Put(Stream fileStream);
         string GetStorageItemPath(int itemId);
+
+        /// <summary>
+        /// Create storage item as folder
+        /// </summary>
+        /// <param name="folderPath">The absolute path to the storage item (folder)</param>
+        /// <returns>Storage item ID</returns>
         int CreateStorageFolder(out string folderPath);
 
         void PutToStorageFolder(int itemId, string srcFileOrDirPath, bool move = false);
+
         /// <summary>
         /// Put file or directory content into specified directory of storage item(folder)
         /// </summary>

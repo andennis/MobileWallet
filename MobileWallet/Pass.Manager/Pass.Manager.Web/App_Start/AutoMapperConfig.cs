@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Web.Models;
+using Pass.Manager.Web.Models.GeneralPassTemplate;
 
 namespace Pass.Manager.Web
 {
@@ -8,19 +9,19 @@ namespace Pass.Manager.Web
     {
         public static void Configure()
         {
-            Mapper.CreateMap<PassSite, PassSiteViewModel>();
-            Mapper.CreateMap<PassSiteViewModel, PassSite>();
+            Mapper.CreateMap<PassSite, PassSiteViewModel>().ReverseMap();
+            //Mapper.CreateMap<PassSiteViewModel, PassSite>();
 
-            Mapper.CreateMap<User, UserViewModel>();
-            Mapper.CreateMap<UserViewModel, User>();
+            Mapper.CreateMap<User, UserViewModel>().ReverseMap();
+            //Mapper.CreateMap<UserViewModel, User>();
 
             Mapper.CreateMap<User, UserPasswordViewModel>();
 
-            Mapper.CreateMap<PassProject, PassProjectViewModel>();
-            Mapper.CreateMap<PassProjectViewModel, PassProject>();
+            Mapper.CreateMap<PassProject, PassProjectViewModel>().ReverseMap();
+            //Mapper.CreateMap<PassProjectViewModel, PassProject>();
 
-            Mapper.CreateMap<PassCertificateApple, PassCertificateAppleViewModel>();
-            Mapper.CreateMap<PassCertificateAppleViewModel, PassCertificateApple>();
+            Mapper.CreateMap<PassCertificateApple, PassCertificateAppleViewModel>().ReverseMap();
+            //Mapper.CreateMap<PassCertificateAppleViewModel, PassCertificateApple>();
 
             Mapper.CreateMap<PassSiteUser, PassSiteUserViewModel>()
                 .ForMember(dst => dst.UserId, x => x.MapFrom(src => src.User.UserId))
@@ -37,6 +38,27 @@ namespace Pass.Manager.Web
                                                                       LastName = src.LastName,
                                                                   }));
             */
+
+            Mapper.CreateMap<PassProjectType, PassStyle>().ConstructUsing(PassProjectTypeToPassStyle);
+        }
+
+        private static PassStyle PassProjectTypeToPassStyle(PassProjectType passProjectType)
+        {
+            switch (passProjectType)
+            {
+                case PassProjectType.Coupon:
+                    return PassStyle.Coupon;
+                case PassProjectType.BoardingPass:
+                    return PassStyle.BoardingPass;
+                case PassProjectType.EventTicket:
+                    return PassStyle.EventTicket;
+                case PassProjectType.StoreCard:
+                    return PassStyle.StoreCard;
+                //case PassProjectType.Custom:
+                //    return PassStyle.Generic;
+            }
+
+            return PassStyle.Generic;
         }
     }
 }

@@ -171,7 +171,7 @@
     <Compile Include="Models\GeneralPassTemplate\BeaconDetails.cs" />
     <Compile Include="Models\GeneralPassTemplate\DistributionDetails.cs" />
     <Compile Include="Models\GeneralPassTemplate\FieldDetails.cs" />
-    <Compile Include="Models\GeneralPassTemplate\GeneralPassTemplate.cs" />
+    <Compile Include="Models\GeneralPassTemplate\PassTemplateViewModel.cs" />
     <Compile Include="Models\GeneralPassTemplate\IntegrationDetails.cs" />
     <Compile Include="Models\GeneralPassTemplate\LanguageDetails.cs" />
     <Compile Include="Models\GeneralPassTemplate\LocationDetails.cs" />
@@ -1045,6 +1045,22 @@
     <Content Include="Views\PassSiteUser\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CertificateStorage\CertificateStorage.BL\CertificateStorage.BL.csproj">
+      <Project>{6eb0253b-5bcd-43cd-bb76-2ccff5761e7a}</Project>
+      <Name>CertificateStorage.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CertificateStorage\CertificateStorage.Core\CertificateStorage.Core.csproj">
+      <Project>{c65c0f7c-299b-4db8-9ab7-d3c246baba6f}</Project>
+      <Name>CertificateStorage.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CertificateStorage\CertificateStorage.Repository.Core\CertificateStorage.Repository.Core.csproj">
+      <Project>{bb648ede-67d5-488c-b423-346e181b33db}</Project>
+      <Name>CertificateStorage.Repository.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CertificateStorage\CertificateStorage.Repository.EF\CertificateStorage.Repository.EF.csproj">
+      <Project>{1dbbe809-d0ba-4031-9ae6-de6ff57354d7}</Project>
+      <Name>CertificateStorage.Repository.EF</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Common\Common.Extensions\Common.Extensions.csproj">
       <Project>{1628E173-1BE9-4DFC-BCBE-93334DE8EE46}</Project>
       <Name>Common.Extensions</Name>
@@ -1060,6 +1076,22 @@
     <ProjectReference Include="..\..\Common\Common.Web\Common.Web.csproj">
       <Project>{93dd94d6-4255-4d24-adbc-ba3eaa87ddb0}</Project>
       <Name>Common.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FileStorage\FileStorage.BL\FileStorage.BL.csproj">
+      <Project>{f067da74-e48f-4de7-85d4-1217bb3670e3}</Project>
+      <Name>FileStorage.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FileStorage\FileStorage.Core\FileStorage.Core.csproj">
+      <Project>{06ebd357-60dc-4bd9-ad9b-0a736dcc2203}</Project>
+      <Name>FileStorage.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FileStorage\FileStorage.Repository.Core\FileStorage.Repository.Core.csproj">
+      <Project>{cefdb101-184e-4484-9cf8-9616d68ae52a}</Project>
+      <Name>FileStorage.Repository.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FileStorage\FileStorage.Repository.EF\FileStorage.Repository.EF.csproj">
+      <Project>{2378c604-fff4-44f9-9934-bb17013c27fb}</Project>
+      <Name>FileStorage.Repository.EF</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pass.Manager.BL\Pass.Manager.BL.csproj">
       <Project>{24182974-603e-417f-8ba6-034038ec1b89}</Project>

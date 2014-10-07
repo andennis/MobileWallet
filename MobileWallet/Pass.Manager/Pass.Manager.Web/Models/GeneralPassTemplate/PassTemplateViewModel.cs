@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
@@ -9,9 +8,11 @@ namespace Pass.Manager.Web.Models.GeneralPassTemplate
 {
     [Serializable]
     [XmlRoot(ElementName = "passTemplate", Namespace = "http://www.mobilewallet.com")]
-    public class GeneralPassTemplate
+    public class PassTemplateViewModel
     {
         private const string Namespace = "http://www.mobilewallet.com";
+
+        public int PassProjectId { get; set; }
 
         #region Standart keys
 

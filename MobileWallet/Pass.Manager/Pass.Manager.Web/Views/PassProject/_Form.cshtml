@@ -10,6 +10,12 @@
 @Html.TextAreaFormForExt(m => m.Description)
 @Html.HiddenForExt(m => m.PassTemplateId)
 @Html.HiddenForExt(m => m.PassSiteId)
-<div class="col-md-offset-2 col-md-10">
-    @Html.ActionLinkExt("Pass Designer", "PassDesigner", routeValues: new { passProjectId = Model.PassProjectId })
-</div>
+
+@if (!Model.IsNew)
+{
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            @Html.ActionLinkExt("Pass Designer", "Edit", "PassDesigner", new {passProjectId = Model.PassProjectId})
+        </div>    
+    </div>
+}
