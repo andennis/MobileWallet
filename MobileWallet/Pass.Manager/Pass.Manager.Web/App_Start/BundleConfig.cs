@@ -40,7 +40,8 @@ namespace Pass.Manager.Web
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
                 "~/Scripts/kendo/2014.2.716/kendo.core.min.js",
                 "~/Scripts/kendo/2014.2.716/kendo.data.min.js",
-                "~/Scripts/kendo/2014.2.716/kendo.tabstrip.min.js"));
+                "~/Scripts/kendo/2014.2.716/kendo.tabstrip.min.js," +
+                "~/Scripts/kendo/2014.2.716/kendo.upload.js"));
 
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(

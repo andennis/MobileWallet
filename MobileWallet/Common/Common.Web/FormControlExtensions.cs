@@ -186,7 +186,7 @@ namespace Common.Web
         #region FileUpload
         public static MvcHtmlString FileUploadEx(this HtmlHelper html, string name, string saveUrl, string removeUrl)
         {
-            string htmlStr = html.FileUpload().Name(name).SaveAction(saveUrl).RemoveAction(removeUrl).AutoUpload(true).ToHtmlString();
+            string htmlStr = html.FileUpload().Name(name).ToHtmlString();
             return new MvcHtmlString(htmlStr);
         }
         #endregion
