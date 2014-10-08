@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Reflection;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using Common.Extensions;
-using Common.Web.FileUpload;
 
 namespace Common.Web
 {
@@ -33,14 +31,15 @@ namespace Common.Web
         }
 
         #region BeginForm
-        public static MvcForm BeginFormExt<TController>(this HtmlHelper html, Expression<Func<TController, ActionResult>> action) where TController : Controller
+        public static MvcForm BeginFormExt<TController>(this HtmlHelper html, Expression<Func<TController, ActionResult>> action, object htmlAttributes = null) where TController : Controller
         {
             ActionInfo actionInfo = GetActionInfo(action);
-            return html.BeginFormExt(actionInfo.Action, actionInfo.Controller);
+            return html.BeginFormExt(actionInfo.Action, actionInfo.Controller, htmlAttributes);
         }
-        public static MvcForm BeginFormExt(this HtmlHelper html, string actionName = null, string controllerName = null)
+        public static MvcForm BeginFormExt(this HtmlHelper html, string actionName = null, string controllerName = null, object htmlAttributes = null)
         {
-            return html.BeginForm(actionName, controllerName, FormMethod.Post, _initFormAttributes);
+            IDictionary<string, object> attributes = MergeHtmlAttributes(_initFormAttributes, htmlAttributes);
+            return html.BeginForm(actionName, controllerName, FormMethod.Post, attributes);
         }
         #endregion
 
@@ -186,8 +185,15 @@ namespace Common.Web
         #region FileUpload
         public static MvcHtmlString FileUploadEx(this HtmlHelper html, string name, string saveUrl, string removeUrl)
         {
-            string htmlStr = html.FileUpload().Name(name).ToHtmlString();
-            return new MvcHtmlString(htmlStr);
+            var inputTag = new TagBuilder("input");
+            //inputTag.GenerateId(name);
+            inputTag.Attributes.Add("name", name);
+            inputTag.Attributes.Add("type", "file");
+
+            return new MvcHtmlString(inputTag.ToString());
+
+            //string htmlStr = html.FileUpload().Name(name).ToHtmlString();
+            //return new MvcHtmlString(htmlStr);
         }
         #endregion
 
@@ -195,6 +201,11 @@ namespace Common.Web
         {
             public string Controller { get; set; }
             public string Action { get; set; }
+        }
+
+        private static IDictionary<string, object> MergeHtmlAttributes(IEnumerable<KeyValuePair<string, object>> dst, object src)
+        {
+            return dst.Union(src.ObjectPropertiesToDictionary()).ToDictionary(key => key.Key, val => val.Value);
         }
 
         private static ActionInfo GetActionInfo<TController>(Expression<Func<TController, ActionResult>> action)

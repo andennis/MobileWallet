@@ -9,8 +9,8 @@ using Pass.Manager.Core.SearchFilters;
 namespace Pass.Manager.Web.Common
 {
     [Authorize]
-    public abstract class BaseEntityController<TEntityModelView, TEntity, TService, TSearchFilter> : BaseController
-        where TEntityModelView : class, IViewModel, new() 
+    public abstract class BaseEntityController<TEntityViewModel, TEntity, TService, TSearchFilter> : BaseController
+        where TEntityViewModel : class, IViewModel, new() 
         where TEntity : class
         where TService : class, IBaseService<TEntity, TSearchFilter>
         where TSearchFilter : SearchFilterBase
@@ -30,18 +30,18 @@ namespace Pass.Manager.Web.Common
         [HttpGet]
         public virtual ActionResult Create()
         {
-            var model = new TEntityModelView();
+            var model = new TEntityViewModel();
             SetDefaultReturnUrl(model);
             return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult Create(TEntityModelView model)
+        public virtual ActionResult Create(TEntityViewModel model)
         {
             if (ModelState.IsValid)
             {
-                TEntity entity = Mapper.Map<TEntityModelView, TEntity>(model);
+                TEntity entity = Mapper.Map<TEntityViewModel, TEntity>(model);
                 _service.Create(entity);
                 return RedirectTo(model);
             }
@@ -53,19 +53,19 @@ namespace Pass.Manager.Web.Common
         public virtual ActionResult Edit(int id)
         {
             TEntity entity = _service.Get(id);
-            TEntityModelView model = Mapper.Map<TEntity, TEntityModelView>(entity);
+            TEntityViewModel model = Mapper.Map<TEntity, TEntityViewModel>(entity);
             SetDefaultReturnUrl(model);
             return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult Edit(TEntityModelView model)
+        public virtual ActionResult Edit(TEntityViewModel model)
         {
             if (ModelState.IsValid)
             {
                 TEntity entity = _service.Get(model.EntityId);
-                entity = Mapper.Map<TEntityModelView, TEntity>(model, entity);
+                entity = Mapper.Map<TEntityViewModel, TEntity>(model, entity);
                 _service.Update(entity);
                 return RedirectTo(model);
             }
@@ -77,7 +77,7 @@ namespace Pass.Manager.Web.Common
         public virtual ActionResult Get(int id)
         {
             TEntity entity = _service.Get(id);
-            TEntityModelView model = Mapper.Map<TEntity, TEntityModelView>(entity);
+            TEntityViewModel model = Mapper.Map<TEntity, TEntityViewModel>(entity);
             return JsonEx(model, JsonRequestBehavior.AllowGet);
         }
 
@@ -85,7 +85,7 @@ namespace Pass.Manager.Web.Common
         public virtual ActionResult GridSearch(GridDataRequest request, TSearchFilter searchFilter = null)
         {
             SearchResult<TEntity> result = _service.Search(GridRequestToSearchContext(request), searchFilter);
-            IEnumerable<TEntityModelView> resultView = Mapper.Map<IEnumerable<TEntity>, IEnumerable<TEntityModelView>>(result.Data);
+            IEnumerable<TEntityViewModel> resultView = Mapper.Map<IEnumerable<TEntity>, IEnumerable<TEntityViewModel>>(result.Data);
             return Json(GridDataResponse.Create(request, resultView, result.TotalCount), JsonRequestBehavior.AllowGet);
         }
 

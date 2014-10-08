@@ -8,14 +8,15 @@
 @Html.TextBoxFormForExt(m => m.Name)
 @Html.TextBoxFormForExt(m => m.TeamId)
 @Html.TextBoxFormForExt(m => m.PassTypeId)
-@Html.TextBoxFormForExt(m => m.Description)
+@Html.TextAreaFormForExt(m => m.Description)
 @Html.TextBlockFormForExt(m => m.ExpDate, "Expiration Date", "d")
+@Html.TextBoxFormForExt(m => m.Password)
 @Html.HiddenForExt(m => m.ExpDate) @*temp solution for ExpDate*@
 @Html.HiddenForExt(m => m.CertificateStorageId)
 
 <div class="form-group">
     <div class="col-md-offset-2 col-md-10">
-        @Html.FileUploadEx("files", null, null)
+        @Html.FileUploadEx("CertificateFile", null, null)
     </div>
 </div>
     

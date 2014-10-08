@@ -7,7 +7,7 @@
 <h3>
     @RenderSection("Title")
 </h3>
-@using (Html.BeginFormExt())
+@using (Html.BeginFormExt(htmlAttributes: (object)ViewBag.HtmlFormAttributes))
 {
     @Html.ValidationSummary()
     @Html.AntiForgeryToken()

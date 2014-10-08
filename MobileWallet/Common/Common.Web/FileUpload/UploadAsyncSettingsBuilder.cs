@@ -16,6 +16,12 @@ namespace Common.Web.FileUpload
             return this;
         }
 
+        public UploadAsyncSettingsBuilder Batch(bool value)
+        {
+            _asyncSettings.Batch = value;
+            return this;
+        }
+
         public UploadAsyncSettingsBuilder Save(string actionName, string controllerName, object routeValues)
         {
             _asyncSettings.Save = new Navigatable()
@@ -41,12 +47,13 @@ namespace Common.Web.FileUpload
             return this;
         }
 
-        /*
+        
         public UploadAsyncSettingsBuilder SaveUrl(string url)
         {
+            _asyncSettings.Save = new Navigatable() {Url = url};
             return this;
         }
-        */
+        
 
         public UploadAsyncSettingsBuilder Remove(string actionName, string controllerName, object routeValues)
         {
@@ -65,12 +72,13 @@ namespace Common.Web.FileUpload
         {
             return this;
         }
+        */
 
         public UploadAsyncSettingsBuilder RemoveUrl(string url)
         {
+            _asyncSettings.Remove = new Navigatable() { Url = url };
             return this;
         }
-        */
 
         public UploadAsyncSettingsBuilder RemoveField(string fieldName)
         {

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using System.Runtime.ConstrainedExecution;
 using CertificateStorage.Core;
 using CertificateStorage.Core.Entities;
 using CertificateStorage.Repository.Core;
@@ -48,6 +47,7 @@ namespace CertificateStorage.BL
             _certRepository.Insert(cert);
             _unitOfWork.Save();
 
+            certInfo.CertificateId = cert.CertificateId;
             return cert.CertificateId;
         }
 

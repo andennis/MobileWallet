@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
+using AutoMapper;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.SearchFilters;
@@ -17,20 +18,50 @@ namespace Pass.Manager.Web.Controllers
 
         public override ActionResult Create()
         {
-            //TODO temp solution to specify ExpDate
-            return View(new PassCertificateAppleViewModel(){ExpDate = DateTime.Today});
-        }
-
-        public ActionResult Upload()
-        {
+            ViewBag.HtmlFormAttributes = new {enctype = "multipart/form-data"};
             //TODO temp solution to specify ExpDate
             return View(new PassCertificateAppleViewModel() { ExpDate = DateTime.Today });
         }
 
-        public ActionResult Remove()
+        public override ActionResult Edit(int id)
         {
-            //TODO temp solution to specify ExpDate
-            return View(new PassCertificateAppleViewModel() { ExpDate = DateTime.Today });
+            ViewBag.HtmlFormAttributes = new { enctype = "multipart/form-data" };
+            return base.Edit(id);
+        }
+
+        public override ActionResult Create(PassCertificateAppleViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (model.CertificateFile != null && model.CertificateFile.ContentLength > 0)
+                {
+                    PassCertificateApple passCert = Mapper.Map<PassCertificateAppleViewModel, PassCertificateApple>(model);
+                    _service.UploadCertificate(passCert, model.Password, model.CertificateFile.InputStream);
+                    _service.Create(passCert);
+                    return RedirectTo(model);
+                }
+
+                ModelState.AddModelError(string.Empty, "Certificate file should specified");
+            }
+
+            return View(model);
+        }
+
+        public override ActionResult Edit(PassCertificateAppleViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                PassCertificateApple passCert = _service.Get(model.EntityId);
+                passCert = Mapper.Map<PassCertificateAppleViewModel, PassCertificateApple>(model, passCert);
+
+                if (model.CertificateFile != null && model.CertificateFile.ContentLength > 0)
+                    _service.UploadCertificate(passCert, model.Password, model.CertificateFile.InputStream);
+
+                _service.Update(passCert);
+                return RedirectTo(model);
+            }
+
+            return View(model);
         }
     }
 }

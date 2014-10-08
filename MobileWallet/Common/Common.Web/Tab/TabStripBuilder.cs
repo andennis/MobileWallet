@@ -37,8 +37,9 @@ namespace Common.Web.Tab
 
         public TabStripBuilder Events(Action<TabStripEventBuilder> clientEventsAction)
         {
-            clientEventsAction(_tabStripEventBuilder);
-            return this;
+            throw new NotImplementedException();
+            //clientEventsAction(_tabStripEventBuilder);
+            //return this;
         }
 
         public TabStripBuilder SelectedIndex(int index)

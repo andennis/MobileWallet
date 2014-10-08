@@ -79,6 +79,8 @@
     <Compile Include="FileUpload\Navigatable.cs" />
     <Compile Include="FileUpload\UploadAsyncSettings.cs" />
     <Compile Include="FileUpload\UploadAsyncSettingsBuilder.cs" />
+    <Compile Include="FileUpload\UploadFileBuilder.cs" />
+    <Compile Include="FileUpload\UploadFileFactory.cs" />
     <Compile Include="FormControlExtensions.cs" />
     <Compile Include="GridActionExtension.cs" />
     <Compile Include="Grid\GridActionLinkBuilder.cs" />

@@ -13,16 +13,16 @@ namespace Common.Web.FileUpload
         private bool _enable = true;
         private bool _multiple;
         private bool _showFileList;
+        private string _templateId;
 
-        private readonly UploadAsyncSettings _asyncSettings = new UploadAsyncSettings();
-        private readonly UploadAsyncSettingsBuilder _asyncSettingsBuilder;
+        private UploadAsyncSettings _asyncSettings;
         private readonly FileUploadEventBuilder _fileUploadEventBuilder;
+        private readonly UploadFileFactory _uploadFileFactory = new UploadFileFactory();
         private readonly IDictionary<string, object> _events = new Dictionary<string, object>();
 
         public FileUploadBuilder()
         {
             _fileUploadEventBuilder = new FileUploadEventBuilder(_events);
-            _asyncSettingsBuilder = new UploadAsyncSettingsBuilder(_asyncSettings);
         }
 
         public FileUploadBuilder Name(string name)
@@ -48,13 +48,28 @@ namespace Common.Web.FileUpload
 
         public FileUploadBuilder Async(Action<UploadAsyncSettingsBuilder> configurator)
         {
-            configurator(_asyncSettingsBuilder);
+            if (_asyncSettings == null)
+                _asyncSettings = new UploadAsyncSettings();
+
+            configurator(new UploadAsyncSettingsBuilder(_asyncSettings));
             return this;
         }
 
         public FileUploadBuilder Events(Action<FileUploadEventBuilder> clientEventsAction)
         {
             clientEventsAction(_fileUploadEventBuilder);
+            return this;
+        }
+
+        public FileUploadBuilder TemplateId(string templateId)
+        {
+            _templateId = templateId;
+            return this;
+        }
+
+        public FileUploadBuilder Files(Action<UploadFileFactory> configurator)
+        {
+            configurator(_uploadFileFactory);
             return this;
         }
 
@@ -78,8 +93,8 @@ namespace Common.Web.FileUpload
         {
             var sb = new StringBuilder();
             var inputTag = new TagBuilder("input");
-            inputTag.GenerateId("files");
-            inputTag.Attributes.Add("name", _name);
+            inputTag.GenerateId(_name);
+            //inputTag.Attributes.Add("name", _name);
             inputTag.Attributes.Add("type", "file");
             sb.AppendLine(inputTag.ToString());
 
@@ -87,7 +102,19 @@ namespace Common.Web.FileUpload
             {
                 enabled = _enable,
                 multiple = _multiple,
-                showFileList = _showFileList
+                showFileList = _showFileList,
+                //template = kendo.template($('#fileTemplate').html())
+                async = (_asyncSettings != null)
+                        ? new
+                            {
+                                autoUpload = _asyncSettings.AutoUpload,
+                                batch = _asyncSettings.Batch,
+                                removeField = _asyncSettings.RemoveField,
+                                saveField = _asyncSettings.SaveField,
+                                saveUrl = _asyncSettings.Save.Url,
+                                removeUrl = _asyncSettings.Remove.Url
+                            }
+                        : null
             };
 
             var scriptTag = new TagBuilder("script");
