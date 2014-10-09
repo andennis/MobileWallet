@@ -203,9 +203,12 @@ namespace Common.Web
             public string Action { get; set; }
         }
 
-        private static IDictionary<string, object> MergeHtmlAttributes(IEnumerable<KeyValuePair<string, object>> dst, object src)
+        private static IDictionary<string, object> MergeHtmlAttributes(IDictionary<string, object> dst, object src)
         {
-            return dst.Union(src.ObjectPropertiesToDictionary()).ToDictionary(key => key.Key, val => val.Value);
+            if (src != null)
+                return dst.Union(src.ObjectPropertiesToDictionary()).ToDictionary(key => key.Key, val => val.Value);
+
+            return dst;
         }
 
         private static ActionInfo GetActionInfo<TController>(Expression<Func<TController, ActionResult>> action)
