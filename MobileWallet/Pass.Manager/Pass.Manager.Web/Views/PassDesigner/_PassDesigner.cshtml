@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-@{
+@*@{
     Layout = "";
-}
+}*@
 
 @using Pass.Manager.Web.Helpers
 @using Pass.Manager.Web.Models.GeneralPassTemplate
@@ -15,13 +15,13 @@
 
 
 <div class="passDesignerBody">
-    <div class="headerBlockOnDesigner">
+    @*<div class="headerBlockOnDesigner">
         <div class="headerBlockContentDesigner">
             <a href="~/Home/MainPage">
                 <img src="~/Images/MainPage/PassLightLogo.png" class="headerLogoImg" />
             </a>
         </div>
-    </div>
+    </div>*@
     <div id="body" class="bodyPassDesigner">
         <div id="topPanel" class="mainTabs">
             <p id="MainTab1" class="peter-river-flat-button tabMain active">Настройки</p>
@@ -196,6 +196,7 @@
         </div>
     </div>
 </div>
+<input type="hidden" id="passProjectId" value="@Model.PassProjectId" />
 
 <script src="~/Scripts/createCard/passDesigner.js">
 </script>

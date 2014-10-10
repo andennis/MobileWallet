@@ -9,6 +9,7 @@ namespace Common.Extensions
     {
         public static void SaveToXml(this object obj, string filePath, string custNamespace = null)
         {
+            filePath = filePath + "\\XMLData.xml";
             var xws = new XmlWriterSettings() { Indent = true, Encoding = Encoding.UTF8 };
             var serializer = new XmlSerializer(obj.GetType());
             using (var xmlWriter = XmlWriter.Create(filePath, xws))
@@ -28,6 +29,7 @@ namespace Common.Extensions
 
         public static TResult LoadFromXml<TResult>(this string filePath, string custNamespace = null)
         {
+            filePath = filePath + "\\XMLData.xml";
             var doc = new XmlDocument();
             doc.Load(filePath);
 

@@ -35,7 +35,7 @@ namespace Pass.Manager.Web.Controllers
             }
             else
             {
-                model = GetInitialModel(prj.ProjectType);
+                model = GetInitialModel(prj.ProjectType, passProjectId);
             }
 
             return View("_PassDesigner", model);
@@ -44,7 +44,8 @@ namespace Pass.Manager.Web.Controllers
         [HttpPost]
         public ActionResult Edit(PassTemplateViewModel model)
         {
-            if (ModelState.IsValid)
+            //if (ModelState.IsValid)
+            if (true)
             {
                 PassProject prj = _passProjectService.Get(model.PassProjectId);
                 string path;
@@ -64,10 +65,11 @@ namespace Pass.Manager.Web.Controllers
             return View("_PassDesigner", model);
         }
 
-        private PassTemplateViewModel GetInitialModel(PassProjectType projectType)
+        private PassTemplateViewModel GetInitialModel(PassProjectType projectType, int passProjectId)
         {
             return new PassTemplateViewModel
             {
+                PassProjectId = passProjectId,
                 PassStyle = Mapper.Map<PassProjectType, PassStyle>(projectType),
                 BackgroundColor = Color.FromArgb(0, 68, 96),
                 LabelTextColor = Color.FromArgb(0, 0, 0),

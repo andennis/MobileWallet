@@ -12,6 +12,7 @@ namespace Pass.Manager.Web.Models.GeneralPassTemplate
     {
         private const string Namespace = "http://www.mobilewallet.com";
 
+        [JsonProperty(PropertyName = "passProjectId", Required = Required.Always)]
         public int PassProjectId { get; set; }
 
         #region Standart keys

@@ -19,7 +19,7 @@ function WindowOnLoad() {
     ChangeWidthAuxiliaryTextFieldPass(2);
     ChangWidthFlexContainerHeaderPass();
     ChangesDependingPassType('coupon');
-};
+}
 window.onload = WindowOnLoad();
 
 //Replace all SVG images with inline SVG
@@ -74,9 +74,9 @@ function handleFileSelect(evt) {
     // Read in the image file as a data URL.
     reader.readAsDataURL(files[0]);
     ChangeLeftPropertyLogoText();
-    if (divId == 'divBackgroundImagePass') {
+    if (divId === 'divBackgroundImagePass') {
         BlurBackgroundImage();
-    };
+    }
 }
 document.getElementById('logoImageInput').addEventListener('change', handleFileSelect, false);
 document.getElementById('stripImageInput').addEventListener('change', handleFileSelect, false);
@@ -94,12 +94,12 @@ function HandleChanges(evt) {
     RepositionRemoveIcon();
     //var RegExExt = /.*\.(.*)/;
     //var ext = fileTitle.replace(RegExExt, "$1"); //и его расширение
-};
+}
 
 //Blur background image
 function BlurBackgroundImage() {
     stackBlurImage('backgroundImagePass', 'backgroundCanvas', 70, false);
-};
+}
 
 //Remove image on pass
 jQuery('.removeImage').click(function (evt) {
@@ -119,7 +119,7 @@ function RepositionRemoveIcon() {
     document.getElementById('removeStrip').style.marginLeft = max + 203 + 'px';
     document.getElementById('removeThumbnail').style.marginLeft = max + 203 + 'px';
     document.getElementById('removeBackground').style.marginLeft = max + 203 + 'px';
-};
+}
 
 //Flippy effect
 var j = jQuery.noConflict();
@@ -139,7 +139,7 @@ jQuery("#MainTab4").click(function () {
 });
 
 jQuery("#MainTab1, #MainTab2, #MainTab3, #MainTab5, #MainTab6, #MainTab7").click(function () {
-    if (jQuery(this).attr('id') == 'MainTab3') {
+    if (jQuery(this).attr('id') === 'MainTab3') {
         jQuery('.frontTabPassBlock').css('display', 'block');
     } else {
         jQuery('.frontTabPassBlock').css('display', 'none');
@@ -152,7 +152,7 @@ jQuery("#MainTab1, #MainTab2, #MainTab3, #MainTab5, #MainTab6, #MainTab7").click
             duration: "350"
         });
     }
-    if (jQuery('.passTypeImg.selected').attr('data-pass') == 'eventTicket') {
+    if (jQuery('.passTypeImg.selected').attr('data-pass') === 'eventTicket') {
         setTimeout(function () { BlurBackgroundImage(); }, 150);
     }
 });
@@ -160,7 +160,7 @@ jQuery("#MainTab1, #MainTab2, #MainTab3, #MainTab5, #MainTab6, #MainTab7").click
 //Main content tabs
 jQuery('#topPanel p.tabMain').click(function () {
     var clickId = jQuery(this).attr('id');
-    if (clickId != jQuery('#topPanel p.active').attr('id')) {
+    if (clickId !== jQuery('#topPanel p.active').attr('id')) {
         jQuery('#topPanel p.active').removeClass('active');
         jQuery(this).addClass('active');
         jQuery('#rightPanel div').removeClass('active');
@@ -171,7 +171,7 @@ jQuery('#topPanel p.tabMain').click(function () {
 //Front content tabs
 jQuery('.linkTabFrontContent').click(function () {
     var clickId = jQuery(this).attr('id');
-    if (clickId != jQuery('.linkTabFrontContent.active').attr('id')) {
+    if (clickId !== jQuery('.linkTabFrontContent.active').attr('id')) {
         jQuery('.linkTabFrontContent.active').removeClass('active');
         jQuery(this).addClass('active');
         jQuery('#wrapper div').removeClass('active');
@@ -187,7 +187,7 @@ jQuery('#MainTab3').click(function () {
 //Change type of barcode
 jQuery('#divBarcodeFormat input').click(function () {
     var clickId = jQuery(this).attr('id');
-    if (clickId != jQuery('#divBarcodeFormat input.active').attr('id')) {
+    if (clickId !== jQuery('#divBarcodeFormat input.active').attr('id')) {
         jQuery('#divBarcodeFormat input.active').removeClass('active');
         jQuery(this).addClass('active');
         jQuery('#divBarcodePass img').removeClass('active');
@@ -202,8 +202,8 @@ function ChangeLabelTextColor(color) {
         labelElements[i].style.color = color;
     }
     var transitIcons = document.getElementsByClassName("transitIconPass");
-    for (var i = 0, transIconsLength = transitIcons.length; i < transIconsLength; i++) {
-        transitIcons[i].style.fill = color;
+    for (var j = 0, transIconsLength = transitIcons.length; j < transIconsLength; j++) {
+        transitIcons[j].style.fill = color;
     }
 }
 
@@ -267,7 +267,7 @@ function AddFieldBackContent() {
 
 //Add field to back content pass
 function AddFieldBackContentPass(lastChildId) {
-    if (jQuery('#mainCollapsePanelBackContent').children().size() == 1 && jQuery('#mainCollapsePanelBackContent').attr('class') == 'displayNone') {
+    if (jQuery('#mainCollapsePanelBackContent').children().size() === 1 && jQuery('#mainCollapsePanelBackContent').attr('class') === 'displayNone') {
         jQuery('#collapsePanelBackContent' + tempId).removeClass('displayNone');
         jQuery('#divBackFieldContentPass' + tempId).removeClass('displayNone');
     } else {
@@ -301,7 +301,7 @@ function BindBackTextareaToFieldPass(id, value) {
 //Remove field from back content
 function RemoveFieldFromBackContent(id) {
     var tempId = id.slice(-2).replace('d', '');
-    if (jQuery('#mainCollapsePanelBackContent').children().size() == 1) {
+    if (jQuery('#mainCollapsePanelBackContent').children().size() === 1) {
         jQuery('#collapsePanelBackContent' + tempId).addClass('displayNone');
         jQuery('#divBackFieldContentPass' + tempId).addClass('displayNone');
     } else {
@@ -336,8 +336,6 @@ function AddFieldPassAgain() {
         }).appendTo('#divBackFieldContentPass' + tempId);
     }
 }
-
-;
 
 //Change width text fields on header pass area
 function ChangeWidthHeaderTextFieldPass(someId) {
@@ -439,8 +437,6 @@ function CheckAndUncheckFieldFront(id) {
     }
 }
 
-;
-
 //Check and uncheck fieds on back pass
 function CheckAndUncheckFieldBack(id) {
     var tempId = id.toString().replace('checkbox', 'div'),
@@ -484,9 +480,9 @@ jQuery('input.radioInputFixOrDinamicLabel').change(function () {
     var tempId = jQuery(this).attr('id').slice(0, -1).replace('Radios', 'TextInput'),
     number = jQuery(this).attr('id').slice(-1);
 
-    if (number == '1') {
+    if (number === '1') {
         jQuery('#' + tempId).attr('placeholder', 'Обязательный');
-    } else if (number == '2') {
+    } else if (number === '2') {
         jQuery('#' + tempId).attr('placeholder', 'Необязательный');
     }
 });
@@ -494,9 +490,9 @@ jQuery('input.radioInputFixOrDinamicLabel').change(function () {
 jQuery('input.radioInputFixOrDinamicValue').change(function () {
     var tempId = jQuery(this).attr('id').slice(0, -1).replace('Radios', 'TextInput'),
     number = jQuery(this).attr('id').slice(-1);
-    if (number == '1') {
+    if (number === '1') {
         jQuery('#' + tempId).attr('placeholder', 'Обязательное');
-    } else if (number == '2') {
+    } else if (number === '2') {
         jQuery('#' + tempId).attr('placeholder', 'Необязательное');
     }
 });
@@ -504,12 +500,12 @@ jQuery('input.radioInputFixOrDinamicValue').change(function () {
 //Display block serial number input on pass settings tab
 function DisplayBlockSerialNumberInput() {
     jQuery('#divSerialNumberSettingsTab').css('display', 'block');
-};
+}
 
 //Display none serial number input on pass settings tab
 function DisplayNoneSerialNumberInput() {
     jQuery('#divSerialNumberSettingsTab').css('display', 'none');
-};
+}
 
 //Display none checkbox on collapse area
 function DisplayNoneCollapseCheckbox(name) {
@@ -727,7 +723,7 @@ function DisplayBarcodeAltText(tempValue) {
 function displayTransitIcon(tempValue) {
     jQuery('.transitIconPass').css('display', 'none');
     jQuery('#' + tempValue + 'IconPass').css('display', 'block');
-};
+}
 
 
 //Google map on lock screen tab
@@ -902,27 +898,27 @@ jQuery('#divBarcodeFormat input').click(function () {
     switch (jQuery(this).attr('id')) {
         case 'aztecCode':
             jQuery('#tab5').css('top', '378px').css('height', '126px');
-            if (jQuery('.passTypeImg.selected').attr('data-pass') == 'generic') {
+            if (jQuery('.passTypeImg.selected').attr('data-pass') === 'generic') {
                 jQuery('#auxiliaryAreaPass').css('display', 'none');
                 jQuery('#tab3').css('display', 'none');
             }
             break;
         case 'qrCode':
             jQuery('#tab5').css('top', '378px').css('height', '126px');
-            if (jQuery('.passTypeImg.selected').attr('data-pass') == 'generic') {
+            if (jQuery('.passTypeImg.selected').attr('data-pass') === 'generic') {
                 jQuery('#auxiliaryAreaPass').css('display', 'none');
                 jQuery('#tab3').css('display', 'none');
             }
             break;
         case 'pdf417Code':
             jQuery('#tab5').css('top', '397px').css('height', '102px');
-            if (jQuery('.passTypeImg.selected').attr('data-pass') == 'generic') {
+            if (jQuery('.passTypeImg.selected').attr('data-pass') === 'generic') {
                 jQuery('#auxiliaryAreaPass').css('display', 'block');
                 jQuery('#tab3').css('display', 'block');
             }
             break;
     }
-    if (jQuery('.passTypeImg.selected').attr('data-pass') == 'eventTicket' && jQuery('#eventTicketType input:checked').attr('value') == 'option2') {
+    if (jQuery('.passTypeImg.selected').attr('data-pass') === 'eventTicket' && jQuery('#eventTicketType input:checked').attr('value') === 'option2') {
         ChangesDependingPassType('eventTicket');
     };
 });
@@ -1104,10 +1100,10 @@ function ChangesDependingPassType(passType) {
             jQuery('#collapsePanelAuxiliaryContent4').css('display', 'block');
             jQuery('#collapsePanelAuxiliaryContent5').css('display', 'none');
             jQuery('#tab3').css('height', '36px').css('top', '357px');
-            if (!(jQuery('#divBarcodeFormat input.active').attr('id') == 'pdf417Code')) {
+            if (!(jQuery('#divBarcodeFormat input.active').attr('id') === 'pdf417Code')) {
                 jQuery('#auxiliaryAreaPass').css('display', 'none');
                 jQuery('#tab3').css('display', 'none');
-            };
+            }
 
             //Primary
             jQuery('#collapsePanelPrimaryContent2').css('display', 'none');
@@ -1136,7 +1132,7 @@ function ChangesDependingPassType(passType) {
             jQuery('#divEventTicketTypeRadio').css('display', 'none');
             break;
         case 'eventTicket':
-            if (jQuery('#eventTicketType input:checked').attr('value') == 'option1') {
+            if (jQuery('#eventTicketType input:checked').attr('value') === 'option1') {
 
                 //Images
                 jQuery('#divStripImage').css('display', 'none');
@@ -1183,7 +1179,7 @@ function ChangesDependingPassType(passType) {
                 //Others
                 jQuery('#divGroupingIdentifier').css('display', 'block');
                 jQuery('#divEventTicketTypeRadio').css('display', 'block');
-            } else if (jQuery('#eventTicketType input:checked').attr('value') == 'option2') {
+            } else if (jQuery('#eventTicketType input:checked').attr('value') === 'option2') {
 
                 //Images
                 jQuery('#divStripImage').css('display', 'block');
@@ -1237,7 +1233,7 @@ function ChangesDependingPassType(passType) {
                     jQuery('#flexContainerSecondaryLabels').css('top', '130px');
                     jQuery('#flexContainerSecondaryValues').css('top', '144px');
                     jQuery('#tab4').css('display', 'block').css('top', '294px').css('height', '35px');
-                };
+                }
 
                 //Others
                 jQuery('#divGroupingIdentifier').css('display', 'block');
@@ -1276,6 +1272,8 @@ function PostJsonData() {
     { 'fieldName': 'primary', 'FieldName': 'Primary', 'fieldCount': 2, 'arrName': jsonObj.FieldDetails.PrimaryFields },
     { 'fieldName': 'secondary', 'FieldName': 'Secondary', 'fieldCount': 4, 'arrName': jsonObj.FieldDetails.SecondaryFields }
     ];
+
+    jsonObj.passProjectId = jQuery('#passProjectId').val();
 
     //Standard Keys
     jsonObj.OrganizationName = jQuery('#organizationNameInput').val();
@@ -1324,16 +1322,16 @@ function PostJsonData() {
     //jsonObj.DistributionDetails.LimitPassPerUser = ???????????
     jsonObj.DistributionDetails.AllPassesAsExpired = jQuery('#voidedCheckbox').is(':checked');
     jsonObj.DistributionDetails.ExpirationDate = jQuery('#autoExpireInput').val();
-    if (jQuery('#distQuantitySelect :selected').val() == 1) {
+    if (jQuery('#distQuantitySelect :selected').val() === 1) {
         jsonObj.DistributionDetails.QuantityRestriction = jQuery('#distQuantityInput').val();
     }
-    if (jQuery('#distDateRestrSelect :selected').val() == 1) {
+    if (jQuery('#distDateRestrSelect :selected').val() === 1) {
         jsonObj.DistributionDetails.DateRestriction = jQuery('#distDateRestrInput').val();
     }
-    if (jQuery('#distPasswdSelect :selected').val() == 1) {
+    if (jQuery('#distPasswdSelect :selected').val() === 1) {
         jsonObj.DistributionDetails.PasswordToIssue = jQuery('#distIssuePasswdInput').val();
     }
-    if (jQuery('#distPasswdUpdSelect :selected').val() == 1) {
+    if (jQuery('#distPasswdUpdSelect :selected').val() === 1) {
         jsonObj.DistributionDetails.PasswordToUpdate = jQuery('#distUpdatePasswdInput').val();
     }
 
@@ -1379,10 +1377,10 @@ function PostJsonData() {
 
     jQuery.ajax({
         type: "POST",
-        url: "/Home/GiveMeJson",
+        url: "/PassDesigner/Edit",
         data: JSON.stringify(jsonObj),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
     });
-    alert(JSON.stringify(jsonObj));
+    //alert(JSON.stringify(jsonObj));
 }
