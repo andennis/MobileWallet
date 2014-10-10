@@ -1,14 +1,17 @@
-﻿using Pass.Manager.Core;
+﻿using FileStorage.Core;
+using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.SearchFilters;
 
 namespace Pass.Manager.BL
 {
-    class PassProjectService : BaseService<PassProject, PassProjectFilter, IPassManagerUnitOfWork>, IPassProjectService
+    public class PassProjectService : BaseService<PassProject, PassProjectFilter, IPassManagerUnitOfWork>, IPassProjectService
     {
-        public PassProjectService (IPassManagerUnitOfWork unitOfWork)
+        private readonly IFileStorageService _fileStorageService;
+        public PassProjectService (IPassManagerUnitOfWork unitOfWork, IFileStorageService fileStorageService)
             : base(unitOfWork)
-        { 
+        {
+            _fileStorageService = fileStorageService;
         }
 
         public override SearchResult<PassProject> Search(SearchContext searchContext, PassProjectFilter searchFilter = null)
