@@ -160,6 +160,7 @@
     <Compile Include="Controllers\PassCertificateController.cs" />
     <Compile Include="Controllers\PassDesignerController.cs" />
     <Compile Include="Controllers\PassProjectController.cs" />
+    <Compile Include="Controllers\PassSiteCertificateController.cs" />
     <Compile Include="Controllers\PassSiteController.cs" />
     <Compile Include="Controllers\PassSiteUserController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -178,6 +179,7 @@
     <Compile Include="Models\PassCertificateAppleViewModel.cs" />
     <Compile Include="Models\PassCertificateViewModel.cs" />
     <Compile Include="Models\PassProjectViewModel.cs" />
+    <Compile Include="Models\PassSiteCertificateViewModel.cs" />
     <Compile Include="Models\PassSiteUserViewModel.cs" />
     <Compile Include="Models\UserPasswordViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
@@ -1043,6 +1045,8 @@
     <Content Include="Views\PassSite\Tabs\_Users.cshtml" />
     <Content Include="Views\PassSiteUser\_Form.cshtml" />
     <Content Include="Views\PassSiteUser\Create.cshtml" />
+    <Content Include="Views\PassSiteCertificate\_Form.cshtml" />
+    <Content Include="Views\PassSiteCertificate\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CertificateStorage\CertificateStorage.BL\CertificateStorage.BL.csproj">

@@ -56,14 +56,17 @@
     <Compile Include="IPassManagerConfig.cs" />
     <Compile Include="IPassManagerUnitOfWork.cs" />
     <Compile Include="IPassProjectService.cs" />
+    <Compile Include="IPassSiteCertificateService.cs" />
     <Compile Include="IPassSiteService.cs" />
     <Compile Include="IPassSiteUserService.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IPassSiteCertificateRepository.cs" />
     <Compile Include="Repositories\IPassSiteRepository.cs" />
     <Compile Include="Repositories\IPassSiteUserRepository.cs" />
     <Compile Include="SearchContext.cs" />
     <Compile Include="SearchFilters\PassProjectFilter.cs" />
+    <Compile Include="SearchFilters\PassSiteCertificateFilter.cs" />
     <Compile Include="SearchFilters\PassSiteUserFilter.cs" />
     <Compile Include="SearchFilters\SearchFilterBase.cs" />
     <Compile Include="SearchResult.cs" />

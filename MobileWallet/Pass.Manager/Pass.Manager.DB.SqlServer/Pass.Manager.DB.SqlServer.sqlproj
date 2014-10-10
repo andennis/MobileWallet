@@ -75,4 +75,7 @@
     <Build Include="Security\pm.sql" />
     <Build Include="Stored Procedures\pm.PassSiteUser_GetUnassignedUsers.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Stored Procedures\pm.PassSiteCertificate_GetPassCertificates.sql" />
+  </ItemGroup>
 </Project>

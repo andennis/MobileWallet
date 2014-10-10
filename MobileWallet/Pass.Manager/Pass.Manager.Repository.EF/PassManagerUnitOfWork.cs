@@ -13,6 +13,7 @@ namespace Pass.Manager.Repository.EF
         private readonly HashSet<Type> _allowedRepositoryEntities;
         private IPassSiteRepository _passSiteRepository;
         private IPassSiteUserRepository _passSiteUserRepository;
+        private IPassSiteCertificateRepository _passSiteCertificateRepository;
 
         public PassManagerUnitOfWork(IDbConfig dbConfig)
             : base(new PassManagerDbContext(dbConfig.ConnectionString))
@@ -24,6 +25,7 @@ namespace Pass.Manager.Repository.EF
                                             typeof(User),
                                             typeof(PassSiteUser),
                                             typeof(PassCertificate),
+                                            typeof(PassSiteCertificate),
                                             typeof(PassCertificateApple),
                                             typeof(PassSiteCertificate)
                                         };
@@ -52,6 +54,13 @@ namespace Pass.Manager.Repository.EF
             get
             {
                 return _passSiteUserRepository ?? (_passSiteUserRepository = new PassSiteUserRepository(_dbContext));
+            }
+        }
+        public IPassSiteCertificateRepository PassSiteCertificateRepository
+        {
+            get
+            {
+                return _passSiteCertificateRepository ?? (_passSiteCertificateRepository = new PassSiteCertificateRepository(_dbContext));
             }
         }
     }

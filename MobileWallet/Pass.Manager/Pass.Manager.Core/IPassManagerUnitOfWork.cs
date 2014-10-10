@@ -7,5 +7,6 @@ namespace Pass.Manager.Core
     {
         IPassSiteRepository PassSiteRepository { get; }
         IPassSiteUserRepository PassSiteUserRepository { get; }
+        IPassSiteCertificateRepository PassSiteCertificateRepository { get; }
     }
 }

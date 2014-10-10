@@ -39,6 +39,15 @@ namespace Pass.Manager.Web
                                                                   }));
             */
 
+            Mapper.CreateMap<PassSiteCertificate, PassSiteCertificateViewModel>()
+                .ForMember(dst => dst.PassCertificateId, x => x.MapFrom(src => src.PassCertificate.PassCertificateId))
+                .ForMember(dst => dst.Name, x => x.MapFrom(src => src.PassCertificate.Name))
+                .ForMember(dst => dst.Description, x => x.MapFrom(src => src.PassCertificate.Description))
+                .ForMember(dst => dst.ExpDate, x => x.MapFrom(src => src.PassCertificate.ExpDate));
+            Mapper.CreateMap<PassSiteCertificateViewModel, PassSiteCertificate>();
+            Mapper.CreateMap<PassSiteCertificateViewModel, PassCertificate>();
+            Mapper.CreateMap<PassSiteCertificateViewModel, PassCertificateApple>();
+
             Mapper.CreateMap<PassProjectType, PassStyle>().ConstructUsing(PassProjectTypeToPassStyle);
         }
 
