@@ -75,6 +75,10 @@
       <Project>{F1CAD860-50FC-456C-96CD-1332CC48D03F}</Project>
       <Name>Common.Utils</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\FileStorage\FileStorage.Core\FileStorage.Core.csproj">
+      <Project>{06ebd357-60dc-4bd9-ad9b-0a736dcc2203}</Project>
+      <Name>FileStorage.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pass.Manager.Core\Pass.Manager.Core.csproj">
       <Project>{DC28CC0D-F87E-4D65-8812-3BAF31C9C359}</Project>
       <Name>Pass.Manager.Core</Name>
