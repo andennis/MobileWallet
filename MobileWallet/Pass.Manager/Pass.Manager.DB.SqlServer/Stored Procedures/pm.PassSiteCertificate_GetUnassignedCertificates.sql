@@ -3,7 +3,7 @@
 -- Create date: 10.10.2014
 -- Description:	
 -- =============================================
-CREATE PROCEDURE [pm].[PassSiteCertificate_GetPassCertificates] 
+CREATE PROCEDURE [pm].[PassSiteCertificate_GetUnassignedCertificates] 
 	@PassSiteId INT
 AS
 BEGIN

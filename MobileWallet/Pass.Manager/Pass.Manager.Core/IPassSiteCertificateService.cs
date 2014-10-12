@@ -6,6 +6,6 @@ namespace Pass.Manager.Core
 {
     public interface IPassSiteCertificateService : IBaseService<PassSiteCertificate, PassSiteCertificateFilter>
     {
-        IEnumerable<PassCertificate> GetPassCertificates(int passSiteId);
+        IEnumerable<PassCertificate> GetUnassignedCertificates(int passSiteId);
     }
 }

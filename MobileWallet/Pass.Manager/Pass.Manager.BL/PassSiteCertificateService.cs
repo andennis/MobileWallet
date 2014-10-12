@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.SearchFilters;
@@ -21,9 +18,9 @@ namespace Pass.Manager.BL
             return _repository.Query().Filter(x => x.PassSiteCertificateId == entityId).Include(x => x.PassCertificate).Get().First();
         }
 
-        public IEnumerable<PassCertificate> GetPassCertificates(int passSiteId)
+        public IEnumerable<PassCertificate> GetUnassignedCertificates(int passSiteId)
         {
-            return _unitOfWork.PassSiteCertificateRepository.GetPassCertificates(passSiteId);
+            return _unitOfWork.PassSiteCertificateRepository.GetUnassignedCertificates(passSiteId);
         }
 
         public override SearchResult<PassSiteCertificate> Search(SearchContext searchContext, PassSiteCertificateFilter searchFilter = null)

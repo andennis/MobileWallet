@@ -27,7 +27,7 @@ namespace Pass.Manager.Web.Controllers
         {
             var model = new PassSiteCertificateViewModel() { PassSiteId = passSiteId };
             SetDefaultReturnUrl(model);
-            model.Certificates = new SelectListTyped<PassCertificate, int, string>(_service.GetPassCertificates(passSiteId), x => x.PassCertificateId, x => x.Name);
+            model.Certificates = new SelectListTyped<PassCertificate, int, string>(_service.GetUnassignedCertificates(passSiteId), x => x.PassCertificateId, x => x.Name);
             return View("Create", model);
         }
 

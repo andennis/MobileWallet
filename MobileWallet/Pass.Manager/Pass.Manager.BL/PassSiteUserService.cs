@@ -31,10 +31,10 @@ namespace Pass.Manager.BL
                 .Get();
 
             return new SearchResult<PassSiteUser>()
-            {
-                Data = data,
-                TotalCount = data.Count()
-            };
+                    {
+                        Data = data,
+                        TotalCount = data.Count()
+                    };
         }
     }
 }

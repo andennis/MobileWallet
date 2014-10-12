@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Common.Repository.EF;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.Repositories;
@@ -17,9 +14,9 @@ namespace Pass.Manager.Repository.EF
         {
         }
 
-        public IEnumerable<PassCertificate> GetPassCertificates(int passSiteId)
+        public IEnumerable<PassCertificate> GetUnassignedCertificates(int passSiteId)
         {
-            return SqlQuery<PassCertificate>(DbScheme + ".PassSiteCertificate_GetPassCertificates @PassSiteId",
+            return SqlQuery<PassCertificate>(DbScheme + ".PassSiteCertificate_GetUnassignedCertificates @PassSiteId",
                                           new SqlParameter("PassSiteId", passSiteId)).ToList();
         }
 

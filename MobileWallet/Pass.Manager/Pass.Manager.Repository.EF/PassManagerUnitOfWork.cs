@@ -32,6 +32,7 @@ namespace Pass.Manager.Repository.EF
 
             RegisterCustomRepository(PassSiteRepository);
             RegisterCustomRepository(PassSiteUserRepository);
+            RegisterCustomRepository(PassSiteCertificateRepository);
         }
 
         protected override HashSet<Type> AllowedRepositoryEntities
