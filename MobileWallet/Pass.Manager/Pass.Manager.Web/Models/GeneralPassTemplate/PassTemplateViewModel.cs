@@ -54,17 +54,29 @@ namespace Pass.Manager.Web.Models.GeneralPassTemplate
         #region Visual Appearance Keys
 
         //[RegularExpression("^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$", ErrorMessage = "Invalid Format")]
+        //[XmlElement(ElementName = "backgroundColor")]
+        //[JsonProperty(PropertyName = "backgroundColor", Required = Required.Always)]
+        //public Color BackgroundColor { get; set; }
+
+        //[XmlElement(ElementName = "labelTextColor")]
+        //[JsonProperty(PropertyName = "labelTextColor", Required = Required.Always)]
+        //public Color LabelTextColor { get; set; }
+
+        //[XmlElement(ElementName = "valueTextColor")]
+        //[JsonProperty(PropertyName = "valueTextColor", Required = Required.Always)]
+        //public Color ValueTextColor { get; set; }
+
         [XmlElement(ElementName = "backgroundColor")]
         [JsonProperty(PropertyName = "backgroundColor", Required = Required.Always)]
-        public Color BackgroundColor { get; set; }
+        public string BackgroundColor { get; set; }
 
         [XmlElement(ElementName = "labelTextColor")]
         [JsonProperty(PropertyName = "labelTextColor", Required = Required.Always)]
-        public Color LabelTextColor { get; set; }
+        public string LabelTextColor { get; set; }
 
         [XmlElement(ElementName = "valueTextColor")]
         [JsonProperty(PropertyName = "valueTextColor", Required = Required.Always)]
-        public Color ValueTextColor { get; set; }
+        public string ValueTextColor { get; set; }
 
         [XmlElement(ElementName = "suppressStripShine")]
         [JsonProperty(PropertyName = "suppressStripShine", NullValueHandling = NullValueHandling.Ignore)]

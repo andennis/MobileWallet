@@ -60,7 +60,7 @@ namespace Pass.Manager.Web.Controllers
                 }
 
                 model.SaveToXml(path);
-                return RedirectToAction("Edit", "PassProject", new {id = model.PassProjectId});
+                return RedirectToAction("Edit", "PassProject", new { id = model.PassProjectId });
             }
             return View("_PassDesigner", model);
         }
@@ -71,9 +71,12 @@ namespace Pass.Manager.Web.Controllers
             {
                 PassProjectId = passProjectId,
                 PassStyle = Mapper.Map<PassProjectType, PassStyle>(projectType),
-                BackgroundColor = Color.FromArgb(0, 68, 96),
-                LabelTextColor = Color.FromArgb(0, 0, 0),
-                ValueTextColor = Color.FromArgb(255, 255, 255),
+                //BackgroundColor = Color.FromArgb(0, 68, 96),
+                //LabelTextColor = Color.FromArgb(0, 0, 0),
+                //ValueTextColor = Color.FromArgb(255, 255, 255),
+                BackgroundColor = "#004460",
+                LabelTextColor = "#000000",
+                ValueTextColor = "#ffffff",
                 //LogoText = "Clever",
                 LocationDetails = new LocationDetails(),
                 DistributionDetails = new DistributionDetails()
@@ -122,9 +125,12 @@ namespace Pass.Manager.Web.Controllers
             var passModel = new PassTemplateViewModel
             {
                 PassStyle = PassStyle.Coupon,
-                BackgroundColor = Color.FromArgb(0, 68, 96),
-                LabelTextColor = Color.FromArgb(0, 0, 0),
-                ValueTextColor = Color.FromArgb(255, 255, 255),
+                //BackgroundColor = Color.FromArgb(0, 68, 96),
+                //LabelTextColor = Color.FromArgb(0, 0, 0),
+                //ValueTextColor = Color.FromArgb(255, 255, 255),
+                BackgroundColor = "#004460",
+                LabelTextColor = "#000000",
+                ValueTextColor = "#ffffff",
                 LogoText = "Clever",
                 LocationDetails = new LocationDetails(),
                 DistributionDetails = new DistributionDetails()
@@ -174,9 +180,12 @@ namespace Pass.Manager.Web.Controllers
             var passModel = new PassTemplateViewModel
             {
                 PassStyle = PassStyle.BoardingPass,
-                BackgroundColor = Color.FromArgb(0, 68, 96),
-                LabelTextColor = Color.FromArgb(0, 0, 0),
-                ValueTextColor = Color.FromArgb(255, 255, 255),
+                //BackgroundColor = Color.FromArgb(0, 68, 96),
+                //LabelTextColor = Color.FromArgb(0, 0, 0),
+                //ValueTextColor = Color.FromArgb(255, 255, 255),
+                BackgroundColor = "#004460",
+                LabelTextColor = "#000000",
+                ValueTextColor = "#ffffff",
                 LogoText = "Clever",
                 LocationDetails = new LocationDetails(),
                 DistributionDetails = new DistributionDetails()
@@ -230,9 +239,12 @@ namespace Pass.Manager.Web.Controllers
                 OrganizationName = "Clever",
                 PassDescription = "Купон для сети магазинов Clever",
                 PassStyle = PassStyle.Coupon,
-                BackgroundColor = Color.FromArgb(0, 68, 96),
-                LabelTextColor = Color.FromArgb(0, 0, 0),
-                ValueTextColor = Color.FromArgb(255, 255, 255),
+                //BackgroundColor = Color.FromArgb(0, 68, 96),
+                //LabelTextColor = Color.FromArgb(0, 0, 0),
+                //ValueTextColor = Color.FromArgb(255, 255, 255),
+                BackgroundColor = "#004460",
+                LabelTextColor = "#000000",
+                ValueTextColor = "#ffffff",
                 LogoText = "Clever",
                 LocationDetails = new LocationDetails(),
                 DistributionDetails = new DistributionDetails
@@ -303,9 +315,12 @@ namespace Pass.Manager.Web.Controllers
             var passModel = new PassTemplateViewModel
             {
                 PassStyle = PassStyle.Coupon,
-                BackgroundColor = Color.FromArgb(0, 68, 96),
-                LabelTextColor = Color.FromArgb(0, 0, 0),
-                ValueTextColor = Color.FromArgb(255, 255, 255),
+                //BackgroundColor = Color.FromArgb(0, 68, 96),
+                //LabelTextColor = Color.FromArgb(0, 0, 0),
+                //ValueTextColor = Color.FromArgb(255, 255, 255),
+                BackgroundColor = "#004460",
+                LabelTextColor = "#000000",
+                ValueTextColor = "#ffffff",
                 LogoText = "Clever",
                 LocationDetails = new LocationDetails(),
                 DistributionDetails = new DistributionDetails()
@@ -357,9 +372,12 @@ namespace Pass.Manager.Web.Controllers
                 OrganizationName = "Clever",
                 PassDescription = "Купон для сети магазинов Clever",
                 PassStyle = PassStyle.Generic,
-                BackgroundColor = Color.FromArgb(255, 215, 0),
-                LabelTextColor = Color.FromArgb(0, 96, 8),
-                ValueTextColor = Color.FromArgb(255, 255, 255),
+                //BackgroundColor = Color.FromArgb(255, 215, 0),
+                //LabelTextColor = Color.FromArgb(0, 96, 8),
+                //ValueTextColor = Color.FromArgb(255, 255, 255),
+                BackgroundColor = "#004460",
+                LabelTextColor = "#000000",
+                ValueTextColor = "#ffffff",
                 LogoText = "Clever",
                 LocationDetails = new LocationDetails(),
                 DistributionDetails = new DistributionDetails
@@ -430,5 +448,5 @@ namespace Pass.Manager.Web.Controllers
             };
             return View("_PassDesigner", passModel);
         }
-	}
+    }
 }
