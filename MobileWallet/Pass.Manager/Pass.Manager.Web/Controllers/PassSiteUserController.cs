@@ -23,7 +23,7 @@ namespace Pass.Manager.Web.Controllers
         {
             var model = new PassSiteUserViewModel() { PassSiteId = passSiteId };
             SetDefaultReturnUrl(model);
-            model.Users = new SelectListTyped<User, int, string>(_service.GetUnassignedUsers(passSiteId), x => x.UserId, x => x.UserName);
+            PrepareModelToCreateView(model);
             return View("Create", model);
         }
 
@@ -41,6 +41,7 @@ namespace Pass.Manager.Web.Controllers
                 return RedirectTo(model);
             }
 
+            PrepareModelToCreateView(model);
             return View(model);
         }
 
@@ -57,5 +58,12 @@ namespace Pass.Manager.Web.Controllers
 
             return View(model);
         }
+
+        protected override void PrepareModelToCreateView(PassSiteUserViewModel model)
+        {
+            model.Users = new SelectListTyped<User, int, string>(_service.GetUnassignedUsers(model.PassSiteId), x => x.UserId, x => x.UserName);
+            base.PrepareModelToCreateView(model);
+        }
+
     }
 }

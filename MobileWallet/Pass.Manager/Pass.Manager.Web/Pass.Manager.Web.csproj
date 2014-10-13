@@ -187,6 +187,7 @@
     <Compile Include="Models\PassSiteViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validators\PassProjectViewModelValidator.cs" />
+    <Compile Include="Validators\PassSiteUserViewModelValidator.cs" />
     <Compile Include="Validators\UserPasswordValidator.cs" />
     <Compile Include="Validators\PassSiteViewModelValidator.cs" />
     <Compile Include="Validators\UserViewModelValidator.cs" />

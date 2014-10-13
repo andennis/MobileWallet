@@ -32,6 +32,7 @@ namespace Pass.Manager.Web.Common
         {
             var model = new TEntityViewModel();
             SetDefaultReturnUrl(model);
+            PrepareModelToCreateView(model);
             return View(model);
         }
 
@@ -46,6 +47,7 @@ namespace Pass.Manager.Web.Common
                 return RedirectTo(model);
             }
 
+            PrepareModelToCreateView(model);
             return View(model);
         }
 
@@ -55,6 +57,7 @@ namespace Pass.Manager.Web.Common
             TEntity entity = _service.Get(id);
             TEntityViewModel model = Mapper.Map<TEntity, TEntityViewModel>(entity);
             SetDefaultReturnUrl(model);
+            PrepareModelToEditView(model);
             return View(model);
         }
 
@@ -70,6 +73,7 @@ namespace Pass.Manager.Web.Common
                 return RedirectTo(model);
             }
 
+            PrepareModelToEditView(model);
             return View(model);
         }
 
@@ -95,6 +99,13 @@ namespace Pass.Manager.Web.Common
         {
             _service.Delete(id);
             return JsonEx();
+        }
+
+        protected virtual void PrepareModelToCreateView(TEntityViewModel model)
+        {
+        }
+        protected virtual void PrepareModelToEditView(TEntityViewModel model)
+        {
         }
 
         protected SearchContext GridRequestToSearchContext(GridDataRequest request)
