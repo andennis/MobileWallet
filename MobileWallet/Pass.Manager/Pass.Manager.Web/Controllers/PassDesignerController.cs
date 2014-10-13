@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
+using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using Common.Extensions;
@@ -59,18 +60,18 @@ namespace Pass.Manager.Web.Controllers
                     _passProjectService.Update(prj);
                 }
 
-                model.SaveToXml(path);
+                model.SaveToXml(path + "\\XMLData.xml");
                 return RedirectToAction("Edit", "PassProject", new { id = model.PassProjectId });
             }
             return View("_PassDesigner", model);
         }
-
+        
         private PassTemplateViewModel GetInitialModel(PassProjectType projectType, int passProjectId)
         {
             return new PassTemplateViewModel
             {
-                PassProjectId = passProjectId,
-                PassStyle = Mapper.Map<PassProjectType, PassStyle>(projectType),
+                PassProjectId = passProjectId,PassStyle = Mapper.Map<PassProjectType, PassStyle>(projectType),
+                
                 //BackgroundColor = Color.FromArgb(0, 68, 96),
                 //LabelTextColor = Color.FromArgb(0, 0, 0),
                 //ValueTextColor = Color.FromArgb(255, 255, 255),
