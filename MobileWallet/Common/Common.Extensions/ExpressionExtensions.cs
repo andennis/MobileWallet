@@ -6,26 +6,20 @@ namespace Common.Extensions
 {
     public static class ExpressionExtensions
     {
-        public static string GetMethodOrPropertyName<T, TReturn>(this Expression<Func<T, TReturn>> expression)
+        public static string GetPropertyName<T, TReturn>(this Expression<Func<T, TReturn>> expression)
         {
             var member = expression.Body as MemberExpression;
-            if (member != null)
-            {
-                var pi = member.Member as PropertyInfo;
-                if (pi == null)
-                    throw new ArgumentException("Expression is not a property", "expression");
+            if (member == null)
+                throw new ArgumentException("Expression is not a property", "expression");
 
-                return member.Member.Name;
-            }
+            var pi = member.Member as PropertyInfo;
+            if (pi == null)
+                throw new ArgumentException("Expression is not a property", "expression");
 
-            var method = expression.Body as MethodCallExpression;
-            if (method != null)
-                return method.Method.Name;
-
-            throw new ArgumentException("Expression is not a property or a method", "expression");
+            return member.Member.Name;
         }
 
-        public static string GetMethodOrPropertyName<T>(this Expression<Action<T>> expression)
+        public static string GetMethodName<T>(this Expression<Action<T>> expression)
         {
             var method = expression.Body as MethodCallExpression;
             if (method == null)

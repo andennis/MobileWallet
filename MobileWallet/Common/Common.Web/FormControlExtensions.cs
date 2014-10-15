@@ -206,7 +206,7 @@ namespace Common.Web
         private static IDictionary<string, object> MergeHtmlAttributes(IDictionary<string, object> dst, object src)
         {
             if (src != null)
-                return dst.Union(src.ObjectPropertiesToDictionary()).ToDictionary(key => key.Key, val => val.Value);
+                return dst.Union(HtmlHelper.AnonymousObjectToHtmlAttributes(src)).ToDictionary(key => key.Key, val => val.Value);
 
             return dst;
         }
@@ -218,7 +218,7 @@ namespace Common.Web
             return new ActionInfo()
                    {
                        Controller = controllerName,
-                       Action = action.GetMethodOrPropertyName()
+                       Action = action.GetPropertyName()
                    };
         }
 
@@ -231,7 +231,7 @@ namespace Common.Web
                                                      };
             if (labelHtmlAttributes != null)
             {
-                foreach (var attr in labelHtmlAttributes.ObjectPropertiesToDictionary())
+                foreach (var attr in HtmlHelper.AnonymousObjectToHtmlAttributes(labelHtmlAttributes))
                 {
                     if (!attr.Key.Equals("class", StringComparison.InvariantCultureIgnoreCase))
                         labelAttrs["class"] += " " + attr.Value;

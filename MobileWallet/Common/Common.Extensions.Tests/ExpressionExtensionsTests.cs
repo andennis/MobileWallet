@@ -23,22 +23,29 @@ namespace Common.Extensions.Tests
         }
 
         [Test]
-        public void GetMethodOrPropertyNameTest()
+        public void GetPropertyNameTest()
         {
             Expression<Func<MyClass, string>> expFunc1 = x => x.Func1();
-            string name = expFunc1.GetMethodOrPropertyName();
-            Assert.AreEqual("Func1", name);
+            Assert.Throws<ArgumentException>(() => expFunc1.GetPropertyName());
 
             Expression<Func<MyClass, int>> expP1 = x => x.P1;
-            name = expP1.GetMethodOrPropertyName();
+            string name = expP1.GetPropertyName();
             Assert.AreEqual("P1", name);
 
             Expression<Func<MyClass, string>> expMemeber1 = x => x.Member1;
-            Assert.Throws<ArgumentException>(() => expMemeber1.GetMethodOrPropertyName());
+            Assert.Throws<ArgumentException>(() => expMemeber1.GetPropertyName());
+        }
 
-            Expression<Action<MyClass>> expAction1 = x => x.Action1();
-            name = expAction1.GetMethodOrPropertyName();
+        [Test]
+        public void GetMethodNameTest()
+        {
+            Expression<Action<MyClass>> expAction = x => x.Action1();
+            string name = expAction.GetMethodName();
             Assert.AreEqual("Action1", name);
+
+            expAction = x => x.Func1();
+            name = expAction.GetMethodName();
+            Assert.AreEqual("Func1", name);
         }
     }
 }

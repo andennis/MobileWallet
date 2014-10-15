@@ -26,15 +26,15 @@ namespace Common.Web.Grid
 
         public GridBoundColumnBuilder<TModel> Bound<TValue>(Expression<Func<TModel, TValue>> expression)
         {
-            var builder = new GridBoundColumnBuilder<TModel>(_htmlHelper, expression.GetMethodOrPropertyName(), typeof(TValue));
+            var builder = new GridBoundColumnBuilder<TModel>(_htmlHelper, expression.GetPropertyName(), typeof(TValue));
             Columns.Add(builder);
             return builder;
         }
 
         public GridBoundColumnBuilder<TModel> BoundLink<TValue, TId>(Expression<Func<TModel, TValue>> expression, string url, Expression<Func<TModel, TId>> expressionId)
         {
-            var builder = new GridBoundColumnBuilder<TModel>(_htmlHelper, expression.GetMethodOrPropertyName());
-            string idColName = expressionId.GetMethodOrPropertyName();
+            var builder = new GridBoundColumnBuilder<TModel>(_htmlHelper, expression.GetPropertyName());
+            string idColName = expressionId.GetPropertyName();
 
             int i = url.IndexOf('?');
             if (i != -1)
@@ -50,7 +50,7 @@ namespace Common.Web.Grid
         public GridBoundColumnBuilder<TModel> BoundLink<TId>(string linkText, string url, Expression<Func<TModel, TId>> expressionId, string colName = null)
         {
             var builder = new GridBoundColumnBuilder<TModel>(_htmlHelper, colName);
-            string idColName = expressionId.GetMethodOrPropertyName();
+            string idColName = expressionId.GetPropertyName();
 
             int i = url.IndexOf('?');
             if (i != -1)

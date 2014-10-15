@@ -7,9 +7,10 @@ namespace Common.Web
 {
     public static class UrlHelperExtensions
     {
-        public static string Action<TController>(this UrlHelper url, Expression<Func<TController, ActionResult>> expression, object routeValues = null)
+        public static string Action<TController>(this UrlHelper url, Expression<Action<TController>> expression, object routeValues = null)
+            where TController : Controller
         {
-            string actionName = expression.GetMethodOrPropertyName();
+            string actionName = expression.GetMethodName();
             string typeName = typeof (TController).Name;
             if (!typeName.EndsWith("Controller", StringComparison.OrdinalIgnoreCase))
                 throw new ArgumentException(string.Format("Type '{0}' is not a controller", typeName));
