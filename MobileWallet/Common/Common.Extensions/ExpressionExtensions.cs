@@ -16,7 +16,7 @@ namespace Common.Extensions
             if (pi == null)
                 throw new ArgumentException("Expression is not a property", "expression");
 
-            return member.Member.Name;
+            return pi.Name;
         }
 
         public static string GetMethodName<T>(this Expression<Action<T>> expression)
