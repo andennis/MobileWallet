@@ -21,10 +21,8 @@ else
 }
 
  @Html.TextBoxFormForExt(m => m.Description, "Description")
- @Html.TextBlockFormForExt(m => m.ExpDate, "Expiration Date", "d")
- @Html.HiddenForExt(m => m.ExpDate) @*temp solution for ExpDate*@
-
-
+ @Html.TextBlockFormForExt(m => m.ExpDate, "Expiration Date", "dd/MM/yyyy")
+ 
 <script type="text/javascript">
     $(document).ready(function() {
         $("#PassCertificateId").change(function() {
@@ -37,6 +35,7 @@ else
                 if (data.Success != null) {
                     if (data.Success) {
                         delete data.Data.RedirectUrl;
+                        data.Data.ExpDate = kendo.toString(kendo.parseDate(data.Data.ExpDate), $("#ExpDate").data("format"));
                         $("form").autofill(data.Data);
                     } else
                         alert(data.Message);

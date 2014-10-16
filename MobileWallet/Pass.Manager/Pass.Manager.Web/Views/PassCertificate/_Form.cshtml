@@ -9,9 +9,8 @@
 @Html.TextBoxFormForExt(m => m.TeamId)
 @Html.TextBoxFormForExt(m => m.PassTypeId)
 @Html.TextAreaFormForExt(m => m.Description)
-@Html.TextBlockFormForExt(m => m.ExpDate, "Expiration Date", "d")
+@Html.TextBlockFormForExt(m => m.ExpDate, "Expiration Date")
 @Html.TextBoxFormForExt(m => m.Password)
-@Html.HiddenForExt(m => m.ExpDate) @*temp solution for ExpDate*@
 @Html.HiddenForExt(m => m.CertificateStorageId)
 
 <div class="form-group">

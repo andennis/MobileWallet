@@ -78,7 +78,7 @@ namespace Common.Web
 
         #endregion
 
-        #region TextBox
+        #region TextBlock
         public static MvcHtmlString TextBlockForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string format = null/*, object htmlAttributes = null*/)
         {
             return html.TextBlockFor(expression, format);
@@ -95,7 +95,14 @@ namespace Common.Web
                     format = "d";
 
             string dataFmt = (!string.IsNullOrEmpty(format) ? string.Format("{{0:{0}}}", format) : null);
-            var attributes = _initControlAttributes.Union(new Dictionary<string, object>() { { "readonly", "readonly" } }).ToDictionary(key => key.Key, val => val.Value);
+            IDictionary<string,object> attributes = _initControlAttributes
+                .Union(new Dictionary<string, object>()
+                {
+                    { "readonly", "readonly" }, 
+                    { "data-format", format }
+                })
+                .ToDictionary(key => key.Key, val => val.Value);
+
             return html.TextBoxFor(expression, dataFmt, attributes);
         }
 
