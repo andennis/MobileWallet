@@ -67,5 +67,11 @@ namespace Pass.Manager.Web.Controllers
             PassSiteCertificate passSiteCertificate = _service.Get(id);
             return RedirectToAction("Download", "PassCertificate", new {id = passSiteCertificate.PassCertificateId});
         }
+
+        protected override void PrepareModelToCreateView(PassSiteCertificateViewModel model)
+        {
+            model.Certificates = new SelectListTyped<PassCertificate, int, string>(_service.GetUnassignedCertificates(model.PassSiteId), x => x.PassCertificateId, x => x.Name);
+            base.PrepareModelToCreateView(model);
+        }
     }
 }
