@@ -12,7 +12,7 @@
         c.BoundLink(m => m.Name, Url.Action("Edit", "PassSiteCertificate"), m => m.PassSiteCertificateId ).Title("Name");
         c.Bound(m => m.Description);
         c.Bound(m => m.ExpDate);
-        c.Bound(m => m.PassSiteCertificateId).Title("Action").GridAjaxAction("Remove", Url.Action("Delete", "PassSiteCertificate"));
+        c.Bound(m => m.PassSiteCertificateId).Title("Action").GridAction("Download", Url.Action("Download", "PassSiteCertificate")).GridAjaxAction("Remove", Url.Action("Delete", "PassSiteCertificate"));
     }))
 
 <script type="text/javascript">

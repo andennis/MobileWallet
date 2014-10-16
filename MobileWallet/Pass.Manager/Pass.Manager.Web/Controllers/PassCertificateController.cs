@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Web.Mvc;
 using AutoMapper;
 using Pass.Manager.Core;
@@ -62,6 +63,13 @@ namespace Pass.Manager.Web.Controllers
             }
 
             return View(model);
+        }
+
+        public FileResult Download(int id)
+        {
+            PassCertificateApple passCertificate = _service.Get(id);
+            Stream file = _service.DownloadCertificate(passCertificate.CertificateStorageId);
+            return File(file, System.Net.Mime.MediaTypeNames.Application.Octet, "Certificate");
         }
     }
 }

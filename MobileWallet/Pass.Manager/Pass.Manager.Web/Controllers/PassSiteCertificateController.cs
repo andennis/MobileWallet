@@ -61,5 +61,11 @@ namespace Pass.Manager.Web.Controllers
 
             return View(model);
         }
+
+        public ActionResult Download(int id)
+        {
+            PassSiteCertificate passSiteCertificate = _service.Get(id);
+            return RedirectToAction("Download", "PassCertificate", new {id = passSiteCertificate.PassCertificateId});
+        }
     }
 }

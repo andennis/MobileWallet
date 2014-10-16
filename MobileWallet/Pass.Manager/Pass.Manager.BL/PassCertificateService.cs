@@ -33,5 +33,11 @@ namespace Pass.Manager.BL
             else
                 _certificateStorageService.Update(certInfo);
         }
+
+        public Stream DownloadCertificate(int certificateStorageId)
+        {
+            CertificateInfo certInfo = _certificateStorageService.Read(certificateStorageId);
+            return certInfo.CertificateFile;
+        }
     }
 }

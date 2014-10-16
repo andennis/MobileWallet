@@ -7,5 +7,6 @@ namespace Pass.Manager.Core
     public interface IPassCertificateService : IBaseService<PassCertificateApple, SearchFilterBase>
     {
         void UploadCertificate(PassCertificateApple passCert, string certPassword, Stream fileStream);
+        Stream DownloadCertificate(int certificateStorageId);
     }
 }
