@@ -38,9 +38,9 @@ namespace Pass.Manager.Web.Controllers
                 PassSiteCertificate entity = Mapper.Map<PassSiteCertificateViewModel, PassSiteCertificate>(model);
                 _service.Create(entity);
 
-                //PassCertificateApple certificate = _certificateService.Get(model.PassCertificateId);
-                //certificate = Mapper.Map<PassSiteCertificateViewModel, PassCertificateApple>(model, certificate);
-                //_certificateService.Update(certificate);
+                PassCertificateApple certificate = _certificateService.Get(model.PassCertificateId);
+                certificate = Mapper.Map<PassSiteCertificateViewModel, PassCertificateApple>(model, certificate);
+                _certificateService.Update(certificate);
 
                 return RedirectTo(model);
             }
