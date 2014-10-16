@@ -178,6 +178,8 @@
     <Compile Include="Models\GeneralPassTemplate\LocationDetails.cs" />
     <Compile Include="Models\PassCertificateAppleViewModel.cs" />
     <Compile Include="Models\PassCertificateViewModel.cs" />
+    <Compile Include="Validators\PassCertificateAppleViewModelValidator.cs" />
+    <Compile Include="Validators\PassCertificateViewModelValidator.cs" />
     <Compile Include="Models\PassProjectViewModel.cs" />
     <Compile Include="Models\PassSiteCertificateViewModel.cs" />
     <Compile Include="Models\PassSiteUserViewModel.cs" />
@@ -187,6 +189,7 @@
     <Compile Include="Models\PassSiteViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validators\PassProjectViewModelValidator.cs" />
+    <Compile Include="Validators\PassSiteCertificateViewModelValidator.cs" />
     <Compile Include="Validators\PassSiteUserViewModelValidator.cs" />
     <Compile Include="Validators\UserPasswordValidator.cs" />
     <Compile Include="Validators\PassSiteViewModelValidator.cs" />

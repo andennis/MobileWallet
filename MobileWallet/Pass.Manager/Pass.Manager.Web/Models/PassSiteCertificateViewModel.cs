@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using FluentValidation.Attributes;
+using Pass.Manager.Web.Validators;
 
 namespace Pass.Manager.Web.Models
 {
+     [Validator(typeof(PassSiteCertificateViewModelValidator))]
     public class PassSiteCertificateViewModel : PassCertificateViewModel
     {
         public override int EntityId
