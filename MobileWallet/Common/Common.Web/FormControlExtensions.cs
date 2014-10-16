@@ -31,7 +31,7 @@ namespace Common.Web
         }
 
         #region BeginForm
-        public static MvcForm BeginFormExt<TController>(this HtmlHelper html, Expression<Func<TController, ActionResult>> action, object htmlAttributes = null) where TController : Controller
+        public static MvcForm BeginFormExt<TController>(this HtmlHelper html, Expression<Action<TController>> action, object htmlAttributes = null) where TController : Controller
         {
             ActionInfo actionInfo = GetActionInfo(action);
             return html.BeginFormExt(actionInfo.Action, actionInfo.Controller, htmlAttributes);
@@ -169,7 +169,7 @@ namespace Common.Web
         #endregion
 
         #region ActionLink
-        public static MvcHtmlString ActionLinkExt<TController>(this HtmlHelper html, Expression<Func<TController, ActionResult>> action, 
+        public static MvcHtmlString ActionLinkExt<TController>(this HtmlHelper html, Expression<Action<TController>> action, 
             string linkText, object routeValues = null, object htmlAttributes = null)
             where TController : Controller
         {
@@ -211,14 +211,14 @@ namespace Common.Web
             return dst;
         }
 
-        private static ActionInfo GetActionInfo<TController>(Expression<Func<TController, ActionResult>> action)
+        private static ActionInfo GetActionInfo<TController>(Expression<Action<TController>> action)
         {
             string controllerName = typeof(TController).Name;
             controllerName = controllerName.Substring(0, controllerName.Length - 10/*Controller*/);
             return new ActionInfo()
                    {
                        Controller = controllerName,
-                       Action = action.GetPropertyName()
+                       Action = action.GetMethodName()
                    };
         }
 
