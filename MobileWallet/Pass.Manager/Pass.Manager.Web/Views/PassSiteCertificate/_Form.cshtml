@@ -2,6 +2,8 @@
 
 @Html.HiddenForExt(m => m.PassSiteCertificateId)
 @Html.HiddenForExt(m => m.PassSiteId)
+@Html.HiddenForExt(m => m.CertificateStorageId)
+
 @if (Model.IsNew)
 {
     @Html.DropDownListFormForExt(x => x.PassCertificateId, Model.Certificates, "PassCertificate", "- Select Certificate -")
@@ -16,13 +18,16 @@
 else
 {
     @Html.TextBoxFormForExt(m => m.Name, "Name")
-    @Html.TextBoxFormForExt(m => m.Description, "Description")
-    @Html.TextBlockFormForExt(m => m.ExpDate, "Expiration Date", "d")
 }
+
+ @Html.TextBoxFormForExt(m => m.Description, "Description")
+ @Html.TextBlockFormForExt(m => m.ExpDate, "Expiration Date", "d")
+ @Html.HiddenForExt(m => m.ExpDate) @*temp solution for ExpDate*@
+
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $("#UserId").change(function() {
+        $("#PassCertificateId").change(function() {
             OnCertificateChanged();
         });
     });
