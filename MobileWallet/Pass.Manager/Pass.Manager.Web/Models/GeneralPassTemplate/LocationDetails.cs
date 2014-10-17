@@ -25,11 +25,11 @@ namespace Pass.Manager.Web.Models.GeneralPassTemplate
 
         [XmlElement(ElementName = "latitude")]
         [JsonProperty(PropertyName = "latitude", Required = Required.Always)]
-        public double Latitude { get; set; }
+        public double? Latitude { get; set; }
 
         [XmlElement(ElementName = "longitude")]
         [JsonProperty(PropertyName = "longitude", Required = Required.Always)]
-        public double Longitude { get; set; }
+        public double? Longitude { get; set; }
 
         [XmlElement(ElementName = "relevantText")]
         [JsonProperty(PropertyName = "relevantText", NullValueHandling = NullValueHandling.Ignore)]

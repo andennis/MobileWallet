@@ -285,18 +285,18 @@ function AddFieldBackContentPass(lastChildId) {
         }).appendTo('#divBackFieldContentPass' + lastChildId);
     }
 }
-
+//backLabelTextInput1     backLabelPass1
 //Bind back inputs to pass fields
 function BindBackInputToFieldPass(id, value) {
-    var imputId = id.slice(-2).replace('t', '');
-    document.getElementById('labelFieldBackPass' + imputId).innerHTML = value;
+    var imputId = id.replace('TextInput', 'Pass');
+    document.getElementById(imputId).innerHTML = value;
 }
 
-//Bind back textarea to pass fields
-function BindBackTextareaToFieldPass(id, value) {
-    var imputId = id.slice(-2).replace('t', '');
-    document.getElementById('valueFieldBackPass' + imputId).innerHTML = value;
-}
+////Bind back textarea to pass fields
+//function BindBackTextareaToFieldPass(id, value) {
+//    var imputId = id.slice(-2).replace('t', '');
+//    document.getElementById('valueFieldBackPass' + imputId).innerHTML = value;
+//}
 
 //Remove field from back content
 function RemoveFieldFromBackContent(id) {
@@ -439,13 +439,18 @@ function CheckAndUncheckFieldFront(id) {
 
 //Check and uncheck fieds on back pass
 function CheckAndUncheckFieldBack(id) {
-    var tempId = id.toString().replace('checkbox', 'div'),
-    number = tempId.slice(-1);
-    tempId = tempId.replace(number, 'FieldContentPass' + number);
+    var tempId = id.replace('checkbox', '').toLowerCase(),
+    number = tempId.slice(-1),
+    tempIdLabel = '',
+    tempIdValue = '';
+    tempIdLabel = tempId.replace(number, 'LabelPass' + number);
+    tempIdValue = tempId.replace(number, 'ValuePass' + number);
     if (jQuery('#' + id).prop('checked')) {
-        jQuery('#' + tempId).css('display', 'block');
+        jQuery('#' + tempIdLabel).css('display', 'block');
+        jQuery('#' + tempIdValue).css('display', 'block');
     } else {
-        jQuery('#' + tempId).css('display', 'none');
+        jQuery('#' + tempIdLabel).css('display', 'none');
+        jQuery('#' + tempIdValue).css('display', 'none');
     }
 }
 
@@ -1341,7 +1346,7 @@ function PostJsonData() {
     jsonObj.BarcodeDetails.TextToEncode = jQuery('#barcodeMessageTextarea').val();
     jsonObj.BarcodeDetails.AlternativeText = jQuery('#barcodeAltTextSelect option:selected').val();
     jsonObj.BarcodeDetails.TextToDisplay = jQuery('#alternativeTextInput').val();
-    //jsonObj.BarcodeDetails.EncodingFormat = ???????????????????
+    jsonObj.BarcodeDetails.EncodingFormat = jQuery('#encodingFormatSelect option:selected').val();
 
     //Field Details
     for (var j = 0; j < fieldsName.length; j++) {
@@ -1375,12 +1380,67 @@ function PostJsonData() {
         }
     }
 
-    jQuery.ajax({
+
+    //var formData = new Object();
+    //var files = $("#logoImageInput").get(0).files;
+    //if (files.length > 0) {
+    //    formData.Images = JSON.stringify(jsonObj);
+    //}
+    //formData.TemplateJson = JSON.stringify(jsonObj);
+
+    //$.ajax({
+    //    url: "/PassDesigner/UploadImages",
+    //    type: 'POST',
+    //    dataType: 'json',
+    //    data: JSON.stringify(formData),
+    //    contentType: 'application/json; charset=utf-8'
+    //    });
+
+
+
+
+
+
+
+
+
+
+    var data = new FormData();
+
+    data.append('jsonData', new Blob([JSON.stringify(jsonObj)], {
+        type: "application/json; charset=utf-8"
+    }));
+
+    var files = $("#logoImageInput").get(0).files;
+    if (files.length > 0) {
+        data.append('HelpSectionImages', files[0]);
+    }
+
+    $.ajax({
+        url: "/PassDesigner/UploadImages",
         type: "POST",
-        url: "/PassDesigner/Edit",
-        data: JSON.stringify(jsonObj),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
+        processData: false,
+        contentType: false,
+        data: data,
+        error: function (er) {
+            alert(er);
+        }
+
     });
+
+
+
+    //jQuery.ajax({
+    //    type: "POST",
+    //    url: "/PassDesigner/Edit",
+    //    data: JSON.stringify(jsonObj),
+    //    contentType: "application/json; charset=utf-8",
+    //    dataType: "json",
+    //    success: function (path) {
+    //        var d = path;
+    //        alert(d);
+    //        console.log(path);
+    //    }
+    //});
     //alert(JSON.stringify(jsonObj));
 }

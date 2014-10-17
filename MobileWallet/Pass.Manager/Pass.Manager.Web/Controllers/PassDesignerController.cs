@@ -1,13 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using AutoMapper;
 using Common.Extensions;
 using FileStorage.Core;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Web.Common;
+using Pass.Manager.Web.Models;
 using Pass.Manager.Web.Models.GeneralPassTemplate;
 
 
@@ -31,7 +35,7 @@ namespace Pass.Manager.Web.Controllers
             PassTemplateViewModel model;
             if (prj.PassContentId.HasValue)
             {
-                string path = _fileStorageService.GetStorageItemPath(prj.PassContentId.Value);
+                string path = _fileStorageService.GetStorageItemPath(prj.PassContentId.Value) + "\\XMLData.xml";
                 model = path.LoadFromXml<PassTemplateViewModel>();
             }
             else
@@ -65,13 +69,32 @@ namespace Pass.Manager.Web.Controllers
             }
             return View("_PassDesigner", model);
         }
-        
+
+        [HttpPost]
+        public void UploadImages()
+        {
+            if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
+            {
+                var pic = System.Web.HttpContext.Current.Request.Files["HelpSectionImages"];
+                var jsonObj = System.Web.HttpContext.Current.Request.Files["jsonData"];
+                string path = "D:\\Data\\MW\\FS\\PM\\logo.png";
+                pic.SaveAs(path);
+                jsonObj.SaveAs("D:\\Data\\MW\\FS\\PM\\json.json");
+                var json = System.IO.File.ReadAllText(@"D:\\Data\\MW\\FS\\PM\\json.json");
+                PassTemplateViewModel model = json.JsonToObject<PassTemplateViewModel>();
+
+                Console.WriteLine(pic);
+                Console.WriteLine(jsonObj);
+            }
+        }
+
         private PassTemplateViewModel GetInitialModel(PassProjectType projectType, int passProjectId)
         {
             return new PassTemplateViewModel
             {
-                PassProjectId = passProjectId,PassStyle = Mapper.Map<PassProjectType, PassStyle>(projectType),
-                
+                PassProjectId = passProjectId,
+                PassStyle = Mapper.Map<PassProjectType, PassStyle>(projectType),
+
                 //BackgroundColor = Color.FromArgb(0, 68, 96),
                 //LabelTextColor = Color.FromArgb(0, 0, 0),
                 //ValueTextColor = Color.FromArgb(255, 255, 255),
