@@ -46,7 +46,8 @@ namespace Pass.Manager.Web.Models.GeneralPassTemplate
         public string PassCertificate { get; set; }
 
         [XmlElement(ElementName = "teamIdentifier")]
-        [JsonProperty(PropertyName = "teamIdentifier", Required = Required.Always)]
+        //[JsonProperty(PropertyName = "teamIdentifier", Required = Required.Always)]
+        [JsonProperty(PropertyName = "teamIdentifier")]
         public string TeamIdentifier { get; set; }
 
         #endregion
@@ -94,7 +95,8 @@ namespace Pass.Manager.Web.Models.GeneralPassTemplate
 
         [XmlElement(ElementName = "passTimezone")]
         [JsonProperty(PropertyName = "passTimezone")]
-        public TimeZone PassTimezone { get; set; }
+        //public TimeZone PassTimezone { get; set; }
+        public string PassTimezone { get; set; }
 
         [XmlElement(ElementName = "logoText")]
         [JsonProperty(PropertyName = "logoText", NullValueHandling = NullValueHandling.Ignore)]

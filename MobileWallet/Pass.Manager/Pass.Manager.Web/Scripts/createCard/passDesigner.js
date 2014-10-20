@@ -276,11 +276,11 @@ function AddFieldBackContentPass(lastChildId) {
             class: 'divBackFieldContentPass'
         }).appendTo('#divBackContentPass');
         jQuery('<div />', {
-            id: 'labelFieldBackPass' + lastChildId,
+            id: 'backLabelPass' + lastChildId,
             class: 'labelFieldBackPass'
         }).appendTo('#divBackFieldContentPass' + lastChildId);
         jQuery('<div />', {
-            id: 'valueFieldBackPass' + lastChildId,
+            id: 'backValuePass' + lastChildId,
             class: 'valueFieldBackPass'
         }).appendTo('#divBackFieldContentPass' + lastChildId);
     }
@@ -325,12 +325,12 @@ function AddFieldPassAgain() {
             class: 'divBackFieldContentPass'
         }).appendTo('#divBackContentPass');
         jQuery('<div />', {
-            id: 'labelFieldBackPass' + tempId,
+            id: 'backLabelPass' + tempId,
             class: 'labelFieldBackPass',
             text: jQuery('#inputBackFieldContent' + tempId).val()
         }).appendTo('#divBackFieldContentPass' + tempId);
         jQuery('<div />', {
-            id: 'valueFieldBackPass' + tempId,
+            id: 'backValuePass' + tempId,
             class: 'valueFieldBackPass',
             text: jQuery('#textareaBackFieldContent' + tempId).val()
         }).appendTo('#divBackFieldContentPass' + tempId);
@@ -439,18 +439,12 @@ function CheckAndUncheckFieldFront(id) {
 
 //Check and uncheck fieds on back pass
 function CheckAndUncheckFieldBack(id) {
-    var tempId = id.replace('checkbox', '').toLowerCase(),
-    number = tempId.slice(-1),
-    tempIdLabel = '',
-    tempIdValue = '';
-    tempIdLabel = tempId.replace(number, 'LabelPass' + number);
-    tempIdValue = tempId.replace(number, 'ValuePass' + number);
+    var number = id.slice(-2).replace('k', ''),
+    tempId = 'divBackFieldContentPass' + number;
     if (jQuery('#' + id).prop('checked')) {
-        jQuery('#' + tempIdLabel).css('display', 'block');
-        jQuery('#' + tempIdValue).css('display', 'block');
+        jQuery('#' + tempId).css('display', 'block');
     } else {
-        jQuery('#' + tempIdLabel).css('display', 'none');
-        jQuery('#' + tempIdValue).css('display', 'none');
+        jQuery('#' + tempId).css('display', 'none');
     }
 }
 
@@ -1284,7 +1278,7 @@ function PostJsonData() {
     jsonObj.OrganizationName = jQuery('#organizationNameInput').val();
     jsonObj.TemplateName = jQuery('#templateNameInput').val();
     //jsonObj.TemplateDescription = ?????????????????????????
-    jsonObj.PassStyle = jQuery('#divPassType input[checked = "checked"]').val();
+    jsonObj.PassType = jQuery('#divPassType input[checked = "checked"]').val();
     jsonObj.PassDescription = jQuery('#passDescriptionTextarea').val();
     jsonObj.PassSerialNumberType = jQuery('#serialNumber input:checked').val();
     //if (jQuery('#serialNumber input:checked').attr('value') == 'option3') {
