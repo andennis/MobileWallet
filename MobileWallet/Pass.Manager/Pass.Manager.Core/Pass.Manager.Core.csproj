@@ -42,14 +42,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\IEntityWithId.cs" />
+    <Compile Include="Entities\PassBarcodeFormat.cs" />
+    <Compile Include="Entities\PassBeacon.cs" />
     <Compile Include="Entities\PassCertificate.cs" />
     <Compile Include="Entities\PassCertificateApple.cs" />
+    <Compile Include="Entities\PassContent.cs" />
+    <Compile Include="Entities\PassContentField.cs" />
+    <Compile Include="Entities\PassContentFieldKind.cs" />
+    <Compile Include="Entities\PassField.cs" />
+    <Compile Include="Entities\PassLocation.cs" />
     <Compile Include="Entities\PassProject.cs" />
     <Compile Include="Entities\PassProjectType.cs" />
     <Compile Include="Entities\PassSite.cs" />
     <Compile Include="Entities\PassSiteCertificate.cs" />
     <Compile Include="Entities\PassSiteUser.cs" />
     <Compile Include="Entities\PassSiteUserState.cs" />
+    <Compile Include="Entities\PassContentStyle.cs" />
+    <Compile Include="Entities\TextAlignment.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="IBaseService.cs" />
     <Compile Include="IPassCertificateService.cs" />

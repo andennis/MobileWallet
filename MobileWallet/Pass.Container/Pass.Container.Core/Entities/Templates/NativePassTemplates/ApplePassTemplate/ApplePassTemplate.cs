@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using Newtonsoft.Json;
 using Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTemplate.LowerLevelKeys;
 
@@ -155,7 +154,7 @@ namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTe
         {
             this.FormatVersion = 1;
             //this.Voided = false;
-            this.IgnoresTimeZone = false;
+            this.IgnoresTimeZone = false; //TODO it should be moved to date field structure
         }
     }
 }

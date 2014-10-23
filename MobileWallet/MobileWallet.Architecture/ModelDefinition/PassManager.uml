@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner"
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="e4e81fff-227b-4bf3-a1ca-821448ae421b"
   name="Pass.Manager" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -135,7 +135,7 @@
             isAbstract="false">
             <classMoniker
               Id="d9a45994-3957-4866-9c35-22ab63cd26ef"
-              LastKnownName="Category"
+              LastKnownName="ProjectCategory"
               LastKnownLocation="PassModeling.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -315,7 +315,7 @@
             isAbstract="false">
             <classMoniker
               Id="d9a45994-3957-4866-9c35-22ab63cd26ef"
-              LastKnownName="Category"
+              LastKnownName="ProjectCategory"
               LastKnownLocation="PassModeling.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -358,6 +358,45 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="d7bc09ce-d132-4100-9c19-9f695e2b4291"
+            isDerived="false"
+            sourceEndRoleName="PassProject"
+            targetEndRoleName="PassContent"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="3c632d66-5e52-4e22-8aab-faf18a87d7ba"
+              LastKnownName="PassContent"
+              LastKnownLocation="PassModeling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9a30ef71-fe96-4000-835d-190a0772020f"
+                  name="PassProject"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="28234391-f967-4aa3-84ef-d8388331fdfa"
+                  name="PassContent"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
         <ownedAttributesInternal>
           <property
@@ -374,6 +413,17 @@
           <property
             Id="bd0ed808-72ed-4296-9921-b5804f6ca06c"
             name="PassTemplateId"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="274b1968-18a1-49f5-a013-bd0c2345c264"
+            name="CertificateId"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -788,8 +838,8 @@
             aggregation="None"
             isComposite="false" />
           <property
-            Id="881266fe-fc90-4366-81b7-0bccaebd57a7"
-            name="Label"
+            Id="5260dd2c-c00e-41f3-b7f4-b0f91992450a"
+            name="DefaultValue"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -799,8 +849,8 @@
             aggregation="None"
             isComposite="false" />
           <property
-            Id="5260dd2c-c00e-41f3-b7f4-b0f91992450a"
-            name="Value"
+            Id="72011c57-605c-4459-b87c-121eb5a5f4b1"
+            name="DefaultLabel"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"

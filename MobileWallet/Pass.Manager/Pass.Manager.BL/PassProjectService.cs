@@ -8,6 +8,7 @@ namespace Pass.Manager.BL
     public class PassProjectService : BaseService<PassProject, PassProjectFilter, IPassManagerUnitOfWork>, IPassProjectService
     {
         private readonly IFileStorageService _fileStorageService;
+
         public PassProjectService (IPassManagerUnitOfWork unitOfWork, IFileStorageService fileStorageService)
             : base(unitOfWork)
         {
@@ -17,6 +18,10 @@ namespace Pass.Manager.BL
         public override SearchResult<PassProject> Search(SearchContext searchContext, PassProjectFilter searchFilter = null)
         {
             return Search(searchContext, x => x.PassSiteId == searchFilter.PassSiteId);
+        }
+
+        public void SavePassContent(int passProjectId)
+        {
         }
     }
 }

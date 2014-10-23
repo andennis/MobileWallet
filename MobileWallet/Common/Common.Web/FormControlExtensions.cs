@@ -190,12 +190,14 @@ namespace Common.Web
         #endregion
 
         #region FileUpload
-        public static MvcHtmlString FileUploadEx(this HtmlHelper html, string name, string saveUrl, string removeUrl)
+        public static MvcHtmlString FileUploadEx(this HtmlHelper html, string name, string saveUrl = null, string removeUrl = null, string fileExts = null)
         {
             var inputTag = new TagBuilder("input");
             //inputTag.GenerateId(name);
             inputTag.Attributes.Add("name", name);
             inputTag.Attributes.Add("type", "file");
+            if (!string.IsNullOrEmpty(fileExts))
+                inputTag.Attributes.Add("accept", fileExts);
 
             return new MvcHtmlString(inputTag.ToString());
 
