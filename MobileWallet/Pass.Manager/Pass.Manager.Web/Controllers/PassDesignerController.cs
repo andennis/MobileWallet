@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -28,6 +29,24 @@ namespace Pass.Manager.Web.Controllers
             _fileStorageService = fileStorageService;
         }
 
+        //public ActionResult Edit(int passProjectId)
+        //{
+        //    PassProject prj = _passProjectService.Get(passProjectId);
+
+        //    PassTemplateViewModel model;
+        //    if (prj.PassContentId.HasValue)
+        //    {
+        //        string path = _fileStorageService.GetStorageItemPath(prj.PassContentId.Value) + "\\XMLData.xml";
+        //        model = path.LoadFromXml<PassTemplateViewModel>();
+        //    }
+        //    else
+        //    {
+        //        model = GetInitialModel(prj.ProjectType, passProjectId);
+        //    }
+
+        //    return View("_PassDesigner", model);
+        //}
+
         public ActionResult Edit(int passProjectId)
         {
             PassProject prj = _passProjectService.Get(passProjectId);
@@ -37,6 +56,7 @@ namespace Pass.Manager.Web.Controllers
             {
                 string path = _fileStorageService.GetStorageItemPath(prj.PassContentId.Value) + "\\XMLData.xml";
                 model = path.LoadFromXml<PassTemplateViewModel>();
+                model.TemplatePath = path.Replace("XMLData.xml", "");
             }
             else
             {
@@ -46,48 +66,88 @@ namespace Pass.Manager.Web.Controllers
             return View("_PassDesigner", model);
         }
 
-        [HttpPost]
-        public ActionResult Edit(PassTemplateViewModel model)
-        {
-            //if (ModelState.IsValid)
-            if (true)
-            {
-                PassProject prj = _passProjectService.Get(model.PassProjectId);
-                string path;
-                if (prj.PassContentId.HasValue)
-                {
-                    path = _fileStorageService.GetStorageItemPath(prj.PassContentId.Value);
-                }
-                else
-                {
-                    prj.PassContentId = _fileStorageService.CreateStorageFolder(out path);
-                    _passProjectService.Update(prj);
-                }
+     //[HttpPost]
+        //public ActionResult Edit(PassTemplateViewModel model)
+        //{
+        //    //if (ModelState.IsValid)
+        //    if (true)
+        //    {
+        //        PassProject prj = _passProjectService.Get(model.PassProjectId);
+        //        string path;
+        //        if (prj.PassContentId.HasValue)
+        //        {
+        //            path = _fileStorageService.GetStorageItemPath(prj.PassContentId.Value);
+        //        }
+        //        else
+        //        {
+        //            prj.PassContentId = _fileStorageService.CreateStorageFolder(out path);
+        //            _passProjectService.Update(prj);
+        //        }
 
-                model.SaveToXml(path + "\\XMLData.xml");
-                return RedirectToAction("Edit", "PassProject", new { id = model.PassProjectId });
+        //        model.SaveToXml(path + "\\XMLData.xml");
+        //        return RedirectToAction("Edit", "PassProject", new { id = model.PassProjectId });
+        //    }
+        //    return View("_PassDesigner", model);
+        //}
+
+        [HttpPost]
+        public ActionResult Edit()
+        {
+            var model = new PassTemplateViewModel();
+            if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
+            {
+                var jsonData = System.Web.HttpContext.Current.Request.Files["jsonData"];
+                var logo = System.Web.HttpContext.Current.Request.Files["logo"];
+                var strip = System.Web.HttpContext.Current.Request.Files["strip"];
+                var background = System.Web.HttpContext.Current.Request.Files["background"];
+                var thumbnail = System.Web.HttpContext.Current.Request.Files["thumbnail"];
+                if (jsonData != null)
+                {
+                    var json = new StreamReader(jsonData.InputStream).ReadToEnd();
+                    model = json.JsonToObject<PassTemplateViewModel>();
+                }
+                if (ModelState.IsValid)
+                {
+                    PassProject prj = _passProjectService.Get(model.PassProjectId);
+                    string path;
+                    if (prj.PassContentId.HasValue)
+                    {
+                        path = _fileStorageService.GetStorageItemPath(prj.PassContentId.Value);
+                    }
+                    else
+                    {
+                        prj.PassContentId = _fileStorageService.CreateStorageFolder(out path);
+                        _passProjectService.Update(prj);
+                    }
+
+                    model.SaveToXml(path + "\\XMLData.xml");
+                    if (logo != null)
+                    {
+                        logo.SaveAs(path + "\\logo.png");
+                    }
+                    if (strip != null)
+                    {
+                        strip.SaveAs(path + "\\strip.png");
+                    }
+                    if (background != null)
+                    {
+                        background.SaveAs(path + "\\background.png");
+                    }
+                    if (thumbnail != null)
+                    {
+                        thumbnail.SaveAs(path + "\\thumbnail.png");
+                    }
+                    return RedirectToAction("Edit", "PassProject", new { id = model.PassProjectId });
+                }
             }
             return View("_PassDesigner", model);
         }
 
-        [HttpPost]
-        public void UploadImages()
+        public ActionResult GetImage(string path, string imageName)
         {
-            if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
-            {
-                var pic = System.Web.HttpContext.Current.Request.Files["HelpSectionImages"];
-                var jsonObj = System.Web.HttpContext.Current.Request.Files["jsonData"];
-                string path = "D:\\Data\\MW\\FS\\PM\\logo.png";
-                pic.SaveAs(path);
-                jsonObj.SaveAs("D:\\Data\\MW\\FS\\PM\\json.json");
-                var json = System.IO.File.ReadAllText(@"D:\\Data\\MW\\FS\\PM\\json.json");
-                PassTemplateViewModel model = json.JsonToObject<PassTemplateViewModel>();
-
-                Console.WriteLine(pic);
-                Console.WriteLine(jsonObj);
-            }
+            return File(path + imageName, "image/png");
         }
-
+        
         private PassTemplateViewModel GetInitialModel(PassProjectType projectType, int passProjectId)
         {
             return new PassTemplateViewModel

@@ -15,6 +15,8 @@ namespace Pass.Manager.Web.Models.GeneralPassTemplate
         [JsonProperty(PropertyName = "passProjectId", Required = Required.Always)]
         public int PassProjectId { get; set; }
 
+        public string TemplatePath { get; set; }
+
         #region Standart keys
 
         [XmlElement(ElementName = "organizationName")]

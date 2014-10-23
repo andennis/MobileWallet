@@ -1,26 +1,21 @@
 ﻿//On load window
-function WindowOnLoad() {
+jQuery(window).load(function () {
     var fileInput = document.getElementById('logoImageInput'),
-    stripFileInput = document.getElementById('stripImageInput'),
-    thumbnailFileInput = document.getElementById('thumbnailImageInput'),
-    backgroundFileInput = document.getElementById('backgroundImageInput');
+        stripFileInput = document.getElementById('stripImageInput'),
+        thumbnailFileInput = document.getElementById('thumbnailImageInput'),
+        backgroundFileInput = document.getElementById('backgroundImageInput');
     fileInput.onchange = HandleChanges;
     stripFileInput.onchange = HandleChanges;
     thumbnailFileInput.onchange = HandleChanges;
     backgroundFileInput.onchange = HandleChanges;
     fileInput.value = '';
     stripFileInput.value = '';
-    //fileInput.className = 'customFile';
-    //stripFileInput.className = 'customFile';
-    BlurBackgroundImage();
 
     ChangeWidthHeaderTextFieldPass(1);
     ChangeWidthAuxiliaryTextFieldPass(1);
     ChangeWidthAuxiliaryTextFieldPass(2);
     ChangWidthFlexContainerHeaderPass();
-    ChangesDependingPassType('coupon');
-}
-window.onload = WindowOnLoad();
+});
 
 //Replace all SVG images with inline SVG
 jQuery('img.transitIconPass').each(function () {
@@ -109,6 +104,16 @@ jQuery('.removeImage').click(function (evt) {
     itemId = itemId.toLowerCase();
     document.getElementById(itemId + 'Name').innerHTML = 'Файл не выбран';
     RepositionRemoveIcon();
+});
+
+//Hide “Image not found” icon when src source image is not found
+$("img").error(function () {
+    $(this).hide();
+});
+
+//Blur background image after loading
+$("#backgroundImagePass").load(function () {
+    BlurBackgroundImage();
 });
 
 //Reposition remove icon
@@ -1165,6 +1170,7 @@ function ChangesDependingPassType(passType) {
                 jQuery('#flexContainerPrimaryValues').css('top', '66px').css('height', '25px').css('width', '168px');
                 jQuery('#flexContainerPrimaryLabels').css('top', '55px').css('height', '13px').css('width', '168px');
                 jQuery('#tab2').css('height', '34px').css('top', '222px');
+                jQuery('#transitIconsBlock').css('display', 'none');
 
                 //Secondary
                 jQuery('#secondaryAreaPass').css('display', 'block');
@@ -1400,18 +1406,30 @@ function PostJsonData() {
 
 
     var data = new FormData();
+    var logo = $("#logoImageInput").get(0).files;
+    var strip = $("#stripImageInput").get(0).files;
+    var background = $("#backgroundImageInput").get(0).files;
+    var thumbnail = $("#thumbnailImageInput").get(0).files;
 
     data.append('jsonData', new Blob([JSON.stringify(jsonObj)], {
         type: "application/json; charset=utf-8"
     }));
 
-    var files = $("#logoImageInput").get(0).files;
-    if (files.length > 0) {
-        data.append('HelpSectionImages', files[0]);
+    if (logo.length > 0) {
+        data.append('logo', logo[0]);
+    }
+    if (strip.length > 0) {
+        data.append('strip', strip[0]);
+    }
+    if (background.length > 0) {
+        data.append('background', background[0]);
+    }
+    if (thumbnail.length > 0) {
+        data.append('thumbnail', thumbnail[0]);
     }
 
     $.ajax({
-        url: "/PassDesigner/UploadImages",
+        url: "/PassDesigner/Edit",
         type: "POST",
         processData: false,
         contentType: false,
@@ -1419,7 +1437,6 @@ function PostJsonData() {
         error: function (er) {
             alert(er);
         }
-
     });
 
 

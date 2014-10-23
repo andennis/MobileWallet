@@ -51,7 +51,8 @@
                             <span>
                                 <canvas id="backgroundCanvas" class="backgroundImgCanvas"></canvas>
                                 <br />
-                                <img id="backgroundImagePass" class="spanBackgroundImagePass" src="~/Images/createCard/myImages/backgroundImage2.jpg" />
+                                @*<img id="backgroundImagePass" class="spanBackgroundImagePass" src="~/Images/createCard/myImages/backgroundImage2.jpg" />*@
+                                <img id="backgroundImagePass" class="spanBackgroundImagePass" src="@Url.Action("GetImage", "PassDesigner", new { path = Model.TemplatePath, imageName = "background.png" })" />
                             </span>
                         </div>
 
@@ -68,7 +69,8 @@
                         <!--Header area on pass-->
                         <div id="divLogoImagePass" class="logoImagePassBlock">
                             <span>
-                                <img class="spanLogoImagePass" src="~/Images/logo&strip/cleverLogo.png" />
+                                @*<img class="spanLogoImagePass" src="~/Images/logo&strip/cleverLogo.png" />*@
+                                <img class="spanLogoImagePass" src="@Url.Action("GetImage", "PassDesigner", new { path = Model.TemplatePath, imageName = "logo.png" })" />
                             </span>
                         </div>
                         <div id="divLogoTextPass" class="valueText logoTextPass">@Model.LogoText</div>
@@ -86,12 +88,14 @@
                         <!--Primary area on pass-->
                         <div id="divStripImagePass" class="divStripImagePass">
                             <span>
-                                <img class="spanStripImagePass" src="~/Images/logo&strip/storeStrip7.jpg" />
+                                @*<img class="spanStripImagePass" src="~/Images/logo&strip/storeStrip7.jpg" />*@
+                                <img class="spanStripImagePass" src="@Url.Action("GetImage", "PassDesigner", new { path = Model.TemplatePath, imageName = "strip.png" })" />
                             </span>
                         </div>
                         <div id="divThumbnailImagePass" class="thumbnailImagePassBlock">
                             <span>
-                                <img id="thumbnailImagePass" src="~/Images/createCard/Vitalik.png" />
+                                @*<img id="thumbnailImagePass" src="~/Images/createCard/Vitalik.png" />*@
+                                <img id="thumbnailImagePass" src="@Url.Action("GetImage", "PassDesigner", new { path = Model.TemplatePath, imageName = "thumbnail.png" })" />
                             </span>
                         </div>
                         <div id="flexContainerPrimaryValues" class="flexContainerPrimaryFields primaryFieldLabels">
@@ -197,13 +201,12 @@
     </div>
 </div>
 <input type="hidden" id="passProjectId" value="@Model.PassProjectId" />
-
 <script src="~/Scripts/createCard/passDesigner.js">
 </script>
 
 <script type="text/javascript">
-    //On ready window
-    jQuery(window).ready(function () {
+    //On load window
+    jQuery(window).load(function () {
 
     //JSON deserialize
     //Choice pass type (radiobutton)
