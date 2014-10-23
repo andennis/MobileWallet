@@ -56,7 +56,6 @@ namespace Pass.Manager.Repository.EF
             modelBuilder.Entity<PassCertificate>().ToTable("PassCertificate", DbScheme);
             modelBuilder.Entity<PassCertificate>().Property(x => x.Version).IsConcurrencyToken();
             modelBuilder.Entity<PassCertificate>().Property(x => x.Name).IsRequired().HasMaxLength(FieldLenName);
-            //modelBuilder.Entity<PassCertificate>().Property(x => x.CertificateFileName).IsRequired().HasMaxLength(512);
 
             //PassCertificateApple
             modelBuilder.Entity<PassCertificateApple>().ToTable("PassCertificateApple", DbScheme);
