@@ -1323,7 +1323,7 @@
     <packageHasNamedElement>
       <class
         Id="3c632d66-5e52-4e22-8aab-faf18a87d7ba"
-        name="PassContent"
+        name="PassContentTemplate"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
@@ -1431,10 +1431,10 @@
             </relationshipOwnedElementsInternal>
           </association>
           <association
-            Id="0af53fe5-3064-4e5e-aead-ea12762be5f7"
+            Id="3b3142b8-7af6-4e22-a5b7-9b884517a2e3"
             isDerived="false"
             sourceEndRoleName="PassContent"
-            targetEndRoleName="Barcode"
+            targetEndRoleName="PassBarcode"
             isLeaf="false"
             isAbstract="false">
             <classMoniker
@@ -1444,28 +1444,28 @@
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="637de628-762a-453c-bf94-45a63c0e29c7"
+                  Id="218d0c71-f6d9-4254-bb13-e0022401220d"
                   name="PassContent"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
                   isDerived="false"
                   isDerivedUnion="false"
-                  aggregation="None"
+                  aggregation="Composite"
                   isComposite="false"
                   isNavigableOwned="false" />
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="92c71bc2-7ae4-40dd-8cbd-73406c30491a"
-                  name="Barcode"
+                  Id="e5f5c20d-05e0-4c4f-84ce-1faf640d8b7a"
+                  name="PassBarcode"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
                   isDerived="false"
                   isDerivedUnion="false"
                   aggregation="None"
-                  isComposite="false" />
+                  isComposite="true" />
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
@@ -1512,7 +1512,7 @@
     <packageHasNamedElement>
       <class
         Id="2801c02d-a28b-4d90-937f-b3e08b4e6b46"
-        name="PassContentField"
+        name="PassContentTemplateField"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
@@ -1535,7 +1535,7 @@
             isAbstract="false">
             <classMoniker
               Id="3c632d66-5e52-4e22-8aab-faf18a87d7ba"
-              LastKnownName="PassContent"
+              LastKnownName="PassContentTemplate"
               LastKnownLocation="PassModeling.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -1572,7 +1572,7 @@
             isAbstract="false">
             <classMoniker
               Id="340d6cfd-b84d-4a20-9e84-20c7085117de"
-              LastKnownName="PassField"
+              LastKnownName="PassProjectField"
               LastKnownLocation="PassManager.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>

@@ -5,20 +5,22 @@ using Common.Repository;
 
 namespace Pass.Manager.Core.Entities
 {
-    public class PassContent : EntityVersionable
+    public class PassContentTemplate : EntityVersionable
     {
-        public int PassContentId { get; set; }
+        public int PassContentTemplateId { get; set; }
         public string Description { get; set; }
         public string OrganizationName { get; set; }
         public PassContentStyle PassStyle { get; set; }
 
         #region Barcode
+        /*
         public string BarcodeAltText { get; set; }
         public PassBarcodeFormat? BarcodeFormat { get; set; }
         public string BarcodeMessage { get; set; }
         public string BarcodeMessageEncoding { get; set; }
+        */
         #endregion
-
+        
         public int? MaxDistance { get; set; }
         public DateTime? RelevantDate { get; set; }
 

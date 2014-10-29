@@ -46,10 +46,10 @@
     <Compile Include="Entities\PassBeacon.cs" />
     <Compile Include="Entities\PassCertificate.cs" />
     <Compile Include="Entities\PassCertificateApple.cs" />
-    <Compile Include="Entities\PassContent.cs" />
-    <Compile Include="Entities\PassContentField.cs" />
+    <Compile Include="Entities\PassContentTemplate.cs" />
+    <Compile Include="Entities\PassContentTemplateField.cs" />
     <Compile Include="Entities\PassContentFieldKind.cs" />
-    <Compile Include="Entities\PassField.cs" />
+    <Compile Include="Entities\PassProjectField.cs" />
     <Compile Include="Entities\PassLocation.cs" />
     <Compile Include="Entities\PassProject.cs" />
     <Compile Include="Entities\PassProjectType.cs" />

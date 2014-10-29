@@ -263,7 +263,7 @@
             isAbstract="false">
             <classMoniker
               Id="340d6cfd-b84d-4a20-9e84-20c7085117de"
-              LastKnownName="PassField"
+              LastKnownName="PassProjectField"
               LastKnownLocation="PassManager.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -367,7 +367,7 @@
             isAbstract="false">
             <classMoniker
               Id="3c632d66-5e52-4e22-8aab-faf18a87d7ba"
-              LastKnownName="PassContent"
+              LastKnownName="PassContentTemplate"
               LastKnownLocation="PassModeling.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -821,7 +821,7 @@
     <packageHasNamedElement>
       <class
         Id="340d6cfd-b84d-4a20-9e84-20c7085117de"
-        name="PassField"
+        name="PassProjectField"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">

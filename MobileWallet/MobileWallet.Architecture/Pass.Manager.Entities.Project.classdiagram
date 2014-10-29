@@ -6,7 +6,7 @@
         <elementDefinition Id="91b84374-b840-4b47-9bd4-09864989628a" />
         <targetEnds>
           <association Id="dfa6e207-af02-461e-96b0-91128c10e77a" isDerived="false" sourceEndRoleName="PassProject" targetEndRoleName="PassField" isLeaf="false" isAbstract="false">
-            <classMoniker Id="4ae14921-b85a-403a-bf19-bc8a9d853dfd" LastKnownName="PassField" />
+            <classMoniker Id="4ae14921-b85a-403a-bf19-bc8a9d853dfd" LastKnownName="PassProjectField" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="e6cc7504-ea66-4a7a-a435-74cc483f312c" name="PassProject" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
@@ -58,7 +58,7 @@
             <elementDefinition Id="8c4caa64-63e3-4613-8cec-3877fbd53cdb" />
           </association>
           <association Id="3e385d3a-60de-4ad7-8721-d4f4e34a41ea" isDerived="false" sourceEndRoleName="PassProject" targetEndRoleName="PassContent" isLeaf="false" isAbstract="false">
-            <classMoniker Id="35303514-6579-431b-a5b4-1793d070254a" LastKnownName="PassContent" />
+            <classMoniker Id="35303514-6579-431b-a5b4-1793d070254a" LastKnownName="PassContentTemplate" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="405634d1-2d9f-4da6-84b3-2c12b545eb41" name="PassProject" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
@@ -152,7 +152,7 @@
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="4ae14921-b85a-403a-bf19-bc8a9d853dfd" name="PassField" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="4ae14921-b85a-403a-bf19-bc8a9d853dfd" name="PassProjectField" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="340d6cfd-b84d-4a20-9e84-20c7085117de" />
         <ownedAttributesInternal>
           <property Id="d4227025-ad1d-40f0-bfcd-cc4f634ae0c7" name="Name" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
@@ -191,7 +191,7 @@
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="35303514-6579-431b-a5b4-1793d070254a" name="PassContent" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="35303514-6579-431b-a5b4-1793d070254a" name="PassContentTemplate" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="3c632d66-5e52-4e22-8aab-faf18a87d7ba" />
         <targetEnds>
           <association Id="4733febb-0ad2-4ec7-a0e5-5856a5e62154" isDerived="false" sourceEndRoleName="PassContent" targetEndRoleName="Location" isLeaf="false" isAbstract="false">
@@ -246,21 +246,21 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="cbb21d64-f0e6-4c61-bd7f-a5ee02164fba" />
           </association>
-          <association Id="9cb19cd4-4d8d-4c48-97e7-9dc372ef14d5" isDerived="false" sourceEndRoleName="PassContent" targetEndRoleName="Barcode" isLeaf="false" isAbstract="false">
+          <association Id="bfd83ae6-ab69-4015-a2d3-2c4559f3e259" isDerived="false" sourceEndRoleName="PassContent" targetEndRoleName="PassBarcode" isLeaf="false" isAbstract="false">
             <classMoniker Id="72da18c1-1213-49ee-9b0c-cc082fa60ae4" LastKnownName="PassBarcode" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="9837ecce-e135-431b-ab33-9570077b9717" name="PassContent" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="637de628-762a-453c-bf94-45a63c0e29c7" />
+                <memberEnd Id="fc4268a1-f0bc-4921-beb9-1cd0fc05c65d" name="PassContent" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="218d0c71-f6d9-4254-bb13-e0022401220d" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="c320cf33-4406-4440-8c62-15dc276adf65" name="Barcode" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="92c71bc2-7ae4-40dd-8cbd-73406c30491a" />
+                <memberEnd Id="810e3c10-2271-4656-8235-6531b5a9a7dd" name="PassBarcode" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="e5f5c20d-05e0-4c4f-84ce-1faf640d8b7a" />
                 </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
-            <elementDefinition Id="0af53fe5-3064-4e5e-aead-ea12762be5f7" />
+            <elementDefinition Id="3b3142b8-7af6-4e22-a5b7-9b884517a2e3" />
           </association>
         </targetEnds>
         <ownedAttributesInternal>
@@ -286,7 +286,7 @@
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="491cea0c-d158-4080-9afe-1bd16d61dec8" name="PassContentField" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="491cea0c-d158-4080-9afe-1bd16d61dec8" name="PassContentTemplateField" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="2801c02d-a28b-4d90-937f-b3e08b4e6b46" />
         <suppliersInternal>
           <dependency Id="67ea8fd6-b700-4b43-b673-4f56fe3f7db4">
@@ -296,7 +296,7 @@
         </suppliersInternal>
         <targetEnds>
           <association Id="7e365719-7e60-4826-87e2-4e4d69d8f88a" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
-            <classMoniker Id="35303514-6579-431b-a5b4-1793d070254a" LastKnownName="PassContent" />
+            <classMoniker Id="35303514-6579-431b-a5b4-1793d070254a" LastKnownName="PassContentTemplate" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="601ca78c-3fbf-4d08-a05b-50fc4d0ffb49" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
@@ -312,7 +312,7 @@
             <elementDefinition Id="b6d06ff7-a8dc-4b60-8dc6-e55a490722f2" />
           </association>
           <association Id="8dc454b6-9a8a-4d38-be63-0a004740e436" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
-            <classMoniker Id="4ae14921-b85a-403a-bf19-bc8a9d853dfd" LastKnownName="PassField" />
+            <classMoniker Id="4ae14921-b85a-403a-bf19-bc8a9d853dfd" LastKnownName="PassProjectField" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="feb19020-8337-44ca-b934-47142f510f93" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">

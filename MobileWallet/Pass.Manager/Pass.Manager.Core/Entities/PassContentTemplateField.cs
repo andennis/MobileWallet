@@ -2,7 +2,7 @@
 
 namespace Pass.Manager.Core.Entities
 {
-    public class PassContentField : EntityVersionable
+    public class PassContentTemplateField : EntityVersionable
     {
         public int PassContentFieldId { get; set; }
         public int PassContentId { get; set; }
@@ -12,7 +12,7 @@ namespace Pass.Manager.Core.Entities
         public string ChangeMessage { get; set; }
         public string Label { get; set; }
         public TextAlignment TextAlignment { get; set; }
-        public PassField PassField { get; set; }
-        public PassContent PassContent { get; set; }
+        public PassProjectField PassField { get; set; }
+        public PassContentTemplate PassContent { get; set; }
     }
 }

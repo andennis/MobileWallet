@@ -73,6 +73,14 @@
     <Compile Include="Migrations\201410171118408_M5.Designer.cs">
       <DependentUpon>201410171118408_M5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201410282351561_M6.cs" />
+    <Compile Include="Migrations\201410282351561_M6.Designer.cs">
+      <DependentUpon>201410282351561_M6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201410282354334_M7.cs" />
+    <Compile Include="Migrations\201410282354334_M7.Designer.cs">
+      <DependentUpon>201410282354334_M7.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PassManagerDbContext.cs" />
     <Compile Include="PassManagerUnitOfWork.cs" />
@@ -93,6 +101,10 @@
     <ProjectReference Include="..\..\Common\Common.Repository\Common.Repository.csproj">
       <Project>{f36371d6-812f-49f5-9e9b-043265660647}</Project>
       <Name>Common.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pass.Container\Pass.Container.Repository.Core\Pass.Container.Repository.Core.csproj">
+      <Project>{9E9BCF53-D0D8-40E5-A3B1-35D9564D8CCD}</Project>
+      <Name>Pass.Container.Repository.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pass.Manager.Core\Pass.Manager.Core.csproj">
       <Project>{dc28cc0d-f87e-4d65-8812-3baf31c9c359}</Project>
@@ -117,6 +129,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201410171118408_M5.resx">
       <DependentUpon>201410171118408_M5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410282351561_M6.resx">
+      <DependentUpon>201410282351561_M6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410282354334_M7.resx">
+      <DependentUpon>201410282354334_M7.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
