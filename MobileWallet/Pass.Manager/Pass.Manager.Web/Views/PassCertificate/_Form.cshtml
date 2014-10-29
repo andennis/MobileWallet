@@ -13,6 +13,11 @@
 @Html.TextBoxFormForExt(m => m.Password)
 @Html.HiddenForExt(m => m.CertificateStorageId)
 
+@if (Model.CertificateFileName != null)
+{
+    @Html.TextBlockFormForExt(m => m.CertificateFileName, "Certificate File");
+}
+
 <div class="form-group">
     <div class="col-md-offset-2 col-md-10">
         @Html.FileUploadEx("CertificateFile")

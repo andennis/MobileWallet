@@ -38,6 +38,7 @@ namespace Pass.Manager.Web.Controllers
                 {
                     PassCertificateApple passCert = Mapper.Map<PassCertificateAppleViewModel, PassCertificateApple>(model);
                     _service.UploadCertificate(passCert, model.Password, model.CertificateFile.InputStream);
+                    passCert.CertificateFileName = model.CertificateFile.FileName;
                     _service.Create(passCert);
                     return RedirectTo(model);
                 }
@@ -56,7 +57,10 @@ namespace Pass.Manager.Web.Controllers
                 passCert = Mapper.Map<PassCertificateAppleViewModel, PassCertificateApple>(model, passCert);
 
                 if (model.CertificateFile != null && model.CertificateFile.ContentLength > 0)
+                {
                     _service.UploadCertificate(passCert, model.Password, model.CertificateFile.InputStream);
+                    passCert.CertificateFileName = model.CertificateFile.FileName;
+                }
 
                 _service.Update(passCert);
                 return RedirectTo(model);
@@ -69,7 +73,7 @@ namespace Pass.Manager.Web.Controllers
         {
             PassCertificateApple passCertificate = _service.Get(id);
             Stream file = _service.DownloadCertificate(passCertificate.CertificateStorageId);
-            return File(file, System.Net.Mime.MediaTypeNames.Application.Octet, "Certificate");
+            return File(file, System.Net.Mime.MediaTypeNames.Application.Octet, passCertificate.CertificateFileName ?? "Certificate_" + passCertificate.Name);
         }
     }
 }

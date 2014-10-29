@@ -41,7 +41,7 @@ namespace Pass.Manager.Web.Controllers
                 PassCertificateApple certificate = _certificateService.Get(model.PassCertificateId);
                 certificate = Mapper.Map<PassSiteCertificateViewModel, PassCertificateApple>(model, certificate);
                 _certificateService.Update(certificate);
-
+                model.Certificates = new SelectListTyped<PassCertificate, int, string>(_service.GetUnassignedCertificates(model.PassSiteId), x => x.PassCertificateId, x => x.Name);
                 return RedirectTo(model);
             }
 
