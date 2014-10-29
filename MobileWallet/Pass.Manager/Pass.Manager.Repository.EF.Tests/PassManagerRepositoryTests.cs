@@ -169,19 +169,19 @@ namespace Pass.Manager.Repository.EF.Tests
                                Status = EntityStatus.InActive
                            };
             CreateEntity(siteUser1);
-            var siteUser2 = ReadEntity<PassSiteUser>(siteUser1.PassSiteId, siteUser1.UserId);
+            var siteUser2 = ReadEntity<PassSiteUser>(siteUser1.PassSiteUserId);
             Assert.NotNull(siteUser2);
             Assert.AreEqual(siteUser1.Status, siteUser2.Status);
 
             siteUser2.Status = EntityStatus.Active;
             UpdateEntity(siteUser2);
 
-            var siteUser3 = ReadEntity<PassSiteUser>(siteUser1.PassSiteId, siteUser1.UserId);
+            var siteUser3 = ReadEntity<PassSiteUser>(siteUser1.PassSiteUserId);
             Assert.NotNull(siteUser3);
             Assert.AreEqual(siteUser2.Status, siteUser3.Status);
 
             DeleteEntity(siteUser3);
-            var siteUser4 = ReadEntity<PassSiteUser>(siteUser1.PassSiteId, siteUser1.UserId);
+            var siteUser4 = ReadEntity<PassSiteUser>(siteUser1.PassSiteUserId);
             Assert.Null(siteUser4);
 
             DeleteEntity(passSite);
@@ -200,11 +200,11 @@ namespace Pass.Manager.Repository.EF.Tests
                 PassCertificateId = cert.PassCertificateId,
             };
             CreateEntity(siteCert1);
-            var siteCert2 = ReadEntity<PassSiteCertificate>(siteCert1.PassSiteId, siteCert1.PassCertificateId);
+            var siteCert2 = ReadEntity<PassSiteCertificate>(siteCert1.PassSiteCertificateId);
             Assert.NotNull(siteCert2);
 
             DeleteEntity(siteCert2);
-            var siteUser3 = ReadEntity<PassSiteCertificate>(siteCert1.PassSiteId, siteCert1.PassCertificateId);
+            var siteUser3 = ReadEntity<PassSiteCertificate>(siteCert1.PassSiteCertificateId);
             Assert.Null(siteUser3);
 
             DeleteEntity(passSite);
