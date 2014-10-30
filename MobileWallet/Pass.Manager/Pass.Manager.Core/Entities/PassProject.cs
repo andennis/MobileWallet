@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Common.Repository;
 
 namespace Pass.Manager.Core.Entities
@@ -26,6 +25,6 @@ namespace Pass.Manager.Core.Entities
         public ICollection<PassProjectField> PassFields { get; set; }
 
         //public int PassContentTemplateId { get; set; }
-        //public PassContentTemplate PassContentTemplate { get; set; }
+        public PassContentTemplate PassContentTemplate { get; set; }
     }
 }
