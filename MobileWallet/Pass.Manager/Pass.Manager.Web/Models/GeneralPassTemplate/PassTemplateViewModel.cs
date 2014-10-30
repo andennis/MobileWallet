@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Web;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -16,6 +17,14 @@ namespace Pass.Manager.Web.Models.GeneralPassTemplate
         public int PassProjectId { get; set; }
 
         public string TemplatePath { get; set; }
+
+        public HttpPostedFileBase Logo { get; set; }
+
+        public HttpPostedFileBase Strip { get; set; }
+
+        public HttpPostedFileBase Background { get; set; }
+
+        public HttpPostedFileBase Thumbnail { get; set; }
 
         #region Standart keys
 

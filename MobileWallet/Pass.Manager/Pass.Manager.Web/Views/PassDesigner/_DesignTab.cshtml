@@ -15,7 +15,7 @@
         <a data-toggle="tooltip" title="Выберите цвет фона пасса из палитры цветов или введите hex код цвета (например #BDC3C7)">Цвет фона<span class="spanRed">*</span></a>
     </p>
     @*<input id="backColorPicker" class="colorPickerInput" type="color" value="#@Model.BackgroundColor.Name.Substring(2)" data-hex="true" onchange="javascript:document.getElementById('divPassBody').style.backgroundColor=document.getElementById('backColorPicker').value;" /><br />*@
-    <input id="backColorPicker" class="colorPickerInput" type="color" value="@Model.BackgroundColor" data-hex="true" onchange="javascript:document.getElementById('divPassBody').style.backgroundColor=document.getElementById('backColorPicker').value;" /><br />
+    <input id="backColorPicker" class="colorPickerInput" type="color" value="@Model.BackgroundColor" name="BackgroundColor" data-hex="true" onchange="javascript:document.getElementById('divPassBody').style.backgroundColor=document.getElementById('backColorPicker').value;" /><br />
 </div>
 <br>
 
@@ -25,7 +25,7 @@
         <a data-toggle="tooltip" title="Выберите цвет заголовков полей из палитры цветов или введите hex код цвета (например #000000)">Цвет заголовков<span class="spanRed">*</span></a>
     </p>
     @*<input id="labelColorPicker" class="colorPickerInput" type="color" value="#@Model.LabelTextColor.Name.Substring(2)" data-hex="true" onchange="ChangeLabelTextColor((this).value)" /><br />*@
-    <input id="labelColorPicker" class="colorPickerInput" type="color" value="@Model.LabelTextColor" data-hex="true" onchange="ChangeLabelTextColor((this).value)" /><br />
+    <input id="labelColorPicker" class="colorPickerInput" type="color" value="@Model.LabelTextColor" name="LabelTextColor" data-hex="true" onchange="ChangeLabelTextColor((this).value)" /><br />
 </div>
 <br>
 
@@ -35,7 +35,7 @@
         <a data-toggle="tooltip" title="Выберите цвет значений полей из палитры цветов или введите hex код цвета (например #ffffff)">Цвет значений<span class="spanRed">*</span></a>
     </p>
     @*<input id="textColorPicker" class="colorPickerInput" type="color" value="#@Model.ValueTextColor.Name.Substring(2)" data-hex="true" onchange="ChangeValueTextColor((this).value)" /><br />*@
-    <input id="textColorPicker" class="colorPickerInput" type="color" value="@Model.ValueTextColor" data-hex="true" onchange="ChangeValueTextColor((this).value)" /><br />
+    <input id="textColorPicker" class="colorPickerInput" type="color" value="@Model.ValueTextColor" name="ValueTextColor" data-hex="true" onchange="ChangeValueTextColor((this).value)" /><br />
 </div>
 <br>
 
@@ -44,7 +44,7 @@
     <p class="labelInput">
         <a data-toggle="tooltip" title="Default tooltip">Логотип</a>
     </p>
-    <input class="customFile" type="file" id="logoImageInput" />
+    <input class="customFile" type="file" id="logoImageInput" name="Logo"/>
     <div class="emerald-flat-button">Добавить...</div>
     <div class="blocker"></div>
     <div id="logoName" class="FileName">cleverLogo.png</div>
@@ -58,7 +58,7 @@
     <p class="labelInput">
         <a data-toggle="tooltip" title="Default tooltip" style="z-index:4;">Лента</a>
     </p>
-    <input class="customFile" type="file" id="stripImageInput" />
+    <input class="customFile" type="file" id="stripImageInput" name="Strip" />
     <div class="emerald-flat-button">Добавить...</div>
     <div class="blocker"></div>
     <div id="stripName" class="FileName">storeStrip7.jpg</div>
@@ -73,7 +73,7 @@
     <p class="labelInput">
         <a data-toggle="tooltip" title="Default tooltip" style="z-index:4;">Фон</a>
     </p>
-    <input class="customFile" type="file" id="backgroundImageInput" />
+    <input class="customFile" type="file" id="backgroundImageInput" name="Background" />
     <div class="emerald-flat-button">Добавить...</div>
     <div class="blocker"></div>
     <div id="backgroundName" class="FileName">Tulips.jpg</div>
@@ -87,7 +87,7 @@
     <p class="labelInput">
         <a data-toggle="tooltip" title="Default tooltip" style="z-index:4;">Миниатюра</a>
     </p>
-    <input class="customFile" type="file" id="thumbnailImageInput" />
+    <input class="customFile" type="file" id="thumbnailImageInput" name="Thumbnail" />
     <div class="emerald-flat-button">Добавить...</div>
     <div class="blocker"></div>
     <div id="thumbnailName" class="FileName">Vitalik.png</div>

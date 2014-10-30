@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 @*@{
-    Layout = "";
-}*@
+        Layout = "";
+    }*@
 
 @using Pass.Manager.Web.Helpers
 @using Pass.Manager.Web.Models.GeneralPassTemplate
@@ -13,153 +13,157 @@
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false">
 </script>
 
+@using (Html.BeginForm("TestForm", "PassDesigner", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
 
-<div class="passDesignerBody">
-    @*<div class="headerBlockOnDesigner">
-        <div class="headerBlockContentDesigner">
-            <a href="~/Home/MainPage">
-                <img src="~/Images/MainPage/PassLightLogo.png" class="headerLogoImg" />
-            </a>
-        </div>
-    </div>*@
-    <div id="body" class="bodyPassDesigner">
-        <div id="topPanel" class="mainTabs">
-            <p id="MainTab1" class="peter-river-flat-button tabMain active">Настройки</p>
-            <p id="MainTab2" class="peter-river-flat-button tabMain">Дизайн</p>
-            <p id="MainTab3" class="peter-river-flat-button tabMain">Содержимое</p>
-            <p id="MainTab4" class="peter-river-flat-button tabMain" onclick="RemoveAllFieldBackPass(); AddFieldPassAgain(); ">Обратная сторона</p>
-            <p id="MainTab5" class="peter-river-flat-button tabMain">Экран блокировки</p>
-            <p id="MainTab6" class="peter-river-flat-button tabMain">Языки</p>
-            <p id="MainTab7" class="peter-river-flat-button tabMain">Распространение</p>
-            <p id="MainTab8" class="peter-river-flat-button tabMain saveTab" onclick="PostJsonData();">Сохранить пасс</p>
-        </div>
-        <div id="leftPanel" class="leftPanelDesigner">
-            <div class="phoneBlockLeftPanel">
-                <div id="frontTabPassBlock" class="frontTabPassBlock">
-                    <p id="tab1" class="linkTabFrontContent frontTabPass1">Редактировать</p>
-                    <p id="tab2" class="linkTabFrontContent frontTabPass2">Редактировать</p>
-                    <p id="tab3" class="linkTabFrontContent frontTabPass3">Редактировать</p>
-                    <p id="tab4" class="linkTabFrontContent frontTabPass4">Редактировать</p>
-                    <p id="tab5" class="linkTabFrontContent frontTabPass5">Редактировать</p>
+    <div class="passDesignerBody">
+        @*<div class="headerBlockOnDesigner">
+                <div class="headerBlockContentDesigner">
+                    <a href="~/Home/MainPage">
+                        <img src="~/Images/MainPage/PassLightLogo.png" class="headerLogoImg" />
+                    </a>
                 </div>
-                
-                <div id="divPassBody" class="passBodyBlock">
-                    <div id="divFrontPass">
+            </div>*@
+        <div id="body" class="bodyPassDesigner">
 
-                        <!--Pass background image-->
-                        <div id="divBackgroundImagePass" class="backgroundImgPassBlock">
-                            <span>
-                                <canvas id="backgroundCanvas" class="backgroundImgCanvas"></canvas>
-                                <br />
-                                @*<img id="backgroundImagePass" class="spanBackgroundImagePass" src="~/Images/createCard/myImages/backgroundImage2.jpg" />*@
-                                <img id="backgroundImagePass" class="spanBackgroundImagePass" src="@Url.Action("GetImage", "PassDesigner", new { path = Model.TemplatePath, imageName = "background.png" })" />
-                            </span>
-                        </div>
-
-                        <!--Transit icon on pass-->
-                        <div id="transitIconsBlock">
-                            <img id="AirIconPass" class="transitIconPass airIconPass" src="~/Images/createCard/Transit/air.svg" alt="картинка на SVG" />
-                            <img id="TrainIconPass" class="transitIconPass" src="~/Images/createCard/Transit/train.svg" alt="картинка на SVG" />
-                            <img id="BusIconPass" class="transitIconPass" src="~/Images/createCard/Transit/bus.svg" alt="картинка на SVG" />
-                            <img id="BoatIconPass" class="transitIconPass" src="~/Images/createCard/Transit/boat.svg" alt="картинка на SVG" />
-                            <img id="GenericIconPass" class="transitIconPass" src="~/Images/createCard/Transit/arrowRight.svg" alt="картинка на SVG" />
-                        </div>
-
-
-                        <!--Header area on pass-->
-                        <div id="divLogoImagePass" class="logoImagePassBlock">
-                            <span>
-                                @*<img class="spanLogoImagePass" src="~/Images/logo&strip/cleverLogo.png" />*@
-                                <img class="spanLogoImagePass" src="@Url.Action("GetImage", "PassDesigner", new { path = Model.TemplatePath, imageName = "logo.png" })" />
-                            </span>
-                        </div>
-                        <div id="divLogoTextPass" class="valueText logoTextPass">@Model.LogoText</div>
-                        <div class="flexContainerHeaderFields headerFieldsLabels">
-                            <div id="divHeaderLabelPass3" class="labelTextHeader labelText">@Model.FieldDetails.HeaderFields[2].Label</div>
-                            <div id="divHeaderLabelPass2" class="labelTextHeader labelText">@Model.FieldDetails.HeaderFields[1].Label</div>
-                            <div id="divHeaderLabelPass1" class="labelTextHeader labelText">@Model.FieldDetails.HeaderFields[0].Label</div>
-                        </div>
-                        <div class="flexContainerHeaderFields headerFieldsValues">
-                            <div id="divHeaderValuePass3" class="valueTextHeader valueText">@Model.FieldDetails.HeaderFields[2].Value</div>
-                            <div id="divHeaderValuePass2" class="valueTextHeader valueText">@Model.FieldDetails.HeaderFields[1].Value</div>
-                            <div id="divHeaderValuePass1" class="valueTextHeader valueText">@Model.FieldDetails.HeaderFields[0].Value</div>
-                        </div>
-
-                        <!--Primary area on pass-->
-                        <div id="divStripImagePass" class="divStripImagePass">
-                            <span>
-                                @*<img class="spanStripImagePass" src="~/Images/logo&strip/storeStrip7.jpg" />*@
-                                <img class="spanStripImagePass" src="@Url.Action("GetImage", "PassDesigner", new { path = Model.TemplatePath, imageName = "strip.png" })" />
-                            </span>
-                        </div>
-                        <div id="divThumbnailImagePass" class="thumbnailImagePassBlock">
-                            <span>
-                                @*<img id="thumbnailImagePass" src="~/Images/createCard/Vitalik.png" />*@
-                                <img id="thumbnailImagePass" src="@Url.Action("GetImage", "PassDesigner", new { path = Model.TemplatePath, imageName = "thumbnail.png" })" />
-                            </span>
-                        </div>
-                        <div id="flexContainerPrimaryValues" class="flexContainerPrimaryFields primaryFieldLabels">
-                            <div id="divPrimaryValuePass1" class="valueTextPrimary valueText leftAlignPassText">@Model.FieldDetails.PrimaryFields[0].Label</div>
-                            <div id="divPrimaryValuePass2" class="valueTextPrimary valueText">@Model.FieldDetails.PrimaryFields[1].Label</div>
-                        </div>
-                        <div id="flexContainerPrimaryLabels" class="flexContainerPrimaryFields primaryFieldValues">
-                            <div id="divPrimaryLabelPass1" class="labelTextPrimary labelText leftAlignPassText">@Model.FieldDetails.PrimaryFields[0].Value</div>
-                            <div id="divPrimaryLabelPass2" class="labelTextPrimary labelText">@Model.FieldDetails.PrimaryFields[1].Value</div>
-                        </div>
-
-                        <!--Auxiliary area on pass-->
-                        <div id="auxiliaryAreaPass">
-                            <div id="flexContainerAuxiliaryLabels" class="flexContainerAuxiliaryFields auxiliaryFieldLabels">
-                                <div id="divAuxiliaryLabelPass1" class="labelTextAuxiliary labelText leftAlignPassText">@Model.FieldDetails.AuxiliaryFields[0].Label</div>
-                                <div id="divAuxiliaryLabelPass2" class="labelTextAuxiliary labelText">@Model.FieldDetails.AuxiliaryFields[1].Label</div>
-                                <div id="divAuxiliaryLabelPass3" class="labelTextAuxiliary labelText">@Model.FieldDetails.AuxiliaryFields[2].Label</div>
-                                <div id="divAuxiliaryLabelPass4" class="labelTextAuxiliary labelText">@Model.FieldDetails.AuxiliaryFields[3].Label</div>
-                                <div id="divAuxiliaryLabelPass5" class="labelTextAuxiliary labelText">@Model.FieldDetails.AuxiliaryFields[4].Label</div>
-                            </div>
-                            <div id="flexContainerAuxiliaryValues" class="flexContainerAuxiliaryFields auxiliaryFieldValues">
-                                <div id="divAuxiliaryValuePass1" class="valueTextAuxiliary valueText leftAlignPassText">@Model.FieldDetails.AuxiliaryFields[0].Value</div>
-                                <div id="divAuxiliaryValuePass2" class="valueTextAuxiliary valueText">@Model.FieldDetails.AuxiliaryFields[1].Value</div>
-                                <div id="divAuxiliaryValuePass3" class="valueTextAuxiliary valueText">@Model.FieldDetails.AuxiliaryFields[2].Value</div>
-                                <div id="divAuxiliaryValuePass4" class="valueTextAuxiliary valueText">@Model.FieldDetails.AuxiliaryFields[3].Value</div>
-                                <div id="divAuxiliaryValuePass5" class="valueTextAuxiliary valueText">@Model.FieldDetails.AuxiliaryFields[4].Value</div>
-                            </div>
-                        </div>
-
-                        <!--Secondary area on pass-->
-                        <div id="secondaryAreaPass">
-                            <div id="flexContainerSecondaryLabels" class="flexContainerSecondaryFields">
-                                <div id="divSecondaryLabelPass1" class="labelTextSecondary labelText leftAlignPassText">@Model.FieldDetails.SecondaryFields[0].Label</div>
-                                <div id="divSecondaryLabelPass2" class="labelTextSecondary labelText">@Model.FieldDetails.SecondaryFields[1].Label</div>
-                                <div id="divSecondaryLabelPass3" class="labelTextSecondary labelText">@Model.FieldDetails.SecondaryFields[2].Label</div>
-                                <div id="divSecondaryLabelPass4" class="labelTextSecondary labelText">@Model.FieldDetails.SecondaryFields[3].Label</div>
-                            </div>
-                            <div id="flexContainerSecondaryValues" class="flexContainerSecondaryFields secondaryFieldValues">
-                                <div id="divSecondaryValuePass1" class="valueTextSecondary valueText leftAlignPassText">@Model.FieldDetails.SecondaryFields[0].Value</div>
-                                <div id="divSecondaryValuePass2" class="valueTextSecondary valueText">@Model.FieldDetails.SecondaryFields[1].Value</div>
-                                <div id="divSecondaryValuePass3" class="valueTextSecondary valueText">@Model.FieldDetails.SecondaryFields[2].Value</div>
-                                <div id="divSecondaryValuePass4" class="valueTextSecondary valueText">@Model.FieldDetails.SecondaryFields[3].Value</div>
-                            </div>
-                        </div>
-
-                        <!--Barcode area on pass-->
-                        <div id="divBarcodePass">
-                            <img id="aztecCodePass" class="barcodePass aztecCodeImgPass" src="~/Images/createCard/barcode/aztecPass.png" />
-                            <img id="qrCodePass" class="barcodePass qrCodeImgPass active" src="~/Images/createCard/barcode/qrPass.png" />
-                            <img id="pdf417CodePass" class="barcodePass pdf417CodeImgPass" src="~/Images/createCard/barcode/pdf417Pass.png" />
-                        </div>
+            <div id="topPanel" class="mainTabs">
+                <p id="MainTab1" class="peter-river-flat-button tabMain active">Настройки</p>
+                <p id="MainTab2" class="peter-river-flat-button tabMain">Дизайн</p>
+                <p id="MainTab3" class="peter-river-flat-button tabMain">Содержимое</p>
+                <p id="MainTab4" class="peter-river-flat-button tabMain" onclick="RemoveAllFieldBackPass(); AddFieldPassAgain(); ">Обратная сторона</p>
+                <p id="MainTab5" class="peter-river-flat-button tabMain">Экран блокировки</p>
+                <p id="MainTab6" class="peter-river-flat-button tabMain">Языки</p>
+                <p id="MainTab7" class="peter-river-flat-button tabMain">Распространение</p>
+                <p id="MainTab8" class="peter-river-flat-button tabMain saveTab" onclick="PostJsonData();">Сохранить пасс</p>
+            </div>
+            <div id="leftPanel" class="leftPanelDesigner">
+                <div class="phoneBlockLeftPanel">
+                    <div id="frontTabPassBlock" class="frontTabPassBlock">
+                        <p id="tab1" class="linkTabFrontContent frontTabPass1">Редактировать</p>
+                        <p id="tab2" class="linkTabFrontContent frontTabPass2">Редактировать</p>
+                        <p id="tab3" class="linkTabFrontContent frontTabPass3">Редактировать</p>
+                        <p id="tab4" class="linkTabFrontContent frontTabPass4">Редактировать</p>
+                        <p id="tab5" class="linkTabFrontContent frontTabPass5">Редактировать</p>
                     </div>
 
+                    <div id="divPassBody" class="passBodyBlock">
+                        <div id="divFrontPass">
 
-                    <!--Back area on pass-->
-                    <div id="divbackPass" class="backAreaPass">
-                        <img src="~/Images/createCard/myImages/backPass.png" class="backPassBackgroundImg" />
-                        <div id="divBackOuter" class="backPassBlock">
-                            <div id="divBackHack" class="backHackBlock">
-                                <img src="~/Images/createCard/myImages/uutomatic_updates.png" class="automaticUpdateImg" />
-                                <div id="divBackContentPass" class="backPassContentBlock">
-                                    <div id="divBackFieldContentPass1" class="divBackFieldContentPass">
-                                        <div id="backLabelPass1" class="labelFieldBackPass"></div>
-                                        <div id="backValuePass1" class="valueFieldBackPass"></div>
+                            <!--Pass background image-->
+                            <div id="divBackgroundImagePass" class="backgroundImgPassBlock">
+                                <span>
+                                    <canvas id="backgroundCanvas" class="backgroundImgCanvas"></canvas>
+                                    <br />
+                                    @*<img id="backgroundImagePass" class="spanBackgroundImagePass" src="~/Images/createCard/myImages/backgroundImage2.jpg" />*@
+                                    <img id="backgroundImagePass" class="spanBackgroundImagePass" src="@Url.Action("GetImage", "PassDesigner", new { path = Model.TemplatePath, imageName = "background.png" })" />
+                                </span>
+                            </div>
+
+                            <!--Transit icon on pass-->
+                            <div id="transitIconsBlock">
+                                <img id="AirIconPass" class="transitIconPass airIconPass" src="~/Images/createCard/Transit/air.svg" alt="картинка на SVG" />
+                                <img id="TrainIconPass" class="transitIconPass" src="~/Images/createCard/Transit/train.svg" alt="картинка на SVG" />
+                                <img id="BusIconPass" class="transitIconPass" src="~/Images/createCard/Transit/bus.svg" alt="картинка на SVG" />
+                                <img id="BoatIconPass" class="transitIconPass" src="~/Images/createCard/Transit/boat.svg" alt="картинка на SVG" />
+                                <img id="GenericIconPass" class="transitIconPass" src="~/Images/createCard/Transit/arrowRight.svg" alt="картинка на SVG" />
+                            </div>
+
+
+                            <!--Header area on pass-->
+                            <div id="divLogoImagePass" class="logoImagePassBlock">
+                                <span>
+                                    @*<img class="spanLogoImagePass" src="~/Images/logo&strip/cleverLogo.png" />*@
+                                    <img class="spanLogoImagePass" src="@Url.Action("GetImage", "PassDesigner", new { path = Model.TemplatePath, imageName = "logo.png" })" />
+                                </span>
+                            </div>
+                            <div id="divLogoTextPass" class="valueText logoTextPass">@Model.LogoText</div>
+                            <div class="flexContainerHeaderFields headerFieldsLabels">
+                                <div id="divHeaderLabelPass3" class="labelTextHeader labelText">@Model.FieldDetails.HeaderFields[2].Label</div>
+                                <div id="divHeaderLabelPass2" class="labelTextHeader labelText">@Model.FieldDetails.HeaderFields[1].Label</div>
+                                <div id="divHeaderLabelPass1" class="labelTextHeader labelText">@Model.FieldDetails.HeaderFields[0].Label</div>
+                            </div>
+                            <div class="flexContainerHeaderFields headerFieldsValues">
+                                <div id="divHeaderValuePass3" class="valueTextHeader valueText">@Model.FieldDetails.HeaderFields[2].Value</div>
+                                <div id="divHeaderValuePass2" class="valueTextHeader valueText">@Model.FieldDetails.HeaderFields[1].Value</div>
+                                <div id="divHeaderValuePass1" class="valueTextHeader valueText">@Model.FieldDetails.HeaderFields[0].Value</div>
+                            </div>
+
+                            <!--Primary area on pass-->
+                            <div id="divStripImagePass" class="divStripImagePass">
+                                <span>
+                                    @*<img class="spanStripImagePass" src="~/Images/logo&strip/storeStrip7.jpg" />*@
+                                    <img class="spanStripImagePass" src="@Url.Action("GetImage", "PassDesigner", new { path = Model.TemplatePath, imageName = "strip.png" })" />
+                                </span>
+                            </div>
+                            <div id="divThumbnailImagePass" class="thumbnailImagePassBlock">
+                                <span>
+                                    @*<img id="thumbnailImagePass" src="~/Images/createCard/Vitalik.png" />*@
+                                    <img id="thumbnailImagePass" src="@Url.Action("GetImage", "PassDesigner", new { path = Model.TemplatePath, imageName = "thumbnail.png" })" />
+                                </span>
+                            </div>
+                            <div id="flexContainerPrimaryValues" class="flexContainerPrimaryFields primaryFieldLabels">
+                                <div id="divPrimaryValuePass1" class="valueTextPrimary valueText leftAlignPassText">@Model.FieldDetails.PrimaryFields[0].Label</div>
+                                <div id="divPrimaryValuePass2" class="valueTextPrimary valueText">@Model.FieldDetails.PrimaryFields[1].Label</div>
+                            </div>
+                            <div id="flexContainerPrimaryLabels" class="flexContainerPrimaryFields primaryFieldValues">
+                                <div id="divPrimaryLabelPass1" class="labelTextPrimary labelText leftAlignPassText">@Model.FieldDetails.PrimaryFields[0].Value</div>
+                                <div id="divPrimaryLabelPass2" class="labelTextPrimary labelText">@Model.FieldDetails.PrimaryFields[1].Value</div>
+                            </div>
+
+                            <!--Auxiliary area on pass-->
+                            <div id="auxiliaryAreaPass">
+                                <div id="flexContainerAuxiliaryLabels" class="flexContainerAuxiliaryFields auxiliaryFieldLabels">
+                                    <div id="divAuxiliaryLabelPass1" class="labelTextAuxiliary labelText leftAlignPassText">@Model.FieldDetails.AuxiliaryFields[0].Label</div>
+                                    <div id="divAuxiliaryLabelPass2" class="labelTextAuxiliary labelText">@Model.FieldDetails.AuxiliaryFields[1].Label</div>
+                                    <div id="divAuxiliaryLabelPass3" class="labelTextAuxiliary labelText">@Model.FieldDetails.AuxiliaryFields[2].Label</div>
+                                    <div id="divAuxiliaryLabelPass4" class="labelTextAuxiliary labelText">@Model.FieldDetails.AuxiliaryFields[3].Label</div>
+                                    <div id="divAuxiliaryLabelPass5" class="labelTextAuxiliary labelText">@Model.FieldDetails.AuxiliaryFields[4].Label</div>
+                                </div>
+                                <div id="flexContainerAuxiliaryValues" class="flexContainerAuxiliaryFields auxiliaryFieldValues">
+                                    <div id="divAuxiliaryValuePass1" class="valueTextAuxiliary valueText leftAlignPassText">@Model.FieldDetails.AuxiliaryFields[0].Value</div>
+                                    <div id="divAuxiliaryValuePass2" class="valueTextAuxiliary valueText">@Model.FieldDetails.AuxiliaryFields[1].Value</div>
+                                    <div id="divAuxiliaryValuePass3" class="valueTextAuxiliary valueText">@Model.FieldDetails.AuxiliaryFields[2].Value</div>
+                                    <div id="divAuxiliaryValuePass4" class="valueTextAuxiliary valueText">@Model.FieldDetails.AuxiliaryFields[3].Value</div>
+                                    <div id="divAuxiliaryValuePass5" class="valueTextAuxiliary valueText">@Model.FieldDetails.AuxiliaryFields[4].Value</div>
+                                </div>
+                            </div>
+
+                            <!--Secondary area on pass-->
+                            <div id="secondaryAreaPass">
+                                <div id="flexContainerSecondaryLabels" class="flexContainerSecondaryFields">
+                                    <div id="divSecondaryLabelPass1" class="labelTextSecondary labelText leftAlignPassText">@Model.FieldDetails.SecondaryFields[0].Label</div>
+                                    <div id="divSecondaryLabelPass2" class="labelTextSecondary labelText">@Model.FieldDetails.SecondaryFields[1].Label</div>
+                                    <div id="divSecondaryLabelPass3" class="labelTextSecondary labelText">@Model.FieldDetails.SecondaryFields[2].Label</div>
+                                    <div id="divSecondaryLabelPass4" class="labelTextSecondary labelText">@Model.FieldDetails.SecondaryFields[3].Label</div>
+                                </div>
+                                <div id="flexContainerSecondaryValues" class="flexContainerSecondaryFields secondaryFieldValues">
+                                    <div id="divSecondaryValuePass1" class="valueTextSecondary valueText leftAlignPassText">@Model.FieldDetails.SecondaryFields[0].Value</div>
+                                    <div id="divSecondaryValuePass2" class="valueTextSecondary valueText">@Model.FieldDetails.SecondaryFields[1].Value</div>
+                                    <div id="divSecondaryValuePass3" class="valueTextSecondary valueText">@Model.FieldDetails.SecondaryFields[2].Value</div>
+                                    <div id="divSecondaryValuePass4" class="valueTextSecondary valueText">@Model.FieldDetails.SecondaryFields[3].Value</div>
+                                </div>
+                            </div>
+
+                            <!--Barcode area on pass-->
+                            <div id="divBarcodePass">
+                                <img id="aztecCodePass" class="barcodePass aztecCodeImgPass" src="~/Images/createCard/barcode/aztecPass.png" />
+                                <img id="qrCodePass" class="barcodePass qrCodeImgPass active" src="~/Images/createCard/barcode/qrPass.png" />
+                                <img id="pdf417CodePass" class="barcodePass pdf417CodeImgPass" src="~/Images/createCard/barcode/pdf417Pass.png" />
+                            </div>
+                        </div>
+
+
+                        <!--Back area on pass-->
+                        <div id="divbackPass" class="backAreaPass">
+                            <img src="~/Images/createCard/myImages/backPass.png" class="backPassBackgroundImg" />
+                            <div id="divBackOuter" class="backPassBlock">
+                                <div id="divBackHack" class="backHackBlock">
+                                    <img src="~/Images/createCard/myImages/uutomatic_updates.png" class="automaticUpdateImg" />
+                                    <div id="divBackContentPass" class="backPassContentBlock">
+                                        <div id="divBackFieldContentPass1" class="divBackFieldContentPass">
+                                            <div id="backLabelPass1" class="labelFieldBackPass"></div>
+                                            <div id="backValuePass1" class="valueFieldBackPass"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -167,40 +171,41 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="clearPanel" class="clearPanel"></div>
-        <div id="darkAreaLockScreen" onclick="DisNoneDarkAreaAndMap();"></div>
+            <div id="clearPanel" class="clearPanel"></div>
+            <div id="darkAreaLockScreen" onclick="DisNoneDarkAreaAndMap();"></div>
 
-        <!--Editing area-->
-        <div id="rightPanel" class="rightPanelDesigner">
-            <div class="tabbable" />
-            <div id="myTabContent" class="active">
-                <div id="contentMainTab1" class="tabMainContent active">
-                    @Html.PassSettingsTab()
-                </div>
-                <div id="contentMainTab2" class="tabMainContent">
-                    @Html.DesignTab()
-                </div>
-                <div id="contentMainTab3" class="tabMainContent">
-                    @Html.FrontContentTab()
-                </div>
-                <div id="contentMainTab4" class="tabMainContent">
-                    @Html.BackContentTab()
-                </div>
-                <div id="contentMainTab5" class="tabMainContent">
-                    @Html.LockScreenTab()
-                </div>
-                <div id="contentMainTab6" class="tabMainContent">
-                    @Html.LanguagesTab()
-                </div>
-                <div id="contentMainTab7" class="tabMainContent">
-                    @Html.DistributionTab()
+            <!--Editing area-->
+            <div id="rightPanel" class="rightPanelDesigner">
+                <div class="tabbable" />
+                <div id="myTabContent" class="active">
+                    <div id="contentMainTab1" class="tabMainContent active">
+                        @Html.PassSettingsTab()
+                    </div>
+                    <div id="contentMainTab2" class="tabMainContent">
+                        @Html.DesignTab()
+                    </div>
+                    <div id="contentMainTab3" class="tabMainContent">
+                        @Html.FrontContentTab()
+                    </div>
+                    <div id="contentMainTab4" class="tabMainContent">
+                        @Html.BackContentTab()
+                    </div>
+                    <div id="contentMainTab5" class="tabMainContent">
+                        @Html.LockScreenTab()
+                    </div>
+                    <div id="contentMainTab6" class="tabMainContent">
+                        @Html.LanguagesTab()
+                    </div>
+                    <div id="contentMainTab7" class="tabMainContent">
+                        @Html.DistributionTab()
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<input type="hidden" id="passProjectId" value="@Model.PassProjectId" />
+    <input type="hidden" id="passProjectId" value="@Model.PassProjectId" name="PassProjectId" />
+    <input type="submit" value="Html PsBk Click" />
+}
 <script src="~/Scripts/createCard/passDesigner.js">
 </script>
 
@@ -208,592 +213,595 @@
     //On load window
     jQuery(window).load(function () {
 
-    //JSON deserialize
-    //Choice pass type (radiobutton)
-    @switch (Model.PassStyle)
+        //JSON deserialize
+        //Choice pass type (radiobutton)
+        @switch (Model.PassStyle)
     {
         case PassStyle.BoardingPass:
             @:jQuery('#boardingPassImg').trigger('click');
-                break;
+                        break;
         case PassStyle.Coupon:
         @:jQuery('#couponImg').trigger('click');
-                                                                    break;
+                                                                            break;
         case PassStyle.EventTicket:
         @:jQuery('#eventTicketImg').trigger('click');
-                                                                    break;
+                                                                            break;
         case PassStyle.Generic:
         @:jQuery('#genericImg').trigger('click');
-                                                                    break;
+                                                                            break;
         case PassStyle.StoreCard:
         @:jQuery('#storeCardImg').trigger('click');
-                                                                    break;
+                                                                            break;
     }
 
-    //Choice transport type in transit pass (select list)
-    jQuery('#transitType').val('@Model.FieldDetails.TransitType.ToString()').change();
+        //Choice transport type in transit pass (select list)
+        jQuery('#transitType').val('@Model.FieldDetails.TransitType.ToString()').change();
 
-    //Choice pass serial number type (radio button)
-    @switch (Model.PassSerialNumberType)
+        //Choice pass serial number type (radio button)
+        @switch (Model.PassSerialNumberType)
     {
         case PassSerialNumberType.AutoGgenerated:
             @:jQuery('#optionsRadiosSerialNumber1').trigger('click');
-                                                                    break;
+                                                                            break;
         case PassSerialNumberType.Provided:
         @:jQuery('#optionsRadiosSerialNumber2').trigger('click');
-                                                                    break;
+                                                                            break;
         case PassSerialNumberType.SameForEachPass:
         @:jQuery('#optionsRadiosSerialNumber3').trigger('click');
-                                                                    break;
+                                                                            break;
     }
 
-    //Choice pass sertificate (select list)
-    //jQuery('#passCertificSelect').optSelected()
+        //Choice pass sertificate (select list)
+        //jQuery('#passCertificSelect').optSelected()
 
-    //Set colors
-    @*var divPassBodyColor = @Html.Raw(new JavaScriptSerializer().Serialize(ViewData["divPassBodyColor"]));
+        //Set colors
+        @*var divPassBodyColor = @Html.Raw(new JavaScriptSerializer().Serialize(ViewData["divPassBodyColor"]));
         var labelTextColor = @Html.Raw(new JavaScriptSerializer().Serialize(ViewData["labelTextColor"]));
         var valueTextColor = @Html.Raw(new JavaScriptSerializer().Serialize(ViewData["valueTextColor"]));
         jQuery('#divPassBody').css('background-color', divPassBodyColor);
         jQuery('.labelText').css('color', labelTextColor);
         jQuery('.valueText').css('color', valueTextColor);*@
 
-    //Choice pass time zone (select list)
+        //Choice pass time zone (select list)
 
-    //Location details
+        //Location details
 
-    //Choice pass link type (select list)
-    @switch (Model.DistributionDetails.PassLinkType)
+        //Choice pass link type (select list)
+        @switch (Model.DistributionDetails.PassLinkType)
     {
         case PassLinkType.Private:
-            @:jQuery('#distTypeSelect option[value="private"]').attr('selected', 'selected');
-                                                                    break;
+            @:jQuery('#distTypeSelect').val('private');
+                                                                            break;
         case PassLinkType.Public:
-        @:jQuery('#distTypeSelect option[value="public"]').attr('selected', 'selected');
-                                                                    break;
+        @:jQuery('#distTypeSelect').val('public');
+                                                                            break;
     }
 
-    //Choice void passes checkbox
-    @switch (Model.DistributionDetails.AllPassesAsExpired)
+        //Choice void passes checkbox
+        @switch (Model.DistributionDetails.AllPassesAsExpired)
     {
         case true:
             @:jQuery('#voidedCheckbox').attr('checked', 'checked');
-                                                                    break;
+                                                                            break;
         case false:
         @:jQuery('#voidedCheckbox').removeAttr('checked');
-                                                                    break;
+                                                                            break;
     }
 
-    //Quantity restriction select list
-    @if (Model.DistributionDetails.QuantityRestriction != null)
+        //Quantity restriction select list
+        @if (Model.DistributionDetails.QuantityRestriction != null)
     {
         @:jQuery('#distQuantitySelect').val('1').change();
-                                                            }
+                                                                    }
 
-    //Date restriction select list
-    @if (Model.DistributionDetails.DateRestriction != null)
+        //Date restriction select list
+        @if (Model.DistributionDetails.DateRestriction != null)
     {
         @:jQuery('#distDateRestrSelect').val('1').change();
-                                                            }
+                                                                    }
 
-    //Issue password select list
-    @if (Model.DistributionDetails.PasswordToIssue != null)
+        //Issue password select list
+        @if (Model.DistributionDetails.PasswordToIssue != null)
     {
         @:jQuery('#distPasswdSelect').val('1').change();
-                                                            }
+                                                                    }
 
-    //Password to update select list
-    @if (Model.DistributionDetails.PasswordToUpdate != null)
+        //Password to update select list
+        @if (Model.DistributionDetails.PasswordToUpdate != null)
     {
         @:jQuery('#distPasswdUpdSelect').val('1').change();
-                                                            }
+                                                                    }
 
-    //Choice barcode type
-    @switch (Model.BarcodeDetails.BarcodeType)
+        //Choice barcode type
+        @switch (Model.BarcodeDetails.BarcodeType)
     {
         case GeneralBarcodeType.AztecCode:
-            @:jQuery('#aztecCode').trigger('click');
-                                                                    break;
+            @:jQuery('#barcodeTypeSelect').val('aztecCode').change();
+                                                                            break;
         case GeneralBarcodeType.QrCode:
-        @:jQuery('#qrCode').trigger('click');
-                                                                    break;
+        @:jQuery('#barcodeTypeSelect').val('qrCode').change();
+                                                                            break;
         case GeneralBarcodeType.Pdf417Code:
-        @:jQuery('#pdf417Code').trigger('click');
-                                                                    break;
+        @:jQuery('#barcodeTypeSelect').val('pdf417Code').change();
+                                                                            break;
     }
 
-    //Choice encoded message (select list)
-    @switch (Model.BarcodeDetails.EncodedMessage)
+        //Choice encoded message (select list)
+        @switch (Model.BarcodeDetails.EncodedMessage)
     {
         case EncodedMessage.EncodeThePassSerialNumber:
             @:jQuery('#barcodeMessageSelect').val('encodeThePassSerialNumber').change();
-                                                                    break;
+                                                                            break;
         case EncodedMessage.EncodeThePassUniqueId:
         @:jQuery('#barcodeMessageSelect').val('encodeThePassUniqueId').change();
-                                                                    break;
+                                                                            break;
         case EncodedMessage.EncodeTheUrlToUpdateThePass:
         @:jQuery('#barcodeMessageSelect').val('encodeTheUrlToUpdateThePass').change();
-                                                                    break;
+                                                                            break;
         case EncodedMessage.ProvideWhenPassIsCreated:
         @:jQuery('#barcodeMessageSelect').val('provideWhenPassIsCreated').change();
-                                                                    break;
+                                                                            break;
         case EncodedMessage.EncodeTheSameMessageOnEachPass:
         @:jQuery('#barcodeMessageSelect').val('encodeTheSameMessageOnEachPass').change();
-                                                                    break;
+                                                                            break;
     }
 
-    //Choice barcode alternative text (select list)
-    @switch (Model.BarcodeDetails.AlternativeText)
+        //Choice barcode alternative text (select list)
+        @switch (Model.BarcodeDetails.AlternativeText)
     {
         case AlternativeText.DisplayTheBarcodeContent:
             @:jQuery('#barcodeAltTextSelect').val('0').change();
-                                                                    break;
+                                                                            break;
         case AlternativeText.DisplayThePassSerialNumber:
         @:jQuery('#barcodeAltTextSelect').val('displayThePassSerialNumber').change();
-                                                                    break;
+                                                                            break;
         case AlternativeText.DisplayThePassUniqueId:
         @:jQuery('#barcodeAltTextSelect').val('displayThePassUniqueId').change();
-                                                                    break;
+                                                                            break;
         case AlternativeText.ProvideWhenPassIsCreated:
         @:jQuery('#barcodeAltTextSelect').val('provideWhenPassIsCreated').change();
-                                                                    break;
+                                                                            break;
         case AlternativeText.DisplayTheSameMessageOnEachPass:
         @:jQuery('#barcodeAltTextSelect').val('displayTheSameMessageOnEachPass').change();
-                                                                    break;
+                                                                            break;
         case AlternativeText.DoNotDisplayAnyAlternativeText:
         @:jQuery('#barcodeAltTextSelect').val('doNotDisplayAnyAlternativeText').change();
-                                                                    break;
+                                                                                    break;
     }
 
-    //Header fields
-    @for (var a = 0; a < 3; a++)
+        //Choice encoding format (select list) 
+        jQuery('#encodingFormatSelect').val(@Model.BarcodeDetails.EncodingFormat);
+
+        //Header fields
+        @for (var a = 0; a < 3; a++)
     {
 
         //Marked fields checkboxes
         if (Model.FieldDetails.HeaderFields[a].IsMarkedField)
         {
-            @:jQuery('#checkboxHeader' + (@a + 1)).attr('checked', 'checked');
-                                                                }
+            @:jQuery('#checkboxHeader' + (@a +1)).attr('checked', 'checked');
+                                                                        }
         else
         {
-            @:jQuery('#checkboxHeader' + (@a + 1)).removeAttr('checked');
-                                                                }
-                                                                @:CheckAndUncheckFieldFront('checkboxHeader' + (@a + 1));
+            @:jQuery('#checkboxHeader' + (@a +1)).removeAttr('checked');
+                                                                        }
+                                                                @:CheckAndUncheckFieldFront('checkboxHeader' + (@a +1));
 
         //Dynamic and fixed radio button
         if (Model.FieldDetails.HeaderFields[a].IsDynamicLabel)
         {
-            @:jQuery('#headerLabelRadios' + (@a + 1) + '2').trigger('click');
-                                                                }
+            @:jQuery('#headerLabelRadios' + (@a +1) + '2').trigger('click');
+                                                                        }
         else
         {
-            @:jQuery('#headerLabelRadios' + (@a + 1) + '1').trigger('click');
-                                                                }
+            @:jQuery('#headerLabelRadios' + (@a +1) + '1').trigger('click');
+                                                                        }
         if (Model.FieldDetails.HeaderFields[a].IsDynamicValue)
         {
-            @:jQuery('#headerValueRadios' + (@a + 1) + '2').trigger('click');
-                                                                }
+            @:jQuery('#headerValueRadios' + (@a +1) + '2').trigger('click');
+                                                                        }
         else
         {
-            @:jQuery('#headerValueRadios' + (@a + 1) + '1').trigger('click');
-                                                                }
+            @:jQuery('#headerValueRadios' + (@a +1) + '1').trigger('click');
+                                                                        }
 
         //Field data type (select list) (without DateTime case)
         switch (Model.FieldDetails.HeaderFields[a].Type)
         {
             case GeneralField.DataType.Text:
-                @:jQuery('#selectDataTypeHeader' + (@a + 1)).val('text').change();
-                                                                        break;
+                @:jQuery('#selectDataTypeHeader' + (@a +1)).val('text').change();
+                                                                                break;
             case GeneralField.DataType.Number:
-            @:jQuery('#selectDataTypeHeader' + (@a + 1)).val('number').change();
-                                                                        break;
+            @:jQuery('#selectDataTypeHeader' + (@a +1)).val('number').change();
+                                                                                break;
             case GeneralField.DataType.Currency:
-            @:jQuery('#selectDataTypeHeader' + (@a + 1)).val('currency').change();
-                                                                        break;
+            @:jQuery('#selectDataTypeHeader' + (@a +1)).val('currency').change();
+                                                                                break;
             case GeneralField.DataType.Date:
-            @:jQuery('#selectDataTypeHeader' + (@a + 1)).val('date').change();
-                                                                        break;
+            @:jQuery('#selectDataTypeHeader' + (@a +1)).val('date').change();
+                                                                                break;
         }
 
         //Number style type (select list)
         switch (Model.FieldDetails.HeaderFields[a].NumberStyle)
         {
             case GeneralField.NumberStyleType.Decimal:
-                @:jQuery('#selectNumbStyleTypeHeader' + (@a + 1)).val('decimal').change();
-                                                                        break;
+                @:jQuery('#selectNumbStyleTypeHeader' + (@a +1)).val('decimal').change();
+                                                                                break;
             case GeneralField.NumberStyleType.Percent:
-            @:jQuery('#selectNumbStyleTypeHeader' + (@a + 1)).val('percent').change();
-                                                                        break;
+            @:jQuery('#selectNumbStyleTypeHeader' + (@a +1)).val('percent').change();
+                                                                                break;
             case GeneralField.NumberStyleType.Scientific:
-            @:jQuery('#selectNumbStyleTypeHeader' + (@a + 1)).val('scientific').change();
-                                                                        break;
+            @:jQuery('#selectNumbStyleTypeHeader' + (@a +1)).val('scientific').change();
+                                                                                break;
             case GeneralField.NumberStyleType.SpellOut:
-            @:jQuery('#selectNumbStyleTypeHeader' + (@a + 1)).val('spellOut').change();
-                                                                        break;
+            @:jQuery('#selectNumbStyleTypeHeader' + (@a +1)).val('spellOut').change();
+                                                                                break;
         }
 
         //Currency code (select list)
-        @:jQuery('#currencyCodeSelectHeader' + (@a + 1)).val('@Model.FieldDetails.HeaderFields[a].CurrencyCode').change();
+        @:jQuery('#currencyCodeSelectHeader' + (@a +1)).val('@Model.FieldDetails.HeaderFields[a].CurrencyCode').change();
 
         //Number style type (select list) (without none case)
         switch (Model.FieldDetails.HeaderFields[a].DateStyle)
         {
             case GeneralField.DateStyleType.Short:
-                @:jQuery('#selectDateStyleTypeHeader' + (@a + 1)).val('short').change();
-                                                                        break;
+                @:jQuery('#selectDateStyleTypeHeader' + (@a +1)).val('short').change();
+                                                                                break;
             case GeneralField.DateStyleType.Medium:
-            @:jQuery('#selectDateStyleTypeHeader' + (@a + 1)).val('medium').change();
-                                                                        break;
+            @:jQuery('#selectDateStyleTypeHeader' + (@a +1)).val('medium').change();
+                                                                                break;
             case GeneralField.DateStyleType.Long:
-            @:jQuery('#selectDateStyleTypeHeader' + (@a + 1)).val('long').change();
-                                                                        break;
+            @:jQuery('#selectDateStyleTypeHeader' + (@a +1)).val('long').change();
+                                                                                break;
             case GeneralField.DateStyleType.Full:
-            @:jQuery('#selectDateStyleTypeHeader' + (@a + 1)).val('full').change();
-                                                                        break;
+            @:jQuery('#selectDateStyleTypeHeader' + (@a +1)).val('full').change();
+                                                                                break;
         }
 
         //Ignores time zone checkbox
         if (Model.FieldDetails.HeaderFields[a].IgnoresTimeZone)
         {
-            @:jQuery('#checkboxIgnoreDataHeader' + (@a + 1)).attr('checked', 'checked');
-                                                                }
+            @:jQuery('#checkboxIgnoreDataHeader' + (@a +1)).attr('checked', 'checked');
+                                                                        }
         else
         {
-            @:jQuery('#checkboxIgnoreDataHeader' + (@a + 1)).removeAttr('checked');
-                                                                }
+            @:jQuery('#checkboxIgnoreDataHeader' + (@a +1)).removeAttr('checked');
+                                                                        }
 
         //'Is relative' checkbox
         if (Model.FieldDetails.HeaderFields[a].IsRelative)
         {
-            @:jQuery('#checkboxRelativeDataHeader' + (@a + 1)).attr('checked', 'checked');
-                                                                }
+            @:jQuery('#checkboxRelativeDataHeader' + (@a +1)).attr('checked', 'checked');
+                                                                        }
         else
         {
-            @:jQuery('#checkboxRelativeDataHeader' + (@a + 1)).removeAttr('checked');
-                                                                }
+            @:jQuery('#checkboxRelativeDataHeader' + (@a +1)).removeAttr('checked');
+                                                                        }
     }
 
-    //Primary fields
-    @for (var a = 0; a < 2; a++)
+        //Primary fields
+        @for (var a = 0; a < 2; a++)
     {
 
         //Marked fields checkboxes
         if (Model.FieldDetails.PrimaryFields[a].IsMarkedField)
         {
-            @:jQuery('#checkboxPrimary' + (@a + 1)).attr('checked', 'checked');
-                                                                }
+            @:jQuery('#checkboxPrimary' + (@a +1)).attr('checked', 'checked');
+                                                                        }
         else
         {
-            @:jQuery('#checkboxPrimary' + (@a + 1)).removeAttr('checked');
-                                                                }
-                                                                @:CheckAndUncheckFieldFront('checkboxPrimary' + (@a + 1));
+            @:jQuery('#checkboxPrimary' + (@a +1)).removeAttr('checked');
+                                                                        }
+                                                                @:CheckAndUncheckFieldFront('checkboxPrimary' + (@a +1));
 
         //Dynamic and fixed radio button
         if (Model.FieldDetails.PrimaryFields[a].IsDynamicLabel)
         {
-            @:jQuery('#primaryLabelRadios' + (@a + 1) + '2').trigger('click');
-                                                                }
+            @:jQuery('#primaryLabelRadios' + (@a +1) + '2').trigger('click');
+                                                                        }
         else
         {
-            @:jQuery('#primaryLabelRadios' + (@a + 1) + '1').trigger('click');
-                                                                }
+            @:jQuery('#primaryLabelRadios' + (@a +1) + '1').trigger('click');
+                                                                        }
         if (Model.FieldDetails.PrimaryFields[a].IsDynamicValue)
         {
-            @:jQuery('#primaryValueRadios' + (@a + 1) + '2').trigger('click');
-                                                                }
+            @:jQuery('#primaryValueRadios' + (@a +1) + '2').trigger('click');
+                                                                        }
         else
         {
-            @:jQuery('#primaryValueRadios' + (@a + 1) + '1').trigger('click');
-                                                                }
+            @:jQuery('#primaryValueRadios' + (@a +1) + '1').trigger('click');
+                                                                        }
 
         //Field data type (select list) (without DateTime case)
         switch (Model.FieldDetails.PrimaryFields[a].Type)
         {
             case GeneralField.DataType.Text:
-                @:jQuery('#selectDataTypePrimary' + (@a + 1)).val('text').change();
-                                                                        break;
+                @:jQuery('#selectDataTypePrimary' + (@a +1)).val('text').change();
+                                                                                break;
             case GeneralField.DataType.Number:
-            @:jQuery('#selectDataTypePrimary' + (@a + 1)).val('number').change();
-                                                                        break;
+            @:jQuery('#selectDataTypePrimary' + (@a +1)).val('number').change();
+                                                                                break;
             case GeneralField.DataType.Currency:
-            @:jQuery('#selectDataTypePrimary' + (@a + 1)).val('currency').change();
-                                                                        break;
+            @:jQuery('#selectDataTypePrimary' + (@a +1)).val('currency').change();
+                                                                                break;
             case GeneralField.DataType.Date:
-            @:jQuery('#selectDataTypePrimary' + (@a + 1)).val('date').change();
-                                                                        break;
+            @:jQuery('#selectDataTypePrimary' + (@a +1)).val('date').change();
+                                                                                break;
         }
 
         //Number style type (select list)
         switch (Model.FieldDetails.PrimaryFields[a].NumberStyle)
         {
             case GeneralField.NumberStyleType.Decimal:
-                @:jQuery('#selectNumbStyleTypePrimary' + (@a + 1)).val('decimal').change();
-                                                                        break;
+                @:jQuery('#selectNumbStyleTypePrimary' + (@a +1)).val('decimal').change();
+                                                                                break;
             case GeneralField.NumberStyleType.Percent:
-            @:jQuery('#selectNumbStyleTypePrimary' + (@a + 1)).val('percent').change();
-                                                                        break;
+            @:jQuery('#selectNumbStyleTypePrimary' + (@a +1)).val('percent').change();
+                                                                                break;
             case GeneralField.NumberStyleType.Scientific:
-            @:jQuery('#selectNumbStyleTypePrimary' + (@a + 1)).val('scientific').change();
-                                                                        break;
+            @:jQuery('#selectNumbStyleTypePrimary' + (@a +1)).val('scientific').change();
+                                                                                break;
             case GeneralField.NumberStyleType.SpellOut:
-            @:jQuery('#selectNumbStyleTypePrimary' + (@a + 1)).val('spellOut').change();
-                                                                        break;
+            @:jQuery('#selectNumbStyleTypePrimary' + (@a +1)).val('spellOut').change();
+                                                                                break;
         }
 
         //Currency code (select list)
-        @:jQuery('#currencyCodeSelectPrimary' + (@a + 1)).val('@Model.FieldDetails.PrimaryFields[a].CurrencyCode').change();
+        @:jQuery('#currencyCodeSelectPrimary' + (@a +1)).val('@Model.FieldDetails.PrimaryFields[a].CurrencyCode').change();
 
         //Number style type (select list) (without none case)
         switch (Model.FieldDetails.PrimaryFields[a].DateStyle)
         {
             case GeneralField.DateStyleType.Short:
-                @:jQuery('#selectDateStyleTypePrimary' + (@a + 1)).val('short').change();
-                                                                        break;
+                @:jQuery('#selectDateStyleTypePrimary' + (@a +1)).val('short').change();
+                                                                                break;
             case GeneralField.DateStyleType.Medium:
-            @:jQuery('#selectDateStyleTypePrimary' + (@a + 1)).val('medium').change();
-                                                                        break;
+            @:jQuery('#selectDateStyleTypePrimary' + (@a +1)).val('medium').change();
+                                                                                break;
             case GeneralField.DateStyleType.Long:
-            @:jQuery('#selectDateStyleTypePrimary' + (@a + 1)).val('long').change();
-                                                                        break;
+            @:jQuery('#selectDateStyleTypePrimary' + (@a +1)).val('long').change();
+                                                                                break;
             case GeneralField.DateStyleType.Full:
-            @:jQuery('#selectDateStyleTypePrimary' + (@a + 1)).val('full').change();
-                                                                        break;
+            @:jQuery('#selectDateStyleTypePrimary' + (@a +1)).val('full').change();
+                                                                                break;
         }
 
         //Ignores time zone checkbox
         if (Model.FieldDetails.PrimaryFields[a].IgnoresTimeZone)
         {
-            @:jQuery('#checkboxIgnoreDataPrimary' + (@a + 1)).attr('checked', 'checked');
-                                                                }
+            @:jQuery('#checkboxIgnoreDataPrimary' + (@a +1)).attr('checked', 'checked');
+                                                                        }
         else
         {
-            @:jQuery('#checkboxIgnoreDataPrimary' + (@a + 1)).removeAttr('checked');
-                                                                }
+            @:jQuery('#checkboxIgnoreDataPrimary' + (@a +1)).removeAttr('checked');
+                                                                        }
 
         //'Is relative' checkbox
         if (Model.FieldDetails.PrimaryFields[a].IsRelative)
         {
-            @:jQuery('#checkboxRelativeDataPrimary' + (@a + 1)).attr('checked', 'checked');
-                                                                }
+            @:jQuery('#checkboxRelativeDataPrimary' + (@a +1)).attr('checked', 'checked');
+                                                                        }
         else
         {
-            @:jQuery('#checkboxRelativeDataPrimary' + (@a + 1)).removeAttr('checked');
-                                                                }
+            @:jQuery('#checkboxRelativeDataPrimary' + (@a +1)).removeAttr('checked');
+                                                                        }
     }
 
-    //Auxiliary fields
-    @for (var a = 0; a < 5; a++)
+        //Auxiliary fields
+        @for (var a = 0; a < 5; a++)
     {
 
         //Marked fields checkboxes
         if (Model.FieldDetails.AuxiliaryFields[a].IsMarkedField)
         {
-            @:jQuery('#checkboxAuxiliary' + (@a + 1)).attr('checked', 'checked');
-                                                                                                    }
+            @:jQuery('#checkboxAuxiliary' + (@a +1)).attr('checked', 'checked');
+                                                                                                            }
         else
         {
-            @:jQuery('#checkboxAuxiliary' + (@a + 1)).removeAttr('checked');
-                                                                                                    }
-                                                                                                    @:CheckAndUncheckFieldFront('checkboxAuxiliary' + (@a + 1));
+            @:jQuery('#checkboxAuxiliary' + (@a +1)).removeAttr('checked');
+                                                                                                            }
+                                                                                                    @:CheckAndUncheckFieldFront('checkboxAuxiliary' + (@a +1));
 
         //Dynamic and fixed radio button
         if (Model.FieldDetails.AuxiliaryFields[a].IsDynamicLabel)
         {
-            @:jQuery('#auxiliaryLabelRadios' + (@a + 1) + '2').trigger('click');
-                                                                                                    }
+            @:jQuery('#auxiliaryLabelRadios' + (@a +1) + '2').trigger('click');
+                                                                                                            }
         else
         {
-            @:jQuery('#auxiliaryLabelRadios' + (@a + 1) + '1').trigger('click');
-                                                                                                    }
+            @:jQuery('#auxiliaryLabelRadios' + (@a +1) + '1').trigger('click');
+                                                                                                            }
         if (Model.FieldDetails.AuxiliaryFields[a].IsDynamicValue)
         {
-            @:jQuery('#auxiliaryValueRadios' + (@a + 1) + '2').trigger('click');
-                                                                                                    }
+            @:jQuery('#auxiliaryValueRadios' + (@a +1) + '2').trigger('click');
+                                                                                                            }
         else
         {
-            @:jQuery('#auxiliaryValueRadios' + (@a + 1) + '1').trigger('click');
-                                                                                                    }
+            @:jQuery('#auxiliaryValueRadios' + (@a +1) + '1').trigger('click');
+                                                                                                            }
 
         //Field data type (select list) (without DateTime case)
         switch (Model.FieldDetails.AuxiliaryFields[a].Type)
         {
             case GeneralField.DataType.Text:
-                @:jQuery('#selectDataTypeAuxiliary' + (@a + 1)).val('text').change();
-                                                                        break;
+                @:jQuery('#selectDataTypeAuxiliary' + (@a +1)).val('text').change();
+                                                                                break;
             case GeneralField.DataType.Number:
-            @:jQuery('#selectDataTypeAuxiliary' + (@a + 1)).val('number').change();
-                                                                         break;
+            @:jQuery('#selectDataTypeAuxiliary' + (@a +1)).val('number').change();
+                                                                                 break;
             case GeneralField.DataType.Currency:
-            @:jQuery('#selectDataTypeAuxiliary' + (@a + 1)).val('currency').change();
-                                                                        break;
+            @:jQuery('#selectDataTypeAuxiliary' + (@a +1)).val('currency').change();
+                                                                                break;
             case GeneralField.DataType.Date:
-            @:jQuery('#selectDataTypeAuxiliary' + (@a + 1)).val('date').change();
-                                                                        break;
+            @:jQuery('#selectDataTypeAuxiliary' + (@a +1)).val('date').change();
+                                                                                break;
         }
 
         //Number style type (select list)
         switch (Model.FieldDetails.AuxiliaryFields[a].NumberStyle)
         {
             case GeneralField.NumberStyleType.Decimal:
-                @:jQuery('#selectNumbStyleTypeAuxiliary' + (@a + 1)).val('decimal').change();
-                                                                        break;
+                @:jQuery('#selectNumbStyleTypeAuxiliary' + (@a +1)).val('decimal').change();
+                                                                                break;
             case GeneralField.NumberStyleType.Percent:
-            @:jQuery('#selectNumbStyleTypeAuxiliary' + (@a + 1)).val('percent').change();
-                                                                         break;
+            @:jQuery('#selectNumbStyleTypeAuxiliary' + (@a +1)).val('percent').change();
+                                                                                 break;
             case GeneralField.NumberStyleType.Scientific:
-            @:jQuery('#selectNumbStyleTypeAuxiliary' + (@a + 1)).val('scientific').change();
-                                                                        break;
+            @:jQuery('#selectNumbStyleTypeAuxiliary' + (@a +1)).val('scientific').change();
+                                                                                break;
             case GeneralField.NumberStyleType.SpellOut:
-            @:jQuery('#selectNumbStyleTypeAuxiliary' + (@a + 1)).val('spellOut').change();
-                                                                        break;
+            @:jQuery('#selectNumbStyleTypeAuxiliary' + (@a +1)).val('spellOut').change();
+                                                                                break;
         }
 
         //Currency code (select list)
-        @:jQuery('#currencyCodeSelectAuxiliary' + (@a + 1)).val('@Model.FieldDetails.AuxiliaryFields[a].CurrencyCode').change();
+        @:jQuery('#currencyCodeSelectAuxiliary' + (@a +1)).val('@Model.FieldDetails.AuxiliaryFields[a].CurrencyCode').change();
 
         //Number style type (select list) (without none case)
         switch (Model.FieldDetails.AuxiliaryFields[a].DateStyle)
         {
             case GeneralField.DateStyleType.Short:
-                @:jQuery('#selectDateStyleTypeAuxiliary' + (@a + 1)).val('short').change();
-                                                                        break;
+                @:jQuery('#selectDateStyleTypeAuxiliary' + (@a +1)).val('short').change();
+                                                                                break;
             case GeneralField.DateStyleType.Medium:
-            @:jQuery('#selectDateStyleTypeAuxiliary' + (@a + 1)).val('medium').change();
-                                                                         break;
+            @:jQuery('#selectDateStyleTypeAuxiliary' + (@a +1)).val('medium').change();
+                                                                                 break;
             case GeneralField.DateStyleType.Long:
-            @:jQuery('#selectDateStyleTypeAuxiliary' + (@a + 1)).val('long').change();
-                                                                        break;
+            @:jQuery('#selectDateStyleTypeAuxiliary' + (@a +1)).val('long').change();
+                                                                                break;
             case GeneralField.DateStyleType.Full:
-            @:jQuery('#selectDateStyleTypeAuxiliary' + (@a + 1)).val('full').change();
-                                                                        break;
+            @:jQuery('#selectDateStyleTypeAuxiliary' + (@a +1)).val('full').change();
+                                                                                break;
         }
 
         //Ignores time zone checkbox
         if (Model.FieldDetails.AuxiliaryFields[a].IgnoresTimeZone)
         {
-            @:jQuery('#checkboxIgnoreDataAuxiliary' + (@a + 1)).attr('checked', 'checked');
-                                                                }
+            @:jQuery('#checkboxIgnoreDataAuxiliary' + (@a +1)).attr('checked', 'checked');
+                                                                        }
         else
         {
-            @:jQuery('#checkboxIgnoreDataAuxiliary' + (@a + 1)).removeAttr('checked');
-                                                                }
+            @:jQuery('#checkboxIgnoreDataAuxiliary' + (@a +1)).removeAttr('checked');
+                                                                        }
 
         //'Is relative' checkbox
         if (Model.FieldDetails.AuxiliaryFields[a].IsRelative)
         {
-            @:jQuery('#checkboxRelativeDataAuxiliary' + (@a + 1)).attr('checked', 'checked');
-                                                                }
+            @:jQuery('#checkboxRelativeDataAuxiliary' + (@a +1)).attr('checked', 'checked');
+                                                                        }
         else
         {
-            @:jQuery('#checkboxRelativeDataAuxiliary' + (@a + 1)).removeAttr('checked');
-                                                                }
+            @:jQuery('#checkboxRelativeDataAuxiliary' + (@a +1)).removeAttr('checked');
+                                                                        }
     }
 
-    //Secondary fields
-    @for (var a = 0; a < 4; a++)
+        //Secondary fields
+        @for (var a = 0; a < 4; a++)
     {
 
         //Marked fields checkboxes
         if (Model.FieldDetails.SecondaryFields[a].IsMarkedField)
         {
-            @:jQuery('#checkboxSecondary' + (@a + 1)).attr('checked', 'checked');
-                                                                }
+            @:jQuery('#checkboxSecondary' + (@a +1)).attr('checked', 'checked');
+                                                                        }
         else
         {
-            @:jQuery('#checkboxSecondary' + (@a + 1)).removeAttr('checked');
-                                                                }
-                                                                @:CheckAndUncheckFieldFront('checkboxSecondary' + (@a + 1));
+            @:jQuery('#checkboxSecondary' + (@a +1)).removeAttr('checked');
+                                                                        }
+                                                                @:CheckAndUncheckFieldFront('checkboxSecondary' + (@a +1));
 
         //Dynamic and fixed radio button
         if (Model.FieldDetails.SecondaryFields[a].IsDynamicLabel)
         {
-            @:jQuery('#secondaryLabelRadios' + (@a + 1) + '2').trigger('click');
-                                                                }
+            @:jQuery('#secondaryLabelRadios' + (@a +1) + '2').trigger('click');
+                                                                        }
         else
         {
-            @:jQuery('#secondaryLabelRadios' + (@a + 1) + '1').trigger('click');
-                                                                }
+            @:jQuery('#secondaryLabelRadios' + (@a +1) + '1').trigger('click');
+                                                                        }
         if (Model.FieldDetails.SecondaryFields[a].IsDynamicValue)
         {
-            @:jQuery('#secondaryValueRadios' + (@a + 1) + '2').trigger('click');
-                                                                }
+            @:jQuery('#secondaryValueRadios' + (@a +1) + '2').trigger('click');
+                                                                        }
         else
         {
-            @:jQuery('#secondaryValueRadios' + (@a + 1) + '1').trigger('click');
-                                                                }
+            @:jQuery('#secondaryValueRadios' + (@a +1) + '1').trigger('click');
+                                                                        }
 
         //Field data type (select list) (without DateTime case)
         switch (Model.FieldDetails.SecondaryFields[a].Type)
         {
             case GeneralField.DataType.Text:
-                @:jQuery('#selectDataTypeSecondary' + (@a + 1)).val('text').change();
-                                                                        break;
+                @:jQuery('#selectDataTypeSecondary' + (@a +1)).val('text').change();
+                                                                                break;
             case GeneralField.DataType.Number:
-            @:jQuery('#selectDataTypeSecondary' + (@a + 1)).val('number').change();
-                                                                        break;
+            @:jQuery('#selectDataTypeSecondary' + (@a +1)).val('number').change();
+                                                                                break;
             case GeneralField.DataType.Currency:
-            @:jQuery('#selectDataTypeSecondary' + (@a + 1)).val('currency').change();
-                                                                        break;
+            @:jQuery('#selectDataTypeSecondary' + (@a +1)).val('currency').change();
+                                                                                break;
             case GeneralField.DataType.Date:
-            @:jQuery('#selectDataTypeSecondary' + (@a + 1)).val('date').change();
-                                                                        break;
+            @:jQuery('#selectDataTypeSecondary' + (@a +1)).val('date').change();
+                                                                                break;
         }
 
         //Number style type (select list)
         switch (Model.FieldDetails.SecondaryFields[a].NumberStyle)
         {
             case GeneralField.NumberStyleType.Decimal:
-                @:jQuery('#selectNumbStyleTypeSecondary' + (@a + 1)).val('decimal').change();
-                                                                        break;
+                @:jQuery('#selectNumbStyleTypeSecondary' + (@a +1)).val('decimal').change();
+                                                                                break;
             case GeneralField.NumberStyleType.Percent:
-            @:jQuery('#selectNumbStyleTypeSecondary' + (@a + 1)).val('percent').change();
-                                                                        break;
+            @:jQuery('#selectNumbStyleTypeSecondary' + (@a +1)).val('percent').change();
+                                                                                break;
             case GeneralField.NumberStyleType.Scientific:
-            @:jQuery('#selectNumbStyleTypeSecondary' + (@a + 1)).val('scientific').change();
-                                                                        break;
+            @:jQuery('#selectNumbStyleTypeSecondary' + (@a +1)).val('scientific').change();
+                                                                                break;
             case GeneralField.NumberStyleType.SpellOut:
-            @:jQuery('#selectNumbStyleTypeSecondary' + (@a + 1)).val('spellOut').change();
-                                                                        break;
+            @:jQuery('#selectNumbStyleTypeSecondary' + (@a +1)).val('spellOut').change();
+                                                                                break;
         }
 
         //Currency code (select list)
-        @:jQuery('#currencyCodeSelectSecondary' + (@a + 1)).val('@Model.FieldDetails.SecondaryFields[a].CurrencyCode').change();
+        @:jQuery('#currencyCodeSelectSecondary' + (@a +1)).val('@Model.FieldDetails.SecondaryFields[a].CurrencyCode').change();
 
         //Number style type (select list) (without none case)
         switch (Model.FieldDetails.SecondaryFields[a].DateStyle)
         {
             case GeneralField.DateStyleType.Short:
-                @:jQuery('#selectDateStyleTypeSecondary' + (@a + 1)).val('short').change();
-                                                                        break;
+                @:jQuery('#selectDateStyleTypeSecondary' + (@a +1)).val('short').change();
+                                                                                break;
             case GeneralField.DateStyleType.Medium:
-            @:jQuery('#selectDateStyleTypeSecondary' + (@a + 1)).val('medium').change();
-                                                                        break;
+            @:jQuery('#selectDateStyleTypeSecondary' + (@a +1)).val('medium').change();
+                                                                                break;
             case GeneralField.DateStyleType.Long:
-            @:jQuery('#selectDateStyleTypeSecondary' + (@a + 1)).val('long').change();
-                                                                        break;
+            @:jQuery('#selectDateStyleTypeSecondary' + (@a +1)).val('long').change();
+                                                                                break;
             case GeneralField.DateStyleType.Full:
-            @:jQuery('#selectDateStyleTypeSecondary' + (@a + 1)).val('full').change();
-                                                                        break;
+            @:jQuery('#selectDateStyleTypeSecondary' + (@a +1)).val('full').change();
+                                                                                break;
         }
 
         //Ignores time zone checkbox
         if (Model.FieldDetails.SecondaryFields[a].IgnoresTimeZone)
         {
-            @:jQuery('#checkboxIgnoreDataSecondary' + (@a + 1)).attr('checked', 'checked');
-                                                                }
+            @:jQuery('#checkboxIgnoreDataSecondary' + (@a +1)).attr('checked', 'checked');
+                                                                        }
         else
         {
-            @:jQuery('#checkboxIgnoreDataSecondary' + (@a + 1)).removeAttr('checked');
-                                                                }
+            @:jQuery('#checkboxIgnoreDataSecondary' + (@a +1)).removeAttr('checked');
+                                                                        }
 
         //'Is relative' checkbox
         if (Model.FieldDetails.SecondaryFields[a].IsRelative)
         {
-            @:jQuery('#checkboxRelativeDataSecondary' + (@a + 1)).attr('checked', 'checked');
-                                                                }
+            @:jQuery('#checkboxRelativeDataSecondary' + (@a +1)).attr('checked', 'checked');
+                                                                        }
         else
         {
-            @:jQuery('#checkboxRelativeDataSecondary' + (@a + 1)).removeAttr('checked');
-                                                                }
+            @:jQuery('#checkboxRelativeDataSecondary' + (@a +1)).removeAttr('checked');
+                                                                        }
     }
 
 

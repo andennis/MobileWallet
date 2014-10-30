@@ -15,7 +15,7 @@
             <p class="labelInput">
                 <a data-toggle="tooltip" title="Этот необязательный текст будет расположен рядом с логотипом, при условии, что есть место">&nbsp;&nbsp;Название</a>
             </p>
-            <input id="logoTextInput" type="text" class="form-control" placeholder="Название" value="@Model.LogoText" maxlength="30" style="width: 300px; height: 28px;" onkeyup="document.getElementById('divLogoTextPass').innerHTML = this.value; ChangWidthFlexContainerHeaderPass()" />
+            <input id="logoTextInput" type="text" class="form-control" name="LogoText" placeholder="Название" value="@Model.LogoText" maxlength="30" style="width: 300px; height: 28px;" onkeyup="document.getElementById('divLogoTextPass').innerHTML = this.value; ChangWidthFlexContainerHeaderPass()" />
         </div>
         <br />
         <div id="mainCollapsePanelHeaderContent">
@@ -23,7 +23,7 @@
             <!--Header collapse field 1-->
             <div id="collapsePanelHeaderContent1" class="panel">
                 <div class="collapseLinkContent">
-                    <input type="checkbox" name="checkboxG3" id="checkboxHeader1" class="checkboxCollapse" onchange="CheckAndUncheckFieldFront(id);">
+                    <input id="checkboxHeader1" class="checkboxCollapse" type="checkbox" name="FieldDetails.HeaderFields[0].IsMarkedField" value="true" onchange="CheckAndUncheckFieldFront(id);">
                     <label for="checkboxHeader1" class="checkboxCollapseLabel"></label>
                     <a data-toggle="collapse" data-parent="#mainCollapsePanelHeaderContent" href="#collapseContentHeader1">
                         <p class="labelInput">
@@ -31,7 +31,7 @@
                         </p>
                         <img src="~/Images/createCard/expand.png" class="expandImageCollapse" data-toggle="tooltip" title="Развернуть(свернуть) поле" />
                     </a>
-                    <input id="headerLabelCollapseInput1" class="form-control textInputNameContent" value="@Model.FieldDetails.HeaderFields[0].Key" maxlength="20" placeholder="Обязательное" onkeyup="CheckCheckboxAfterInput(id);" />
+                    <input id="headerLabelCollapseInput1" class="form-control textInputNameContent" name="FieldDetails.HeaderFields[0].Key" value="@Model.FieldDetails.HeaderFields[0].Key" maxlength="20" placeholder="Обязательное" onkeyup="CheckCheckboxAfterInput(id);" />
                 </div>
                 <div id="collapseContentHeader1" class="collapseContent collapse in">
                     <div id="divHeaderLabelText">
@@ -41,19 +41,19 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="optionsRadiosHeaderLabel1" id="headerLabelRadios11" value="option1" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.HeaderFields[0].IsDynamicLabel" id="headerLabelRadios11" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);" checked>
                                     Фиксированный
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="optionsRadiosHeaderLabel1" id="headerLabelRadios12" value="option2" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);">
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.HeaderFields[0].IsDynamicLabel" id="headerLabelRadios12" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);">
                                     Динамический
                                 </label>
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="headerLabelTextInput1" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Необязательный" value="@Model.FieldDetails.HeaderFields[0].Label" maxlength="30"
+                            <input id="headerLabelTextInput1" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.HeaderFields[0].Label" placeholder="Необязательный" value="@Model.FieldDetails.HeaderFields[0].Label" maxlength="30"
                                    onkeyup="document.getElementById('divHeaderLabelPass1').innerHTML = this.value; ChangeWidthHeaderTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="headerLabelRadios1Prompt" class="rdiosPrompt"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -71,19 +71,19 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="optionsRadiosHeaderValue1" id="headerValueRadios11" value="option1" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);">
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.HeaderFields[0].IsDynamicValue" id="headerValueRadios11" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);">
                                     Фиксированное
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="optionsRadiosHeaderValue1" id="headerValueRadios12" value="option2" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.HeaderFields[0].IsDynamicValue" id="headerValueRadios12" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);" checked>
                                     Динамическое
                                 </label>
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="headerValueTextInput1" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Необязательное" value="@Model.FieldDetails.HeaderFields[0].Value" maxlength="30"
+                            <input id="headerValueTextInput1" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.HeaderFields[0].Value" placeholder="Необязательное" value="@Model.FieldDetails.HeaderFields[0].Value" maxlength="30"
                                    onkeyup="document.getElementById('divHeaderValuePass1').innerHTML = this.value; ChangeWidthHeaderTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="headerValueRadios1Prompt" class="rdiosPrompt displayBlock"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -99,11 +99,11 @@
                             <span data-toggle="tooltip" title="Чтобы включить новое значение данных в сообщение, вставте &#37;&#64; туда, где бы Вы хотели, чтобы это новое значение появилось.
                              Например: Теперь баланс Вашей карты составляет &#37;&#64; рублей">Уведомление, отображаемое при изменении данных</span>
                         </p>
-                        <input id="notificationInputHeader1" class="form-control textInputNameContent" value="@Model.FieldDetails.HeaderFields[0].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
+                        <input id="notificationInputHeader1" class="form-control textInputNameContent" name="FieldDetails.HeaderFields[0].ChangeMessage" value="@Model.FieldDetails.HeaderFields[0].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
                     </div>
                     <div class="divDataTypeCollapseField">
                         <p class="pDataTypeCollapseField"><span data-toggle="tooltip" title="tttttttа">Тип данных</span></p>
-                        <select id="selectDataTypeHeader1" class="form-control textInputNameContent" onchange="DisplayBlockDesiredSelect(id);">
+                        <select id="selectDataTypeHeader1" class="form-control textInputNameContent" name="FieldDetails.HeaderFields[0].Type" onchange="DisplayBlockDesiredSelect(id);">
                             <option value="text" selected>Текст</option>
                             <option value="number">Число</option>
                             <option value="currency">Валюта</option>
@@ -161,7 +161,7 @@
             <!--Header collapse field 2-->
             <div id="collapsePanelHeaderContent2" class="panel">
                 <div class="collapseLinkContent">
-                    <input type="checkbox" name="checkboxG3" id="checkboxHeader2" class="checkboxCollapse" onchange="CheckAndUncheckFieldFront(id);">
+                    <input type="checkbox" id="checkboxHeader2" class="checkboxCollapse" name="FieldDetails.HeaderFields[1].IsMarkedField" value="true" onchange="CheckAndUncheckFieldFront(id);">
                     <label for="checkboxHeader2" class="checkboxCollapseLabel"></label>
                     <a data-toggle="collapse" data-parent="#mainCollapsePanelHeaderContent" href="#collapseContentHeader2">
                         <p class="labelInput">
@@ -169,7 +169,7 @@
                         </p>
                         <img src="~/Images/createCard/expand.png" class="expandImageCollapse" data-toggle="tooltip" title="Развернуть(свернуть) поле" />
                     </a>
-                    <input id="headerLabelCollapseInput2" class="form-control textInputNameContent" value="@Model.FieldDetails.HeaderFields[1].Key" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
+                    <input id="headerLabelCollapseInput2" class="form-control textInputNameContent" name="FieldDetails.HeaderFields[1].Key" value="@Model.FieldDetails.HeaderFields[1].Key" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
                 </div>
                 <div id="collapseContentHeader2" class="collapseContent collapse">
                     <div id="divHeaderLabelText">
@@ -179,19 +179,19 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="optionsRadiosHeaderLabel2" id="headerLabelRadios21" value="option1" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.HeaderFields[1].IsDynamicLabel" id="headerLabelRadios21" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);" checked>
                                     Фиксированный
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="optionsRadiosHeaderLabel2" id="headerLabelRadios22" value="option2" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);">
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.HeaderFields[1].IsDynamicLabel" id="headerLabelRadios22" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);">
                                     Динамический
                                 </label>
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="headerLabelTextInput2" type="text" class="form-control LabelAndValueInputCollapse" value="@Model.FieldDetails.HeaderFields[1].Label" placeholder="Обязательный" maxlength="30"
+                            <input id="headerLabelTextInput2" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.HeaderFields[1].Label" value="@Model.FieldDetails.HeaderFields[1].Label" placeholder="Обязательный" maxlength="30"
                                    onkeyup="document.getElementById('divHeaderLabelPass2').innerHTML = this.value; ChangeWidthHeaderTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="headerLabelRadios2Prompt" class="rdiosPrompt"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -209,19 +209,19 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="optionsRadiosHeaderValue2" id="headerValueRadios21" value="option1" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);">
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.HeaderFields[1].IsDynamicValue" id="headerValueRadios21" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);">
                                     Фиксированное
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="optionsRadiosHeaderValue2" id="headerValueRadios22" value="option2" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.HeaderFields[1].IsDynamicValue" id="headerValueRadios22" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);" checked>
                                     Динамическое
                                 </label>
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="headerValueTextInput2" type="text" class="form-control LabelAndValueInputCollapse" value="@Model.FieldDetails.HeaderFields[1].Value" placeholder="Необязательное" maxlength="30"
+                            <input id="headerValueTextInput2" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.HeaderFields[1].Value" value="@Model.FieldDetails.HeaderFields[1].Value" placeholder="Необязательное" maxlength="30"
                                    onkeyup="document.getElementById('divHeaderValuePass2').innerHTML = this.value; ChangeWidthHeaderTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="headerValueRadios2Prompt" class="rdiosPrompt displayBlock"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -237,11 +237,11 @@
                             <span data-toggle="tooltip" title="Чтобы включить новое значение данных в сообщение, вставте &#37;&#64; туда, где бы Вы хотели, чтобы это новое значение появилось.
                              Например: Теперь баланс Вашей карты составляет &#37;&#64; рублей">Уведомление, отображаемое при изменении данных</span>
                         </p>
-                        <input id="notificationInputHeader2" class="form-control textInputNameContent" value="@Model.FieldDetails.HeaderFields[1].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
+                        <input id="notificationInputHeader2" class="form-control textInputNameContent" name="FieldDetails.HeaderFields[1].ChangeMessage" value="@Model.FieldDetails.HeaderFields[1].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
                     </div>
                     <div class="divDataTypeCollapseField">
                         <p class="pDataTypeCollapseField"><span data-toggle="tooltip" title="tttttttа">Тип данных</span></p>
-                        <select id="selectDataTypeHeader2" class="form-control textInputNameContent" onchange="DisplayBlockDesiredSelect(id);">
+                        <select id="selectDataTypeHeader2" class="form-control textInputNameContent" name="FieldDetails.HeaderFields[1].Type" onchange="DisplayBlockDesiredSelect(id);">
                             <option value="text" selected>Текст</option>
                             <option value="number">Число</option>
                             <option value="currency">Валюта</option>
@@ -299,7 +299,7 @@
             <!--Header collapse field 3-->
             <div id="collapsePanelHeaderContent3" class="panel">
                 <div class="collapseLinkContent">
-                    <input type="checkbox" name="checkboxG3" id="checkboxHeader3" class="checkboxCollapse" onchange="CheckAndUncheckFieldFront(id);">
+                    <input type="checkbox" id="checkboxHeader3" class="checkboxCollapse" name="FieldDetails.HeaderFields[2].IsMarkedField" value="true" onchange="CheckAndUncheckFieldFront(id);">
                     <label for="checkboxHeader3" class="checkboxCollapseLabel"></label>
                     <a data-toggle="collapse" data-parent="#mainCollapsePanelHeaderContent" href="#collapseContentHeader3">
                         <p class="labelInput">
@@ -307,7 +307,7 @@
                         </p>
                         <img src="~/Images/createCard/expand.png" class="expandImageCollapse" data-toggle="tooltip" title="Развернуть(свернуть) поле" />
                     </a>
-                    <input id="headerLabelCollapseInput3" class="form-control textInputNameContent" value="@Model.FieldDetails.HeaderFields[2].Key" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
+                    <input id="headerLabelCollapseInput3" class="form-control textInputNameContent" name="FieldDetails.HeaderFields[2].Key" value="@Model.FieldDetails.HeaderFields[2].Key" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
                 </div>
                 <div id="collapseContentHeader3" class="collapseContent collapse">
                     <div id="divHeaderLabelText">
@@ -317,19 +317,19 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="optionsRadiosHeaderLabel3" id="headerLabelRadios31" value="option1" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.HeaderFields[2].IsDynamicLabel" id="headerLabelRadios31" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);" checked>
                                     Фиксированный
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="optionsRadiosHeaderLabel3" id="headerLabelRadios32" value="option2" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);">
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.HeaderFields[2].IsDynamicLabel" id="headerLabelRadios32" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);">
                                     Динамический
                                 </label>
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="headerLabelTextInput3" type="text" class="form-control LabelAndValueInputCollapse" value="@Model.FieldDetails.HeaderFields[2].Label" placeholder="Обязательный" maxlength="30"
+                            <input id="headerLabelTextInput3" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.HeaderFields[2].Label" value="@Model.FieldDetails.HeaderFields[2].Label" placeholder="Обязательный" maxlength="30"
                                    onkeyup="document.getElementById('divHeaderLabelPass3').innerHTML = this.value; ChangeWidthHeaderTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="headerLabelRadios3Prompt" class="rdiosPrompt"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -347,19 +347,19 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="optionsRadiosHeaderValue3" id="headerValueRadios31" value="option1" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);">
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.HeaderFields[2].IsDynamicValue" id="headerValueRadios31" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);">
                                     Фиксированное
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="optionsRadiosHeaderValue3" id="headerValueRadios32" value="option2" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.HeaderFields[2].IsDynamicValue" id="headerValueRadios32" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);" checked>
                                     Динамическое
                                 </label>
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="headerValueTextInput3" type="text" class="form-control LabelAndValueInputCollapse" value="@Model.FieldDetails.HeaderFields[2].Value" placeholder="Необязательное" maxlength="30"
+                            <input id="headerValueTextInput3" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.HeaderFields[2].Value" value="@Model.FieldDetails.HeaderFields[2].Value" placeholder="Необязательное" maxlength="30"
                                    onkeyup="document.getElementById('divHeaderValuePass3').innerHTML = this.value; ChangeWidthHeaderTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="headerValueRadios3Prompt" class="rdiosPrompt displayBlock"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -375,11 +375,11 @@
                             <span data-toggle="tooltip" title="Чтобы включить новое значение данных в сообщение, вставте &#37;&#64; туда, где бы Вы хотели, чтобы это новое значение появилось.
                              Например: Теперь баланс Вашей карты составляет &#37;&#64; рублей">Уведомление, отображаемое при изменении данных</span>
                         </p>
-                        <input id="notificationInputHeader3" class="form-control textInputNameContent" value="@Model.FieldDetails.HeaderFields[2].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
+                        <input id="notificationInputHeader3" class="form-control textInputNameContent" name="FieldDetails.HeaderFields[2].ChangeMessage" value="@Model.FieldDetails.HeaderFields[2].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
                     </div>
                     <div class="divDataTypeCollapseField">
                         <p class="pDataTypeCollapseField"><span data-toggle="tooltip" title="tttttttа">Тип данных</span></p>
-                        <select id="selectDataTypeHeader3" class="form-control textInputNameContent" onchange="DisplayBlockDesiredSelect(id);">
+                        <select id="selectDataTypeHeader3" class="form-control textInputNameContent" name="FieldDetails.HeaderFields[2].Type" onchange="DisplayBlockDesiredSelect(id);">
                             <option value="text" selected>Текст</option>
                             <option value="number">Число</option>
                             <option value="currency">Валюта</option>
@@ -457,7 +457,7 @@
             <!--Primary collapse field 1-->
             <div id="collapsePanelPrimaryContent1" class="panel">
                 <div class="collapseLinkContent">
-                    <input type="checkbox" name="checkboxG3" id="checkboxPrimary1" class="checkboxCollapse" onchange="CheckAndUncheckFieldFront(id);">
+                    <input type="checkbox" id="checkboxPrimary1" class="checkboxCollapse" name="FieldDetails.PrimaryFields[0].IsMarkedField" value="true" onchange="CheckAndUncheckFieldFront(id);">
                     <label for="checkboxPrimary1" class="checkboxCollapseLabel"></label>
                     <a data-toggle="collapse" data-parent="#mainCollapsePanelPrimaryContent" href="#collapseContentPrimary1">
                         <p class="labelInput">
@@ -465,7 +465,7 @@
                         </p>
                         <img src="~/Images/createCard/expand.png" class="expandImageCollapse" data-toggle="tooltip" title="Развернуть(свернуть) поле" />
                     </a>
-                    <input id="primaryLabelCollapseInput1" class="form-control textInputNameContent" value="@Model.FieldDetails.PrimaryFields[0].Key" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
+                    <input id="primaryLabelCollapseInput1" class="form-control textInputNameContent" name="FieldDetails.PrimaryFields[0].Key" value="@Model.FieldDetails.PrimaryFields[0].Key" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
                 </div>
                 <div id="collapseContentPrimary1" class="collapseContent collapse in">
                     <div id="divPrimaryLabelText1">
@@ -476,19 +476,19 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="optionsRadiosPrimaryLabel1" id="primaryLabelRadios1" value="option1" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.PrimaryFields[0].IsDynamicLabel" id="primaryLabelRadios1" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);" checked>
                                     Фиксированный
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="optionsRadiosPrimaryLabel1" id="primaryLabelRadios2" value="option2" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);">
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.PrimaryFields[0].IsDynamicLabel" id="primaryLabelRadios2" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);">
                                     Динамический
                                 </label>
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="primaryLabelTextInput1" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Обязательный" value="@Model.FieldDetails.PrimaryFields[0].Label" maxlength="30"
+                            <input id="primaryLabelTextInput1" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.PrimaryFields[0].Label" placeholder="Обязательный" value="@Model.FieldDetails.PrimaryFields[0].Label" maxlength="30"
                                    onkeyup="document.getElementById('divPrimaryLabelPass1').innerHTML = this.value; CheckCheckboxAfterInput(id);" />
                             <div id="primaryLabelRadiosPrompt" class="rdiosPrompt"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -506,19 +506,19 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="optionsRadiosPrimaryValue1" id="primaryValueRadios1" value="option1" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);">
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.PrimaryFields[0].IsDynamicValue" id="primaryValueRadios1" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);">
                                     Фиксированное
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="optionsRadiosPrimaryValue1" id="primaryValueRadios2" value="option2" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.PrimaryFields[0].IsDynamicValue" id="primaryValueRadios2" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);" checked>
                                     Динамическое
                                 </label>
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="primaryValueTextInput1" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Необязательное" value="@Model.FieldDetails.PrimaryFields[0].Value" maxlength="30"
+                            <input id="primaryValueTextInput1" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.PrimaryFields[0].Value" placeholder="Необязательное" value="@Model.FieldDetails.PrimaryFields[0].Value" maxlength="30"
                                    onkeyup="document.getElementById('divPrimaryValuePass1').innerHTML = this.value; CheckCheckboxAfterInput(id);" />
                             <div id="primaryValueRadiosPrompt" class="rdiosPrompt displayBlock"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -534,11 +534,11 @@
                             <span data-toggle="tooltip" title="Чтобы включить новое значение данных в сообщение, вставте &#37;&#64; туда, где бы Вы хотели, чтобы это новое значение появилось.
                              Например: Теперь баланс Вашей карты составляет &#37;&#64; рублей">Уведомление, отображаемое при изменении данных</span>
                         </p>
-                        <input id="notificationInputPrimary1" class="form-control textInputNameContent" value="@Model.FieldDetails.PrimaryFields[0].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
+                        <input id="notificationInputPrimary1" class="form-control textInputNameContent" name="FieldDetails.PrimaryFields[0].ChangeMessage" value="@Model.FieldDetails.PrimaryFields[0].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
                     </div>
                     <div class="divDataTypeCollapseField">
                         <p class="pDataTypeCollapseField"><span data-toggle="tooltip" title="tttttttа">Тип данных</span></p>
-                        <select id="selectDataTypePrimary1" class="form-control textInputNameContent" onchange="DisplayBlockDesiredSelect(id);">
+                        <select id="selectDataTypePrimary1" class="form-control textInputNameContent" name="FieldDetails.PrimaryFields[0].Type" onchange="DisplayBlockDesiredSelect(id);">
                             <option value="text" selected>Текст</option>
                             <option value="number">Число</option>
                             <option value="currency">Валюта</option>
@@ -596,7 +596,7 @@
             <!--Primary collapse field 2-->
             <div id="collapsePanelPrimaryContent2" class="panel">
                 <div class="collapseLinkContent">
-                    <input type="checkbox" name="checkboxG3" id="checkboxPrimary2" class="checkboxCollapse" onchange="CheckAndUncheckFieldFront(id);">
+                    <input type="checkbox" id="checkboxPrimary2" class="checkboxCollapse" name="FieldDetails.PrimaryFields[1].IsMarkedField" value="true" onchange="CheckAndUncheckFieldFront(id);">
                     <label for="checkboxPrimary2" class="checkboxCollapseLabel"></label>
                     <a data-toggle="collapse" data-parent="#mainCollapsePanelPrimaryContent" href="#collapseContentPrimary2">
                         <p class="labelInput">
@@ -604,7 +604,7 @@
                         </p>
                         <img src="~/Images/createCard/expand.png" class="expandImageCollapse" data-toggle="tooltip" title="Развернуть(свернуть) поле" />
                     </a>
-                    <input id="primaryLabelCollapseInput2" class="form-control textInputNameContent" value="@Model.FieldDetails.PrimaryFields[1].Key" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
+                    <input id="primaryLabelCollapseInput2" class="form-control textInputNameContent" name="FieldDetails.PrimaryFields[1].Key" value="@Model.FieldDetails.PrimaryFields[1].Key" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
                 </div>
                 <div id="collapseContentPrimary2" class="collapseContent collapse">
                     <div id="divPrimaryLabelText2">
@@ -615,19 +615,19 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="optionsRadiosPrimaryLabel2" id="primaryLabelRadios2" value="option1" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.PrimaryFields[1].IsDynamicLabel" id="primaryLabelRadios2" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);" checked>
                                     Фиксированный
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="optionsRadiosPrimaryLabel2" id="primaryLabelRadios2" value="option2" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);">
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.PrimaryFields[1].IsDynamicLabel" id="primaryLabelRadios2" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);">
                                     Динамический
                                 </label>
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="primaryLabelTextInput2" type="text" class="form-control LabelAndValueInputCollapse" value="@Model.FieldDetails.PrimaryFields[1].Label" placeholder="Обязательный" maxlength="30"
+                            <input id="primaryLabelTextInput2" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.PrimaryFields[1].Label" value="@Model.FieldDetails.PrimaryFields[1].Label" placeholder="Обязательный" maxlength="30"
                                    onkeyup="document.getElementById('divPrimaryLabelPass2').innerHTML = this.value; CheckCheckboxAfterInput(id); ChangeWidthPrimaryTextFieldPass(id);" />
                             <div id="primaryLabelRadiosPrompt" class="rdiosPrompt"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -645,19 +645,19 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="optionsRadiosPrimaryValue2" id="primaryValueRadios2" value="option1" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);">
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.PrimaryFields[1].IsDynamicValue" id="primaryValueRadios2" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);">
                                     Фиксированное
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="optionsRadiosPrimaryValue2" id="primaryValueRadios2" value="option2" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.PrimaryFields[1].IsDynamicValue" id="primaryValueRadios2" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);" checked>
                                     Динамическое
                                 </label>
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="primaryValueTextInput2" type="text" class="form-control LabelAndValueInputCollapse" value="@Model.FieldDetails.PrimaryFields[1].Value" placeholder="Необязательное" maxlength="30"
+                            <input id="primaryValueTextInput2" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.PrimaryFields[1].Value" value="@Model.FieldDetails.PrimaryFields[1].Value" placeholder="Необязательное" maxlength="30"
                                    onkeyup="document.getElementById('divPrimaryValuePass2').innerHTML = this.value; CheckCheckboxAfterInput(id); ChangeWidthPrimaryTextFieldPass(id);" />
                             <div id="primaryValueRadiosPrompt" class="rdiosPrompt displayBlock"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -673,11 +673,11 @@
                             <span data-toggle="tooltip" title="Чтобы включить новое значение данных в сообщение, вставте &#37;&#64; туда, где бы Вы хотели, чтобы это новое значение появилось.
                              Например: Теперь баланс Вашей карты составляет &#37;&#64; рублей">Уведомление, отображаемое при изменении данных</span>
                         </p>
-                        <input id="notificationInputPrimary2" class="form-control textInputNameContent" value="@Model.FieldDetails.PrimaryFields[1].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
+                        <input id="notificationInputPrimary2" class="form-control textInputNameContent" name="FieldDetails.PrimaryFields[1].ChangeMessage" value="@Model.FieldDetails.PrimaryFields[1].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
                     </div>
                     <div class="divDataTypeCollapseField">
                         <p class="pDataTypeCollapseField"><span data-toggle="tooltip" title="tttttttа">Тип данных</span></p>
-                        <select id="selectDataTypePrimary2" class="form-control textInputNameContent" onchange="DisplayBlockDesiredSelect(id);">
+                        <select id="selectDataTypePrimary2" class="form-control textInputNameContent" name="FieldDetails.PrimaryFields[1].Type" onchange="DisplayBlockDesiredSelect(id);">
                             <option value="text" selected>Текст</option>
                             <option value="number">Число</option>
                             <option value="currency">Валюта</option>
@@ -742,7 +742,7 @@
             <!--Auxiliary collapse field 1-->
             <div id="collapsePanelAuxiliaryContent1" class="panel">
                 <div class="collapseLinkContent">
-                    <input type="checkbox" name="checkboxG3" id="checkboxAuxiliary1" class="checkboxCollapse" onchange="CheckAndUncheckFieldFront(id);">
+                    <input type="checkbox" id="checkboxAuxiliary1" class="checkboxCollapse" name="FieldDetails.AuxiliaryFields[0].IsMarkedField" value="true" onchange="CheckAndUncheckFieldFront(id);">
                     <label for="checkboxAuxiliary1" class="checkboxCollapseLabel"></label>
                     <a data-toggle="collapse" data-parent="#mainCollapsePanelAuxiliaryContent" href="#collapseContentAuxiliary1">
                         <p class="labelInput">
@@ -750,7 +750,7 @@
                         </p>
                         <img src="~/Images/createCard/expand.png" class="expandImageCollapse" data-toggle="tooltip" title="Развернуть(свернуть) поле" />
                     </a>
-                    <input id="auxiliaryLabelCollapseInput1" class="form-control textInputNameContent" value="@Model.FieldDetails.AuxiliaryFields[0].Key" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
+                    <input id="auxiliaryLabelCollapseInput1" class="form-control textInputNameContent" name="FieldDetails.AuxiliaryFields[0].Key" value="@Model.FieldDetails.AuxiliaryFields[0].Key" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
                 </div>
                 <div id="collapseContentAuxiliary1" class="collapseContent collapse in">
                     <div id="divAuxiliaryLabelText1">
@@ -760,19 +760,19 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="optionsRadiosAuxiliaryLabel1" id="auxiliaryLabelRadios11" value="option1" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.AuxiliaryFields[0].IsDynamicLabel" id="auxiliaryLabelRadios11" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);" checked>
                                     Фиксированный
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="optionsRadiosAuxiliaryLabel1" id="auxiliaryLabelRadios12" value="option2" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);">
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.AuxiliaryFields[0].IsDynamicLabel" id="auxiliaryLabelRadios12" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);">
                                     Динамический
                                 </label>
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="auxiliaryLabelTextInput1" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Обязательный" value="@Model.FieldDetails.AuxiliaryFields[0].Label" maxlength="30"
+                            <input id="auxiliaryLabelTextInput1" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.AuxiliaryFields[0].Label" placeholder="Обязательный" value="@Model.FieldDetails.AuxiliaryFields[0].Label" maxlength="30"
                                    onkeyup="document.getElementById('divAuxiliaryLabelPass1').innerHTML = this.value; ChangeWidthAuxiliaryTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="auxiliaryLabelRadios1Prompt" class="rdiosPrompt"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -790,19 +790,19 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="optionsRadiosAuxiliaryValue1" id="auxiliaryValueRadios11" value="option1" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);">
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.AuxiliaryFields[0].IsDynamicValue" id="auxiliaryValueRadios11" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);">
                                     Фиксированное
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="optionsRadiosAuxiliaryValue1" id="auxiliaryValueRadios12" value="option2" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.AuxiliaryFields[0].IsDynamicValue" id="auxiliaryValueRadios12" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);" checked>
                                     Динамическое
                                 </label>
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="auxiliaryValueTextInput1" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Необязательное" value="@Model.FieldDetails.AuxiliaryFields[0].Value" maxlength="30"
+                            <input id="auxiliaryValueTextInput1" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.AuxiliaryFields[0].Value" placeholder="Необязательное" value="@Model.FieldDetails.AuxiliaryFields[0].Value" maxlength="30"
                                    onkeyup="document.getElementById('divAuxiliaryValuePass1').innerHTML = this.value; ChangeWidthAuxiliaryTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="auxiliaryValueRadios1Prompt" class="rdiosPrompt displayBlock"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -818,11 +818,11 @@
                             <span data-toggle="tooltip" title="Чтобы включить новое значение данных в сообщение, вставте &#37;&#64; туда, где бы Вы хотели, чтобы это новое значение появилось.
                              Например: Теперь баланс Вашей карты составляет &#37;&#64; рублей">Уведомление, отображаемое при изменении данных</span>
                         </p>
-                        <input id="notificationInputAuxiliary1" class="form-control textInputNameContent" value="@Model.FieldDetails.AuxiliaryFields[0].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
+                        <input id="notificationInputAuxiliary1" class="form-control textInputNameContent" name="FieldDetails.AuxiliaryFields[0].ChangeMessage" value="@Model.FieldDetails.AuxiliaryFields[0].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
                     </div>
                     <div class="divDataTypeCollapseField">
                         <p class="pDataTypeCollapseField"><span data-toggle="tooltip" title="tttttttа">Тип данных</span></p>
-                        <select id="selectDataTypeAuxiliary1" class="form-control textInputNameContent" onchange="DisplayBlockDesiredSelect(id);">
+                        <select id="selectDataTypeAuxiliary1" class="form-control textInputNameContent" name="FieldDetails.AuxiliaryFields[0].Type" onchange="DisplayBlockDesiredSelect(id);">
                             <option value="text" selected>Текст</option>
                             <option value="number">Число</option>
                             <option value="currency">Валюта</option>
@@ -880,7 +880,7 @@
             <!--Auxiliary collapse field 2-->
             <div id="collapsePanelAuxiliaryContent2" class="panel">
                 <div class="collapseLinkContent">
-                    <input type="checkbox" name="checkboxG3" id="checkboxAuxiliary2" class="checkboxCollapse" onchange="CheckAndUncheckFieldFront(id);" checked>
+                    <input type="checkbox" id="checkboxAuxiliary2" class="checkboxCollapse" name="FieldDetails.AuxiliaryFields[1].IsMarkedField" value="true" onchange="CheckAndUncheckFieldFront(id);" checked>
                     <label for="checkboxAuxiliary2" class="checkboxCollapseLabel"></label>
                     <a data-toggle="collapse" data-parent="#mainCollapsePanelAuxiliaryContent" href="#collapseContentAuxiliary2">
                         <p class="labelInput">
@@ -888,7 +888,7 @@
                         </p>
                         <img src="~/Images/createCard/expand.png" class="expandImageCollapse" data-toggle="tooltip" title="Развернуть(свернуть) поле" />
                     </a>
-                    <input id="auxiliaryLabelCollapseInput2" class="form-control textInputNameContent" value="@Model.FieldDetails.AuxiliaryFields[1].Key" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
+                    <input id="auxiliaryLabelCollapseInput2" class="form-control textInputNameContent" name="FieldDetails.AuxiliaryFields[1].Key" value="@Model.FieldDetails.AuxiliaryFields[1].Key" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
                 </div>
                 <div id="collapseContentAuxiliary2" class="collapseContent collapse">
                     <div id="divAuxiliaryLabelText2">
@@ -898,19 +898,19 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="optionsRadiosAuxiliaryLabel2" id="auxiliaryLabelRadios21" value="option1" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.AuxiliaryFields[1].IsDynamicLabel" id="auxiliaryLabelRadios21" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);" checked>
                                     Фиксированный
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="optionsRadiosAuxiliaryLabel2" id="auxiliaryLabelRadios22" value="option2" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);">
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.AuxiliaryFields[1].IsDynamicLabel" id="auxiliaryLabelRadios22" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);">
                                     Динамический
                                 </label>
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="auxiliaryLabelTextInput2" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Обязательный" value="@Model.FieldDetails.AuxiliaryFields[1].Label" maxlength="30"
+                            <input id="auxiliaryLabelTextInput2" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.AuxiliaryFields[1].Label" placeholder="Обязательный" value="@Model.FieldDetails.AuxiliaryFields[1].Label" maxlength="30"
                                    onkeyup="document.getElementById('divAuxiliaryLabelPass2').innerHTML = this.value;; ChangeWidthAuxiliaryTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="auxiliaryLabelRadios2Prompt" class="rdiosPrompt"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -928,19 +928,19 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="optionsRadiosAuxiliaryValue2" id="auxiliaryValueRadios21" value="option1" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);">
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.AuxiliaryFields[1].IsDynamicValue" id="auxiliaryValueRadios21" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);">
                                     Фиксированное
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="optionsRadiosAuxiliaryValue2" id="auxiliaryValueRadios22" value="option2" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.AuxiliaryFields[1].IsDynamicValue" id="auxiliaryValueRadios22" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);" checked>
                                     Динамическое
                                 </label>
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="auxiliaryValueTextInput2" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Необязательное" value="@Model.FieldDetails.AuxiliaryFields[1].Value" maxlength="30"
+                            <input id="auxiliaryValueTextInput2" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.AuxiliaryFields[1].Value" placeholder="Необязательное" value="@Model.FieldDetails.AuxiliaryFields[1].Value" maxlength="30"
                                    onkeyup="document.getElementById('divAuxiliaryValuePass2').innerHTML = this.value; ChangeWidthAuxiliaryTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="auxiliaryValueRadios2Prompt" class="rdiosPrompt displayBlock"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -956,11 +956,11 @@
                             <span data-toggle="tooltip" title="Чтобы включить новое значение данных в сообщение, вставте &#37;&#64; туда, где бы Вы хотели, чтобы это новое значение появилось.
                              Например: Теперь баланс Вашей карты составляет &#37;&#64; рублей">Уведомление, отображаемое при изменении данных</span>
                         </p>
-                        <input id="notificationInputAuxiliary2" class="form-control textInputNameContent" value="@Model.FieldDetails.AuxiliaryFields[1].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
+                        <input id="notificationInputAuxiliary2" class="form-control textInputNameContent" name="FieldDetails.AuxiliaryFields[1].ChangeMessage" value="@Model.FieldDetails.AuxiliaryFields[1].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
                     </div>
                     <div class="divDataTypeCollapseField">
                         <p class="pDataTypeCollapseField"><span data-toggle="tooltip" title="tttttttа">Тип данных</span></p>
-                        <select id="selectDataTypeAuxiliary2" class="form-control textInputNameContent" onchange="DisplayBlockDesiredSelect(id);">
+                        <select id="selectDataTypeAuxiliary2" class="form-control textInputNameContent" name="FieldDetails.AuxiliaryFields[1].Type" onchange="DisplayBlockDesiredSelect(id);">
                             <option value="text" selected>Текст</option>
                             <option value="number">Число</option>
                             <option value="currency">Валюта</option>
@@ -1018,7 +1018,7 @@
             <!--Auxiliary collapse field 3-->
             <div id="collapsePanelAuxiliaryContent3" class="panel">
                 <div class="collapseLinkContent">
-                    <input type="checkbox" name="checkboxG3" id="checkboxAuxiliary3" class="checkboxCollapse" onchange="CheckAndUncheckFieldFront(id);">
+                    <input type="checkbox" id="checkboxAuxiliary3" class="checkboxCollapse" name="FieldDetails.AuxiliaryFields[2].IsMarkedField" value="true" onchange="CheckAndUncheckFieldFront(id);">
                     <label for="checkboxAuxiliary3" class="checkboxCollapseLabel"></label>
                     <a data-toggle="collapse" data-parent="#mainCollapsePanelAuxiliaryContent" href="#collapseContentAuxiliary3">
                         <p class="labelInput">
@@ -1026,7 +1026,7 @@
                         </p>
                         <img src="~/Images/createCard/expand.png" class="expandImageCollapse" data-toggle="tooltip" title="Развернуть(свернуть) поле" />
                     </a>
-                    <input id="auxiliaryLabelCollapseInput3" class="form-control textInputNameContent" value="@Model.FieldDetails.AuxiliaryFields[2].Key" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
+                    <input id="auxiliaryLabelCollapseInput3" class="form-control textInputNameContent" name="FieldDetails.AuxiliaryFields[2].Key" value="@Model.FieldDetails.AuxiliaryFields[2].Key" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
                 </div>
                 <div id="collapseContentAuxiliary3" class="collapseContent collapse">
                     <div id="divAuxiliaryLabelText3">
@@ -1036,19 +1036,19 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="optionsRadiosAuxiliaryLabel3" id="auxiliaryLabelRadios31" value="option1" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.AuxiliaryFields[2].IsDynamicLabel" id="auxiliaryLabelRadios31" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);" checked>
                                     Фиксированный
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="optionsRadiosAuxiliaryLabel3" id="auxiliaryLabelRadios32" value="option2" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);">
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.AuxiliaryFields[2].IsDynamicLabel" id="auxiliaryLabelRadios32" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);">
                                     Динамический
                                 </label>
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="auxiliaryLabelTextInput3" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Обязательный" value="@Model.FieldDetails.AuxiliaryFields[2].Label" maxlength="30"
+                            <input id="auxiliaryLabelTextInput3" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.AuxiliaryFields[2].Label" placeholder="Обязательный" value="@Model.FieldDetails.AuxiliaryFields[2].Label" maxlength="30"
                                    onkeyup="document.getElementById('divAuxiliaryLabelPass3').innerHTML = this.value; ChangeWidthAuxiliaryTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="auxiliaryLabelRadios3Prompt" class="rdiosPrompt"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -1066,19 +1066,19 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="optionsRadiosAuxiliaryValue3" id="auxiliaryValueRadios31" value="option1" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);">
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.AuxiliaryFields[0].IsDynamicValue" id="auxiliaryValueRadios31" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);">
                                     Фиксированное
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="optionsRadiosAuxiliaryValue3" id="auxiliaryValueRadios32" value="option2" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.AuxiliaryFields[0].IsDynamicValue" id="auxiliaryValueRadios32" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);" checked>
                                     Динамическое
                                 </label>
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="auxiliaryValueTextInput3" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Необязательное" value="@Model.FieldDetails.AuxiliaryFields[2].Value" maxlength="30"
+                            <input id="auxiliaryValueTextInput3" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.AuxiliaryFields[2].Value" placeholder="Необязательное" value="@Model.FieldDetails.AuxiliaryFields[2].Value" maxlength="30"
                                    onkeyup="document.getElementById('divAuxiliaryValuePass3').innerHTML = this.value; ChangeWidthAuxiliaryTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="auxiliaryValueRadios3Prompt" class="rdiosPrompt displayBlock"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -1094,11 +1094,11 @@
                             <span data-toggle="tooltip" title="Чтобы включить новое значение данных в сообщение, вставте &#37;&#64; туда, где бы Вы хотели, чтобы это новое значение появилось.
                              Например: Теперь баланс Вашей карты составляет &#37;&#64; рублей">Уведомление, отображаемое при изменении данных</span>
                         </p>
-                        <input id="notificationInputAuxiliary3" class="form-control textInputNameContent" value="@Model.FieldDetails.AuxiliaryFields[2].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
+                        <input id="notificationInputAuxiliary3" class="form-control textInputNameContent" name="FieldDetails.AuxiliaryFields[2].ChangeMessage" value="@Model.FieldDetails.AuxiliaryFields[2].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
                     </div>
                     <div class="divDataTypeCollapseField">
                         <p class="pDataTypeCollapseField"><span data-toggle="tooltip" title="tttttttа">Тип данных</span></p>
-                        <select id="selectDataTypeAuxiliary3" class="form-control textInputNameContent" onchange="DisplayBlockDesiredSelect(id);">
+                        <select id="selectDataTypeAuxiliary3" class="form-control textInputNameContent" name="FieldDetails.AuxiliaryFields[2].Type" onchange="DisplayBlockDesiredSelect(id);">
                             <option value="text" selected>Текст</option>
                             <option value="number">Число</option>
                             <option value="currency">Валюта</option>
@@ -1156,7 +1156,7 @@
             <!--Auxiliary collapse field 4-->
             <div id="collapsePanelAuxiliaryContent4" class="panel">
                 <div class="collapseLinkContent">
-                    <input type="checkbox" name="checkboxG4" id="checkboxAuxiliary4" class="checkboxCollapse" onchange="CheckAndUncheckFieldFront(id);">
+                    <input type="checkbox" id="checkboxAuxiliary4" class="checkboxCollapse" name="FieldDetails.AuxiliaryFields[3].IsMarkedField" value="true" onchange="CheckAndUncheckFieldFront(id);">
                     <label for="checkboxAuxiliary4" class="checkboxCollapseLabel"></label>
                     <a data-toggle="collapse" data-parent="#mainCollapsePanelAuxiliaryContent" href="#collapseContentAuxiliary4">
                         <p class="labelInput">
@@ -1164,7 +1164,7 @@
                         </p>
                         <img src="~/Images/createCard/expand.png" class="expandImageCollapse" data-toggle="tooltip" title="Развернуть(свернуть) поле" />
                     </a>
-                    <input id="auxiliaryLabelCollapseInput4" class="form-control textInputNameContent" value="@Model.FieldDetails.AuxiliaryFields[3].Key" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
+                    <input id="auxiliaryLabelCollapseInput4" class="form-control textInputNameContent" name="FieldDetails.AuxiliaryFields[3].Key" value="@Model.FieldDetails.AuxiliaryFields[3].Key" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
                 </div>
                 <div id="collapseContentAuxiliary4" class="collapseContent collapse">
                     <div id="divAuxiliaryLabelText4">
@@ -1174,19 +1174,19 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="optionsRadiosAuxiliaryLabel4" id="auxiliaryLabelRadios41" value="option1" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.AuxiliaryFields[3].IsDynamicLabel" id="auxiliaryLabelRadios41" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);" checked>
                                     Фиксированный
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="optionsRadiosAuxiliaryLabel4" id="auxiliaryLabelRadios42" value="option2" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);">
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.AuxiliaryFields[3].IsDynamicLabel" id="auxiliaryLabelRadios42" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);">
                                     Динамический
                                 </label>
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="auxiliaryLabelTextInput4" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Обязательный" value="@Model.FieldDetails.AuxiliaryFields[3].Label" maxlength="40"
+                            <input id="auxiliaryLabelTextInput4" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.AuxiliaryFields[3].Label" placeholder="Обязательный" value="@Model.FieldDetails.AuxiliaryFields[3].Label" maxlength="40"
                                    onkeyup="document.getElementById('divAuxiliaryLabelPass4').innerHTML = this.value; ChangeWidthAuxiliaryTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="auxiliaryLabelRadios4Prompt" class="rdiosPrompt"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -1204,19 +1204,19 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="optionsRadiosAuxiliaryValue4" id="auxiliaryValueRadios41" value="option1" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);">
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.AuxiliaryFields[3].IsDynamicValue" id="auxiliaryValueRadios41" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);">
                                     Фиксированное
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="optionsRadiosAuxiliaryValue4" id="auxiliaryValueRadios42" value="option2" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.AuxiliaryFields[3].IsDynamicValue" id="auxiliaryValueRadios42" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);" checked>
                                     Динамическое
                                 </label>
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="auxiliaryValueTextInput4" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Необязательное" value="@Model.FieldDetails.AuxiliaryFields[3].Value" maxlength="40"
+                            <input id="auxiliaryValueTextInput4" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.AuxiliaryFields[3].Value" placeholder="Необязательное" value="@Model.FieldDetails.AuxiliaryFields[3].Value" maxlength="40"
                                    onkeyup="document.getElementById('divAuxiliaryValuePass4').innerHTML = this.value; ChangeWidthAuxiliaryTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="auxiliaryValueRadios4Prompt" class="rdiosPrompt displayBlock"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -1232,11 +1232,11 @@
                             <span data-toggle="tooltip" title="Чтобы включить новое значение данных в сообщение, вставте &#47;&#64; туда, где бы Вы хотели, чтобы это новое значение появилось.
                              Например: Теперь баланс Вашей карты составляет &#47;&#64; рублей">Уведомление, отображаемое при изменении данных</span>
                         </p>
-                        <input id="notificationInputAuxiliary4" class="form-control textInputNameContent" value="@Model.FieldDetails.AuxiliaryFields[3].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
+                        <input id="notificationInputAuxiliary4" class="form-control textInputNameContent" name="FieldDetails.AuxiliaryFields[3].ChangeMessage" value="@Model.FieldDetails.AuxiliaryFields[3].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
                     </div>
                     <div class="divDataTypeCollapseField">
                         <p class="pDataTypeCollapseField"><span data-toggle="tooltip" title="tttttttа">Тип данных</span></p>
-                        <select id="selectDataTypeAuxiliary4" class="form-control textInputNameContent" onchange="DisplayBlockDesiredSelect(id);">
+                        <select id="selectDataTypeAuxiliary4" class="form-control textInputNameContent" name="FieldDetails.AuxiliaryFields[3].Type" onchange="DisplayBlockDesiredSelect(id);">
                             <option value="text" selected>Текст</option>
                             <option value="number">Число</option>
                             <option value="currency">Валюта</option>
@@ -1294,7 +1294,7 @@
             <!--Auxiliary collapse field 5-->
             <div id="collapsePanelAuxiliaryContent5" class="panel">
                 <div class="collapseLinkContent">
-                    <input type="checkbox" name="checkboxG4" id="checkboxAuxiliary5" class="checkboxCollapse" onchange="CheckAndUncheckFieldFront(id);">
+                    <input type="checkbox" id="checkboxAuxiliary5" class="checkboxCollapse" name="FieldDetails.AuxiliaryFields[4].IsMarkedField" value="true" onchange="CheckAndUncheckFieldFront(id);">
                     <label for="checkboxAuxiliary5" class="checkboxCollapseLabel"></label>
                     <a data-toggle="collapse" data-parent="#mainCollapsePanelAuxiliaryContent" href="#collapseContentAuxiliary5">
                         <p class="labelInput">
@@ -1302,7 +1302,7 @@
                         </p>
                         <img src="~/Images/createCard/expand.png" class="expandImageCollapse" data-toggle="tooltip" title="Развернуть(свернуть) поле" />
                     </a>
-                    <input id="auxiliaryLabelCollapseInput5" class="form-control textInputNameContent" value="@Model.FieldDetails.AuxiliaryFields[4].Key" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
+                    <input id="auxiliaryLabelCollapseInput5" class="form-control textInputNameContent" name="FieldDetails.AuxiliaryFields[4].Key" value="@Model.FieldDetails.AuxiliaryFields[4].Key" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
                 </div>
                 <div id="collapseContentAuxiliary5" class="collapseContent collapse">
                     <div id="divAuxiliaryLabelText5">
@@ -1312,19 +1312,19 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="optionsRadiosAuxiliaryLabel5" id="auxiliaryLabelRadios51" value="option1" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.AuxiliaryFields[4].IsDynamicLabel" id="auxiliaryLabelRadios51" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);" checked>
                                     Фиксированный
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="optionsRadiosAuxiliaryLabel5" id="auxiliaryLabelRadios52" value="option2" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);">
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.AuxiliaryFields[4].IsDynamicLabel" id="auxiliaryLabelRadios52" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);">
                                     Динамический
                                 </label>
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="auxiliaryLabelTextInput5" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Обязательный" value="@Model.FieldDetails.AuxiliaryFields[4].Label" maxlength="40"
+                            <input id="auxiliaryLabelTextInput5" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.AuxiliaryFields[4].Label" placeholder="Обязательный" value="@Model.FieldDetails.AuxiliaryFields[4].Label" maxlength="40"
                                    onkeyup="document.getElementById('divAuxiliaryLabelPass5').innerHTML = this.value; ChangeWidthAuxiliaryTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="auxiliaryLabelRadios5Prompt" class="rdiosPrompt"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -1342,19 +1342,19 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="optionsRadiosAuxiliaryValue5" id="auxiliaryValueRadios51" value="option1" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);">
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.AuxiliaryFields[4].IsDynamicLabel" id="auxiliaryValueRadios51" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);">
                                     Фиксированное
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="optionsRadiosAuxiliaryValue5" id="auxiliaryValueRadios52" value="option2" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.AuxiliaryFields[4].IsDynamicLabel" id="auxiliaryValueRadios52" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);" checked>
                                     Динамическое
                                 </label>
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="auxiliaryValueTextInput5" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Необязательное" value="@Model.FieldDetails.AuxiliaryFields[4].Value" maxlength="40"
+                            <input id="auxiliaryValueTextInput5" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.AuxiliaryFields[4].Value" placeholder="Необязательное" value="@Model.FieldDetails.AuxiliaryFields[4].Value" maxlength="40"
                                    onkeyup="document.getElementById('divAuxiliaryValuePass5').innerHTML = this.value; ChangeWidthAuxiliaryTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="auxiliaryValueRadios5Prompt" class="rdiosPrompt displayBlock"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -1370,11 +1370,11 @@
                             <span data-toggle="tooltip" title="Чтобы включить новое значение данных в сообщение, вставте &#47;&#64; туда, где бы Вы хотели, чтобы это новое значение появилось.
                              Например: Теперь баланс Вашей карты составляет &#47;&#64; рублей">Уведомление, отображаемое при изменении данных</span>
                         </p>
-                        <input id="notificationInputAuxiliary5" class="form-control textInputNameContent" value="@Model.FieldDetails.AuxiliaryFields[4].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
+                        <input id="notificationInputAuxiliary5" class="form-control textInputNameContent" name="FieldDetails.AuxiliaryFields[4].ChangeMessage" value="@Model.FieldDetails.AuxiliaryFields[4].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
                     </div>
                     <div class="divDataTypeCollapseField">
                         <p class="pDataTypeCollapseField"><span data-toggle="tooltip" title="tttttttа">Тип данных</span></p>
-                        <select id="selectDataTypeAuxiliary5" class="form-control textInputNameContent" onchange="DisplayBlockDesiredSelect(id);">
+                        <select id="selectDataTypeAuxiliary5" class="form-control textInputNameContent" name="FieldDetails.AuxiliaryFields[4].Type" onchange="DisplayBlockDesiredSelect(id);">
                             <option value="text" selected>Текст</option>
                             <option value="number">Число</option>
                             <option value="currency">Валюта</option>
@@ -1439,7 +1439,7 @@
             <!--Secondary collapse field 1-->
             <div id="collapsePanelSecondaryContent1" class="panel">
                 <div class="collapseLinkContent">
-                    <input type="checkbox" name="checkboxG3" id="checkboxSecondary1" class="checkboxCollapse" onchange="CheckAndUncheckFieldFront(id);">
+                    <input type="checkbox" id="checkboxSecondary1" class="checkboxCollapse" name="FieldDetails.SecondaryFields[0].IsMarkedField" value="true" onchange="CheckAndUncheckFieldFront(id);">
                     <label for="checkboxSecondary1" class="checkboxCollapseLabel"></label>
                     <a data-toggle="collapse" data-parent="#mainCollapsePanelSecondaryContent" href="#collapseContentSecondary1">
                         <p class="labelInput">
@@ -1447,7 +1447,7 @@
                         </p>
                         <img src="~/Images/createCard/expand.png" class="expandImageCollapse" data-toggle="tooltip" title="Развернуть(свернуть) поле" />
                     </a>
-                    <input id="secondaryLabelCollapseInput1" class="form-control textInputNameContent" maxlength="20" value="@Model.FieldDetails.SecondaryFields[0].Key" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
+                    <input id="secondaryLabelCollapseInput1" class="form-control textInputNameContent" name="FieldDetails.SecondaryFields[0].Key" maxlength="20" value="@Model.FieldDetails.SecondaryFields[0].Key" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
                 </div>
                 <div id="collapseContentSecondary1" class="collapseContent collapse in">
                     <div id="divSecondaryLabelText1">
@@ -1457,19 +1457,19 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="optionsRadiosSecondaryLabel1" id="secondaryLabelRadios11" value="option1" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.SecondaryFields[0].IsDynamicLabel" id="secondaryLabelRadios11" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);" checked>
                                     Фиксированный
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="optionsRadiosSecondaryLabel1" id="secondaryLabelRadios12" value="option2" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);">
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.SecondaryFields[0].IsDynamicLabel" id="secondaryLabelRadios12" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);">
                                     Динамический
                                 </label>
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="secondaryLabelTextInput1" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Обязательный" value="@Model.FieldDetails.SecondaryFields[0].Label" maxlength="30"
+                            <input id="secondaryLabelTextInput1" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.SecondaryFields[0].Label" placeholder="Обязательный" value="@Model.FieldDetails.SecondaryFields[0].Label" maxlength="30"
                                    onkeyup="document.getElementById('divSecondaryLabelPass1').innerHTML = this.value; ChangeWidthSecondaryTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="secondaryLabelRadios1Prompt" class="rdiosPrompt"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -1487,19 +1487,19 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="optionsRadiosSecondaryValue1" id="secondaryValueRadios11" value="option1" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);">
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.SecondaryFields[0].IsDynamicValue" id="secondaryValueRadios11" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);">
                                     Фиксированное
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="optionsRadiosSecondaryValue1" id="secondaryValueRadios12" value="option2" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.SecondaryFields[0].IsDynamicValue" id="secondaryValueRadios12" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);" checked>
                                     Динамическое
                                 </label>
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="secondaryValueTextInput1" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Необязательное" value="@Model.FieldDetails.SecondaryFields[0].Value" maxlength="30"
+                            <input id="secondaryValueTextInput1" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.SecondaryFields[0].Value" placeholder="Необязательное" value="@Model.FieldDetails.SecondaryFields[0].Value" maxlength="30"
                                    onkeyup="document.getElementById('divSecondaryValuePass1').innerHTML = this.value; ChangeWidthSecondaryTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="secondaryValueRadios1Prompt" class="rdiosPrompt displayBlock"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -1515,11 +1515,11 @@
                             <span data-toggle="tooltip" title="Чтобы включить новое значение данных в сообщение, вставте &#37;&#64; туда, где бы Вы хотели, чтобы это новое значение появилось.
                              Например: Теперь баланс Вашей карты составляет &#37;&#64; рублей">Уведомление, отображаемое при изменении данных</span>
                         </p>
-                        <input id="notificationInputSecondary1" class="form-control textInputNameContent" value="@Model.FieldDetails.SecondaryFields[0].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
+                        <input id="notificationInputSecondary1" class="form-control textInputNameContent" name="FieldDetails.SecondaryFields[0].ChangeMessage" value="@Model.FieldDetails.SecondaryFields[0].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
                     </div>
                     <div class="divDataTypeCollapseField">
                         <p class="pDataTypeCollapseField"><span data-toggle="tooltip" title="tttttttа">Тип данных</span></p>
-                        <select id="selectDataTypeSecondary1" class="form-control textInputNameContent" onchange="DisplayBlockDesiredSelect(id);">
+                        <select id="selectDataTypeSecondary1" class="form-control textInputNameContent" name="FieldDetails.SecondaryFields[0].Type" onchange="DisplayBlockDesiredSelect(id);">
                             <option value="text" selected>Текст</option>
                             <option value="number">Число</option>
                             <option value="currency">Валюта</option>
@@ -1577,7 +1577,7 @@
             <!--Secondary collapse field 2-->
             <div id="collapsePanelSecondaryContent2" class="panel">
                 <div class="collapseLinkContent">
-                    <input type="checkbox" name="checkboxG3" id="checkboxSecondary2" class="checkboxCollapse" onchange="CheckAndUncheckFieldFront(id);">
+                    <input type="checkbox" id="checkboxSecondary2" class="checkboxCollapse" name="FieldDetails.SecondaryFields[1].IsMarkedField" value="true" onchange="CheckAndUncheckFieldFront(id);">
                     <label for="checkboxSecondary2" class="checkboxCollapseLabel"></label>
                     <a data-toggle="collapse" data-parent="#mainCollapsePanelSecondaryContent" href="#collapseContentSecondary2">
                         <p class="labelInput">
@@ -1585,7 +1585,7 @@
                         </p>
                         <img src="~/Images/createCard/expand.png" class="expandImageCollapse" data-toggle="tooltip" title="Развернуть(свернуть) поле" />
                     </a>
-                    <input id="secondaryLabelCollapseInput2" class="form-control textInputNameContent" maxlength="20" value="@Model.FieldDetails.SecondaryFields[1].Key" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
+                    <input id="secondaryLabelCollapseInput2" class="form-control textInputNameContent" name="FieldDetails.SecondaryFields[1].Key" maxlength="20" value="@Model.FieldDetails.SecondaryFields[1].Key" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
                 </div>
                 <div id="collapseContentSecondary2" class="collapseContent collapse">
                     <div id="divSecondaryLabelText2">
@@ -1595,19 +1595,19 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="optionsRadiosSecondaryLabel2" id="secondaryLabelRadios21" value="option1" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.SecondaryFields[1].IsDynamicLabel" id="secondaryLabelRadios21" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);" checked>
                                     Фиксированный
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="optionsRadiosSecondaryLabel2" id="secondaryLabelRadios22" value="option2" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);">
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.SecondaryFields[1].IsDynamicLabel" id="secondaryLabelRadios22" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);">
                                     Динамический
                                 </label>
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="secondaryLabelTextInput2" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Обязательный" value="@Model.FieldDetails.SecondaryFields[1].Label" maxlength="30"
+                            <input id="secondaryLabelTextInput2" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.SecondaryFields[1].Label" placeholder="Обязательный" value="@Model.FieldDetails.SecondaryFields[1].Label" maxlength="30"
                                    onkeyup="document.getElementById('divSecondaryLabelPass2').innerHTML = this.value;; ChangeWidthSecondaryTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="secondaryLabelRadios2Prompt" class="rdiosPrompt"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -1625,19 +1625,19 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="optionsRadiosSecondaryValue2" id="secondaryValueRadios21" value="option1" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);">
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.SecondaryFields[1].IsDynamicValue" id="secondaryValueRadios21" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);">
                                     Фиксированное
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="optionsRadiosSecondaryValue2" id="secondaryValueRadios22" value="option2" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.SecondaryFields[1].IsDynamicValue" id="secondaryValueRadios22" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);" checked>
                                     Динамическое
                                 </label>
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="secondaryValueTextInput2" type="text" class="form-control LabelAndValueInputCollapse" placeholder="Необязательное" value="@Model.FieldDetails.SecondaryFields[1].Value" maxlength="30"
+                            <input id="secondaryValueTextInput2" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.SecondaryFields[1].Value" placeholder="Необязательное" value="@Model.FieldDetails.SecondaryFields[1].Value" maxlength="30"
                                    onkeyup="document.getElementById('divSecondaryValuePass2').innerHTML = this.value; ChangeWidthSecondaryTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="secondaryValueRadios2Prompt" class="rdiosPrompt displayBlock"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -1653,11 +1653,11 @@
                             <span data-toggle="tooltip" title="Чтобы включить новое значение данных в сообщение, вставте &#37;&#64; туда, где бы Вы хотели, чтобы это новое значение появилось.
                              Например: Теперь баланс Вашей карты составляет &#37;&#64; рублей">Уведомление, отображаемое при изменении данных</span>
                         </p>
-                        <input id="notificationInputSecondary2" class="form-control textInputNameContent" value="@Model.FieldDetails.SecondaryFields[1].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
+                        <input id="notificationInputSecondary2" class="form-control textInputNameContent" name="FieldDetails.SecondaryFields[1].ChangeMessage" value="@Model.FieldDetails.SecondaryFields[1].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
                     </div>
                     <div class="divDataTypeCollapseField">
                         <p class="pDataTypeCollapseField"><span data-toggle="tooltip" title="tttttttа">Тип данных</span></p>
-                        <select id="selectDataTypeSecondary2" class="form-control textInputNameContent" onchange="DisplayBlockDesiredSelect(id);">
+                        <select id="selectDataTypeSecondary2" class="form-control textInputNameContent" name="FieldDetails.SecondaryFields[1].Type" onchange="DisplayBlockDesiredSelect(id);">
                             <option value="text" selected>Текст</option>
                             <option value="number">Число</option>
                             <option value="currency">Валюта</option>
@@ -1715,7 +1715,7 @@
             <!--Secondary collapse field 3-->
             <div id="collapsePanelSecondaryContent3" class="panel">
                 <div class="collapseLinkContent">
-                    <input type="checkbox" name="checkboxG3" id="checkboxSecondary3" class="checkboxCollapse" onchange="CheckAndUncheckFieldFront(id);">
+                    <input type="checkbox" id="checkboxSecondary3" class="checkboxCollapse" name="FieldDetails.SecondaryFields[2].IsMarkedField" value="true" onchange="CheckAndUncheckFieldFront(id);">
                     <label for="checkboxSecondary3" class="checkboxCollapseLabel"></label>
                     <a data-toggle="collapse" data-parent="#mainCollapsePanelSecondaryContent" href="#collapseContentSecondary3">
                         <p class="labelInput">
@@ -1723,7 +1723,7 @@
                         </p>
                         <img src="~/Images/createCard/expand.png" class="expandImageCollapse" data-toggle="tooltip" title="Развернуть(свернуть) поле" />
                     </a>
-                    <input id="secondaryLabelCollapseInput3" class="form-control textInputNameContent" value="@Model.FieldDetails.SecondaryFields[2].Key" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
+                    <input id="secondaryLabelCollapseInput3" class="form-control textInputNameContent" name="FieldDetails.SecondaryFields[2].Key" value="@Model.FieldDetails.SecondaryFields[2].Key" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
                 </div>
                 <div id="collapseContentSecondary3" class="collapseContent collapse">
                     <div id="divSecondaryLabelText3">
@@ -1733,19 +1733,19 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="optionsRadiosSecondaryLabel3" id="secondaryLabelRadios31" value="option1" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.SecondaryFields[2].IsDynamicLabel" id="secondaryLabelRadios31" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);" checked>
                                     Фиксированный
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="optionsRadiosSecondaryLabel3" id="secondaryLabelRadios32" value="option2" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);">
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.SecondaryFields[2].IsDynamicLabel" id="secondaryLabelRadios32" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);">
                                     Динамический
                                 </label>
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="secondaryLabelTextInput3" type="text" class="form-control LabelAndValueInputCollapse" value="@Model.FieldDetails.SecondaryFields[2].Label" placeholder="Обязательный" maxlength="30"
+                            <input id="secondaryLabelTextInput3" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.SecondaryFields[2].Label" value="@Model.FieldDetails.SecondaryFields[2].Label" placeholder="Обязательный" maxlength="30"
                                    onkeyup="document.getElementById('divSecondaryLabelPass3').innerHTML = this.value; ChangeWidthSecondaryTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="secondaryLabelRadios3Prompt" class="rdiosPrompt"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -1763,19 +1763,19 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="optionsRadiosSecondaryValue3" id="secondaryValueRadios31" value="option1" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);">
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.SecondaryFields[2].IsDynamicValue" id="secondaryValueRadios31" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);">
                                     Фиксированное
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="optionsRadiosSecondaryValue3" id="secondaryValueRadios32" value="option2" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.SecondaryFields[2].IsDynamicValue" id="secondaryValueRadios32" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);" checked>
                                     Динамическое
                                 </label>
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="secondaryValueTextInput3" type="text" class="form-control LabelAndValueInputCollapse" value="@Model.FieldDetails.SecondaryFields[2].Value" placeholder="Необязательное" maxlength="30"
+                            <input id="secondaryValueTextInput3" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.SecondaryFields[2].Value" value="@Model.FieldDetails.SecondaryFields[2].Value" placeholder="Необязательное" maxlength="30"
                                    onkeyup="document.getElementById('divSecondaryValuePass3').innerHTML = this.value; ChangeWidthSecondaryTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="secondaryValueRadios3Prompt" class="rdiosPrompt displayBlock"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -1791,11 +1791,11 @@
                             <span data-toggle="tooltip" title="Чтобы включить новое значение данных в сообщение, вставте &#37;&#64; туда, где бы Вы хотели, чтобы это новое значение появилось.
                              Например: Теперь баланс Вашей карты составляет &#37;&#64; рублей">Уведомление, отображаемое при изменении данных</span>
                         </p>
-                        <input id="notificationInputSecondary3" class="form-control textInputNameContent" value="@Model.FieldDetails.SecondaryFields[2].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
+                        <input id="notificationInputSecondary3" class="form-control textInputNameContent" name="FieldDetails.SecondaryFields[2].ChangeMessage" value="@Model.FieldDetails.SecondaryFields[2].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
                     </div>
                     <div class="divDataTypeCollapseField">
                         <p class="pDataTypeCollapseField"><span data-toggle="tooltip" title="tttttttа">Тип данных</span></p>
-                        <select id="selectDataTypeSecondary3" class="form-control textInputNameContent" onchange="DisplayBlockDesiredSelect(id);">
+                        <select id="selectDataTypeSecondary3" class="form-control textInputNameContent" name="FieldDetails.SecondaryFields[2].Type" onchange="DisplayBlockDesiredSelect(id);">
                             <option value="text" selected>Текст</option>
                             <option value="number">Число</option>
                             <option value="currency">Валюта</option>
@@ -1853,7 +1853,7 @@
             <!--Secondary collapse field 4-->
             <div id="collapsePanelSecondaryContent4" class="panel">
                 <div class="collapseLinkContent">
-                    <input type="checkbox" name="checkboxG4" id="checkboxSecondary4" class="checkboxCollapse" onchange="CheckAndUncheckFieldFront(id);">
+                    <input type="checkbox" id="checkboxSecondary4" class="checkboxCollapse" name="FieldDetails.SecondaryFields[3].IsMarkedField" value="true" onchange="CheckAndUncheckFieldFront(id);">
                     <label for="checkboxSecondary4" class="checkboxCollapseLabel"></label>
                     <a data-toggle="collapse" data-parent="#mainCollapsePanelSecondaryContent" href="#collapseContentSecondary4">
                         <p class="labelInput">
@@ -1861,7 +1861,7 @@
                         </p>
                         <img src="~/Images/createCard/expand.png" class="expandImageCollapse" data-toggle="tooltip" title="Развернуть(свернуть) поле" />
                     </a>
-                    <input id="secondaryLabelCollapseInput4" class="form-control textInputNameContent" value="@Model.FieldDetails.SecondaryFields[3].Key" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
+                    <input id="secondaryLabelCollapseInput4" class="form-control textInputNameContent" name="FieldDetails.SecondaryFields[3].Key" value="@Model.FieldDetails.SecondaryFields[3].Key" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
                 </div>
                 <div id="collapseContentSecondary4" class="collapseContent collapse">
                     <div id="divSecondaryLabelText4">
@@ -1871,19 +1871,19 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="optionsRadiosSecondaryLabel4" id="secondaryLabelRadios41" value="option1" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.SecondaryFields[3].IsDynamicLabel" id="secondaryLabelRadios41" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);" checked>
                                     Фиксированный
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="optionsRadiosSecondaryLabel4" id="secondaryLabelRadios42" value="option2" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);">
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.SecondaryFields[3].IsDynamicLabel" id="secondaryLabelRadios42" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);">
                                     Динамический
                                 </label>
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="secondaryLabelTextInput4" type="text" class="form-control LabelAndValueInputCollapse" value="@Model.FieldDetails.SecondaryFields[3].Label" placeholder="Обязательный" maxlength="40"
+                            <input id="secondaryLabelTextInput4" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.SecondaryFields[3].Label" value="@Model.FieldDetails.SecondaryFields[3].Label" placeholder="Обязательный" maxlength="40"
                                    onkeyup="document.getElementById('divSecondaryLabelPass4').innerHTML = this.value; ChangeWidthSecondaryTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="secondaryLabelRadios4Prompt" class="rdiosPrompt"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -1901,19 +1901,19 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="optionsRadiosSecondaryValue4" id="secondaryValueRadios41" value="option1" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);">
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.SecondaryFields[3].IsDynamicValue" id="secondaryValueRadios41" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);">
                                     Фиксированное
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="optionsRadiosSecondaryValue4" id="secondaryValueRadios42" value="option2" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.SecondaryFields[3].IsDynamicValue" id="secondaryValueRadios42" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);" checked>
                                     Динамическое
                                 </label>
                             </div>
                         </div>
                         <div class="inputTextFlexContainer">
-                            <input id="secondaryValueTextInput4" type="text" class="form-control LabelAndValueInputCollapse" value="@Model.FieldDetails.SecondaryFields[3].Value" placeholder="Необязательное" maxlength="40"
+                            <input id="secondaryValueTextInput4" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.SecondaryFields[3].Value" value="@Model.FieldDetails.SecondaryFields[3].Value" placeholder="Необязательное" maxlength="40"
                                    onkeyup="document.getElementById('divSecondaryValuePass4').innerHTML = this.value; ChangeWidthSecondaryTextFieldPass(id); CheckCheckboxAfterInput(id);" />
                             <div id="secondaryValueRadios4Prompt" class="rdiosPrompt displayBlock"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
@@ -1929,11 +1929,11 @@
                             <span data-toggle="tooltip" title="Чтобы включить новое значение данных в сообщение, вставте &#47;&#64; туда, где бы Вы хотели, чтобы это новое значение появилось.
                              Например: Теперь баланс Вашей карты составляет &#47;&#64; рублей">Уведомление, отображаемое при изменении данных</span>
                         </p>
-                        <input id="notificationInputSecondary4" class="form-control textInputNameContent" value="@Model.FieldDetails.SecondaryFields[3].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
+                        <input id="notificationInputSecondary4" class="form-control textInputNameContent" name="FieldDetails.SecondaryFields[3].ChangeMessage" value="@Model.FieldDetails.SecondaryFields[3].ChangeMessage" maxlength="40" placeholder="Не обязательное" />
                     </div>
                     <div class="divDataTypeCollapseField">
                         <p class="pDataTypeCollapseField"><span data-toggle="tooltip" title="tttttttа">Тип данных</span></p>
-                        <select id="selectDataTypeSecondary4" class="form-control textInputNameContent" onchange="DisplayBlockDesiredSelect(id);">
+                        <select id="selectDataTypeSecondary4" class="form-control textInputNameContent" name="FieldDetails.SecondaryFields[3].Type" onchange="DisplayBlockDesiredSelect(id);">
                             <option value="text" selected>Текст</option>
                             <option value="number">Число</option>
                             <option value="currency">Валюта</option>
@@ -1993,19 +1993,24 @@
     <!--Barcode format tab-->
     <div id="con_tab5" class="tabFrontContent">
         <br />
-        <div id="divBarcodeFormat">
-            <p style="font-size: 20px;">Формат штрихкода</p>
-            <input id="aztecCode" type="image" src="~/Images/createCard/barcode/aztec.png" style="height: 110px; width: auto;" />
-            <input class="active" id="qrCode" type="image" src="~/Images/createCard/barcode/qr.png" style="height: 110px; width: auto;" />
-            <input id="pdf417Code" type="image" src="~/Images/createCard/barcode/pdf.png" style="height: 110px; width: auto;" />
-        </div>
+
+        <!--Barcode type select-->
+        <p class="labelInput labelInputBarcode">
+            <span data-toggle="tooltip" title="Выбирая тип штрих-кода убедитесь, что ваши сканеры имеют возможность считывать этот тип">Тип штрих-кода</span>
+        </p>
+        <select id="barcodeTypeSelect" name="BarcodeDetails.BarcodeType" class="form-control textInputBarcode" onchange="ChangeBarcodeType(value)">
+            <option value="aztecCode">Aztec</option>
+            <option value="qrCode" selected="">QR</option>
+            <option value="pdf417Code">PDF417</option>
+            <option value="doNotDisplay">Не отображать штрих-код</option>
+        </select>
         <br />
 
         <!--Encoded message select-->
         <p class="labelInput labelInputBarcode">
             <span data-toggle="tooltip" title="Выберите какую информацию закодировать в штрих-код">Закодированное сообщение</span>
         </p>
-        <select id="barcodeMessageSelect" name="bms" class="form-control textInputBarcode" onchange="DisplayBarcodeMessTextarea(value)">
+        <select id="barcodeMessageSelect" name="BarcodeDetails.EncodedMessage" class="form-control textInputBarcode" onchange="DisplayBarcodeMessTextarea(value)">
             <option value="encodeThePassSerialNumber">Закодировать серийный номер пасса</option>
             <option value="encodeThePassUniqueId">Закодировать уникальный идентификатор</option>
             <option value="encodeTheUrlToUpdateThePass" selected="selected">Закодировать URL для обновления пасса</option>
@@ -2019,7 +2024,7 @@
             <p class="labelInput labelInputBarcode">
                 <span data-toggle="tooltip" title="Этот текст будет закодирован в штрих-коде. Если Вы хотите закодировать ссылку на веб-страницу, то введите URL начинающийся с http:// или https://">Текст для кодирования</span>
             </p>
-            <textarea id="barcodeMessageTextarea" class="form-control textInputBarcode" maxlength="20" placeholder="Необязательное" rows="2">@Model.BarcodeDetails.TextToEncode</textarea>
+            <textarea id="barcodeMessageTextarea" class="form-control textInputBarcode" name="BarcodeDetails.TextToEncode" maxlength="20" placeholder="Необязательное" rows="2">@Model.BarcodeDetails.TextToEncode</textarea>
             <br>
         </div>
 
@@ -2027,7 +2032,7 @@
         <p class="labelInput labelInputBarcode">
             <span data-toggle="tooltip" title="Выберите какой текст будет отображаться под штрих-кодом. Это может помочь использовать пасс в случае, когда пасс не сканируется">Альтернативный текст</span>
         </p>
-        <select id="barcodeAltTextSelect" name="bat" class="form-control textInputBarcode" onchange="DisplayBarcodeAltText(value)">
+        <select id="barcodeAltTextSelect" name="BarcodeDetails.AlternativeText" class="form-control textInputBarcode" onchange="DisplayBarcodeAltText(value)">
             <option value="0">Отображать содержимое штрих-кода</option>
             <option value="displayThePassSerialNumber" selected="selected">Отображать серийный номер пасса</option>
             <option value="displayThePassUniqueId">Отображать уникальный идентификатор пасса</option>
@@ -2042,16 +2047,15 @@
             <p class="labelInput labelInputBarcode">
                 <span data-toggle="tooltip" title="This field may also be used to provide additional information to the passholder such as 'Admits one only'">Текст для отображения</span>
             </p>
-            <input id="alternativeTextInput" class="form-control textInputBarcode" maxlength="20" value="@Model.BarcodeDetails.TextToDisplay" placeholder="Введите текст для отображения">
+            <input id="alternativeTextInput" class="form-control textInputBarcode" name="BarcodeDetails.TextToDisplay" maxlength="20" value="@Model.BarcodeDetails.TextToDisplay" placeholder="Введите текст для отображения">
             <br>
         </div>
-        <br />
 
         <!--Encoding format select-->
         <p class="labelInput labelInputBarcode">
             <span data-toggle="tooltip" title="Требуется только если ваше закодированное сообщение не совместимо с ISO_8859-1. Убедитесь в поддержке программного обеспечения прежде чем изменять">Формат кодирования</span>
         </p>
-        <select id="encodingFormatSelect" class="form-control textInputBarcode" name="bce">
+        <select id="encodingFormatSelect" class="form-control textInputBarcode" name="BarcodeDetails.EncodingFormat">
             <option>ANSI_X3.4-1968</option>
             <option>Big5</option>
             <option>Big5-HKSCS</option>
