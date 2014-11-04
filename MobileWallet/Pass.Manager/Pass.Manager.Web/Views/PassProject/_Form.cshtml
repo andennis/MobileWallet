@@ -19,3 +19,43 @@
         </div>    
     </div>
 }
+
+<span id="undo" class="k-button">Click here to open the window.</span>
+
+<div id="window"></div>
+
+<script>
+    $(document).ready(function() {
+        var window = $("#window"),
+            undo = $("#undo").bind("click", function() {
+                        window.data("kendoWindow").open();
+                        window.data("kendoWindow").center();
+                    });
+
+
+        if (!window.data("kendoWindow")) {
+            window.kendoWindow({
+                width: "600px",
+                height: "400px",
+                title: "My Title",
+                visible: false,
+                animation: {
+                    open: {
+                        effects: "fade:in",
+                        duration: 500
+                    }
+                },
+                actions: [
+                    "Pin",
+                    "Minimize",
+                    "Maximize",
+                    "Close"
+                ],
+                modal: true
+                //content: "http://www.telerik.com/"
+            });
+        }
+    });
+</script>
+
+

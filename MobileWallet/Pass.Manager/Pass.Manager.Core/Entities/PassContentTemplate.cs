@@ -35,5 +35,6 @@ namespace Pass.Manager.Core.Entities
         public bool? SuppressStripShine { get; set; }
 
         public PassProject PassProject { get; set; }
+        public ICollection<PassContentTemplateField> PassContentTemplateFields { get; set; }
     }
 }

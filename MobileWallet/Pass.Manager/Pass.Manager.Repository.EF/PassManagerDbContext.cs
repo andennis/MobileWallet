@@ -92,6 +92,14 @@ namespace Pass.Manager.Repository.EF
             modelBuilder.Entity<PassLocation>().Property(x => x.Longitude).IsRequired();
             modelBuilder.Entity<PassLocation>().HasRequired(x => x.PassContentTemplate).WithMany(x => x.Locations).HasForeignKey(x => x.PassContentTemplateId);
 
+            modelBuilder.Entity<PassContentTemplateField>().ToTable("PassContentTemplateField", DbScheme);
+            modelBuilder.Entity<PassContentTemplateField>().Property(x => x.Version).IsConcurrencyToken();
+            modelBuilder.Entity<PassContentTemplateField>().Property(x => x.AttributedValue).HasMaxLength(128);
+            modelBuilder.Entity<PassContentTemplateField>().Property(x => x.ChangeMessage).HasMaxLength(128);
+            modelBuilder.Entity<PassContentTemplateField>().Property(x => x.Label).HasMaxLength(128);
+            modelBuilder.Entity<PassContentTemplateField>().HasRequired(x => x.PassContentTemplate).WithMany(x => x.PassContentTemplateFields).HasForeignKey(x => x.PassContentTemplateId);
+            modelBuilder.Entity<PassContentTemplateField>().HasRequired(x => x.PassProjectField).WithMany().HasForeignKey(x => x.PassProjectFieldId);
+
             base.OnModelCreating(modelBuilder);
         }
 

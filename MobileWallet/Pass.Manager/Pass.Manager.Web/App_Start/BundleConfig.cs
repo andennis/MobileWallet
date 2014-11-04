@@ -39,9 +39,13 @@ namespace Pass.Manager.Web
                       "~/Content/kendo/2014.2.716/kendo.default.min.css"));
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
                 "~/Scripts/kendo/2014.2.716/kendo.core.min.js",
+                //TabStrip
                 "~/Scripts/kendo/2014.2.716/kendo.data.min.js",
                 "~/Scripts/kendo/2014.2.716/kendo.tabstrip.min.js",
-                "~/Scripts/kendo/2014.2.716/kendo.upload.js"));
+                //Window
+                "~/Scripts/kendo/2014.2.716/kendo.userevents.min.js",
+                "~/Scripts/kendo/2014.2.716/kendo.draganddrop.min.js",
+                "~/Scripts/kendo/2014.2.716/kendo.window.min.js"));
 
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
