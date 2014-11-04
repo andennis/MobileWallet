@@ -16,15 +16,25 @@ namespace Pass.Manager.Web.Models.GeneralPassTemplate
         [JsonProperty(PropertyName = "passProjectId", Required = Required.Always)]
         public int PassProjectId { get; set; }
 
+        #region Images Keys
         public string TemplatePath { get; set; }
 
         public HttpPostedFileBase Logo { get; set; }
 
+        public bool RemoveLogo { get; set; }
+
         public HttpPostedFileBase Strip { get; set; }
+
+        public bool RemoveStrip { get; set; }
 
         public HttpPostedFileBase Background { get; set; }
 
+        public bool RemoveBackground { get; set; }
+
         public HttpPostedFileBase Thumbnail { get; set; }
+
+        public bool RemoveThumbnail { get; set; }
+        #endregion
 
         #region Standart keys
 

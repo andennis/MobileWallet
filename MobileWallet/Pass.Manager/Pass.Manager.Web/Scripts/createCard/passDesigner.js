@@ -100,12 +100,12 @@ function BlurBackgroundImage() {
 //Remove image on pass
 jQuery('.removeImage').click(function (evt) {
     var itemId = evt.target.id.replace('remove', '');
-    console.log(itemId);
+    jQuery('#checkRemove' + itemId).val(true);
     document.getElementById('div' + itemId + 'ImagePass').innerHTML = '';
     itemId = itemId.toLowerCase();
     document.getElementById(itemId + 'Name').innerHTML = 'Файл не выбран';
     RepositionRemoveIcon();
-});
+    });
 
 //Hide “Image not found” icon when src source image is not found
 jQuery("img").error(function () {
@@ -209,7 +209,7 @@ function ChangeBarcodeType(itemValue) {
             jQuery('#tab3').css('display', 'block');
         }
     }
-   if (jQuery('.passTypeImg.selected').attr('data-pass') === 'eventTicket' && jQuery('#eventTicketType input:checked').attr('value') === 'option2') {
+    if (jQuery('.passTypeImg.selected').attr('data-pass') === 'eventTicket' && jQuery('#eventTicketType input:checked').attr('value') === 'option2') {
         ChangesDependingPassType('eventTicket');
     };
 }
@@ -234,62 +234,68 @@ function ChangeValueTextColor(color) {
 }
 
 //Add field to back content
+var GLOBAL_COUNT_BACK_FIELD = 1;
 function AddFieldBackContent() {
-    var lastChild = jQuery("#mainCollapsePanelBackContent").children().last(),
-    lastChildId = parseInt(lastChild.attr('id').toString().slice(-2).replace('t', ''), 10),
-    content = '',
-    aHref = '',
-    tempId = '',
-    tempName = '',
-    propCheckedFixedLabel = '',
-    propCheckedDynamicLabel = '',
-    propCheckedFixedValue = '',
-    propCheckedDynamicValue = '',
-    replacedHtml = '',
-    //stringContent = '/Content' + lastChildID + '/g',
-    stringContent = new RegExp('Content' + lastChildId, 'g'),
-    stringBack = new RegExp('Back' + lastChildId, 'g'),
-    stringInput = new RegExp('Input' + lastChildId, 'g'),
-    stringField = new RegExp('Field' + lastChildId, 'g'),
-    stringLabel = new RegExp('Label' + lastChildId, 'g'),
-    stringValue = new RegExp('Value' + lastChildId, 'g');
-    jQuery('<div />', {
-        id: 'collapsePanelBackContent' + (lastChildId + 1)
-    }).appendTo('#mainCollapsePanelBackContent');
+    if (GLOBAL_COUNT_BACK_FIELD <= 21) {
+        GLOBAL_COUNT_BACK_FIELD++;
+        var idArray = [];
+        jQuery('#mainCollapsePanelBackContent').children().each(function () {
+            idArray.push(this.id.slice(-2).replace('t', ''));
+        });
 
-    //Save property 'checked' radio buttons last field
-    propCheckedFixedLabel = jQuery('#collapseContentLabelBack' + lastChildId + '1').prop('checked');
-    propCheckedDynamicLabel = jQuery('#collapseContentLabelBack' + lastChildId + '2').prop('checked');
-    propCheckedFixedValue = jQuery('#collapseContentValueBack' + lastChildId + '1').prop('checked');
-    propCheckedDynamicValue = jQuery('#collapseContentValueBack' + lastChildId + '2').prop('checked');
+        var lastChild = jQuery("#mainCollapsePanelBackContent").children().last(),
+            lastChildId = parseInt(lastChild.attr('id').toString().slice(-2).replace('t', ''), 10),
+            content = '',
+            aHref = '',
+            tempId = '',
+            tempName = '',
+            propCheckedFixedLabel = '',
+            propCheckedDynamicLabel = '',
+            propCheckedFixedValue = '',
+            propCheckedDynamicValue = '',
+            replacedHtml = '',
+            //stringContent = '/Content' + lastChildID + '/g',
+            stringContent = new RegExp('Content' + lastChildId, 'g'),
+            stringBack = new RegExp('Back' + lastChildId, 'g'),
+            stringInput = new RegExp('Input' + lastChildId, 'g'),
+            stringField = new RegExp('Field' + lastChildId, 'g'),
+            stringLabel = new RegExp('Label' + lastChildId, 'g'),
+            stringValue = new RegExp('Value' + lastChildId, 'g'),
+            stringName = new RegExp('\\[' + (lastChildId - 1), 'g');
+        jQuery('<div />', {
+            id: 'collapsePanelBackContent' + (lastChildId + 1)
+        }).appendTo('#mainCollapsePanelBackContent');
 
-    //Copy content last field to new field
-    content = jQuery('#collapsePanelBackContent' + lastChildId).html();
-    jQuery('#collapsePanelBackContent' + (lastChildId + 1)).html(content);
+        //Save property 'checked' radio buttons last field
+        propCheckedFixedLabel = jQuery('#collapseContentLabelBack' + lastChildId + '1').prop('checked');
+        propCheckedDynamicLabel = jQuery('#collapseContentLabelBack' + lastChildId + '2').prop('checked');
+        propCheckedFixedValue = jQuery('#collapseContentValueBack' + lastChildId + '1').prop('checked');
+        propCheckedDynamicValue = jQuery('#collapseContentValueBack' + lastChildId + '2').prop('checked');
 
-    //Change attributes in new field
-    replacedHtml = jQuery('#collapsePanelBackContent' + (lastChildId + 1)).html().replace(stringContent, 'Content' + (lastChildId + 1)).replace(stringBack, 'Back' + (lastChildId + 1))
-    .replace(stringInput, 'Input' + (lastChildId + 1)).replace(stringField, 'Field' + (lastChildId + 1))
-    .replace(stringLabel, 'Label' + (lastChildId + 1)).replace(stringValue, 'Value' + (lastChildId + 1));
-    jQuery('#collapsePanelBackContent' + (lastChildId + 1)).html(replacedHtml);
+        //Copy content last field to new field
+        content = jQuery('#collapsePanelBackContent' + lastChildId).html();
+        jQuery('#collapsePanelBackContent' + (lastChildId + 1)).html(content);
 
-    jQuery('#collapseContentLabelBack' + lastChildId + '1').prop('checked', propCheckedFixedLabel);
-    jQuery('#collapseContentLabelBack' + lastChildId + '2').prop('checked', propCheckedDynamicLabel);
-    jQuery('#collapseContentValueBack' + lastChildId + '1').prop('checked', propCheckedFixedValue);
-    jQuery('#collapseContentValueBack' + lastChildId + '2').prop('checked', propCheckedDynamicValue);
+        //Change attributes in new field
+        replacedHtml = jQuery('#collapsePanelBackContent' + (lastChildId + 1)).html().replace(stringContent, 'Content' + (lastChildId + 1)).replace(stringBack, 'Back' + (lastChildId + 1))
+        .replace(stringInput, 'Input' + (lastChildId + 1)).replace(stringField, 'Field' + (lastChildId + 1))
+        .replace(stringLabel, 'Label' + (lastChildId + 1)).replace(stringValue, 'Value' + (lastChildId + 1)).replace(stringName, '[' + lastChildId);
+        jQuery('#collapsePanelBackContent' + (lastChildId + 1)).html(replacedHtml);
 
-    DisplayNoneRadioButtonPrompt('collapseContentLabelBack' + (lastChildId + 1) + '1');
-    DisplayNoneRadioButtonPrompt('collapseContentValueBack' + (lastChildId + 1) + '1');
-    AddFieldBackContentPass(lastChildId + 1);
+        jQuery('#collapseContentLabelBack' + lastChildId + '1').prop('checked', propCheckedFixedLabel);
+        jQuery('#collapseContentLabelBack' + lastChildId + '2').prop('checked', propCheckedDynamicLabel);
+        jQuery('#collapseContentValueBack' + lastChildId + '1').prop('checked', propCheckedFixedValue);
+        jQuery('#collapseContentValueBack' + lastChildId + '2').prop('checked', propCheckedDynamicValue);
+
+        DisplayNoneRadioButtonPrompt('collapseContentLabelBack' + (lastChildId + 1) + '1');
+        DisplayNoneRadioButtonPrompt('collapseContentValueBack' + (lastChildId + 1) + '1');
+        AddFieldBackContentPass(lastChildId + 1);
+        }
     jQuery("[data-toggle='tooltip']").tooltip();
 }
 
 //Add field to back content pass
-function AddFieldBackContentPass(lastChildId) {
-    if (jQuery('#mainCollapsePanelBackContent').children().size() === 1 && jQuery('#mainCollapsePanelBackContent').attr('class') === 'displayNone') {
-        jQuery('#collapsePanelBackContent' + tempId).removeClass('displayNone');
-        jQuery('#divBackFieldContentPass' + tempId).removeClass('displayNone');
-    } else {
+function AddFieldBackContentPass(lastChildId) { 
         jQuery('<div />', {
             id: 'divBackFieldContentPass' + lastChildId,
             class: 'divBackFieldContentPass'
@@ -302,31 +308,12 @@ function AddFieldBackContentPass(lastChildId) {
             id: 'backValuePass' + lastChildId,
             class: 'valueFieldBackPass'
         }).appendTo('#divBackFieldContentPass' + lastChildId);
-    }
 }
-//backLabelTextInput1     backLabelPass1
+
 //Bind back inputs to pass fields
 function BindBackInputToFieldPass(id, value) {
     var imputId = id.replace('TextInput', 'Pass');
     document.getElementById(imputId).innerHTML = value;
-}
-
-////Bind back textarea to pass fields
-//function BindBackTextareaToFieldPass(id, value) {
-//    var imputId = id.slice(-2).replace('t', '');
-//    document.getElementById('valueFieldBackPass' + imputId).innerHTML = value;
-//}
-
-//Remove field from back content
-function RemoveFieldFromBackContent(id) {
-    var tempId = id.slice(-2).replace('d', '');
-    if (jQuery('#mainCollapsePanelBackContent').children().size() === 1) {
-        jQuery('#collapsePanelBackContent' + tempId).addClass('displayNone');
-        jQuery('#divBackFieldContentPass' + tempId).addClass('displayNone');
-    } else {
-        jQuery('#collapsePanelBackContent' + tempId).remove();
-        jQuery('#divBackFieldContentPass' + tempId).remove();
-    }
 }
 
 //Remove all field in back content pass
@@ -576,7 +563,8 @@ function AddAddressField() {
         stringInput = new RegExp('Input' + lastChildId, 'g'),
         stringMap = new RegExp('Map' + lastChildId, 'g'),
         stringLock = new RegExp('Lock' + lastChildId, 'g'),
-        stringButton = new RegExp('Button' + lastChildId, 'g');
+        stringButton = new RegExp('Button' + lastChildId, 'g'),
+        stringName = new RegExp('\\[' + (lastChildId - 1), 'g');
         jQuery('<div />', {
             id: 'collapsePanelAddressContent' + (lastChildId + 1)
         }).appendTo('#mainCollapsePanelAddressContent');
@@ -588,7 +576,7 @@ function AddAddressField() {
         //Change attributes in new field
         replacedHtml = jQuery('#collapsePanelAddressContent' + (lastChildId + 1)).html().replace(stringContent, 'Content' + (lastChildId + 1))
         .replace(stringAddress, 'Address' + (lastChildId + 1)).replace(stringInput, 'Input' + (lastChildId + 1)).replace(stringMap, 'Map' + (lastChildId + 1))
-        .replace(stringLock, 'Lock' + (lastChildId + 1)).replace(stringButton, 'Button' + (lastChildId + 1));
+        .replace(stringLock, 'Lock' + (lastChildId + 1)).replace(stringButton, 'Button' + (lastChildId + 1)).replace(stringName, '[' + lastChildId);
         jQuery('#collapsePanelAddressContent' + (lastChildId + 1)).html(replacedHtml);
     }
     jQuery("[data-toggle='tooltip']").tooltip();
@@ -875,8 +863,8 @@ function LatLngApply(tempId) {
     lngInputId = tempId.replace('latLngApplyButton', 'longitudeInput');
     addressInputId = tempId.replace('latLngApplyButton', 'addressLabelCollapseInput');
     addressInputMapId = tempId.replace('latLngApplyButton', 'addressInputLock');
-    document.getElementById(latInputId).value = TEMP_LAT;
-    document.getElementById(lngInputId).value = TEMP_LNG;
+    document.getElementById(latInputId).value = TEMP_LAT.toString().replace('.', ',');
+    document.getElementById(lngInputId).value = TEMP_LNG.toString().replace('.', ',');
     document.getElementById(addressInputId).value = document.getElementById(addressInputMapId).value;
     DisNoneDarkAreaAndMap();
 }
@@ -1243,204 +1231,204 @@ function ChangesDependingPassType(passType) {
 //}
 
 //JSON serialization
-function PostJsonData() {
-    var jsonObj = {
-        LocationDetails: {
-            Locations: []
-        },
-        DistributionDetails: {},
-        BarcodeDetails: {},
-        FieldDetails: {
-            AuxiliaryFields: [],
-            BackFields: [],
-            HeaderFields: [],
-            PrimaryFields: [],
-            SecondaryFields: []
-        }
-    },
-    fieldsName = [
-    { 'fieldName': 'auxiliary', 'FieldName': 'Auxiliary', 'fieldCount': 5, 'arrName': jsonObj.FieldDetails.AuxiliaryFields },
-    { 'fieldName': 'back', 'FieldName': 'Back', 'fieldCount': jQuery('#mainCollapsePanelBackContent').children().length, 'arrName': jsonObj.FieldDetails.BackFields },
-    { 'fieldName': 'header', 'FieldName': 'Header', 'fieldCount': 3, 'arrName': jsonObj.FieldDetails.HeaderFields },
-    { 'fieldName': 'primary', 'FieldName': 'Primary', 'fieldCount': 2, 'arrName': jsonObj.FieldDetails.PrimaryFields },
-    { 'fieldName': 'secondary', 'FieldName': 'Secondary', 'fieldCount': 4, 'arrName': jsonObj.FieldDetails.SecondaryFields }
-    ];
+//function PostJsonData() {
+//    var jsonObj = {
+//        LocationDetails: {
+//            Locations: []
+//        },
+//        DistributionDetails: {},
+//        BarcodeDetails: {},
+//        FieldDetails: {
+//            AuxiliaryFields: [],
+//            BackFields: [],
+//            HeaderFields: [],
+//            PrimaryFields: [],
+//            SecondaryFields: []
+//        }
+//    },
+//    fieldsName = [
+//    { 'fieldName': 'auxiliary', 'FieldName': 'Auxiliary', 'fieldCount': 5, 'arrName': jsonObj.FieldDetails.AuxiliaryFields },
+//    { 'fieldName': 'back', 'FieldName': 'Back', 'fieldCount': jQuery('#mainCollapsePanelBackContent').children().length, 'arrName': jsonObj.FieldDetails.BackFields },
+//    { 'fieldName': 'header', 'FieldName': 'Header', 'fieldCount': 3, 'arrName': jsonObj.FieldDetails.HeaderFields },
+//    { 'fieldName': 'primary', 'FieldName': 'Primary', 'fieldCount': 2, 'arrName': jsonObj.FieldDetails.PrimaryFields },
+//    { 'fieldName': 'secondary', 'FieldName': 'Secondary', 'fieldCount': 4, 'arrName': jsonObj.FieldDetails.SecondaryFields }
+//    ];
 
-    jsonObj.passProjectId = jQuery('#passProjectId').val();//++++++++++++++++++++++++++++++++++++++++++
-    jsonObj.Logo = $("#logoImageInput").get(0).files;//++++++++++++++++++++++++++++++++++++++++++
+//    jsonObj.passProjectId = jQuery('#passProjectId').val();//++++++++++++++++++++++++++++++++++++++++++
+//    jsonObj.Logo = $("#logoImageInput").get(0).files;//++++++++++++++++++++++++++++++++++++++++++
 
-    //Standard Keys
-    jsonObj.OrganizationName = jQuery('#organizationNameInput').val();//++++++++++++++++++++++++++++++++++++++++++
-    jsonObj.TemplateName = jQuery('#templateNameInput').val();//++++++++++++++++++++++++++++++++++++++++++
-    //jsonObj.TemplateDescription = ?????????????????????????
-    jsonObj.PassType = jQuery('#divPassType input[checked = "checked"]').val();//++++++++++++++++++++++++++++++++++++++++++
-    jsonObj.PassDescription = jQuery('#passDescriptionTextarea').val();//++++++++++++++++++++++++++++++++++++++++++
-    jsonObj.PassSerialNumberType = jQuery('#serialNumber input:checked').val();//++++++++++++++++++++++++++++++++++++++++++
-    //if (jQuery('#serialNumber input:checked').attr('value') == 'option3') {
-    //    jsonObj.serialNumber = jQuery('#serialNumberInput').val();
-    //}
-    jsonObj.PassCertificate = jQuery('#passCertificSelect option:selected').val();//++++++++++++++++++++++++++++++++++++++++++
-    //jsonObj.TeamIdentifier = ??????????????????????????
+//    //Standard Keys
+//    jsonObj.OrganizationName = jQuery('#organizationNameInput').val();//++++++++++++++++++++++++++++++++++++++++++
+//    jsonObj.TemplateName = jQuery('#templateNameInput').val();//++++++++++++++++++++++++++++++++++++++++++
+//    //jsonObj.TemplateDescription = ?????????????????????????
+//    jsonObj.PassType = jQuery('#divPassType input[checked = "checked"]').val();//++++++++++++++++++++++++++++++++++++++++++
+//    jsonObj.PassDescription = jQuery('#passDescriptionTextarea').val();//++++++++++++++++++++++++++++++++++++++++++
+//    jsonObj.PassSerialNumberType = jQuery('#serialNumber input:checked').val();//++++++++++++++++++++++++++++++++++++++++++
+//    //if (jQuery('#serialNumber input:checked').attr('value') == 'option3') {
+//    //    jsonObj.serialNumber = jQuery('#serialNumberInput').val();
+//    //}
+//    jsonObj.PassCertificate = jQuery('#passCertificSelect option:selected').val();//++++++++++++++++++++++++++++++++++++++++++
+//    //jsonObj.TeamIdentifier = ??????????????????????????
 
-    //Visual Appearance Keys
-    jsonObj.BackgroundColor = jQuery('#backColorPicker').val();//++++++++++++++++++++++++++++++++++++++++++
-    jsonObj.LabelTextColor = jQuery('#labelColorPicker').val();//++++++++++++++++++++++++++++++++++++++++++
-    jsonObj.ValueTextColor = jQuery('#textColorPicker').val();//++++++++++++++++++++++++++++++++++++++++++
-    //jsonObj.SuppressStripShine = ????????????????????????????(only before IOS7)
+//    //Visual Appearance Keys
+//    jsonObj.BackgroundColor = jQuery('#backColorPicker').val();//++++++++++++++++++++++++++++++++++++++++++
+//    jsonObj.LabelTextColor = jQuery('#labelColorPicker').val();//++++++++++++++++++++++++++++++++++++++++++
+//    jsonObj.ValueTextColor = jQuery('#textColorPicker').val();//++++++++++++++++++++++++++++++++++++++++++
+//    //jsonObj.SuppressStripShine = ????????????????????????????(only before IOS7)
 
-    //IOS 7
-    //WARNING! Optional for event tickets and boarding passes; otherwise not allowed
-    jsonObj.GroupingIdentifier = jQuery('#groupingIdentifierInput').val();//++++++++++++++++++++++++++++++++++++++++++
-    jsonObj.PassTimezone = jQuery('#passTz').val();//invalid value//++++++++++++++++++++++++++++++++++++++++++
-    jsonObj.LogoText = jQuery('#logoTextInput').val();//++++++++++++++++++++++++++++++++++++++++++
+//    //IOS 7
+//    //WARNING! Optional for event tickets and boarding passes; otherwise not allowed
+//    jsonObj.GroupingIdentifier = jQuery('#groupingIdentifierInput').val();//++++++++++++++++++++++++++++++++++++++++++
+//    jsonObj.PassTimezone = jQuery('#passTz').val();//invalid value//++++++++++++++++++++++++++++++++++++++++++
+//    jsonObj.LogoText = jQuery('#logoTextInput').val();//++++++++++++++++++++++++++++++++++++++++++
 
-    //Integration Details
-    //jsonObj.IntegrationDetails = ?????????????????????
+//    //Integration Details
+//    //jsonObj.IntegrationDetails = ?????????????????????
 
-    //Location Details
-    jsonObj.LocationDetails.MaxDistance = jQuery('#maxDistanceInput').val();
-    for (var i = 0; i < jQuery('#mainCollapsePanelAddressContent').children().length; i++) {
-        jsonObj.LocationDetails.Locations.push({
-            'Altitude': jQuery('#altitudeInput' + (i + 1)).val().replace('.', ','),
-            'Latitude': jQuery('#latitudeInput' + (i + 1)).val().replace('.', ','),
-            'Longitude': jQuery('#longitudeInput' + (i + 1)).val().replace('.', ','),
-            'RelevantText': jQuery('#notificationInputAddress' + (i + 1)).val()
-        });
-    };//no deserialize
+//    //Location Details
+//    jsonObj.LocationDetails.MaxDistance = jQuery('#maxDistanceInput').val();//++++++++++++++++++++++++++++++++++++++++++
+//    for (var i = 0; i < jQuery('#mainCollapsePanelAddressContent').children().length; i++) {
+//        jsonObj.LocationDetails.Locations.push({
+//            'Altitude': jQuery('#altitudeInput' + (i + 1)).val().replace('.', ','),//++++++++++++++++++++++++++++++++++++++++++not recover
+//            'Latitude': jQuery('#latitudeInput' + (i + 1)).val().replace('.', ','),//++++++++++++++++++++++++++++++++++++++++++not recover
+//            'Longitude': jQuery('#longitudeInput' + (i + 1)).val().replace('.', ','),//++++++++++++++++++++++++++++++++++++++++++not recover
+//            'RelevantText': jQuery('#notificationInputAddress' + (i + 1)).val()//++++++++++++++++++++++++++++++++++++++++++not recover
+//        });
+//    };//no deserialize
 
-    //Beacon Details
-    //jsonObj.BeaconDetails = ?????????????????????
+//    //Beacon Details
+//    //jsonObj.BeaconDetails = ?????????????????????
 
-    //Distribution Details
-    jsonObj.DistributionDetails.PassLinkType = jQuery('#distTypeSelect option:selected').val();//++++++++++++++++++++++++++++++++++++++++++
-    //jsonObj.DistributionDetails.LimitPassPerUser = ???????????
-    jsonObj.DistributionDetails.AllPassesAsExpired = jQuery('#voidedCheckbox').is(':checked');//++++++++++++++++++++++++++++++++++++++++++
-    jsonObj.DistributionDetails.ExpirationDate = jQuery('#autoExpireInput').val();//++++++++++++++++++++++++++++++++++++++++++
-    if (jQuery('#distQuantitySelect :selected').val() === 1) {
-        jsonObj.DistributionDetails.QuantityRestriction = jQuery('#distQuantityInput').val();//++++++++++++++++++++++++++++++++++++++++++
-    }
-    if (jQuery('#distDateRestrSelect :selected').val() === 1) {
-        jsonObj.DistributionDetails.DateRestriction = jQuery('#distDateRestrInput').val();//++++++++++++++++++++++++++++++++++++++++++
-    }
-    if (jQuery('#distPasswdSelect :selected').val() === 1) {
-        jsonObj.DistributionDetails.PasswordToIssue = jQuery('#distIssuePasswdInput').val();//++++++++++++++++++++++++++++++++++++++++++
-    }
-    if (jQuery('#distPasswdUpdSelect :selected').val() === 1) {
-        jsonObj.DistributionDetails.PasswordToUpdate = jQuery('#distUpdatePasswdInput').val();//++++++++++++++++++++++++++++++++++++++++++
-    }
+//    //Distribution Details
+//    jsonObj.DistributionDetails.PassLinkType = jQuery('#distTypeSelect option:selected').val();//++++++++++++++++++++++++++++++++++++++++++
+//    //jsonObj.DistributionDetails.LimitPassPerUser = ???????????
+//    jsonObj.DistributionDetails.AllPassesAsExpired = jQuery('#voidedCheckbox').is(':checked');//++++++++++++++++++++++++++++++++++++++++++
+//    jsonObj.DistributionDetails.ExpirationDate = jQuery('#autoExpireInput').val();//++++++++++++++++++++++++++++++++++++++++++
+//    if (jQuery('#distQuantitySelect :selected').val() === 1) {
+//        jsonObj.DistributionDetails.QuantityRestriction = jQuery('#distQuantityInput').val();//++++++++++++++++++++++++++++++++++++++++++
+//    }
+//    if (jQuery('#distDateRestrSelect :selected').val() === 1) {
+//        jsonObj.DistributionDetails.DateRestriction = jQuery('#distDateRestrInput').val();//++++++++++++++++++++++++++++++++++++++++++
+//    }
+//    if (jQuery('#distPasswdSelect :selected').val() === 1) {
+//        jsonObj.DistributionDetails.PasswordToIssue = jQuery('#distIssuePasswdInput').val();//++++++++++++++++++++++++++++++++++++++++++
+//    }
+//    if (jQuery('#distPasswdUpdSelect :selected').val() === 1) {
+//        jsonObj.DistributionDetails.PasswordToUpdate = jQuery('#distUpdatePasswdInput').val();//++++++++++++++++++++++++++++++++++++++++++
+//    }
 
-    //Barcode Details
-    jsonObj.BarcodeDetails.BarcodeType = jQuery('#divBarcodeFormat input.active').attr('id');//++++++++++++++++++++++++++++++++++++++++++
-    jsonObj.BarcodeDetails.EncodedMessage = jQuery('#barcodeMessageSelect option:selected').val();//++++++++++++++++++++++++++++++++++++++++++
-    jsonObj.BarcodeDetails.TextToEncode = jQuery('#barcodeMessageTextarea').val();//++++++++++++++++++++++++++++++++++++++++++
-    jsonObj.BarcodeDetails.AlternativeText = jQuery('#barcodeAltTextSelect option:selected').val();//++++++++++++++++++++++++++++++++++++++++++
-    jsonObj.BarcodeDetails.TextToDisplay = jQuery('#alternativeTextInput').val();//++++++++++++++++++++++++++++++++++++++++++
-    jsonObj.BarcodeDetails.EncodingFormat = jQuery('#encodingFormatSelect option:selected').val();//++++++++++++++++++++++++++++++++++++++++++
+//    //Barcode Details
+//    jsonObj.BarcodeDetails.BarcodeType = jQuery('#divBarcodeFormat input.active').attr('id');//++++++++++++++++++++++++++++++++++++++++++
+//    jsonObj.BarcodeDetails.EncodedMessage = jQuery('#barcodeMessageSelect option:selected').val();//++++++++++++++++++++++++++++++++++++++++++
+//    jsonObj.BarcodeDetails.TextToEncode = jQuery('#barcodeMessageTextarea').val();//++++++++++++++++++++++++++++++++++++++++++
+//    jsonObj.BarcodeDetails.AlternativeText = jQuery('#barcodeAltTextSelect option:selected').val();//++++++++++++++++++++++++++++++++++++++++++
+//    jsonObj.BarcodeDetails.TextToDisplay = jQuery('#alternativeTextInput').val();//++++++++++++++++++++++++++++++++++++++++++
+//    jsonObj.BarcodeDetails.EncodingFormat = jQuery('#encodingFormatSelect option:selected').val();//++++++++++++++++++++++++++++++++++++++++++
 
-    //Field Details
-    for (var j = 0; j < fieldsName.length; j++) {
-        for (var a = 0; a < fieldsName[j].fieldCount; a++) {
-            fieldsName[j].arrName.push({
-                'IsMarkedField': jQuery('#checkbox' + fieldsName[j].FieldName + (a + 1)).is(':checked'),//++++++++++++++++++++++++++++++++++++++++++
+//    //Field Details
+//    for (var j = 0; j < fieldsName.length; j++) {
+//        for (var a = 0; a < fieldsName[j].fieldCount; a++) {
+//            fieldsName[j].arrName.push({
+//                'IsMarkedField': jQuery('#checkbox' + fieldsName[j].FieldName + (a + 1)).is(':checked'),//++++++++++++++++++++++++++++++++++++++++++
 
-                //Standard Field Dictionary Keys
-                //'attributedValue': ????????,
-                'ChangeMessage': jQuery('#notificationInput' + fieldsName[j].FieldName + (a + 1)).val(),//++++++++++++++++++++++++++++++++++++++++++
-                //'dataDetectorTypes': чекбоксы
-                'Key': jQuery('#' + fieldsName[j].fieldName + 'LabelCollapseInput' + (a + 1)).val(),//++++++++++++++++++++++++++++++++++++++++++
-                'Label': jQuery('#' + fieldsName[j].fieldName + 'LabelTextInput' + (a + 1)).val(),//++++++++++++++++++++++++++++++++++++++++++
-                'IsDynamicLabel': jQuery('#' + fieldsName[j].fieldName + 'LabelRadios' + (a + 1) + '2').is(':checked'),//++++++++++++++++++++++++++++++++++++++++++false если ничего не выбрано
-                'Value': jQuery('#' + fieldsName[j].fieldName + 'ValueTextInput' + (a + 1)).val(),//++++++++++++++++++++++++++++++++++++++++++
-                'IsDynamicValue': jQuery('#' + fieldsName[j].fieldName + 'ValueRadios' + (a + 1) + '2').is(':checked'),//++++++++++++++++++++++++++++++++++++++++++false если ничего не выбрано
-                //'textAlignment': ????????
-                'Type': jQuery('#selectDataType' + fieldsName[j].FieldName + (a + 1) + ' option:selected').val(),//++++++++++++++++++++++++++++++++++++++++++not recover
+//                //Standard Field Dictionary Keys
+//                //'attributedValue': ????????,
+//                'ChangeMessage': jQuery('#notificationInput' + fieldsName[j].FieldName + (a + 1)).val(),//++++++++++++++++++++++++++++++++++++++++++
+//                //'dataDetectorTypes': чекбоксы
+//                'Key': jQuery('#' + fieldsName[j].fieldName + 'LabelCollapseInput' + (a + 1)).val(),//++++++++++++++++++++++++++++++++++++++++++
+//                'Label': jQuery('#' + fieldsName[j].fieldName + 'LabelTextInput' + (a + 1)).val(),//++++++++++++++++++++++++++++++++++++++++++
+//                'IsDynamicLabel': jQuery('#' + fieldsName[j].fieldName + 'LabelRadios' + (a + 1) + '2').is(':checked'),//++++++++++++++++++++++++++++++++++++++++++false если ничего не выбрано
+//                'Value': jQuery('#' + fieldsName[j].fieldName + 'ValueTextInput' + (a + 1)).val(),//++++++++++++++++++++++++++++++++++++++++++
+//                'IsDynamicValue': jQuery('#' + fieldsName[j].fieldName + 'ValueRadios' + (a + 1) + '2').is(':checked'),//++++++++++++++++++++++++++++++++++++++++++false если ничего не выбрано
+//                //'textAlignment': ????????
+//                'Type': jQuery('#selectDataType' + fieldsName[j].FieldName + (a + 1) + ' option:selected').val(),//++++++++++++++++++++++++++++++++++++++++++not recover
 
-                //Number Style Keys
-                'NumberStyle': jQuery('#selectNumbStyleType' + fieldsName[j].FieldName + (a + 1) + ' option:selected').val(),
-                'CurrencyCode': jQuery('#currencyCodeSelect' + fieldsName[j].FieldName + (a + 1)).val(),
+//                //Number Style Keys
+//                'NumberStyle': jQuery('#selectNumbStyleType' + fieldsName[j].FieldName + (a + 1) + ' option:selected').val(),//++++++++++++++++++++++++++++++++++++++++++
+//                'CurrencyCode': jQuery('#currencyCodeSelect' + fieldsName[j].FieldName + (a + 1)).val(),//++++++++++++++++++++++++++++++++++++++++++
 
-                //Date Style Keys
-                'DateStyle': jQuery('#selectDateStyleType' + fieldsName[j].FieldName + (a + 1) + ' option:selected').val(),//without none value
-                'IgnoresTimeZone': jQuery('#checkboxIgnoreData' + fieldsName[j].FieldName + (a + 1)).attr('checked') == 'checked',
-                'IsRelative': jQuery('#checkboxRelativeData' + fieldsName[j].FieldName + (a + 1)).attr('checked') == 'checked'
+//                //Date Style Keys
+//                'DateStyle': jQuery('#selectDateStyleType' + fieldsName[j].FieldName + (a + 1) + ' option:selected').val(),//without none value++++++++++++++++++++++++++++++++++++++++++
+//                'IgnoresTimeZone': jQuery('#checkboxIgnoreData' + fieldsName[j].FieldName + (a + 1)).attr('checked') == 'checked',//++++++++++++++++++++++++++++++++++++++++++
+//                'IsRelative': jQuery('#checkboxRelativeData' + fieldsName[j].FieldName + (a + 1)).attr('checked') == 'checked'//++++++++++++++++++++++++++++++++++++++++++
 
-                //'timeStyle': чекбокс??????
-            });
-        }
-    }
-
-
-    //var data = new FormData();
-    //var logo = $("#logoImageInput").get(0).files;
-    //var strip = $("#stripImageInput").get(0).files;
-    //var background = $("#backgroundImageInput").get(0).files;
-    //var thumbnail = $("#thumbnailImageInput").get(0).files;
-
-    //data.append('jsonData', new Blob([JSON.stringify(jsonObj)], {
-    //    type: "application/json; charset=utf-8"
-    //}));
-
-    //if (logo.length > 0) {
-    //    data.append('logo', logo[0]);
-    //}
-    //if (strip.length > 0) {
-    //    data.append('strip', strip[0]);
-    //}
-    //if (background.length > 0) {
-    //    data.append('background', background[0]);
-    //}
-    //if (thumbnail.length > 0) {
-    //    data.append('thumbnail', thumbnail[0]);
-    //}
-
-    //$.ajax({
-    //    url: "/PassDesigner/Edit",
-    //    type: "POST",
-    //    processData: false,
-    //    contentType: false,
-    //    data: data,
-    //    error: function (er) {
-    //        alert(er);
-    //    }
-    //});
+//                //'timeStyle': чекбокс??????
+//            });
+//        }
+//    }
 
 
-    var formData = new FormData();
-    //jsonObj = jsonObj.serialize();
-    var blob = new Blob([jsonObj], {
-        type: "multipart/form-data"
-    });
-    formData.append('template', blob);
+//    //var data = new FormData();
+//    //var logo = $("#logoImageInput").get(0).files;
+//    //var strip = $("#stripImageInput").get(0).files;
+//    //var background = $("#backgroundImageInput").get(0).files;
+//    //var thumbnail = $("#thumbnailImageInput").get(0).files;
+
+//    //data.append('jsonData', new Blob([JSON.stringify(jsonObj)], {
+//    //    type: "application/json; charset=utf-8"
+//    //}));
+
+//    //if (logo.length > 0) {
+//    //    data.append('logo', logo[0]);
+//    //}
+//    //if (strip.length > 0) {
+//    //    data.append('strip', strip[0]);
+//    //}
+//    //if (background.length > 0) {
+//    //    data.append('background', background[0]);
+//    //}
+//    //if (thumbnail.length > 0) {
+//    //    data.append('thumbnail', thumbnail[0]);
+//    //}
+
+//    //$.ajax({
+//    //    url: "/PassDesigner/Edit",
+//    //    type: "POST",
+//    //    processData: false,
+//    //    contentType: false,
+//    //    data: data,
+//    //    error: function (er) {
+//    //        alert(er);
+//    //    }
+//    //});
 
 
-
-
-
-    $.ajax({
-        url: "/PassDesigner/Edit",
-        type: "POST",
-        processData: false,
-        contentType: false,
-        data: formData,
-        error: function (er) {
-            alert(er);
-        }
-    });
+//    var formData = new FormData();
+//    //jsonObj = jsonObj.serialize();
+//    var blob = new Blob([jsonObj], {
+//        type: "multipart/form-data"
+//    });
+//    formData.append('template', blob);
 
 
 
 
-    //jQuery.ajax({
-    //    type: "POST",
-    //    url: "/PassDesigner/Edit",
-    //    data: JSON.stringify(jsonObj),
-    //    contentType: "application/json; charset=utf-8",
-    //    dataType: "json",
-    //    success: function (path) {
-    //        var d = path;
-    //        alert(d);
-    //        console.log(path);
-    //    }
-    //});
-    //alert(JSON.stringify(jsonObj));
-}
+
+//    $.ajax({
+//        url: "/PassDesigner/Edit",
+//        type: "POST",
+//        processData: false,
+//        contentType: false,
+//        data: formData,
+//        error: function (er) {
+//            alert(er);
+//        }
+//    });
+
+
+
+
+//    //jQuery.ajax({
+//    //    type: "POST",
+//    //    url: "/PassDesigner/Edit",
+//    //    data: JSON.stringify(jsonObj),
+//    //    contentType: "application/json; charset=utf-8",
+//    //    dataType: "json",
+//    //    success: function (path) {
+//    //        var d = path;
+//    //        alert(d);
+//    //        console.log(path);
+//    //    }
+//    //});
+//    //alert(JSON.stringify(jsonObj));
+//}

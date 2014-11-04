@@ -18,7 +18,7 @@
                 </a>
                 <input id="backLabelCollapseInput1" class="form-control textInputNameContent" name="FieldDetails.BackFields[0].Key" value="" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
             </div>
-            <div id="removeCollapseField1" class="removeField" data-toggle="tooltip" title="Удалить поле" onclick="RemoveFieldFromBackContent(id)">x</div>
+            @*<div id="removeCollapseField1" class="removeField" data-toggle="tooltip" title="Удалить поле" onclick="RemoveFieldFromBackContent(id)">x</div>*@
             <div id="collapseContentBack1" class="collapseContent collapse in">
                 <div class="radioFlexContainer">
                     <p class="labelInput">
@@ -95,7 +95,7 @@
                 </div>
                 <div id="divNumberFormatDataTypeBack1" class="divDataTypeCollapseField displayNone">
                     <p class="pDataTypeCollapseField"><span data-toggle="tooltip" title="Выберите, как числа будут отображаться">Формат числа</span></p>
-                    <select id="selectNumbStyleTypeBack1" class="form-control textInputNameContent">
+                    <select id="selectNumbStyleTypeBack1" name="FieldDetails.BackFields[0].NumberStyle" class="form-control textInputNameContent">
                         <option value="decimal" selected>Десятичное</option>
                         <option value="percent">Процент</option>
                         <option value="scientific">Научное??</option>
@@ -104,7 +104,7 @@
                 </div>
                 <div id="divCurrencyDataTypeBack1" class="divDataTypeCollapseField displayNone">
                     <p class="pDataTypeCollapseField"><span data-toggle="tooltip" title="Выберите необходимую валюту. Так например 50 USD будут отображаться как $50.00">Валюта</span></p>
-                    <select id="currencyCodeSelectBack1" class="form-control textInputNameContent">
+                    <select id="currencyCodeSelectBack1" name="FieldDetails.BackFields[0].CurrencyCode" class="form-control textInputNameContent">
                         <option value="BYR" selected>BYR (Белорусский рубль)</option>
                         <option value="EUR">EUR (Евро)</option>
                         <option value="PLN">PLN (Польский злотый)</option>
@@ -115,7 +115,7 @@
                 </div>
                 <div id="divDateFormatDataTypeBack1" class="divDataTypeCollapseField displayNone">
                     <p class="pDataTypeCollapseField pDateTime"><span data-toggle="tooltip" title="Выберите как дата и время будут отображяться">Дата/время формат</span></p>
-                    <select id="selectDateStyleTypeBack1" class="form-control textInputNameContent dataStyleSelectlist">
+                    <select id="selectDateStyleTypeBack1" name="FieldDetails.BackFields[0].DateStyle" class="form-control textInputNameContent dataStyleSelectlist">
                         <option value="short">Короткий</option>
                         <option value="medium" selected="selected">Средний</option>
                         <option value="long">Длинный</option>
@@ -126,14 +126,14 @@
                             <span data-toggle="tooltip" title="Выберите этот необязательный параметр для отображения даты
                                       относительно текущего времени клиента (Например, отображать &laquo;Сегодня&raquo; вместо &laquo;5 марта&raquo;)">Отображать дату относительно</span>
                         </p>
-                        <input type="checkbox" name="checkboxRelativeDataBack1" id="checkboxRelativeDataBack1" class="checkboxCollapse">
+                        <input type="checkbox" id="checkboxRelativeDataBack1" class="checkboxCollapse" name="FieldDetails.BackFields[0].IsRelative" value="true">
                         <label for="checkboxRelativeDataBack1" class="checkboxCollapseLabel"></label>
                     </div>
                     <div class="divDateTimeCheckbox">
                         <p class="pDataTypeCollapseField pDateTimeCheckbox">
                             <span data-toggle="tooltip" title="iiiiiiiiiii">Игнорировать часовой пояс</span>
                         </p>
-                        <input type="checkbox" name="checkboxIgnoreDataBack1" id="checkboxIgnoreDataBack1" class="checkboxCollapse">
+                        <input type="checkbox" id="checkboxIgnoreDataBack1" class="checkboxCollapse" name="FieldDetails.BackFields[0].IgnoresTimeZone" value="true">
                         <label for="checkboxIgnoreDataBack1" class="checkboxCollapseLabel"></label>
                     </div>
                 </div>
@@ -141,4 +141,4 @@
         </div>
     </div>
 </div>
-<button class="emerald-flat-button addFieldButton" onclick="AddFieldBackContent()">Добавить поле</button>
+<div class="emerald-flat-button addFieldButton" onclick="AddFieldBackContent()">Добавить поле</div>

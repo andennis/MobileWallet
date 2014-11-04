@@ -1356,9 +1356,17 @@ label.checkboxCollapseLabel {
 
 .addFieldButton {
     width: 120px;
-    margin-left: 0px;
+    margin-left: 20px;
     margin-top: 18px;
     position: relative;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    -ms-box-shadow: none;
+    box-shadow: none;
+    -ms-text-shadow: none;
+    -moz-text-shadow: none;
+    -webkit-text-shadow: none;
+    text-shadow: none;
 }
 
 .dataStyleSelectlist {

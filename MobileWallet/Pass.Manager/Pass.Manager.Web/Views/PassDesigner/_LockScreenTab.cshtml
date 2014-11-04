@@ -19,7 +19,7 @@
         <span data-toggle="tooltip" title="Максимальное расстояние от местоположения, где будет появляться уведомление (в метрах).
           Будет использовано введенное значение или значение по умолчанию, установленное компанией Apple">Максимальное расстояние</span>
     </p>
-    <input class="form-control textInputNameContent" id="maxDistanceInput" value="@Model.LocationDetails.MaxDistance" maxlength="10" placeholder="Необязательное" style="width: 300px;">
+    <input class="form-control textInputNameContent" id="maxDistanceInput" name="LocationDetails.MaxDistance" value="@Model.LocationDetails.MaxDistance" maxlength="10" placeholder="Необязательное" style="width: 300px;">
     <br>
 
     <!--Address collapse field 1-->
@@ -41,21 +41,21 @@
                 <p class="labelInput labelInputAddress">
                     <span data-toggle="tooltip" title="Введите значение широты между -90 и 90 градусов">Широта<span class="spanRed">*</span></span>
                 </p>
-                <input id="latitudeInput1" class="form-control textInputAddress" maxlength="30" placeholder="Обязательное" />
+                <input id="latitudeInput1" class="form-control textInputAddress" name="LocationDetails.Locations[0].Latitude" value="@Model.LocationDetails.Locations[0].Latitude" maxlength="30" placeholder="Обязательное" />
                 <br>
                 <p class="labelInput labelInputAddress">
                     <span data-toggle="tooltip" title="Введите значение долготы между -180 и 180 градусов">Долгота<span class="spanRed">*</span></span>
                 </p>
-                <input id="longitudeInput1" class="form-control textInputAddress" maxlength="30" placeholder="Обязательное" />
+                <input id="longitudeInput1" class="form-control textInputAddress" name="LocationDetails.Locations[0].Longitude" value="@Model.LocationDetails.Locations[0].Longitude" maxlength="30" placeholder="Обязательное" />
                 <br>
                 <p class="labelInput labelInputAddress">
                     <span data-toggle="tooltip" title="Высота над уровнем моря">Высота</span>
                 </p>
-                <input id="altitudeInput1" class="form-control textInputAddress" maxlength="30" placeholder="Необязательное" />
+                <input id="altitudeInput1" class="form-control textInputAddress" name="LocationDetails.Locations[0].Altitude" maxlength="30" placeholder="Необязательное" />
                 <br>
                 <div class="divNotificationInputAddress">
                     <p><span data-toggle="tooltip" title="Этот текст появится на экране блокировки, когда пользователь будет находиться недалеко от Вашего магазина">Уведомление, отображаемое около введенного местоположения<span class="spanRed">*</span></span></p>
-                    <input id="notificationInputAddress1" class="form-control textInputAddress" maxlength="40" placeholder="Обязательное" />
+                    <input id="notificationInputAddress1" class="form-control textInputAddress" name="LocationDetails.Locations[0].RelevantText" maxlength="40" placeholder="Обязательное" />
                 </div>
             </div>
 
@@ -76,5 +76,5 @@
             </div>
         </div>
     </div>
-    <button class="emerald-flat-button" style="width:120px;margin-left:0px;margin-top:18px;position:relative;" onclick="AddAddressField();">Добавить адрес</button>
+    <div class="emerald-flat-button addFieldButton" onclick="AddAddressField();">Добавить адрес</div>
 </div>

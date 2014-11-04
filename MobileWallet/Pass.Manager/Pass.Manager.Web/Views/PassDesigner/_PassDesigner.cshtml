@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-@*@{
-        Layout = "";
-    }*@
+@{
+    Layout = "";
+}
 
 @using Pass.Manager.Web.Helpers
 @using Pass.Manager.Web.Models.GeneralPassTemplate
@@ -13,7 +13,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false">
 </script>
 
-@using (Html.BeginForm("TestForm", "PassDesigner", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Edit", "PassDesigner", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 
     <div class="passDesignerBody">
@@ -34,7 +34,7 @@
                 <p id="MainTab5" class="peter-river-flat-button tabMain">Экран блокировки</p>
                 <p id="MainTab6" class="peter-river-flat-button tabMain">Языки</p>
                 <p id="MainTab7" class="peter-river-flat-button tabMain">Распространение</p>
-                <p id="MainTab8" class="peter-river-flat-button tabMain saveTab" onclick="PostJsonData();">Сохранить пасс</p>
+                <input id="MainTab8" class="peter-river-flat-button tabMain saveTab" type="submit" value="Сохранить пасс" />
             </div>
             <div id="leftPanel" class="leftPanelDesigner">
                 <div class="phoneBlockLeftPanel">
@@ -54,7 +54,6 @@
                                 <span>
                                     <canvas id="backgroundCanvas" class="backgroundImgCanvas"></canvas>
                                     <br />
-                                    @*<img id="backgroundImagePass" class="spanBackgroundImagePass" src="~/Images/createCard/myImages/backgroundImage2.jpg" />*@
                                     <img id="backgroundImagePass" class="spanBackgroundImagePass" src="@Url.Action("GetImage", "PassDesigner", new { path = Model.TemplatePath, imageName = "background.png" })" />
                                 </span>
                             </div>
@@ -72,7 +71,6 @@
                             <!--Header area on pass-->
                             <div id="divLogoImagePass" class="logoImagePassBlock">
                                 <span>
-                                    @*<img class="spanLogoImagePass" src="~/Images/logo&strip/cleverLogo.png" />*@
                                     <img class="spanLogoImagePass" src="@Url.Action("GetImage", "PassDesigner", new { path = Model.TemplatePath, imageName = "logo.png" })" />
                                 </span>
                             </div>
@@ -91,14 +89,12 @@
                             <!--Primary area on pass-->
                             <div id="divStripImagePass" class="divStripImagePass">
                                 <span>
-                                    @*<img class="spanStripImagePass" src="~/Images/logo&strip/storeStrip7.jpg" />*@
                                     <img class="spanStripImagePass" src="@Url.Action("GetImage", "PassDesigner", new { path = Model.TemplatePath, imageName = "strip.png" })" />
                                 </span>
                             </div>
                             <div id="divThumbnailImagePass" class="thumbnailImagePassBlock">
                                 <span>
-                                    @*<img id="thumbnailImagePass" src="~/Images/createCard/Vitalik.png" />*@
-                                    <img id="thumbnailImagePass" src="@Url.Action("GetImage", "PassDesigner", new { path = Model.TemplatePath, imageName = "thumbnail.png" })" />
+                                    <img id="thumbnailImagePass" class="generic" src="@Url.Action("GetImage", "PassDesigner", new { path = Model.TemplatePath, imageName = "thumbnail.png" })" />
                                 </span>
                             </div>
                             <div id="flexContainerPrimaryValues" class="flexContainerPrimaryFields primaryFieldLabels">
@@ -204,7 +200,6 @@
         </div>
     </div>
     <input type="hidden" id="passProjectId" value="@Model.PassProjectId" name="PassProjectId" />
-    <input type="submit" value="Html PsBk Click" />
 }
 <script src="~/Scripts/createCard/passDesigner.js">
 </script>
@@ -219,19 +214,19 @@
     {
         case PassStyle.BoardingPass:
             @:jQuery('#boardingPassImg').trigger('click');
-                        break;
+                                break;
         case PassStyle.Coupon:
         @:jQuery('#couponImg').trigger('click');
-                                                                            break;
+                                                                                    break;
         case PassStyle.EventTicket:
         @:jQuery('#eventTicketImg').trigger('click');
-                                                                            break;
+                                                                                    break;
         case PassStyle.Generic:
         @:jQuery('#genericImg').trigger('click');
-                                                                            break;
+                                                                                    break;
         case PassStyle.StoreCard:
         @:jQuery('#storeCardImg').trigger('click');
-                                                                            break;
+                                                                                    break;
     }
 
         //Choice transport type in transit pass (select list)
@@ -242,13 +237,13 @@
     {
         case PassSerialNumberType.AutoGgenerated:
             @:jQuery('#optionsRadiosSerialNumber1').trigger('click');
-                                                                            break;
+                                                                                    break;
         case PassSerialNumberType.Provided:
         @:jQuery('#optionsRadiosSerialNumber2').trigger('click');
-                                                                            break;
+                                                                                    break;
         case PassSerialNumberType.SameForEachPass:
         @:jQuery('#optionsRadiosSerialNumber3').trigger('click');
-                                                                            break;
+                                                                                    break;
     }
 
         //Choice pass sertificate (select list)
@@ -271,10 +266,10 @@
     {
         case PassLinkType.Private:
             @:jQuery('#distTypeSelect').val('private');
-                                                                            break;
+                                                                                    break;
         case PassLinkType.Public:
         @:jQuery('#distTypeSelect').val('public');
-                                                                            break;
+                                                                                    break;
     }
 
         //Choice void passes checkbox
@@ -282,48 +277,48 @@
     {
         case true:
             @:jQuery('#voidedCheckbox').attr('checked', 'checked');
-                                                                            break;
+                                                                                    break;
         case false:
         @:jQuery('#voidedCheckbox').removeAttr('checked');
-                                                                            break;
+                                                                                    break;
     }
 
         //Quantity restriction select list
         @if (Model.DistributionDetails.QuantityRestriction != null)
     {
         @:jQuery('#distQuantitySelect').val('1').change();
-                                                                    }
+                                                                            }
 
         //Date restriction select list
         @if (Model.DistributionDetails.DateRestriction != null)
     {
         @:jQuery('#distDateRestrSelect').val('1').change();
-                                                                    }
+                                                                            }
 
         //Issue password select list
         @if (Model.DistributionDetails.PasswordToIssue != null)
     {
         @:jQuery('#distPasswdSelect').val('1').change();
-                                                                    }
+                                                                            }
 
         //Password to update select list
         @if (Model.DistributionDetails.PasswordToUpdate != null)
     {
         @:jQuery('#distPasswdUpdSelect').val('1').change();
-                                                                    }
+                                                                            }
 
         //Choice barcode type
         @switch (Model.BarcodeDetails.BarcodeType)
     {
         case GeneralBarcodeType.AztecCode:
             @:jQuery('#barcodeTypeSelect').val('aztecCode').change();
-                                                                            break;
+                                                                                    break;
         case GeneralBarcodeType.QrCode:
         @:jQuery('#barcodeTypeSelect').val('qrCode').change();
-                                                                            break;
+                                                                                    break;
         case GeneralBarcodeType.Pdf417Code:
         @:jQuery('#barcodeTypeSelect').val('pdf417Code').change();
-                                                                            break;
+                                                                                    break;
     }
 
         //Choice encoded message (select list)
@@ -331,19 +326,19 @@
     {
         case EncodedMessage.EncodeThePassSerialNumber:
             @:jQuery('#barcodeMessageSelect').val('encodeThePassSerialNumber').change();
-                                                                            break;
+                                                                                    break;
         case EncodedMessage.EncodeThePassUniqueId:
         @:jQuery('#barcodeMessageSelect').val('encodeThePassUniqueId').change();
-                                                                            break;
+                                                                                    break;
         case EncodedMessage.EncodeTheUrlToUpdateThePass:
         @:jQuery('#barcodeMessageSelect').val('encodeTheUrlToUpdateThePass').change();
-                                                                            break;
+                                                                                    break;
         case EncodedMessage.ProvideWhenPassIsCreated:
         @:jQuery('#barcodeMessageSelect').val('provideWhenPassIsCreated').change();
-                                                                            break;
+                                                                                    break;
         case EncodedMessage.EncodeTheSameMessageOnEachPass:
         @:jQuery('#barcodeMessageSelect').val('encodeTheSameMessageOnEachPass').change();
-                                                                            break;
+                                                                                    break;
     }
 
         //Choice barcode alternative text (select list)
@@ -351,25 +346,25 @@
     {
         case AlternativeText.DisplayTheBarcodeContent:
             @:jQuery('#barcodeAltTextSelect').val('0').change();
-                                                                            break;
+                                                                                    break;
         case AlternativeText.DisplayThePassSerialNumber:
         @:jQuery('#barcodeAltTextSelect').val('displayThePassSerialNumber').change();
-                                                                            break;
+                                                                                    break;
         case AlternativeText.DisplayThePassUniqueId:
         @:jQuery('#barcodeAltTextSelect').val('displayThePassUniqueId').change();
-                                                                            break;
+                                                                                    break;
         case AlternativeText.ProvideWhenPassIsCreated:
         @:jQuery('#barcodeAltTextSelect').val('provideWhenPassIsCreated').change();
-                                                                            break;
+                                                                                    break;
         case AlternativeText.DisplayTheSameMessageOnEachPass:
         @:jQuery('#barcodeAltTextSelect').val('displayTheSameMessageOnEachPass').change();
-                                                                            break;
+                                                                                    break;
         case AlternativeText.DoNotDisplayAnyAlternativeText:
         @:jQuery('#barcodeAltTextSelect').val('doNotDisplayAnyAlternativeText').change();
-                                                                                    break;
+                                                                                            break;
     }
 
-        //Choice encoding format (select list) 
+        //Choice encoding format (select list)
         jQuery('#encodingFormatSelect').val(@Model.BarcodeDetails.EncodingFormat);
 
         //Header fields
@@ -380,46 +375,46 @@
         if (Model.FieldDetails.HeaderFields[a].IsMarkedField)
         {
             @:jQuery('#checkboxHeader' + (@a +1)).attr('checked', 'checked');
-                                                                        }
+                                                                                }
         else
         {
             @:jQuery('#checkboxHeader' + (@a +1)).removeAttr('checked');
-                                                                        }
+                                                                                }
                                                                 @:CheckAndUncheckFieldFront('checkboxHeader' + (@a +1));
 
         //Dynamic and fixed radio button
         if (Model.FieldDetails.HeaderFields[a].IsDynamicLabel)
         {
             @:jQuery('#headerLabelRadios' + (@a +1) + '2').trigger('click');
-                                                                        }
+                                                                                }
         else
         {
             @:jQuery('#headerLabelRadios' + (@a +1) + '1').trigger('click');
-                                                                        }
+                                                                                }
         if (Model.FieldDetails.HeaderFields[a].IsDynamicValue)
         {
             @:jQuery('#headerValueRadios' + (@a +1) + '2').trigger('click');
-                                                                        }
+                                                                                }
         else
         {
             @:jQuery('#headerValueRadios' + (@a +1) + '1').trigger('click');
-                                                                        }
+                                                                                }
 
         //Field data type (select list) (without DateTime case)
         switch (Model.FieldDetails.HeaderFields[a].Type)
         {
             case GeneralField.DataType.Text:
                 @:jQuery('#selectDataTypeHeader' + (@a +1)).val('text').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.DataType.Number:
             @:jQuery('#selectDataTypeHeader' + (@a +1)).val('number').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.DataType.Currency:
             @:jQuery('#selectDataTypeHeader' + (@a +1)).val('currency').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.DataType.Date:
             @:jQuery('#selectDataTypeHeader' + (@a +1)).val('date').change();
-                                                                                break;
+                                                                                        break;
         }
 
         //Number style type (select list)
@@ -427,16 +422,16 @@
         {
             case GeneralField.NumberStyleType.Decimal:
                 @:jQuery('#selectNumbStyleTypeHeader' + (@a +1)).val('decimal').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.NumberStyleType.Percent:
             @:jQuery('#selectNumbStyleTypeHeader' + (@a +1)).val('percent').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.NumberStyleType.Scientific:
             @:jQuery('#selectNumbStyleTypeHeader' + (@a +1)).val('scientific').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.NumberStyleType.SpellOut:
             @:jQuery('#selectNumbStyleTypeHeader' + (@a +1)).val('spellOut').change();
-                                                                                break;
+                                                                                        break;
         }
 
         //Currency code (select list)
@@ -447,37 +442,37 @@
         {
             case GeneralField.DateStyleType.Short:
                 @:jQuery('#selectDateStyleTypeHeader' + (@a +1)).val('short').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.DateStyleType.Medium:
             @:jQuery('#selectDateStyleTypeHeader' + (@a +1)).val('medium').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.DateStyleType.Long:
             @:jQuery('#selectDateStyleTypeHeader' + (@a +1)).val('long').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.DateStyleType.Full:
             @:jQuery('#selectDateStyleTypeHeader' + (@a +1)).val('full').change();
-                                                                                break;
+                                                                                        break;
         }
 
         //Ignores time zone checkbox
         if (Model.FieldDetails.HeaderFields[a].IgnoresTimeZone)
         {
             @:jQuery('#checkboxIgnoreDataHeader' + (@a +1)).attr('checked', 'checked');
-                                                                        }
+                                                                                }
         else
         {
             @:jQuery('#checkboxIgnoreDataHeader' + (@a +1)).removeAttr('checked');
-                                                                        }
+                                                                                }
 
         //'Is relative' checkbox
         if (Model.FieldDetails.HeaderFields[a].IsRelative)
         {
             @:jQuery('#checkboxRelativeDataHeader' + (@a +1)).attr('checked', 'checked');
-                                                                        }
+                                                                                }
         else
         {
             @:jQuery('#checkboxRelativeDataHeader' + (@a +1)).removeAttr('checked');
-                                                                        }
+                                                                                }
     }
 
         //Primary fields
@@ -488,46 +483,46 @@
         if (Model.FieldDetails.PrimaryFields[a].IsMarkedField)
         {
             @:jQuery('#checkboxPrimary' + (@a +1)).attr('checked', 'checked');
-                                                                        }
+                                                                                }
         else
         {
             @:jQuery('#checkboxPrimary' + (@a +1)).removeAttr('checked');
-                                                                        }
+                                                                                }
                                                                 @:CheckAndUncheckFieldFront('checkboxPrimary' + (@a +1));
 
         //Dynamic and fixed radio button
         if (Model.FieldDetails.PrimaryFields[a].IsDynamicLabel)
         {
             @:jQuery('#primaryLabelRadios' + (@a +1) + '2').trigger('click');
-                                                                        }
+                                                                                }
         else
         {
             @:jQuery('#primaryLabelRadios' + (@a +1) + '1').trigger('click');
-                                                                        }
+                                                                                }
         if (Model.FieldDetails.PrimaryFields[a].IsDynamicValue)
         {
             @:jQuery('#primaryValueRadios' + (@a +1) + '2').trigger('click');
-                                                                        }
+                                                                                }
         else
         {
             @:jQuery('#primaryValueRadios' + (@a +1) + '1').trigger('click');
-                                                                        }
+                                                                                }
 
         //Field data type (select list) (without DateTime case)
         switch (Model.FieldDetails.PrimaryFields[a].Type)
         {
             case GeneralField.DataType.Text:
                 @:jQuery('#selectDataTypePrimary' + (@a +1)).val('text').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.DataType.Number:
             @:jQuery('#selectDataTypePrimary' + (@a +1)).val('number').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.DataType.Currency:
             @:jQuery('#selectDataTypePrimary' + (@a +1)).val('currency').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.DataType.Date:
             @:jQuery('#selectDataTypePrimary' + (@a +1)).val('date').change();
-                                                                                break;
+                                                                                        break;
         }
 
         //Number style type (select list)
@@ -535,16 +530,16 @@
         {
             case GeneralField.NumberStyleType.Decimal:
                 @:jQuery('#selectNumbStyleTypePrimary' + (@a +1)).val('decimal').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.NumberStyleType.Percent:
             @:jQuery('#selectNumbStyleTypePrimary' + (@a +1)).val('percent').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.NumberStyleType.Scientific:
             @:jQuery('#selectNumbStyleTypePrimary' + (@a +1)).val('scientific').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.NumberStyleType.SpellOut:
             @:jQuery('#selectNumbStyleTypePrimary' + (@a +1)).val('spellOut').change();
-                                                                                break;
+                                                                                        break;
         }
 
         //Currency code (select list)
@@ -555,37 +550,37 @@
         {
             case GeneralField.DateStyleType.Short:
                 @:jQuery('#selectDateStyleTypePrimary' + (@a +1)).val('short').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.DateStyleType.Medium:
             @:jQuery('#selectDateStyleTypePrimary' + (@a +1)).val('medium').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.DateStyleType.Long:
             @:jQuery('#selectDateStyleTypePrimary' + (@a +1)).val('long').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.DateStyleType.Full:
             @:jQuery('#selectDateStyleTypePrimary' + (@a +1)).val('full').change();
-                                                                                break;
+                                                                                        break;
         }
 
         //Ignores time zone checkbox
         if (Model.FieldDetails.PrimaryFields[a].IgnoresTimeZone)
         {
             @:jQuery('#checkboxIgnoreDataPrimary' + (@a +1)).attr('checked', 'checked');
-                                                                        }
+                                                                                }
         else
         {
             @:jQuery('#checkboxIgnoreDataPrimary' + (@a +1)).removeAttr('checked');
-                                                                        }
+                                                                                }
 
         //'Is relative' checkbox
         if (Model.FieldDetails.PrimaryFields[a].IsRelative)
         {
             @:jQuery('#checkboxRelativeDataPrimary' + (@a +1)).attr('checked', 'checked');
-                                                                        }
+                                                                                }
         else
         {
             @:jQuery('#checkboxRelativeDataPrimary' + (@a +1)).removeAttr('checked');
-                                                                        }
+                                                                                }
     }
 
         //Auxiliary fields
@@ -596,46 +591,46 @@
         if (Model.FieldDetails.AuxiliaryFields[a].IsMarkedField)
         {
             @:jQuery('#checkboxAuxiliary' + (@a +1)).attr('checked', 'checked');
-                                                                                                            }
+                                                                                                                    }
         else
         {
             @:jQuery('#checkboxAuxiliary' + (@a +1)).removeAttr('checked');
-                                                                                                            }
+                                                                                                                    }
                                                                                                     @:CheckAndUncheckFieldFront('checkboxAuxiliary' + (@a +1));
 
         //Dynamic and fixed radio button
         if (Model.FieldDetails.AuxiliaryFields[a].IsDynamicLabel)
         {
             @:jQuery('#auxiliaryLabelRadios' + (@a +1) + '2').trigger('click');
-                                                                                                            }
+                                                                                                                    }
         else
         {
             @:jQuery('#auxiliaryLabelRadios' + (@a +1) + '1').trigger('click');
-                                                                                                            }
+                                                                                                                    }
         if (Model.FieldDetails.AuxiliaryFields[a].IsDynamicValue)
         {
             @:jQuery('#auxiliaryValueRadios' + (@a +1) + '2').trigger('click');
-                                                                                                            }
+                                                                                                                    }
         else
         {
             @:jQuery('#auxiliaryValueRadios' + (@a +1) + '1').trigger('click');
-                                                                                                            }
+                                                                                                                    }
 
         //Field data type (select list) (without DateTime case)
         switch (Model.FieldDetails.AuxiliaryFields[a].Type)
         {
             case GeneralField.DataType.Text:
                 @:jQuery('#selectDataTypeAuxiliary' + (@a +1)).val('text').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.DataType.Number:
             @:jQuery('#selectDataTypeAuxiliary' + (@a +1)).val('number').change();
-                                                                                 break;
+                                                                                         break;
             case GeneralField.DataType.Currency:
             @:jQuery('#selectDataTypeAuxiliary' + (@a +1)).val('currency').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.DataType.Date:
             @:jQuery('#selectDataTypeAuxiliary' + (@a +1)).val('date').change();
-                                                                                break;
+                                                                                        break;
         }
 
         //Number style type (select list)
@@ -643,16 +638,16 @@
         {
             case GeneralField.NumberStyleType.Decimal:
                 @:jQuery('#selectNumbStyleTypeAuxiliary' + (@a +1)).val('decimal').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.NumberStyleType.Percent:
             @:jQuery('#selectNumbStyleTypeAuxiliary' + (@a +1)).val('percent').change();
-                                                                                 break;
+                                                                                         break;
             case GeneralField.NumberStyleType.Scientific:
             @:jQuery('#selectNumbStyleTypeAuxiliary' + (@a +1)).val('scientific').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.NumberStyleType.SpellOut:
             @:jQuery('#selectNumbStyleTypeAuxiliary' + (@a +1)).val('spellOut').change();
-                                                                                break;
+                                                                                        break;
         }
 
         //Currency code (select list)
@@ -663,37 +658,37 @@
         {
             case GeneralField.DateStyleType.Short:
                 @:jQuery('#selectDateStyleTypeAuxiliary' + (@a +1)).val('short').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.DateStyleType.Medium:
             @:jQuery('#selectDateStyleTypeAuxiliary' + (@a +1)).val('medium').change();
-                                                                                 break;
+                                                                                         break;
             case GeneralField.DateStyleType.Long:
             @:jQuery('#selectDateStyleTypeAuxiliary' + (@a +1)).val('long').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.DateStyleType.Full:
             @:jQuery('#selectDateStyleTypeAuxiliary' + (@a +1)).val('full').change();
-                                                                                break;
+                                                                                        break;
         }
 
         //Ignores time zone checkbox
         if (Model.FieldDetails.AuxiliaryFields[a].IgnoresTimeZone)
         {
             @:jQuery('#checkboxIgnoreDataAuxiliary' + (@a +1)).attr('checked', 'checked');
-                                                                        }
+                                                                                }
         else
         {
             @:jQuery('#checkboxIgnoreDataAuxiliary' + (@a +1)).removeAttr('checked');
-                                                                        }
+                                                                                }
 
         //'Is relative' checkbox
         if (Model.FieldDetails.AuxiliaryFields[a].IsRelative)
         {
             @:jQuery('#checkboxRelativeDataAuxiliary' + (@a +1)).attr('checked', 'checked');
-                                                                        }
+                                                                                }
         else
         {
             @:jQuery('#checkboxRelativeDataAuxiliary' + (@a +1)).removeAttr('checked');
-                                                                        }
+                                                                                }
     }
 
         //Secondary fields
@@ -704,46 +699,46 @@
         if (Model.FieldDetails.SecondaryFields[a].IsMarkedField)
         {
             @:jQuery('#checkboxSecondary' + (@a +1)).attr('checked', 'checked');
-                                                                        }
+                                                                                }
         else
         {
             @:jQuery('#checkboxSecondary' + (@a +1)).removeAttr('checked');
-                                                                        }
+                                                                                }
                                                                 @:CheckAndUncheckFieldFront('checkboxSecondary' + (@a +1));
 
         //Dynamic and fixed radio button
         if (Model.FieldDetails.SecondaryFields[a].IsDynamicLabel)
         {
             @:jQuery('#secondaryLabelRadios' + (@a +1) + '2').trigger('click');
-                                                                        }
+                                                                                }
         else
         {
             @:jQuery('#secondaryLabelRadios' + (@a +1) + '1').trigger('click');
-                                                                        }
+                                                                                }
         if (Model.FieldDetails.SecondaryFields[a].IsDynamicValue)
         {
             @:jQuery('#secondaryValueRadios' + (@a +1) + '2').trigger('click');
-                                                                        }
+                                                                                }
         else
         {
             @:jQuery('#secondaryValueRadios' + (@a +1) + '1').trigger('click');
-                                                                        }
+                                                                                }
 
         //Field data type (select list) (without DateTime case)
         switch (Model.FieldDetails.SecondaryFields[a].Type)
         {
             case GeneralField.DataType.Text:
                 @:jQuery('#selectDataTypeSecondary' + (@a +1)).val('text').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.DataType.Number:
             @:jQuery('#selectDataTypeSecondary' + (@a +1)).val('number').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.DataType.Currency:
             @:jQuery('#selectDataTypeSecondary' + (@a +1)).val('currency').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.DataType.Date:
             @:jQuery('#selectDataTypeSecondary' + (@a +1)).val('date').change();
-                                                                                break;
+                                                                                        break;
         }
 
         //Number style type (select list)
@@ -751,16 +746,16 @@
         {
             case GeneralField.NumberStyleType.Decimal:
                 @:jQuery('#selectNumbStyleTypeSecondary' + (@a +1)).val('decimal').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.NumberStyleType.Percent:
             @:jQuery('#selectNumbStyleTypeSecondary' + (@a +1)).val('percent').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.NumberStyleType.Scientific:
             @:jQuery('#selectNumbStyleTypeSecondary' + (@a +1)).val('scientific').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.NumberStyleType.SpellOut:
             @:jQuery('#selectNumbStyleTypeSecondary' + (@a +1)).val('spellOut').change();
-                                                                                break;
+                                                                                        break;
         }
 
         //Currency code (select list)
@@ -771,42 +766,41 @@
         {
             case GeneralField.DateStyleType.Short:
                 @:jQuery('#selectDateStyleTypeSecondary' + (@a +1)).val('short').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.DateStyleType.Medium:
             @:jQuery('#selectDateStyleTypeSecondary' + (@a +1)).val('medium').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.DateStyleType.Long:
             @:jQuery('#selectDateStyleTypeSecondary' + (@a +1)).val('long').change();
-                                                                                break;
+                                                                                        break;
             case GeneralField.DateStyleType.Full:
             @:jQuery('#selectDateStyleTypeSecondary' + (@a +1)).val('full').change();
-                                                                                break;
+                                                                                        break;
         }
 
         //Ignores time zone checkbox
         if (Model.FieldDetails.SecondaryFields[a].IgnoresTimeZone)
         {
             @:jQuery('#checkboxIgnoreDataSecondary' + (@a +1)).attr('checked', 'checked');
-                                                                        }
+                                                                                }
         else
         {
             @:jQuery('#checkboxIgnoreDataSecondary' + (@a +1)).removeAttr('checked');
-                                                                        }
+                                                                                }
 
         //'Is relative' checkbox
         if (Model.FieldDetails.SecondaryFields[a].IsRelative)
         {
             @:jQuery('#checkboxRelativeDataSecondary' + (@a +1)).attr('checked', 'checked');
-                                                                        }
+                                                                                }
         else
         {
             @:jQuery('#checkboxRelativeDataSecondary' + (@a +1)).removeAttr('checked');
-                                                                        }
+                                                                                }
     }
 
 
     });
-
 </script>
 <br />
 <br />

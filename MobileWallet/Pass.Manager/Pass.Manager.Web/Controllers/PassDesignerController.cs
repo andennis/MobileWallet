@@ -69,8 +69,7 @@ namespace Pass.Manager.Web.Controllers
         [HttpPost]
         public ActionResult Edit(PassTemplateViewModel model)
         {
-            //if (ModelState.IsValid)
-            if (true)
+            if (ModelState.IsValid)
             {
                 PassProject prj = _passProjectService.Get(model.PassProjectId);
                 string path;
@@ -84,78 +83,56 @@ namespace Pass.Manager.Web.Controllers
                     _passProjectService.Update(prj);
                 }
 
+                if (model.Logo != null)
+                {
+                    model.Logo.SaveAs(path + "\\logo.png");
+                    model.Logo = null;
+                }
+                else if (model.RemoveLogo)
+                {
+                    System.IO.File.Delete(path + "\\logo.png");
+                }
+
+                if (model.Strip != null)
+                {
+                    model.Strip.SaveAs(path + "\\strip.png");
+                    model.Strip = null;
+                }
+                else if (model.RemoveStrip)
+                {
+                    System.IO.File.Delete(path + "\\strip.png");
+                }
+
+                if (model.Background != null)
+                {
+                    model.Background.SaveAs(path + "\\background.png");
+                    model.Background = null;
+                }
+                else if (model.RemoveBackground)
+                {
+                    System.IO.File.Delete(path + "\\background.png");
+                }
+
+                if (model.Thumbnail != null)
+                {
+                    model.Thumbnail.SaveAs(path + "\\thumbnail.png");
+                    model.Thumbnail = null;
+                }
+                else if (model.RemoveThumbnail)
+                {
+                    System.IO.File.Delete(path + "\\thumbnail.png");
+                }
+                //PassTemplateViewModel tempModel = model;
+                //tempModel.Logo = null;
                 model.SaveToXml(path + "\\XMLData.xml");
                 return RedirectToAction("Edit", "PassProject", new { id = model.PassProjectId });
             }
             return View("_PassDesigner", model);
         }
 
-        public void TestForm(PassTemplateViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                
-                //model.Logo.SaveAs("D:\\logo.png");
-                Console.WriteLine("");
-            }
-        }
-
-        //[HttpPost]
-        //public ActionResult Edit()
-        //{
-        //    var model = new PassTemplateViewModel();
-        //    if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
-        //    {
-        //        var jsonData = System.Web.HttpContext.Current.Request.Files["jsonData"];
-        //        var logo = System.Web.HttpContext.Current.Request.Files["logo"];
-        //        var strip = System.Web.HttpContext.Current.Request.Files["strip"];
-        //        var background = System.Web.HttpContext.Current.Request.Files["background"];
-        //        var thumbnail = System.Web.HttpContext.Current.Request.Files["thumbnail"];
-        //        if (jsonData != null)
-        //        {
-        //            var json = new StreamReader(jsonData.InputStream).ReadToEnd();
-        //            model = json.JsonToObject<PassTemplateViewModel>();
-        //        }
-        //        if (ModelState.IsValid)
-        //        {
-        //            PassProject prj = _passProjectService.Get(model.PassProjectId);
-        //            string path;
-        //            if (prj.PassContentId.HasValue)
-        //            {
-        //                path = _fileStorageService.GetStorageItemPath(prj.PassContentId.Value);
-        //            }
-        //            else
-        //            {
-        //                prj.PassContentId = _fileStorageService.CreateStorageFolder(out path);
-        //                _passProjectService.Update(prj);
-        //            }
-
-        //            model.SaveToXml(path + "\\XMLData.xml");
-        //            if (logo != null)
-        //            {
-        //                logo.SaveAs(path + "\\Images\\logo.png");
-        //            }
-        //            if (strip != null)
-        //            {
-        //                strip.SaveAs(path + "\\strip.png");
-        //            }
-        //            if (background != null)
-        //            {
-        //                background.SaveAs(path + "\\background.png");
-        //            }
-        //            if (thumbnail != null)
-        //            {
-        //                thumbnail.SaveAs(path + "\\thumbnail.png");
-        //            }
-        //            return RedirectToAction("Edit", "PassProject", new { id = model.PassProjectId });
-        //        }
-        //    }
-        //    return View("_PassDesigner", model);
-        //}
-
         public ActionResult GetImage(string path, string imageName)
         {
-            return File(path + imageName, "image/png");
+            return File(path + "\\" + imageName, "image/png");
         }
 
         private PassTemplateViewModel GetInitialModel(PassProjectType projectType, int passProjectId)
@@ -172,7 +149,13 @@ namespace Pass.Manager.Web.Controllers
                 LabelTextColor = "#000000",
                 ValueTextColor = "#ffffff",
                 //LogoText = "Clever",
-                LocationDetails = new LocationDetails(),
+                LocationDetails = new LocationDetails()
+                                  {
+                                      Locations = new List<GeneralLocation>()
+                                                  {
+                                                      new GeneralLocation()
+                                                  }
+                                  },
                 DistributionDetails = new DistributionDetails()
                 {
                     QuantityRestriction = 1000
