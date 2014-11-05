@@ -81,13 +81,8 @@ input {
 }
 
 .backgroundImgPassBlock {
-    margin-top: 32px;
     position: absolute;
     display: block;
-}
-
-.backgroundImgCanvas {
-    display: none;
 }
 
 .passTypeImg {
@@ -298,9 +293,9 @@ input {
     height: 100%;
 }
 
-.spanBackgroundImagePass {
-    width: 0px;
-    max-height: 0px;
+.backgroundSvgPass {
+    width: 270px;
+    height: 342px;
 }
 
 #thumbnailImagePass.generic {
@@ -1161,12 +1156,6 @@ label.checkboxCollapseLabel {
     -webkit-box-shadow: 0 0 4px 3px #e67e22 !important;
     -ms-box-shadow: 0 0 4px 3px #e67e22 !important;
     box-shadow: 0 0 4px 3px #e67e22 !important;
-}
-
-#backgroundCanvas {
-    height: 342px !important;
-    width: 270px !important;
-    margin-top: -32px;
 }
 
 #divPassBody {

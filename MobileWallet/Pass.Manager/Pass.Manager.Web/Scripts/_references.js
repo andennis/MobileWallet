@@ -14,7 +14,6 @@
 /// <reference path="createcard/jquery.simple-dtpicker.js" />
 /// <reference path="createcard/mcolorpicker.js" />
 /// <reference path="createcard/passdesigner.js" />
-/// <reference path="createcard/stackblur.js" />
 /// <reference path="datatables-1.10.2/datatables.autofill.js" />
 /// <reference path="datatables-1.10.2/datatables.bootstrap.js" />
 /// <reference path="datatables-1.10.2/datatables.colreorder.js" />

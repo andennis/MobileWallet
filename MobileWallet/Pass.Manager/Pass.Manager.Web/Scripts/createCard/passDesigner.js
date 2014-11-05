@@ -49,8 +49,15 @@ function handleFileSelect(evt) {
     var files = evt.target.files,
     className = evt.target.id.replace('logo', 'spanLogo').replace('strip', 'spanStrip').replace('thumbnail', 'spanThumbnail').replace('background', 'spanBackground').replace('Input', 'Pass'),
     divId = evt.target.id.replace('logo', 'divLogo').replace('strip', 'divStrip').replace('thumbnail', 'divThumbnail').replace('background', 'divBackground').replace('Input', 'Pass'),
+    imgId = evt.target.id.replace('Input', 'Pass'),
     span = document.createElement('span'),
+    passStyle,
     reader = new FileReader();
+
+    if (divId == 'divThumbnailImagePass') {
+        passStyle = jQuery('input[name="PassStyle"]:checked').val();
+        className += ' ' + passStyle;
+    }
 
     // Only process image files.
     if (!files[0].type.match('image.*')) {
@@ -58,21 +65,20 @@ function handleFileSelect(evt) {
     }
     reader.onload = (function (theFile) {
         return function (e) {
-
-            // Render thumbnail.
-            span = document.createElement('span');
-            span.innerHTML = ['<img class="' + className + '" src="', e.target.result, '" title="', escape(theFile.name), '" />'].join('');
-            document.getElementById(divId).innerHTML = "";
-            document.getElementById(divId).insertBefore(span, null);
+            if (divId === 'divBackgroundImagePass') {
+                jQuery('#backgroundImagePass').attr('xlink:href', e.target.result).css('display', 'block');
+            } else {
+                span = document.createElement('span');
+                span.innerHTML = ['<img id="' + imgId + '"  class="' + className + '" src="', e.target.result, '" title="', escape(theFile.name), '" />'].join('');
+                document.getElementById(divId).innerHTML = "";
+                document.getElementById(divId).insertBefore(span, null);
+            }
         };
     })(files);
 
     // Read in the image file as a data URL.
     reader.readAsDataURL(files[0]);
     ChangeLeftPropertyLogoText();
-    if (divId === 'divBackgroundImagePass') {
-        BlurBackgroundImage();
-    }
 }
 document.getElementById('logoImageInput').addEventListener('change', handleFileSelect, false);
 document.getElementById('stripImageInput').addEventListener('change', handleFileSelect, false);
@@ -92,11 +98,6 @@ function HandleChanges(evt) {
     //var ext = fileTitle.replace(RegExExt, "$1"); //и его расширение
 }
 
-//Blur background image
-function BlurBackgroundImage() {
-    stackBlurImage('backgroundImagePass', 'backgroundCanvas', 70, false);
-}
-
 //Remove image on pass
 jQuery('.removeImage').click(function (evt) {
     var itemId = evt.target.id.replace('remove', '');
@@ -105,16 +106,11 @@ jQuery('.removeImage').click(function (evt) {
     itemId = itemId.toLowerCase();
     document.getElementById(itemId + 'Name').innerHTML = 'Файл не выбран';
     RepositionRemoveIcon();
-    });
-
-//Hide “Image not found” icon when src source image is not found
-jQuery("img").error(function () {
-    jQuery(this).hide();
 });
 
-//Blur background image after loading
-jQuery("#backgroundImagePass").load(function () {
-    BlurBackgroundImage();
+//Hide “Image not found” icon when src source image is not found
+jQuery('img, image').error(function () {
+    jQuery(this).hide();
 });
 
 //Reposition remove icon
@@ -157,9 +153,6 @@ jQuery("#MainTab1, #MainTab2, #MainTab3, #MainTab5, #MainTab6, #MainTab7").click
             direction: "RIGHT",
             duration: "350"
         });
-    }
-    if (jQuery('.passTypeImg.selected').attr('data-pass') === 'eventTicket') {
-        setTimeout(function () { BlurBackgroundImage(); }, 150);
     }
 });
 
@@ -290,24 +283,24 @@ function AddFieldBackContent() {
         DisplayNoneRadioButtonPrompt('collapseContentLabelBack' + (lastChildId + 1) + '1');
         DisplayNoneRadioButtonPrompt('collapseContentValueBack' + (lastChildId + 1) + '1');
         AddFieldBackContentPass(lastChildId + 1);
-        }
+    }
     jQuery("[data-toggle='tooltip']").tooltip();
 }
 
 //Add field to back content pass
-function AddFieldBackContentPass(lastChildId) { 
-        jQuery('<div />', {
-            id: 'divBackFieldContentPass' + lastChildId,
-            class: 'divBackFieldContentPass'
-        }).appendTo('#divBackContentPass');
-        jQuery('<div />', {
-            id: 'backLabelPass' + lastChildId,
-            class: 'labelFieldBackPass'
-        }).appendTo('#divBackFieldContentPass' + lastChildId);
-        jQuery('<div />', {
-            id: 'backValuePass' + lastChildId,
-            class: 'valueFieldBackPass'
-        }).appendTo('#divBackFieldContentPass' + lastChildId);
+function AddFieldBackContentPass(lastChildId) {
+    jQuery('<div />', {
+        id: 'divBackFieldContentPass' + lastChildId,
+        class: 'divBackFieldContentPass'
+    }).appendTo('#divBackContentPass');
+    jQuery('<div />', {
+        id: 'backLabelPass' + lastChildId,
+        class: 'labelFieldBackPass'
+    }).appendTo('#divBackFieldContentPass' + lastChildId);
+    jQuery('<div />', {
+        id: 'backValuePass' + lastChildId,
+        class: 'valueFieldBackPass'
+    }).appendTo('#divBackFieldContentPass' + lastChildId);
 }
 
 //Bind back inputs to pass fields
@@ -928,7 +921,7 @@ function ChangesDependingPassType(passType) {
             jQuery('#divStripImage').css('display', 'none');
             jQuery('#divStripImagePass').css('display', 'none');
             jQuery('#divBackgroundImage').css('display', 'none');
-            jQuery('#backgroundCanvas').css('display', 'none');
+            jQuery('#backgroundSvgPass').css('display', 'none');
             jQuery('#divThumbnailImage').css('display', 'none');
             jQuery('#divThumbnailImagePass').css('display', 'none');
 
@@ -977,7 +970,7 @@ function ChangesDependingPassType(passType) {
             jQuery('#divStripImage').css('display', 'block');
             jQuery('#divStripImagePass').css('display', 'block');
             jQuery('#divBackgroundImage').css('display', 'none');
-            jQuery('#backgroundCanvas').css('display', 'none');
+            jQuery('#backgroundSvgPass').css('display', 'none');
             jQuery('#divThumbnailImage').css('display', 'none');
             jQuery('#divThumbnailImagePass').css('display', 'none');
             jQuery('.divStripImagePass').css('max-height', '106px');
@@ -1021,7 +1014,7 @@ function ChangesDependingPassType(passType) {
             jQuery('#divStripImage').css('display', 'block');
             jQuery('#divStripImagePass').css('display', 'block');
             jQuery('#divBackgroundImage').css('display', 'none');
-            jQuery('#backgroundCanvas').css('display', 'none');
+            jQuery('#backgroundSvgPass').css('display', 'none');
             jQuery('#divThumbnailImage').css('display', 'none');
             jQuery('#divThumbnailImagePass').css('display', 'none');
             jQuery('.divStripImagePass').css('max-height', '106px');
@@ -1065,7 +1058,7 @@ function ChangesDependingPassType(passType) {
             jQuery('#divStripImage').css('display', 'none');
             jQuery('#divStripImagePass').css('display', 'none');
             jQuery('#divBackgroundImage').css('display', 'none');
-            jQuery('#backgroundCanvas').css('display', 'none');
+            jQuery('#backgroundSvgPass').css('display', 'none');
             jQuery('#divThumbnailImage').css('display', 'block');
             jQuery('#divThumbnailImagePass').css('display', 'block');
             jQuery('#thumbnailImagePass').removeClass('eventTicket').addClass('generic');
@@ -1118,7 +1111,7 @@ function ChangesDependingPassType(passType) {
                 jQuery('#divStripImage').css('display', 'none');
                 jQuery('#divStripImagePass').css('display', 'none');
                 jQuery('#divBackgroundImage').css('display', 'block');
-                jQuery('#backgroundCanvas').css('display', 'block');
+                jQuery('#backgroundSvgPass').css('display', 'block');
                 jQuery('#divThumbnailImage').css('display', 'block');
                 jQuery('#divThumbnailImagePass').css('display', 'block');
                 jQuery('#thumbnailImagePass').removeClass('generic').addClass('eventTicket');
@@ -1166,7 +1159,7 @@ function ChangesDependingPassType(passType) {
                 jQuery('#divStripImage').css('display', 'block');
                 jQuery('#divStripImagePass').css('display', 'block');
                 jQuery('#divBackgroundImage').css('display', 'none');
-                jQuery('#backgroundCanvas').css('display', 'none');
+                jQuery('#backgroundSvgPass').css('display', 'none');
                 jQuery('#divThumbnailImage').css('display', 'none');
                 jQuery('#divThumbnailImagePass').css('display', 'none');
                 jQuery('.divStripImagePass').css('max-height', '74px');

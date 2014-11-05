@@ -59,8 +59,7 @@ namespace Pass.Manager.Web
                        "~/Scripts/createCard/bootstrap.js",
                        "~/Scripts/createCard/jquery.flippy.js",
                        "~/Scripts/createCard/mColorPicker.js",
-                       "~/Scripts/createCard/jquery.simple-dtpicker.js",
-                       "~/Scripts/createCard/StackBlur.js"
+                       "~/Scripts/createCard/jquery.simple-dtpicker.js"
                        ));
             bundles.Add(new StyleBundle("~/bundles/passDesignerCss").Include(
                       "~/Content/createCard/bootstrap-theme.css",

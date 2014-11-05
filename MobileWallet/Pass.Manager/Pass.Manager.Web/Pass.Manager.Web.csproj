@@ -478,7 +478,6 @@
     <Content Include="Scripts\createCard\jquery.simple-dtpicker.js" />
     <Content Include="Scripts\createCard\mColorPicker.js" />
     <Content Include="Scripts\createCard\passDesigner.js" />
-    <Content Include="Scripts\createCard\StackBlur.js" />
     <Content Include="Scripts\DataTables-1.10.2\dataTables.autoFill.js" />
     <Content Include="Scripts\DataTables-1.10.2\dataTables.autoFill.min.js" />
     <Content Include="Scripts\DataTables-1.10.2\dataTables.bootstrap.js" />
