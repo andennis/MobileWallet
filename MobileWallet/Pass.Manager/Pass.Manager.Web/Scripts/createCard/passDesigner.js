@@ -250,6 +250,7 @@ function AddFieldBackContent() {
             //stringContent = '/Content' + lastChildID + '/g',
             stringContent = new RegExp('Content' + lastChildId, 'g'),
             stringBack = new RegExp('Back' + lastChildId, 'g'),
+            stringRadios = new RegExp('Radios' + lastChildId, 'g'),
             stringInput = new RegExp('Input' + lastChildId, 'g'),
             stringField = new RegExp('Field' + lastChildId, 'g'),
             stringLabel = new RegExp('Label' + lastChildId, 'g'),
@@ -260,10 +261,10 @@ function AddFieldBackContent() {
         }).appendTo('#mainCollapsePanelBackContent');
 
         //Save property 'checked' radio buttons last field
-        propCheckedFixedLabel = jQuery('#collapseContentLabelBack' + lastChildId + '1').prop('checked');
-        propCheckedDynamicLabel = jQuery('#collapseContentLabelBack' + lastChildId + '2').prop('checked');
-        propCheckedFixedValue = jQuery('#collapseContentValueBack' + lastChildId + '1').prop('checked');
-        propCheckedDynamicValue = jQuery('#collapseContentValueBack' + lastChildId + '2').prop('checked');
+        propCheckedFixedLabel = jQuery('#backLabelRadios' + lastChildId + '1').prop('checked');
+        propCheckedDynamicLabel = jQuery('#backLabelRadios' + lastChildId + '2').prop('checked');
+        propCheckedFixedValue = jQuery('#backValueRadios' + lastChildId + '1').prop('checked');
+        propCheckedDynamicValue = jQuery('#backValueRadios' + lastChildId + '2').prop('checked');
 
         //Copy content last field to new field
         content = jQuery('#collapsePanelBackContent' + lastChildId).html();
@@ -271,20 +272,19 @@ function AddFieldBackContent() {
 
         //Change attributes in new field
         replacedHtml = jQuery('#collapsePanelBackContent' + (lastChildId + 1)).html().replace(stringContent, 'Content' + (lastChildId + 1)).replace(stringBack, 'Back' + (lastChildId + 1))
-        .replace(stringInput, 'Input' + (lastChildId + 1)).replace(stringField, 'Field' + (lastChildId + 1))
+        .replace(stringRadios, 'Radios' + (lastChildId + 1)).replace(stringInput, 'Input' + (lastChildId + 1)).replace(stringField, 'Field' + (lastChildId + 1))
         .replace(stringLabel, 'Label' + (lastChildId + 1)).replace(stringValue, 'Value' + (lastChildId + 1)).replace(stringName, '[' + lastChildId);
         jQuery('#collapsePanelBackContent' + (lastChildId + 1)).html(replacedHtml);
 
-        jQuery('#collapseContentLabelBack' + lastChildId + '1').prop('checked', propCheckedFixedLabel);
-        jQuery('#collapseContentLabelBack' + lastChildId + '2').prop('checked', propCheckedDynamicLabel);
-        jQuery('#collapseContentValueBack' + lastChildId + '1').prop('checked', propCheckedFixedValue);
-        jQuery('#collapseContentValueBack' + lastChildId + '2').prop('checked', propCheckedDynamicValue);
+        jQuery('#backLabelRadios' + lastChildId + '1').prop('checked', propCheckedFixedLabel);
+        jQuery('#backLabelRadios' + lastChildId + '2').prop('checked', propCheckedDynamicLabel);
+        jQuery('#backValueRadios' + lastChildId + '1').prop('checked', propCheckedFixedValue);
+        jQuery('#backValueRadios' + lastChildId + '2').prop('checked', propCheckedDynamicValue);
 
-        DisplayNoneRadioButtonPrompt('collapseContentLabelBack' + (lastChildId + 1) + '1');
-        DisplayNoneRadioButtonPrompt('collapseContentValueBack' + (lastChildId + 1) + '1');
+        DisplayNoneRadioButtonPrompt('backLabelRadios' + (lastChildId + 1) + '1');
+        DisplayNoneRadioButtonPrompt('backValueRadios' + (lastChildId + 1) + '1');
         AddFieldBackContentPass(lastChildId + 1);
     }
-    jQuery("[data-toggle='tooltip']").tooltip();
 }
 
 //Add field to back content pass
@@ -506,15 +506,15 @@ function DisplayNoneSerialNumberInput() {
 }
 
 //Display none checkbox on collapse area
-function DisplayNoneCollapseCheckbox(name) {
-    var tempId = name.toString().replace('optionsRadios', 'divCheckbox');
-    jQuery('#' + tempId).css('display', 'none');
+function DisplayNoneCollapseCheckbox(itemId) {
+    var tempId = (itemId[0].toUpperCase() + itemId.slice(1)).replace('Radios', '').slice(0, -1);
+    jQuery('#' + 'divCheckbox' + tempId).css('display', 'none');
 }
 
 //Display block checkbox on collapse area
-function DisplayBlockCollapseCheckbox(name) {
-    var tempId = name.toString().replace('optionsRadios', 'divCheckbox');
-    jQuery('#' + tempId).css('display', 'block');
+function DisplayBlockCollapseCheckbox(itemId) {
+    var tempId = (itemId[0].toUpperCase() + itemId.slice(1)).replace('Radios', '').slice(0, -1);
+    jQuery('#' + 'divCheckbox' + tempId).css('display', 'block');
 }
 
 //Display the desired select list on change data type select in front content tab
@@ -880,9 +880,9 @@ jQuery(function () {
     jQuery("[data-toggle='tooltip']").tooltip();
 });
 
-jQuery(function () {
-    jQuery("[data-toggle='collapse']").collapse();
-});
+//jQuery(function () {
+//    jQuery("[data-toggle='collapse']").collapse();
+//});
 
 //Show date time pickers on distribution tab
 function ShowDateTimePicker(thisId) {

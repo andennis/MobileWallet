@@ -19,20 +19,20 @@
                 <input id="backLabelCollapseInput1" class="form-control textInputNameContent" name="FieldDetails.BackFields[0].Key" value="" maxlength="20" placeholder="Обязательное" onkeyup=" CheckCheckboxAfterInput(id);" />
             </div>
             @*<div id="removeCollapseField1" class="removeField" data-toggle="tooltip" title="Удалить поле" onclick="RemoveFieldFromBackContent(id)">x</div>*@
-            <div id="collapseContentBack1" class="collapseContent collapse in">
+            <div id="collapseContentBack1" class="collapseContent collapse">
                 <div class="radioFlexContainer">
                     <p class="labelInput">
                         <a data-toggle="tooltip" title="Это заголовок поля. Он может быть фиксированным (т.е. одинаковым для всех клиентов) или динамическим (т.е. разным для всех клиентов)">Заголовок</a>
                     </p>
                     <div class="radio">
                         <label class="radioInputFixedLabel">
-                            <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.BackFields[0].IsDynamicLabel" id="collapseContentLabelBack11" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);" checked>
+                            <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.BackFields[0].IsDynamicLabel" id="backLabelRadios11" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(id);" checked>
                             Фиксированный
                         </label>
                     </div>
                     <div class="radio">
                         <label class="radioInputDynamicLabel">
-                            <input type="radio" name="FieldDetails.BackFields[0].IsDynamicLabel" id="collapseContentLabelBack12" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);">
+                            <input type="radio" name="FieldDetails.BackFields[0].IsDynamicLabel" id="backLabelRadios12" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(id);">
                             Динамический
                         </label>
                     </div>
@@ -40,9 +40,9 @@
                 <div class="inputTextFlexContainer">
                     @*<input type="text" id="inputBackFieldContent1" class="form-control LabelAndValueInputCollapse" placeholder="Обязательное" maxlength="30" onkeyup="BindBackInputToFieldPass(id, value); CheckCheckboxAfterInput(id);" />*@
                     <input type="text" id="backLabelTextInput1" class="form-control LabelAndValueInputCollapse" name="FieldDetails.BackFields[0].Label" value="" placeholder="Обязательное" maxlength="30" onkeyup="BindBackInputToFieldPass(id, value); CheckCheckboxAfterInput(id);" />
-                    <div id="collapseContentLabelBack1Prompt" class="rdiosPrompt"><span class="spanRed">*</span>значение по умолчанию</div>
+                    <div id="backLabelRadios1Prompt" class="rdiosPrompt"><span class="spanRed">*</span>значение по умолчанию</div>
                 </div>
-                <div id="divCheckboxCollapseLabel1" class="divCheckboxLabelAndValue" style="display:none;">
+                <div id="divCheckboxBackLabel1" class="divCheckboxLabelAndValue" style="display:none;">
                     <input type="checkbox" name="checkboxBackCollapseLabel1" id="checkboxBackCollapseLabel1" class="checkboxCollapse" checked>
                     <label for="checkboxBackCollapseLabel1" class="checkboxCollapseLabel"></label>
                     Значение по умолчанию может быть изменено
@@ -54,13 +54,13 @@
                     </p>
                     <div class="radio">
                         <label class="radioInputFixedValue">
-                            <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.BackFields[0].IsDynamicValue" id="collapseContentValueBack11" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(name);">
+                            <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.BackFields[0].IsDynamicValue" id="backValueRadios11" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(id);">
                             Фиксированное
                         </label>
                     </div>
                     <div class="radio">
                         <label class="radioInputDynamicValue">
-                            <input type="radio" name="FieldDetails.BackFields[0].IsDynamicValue" id="collapseContentValueBack12" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(name);" checked>
+                            <input type="radio" name="FieldDetails.BackFields[0].IsDynamicValue" id="backValueRadios12" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(id);" checked>
                             Динамическое
                         </label>
                     </div>
@@ -68,9 +68,9 @@
                 <div class="inputTextFlexContainer">
                     @*<textarea id="textareaBackFieldContent1" class="form-control LabelAndValueInputCollapse" rows="3" placeholder="Необязательное" onkeyup="BindBackTextareaToFieldPass(id, value); CheckCheckboxAfterInput(id);"></textarea>*@
                     <textarea id="backValueTextInput1" class="form-control LabelAndValueInputCollapse" rows="3" name="FieldDetails.BackFields[0].Value" placeholder="Необязательное" onkeyup="BindBackInputToFieldPass(id, value); CheckCheckboxAfterInput(id);"></textarea>
-                    <div id="collapseContentValueBack1Prompt" class="rdiosPrompt displayBlock"><span class="spanRed">*</span>значение по умолчанию</div>
+                    <div id="backValueRadios1Prompt" class="rdiosPrompt displayBlock"><span class="spanRed">*</span>значение по умолчанию</div>
                 </div>
-                <div id="divCheckboxCollapseValue1" class="divCheckboxLabelAndValue">
+                <div id="divCheckboxBackValue1" class="divCheckboxLabelAndValue">
                     <input type="checkbox" name="checkboxBackCollapseValue1" id="checkboxBackCollapseValue1" class="checkboxCollapse" checked>
                     <label for="checkboxBackCollapseValue1" class="checkboxCollapseLabel"></label>
                     Значение по умолчанию может быть изменено
