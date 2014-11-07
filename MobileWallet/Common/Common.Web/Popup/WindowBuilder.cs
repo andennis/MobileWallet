@@ -91,37 +91,36 @@ namespace Common.Web.Popup
             _component.Visible = visible;
             return this;
         }
-
+        public WindowBuilder Modal(bool modal)
+        {
+            _component.Modal = modal;
+            return this;
+        }
         public WindowBuilder Resizable(bool value)
         {
             _component.Resizable = value;
             return this;
         }
-
         public WindowBuilder Draggable(bool value)
         {
             _component.Draggable = value;
             return this;
         }
-
         public WindowBuilder Pinned(bool value)
         {
             _component.Pinned = value;
             return this;
         }
-
         public WindowBuilder AutoFocus(bool value)
         {
             _component.AutoFocus = value;
             return this;
         }
-
         public WindowBuilder Iframe(bool value)
         {
             _component.Iframe = value;
             return this;
         }
-
         public WindowBuilder AppendTo(string selector)
         {
             _component.AppendTo = selector;

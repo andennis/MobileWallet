@@ -24,6 +24,13 @@
 <a id="undo2" class="k-button">window2</a>
 
 <div id="window"></div>
+@(Html.PopupDialog()
+    .Name("window2")
+    .Width(600)
+    .Height(400)
+    .Title("My Title2")
+    .Modal(true))
+
 
 <script>
     $(document).ready(function() {
@@ -34,7 +41,7 @@
 
         });
 
-        $("#undo").click(function () {
+        $("#undo2").click(function () {
             $("#window2").data("kendoWindow").open();
             $("#window2").data("kendoWindow").center();
 

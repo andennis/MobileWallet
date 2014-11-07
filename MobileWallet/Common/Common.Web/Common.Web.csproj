@@ -119,6 +119,7 @@
     <Compile Include="WidgetBase.cs" />
     <Compile Include="WidgetBuilderBase.cs" />
     <Compile Include="WidgetFactory.cs" />
+    <Compile Include="WindowExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">

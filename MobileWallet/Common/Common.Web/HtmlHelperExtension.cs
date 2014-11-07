@@ -6,7 +6,7 @@ namespace Common.Web
     {
         private readonly static WidgetFactory _widgetFactory = new WidgetFactory();
 
-        public static WidgetFactory Kendo(this HtmlHelper helper)
+        public static WidgetFactory Widget(this HtmlHelper helper)
         {
             return _widgetFactory;
         }

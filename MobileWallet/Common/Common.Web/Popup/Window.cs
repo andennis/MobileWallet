@@ -1,8 +1,5 @@
-﻿
-
-using System.IO;
+﻿using System.IO;
 using System.Linq;
-using System.Web.Mvc;
 using System.Web.UI;
 using Common.Extensions;
 
@@ -51,8 +48,8 @@ namespace Common.Web.Popup
 
         protected override void WriteHtml(HtmlTextWriter writer)
         {
+            writer.AddAttribute(HtmlTextWriterAttribute.Id, Name);
             writer.RenderBeginTag(HtmlTextWriterTag.Div);
-            writer.WriteAttribute("id", Name);
             writer.RenderEndTag();
         }
         protected override void WriteInitializationScript(TextWriter writer)
@@ -79,7 +76,7 @@ namespace Common.Web.Popup
                 actions = _actions != null ? _actions.Container.Select(x => x.ToString()).ToArray() : null
             };
 
-            string widgetScript = string.Format("$(\"#{0}\").kendoWindow({{{1}}})", Name, settings.ObjectToJson());
+            string widgetScript = string.Format("$(\"#{0}\").kendoWindow({1})", Name, settings.ObjectToJson());
             string script = GetDocumentReadyScript(widgetScript);
             writer.WriteLine(script);
         }
