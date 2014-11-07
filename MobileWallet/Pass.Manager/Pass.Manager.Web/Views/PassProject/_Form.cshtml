@@ -20,41 +20,41 @@
     </div>
 }
 
-<span id="undo" class="k-button">Click here to open the window.</span>
+<a id="undo" class="k-button">window1</a>
+<a id="undo2" class="k-button">window2</a>
 
 <div id="window"></div>
 
 <script>
     $(document).ready(function() {
-        var window = $("#window"),
-            undo = $("#undo").bind("click", function() {
-                        window.data("kendoWindow").open();
-                        window.data("kendoWindow").center();
-                    });
 
+        $("#undo").click(function() {
+            $("#window").data("kendoWindow").open();
+            $("#window").data("kendoWindow").center();
 
-        if (!window.data("kendoWindow")) {
-            window.kendoWindow({
-                width: "600px",
-                height: "400px",
-                title: "My Title",
-                visible: false,
-                animation: {
-                    open: {
-                        effects: "fade:in",
-                        duration: 500
-                    }
-                },
-                actions: [
-                    "Pin",
-                    "Minimize",
-                    "Maximize",
-                    "Close"
-                ],
-                modal: true
-                //content: "http://www.telerik.com/"
-            });
-        }
+        });
+
+        $("#undo").click(function () {
+            $("#window2").data("kendoWindow").open();
+            $("#window2").data("kendoWindow").center();
+
+        });
+
+        $("#window").kendoWindow({
+            width: "600px",
+            height: "400px",
+            title: "My Title",
+            visible: false,
+            actions: [
+                "Pin",
+                "Minimize",
+                "Maximize",
+                "Close"
+            ],
+            modal: true
+            //content: "http://www.telerik.com/"
+        });
+        
     });
 </script>
 

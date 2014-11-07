@@ -51,7 +51,8 @@ namespace Pass.Manager.Web
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                 "~/Scripts/FormAutoFill/jquery.formautofill.js",
                 "~/Scripts/Grid.js",
-                "~/Scripts/Action.js"));
+                "~/Scripts/Action.js",
+                "~/Scripts/PopupWindow.js"));
 
 
             bundles.Add(new ScriptBundle("~/bundles/passDesigner").Include(
