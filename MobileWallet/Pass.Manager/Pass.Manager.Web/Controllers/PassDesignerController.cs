@@ -192,6 +192,10 @@ namespace Pass.Manager.Web.Controllers
                         new GeneralField(),
                         new GeneralField()
                     },
+                    BackFields = new List<GeneralField>()
+                    {
+                       new GeneralField() 
+                    },
                     TransitType = Transit.Generic
                 }
             };
@@ -245,6 +249,10 @@ namespace Pass.Manager.Web.Controllers
                         new GeneralField(),
                         new GeneralField(),
                         new GeneralField()
+                    },
+                    BackFields = new List<GeneralField>()
+                    {
+                       new GeneralField() 
                     },
                     TransitType = Transit.Generic
                 }
@@ -300,6 +308,10 @@ namespace Pass.Manager.Web.Controllers
                         new GeneralField(),
                         new GeneralField(),
                         new GeneralField()
+                    },
+                    BackFields = new List<GeneralField>()
+                    {
+                       new GeneralField() 
                     },
                     TransitType = Transit.Generic
                 }
@@ -381,6 +393,10 @@ namespace Pass.Manager.Web.Controllers
                         new GeneralField(),
                         new GeneralField()
                     },
+                    BackFields = new List<GeneralField>()
+                    {
+                       new GeneralField() 
+                    },
                     TransitType = Transit.Generic
                 }
             };
@@ -435,6 +451,10 @@ namespace Pass.Manager.Web.Controllers
                         new GeneralField(),
                         new GeneralField(),
                         new GeneralField()
+                    },
+                    BackFields = new List<GeneralField>()
+                    {
+                       new GeneralField() 
                     },
                     TransitType = Transit.Generic
                 }
@@ -519,6 +539,10 @@ namespace Pass.Manager.Web.Controllers
                         },
                         new GeneralField(),
                         new GeneralField()
+                    },
+                    BackFields = new List<GeneralField>()
+                    {
+                       new GeneralField() 
                     },
                     TransitType = Transit.Generic
                 }

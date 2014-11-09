@@ -125,20 +125,28 @@ function RepositionRemoveIcon() {
 
 //Flippy effect
 var j = jQuery.noConflict();
-jQuery("#MainTab4").click(function () {
+function flippyBackContent() {
     jQuery('.frontTabPassBlock').css('display', 'none');
     if (!jQuery("#MainTab4").hasClass("active")) {
         j("#divPassBody").flippy({
             color_target: "#ffffff",
             content: j("#divbackPass"),
             direction: "LEFT",
-            duration: "200"
+            duration: "200",
+            onFinish: selectBackPassFields()
         });
-        j("#MainTab4").removeClass("flippy");
-        return true;
     }
+}
 
-});
+function selectBackPassFields() {
+    for (var i = 0; i < jQuery('#mainCollapsePanelBackContent').children().length ; i++) {
+        if (jQuery('#checkboxBack' + (i + 1)).prop('checked')) {
+            jQuery('divBackFieldContentPass' + (i + 1)).css('display', 'block');
+        } else {
+            jQuery('divBackFieldContentPass' + (i + 1)).css('display', 'none');
+        }
+    }
+}
 
 jQuery("#MainTab1, #MainTab2, #MainTab3, #MainTab5, #MainTab6, #MainTab7").click(function () {
     if (jQuery(this).attr('id') === 'MainTab3') {
@@ -310,31 +318,31 @@ function BindBackInputToFieldPass(id, value) {
 }
 
 //Remove all field in back content pass
-function RemoveAllFieldBackPass() {
-    jQuery("#divBackContentPass").html("");
-}
+//function RemoveAllFieldBackPass() {
+//    jQuery("#divBackContentPass").html("");
+//}
 
-function AddFieldPassAgain() {
-    var childs = jQuery("#mainCollapsePanelBackContent").children().toArray(),
-    tempId = '';
-    for (var i = 0; i < childs.length; i++) {
-        tempId = childs[i].getAttribute('id').slice(-2).replace('t', '');
-        jQuery('<div />', {
-            id: 'divBackFieldContentPass' + tempId,
-            class: 'divBackFieldContentPass'
-        }).appendTo('#divBackContentPass');
-        jQuery('<div />', {
-            id: 'backLabelPass' + tempId,
-            class: 'labelFieldBackPass',
-            text: jQuery('#inputBackFieldContent' + tempId).val()
-        }).appendTo('#divBackFieldContentPass' + tempId);
-        jQuery('<div />', {
-            id: 'backValuePass' + tempId,
-            class: 'valueFieldBackPass',
-            text: jQuery('#textareaBackFieldContent' + tempId).val()
-        }).appendTo('#divBackFieldContentPass' + tempId);
-    }
-}
+//function AddFieldPassAgain() {
+//    var childs = jQuery("#mainCollapsePanelBackContent").children().toArray(),
+//    tempId = '';
+//    for (var i = 0; i < childs.length; i++) {
+//        tempId = childs[i].getAttribute('id').slice(-2).replace('t', '');
+//        jQuery('<div />', {
+//            id: 'divBackFieldContentPass' + tempId,
+//            class: 'divBackFieldContentPass'
+//        }).appendTo('#divBackContentPass');
+//        jQuery('<div />', {
+//            id: 'backLabelPass' + tempId,
+//            class: 'labelFieldBackPass',
+//            text: jQuery('#inputBackFieldContent' + tempId).val()
+//        }).appendTo('#divBackFieldContentPass' + tempId);
+//        jQuery('<div />', {
+//            id: 'backValuePass' + tempId,
+//            class: 'valueFieldBackPass',
+//            text: jQuery('#textareaBackFieldContent' + tempId).val()
+//        }).appendTo('#divBackFieldContentPass' + tempId);
+//    }
+//}
 
 //Change width text fields on header pass area
 function ChangeWidthHeaderTextFieldPass(someId) {
