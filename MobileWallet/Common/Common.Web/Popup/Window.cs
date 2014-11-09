@@ -17,6 +17,7 @@ namespace Common.Web.Popup
             Draggable = true;
             Modal = true;
             AutoFocus = true;
+            Iframe = true;
         }
 
         //public bool TitleVisible { get; set; }

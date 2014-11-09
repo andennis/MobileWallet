@@ -22,6 +22,11 @@ namespace Pass.Manager.Web.Controllers
             return View("Create", model);
         }
 
+        public ActionResult CreateField(int passProjectId)
+        {
+            return PartialView("FieldForm");
+        }
+
         /*
         public ActionResult PassDesigner(int passProjectId)
         {

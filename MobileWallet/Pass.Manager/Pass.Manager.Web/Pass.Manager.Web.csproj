@@ -1050,6 +1050,8 @@
     <Content Include="Views\PassSiteUser\Create.cshtml" />
     <Content Include="Views\PassSiteCertificate\_Form.cshtml" />
     <Content Include="Views\PassSiteCertificate\Create.cshtml" />
+    <Content Include="Views\Shared\_LayoutPopupWindow.cshtml" />
+    <Content Include="Views\PassProject\FieldForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CertificateStorage\CertificateStorage.BL\CertificateStorage.BL.csproj">

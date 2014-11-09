@@ -4,18 +4,31 @@ namespace Common.Web.Popup
 {
     public class WindowBuilder : WidgetBuilderBase<Window, WindowBuilder>
     {
-        private readonly WindowEventBuilder _eventBuilder;
-        private readonly WindowResizingSettingsBuilder _resizingSettingsBuilder;
-        private readonly WindowActionsBuilder _actionsBuilder;
-        private readonly WindowPositionSettingsBuilder _positionSettingsBuilder;
+        private WindowEventBuilder _eventBuilder;
+        private WindowResizingSettingsBuilder _resizingSettingsBuilder;
+        private WindowActionsBuilder _actionsBuilder;
+        private WindowPositionSettingsBuilder _positionSettingsBuilder;
 
         public WindowBuilder(Window component)
             :base(component)
         {
-            _resizingSettingsBuilder = new WindowResizingSettingsBuilder(component.ResizingSettings);
-            _actionsBuilder = new WindowActionsBuilder(component.Actions);
-            _positionSettingsBuilder = new WindowPositionSettingsBuilder(component.PositionSettings);
-            _eventBuilder = new WindowEventBuilder(component.Events);
+        }
+
+        public WindowEventBuilder EventBuilder
+        {
+            get { return _eventBuilder ?? (_eventBuilder = new WindowEventBuilder(_component.Events)); }
+        }
+        public WindowResizingSettingsBuilder ResizingSettingsBuilder
+        {
+            get { return _resizingSettingsBuilder ?? (_resizingSettingsBuilder = new WindowResizingSettingsBuilder(_component.ResizingSettings)); }
+        }
+        public WindowActionsBuilder ActionsBuilder
+        {
+            get { return _actionsBuilder ?? (_actionsBuilder = new WindowActionsBuilder(_component.Actions)); }
+        }
+        public WindowPositionSettingsBuilder PositionSettingsBuilder
+        {
+            get { return _positionSettingsBuilder ?? (_positionSettingsBuilder = new WindowPositionSettingsBuilder(_component.PositionSettings)); }
         }
 
         /*

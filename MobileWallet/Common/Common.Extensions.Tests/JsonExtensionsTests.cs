@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 namespace Common.Extensions.Tests
 {
@@ -9,6 +10,7 @@ namespace Common.Extensions.Tests
         {
             public string Name { get; set; }
             public int Value { get; set; }
+            public string P1 { get; set; }
         }
 
         [Test]
@@ -32,9 +34,37 @@ namespace Common.Extensions.Tests
         public void JsonToObjectTest()
         {
             string json = "{\"Name\":\"Name1\",\"Value\":1}";
-            TestClass obj = json.JsonToObject<TestClass>();
+            var obj = json.JsonToObject<TestClass>();
             Assert.AreEqual("Name1", obj.Name);
             Assert.AreEqual(1, obj.Value);
+        }
+
+        [Test]
+        public void MergeJsonTest()
+        {
+            const string json1 = "{\"Name\":\"Name1\"}";
+            const string json2 = "{\"Value\":5}";
+            string json3 = json1.MergeJson(json2);
+            Assert.IsNotNullOrEmpty(json3);
+
+            var obj = json3.JsonToObject<TestClass>();
+            Assert.AreEqual("Name1", obj.Name);
+            Assert.AreEqual(5, obj.Value); 
+        }
+
+        [Test]
+        public void ObjectToJsonMergeTest()
+        {
+            var obj1 = new { Name = "Name1" };
+            var obj2 = new { Value = 5 };
+            var obj3 = new { P1 = "123" };
+            string json = obj1.ObjectToJsonMerge(obj2, obj3);
+            Assert.IsNotNullOrEmpty(json);
+
+            var obj = json.JsonToObject<TestClass>();
+            Assert.AreEqual("Name1", obj.Name);
+            Assert.AreEqual(5, obj.Value);
+            Assert.AreEqual("123", obj.P1); 
         }
 
         /*

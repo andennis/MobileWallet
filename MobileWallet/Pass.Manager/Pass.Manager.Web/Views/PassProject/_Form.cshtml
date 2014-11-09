@@ -24,12 +24,14 @@
 <a id="undo2" class="k-button">window2</a>
 
 <div id="window"></div>
+
 @(Html.PopupDialog()
     .Name("window2")
     .Width(600)
     .Height(400)
     .Title("My Title2")
-    .Modal(true))
+    .Modal(true)
+    .LoadContentFrom("http://www.telerik.com/"))
 
 
 <script>
@@ -58,11 +60,35 @@
                 "Maximize",
                 "Close"
             ],
-            modal: true
-            //content: "http://www.telerik.com/"
+            modal: true,
+            content: "http://www.telerik.com/"
         });
-        
+
+        /*
+        $("#window2").kendoWindow({
+            "title": "My Title2",
+            "content": "http://www.telerik.com/",
+            "width": 600,
+            "height": 400,
+            "visible": false,
+            "draggable": true,
+            "modal": true,
+            "pinned": false,
+            "autoFocus": true,
+            "iframe": true,
+            "resizable": true,
+            "position": {
+                "top": 0,
+                "left": 0
+            },
+            "actions": [
+                "Close"
+            ]
+        });
+        */
+
     });
+
 </script>
 
 
