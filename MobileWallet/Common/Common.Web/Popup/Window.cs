@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Web.UI;
 using Common.Extensions;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace Common.Web.Popup
 {
@@ -53,6 +55,7 @@ namespace Common.Web.Popup
             writer.RenderBeginTag(HtmlTextWriterTag.Div);
             writer.RenderEndTag();
         }
+
         protected override void WriteInitializationScript(TextWriter writer)
         {
             var settings = new

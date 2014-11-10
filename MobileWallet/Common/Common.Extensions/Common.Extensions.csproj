@@ -48,6 +48,8 @@
     <Compile Include="DateTimeExtensions.cs" />
     <Compile Include="ExpressionExtensions.cs" />
     <Compile Include="JsonExtensions.cs" />
+    <Compile Include="JsonNetConverters\DictionaryToObjectJsonConverter.cs" />
+    <Compile Include="JsonNetConverters\JsonValueWithoutQuotes.cs" />
     <Compile Include="JsonNetConverters\JsonValueWithoutQuotesConverter.cs" />
     <Compile Include="ObjectExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

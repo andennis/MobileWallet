@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Common.Extensions.JsonNetConverters;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Common.Extensions
@@ -10,6 +12,13 @@ namespace Common.Extensions
                                                                                  NullValueHandling = NullValueHandling.Ignore, 
                                                                                  Formatting = Formatting.Indented
                                                                              };
+        private readonly static JsonSerializerSettings _dictionaryToObjectJsonSettings = new JsonSerializerSettings()
+                                                                            {
+                                                                                NullValueHandling = NullValueHandling.Ignore,
+                                                                                Formatting = Formatting.Indented,
+                                                                                Converters = new JsonConverter[] { new DictionaryToObjectJsonConverter() }
+                                                                            };
+
 
         public static string ObjectToJson(this object obj)
         {
@@ -44,6 +53,11 @@ namespace Common.Extensions
         public static TResult JsonToObject<TResult>(this string json)
         {
             return JsonConvert.DeserializeObject<TResult>(json);
+        }
+
+        public static string DictionaryToJsonAsObject(this IDictionary<string, object> dict)
+        {
+            return JsonConvert.SerializeObject(dict, _dictionaryToObjectJsonSettings);
         }
     }
 }

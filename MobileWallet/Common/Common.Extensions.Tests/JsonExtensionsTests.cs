@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using Common.Extensions.JsonNetConverters;
 using NUnit.Framework;
 
 namespace Common.Extensions.Tests
@@ -65,6 +66,26 @@ namespace Common.Extensions.Tests
             Assert.AreEqual("Name1", obj.Name);
             Assert.AreEqual(5, obj.Value);
             Assert.AreEqual("123", obj.P1); 
+        }
+
+        [Test]
+        public void DictionaryToJsonAsObjectTest()
+        {
+            var dict = new Dictionary<string, object>()
+                       {
+                           {"Name", "Name1"},
+                           {"Value", 5},
+                           {"P1", "123"},
+                           {"Fnc", new JsonValueWithoutQuotes("Fnc1")}
+                       };
+
+            string json = dict.DictionaryToJsonAsObject();
+            Assert.IsNotNullOrEmpty(json);
+
+            Assert.True(json.Contains("\"Name\": \"Name1\""));
+            Assert.True(json.Contains("\"Value\": 5"));
+            Assert.True(json.Contains("\"P1\": \"123\""));
+            Assert.True(json.Contains("\"Fnc\": Fnc1"));
         }
 
         /*

@@ -43,7 +43,7 @@
 
         });
 
-        $("#undo2").click(function () {
+        $("#undo2").click(function() {
             $("#window2").data("kendoWindow").open();
             $("#window2").data("kendoWindow").center();
 
@@ -60,8 +60,9 @@
                 "Maximize",
                 "Close"
             ],
-            modal: true,
-            content: "http://www.telerik.com/"
+            open: F1,
+            modal: true
+            //content: "http://www.telerik.com/"
         });
 
         /*
@@ -89,6 +90,9 @@
 
     });
 
+    function F1() {
+        alert("hello2");
+    }
 </script>
 
 
