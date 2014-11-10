@@ -4,11 +4,13 @@ jQuery(window).load(function () {
     var fileInput = document.getElementById('logoImageInput'),
         stripFileInput = document.getElementById('stripImageInput'),
         thumbnailFileInput = document.getElementById('thumbnailImageInput'),
-        backgroundFileInput = document.getElementById('backgroundImageInput');
+        backgroundFileInput = document.getElementById('backgroundImageInput'),
+        footerFileInput = document.getElementById('footerImageInput');
     fileInput.onchange = HandleChanges;
     stripFileInput.onchange = HandleChanges;
     thumbnailFileInput.onchange = HandleChanges;
     backgroundFileInput.onchange = HandleChanges;
+    footerFileInput.onchange = HandleChanges;
     fileInput.value = '';
     stripFileInput.value = '';
 
@@ -47,8 +49,8 @@ jQuery('img.transitIconPass').each(function () {
 //Images inputs
 function handleFileSelect(evt) {
     var files = evt.target.files,
-    className = evt.target.id.replace('logo', 'spanLogo').replace('strip', 'spanStrip').replace('thumbnail', 'spanThumbnail').replace('background', 'spanBackground').replace('Input', 'Pass'),
-    divId = evt.target.id.replace('logo', 'divLogo').replace('strip', 'divStrip').replace('thumbnail', 'divThumbnail').replace('background', 'divBackground').replace('Input', 'Pass'),
+    className = evt.target.id.replace('logo', 'spanLogo').replace('strip', 'spanStrip').replace('thumbnail', 'spanThumbnail').replace('background', 'spanBackground').replace('footer', 'spanFooter').replace('Input', 'Pass'),
+    divId = evt.target.id.replace('logo', 'divLogo').replace('strip', 'divStrip').replace('thumbnail', 'divThumbnail').replace('background', 'divBackground').replace('footer', 'divFooter').replace('Input', 'Pass'),
     imgId = evt.target.id.replace('Input', 'Pass'),
     span = document.createElement('span'),
     passStyle,
@@ -84,6 +86,7 @@ document.getElementById('logoImageInput').addEventListener('change', handleFileS
 document.getElementById('stripImageInput').addEventListener('change', handleFileSelect, false);
 document.getElementById('thumbnailImageInput').addEventListener('change', handleFileSelect, false);
 document.getElementById('backgroundImageInput').addEventListener('change', handleFileSelect, false);
+document.getElementById('footerImageInput').addEventListener('change', handleFileSelect, false);
 
 function HandleChanges(evt) {
     var imgNameId = evt.target.id.replace('ImageInput', 'Name');
@@ -116,11 +119,12 @@ jQuery('img, image').error(function () {
 //Reposition remove icon
 function RepositionRemoveIcon() {
     var max = Math.max(document.getElementById('logoName').offsetWidth, document.getElementById('stripName')
-    .offsetWidth, document.getElementById('thumbnailName').offsetWidth, document.getElementById('backgroundName').offsetWidth);
+    .offsetWidth, document.getElementById('thumbnailName').offsetWidth, document.getElementById('backgroundName').offsetWidth, document.getElementById('footerName').offsetWidth);
     document.getElementById('removeLogo').style.marginLeft = max + 203 + 'px';
     document.getElementById('removeStrip').style.marginLeft = max + 203 + 'px';
     document.getElementById('removeThumbnail').style.marginLeft = max + 203 + 'px';
     document.getElementById('removeBackground').style.marginLeft = max + 203 + 'px';
+    document.getElementById('removeFooter').style.marginLeft = max + 203 + 'px';
 }
 
 //Flippy effect
@@ -141,9 +145,9 @@ function flippyBackContent() {
 function selectBackPassFields() {
     for (var i = 0; i < jQuery('#mainCollapsePanelBackContent').children().length ; i++) {
         if (jQuery('#checkboxBack' + (i + 1)).prop('checked')) {
-            jQuery('divBackFieldContentPass' + (i + 1)).css('display', 'block');
+            jQuery('#divBackFieldContentPass' + (i + 1)).css('display', 'block');
         } else {
-            jQuery('divBackFieldContentPass' + (i + 1)).css('display', 'none');
+            jQuery('#divBackFieldContentPass' + (i + 1)).css('display', 'none');
         }
     }
 }
@@ -196,9 +200,15 @@ function ChangeBarcodeType(itemValue) {
     jQuery('#divBarcodePass img').removeClass('active');
     if (itemValue !== 'doNotDisplay') {
         jQuery('#' + itemValue + 'Pass').addClass('active');
+        } else {
+        jQuery('#divFooterImagePass').css('margin-top', '280px');
+    }
+    if (itemValue == 'pdf417Code') {
+        jQuery('#divFooterImagePass').css('margin-top', '198px');
     }
     if (itemValue === 'aztecCode' || itemValue === 'qrCode') {
         jQuery('#tab5').css('top', '378px').css('height', '126px');
+        jQuery('#divFooterImagePass').css('margin-top', '178px');
         if (jQuery('.passTypeImg.selected').attr('data-pass') === 'generic') {
             jQuery('#auxiliaryAreaPass').css('display', 'none');
             jQuery('#tab3').css('display', 'none');

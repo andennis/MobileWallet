@@ -34,6 +34,10 @@ namespace Pass.Manager.Web.Models.GeneralPassTemplate
         public HttpPostedFileBase Thumbnail { get; set; }
 
         public bool RemoveThumbnail { get; set; }
+
+        public HttpPostedFileBase Footer { get; set; }
+
+        public bool RemoveFooter { get; set; }
         #endregion
 
         #region Standart keys

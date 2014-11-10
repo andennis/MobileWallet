@@ -122,8 +122,15 @@ namespace Pass.Manager.Web.Controllers
                 {
                     System.IO.File.Delete(path + "\\thumbnail.png");
                 }
-                //PassTemplateViewModel tempModel = model;
-                //tempModel.Logo = null;
+                if (model.Footer != null)
+                {
+                    model.Footer.SaveAs(path + "\\footer.png");
+                    model.Footer = null;
+                }
+                else if (model.RemoveFooter)
+                {
+                    System.IO.File.Delete(path + "\\footer.png");
+                }
                 model.SaveToXml(path + "\\XMLData.xml");
                 return RedirectToAction("Edit", "PassProject", new { id = model.PassProjectId });
             }

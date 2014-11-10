@@ -19,6 +19,14 @@ namespace Pass.Manager.Web.Models.GeneralPassTemplate
 
     public class GeneralLocation
     {
+        [XmlElement(ElementName = "isMarkedLocation")]
+        [JsonProperty(PropertyName = "isMarkedLocation", NullValueHandling = NullValueHandling.Ignore)]
+        public bool IsMarkedLocation { get; set; }
+
+        [XmlElement(ElementName = "address")]
+        [JsonProperty(PropertyName = "address", NullValueHandling = NullValueHandling.Ignore)]
+        public string Address { get; set; }
+
         [XmlElement(ElementName = "altitude")]
         [JsonProperty(PropertyName = "altitude", NullValueHandling = NullValueHandling.Ignore)]
         public double? Altitude { get; set; }

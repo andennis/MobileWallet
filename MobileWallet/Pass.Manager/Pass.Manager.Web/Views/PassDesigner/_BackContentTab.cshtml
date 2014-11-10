@@ -49,7 +49,7 @@
                 <div class="dividingLine">-----------------------------------------------------------------------------------------</div>
                 <div class="radioFlexContainer">
                     <p class="labelInput">
-                        <a data-toggle="tooltip" title="Это значение поля. Оно может быть фиксированным (т.е. одинаковым для всех клиентов) или динамическим (т.е. разным для всех клиентов)">Значение</a>
+                        <a data-toggle="tooltip" title="Это значение поля. Оно может быть фиксированным (т.е. одинаковым для всех клиентов) или динамическим (т.е. разным для всех клиентов)">Значение<span class="spanRed">*</span></a>
                     </p>
                     <div class="radio">
                         <label class="radioInputFixedValue">
@@ -82,7 +82,7 @@
                     <input id="notificationInputBack1" class="form-control textInputNameContent" name="FieldDetails.BackFields[0].ChangeMessage" value="" maxlength="40" placeholder="Не обязательное" />
                 </div>
                 <div class="divDataTypeCollapseField">
-                    <p class="pDataTypeCollapseField"><span data-toggle="tooltip" title="tttttttа">Тип данных</span></p>
+                    <p class="pDataTypeCollapseField"><span data-toggle="tooltip" title="tttttttа">Тип данных<span class="spanRed">*</span></span></p>
                     <select id="selectDataTypeBack1" class="form-control textInputNameContent" name="FieldDetails.BackFields[0].Type" onchange="DisplayBlockDesiredSelect(id);">
                         <option value="text" selected>Текст</option>
                         <option value="number">Число</option>

@@ -144,7 +144,13 @@
                             </div>
 
                             <!--Barcode area on pass-->
+                            
                             <div id="divBarcodePass">
+                                <div id="divFooterImagePass" class="footerImagePassBlock">
+                                    <span>
+                                        <img class="spanFooterImagePass" src="@Url.Action("GetImage", "PassDesigner", new { path = Model.TemplatePath, imageName = "footer.png" })" />
+                                    </span>
+                                </div>
                                 <img id="aztecCodePass" class="barcodePass aztecCodeImgPass" src="~/Images/createCard/barcode/aztecPass.png" />
                                 <img id="qrCodePass" class="barcodePass qrCodeImgPass active" src="~/Images/createCard/barcode/qrPass.png" />
                                 <img id="pdf417CodePass" class="barcodePass pdf417CodeImgPass" src="~/Images/createCard/barcode/pdf417Pass.png" />
@@ -308,13 +314,16 @@
     {
         case GeneralBarcodeType.AztecCode:
             @:jQuery('#barcodeTypeSelect').val('aztecCode').change();
-                                                                                                    break;
+            break;
         case GeneralBarcodeType.QrCode:
-        @:jQuery('#barcodeTypeSelect').val('qrCode').change();
-                                                                                                    break;
+            @:jQuery('#barcodeTypeSelect').val('qrCode').change();
+            break;
         case GeneralBarcodeType.Pdf417Code:
-        @:jQuery('#barcodeTypeSelect').val('pdf417Code').change();
-                                                                                                    break;
+            @:jQuery('#barcodeTypeSelect').val('pdf417Code').change();
+            break;
+            case GeneralBarcodeType.DoNotDisplay:
+            @:jQuery('#barcodeTypeSelect').val('doNotDisplay').change();
+            break;
     }
 
         //Choice encoded message (select list)
@@ -928,10 +937,19 @@
             {
                 @:AddAddressField();
             }
-             @:jQuery('#latitudeInput' + (@a +1)).val('@Model.LocationDetails.Locations[a].Latitude');
-             @:jQuery('#longitudeInput' + (@a +1)).val('@Model.LocationDetails.Locations[a].Longitude');
-             @:jQuery('#altitudeInput' + (@a +1)).val('@Model.LocationDetails.Locations[a].Altitude');
-             @:jQuery('#notificationInputAddress' + (@a +1)).val('@Model.LocationDetails.Locations[a].RelevantText');
+            if (Model.LocationDetails.Locations[a].IsMarkedLocation)
+            {
+                @:jQuery('#checkboxAddress' + (@a +1)).attr('checked', 'checked');
+            }
+            else
+            {
+                @:jQuery('#checkboxAddress' + (@a +1)).removeAttr('checked');
+            }
+            @:jQuery('#addressLabelCollapseInput' + (@a +1)).val('@Model.LocationDetails.Locations[a].Address');
+            @:jQuery('#latitudeInput' + (@a +1)).val('@Model.LocationDetails.Locations[a].Latitude');
+            @:jQuery('#longitudeInput' + (@a +1)).val('@Model.LocationDetails.Locations[a].Longitude');
+            @:jQuery('#altitudeInput' + (@a +1)).val('@Model.LocationDetails.Locations[a].Altitude');
+            @:jQuery('#notificationInputAddress' + (@a +1)).val('@Model.LocationDetails.Locations[a].RelevantText');
         }
 
     });

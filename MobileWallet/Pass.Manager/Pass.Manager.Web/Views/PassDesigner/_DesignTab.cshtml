@@ -42,7 +42,7 @@
 <!--Logo image input-->
 <div id="divLogoImage" class="designItemBlock">
     <p class="labelInput">
-        <a data-toggle="tooltip" title="Default tooltip">Логотип</a>
+        <a data-toggle="tooltip" title="Логотип вашей компании">Логотип</a>
     </p>
     <input class="customFile" type="file" id="logoImageInput" name="Logo" accept="image/*" />
     <div class="emerald-flat-button">Добавить...</div>
@@ -57,13 +57,14 @@
 <!--Strip image input-->
 <div id="divStripImage" class="designItemBlock">
     <p class="labelInput">
-        <a data-toggle="tooltip" title="Default tooltip" style="z-index:4;">Лента</a>
+        <a data-toggle="tooltip" title="Изображение, которое будет отображено за основными полями на передней части пасса" style="z-index:4;">Лента</a>
     </p>
     <input class="customFile" type="file" id="stripImageInput" name="Strip" accept="image/*" />
     <div class="emerald-flat-button">Добавить...</div>
     <div class="blocker"></div>
     <div id="stripName" class="FileName">Файл не выбран</div>
     <div id="removeStrip" class="removeImage" data-toggle="tooltip" title="Удалить изображение">X</div>
+    <input id="checkRemoveStrip" type="hidden" name="RemoveStrip" value="false" />
     <br />
     <br />
 </div>
@@ -72,13 +73,14 @@
 <!--Background image input-->
 <div id="divBackgroundImage" class="designItemBlock">
     <p class="labelInput">
-        <a data-toggle="tooltip" title="Default tooltip" style="z-index:4;">Фон</a>
+        <a data-toggle="tooltip" title="Изображение, которое будет обображено как фон передней части пасса" style="z-index:4;">Фон</a>
     </p>
     <input class="customFile" type="file" id="backgroundImageInput" name="Background" accept="image/*" />
     <div class="emerald-flat-button">Добавить...</div>
     <div class="blocker"></div>
     <div id="backgroundName" class="FileName">Файл не выбран</div>
     <div id="removeBackground" class="removeImage" data-toggle="tooltip" title="Удалить изображение">X</div>
+    <input id="checkRemoveBackground" type="hidden" name="RemoveBackground" value="false" />
     <br />
     <br />
 </div>
@@ -86,11 +88,29 @@
 <!--Thumbnail image input-->
 <div id="divThumbnailImage" class="designItemBlock">
     <p class="labelInput">
-        <a data-toggle="tooltip" title="Default tooltip" style="z-index:4;">Миниатюра</a>
+        <a data-toggle="tooltip" title="Дополнительное изображение на передней части пасса. Например, на карте клиента это может быть фото держателя карты" style="z-index:4;">Миниатюра</a>
     </p>
     <input class="customFile" type="file" id="thumbnailImageInput" name="Thumbnail" accept="image/*" />
     <div class="emerald-flat-button">Добавить...</div>
     <div class="blocker"></div>
     <div id="thumbnailName" class="FileName">Файл не выбран</div>
     <div id="removeThumbnail" class="removeImage" data-toggle="tooltip" title="Удалить изображение">X</div>
+    <input id="checkRemoveThumbnail" type="hidden" name="RemoveThumbnail" value="false" />
+    <br />
+    <br />
+</div>
+
+<!--Footer image input-->
+<div id="divFooterImage" class="designItemBlock">
+    <p class="labelInput">
+        <a data-toggle="tooltip" title="Изображение, которое будет отображено около штрих-кода">Колонтитул</a>
+    </p>
+    <input class="customFile" type="file" id="footerImageInput" name="Footer" accept="image/*" />
+    <div class="emerald-flat-button">Добавить...</div>
+    <div class="blocker"></div>
+    <div id="footerName" class="FileName">Файл не выбран</div>
+    <div id="removeFooter" class="removeImage" data-toggle="tooltip" title="Удалить изображение">X</div>
+    <input id="checkRemoveFooter" type="hidden" name="RemoveFooter" value="false" />
+    <br />
+    <br />
 </div>
