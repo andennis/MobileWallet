@@ -476,13 +476,13 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.PrimaryFields[0].IsDynamicLabel" id="primaryLabelRadios1" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(id);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.PrimaryFields[0].IsDynamicLabel" id="primaryLabelRadios11" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(id);" checked>
                                     Фиксированный
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.PrimaryFields[0].IsDynamicLabel" id="primaryLabelRadios2" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(id);">
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.PrimaryFields[0].IsDynamicLabel" id="primaryLabelRadios12" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(id);">
                                     Динамический
                                 </label>
                             </div>
@@ -490,7 +490,7 @@
                         <div class="inputTextFlexContainer">
                             <input id="primaryLabelTextInput1" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.PrimaryFields[0].Label" placeholder="Обязательный" value="@Model.FieldDetails.PrimaryFields[0].Label" maxlength="30"
                                    onkeyup="document.getElementById('divPrimaryLabelPass1').innerHTML = this.value; CheckCheckboxAfterInput(id);" />
-                            <div id="primaryLabelRadiosPrompt" class="rdiosPrompt"><span style="color:red;">*</span>значение по умолчанию</div>
+                            <div id="primaryLabelRadios1Prompt" class="rdiosPrompt"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
                     </div>
                     <div id="divCheckboxPrimaryLabel1" class="divCheckboxLabelAndValue" style="display:none;">
@@ -506,13 +506,13 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.PrimaryFields[0].IsDynamicValue" id="primaryValueRadios1" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(id);">
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.PrimaryFields[0].IsDynamicValue" id="primaryValueRadios11" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(id);">
                                     Фиксированное
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.PrimaryFields[0].IsDynamicValue" id="primaryValueRadios2" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(id);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.PrimaryFields[0].IsDynamicValue" id="primaryValueRadios12" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(id);" checked>
                                     Динамическое
                                 </label>
                             </div>
@@ -520,7 +520,7 @@
                         <div class="inputTextFlexContainer">
                             <input id="primaryValueTextInput1" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.PrimaryFields[0].Value" placeholder="Необязательное" value="@Model.FieldDetails.PrimaryFields[0].Value" maxlength="30"
                                    onkeyup="document.getElementById('divPrimaryValuePass1').innerHTML = this.value; CheckCheckboxAfterInput(id);" />
-                            <div id="primaryValueRadiosPrompt" class="rdiosPrompt displayBlock"><span style="color:red;">*</span>значение по умолчанию</div>
+                            <div id="primaryValueRadios1Prompt" class="rdiosPrompt displayBlock"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
                         <div id="divCheckboxPrimaryValue1" class="divCheckboxLabelAndValue">
                             <input type="checkbox" name="checkboxPrimaryValue1" id="checkboxPrimaryValue1" class="checkboxCollapse" checked>
@@ -615,13 +615,13 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.PrimaryFields[1].IsDynamicLabel" id="primaryLabelRadios2" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(id);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.PrimaryFields[1].IsDynamicLabel" id="primaryLabelRadios21" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(id);" checked>
                                     Фиксированный
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.PrimaryFields[1].IsDynamicLabel" id="primaryLabelRadios2" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(id);">
+                                    <input type="radio" class="radioInputFixOrDinamicLabel" name="FieldDetails.PrimaryFields[1].IsDynamicLabel" id="primaryLabelRadios22" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(id);">
                                     Динамический
                                 </label>
                             </div>
@@ -629,7 +629,7 @@
                         <div class="inputTextFlexContainer">
                             <input id="primaryLabelTextInput2" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.PrimaryFields[1].Label" value="@Model.FieldDetails.PrimaryFields[1].Label" placeholder="Обязательный" maxlength="30"
                                    onkeyup="document.getElementById('divPrimaryLabelPass2').innerHTML = this.value; CheckCheckboxAfterInput(id); ChangeWidthPrimaryTextFieldPass(id);" />
-                            <div id="primaryLabelRadiosPrompt" class="rdiosPrompt"><span style="color:red;">*</span>значение по умолчанию</div>
+                            <div id="primaryLabelRadios2Prompt" class="rdiosPrompt"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
                     </div>
                     <div id="divCheckboxPrimaryLabel2" class="divCheckboxLabelAndValue" style="display:none;">
@@ -645,13 +645,13 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.PrimaryFields[1].IsDynamicValue" id="primaryValueRadios2" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(id);">
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.PrimaryFields[1].IsDynamicValue" id="primaryValueRadios21" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(id);">
                                     Фиксированное
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.PrimaryFields[1].IsDynamicValue" id="primaryValueRadios2" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(id);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.PrimaryFields[1].IsDynamicValue" id="primaryValueRadios22" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(id);" checked>
                                     Динамическое
                                 </label>
                             </div>
@@ -659,7 +659,7 @@
                         <div class="inputTextFlexContainer">
                             <input id="primaryValueTextInput2" type="text" class="form-control LabelAndValueInputCollapse" name="FieldDetails.PrimaryFields[1].Value" value="@Model.FieldDetails.PrimaryFields[1].Value" placeholder="Необязательное" maxlength="30"
                                    onkeyup="document.getElementById('divPrimaryValuePass2').innerHTML = this.value; CheckCheckboxAfterInput(id); ChangeWidthPrimaryTextFieldPass(id);" />
-                            <div id="primaryValueRadiosPrompt" class="rdiosPrompt displayBlock"><span style="color:red;">*</span>значение по умолчанию</div>
+                            <div id="primaryValueRadios2Prompt" class="rdiosPrompt displayBlock"><span style="color:red;">*</span>значение по умолчанию</div>
                         </div>
                         <div id="divCheckboxPrimaryValue2" class="divCheckboxLabelAndValue">
                             <input type="checkbox" name="checkboxPrimaryValue2" id="checkboxPrimaryValue2" class="checkboxCollapse" checked>
@@ -1066,13 +1066,13 @@
                             </p>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.AuxiliaryFields[0].IsDynamicValue" id="auxiliaryValueRadios31" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(id);">
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.AuxiliaryFields[2].IsDynamicValue" id="auxiliaryValueRadios31" value="false" onclick="DisplayNoneRadioButtonPrompt(id); DisplayNoneCollapseCheckbox(id);">
                                     Фиксированное
                                 </label>
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.AuxiliaryFields[0].IsDynamicValue" id="auxiliaryValueRadios32" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(id);" checked>
+                                    <input type="radio" class="radioInputFixOrDinamicValue" name="FieldDetails.AuxiliaryFields[2].IsDynamicValue" id="auxiliaryValueRadios32" value="true" onclick="DisplayRadioButtonPrompt(id); DisplayBlockCollapseCheckbox(id);" checked>
                                     Динамическое
                                 </label>
                             </div>

@@ -15,10 +15,23 @@ jQuery(window).load(function () {
     stripFileInput.value = '';
 
     ChangeWidthHeaderTextFieldPass(1);
+    ChangeWidthHeaderTextFieldPass(2);
+    ChangeWidthHeaderTextFieldPass(3);
+    ChangeWidthPrimaryTextFieldPass(1);
+    ChangeWidthPrimaryTextFieldPass(2);
     ChangeWidthAuxiliaryTextFieldPass(1);
     ChangeWidthAuxiliaryTextFieldPass(2);
-    ChangWidthFlexContainerHeaderPass();
+    ChangeWidthAuxiliaryTextFieldPass(3);
+    ChangeWidthAuxiliaryTextFieldPass(4);
+    ChangeWidthAuxiliaryTextFieldPass(5);
+    ChangeWidthSecondaryTextFieldPass(1);
+    ChangeWidthSecondaryTextFieldPass(2);
+    ChangeWidthSecondaryTextFieldPass(3);
+    ChangeWidthSecondaryTextFieldPass(4);
+    ChangeLeftPropertyLogoText();
+
 });
+
 
 //Replace all SVG images with inline SVG
 jQuery('img.transitIconPass').each(function () {
@@ -41,7 +54,7 @@ jQuery('img.transitIconPass').each(function () {
 
         // Replace image with new SVG
         $img.replaceWith($svg);
-
+        $svg.css('fill', jQuery('#labelColorPicker').val());
     }, 'xml');
 
 });
@@ -227,21 +240,12 @@ function ChangeBarcodeType(itemValue) {
 
 //Change text color
 function ChangeLabelTextColor(color) {
-    var labelElements = document.getElementsByClassName("labelText");
-    for (var i = 0, labelElLength = labelElements.length; i < labelElLength; i++) {
-        labelElements[i].style.color = color;
-    }
-    var transitIcons = document.getElementsByClassName("transitIconPass");
-    for (var j = 0, transIconsLength = transitIcons.length; j < transIconsLength; j++) {
-        transitIcons[j].style.fill = color;
-    }
+    jQuery('.labelText').css('color', color);
+    jQuery('.transitIconPass').css('fill', color);
 }
 
 function ChangeValueTextColor(color) {
-    var labelElements = document.getElementsByClassName("valueText");
-    for (var i = 0, labelElLength = labelElements.length; i < labelElLength; i++) {
-        labelElements[i].style.color = color;
-    }
+    jQuery('.valueText').css('color', color);
 }
 
 //Add field to back content
@@ -385,9 +389,6 @@ function ChangWidthFlexContainerHeaderPass() {
     }
 }
 
-//Change 'left' property logo text on pass after resize or delete logo image
-window.onload = ChangeLeftPropertyLogoText();
-
 jQuery('#divLogoImagePass').bind("DOMSubtreeModified", function () {
     ChangeLeftPropertyLogoText();
 });
@@ -472,7 +473,7 @@ function CheckCheckboxAfterInput(id) {
     tempId = tempId.toString().charAt(0).toUpperCase() + tempId.slice(1);
     tempId = 'checkbox' + tempId;
     if (!jQuery('#' + tempId).prop('checked')) {
-        jQuery('#' + tempId).attr('checked', 'checked');
+        jQuery('#' + tempId).prop('checked', true);
         CheckAndUncheckFieldFront(tempId);
         CheckAndUncheckFieldBack(tempId);
     }
@@ -942,6 +943,8 @@ function ChangesDependingPassType(passType) {
             jQuery('#backgroundSvgPass').css('display', 'none');
             jQuery('#divThumbnailImage').css('display', 'none');
             jQuery('#divThumbnailImagePass').css('display', 'none');
+            jQuery('#divFooterImage').css('display', 'block');
+            jQuery('#divFooterImagePass').css('display', 'block');
 
             //Auxiliary
             jQuery('#divAuxiliaryLabelPass4').css('display', 'block');
@@ -957,15 +960,15 @@ function ChangesDependingPassType(passType) {
 
             //Primary
             jQuery('#collapsePanelPrimaryContent2').css('display', 'block');
-            jQuery('#divPrimaryValuePass2').css('display', 'block');
+            jQuery('#divPrimaryValuePass2').css('font-size', '16px').css('display', 'block');
             jQuery('#divPrimaryLabelPass2').css('display', 'block').removeClass('valueText').removeClass('labelText').addClass('labelText');
             jQuery('#divPrimaryLabelPass2').css('color', jQuery('#labelColorPicker').val());
-            jQuery('#divPrimaryValuePass1').css('font-size', '25px');
+            jQuery('#divPrimaryValuePass1').css('font-size', '16px');
             jQuery('#divPrimaryLabelPass1').css('font-size', '10px').css('display', 'block').removeClass('valueText').removeClass('labelText').addClass('labelText');
             jQuery('#divPrimaryLabelPass1').css('color', jQuery('#labelColorPicker').val());
             jQuery('#divPrimaryLabelText1').css('display', 'block');
-            jQuery('#flexContainerPrimaryValues').css('top', '66px').css('height', '40px').css('width', '257px');
-            jQuery('#flexContainerPrimaryLabels').css('top', '55px').css('height', '13px').css('width', '257px');
+            jQuery('#flexContainerPrimaryValues').css('top', '77px').css('height', '40px').css('width', '257px');
+            jQuery('#flexContainerPrimaryLabels').css('top', '60px').css('height', '13px').css('width', '257px');
             jQuery('#tab2').css('height', '40px').css('top', '222px');
             jQuery('#transitIconsBlock').css('display', 'block');
 
@@ -992,6 +995,8 @@ function ChangesDependingPassType(passType) {
             jQuery('#divThumbnailImage').css('display', 'none');
             jQuery('#divThumbnailImagePass').css('display', 'none');
             jQuery('.divStripImagePass').css('max-height', '106px');
+            jQuery('#divFooterImage').css('display', 'none');
+            jQuery('#divFooterImagePass').css('display', 'none');
 
             //Auxiliary
             jQuery('#divAuxiliaryLabelPass4').css('display', 'none');
@@ -1036,6 +1041,8 @@ function ChangesDependingPassType(passType) {
             jQuery('#divThumbnailImage').css('display', 'none');
             jQuery('#divThumbnailImagePass').css('display', 'none');
             jQuery('.divStripImagePass').css('max-height', '106px');
+            jQuery('#divFooterImage').css('display', 'none');
+            jQuery('#divFooterImagePass').css('display', 'none');
 
             //Auxiliary
             jQuery('#divAuxiliaryLabelPass4').css('display', 'none');
@@ -1080,6 +1087,8 @@ function ChangesDependingPassType(passType) {
             jQuery('#divThumbnailImage').css('display', 'block');
             jQuery('#divThumbnailImagePass').css('display', 'block');
             jQuery('#thumbnailImagePass').removeClass('eventTicket').addClass('generic');
+            jQuery('#divFooterImage').css('display', 'none');
+            jQuery('#divFooterImagePass').css('display', 'none');
 
             //Auxiliary
             jQuery('#divAuxiliaryLabelPass4').css('display', 'block');
@@ -1104,7 +1113,7 @@ function ChangesDependingPassType(passType) {
             jQuery('#divPrimaryLabelPass1').css('font-size', '10px').css('display', 'block').removeClass('valueText').removeClass('labelText').addClass('labelText');
             jQuery('#divPrimaryLabelPass1').css('color', jQuery('#labelColorPicker').val());
             jQuery('#divPrimaryLabelText1').css('display', 'block');
-            jQuery('#flexContainerPrimaryValues').css('top', '77px').css('height', '40px').css('width', '168px');
+            jQuery('#flexContainerPrimaryValues').css('top', '80px').css('height', '40px').css('width', '168px');
             jQuery('#flexContainerPrimaryLabels').css('top', '66px').css('height', '13px').css('width', '168px');
             jQuery('#tab2').css('height', '49px').css('top', '227px');
             jQuery('#transitIconsBlock').css('display', 'none');
@@ -1133,6 +1142,8 @@ function ChangesDependingPassType(passType) {
                 jQuery('#divThumbnailImage').css('display', 'block');
                 jQuery('#divThumbnailImagePass').css('display', 'block');
                 jQuery('#thumbnailImagePass').removeClass('generic').addClass('eventTicket');
+                jQuery('#divFooterImage').css('display', 'none');
+                jQuery('#divFooterImagePass').css('display', 'none');
 
                 //Auxiliary
                 jQuery('#divAuxiliaryLabelPass4').css('display', 'block');
@@ -1181,6 +1192,8 @@ function ChangesDependingPassType(passType) {
                 jQuery('#divThumbnailImage').css('display', 'none');
                 jQuery('#divThumbnailImagePass').css('display', 'none');
                 jQuery('.divStripImagePass').css('max-height', '74px');
+                jQuery('#divFooterImage').css('display', 'none');
+                jQuery('#divFooterImagePass').css('display', 'none');
 
                 //Auxiliary
                 jQuery('#divAuxiliaryLabelPass4').css('display', 'block');

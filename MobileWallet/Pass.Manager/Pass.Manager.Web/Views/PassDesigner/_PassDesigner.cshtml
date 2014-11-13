@@ -219,25 +219,6 @@
     jQuery(window).load(function () {
 
         //JSON deserialize
-        //Choice pass type (radiobutton)
-        @switch (Model.PassStyle)
-    {
-        case PassStyle.BoardingPass:
-            @:jQuery('#boardingPassImg').trigger('click');
-                                                break;
-        case PassStyle.Coupon:
-        @:jQuery('#couponImg').trigger('click');
-                                                                                                    break;
-        case PassStyle.EventTicket:
-        @:jQuery('#eventTicketImg').trigger('click');
-                                                                                                    break;
-        case PassStyle.Generic:
-        @:jQuery('#genericImg').trigger('click');
-                                                                                                    break;
-        case PassStyle.StoreCard:
-        @:jQuery('#storeCardImg').trigger('click');
-                                                                                                    break;
-    }
 
         //Choice transport type in transit pass (select list)
         jQuery('#transitType').val('@Model.FieldDetails.TransitType.ToString()').change();
@@ -596,46 +577,46 @@
         if (Model.FieldDetails.AuxiliaryFields[a].IsMarkedField)
         {
             @:jQuery('#checkboxAuxiliary' + (@a +1)).attr('checked', 'checked');
-                                                                                                                                    }
+        }
         else
         {
             @:jQuery('#checkboxAuxiliary' + (@a +1)).removeAttr('checked');
-                                                                                                                                    }
-                                                                                                    @:CheckAndUncheckFieldFront('checkboxAuxiliary' + (@a +1));
+        }
+        @:CheckAndUncheckFieldFront('checkboxAuxiliary' + (@a +1));
 
         //Dynamic and fixed radio button
         if (Model.FieldDetails.AuxiliaryFields[a].IsDynamicLabel)
         {
             @:jQuery('#auxiliaryLabelRadios' + (@a +1) + '2').trigger('click');
-                                                                                                                                    }
+        }
         else
         {
             @:jQuery('#auxiliaryLabelRadios' + (@a +1) + '1').trigger('click');
-                                                                                                                                    }
+        }
         if (Model.FieldDetails.AuxiliaryFields[a].IsDynamicValue)
         {
             @:jQuery('#auxiliaryValueRadios' + (@a +1) + '2').trigger('click');
-                                                                                                                                    }
+        }
         else
         {
             @:jQuery('#auxiliaryValueRadios' + (@a +1) + '1').trigger('click');
-                                                                                                                                    }
+        }
 
         //Field data type (select list) (without DateTime case)
         switch (Model.FieldDetails.AuxiliaryFields[a].Type)
         {
             case GeneralField.DataType.Text:
                 @:jQuery('#selectDataTypeAuxiliary' + (@a +1)).val('text').change();
-                                                                                                        break;
+                break;
             case GeneralField.DataType.Number:
             @:jQuery('#selectDataTypeAuxiliary' + (@a +1)).val('number').change();
-                                                                                                         break;
+                break;
             case GeneralField.DataType.Currency:
             @:jQuery('#selectDataTypeAuxiliary' + (@a +1)).val('currency').change();
-                                                                                                        break;
+                break;
             case GeneralField.DataType.Date:
             @:jQuery('#selectDataTypeAuxiliary' + (@a +1)).val('date').change();
-                                                                                                        break;
+                break;
         }
 
         //Number style type (select list)
@@ -952,6 +933,25 @@
             @:jQuery('#notificationInputAddress' + (@a +1)).val('@Model.LocationDetails.Locations[a].RelevantText');
         }
 
+        //Choice pass type (radiobutton)
+        @switch (Model.PassStyle)
+        {
+            case PassStyle.BoardingPass:
+                @:jQuery('#boardingPassImg').trigger('click');
+                break;
+            case PassStyle.Coupon:
+                @:jQuery('#couponImg').trigger('click');
+                break;
+            case PassStyle.EventTicket:
+                @:jQuery('#eventTicketImg').trigger('click');
+                break;
+            case PassStyle.Generic:
+                @:jQuery('#genericImg').trigger('click');
+                break;
+            case PassStyle.StoreCard:
+                @:jQuery('#storeCardImg').trigger('click');
+                break;
+        }
     });
 </script>
 <br />
