@@ -219,6 +219,7 @@ input {
     -webkit-box-shadow: none;
     -ms-box-shadow: none;
     box-shadow: none;
+    background: #25aaa0;
 }
 
     .peter-river-flat-button:active {
@@ -236,7 +237,13 @@ input {
     border-radius: 0 0 0 0;
     float: left;
     padding: 6px 5px;
+    -ms-text-shadow: none;
     text-shadow: none;
+    -webkit-transition: background 0.2s ease,color 0.3s ease;
+    -moz-transition: background 0.2s ease,color 0.3s ease;
+    -ms-transition: background 0.2s ease,color 0.3s ease;
+    -o-transition: background 0.2s ease,color 0.3s ease;
+    transition: background 0.2s ease,color 0.3s ease;
 }
 
     .tabMain.active, .tabMain.active:hover, .tabMain:focus {
@@ -251,15 +258,18 @@ input {
 
     .tabMain:hover {
         background: #e67e22;
+        background: #FF858D;
     }
 
 .saveTab {
     width: 11%;
     background: #16a085;
+    background: #3E9490;
 }
 
     .saveTab:hover, .saveTab.active:hover {
         background: #2ecc71;
+        background: #1fda9a;
         color: white;
     }
 
@@ -1168,6 +1178,9 @@ label.checkboxCollapseLabel {
     -webkit-box-shadow: 0 0 4px 3px #e67e22 !important;
     -ms-box-shadow: 0 0 4px 3px #e67e22 !important;
     box-shadow: 0 0 4px 3px #e67e22 !important;
+    -webkit-box-shadow: 0 0 4px 3px #FF858D !important;
+    -ms-box-shadow: 0 0 4px 3px #FF858D !important;
+    box-shadow: 0 0 4px 3px #FF858D !important;
 }
 
 #divPassBody {
@@ -1198,14 +1211,6 @@ label.checkboxCollapseLabel {
     left: 119px;
     width: 32px;
     height: 32px;
-}
-
-.airIconPass {
-    -webkit-transform: rotate(90deg);
-    -o-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    transform: rotate(90deg);
 }
 
 .logoTextPass {
@@ -1242,6 +1247,11 @@ label.checkboxCollapseLabel {
 
 .leftAlignPassText {
     margin-right: auto;
+}
+
+.rightAlignPassText {
+    text-align: right;
+    padding-right: 10px;
 }
 
 .aztecCodeImgPass {

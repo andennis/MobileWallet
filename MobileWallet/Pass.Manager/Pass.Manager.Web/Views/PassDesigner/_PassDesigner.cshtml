@@ -24,6 +24,9 @@
                     </a>
                 </div>
             </div>*@
+        <br/>
+        <br />
+        <br />
         <div id="body" class="bodyPassDesigner">
 
             <div id="topPanel" class="mainTabs">
@@ -63,7 +66,7 @@
 
                             <!--Transit icon on pass-->
                             <div id="transitIconsBlock">
-                                <img id="AirIconPass" class="transitIconPass airIconPass" src="~/Images/createCard/Transit/air.svg" alt="картинка на SVG" />
+                                <img id="AirIconPass" class="transitIconPass" src="~/Images/createCard/Transit/air.svg" alt="картинка на SVG" />
                                 <img id="TrainIconPass" class="transitIconPass" src="~/Images/createCard/Transit/train.svg" alt="картинка на SVG" />
                                 <img id="BusIconPass" class="transitIconPass" src="~/Images/createCard/Transit/bus.svg" alt="картинка на SVG" />
                                 <img id="BoatIconPass" class="transitIconPass" src="~/Images/createCard/Transit/boat.svg" alt="картинка на SVG" />
@@ -102,11 +105,11 @@
                             </div>
                             <div id="flexContainerPrimaryValues" class="flexContainerPrimaryFields primaryFieldLabels">
                                 <div id="divPrimaryValuePass1" class="valueTextPrimary valueText leftAlignPassText">@Model.FieldDetails.PrimaryFields[0].Label</div>
-                                <div id="divPrimaryValuePass2" class="valueTextPrimary valueText">@Model.FieldDetails.PrimaryFields[1].Label</div>
+                                <div id="divPrimaryValuePass2" class="valueTextPrimary valueText rightAlignPassText">@Model.FieldDetails.PrimaryFields[1].Label</div>
                             </div>
                             <div id="flexContainerPrimaryLabels" class="flexContainerPrimaryFields primaryFieldValues">
                                 <div id="divPrimaryLabelPass1" class="labelTextPrimary labelText leftAlignPassText">@Model.FieldDetails.PrimaryFields[0].Value</div>
-                                <div id="divPrimaryLabelPass2" class="labelTextPrimary labelText">@Model.FieldDetails.PrimaryFields[1].Value</div>
+                                <div id="divPrimaryLabelPass2" class="labelTextPrimary labelText rightAlignPassText">@Model.FieldDetails.PrimaryFields[1].Value</div>
                             </div>
 
                             <!--Auxiliary area on pass-->

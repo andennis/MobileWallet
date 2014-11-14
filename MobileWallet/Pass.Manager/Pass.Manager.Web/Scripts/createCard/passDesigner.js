@@ -54,7 +54,9 @@ jQuery('img.transitIconPass').each(function () {
 
         // Replace image with new SVG
         $img.replaceWith($svg);
-        $svg.css('fill', jQuery('#labelColorPicker').val());
+        //$svg.css('fill', jQuery('#labelColorPicker').val());
+        
+        jQuery('#' + imgID + ' path').css('fill', jQuery('#labelColorPicker').val());
     }, 'xml');
 
 });
@@ -241,7 +243,7 @@ function ChangeBarcodeType(itemValue) {
 //Change text color
 function ChangeLabelTextColor(color) {
     jQuery('.labelText').css('color', color);
-    jQuery('.transitIconPass').css('fill', color);
+    jQuery('.transitIconPass path').css('fill', color);
 }
 
 function ChangeValueTextColor(color) {
@@ -977,8 +979,8 @@ function ChangesDependingPassType(passType) {
             jQuery('#flexContainerSecondaryLabels').css('top', '152px');
             jQuery('#flexContainerSecondaryValues').css('top', '165px');
             jQuery('.flexContainerSecondaryFields').css('width', '257px');
-            jQuery('#collapsePanelSecondaryContent3').css('display', 'block');
-            jQuery('#collapsePanelSecondaryContent4').css('display', 'block');
+            jQuery('#collapsePanelSecondaryContent3, #divSecondaryLabelPass3, #divSecondaryValuePass3').css('display', 'block');
+            jQuery('#collapsePanelSecondaryContent4, #divSecondaryLabelPass4, #divSecondaryValuePass4').css('display', 'block');
             jQuery('#tab4').css('display', 'block').css('top', '313px').css('height', '40px');
 
             //Others
@@ -1123,8 +1125,8 @@ function ChangesDependingPassType(passType) {
             jQuery('#flexContainerSecondaryLabels').css('top', '152px');
             jQuery('#flexContainerSecondaryValues').css('top', '165px');
             jQuery('.flexContainerSecondaryFields').css('width', '257px');
-            jQuery('#collapsePanelSecondaryContent3').css('display', 'none');
-            jQuery('#collapsePanelSecondaryContent4').css('display', 'none');
+            jQuery('#collapsePanelSecondaryContent3, #divSecondaryLabelPass3, #divSecondaryValuePass3').css('display', 'none');
+            jQuery('#collapsePanelSecondaryContent4, #divSecondaryLabelPass4, #divSecondaryValuePass4').css('display', 'none');
             jQuery('#tab4').css('display', 'block').css('top', '313px').css('height', '40px');
 
             //Others
@@ -1174,9 +1176,9 @@ function ChangesDependingPassType(passType) {
                 jQuery('#secondaryAreaPass').css('display', 'block');
                 jQuery('#flexContainerSecondaryLabels').css('top', '100px');
                 jQuery('#flexContainerSecondaryValues').css('top', '114px');
-                jQuery('.flexContainerSecondaryFields').css('width', '199px');
-                jQuery('#collapsePanelSecondaryContent3').css('display', 'none');
-                jQuery('#collapsePanelSecondaryContent4').css('display', 'none');
+                jQuery('.flexContainerSecondaryFields').css('width', '182px');
+                jQuery('#collapsePanelSecondaryContent3, #divSecondaryLabelPass3, #divSecondaryValuePass3').css('display', 'none');
+                jQuery('#collapsePanelSecondaryContent4, #divSecondaryLabelPass4, #divSecondaryValuePass4').css('display', 'none');
                 jQuery('#tab4').css('display', 'block').css('top', '264px').css('height', '34px');
 
                 //Others
@@ -1227,9 +1229,9 @@ function ChangesDependingPassType(passType) {
 
                 //Secondary
                 jQuery('#secondaryAreaPass').css('display', 'block');
-                jQuery('.flexContainerSecondaryFields').css('width', '199px');
-                jQuery('#collapsePanelSecondaryContent3').css('display', 'block');
-                jQuery('#collapsePanelSecondaryContent4').css('display', 'none');
+                jQuery('.flexContainerSecondaryFields').css('width', '182px');
+                jQuery('#collapsePanelSecondaryContent3, #divSecondaryLabelPass3, #divSecondaryValuePass3').css('display', 'none');
+                jQuery('#collapsePanelSecondaryContent4, #divSecondaryLabelPass4, #divSecondaryValuePass4').css('display', 'none');
                 if (jQuery('#divBarcodeFormat input.active').attr('id') == 'pdf417Code') {
                     jQuery('#flexContainerSecondaryLabels').css('top', '135px');
                     jQuery('#flexContainerSecondaryValues').css('top', '149px');
