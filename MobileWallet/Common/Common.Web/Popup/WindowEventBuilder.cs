@@ -11,7 +11,7 @@ namespace Common.Web.Popup
 
         public WindowEventBuilder Open(string handler)
         {
-            AddHandler("open", handler);
+            AddHandler(Window.EventOpen, handler);
             return this;
         }
         public WindowEventBuilder Activate(string handler)

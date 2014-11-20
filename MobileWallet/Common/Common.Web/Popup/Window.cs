@@ -9,6 +9,8 @@ namespace Common.Web.Popup
 {
     public class Window : WidgetBase
     {
+        public const string EventOpen = "open";
+
         private WindowPositionSettings _positionSettings;
         private WindowResizingSettings _resizingSettings;
         private WindowButtons _actions;
@@ -58,6 +60,9 @@ namespace Common.Web.Popup
 
         protected override void WriteInitializationScript(TextWriter writer)
         {
+            object customOpenHandler;
+            this.Events.TryGetValue(EventOpen, out customOpenHandler);
+
             var settings = new
             {
                 title = Title,
@@ -77,12 +82,37 @@ namespace Common.Web.Popup
                 maxHeight = _resizingSettings != null ? _resizingSettings.MaxHeight : null,
                 minWidth = _resizingSettings != null ? _resizingSettings.MinWidth : null,
                 minHeight = _resizingSettings != null ? _resizingSettings.MinHeight : null,
-                actions = _actions != null ? _actions.Container.Select(x => x.ToString()).ToArray() : null
+                actions = _actions != null ? _actions.Container.Select(x => x.ToString()).ToArray() : null,
+                open = GetOpenEvent(ContentUrl, null, (string)customOpenHandler)
             };
 
-            string widgetScript = string.Format("$(\"#{0}\").kendoWindow({1})", Name, settings.ObjectToJson());
+            var events = this.Events.Where(x => x.Key != EventOpen).ToDictionary(k => k.Key, v => v.Value);
+            string jsonEvents = events.DictionaryToJsonAsObject();
+            string jsonSettings = settings.ObjectToJson();
+            jsonSettings = jsonSettings.MergeJson(jsonEvents);
+
+            string widgetScript = string.Format("$(\"#{0}\").kendoWindow({1})", Name, jsonSettings);
             string script = GetDocumentReadyScript(widgetScript);
             writer.WriteLine(script);
+        }
+
+        protected string GetOpenEvent(string contentUrl, object data, string customOpenHandler)
+        {
+            if (!string.IsNullOrEmpty(contentUrl))
+            {
+                var options = new {url = contentUrl, data};
+                if (!string.IsNullOrEmpty(customOpenHandler))
+                    customOpenHandler += "();";
+                else
+                    customOpenHandler = string.Empty;
+
+                return string.Format(@"function(){{
+                    this.refresh({0});
+                    {1}  
+                }}", options.ObjectToJson(), customOpenHandler);
+            }
+
+            return customOpenHandler;
         }
     }
 }

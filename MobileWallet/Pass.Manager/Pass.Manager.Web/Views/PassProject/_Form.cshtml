@@ -31,7 +31,8 @@
     .Height(400)
     .Title("My Title2")
     .Modal(true)
-    .LoadContentFrom("http://www.telerik.com/"))
+    .LoadContentFrom(Url.Action("TestWindiw", "PassProject"))
+)
 
 
 <script>
@@ -40,7 +41,7 @@
         $("#undo").click(function() {
             $("#window").data("kendoWindow").open();
             $("#window").data("kendoWindow").center();
-
+            $("#window").data("kendoWindow").refresh({ url: "@Url.Action("TestWindiw", "PassProject")" });
         });
 
         $("#undo2").click(function() {
@@ -91,7 +92,7 @@
     });
 
     function F1() {
-        alert("hello2");
+        alert(this.title());
     }
 </script>
 

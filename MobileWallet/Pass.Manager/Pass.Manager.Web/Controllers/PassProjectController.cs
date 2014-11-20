@@ -27,6 +27,11 @@ namespace Pass.Manager.Web.Controllers
             return PartialView("FieldForm");
         }
 
+        public ActionResult TestWindiw()
+        {
+            return Content("Hello");
+        }
+
         /*
         public ActionResult PassDesigner(int passProjectId)
         {
