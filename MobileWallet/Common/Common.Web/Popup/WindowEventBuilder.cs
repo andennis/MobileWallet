@@ -4,7 +4,7 @@ namespace Common.Web.Popup
 {
     public class WindowEventBuilder : EventBuilder
     {
-        public WindowEventBuilder(IDictionary<string, object> events)
+        public WindowEventBuilder(IDictionary<string, string> events)
             :base(events)
         {
         }

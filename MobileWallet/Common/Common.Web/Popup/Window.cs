@@ -1,7 +1,10 @@
-﻿using System.IO;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web.UI;
 using Common.Extensions;
+using Common.Extensions.JsonNetConverters;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
@@ -60,9 +63,6 @@ namespace Common.Web.Popup
 
         protected override void WriteInitializationScript(TextWriter writer)
         {
-            object customOpenHandler;
-            this.Events.TryGetValue(EventOpen, out customOpenHandler);
-
             var settings = new
             {
                 title = Title,
@@ -83,10 +83,20 @@ namespace Common.Web.Popup
                 minWidth = _resizingSettings != null ? _resizingSettings.MinWidth : null,
                 minHeight = _resizingSettings != null ? _resizingSettings.MinHeight : null,
                 actions = _actions != null ? _actions.Container.Select(x => x.ToString()).ToArray() : null,
-                open = GetOpenEvent(ContentUrl, null, (string)customOpenHandler)
             };
 
-            var events = this.Events.Where(x => x.Key != EventOpen).ToDictionary(k => k.Key, v => v.Value);
+            IDictionary<string, object> events = this.Events
+                .Where(x => x.Key != EventOpen)
+                //.ToDictionary(k => k.Key, v => (object)(new JsonValueWithoutQuotes(v.Value)));
+                .ToDictionary(k => k.Key, v => (object)v.Value);
+
+            string customOpenHandler;
+            this.Events.TryGetValue(EventOpen, out customOpenHandler);
+            string openEvent = GetOpenEvent(ContentUrl, null, customOpenHandler);
+            if (!string.IsNullOrEmpty(openEvent))
+                //events.Add(EventOpen, new JsonValueWithoutQuotes(openEvent));
+                events.Add(EventOpen, openEvent);
+
             string jsonEvents = events.DictionaryToJsonAsObject();
             string jsonSettings = settings.ObjectToJson();
             jsonSettings = jsonSettings.MergeJson(jsonEvents);

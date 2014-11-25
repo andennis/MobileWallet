@@ -9,7 +9,7 @@ namespace Common.Web
     {
         protected WidgetBase()
         {
-            Events = new Dictionary<string, object>();
+            Events = new Dictionary<string, string>();
         }
 
         public string Id
@@ -19,7 +19,7 @@ namespace Common.Web
 
         public string Name { get; set; }
 
-        public IDictionary<string, object> Events { get; private set; }
+        public IDictionary<string, string> Events { get; private set; }
 
         public string Render()
         {

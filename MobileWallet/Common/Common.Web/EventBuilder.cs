@@ -4,9 +4,9 @@ namespace Common.Web
 {
     public class EventBuilder
     {
-        private readonly IDictionary<string, object> _events;
+        private readonly IDictionary<string, string> _events;
 
-        protected EventBuilder(IDictionary<string, object> events)
+        protected EventBuilder(IDictionary<string, string> events)
         {
             _events = events;
         }
