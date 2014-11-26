@@ -1,0 +1,13 @@
+﻿@using (Html.BeginFormExt(htmlAttributes: (object)ViewBag.HtmlFormAttributes))
+{
+    @Html.ValidationSummary()
+    @Html.AntiForgeryToken()
+    @*Html.HiddenForExt(m => m.RedirectUrl)*@
+    <div class="container-fluid">
+        @Html.Partial("_Form")
+        <div class="form-group">
+            @Html.Partial("_Actions")
+        </div>
+    </div>
+}
+

@@ -32,6 +32,7 @@
     .Title("My Title2")
     .Modal(true)
     .LoadContentFrom(Url.Action("TestWindiw", "PassProject"))
+    .Events(e => e.Open("F2"))
 )
 
 
@@ -94,6 +95,11 @@
     function F1() {
         alert(this.title());
     }
+
+    function F2(sender) {
+        alert(sender.title());
+    }
+
 </script>
 
 

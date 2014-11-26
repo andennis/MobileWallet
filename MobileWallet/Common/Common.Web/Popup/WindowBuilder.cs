@@ -65,19 +65,19 @@ namespace Common.Web.Popup
 
         public WindowBuilder Events(Action<WindowEventBuilder> clientEventsAction)
         {
-            clientEventsAction(_eventBuilder);
+            clientEventsAction(this.EventBuilder);
             return this;
         }
 
         public WindowBuilder Resizable(Action<WindowResizingSettingsBuilder> resizingSettingsAction)
         {
-            resizingSettingsAction(_resizingSettingsBuilder);
+            resizingSettingsAction(this.ResizingSettingsBuilder);
             return this;
         }
 
         public WindowBuilder Actions(Action<WindowActionsBuilder> actionsBuilderAction)
         {
-            actionsBuilderAction(_actionsBuilder);
+            actionsBuilderAction(this.ActionsBuilder);
             return this;
         }
 
@@ -95,7 +95,7 @@ namespace Common.Web.Popup
 
         public WindowBuilder Position(Action<WindowPositionSettingsBuilder> positionSettingsAction)
         {
-            positionSettingsAction(_positionSettingsBuilder);
+            positionSettingsAction(this.PositionSettingsBuilder);
             return this;
         }
 

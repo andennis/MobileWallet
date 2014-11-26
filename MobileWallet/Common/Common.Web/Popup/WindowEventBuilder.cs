@@ -16,42 +16,42 @@ namespace Common.Web.Popup
         }
         public WindowEventBuilder Activate(string handler)
         {
-            AddHandler("activate", handler);
+            AddHandler(Window.EventActivate, handler);
             return this;
         }
         public WindowEventBuilder Deactivate(string handler)
         {
-            AddHandler("deactivate", handler);
+            AddHandler(Window.EventDeactivate, handler);
             return this;
         }
         public WindowEventBuilder Close(string handler)
         {
-            AddHandler("close", handler);
+            AddHandler(Window.EventClose, handler);
             return this;
         }
         public WindowEventBuilder DragStart(string handler)
         {
-            AddHandler("dragstart", handler);
+            AddHandler(Window.EventDragstart, handler);
             return this;
         }
         public WindowEventBuilder DragEnd(string handler)
         {
-            AddHandler("dragend", handler);
+            AddHandler(Window.EventDragend, handler);
             return this;
         }
         public WindowEventBuilder Resize(string handler)
         {
-            AddHandler("resize", handler);
+            AddHandler(Window.EventResize, handler);
             return this;
         }
         public WindowEventBuilder Refresh(string handler)
         {
-            AddHandler("refresh", handler);
+            AddHandler(Window.EventRefresh, handler);
             return this;
         }
         public WindowEventBuilder Error(string handler)
         {
-            AddHandler("error", handler);
+            AddHandler(Window.EventError, handler);
             return this;
         }
     }

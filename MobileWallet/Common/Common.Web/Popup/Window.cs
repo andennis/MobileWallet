@@ -1,19 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
-using System.Security.Policy;
 using System.Web.UI;
 using Common.Extensions;
 using Common.Extensions.JsonNetConverters;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 
 namespace Common.Web.Popup
 {
     public class Window : WidgetBase
     {
         public const string EventOpen = "open";
+        public const string EventActivate = "activate";
+        public const string EventDeactivate = "deactivate";
+        public const string EventClose = "close";
+        public const string EventDragstart = "dragstart";
+        public const string EventDragend = "dragend";
+        public const string EventResize = "resize";
+        public const string EventRefresh = "refresh";
+        public const string EventError = "error";
 
         private WindowPositionSettings _positionSettings;
         private WindowResizingSettings _resizingSettings;
@@ -86,23 +90,42 @@ namespace Common.Web.Popup
             public string[] actions { get; set; }
 
             //events
+            [JsonConverter(typeof(JsonValueWithoutQuotesConverter))]
             public string open { get; set; }
+
+            [JsonConverter(typeof(JsonValueWithoutQuotesConverter))]
             public string activate { get; set; }
+
+            [JsonConverter(typeof(JsonValueWithoutQuotesConverter))]
             public string deactivate { get; set; }
+
+            [JsonConverter(typeof(JsonValueWithoutQuotesConverter))]
             public string close { get; set; }
+
+            [JsonConverter(typeof(JsonValueWithoutQuotesConverter))]
             public string dragstart { get; set; }
+
+            [JsonConverter(typeof(JsonValueWithoutQuotesConverter))]
             public string dragend { get; set; }
+
+            [JsonConverter(typeof(JsonValueWithoutQuotesConverter))]
             public string resize { get; set; }
+
+            [JsonConverter(typeof(JsonValueWithoutQuotesConverter))]
             public string refresh { get; set; }
+
+            [JsonConverter(typeof(JsonValueWithoutQuotesConverter))]
             public string error { get; set; }
         }
 
         protected override void WriteInitializationScript(TextWriter writer)
         {
+            string customOpenHandler;
+            Events.TryGetValue(EventOpen, out customOpenHandler);
+
             var settings = new WindowSettings
             {
                 title = Title,
-                //content = ContentUrl,
                 width = Width,
                 height = Height,
                 visible = Visible,
@@ -119,24 +142,19 @@ namespace Common.Web.Popup
                 minWidth = _resizingSettings != null ? _resizingSettings.MinWidth : null,
                 minHeight = _resizingSettings != null ? _resizingSettings.MinHeight : null,
                 actions = _actions != null ? _actions.Container.Select(x => x.ToString()).ToArray() : null,
+
+                open = GetOpenEvent(ContentUrl, null, customOpenHandler),
+                activate = Events.ContainsKey(EventActivate) ? Events[EventActivate] : null,
+                deactivate = Events.ContainsKey(EventDeactivate) ? Events[EventDeactivate] : null,
+                close = Events.ContainsKey(EventClose) ? Events[EventClose] : null,
+                dragstart = Events.ContainsKey(EventDragstart) ? Events[EventDragstart] : null,
+                dragend = Events.ContainsKey(EventDragend) ? Events[EventDragend] : null,
+                resize = Events.ContainsKey(EventResize) ? Events[EventResize] : null,
+                refresh = Events.ContainsKey(EventRefresh) ? Events[EventRefresh] : null,
+                error = Events.ContainsKey(EventError) ? Events[EventError] : null,
             };
 
-            IDictionary<string, object> events = this.Events
-                .Where(x => x.Key != EventOpen)
-                //.ToDictionary(k => k.Key, v => (object)(new JsonValueWithoutQuotes(v.Value)));
-                .ToDictionary(k => k.Key, v => (object)v.Value);
-
-            string customOpenHandler;
-            this.Events.TryGetValue(EventOpen, out customOpenHandler);
-            string openEvent = GetOpenEvent(ContentUrl, null, customOpenHandler);
-            if (!string.IsNullOrEmpty(openEvent))
-                //events.Add(EventOpen, new JsonValueWithoutQuotes(openEvent));
-                events.Add(EventOpen, openEvent);
-
-            string jsonEvents = events.DictionaryToJsonAsObject();
             string jsonSettings = settings.ObjectToJson();
-            jsonSettings = jsonSettings.MergeJson(jsonEvents);
-
             string widgetScript = string.Format("$(\"#{0}\").kendoWindow({1})", Name, jsonSettings);
             string script = GetDocumentReadyScript(widgetScript);
             writer.WriteLine(script);
@@ -148,7 +166,7 @@ namespace Common.Web.Popup
             {
                 var options = new {url = contentUrl, data};
                 if (!string.IsNullOrEmpty(customOpenHandler))
-                    customOpenHandler += "();";
+                    customOpenHandler += "(this);";
                 else
                     customOpenHandler = string.Empty;
 
