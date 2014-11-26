@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Policy;
 using System.Web.UI;
 using Common.Extensions;
 using Common.Extensions.JsonNetConverters;
@@ -61,12 +62,47 @@ namespace Common.Web.Popup
             writer.RenderEndTag();
         }
 
+        private class WindowSettings
+        {
+            public string title { get; set; }
+            public int width { get; set; }
+            public int height { get; set; }
+            public bool visible { get; set; }
+            public bool draggable { get; set; }
+            public bool modal { get; set; }
+            public bool pinned { get; set; }
+            public bool autoFocus { get; set; }
+            public bool iframe { get; set; }
+            public string appendTo { get; set; }
+            public bool resizable { get; set; }
+
+            public WindowPositionSettings position { get; set; }
+
+            public int? maxWidth { get; set; }
+            public int? maxHeight { get; set; }
+            public int? minWidth { get; set; }
+            public int? minHeight { get; set; }
+
+            public string[] actions { get; set; }
+
+            //events
+            public string open { get; set; }
+            public string activate { get; set; }
+            public string deactivate { get; set; }
+            public string close { get; set; }
+            public string dragstart { get; set; }
+            public string dragend { get; set; }
+            public string resize { get; set; }
+            public string refresh { get; set; }
+            public string error { get; set; }
+        }
+
         protected override void WriteInitializationScript(TextWriter writer)
         {
-            var settings = new
+            var settings = new WindowSettings
             {
                 title = Title,
-                content = ContentUrl,
+                //content = ContentUrl,
                 width = Width,
                 height = Height,
                 visible = Visible,
@@ -77,7 +113,7 @@ namespace Common.Web.Popup
                 iframe = Iframe,
                 appendTo = AppendTo,
                 resizable = _resizingSettings != null ? _resizingSettings.Enabled : Resizable,
-                position = _positionSettings != null ? new {top = _positionSettings.Top, left = _positionSettings.Left} : null,
+                position = _positionSettings,
                 maxWidth = _resizingSettings != null ? _resizingSettings.MaxWidth : null,
                 maxHeight = _resizingSettings != null ? _resizingSettings.MaxHeight : null,
                 minWidth = _resizingSettings != null ? _resizingSettings.MinWidth : null,
