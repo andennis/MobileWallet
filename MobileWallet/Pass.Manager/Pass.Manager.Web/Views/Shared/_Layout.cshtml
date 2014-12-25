@@ -7,14 +7,14 @@
     @Styles.Render("~/content/css")
     @Styles.Render("~/content/kendo")
     @RenderSection("CssLinks", false)
-
+    
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/kendo")
     @Scripts.Render("~/bundles/datatables")
     @*Scripts.Render("~/bundles/moment")*@
-    @Scripts.Render("~/bundles/app")
+
 </head>
     <body>
         <div class="navbar navbar-default navbar-fixed-top">
@@ -76,6 +76,8 @@
                 @RenderBody()    
             </div>
         </div>
+        
+        @Scripts.Render("~/bundles/app")
 
         @RenderSection("Scripts", false)
     </body>

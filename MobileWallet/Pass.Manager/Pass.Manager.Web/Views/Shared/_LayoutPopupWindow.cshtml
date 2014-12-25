@@ -2,11 +2,10 @@
 {
     @Html.ValidationSummary()
     @Html.AntiForgeryToken()
-    @*Html.HiddenForExt(m => m.RedirectUrl)*@
     <div class="container-fluid">
-        @Html.Partial("_Form")
+        @RenderBody()
         <div class="form-group">
-            @Html.Partial("_Actions")
+            @RenderSection("Actions")
         </div>
     </div>
 }

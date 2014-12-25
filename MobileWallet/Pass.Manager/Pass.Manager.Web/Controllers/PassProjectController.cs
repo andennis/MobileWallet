@@ -29,7 +29,12 @@ namespace Pass.Manager.Web.Controllers
 
         public ActionResult TestWindiw()
         {
-            return Content("Hello");
+            return Content("<b>Hello1</b>");
+        }
+
+        public ActionResult TestWindiw2()
+        {
+            return Content("<b>Hello2</b>");
         }
 
         /*

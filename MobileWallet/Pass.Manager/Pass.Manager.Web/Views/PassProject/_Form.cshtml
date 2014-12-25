@@ -21,7 +21,8 @@
 }
 
 <a id="undo" class="k-button">window1</a>
-<a id="undo2" class="k-button">window2</a>
+<a id="undo3" class="k-button">Refresh window1</a>
+<a id="undo2" class="k-button" data-popup-window="window2">window2</a>
 
 <div id="window"></div>
 
@@ -42,53 +43,59 @@
         $("#undo").click(function() {
             $("#window").data("kendoWindow").open();
             $("#window").data("kendoWindow").center();
-            $("#window").data("kendoWindow").refresh({ url: "@Url.Action("TestWindiw", "PassProject")" });
+            //$("#window").data("kendoWindow").refresh({ url: "@Url.Action("TestWindiw", "PassProject")" });
+            $("#window").data("kendoWindow").refresh({ url: "@Url.Action("TestWindiw2", "PassProject")" });
+
+            $("#window").data("kendoWindow").content("123");
+            //$("#window").data("kendoWindow").refresh();
+            
         });
 
-        $("#undo2").click(function() {
-            $("#window2").data("kendoWindow").open();
-            $("#window2").data("kendoWindow").center();
-
+        $("#undo3").click(function() {
+            $("#window").data("kendoWindow").content("123");
+            //$("#window").data("kendoWindow").refresh();
+            
         });
 
-        $("#window").kendoWindow({
-            width: "600px",
-            height: "400px",
-            title: "My Title",
-            visible: false,
-            actions: [
-                "Pin",
-                "Minimize",
-                "Maximize",
-                "Close"
-            ],
-            open: F1,
-            modal: true
-            //content: "http://www.telerik.com/"
-        });
 
-        /*
-        $("#window2").kendoWindow({
-            "title": "My Title2",
-            "content": "http://www.telerik.com/",
-            "width": 600,
-            "height": 400,
-            "visible": false,
-            "draggable": true,
-            "modal": true,
-            "pinned": false,
-            "autoFocus": true,
-            "iframe": true,
-            "resizable": true,
-            "position": {
-                "top": 0,
-                "left": 0
-            },
-            "actions": [
-                "Close"
-            ]
-        });
-        */
+    $("#window").kendoWindow({
+        width: "600px",
+        height: "400px",
+        title: "My Title",
+        visible: false,
+        actions: [
+            "Pin",
+            "Minimize",
+            "Maximize",
+            "Close"
+        ],
+        open: F1,
+        //modal: true
+        //content: "http://www.telerik.com/"
+    });
+
+    /*
+    $("#window2").kendoWindow({
+        "title": "My Title2",
+        "content": "http://www.telerik.com/",
+        "width": 600,
+        "height": 400,
+        "visible": false,
+        "draggable": true,
+        "modal": true,
+        "pinned": false,
+        "autoFocus": true,
+        "iframe": true,
+        "resizable": true,
+        "position": {
+            "top": 0,
+            "left": 0
+        },
+        "actions": [
+            "Close"
+        ]
+    });
+    */
 
     });
 
