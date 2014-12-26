@@ -1,11 +1,19 @@
-﻿@using (Html.BeginFormExt(htmlAttributes: (object)ViewBag.HtmlFormAttributes))
+﻿@using (Ajax.BeginForm(new AjaxOptions(){UpdateTargetId = "popupWindowContent"}))
 {
     @Html.ValidationSummary()
     @Html.AntiForgeryToken()
     <div class="container-fluid">
         @RenderBody()
         <div class="form-group">
-            @RenderSection("Actions")
+            @if (IsSectionDefined("Actions"))
+            {
+                @RenderSection("Actions")
+            }
+            else
+            {
+                @Html.FormActionSubmit("buttonCreate", "Apply")
+                @Html.FormActionButton("buttonCancel", "Cancel", string.Empty)
+            }
         </div>
     </div>
 }
