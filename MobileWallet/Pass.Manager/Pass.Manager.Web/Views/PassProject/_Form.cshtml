@@ -32,8 +32,8 @@
     .Height(400)
     .Title("My Title2")
     .Modal(true)
-    .LoadContentFrom(Url.Action("TestWindiw", "PassProject"))
-    .Events(e => e.Open("F2"))
+    .LoadContentFrom(Url.Action("CreateField", "PassProject", new { passProjectId = Model.PassProjectId}))
+    //.Events(e => e.Open("F2"))
 )
 
 
@@ -69,7 +69,7 @@
             "Maximize",
             "Close"
         ],
-        open: F1,
+        //open: F1,
         //modal: true
         //content: "http://www.telerik.com/"
     });

@@ -1,15 +1,20 @@
 ﻿(function ($) {
 
-    var template = $.parseHTML('<div id="popupWindowContent"></div>');
+    function show($wndDiv) {
+        var wndAction = $wndDiv.data("popup-action");
+        var dataHandler = $wndDiv.data("popup-datahandler");
+        var prms = dataHandler ? eval(dataHandler + "()") : null;
+        var wnd = $wndDiv.data("kendoWindow");
 
-    function show($wnd) {
-        $.post();
-
-        $wnd.center().open();
+        $.get(wndAction, prms, function (data) {
+            wnd.content(data);
+            wnd.center().open();
+        });
     }
 
-    function close($wnd) {
-        $wnd.close();
+    function close($wndDiv) {
+        var wnd = $wndDiv.data("kendoWindow");
+        wnd.close();
     }
 
     function init() {
@@ -17,9 +22,7 @@
             e.preventDefault();
             var $this = $(this);
             var wndId = $this.data("popup-window");
-
-            var wnd = $("#" + wndId).data("kendoWindow");
-            show(wnd);
+            show($("#" + wndId));
         });
     }
 

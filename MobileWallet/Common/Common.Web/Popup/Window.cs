@@ -18,6 +18,7 @@ namespace Common.Web.Popup
         public const string EventResize = "resize";
         public const string EventRefresh = "refresh";
         public const string EventError = "error";
+        public const string EventDataHandler = "datahandler";
 
         private WindowPositionSettings _positionSettings;
         private WindowResizingSettings _resizingSettings;
@@ -62,6 +63,13 @@ namespace Common.Web.Popup
         protected override void WriteHtml(HtmlTextWriter writer)
         {
             writer.AddAttribute(HtmlTextWriterAttribute.Id, Name);
+            if (!string.IsNullOrEmpty(ContentUrl))
+                writer.AddAttribute("data-popup-action", ContentUrl);
+
+            string dataHandler;
+            if (Events.TryGetValue(EventDataHandler, out dataHandler))
+                writer.AddAttribute("data-popup-datahandler", dataHandler);
+
             writer.RenderBeginTag(HtmlTextWriterTag.Div);
             writer.RenderEndTag();
         }
@@ -120,8 +128,8 @@ namespace Common.Web.Popup
 
         protected override void WriteInitializationScript(TextWriter writer)
         {
-            string customOpenHandler;
-            Events.TryGetValue(EventOpen, out customOpenHandler);
+            //string customOpenHandler;
+            //Events.TryGetValue(EventOpen, out customOpenHandler);
 
             var settings = new WindowSettings
             {
@@ -143,7 +151,8 @@ namespace Common.Web.Popup
                 minHeight = _resizingSettings != null ? _resizingSettings.MinHeight : null,
                 actions = _actions != null ? _actions.Container.Select(x => x.ToString()).ToArray() : null,
 
-                open = GetOpenEvent(ContentUrl, null, customOpenHandler),
+                //open = GetOpenEvent(ContentUrl, null, customOpenHandler),
+                open = Events.ContainsKey(EventOpen) ? Events[EventOpen] : null,
                 activate = Events.ContainsKey(EventActivate) ? Events[EventActivate] : null,
                 deactivate = Events.ContainsKey(EventDeactivate) ? Events[EventDeactivate] : null,
                 close = Events.ContainsKey(EventClose) ? Events[EventClose] : null,
