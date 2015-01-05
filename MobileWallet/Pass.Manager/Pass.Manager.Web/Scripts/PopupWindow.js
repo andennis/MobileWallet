@@ -1,9 +1,16 @@
 ﻿(function (helper, $) {
     var popupWindow = null;
+    var $popupWindowDiv = null;
 
     helper.ajaxOnSuccess = function (data) {
-        if (data.Success)
+        if (data.Success) {
+            var fncSuccess = $popupWindowDiv.data("popup-success");
+            if (fncSuccess)
+                eval(fncSuccess + "(data)");
+
             close();
+
+        }
     }
 
     var $ambientDiv = $($.parseHTML("<div id='popupWindowContent'></div>"));
@@ -45,6 +52,9 @@
 
     function close() {
         popupWindow.close();
+        //popupWindow.destroy();
+        popupWindow = null;
+        $popupWindowDiv = null;
     }
 
     function windowClose(e) {
@@ -56,7 +66,8 @@
         $('body').on('click', '[data-popup-window]', null, function (e) {
             e.preventDefault();
             var wndId = $(this).data("popup-window");
-            show($("#" + wndId));
+            $popupWindowDiv = $("#" + wndId);
+            show($popupWindowDiv);
         });
     }
 

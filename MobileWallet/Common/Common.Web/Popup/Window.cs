@@ -127,8 +127,6 @@ namespace Common.Web.Popup
 
             [JsonConverter(typeof(JsonValueWithoutQuotesConverter))]
             public string error { get; set; }
-
-            public string success { get; set; }
         }
 
         protected override void WriteInitializationScript(TextWriter writer)

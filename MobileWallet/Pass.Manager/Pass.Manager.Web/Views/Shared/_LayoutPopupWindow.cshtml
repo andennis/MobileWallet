@@ -3,9 +3,7 @@
     @Html.ValidationSummary()
     @Html.AntiForgeryToken()
     <div class="container-fluid">
-
         @RenderBody()
-
         <div class="form-group">
             @if (IsSectionDefined("Actions"))
             {
@@ -17,6 +15,5 @@
                 @Html.FormActionButton("btnCancel", "Cancel", string.Empty)
             }
         </div>
-
     </div>
 }

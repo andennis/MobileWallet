@@ -1058,7 +1058,7 @@
     <Content Include="Views\PassSiteUser\Create.cshtml" />
     <Content Include="Views\PassSiteCertificate\_Form.cshtml" />
     <Content Include="Views\PassSiteCertificate\Create.cshtml" />
-    <Content Include="Views\PassProject\FieldForm.cshtml" />
+    <Content Include="Views\PassProject\Field.cshtml" />
     <Content Include="Views\Shared\_LayoutPopupWindow.cshtml" />
   </ItemGroup>
   <ItemGroup>

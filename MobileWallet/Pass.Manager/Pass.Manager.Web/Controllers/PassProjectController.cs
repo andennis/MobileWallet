@@ -24,7 +24,7 @@ namespace Pass.Manager.Web.Controllers
 
         public ActionResult CreateField(int passProjectId)
         {
-            return PartialView("FieldForm", new PassProjectFieldViewModel() { PassProjectId = passProjectId });
+            return PartialView("Field", new PassProjectFieldViewModel() { PassProjectId = passProjectId });
         }
 
         [HttpPost]
@@ -35,7 +35,7 @@ namespace Pass.Manager.Web.Controllers
             {
                 return JsonEx();
             }
-            return PartialView("FieldForm", model);
+            return PartialView("Field", model);
         }
 
         public ActionResult TestWindiw()
