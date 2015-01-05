@@ -1,7 +1,13 @@
-﻿@model Pass.Manager.Core.Entities.PassProjectField
+﻿@model PassProjectFieldViewModel
+
 @{
     Layout = "~/Views/Shared/_LayoutPopupWindow.cshtml";
 }
-<h2>Field Form</h2>
-<p>ProjectID: @Model.PassProjectId</p>
 
+
+@Html.HiddenForExt(m => m.PassProjectId)
+@Html.HiddenForExt(m => m.PassProjectFieldId)
+
+@Html.TextBoxFormForExt(m => m.Name)
+@Html.TextBoxFormForExt(m => m.DefaultLabel)
+@Html.TextBoxFormForExt(m => m.DefaultValue)

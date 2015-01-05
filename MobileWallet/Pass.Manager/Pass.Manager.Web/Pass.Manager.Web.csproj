@@ -178,6 +178,7 @@
     <Compile Include="Models\GeneralPassTemplate\LocationDetails.cs" />
     <Compile Include="Models\PassCertificateAppleViewModel.cs" />
     <Compile Include="Models\PassCertificateViewModel.cs" />
+    <Compile Include="Models\PassProjectFieldViewModel.cs" />
     <Compile Include="Validators\PassCertificateAppleViewModelValidator.cs" />
     <Compile Include="Validators\PassCertificateViewModelValidator.cs" />
     <Compile Include="Models\PassProjectViewModel.cs" />
@@ -188,6 +189,7 @@
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PassSiteViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\PassProjectFieldViewModelValidator.cs" />
     <Compile Include="Validators\PassProjectViewModelValidator.cs" />
     <Compile Include="Validators\PassSiteCertificateViewModelValidator.cs" />
     <Compile Include="Validators\PassSiteUserViewModelValidator.cs" />
@@ -431,15 +433,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\DataTables-1.10.2\css\dataTables.responsive.scss" />
+    <Content Include="Content\DataTables-1.10.2\css\dataTables.jqueryui.scss" />
+    <Content Include="Content\kendo\2014.2.716\images\kendoui.woff" />
+    <Content Include="Content\kendo\2014.2.716\images\kendoui.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\DataTables-1.10.2\css\dataTables.responsive.scss" />
-    <Content Include="Content\DataTables-1.10.2\css\dataTables.jqueryui.scss" />
-    <Content Include="Content\kendo\2014.2.716\images\kendoui.woff" />
-    <Content Include="Content\kendo\2014.2.716\images\kendoui.ttf" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Images\createCard\barcode\aztec.png" />
     <Content Include="Images\createCard\barcode\aztecPass.png" />
@@ -508,7 +510,12 @@
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\jquery-2.1.1.min.map" />
+    <Content Include="Scripts\jquery.form.js" />
+    <Content Include="Scripts\jquery.form.min.js" />
+    <Content Include="Scripts\jquery.form.min.js.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -938,6 +945,7 @@
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\PopupWindow.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">

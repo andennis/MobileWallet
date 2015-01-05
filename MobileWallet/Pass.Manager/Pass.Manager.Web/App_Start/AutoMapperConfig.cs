@@ -49,6 +49,10 @@ namespace Pass.Manager.Web
             Mapper.CreateMap<PassSiteCertificateViewModel, PassCertificateApple>();
 
             Mapper.CreateMap<PassProjectType, PassStyle>().ConvertUsing(PassProjectTypeToPassStyle);
+
+            Mapper.CreateMap<PassProjectFieldViewModel, PassProjectField>();
+            Mapper.CreateMap<PassProjectField, PassProjectFieldViewModel>();
+
         }
 
         private static PassStyle PassProjectTypeToPassStyle(PassProjectType passProjectType)

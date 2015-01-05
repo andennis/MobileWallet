@@ -24,7 +24,18 @@ namespace Pass.Manager.Web.Controllers
 
         public ActionResult CreateField(int passProjectId)
         {
-            return PartialView("FieldForm", new PassProjectField(){PassProjectId = passProjectId});
+            return PartialView("FieldForm", new PassProjectFieldViewModel() { PassProjectId = passProjectId });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateField(PassProjectFieldViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+
+            }
+            return PartialView("FieldForm", model);
         }
 
         public ActionResult TestWindiw()

@@ -21,92 +21,110 @@
 }
 
 <a id="undo" class="k-button">window1</a>
-<a id="undo3" class="k-button">Refresh window1</a>
 <a id="undo2" class="k-button" data-popup-window="window2">window2</a>
 
-<div id="window"></div>
+<a class="btn btn-primary" data-toggle="modal" data-target="#myModal">Launch demo modal</a>
 
-@(Html.PopupDialog()
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">
+                    This Modal title
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="popupWindowContent1">
+                    @{ Html.RenderAction("CreateField", "PassProject", new {passProjectId = Model.PassProjectId}); }
+                </div>
+            </div>
+            <!--
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Submit changes</button>
+            </div>
+            -->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+    <div id="window"></div>
+
+    @(Html.PopupDialog()
     .Name("window2")
     .Width(600)
-    .Height(400)
+    //.Height(400)
     .Title("My Title2")
     .Modal(true)
-    .LoadContentFrom(Url.Action("CreateField", "PassProject", new { passProjectId = Model.PassProjectId}))
-    //.Events(e => e.Open("F2"))
-)
+    .LoadContentFrom(Url.Action("CreateField", "PassProject", new { passProjectId = Model.PassProjectId }))
+            //.Events(e => e.Open("F2"))
+    )
 
 
-<script>
-    $(document).ready(function() {
+    <script>
+        $(document).ready(function () {
 
-        $("#undo").click(function() {
-            $("#window").data("kendoWindow").open();
-            $("#window").data("kendoWindow").center();
-            //$("#window").data("kendoWindow").refresh({ url: "@Url.Action("TestWindiw", "PassProject")" });
-            $("#window").data("kendoWindow").refresh({ url: "@Url.Action("TestWindiw2", "PassProject")" });
+            $("#undo").click(function () {
+                $("#window").data("kendoWindow").open();
+                $("#window").data("kendoWindow").center();
+                //$("#window").data("kendoWindow").refresh({ url: "@Url.Action("TestWindiw", "PassProject")" });
+                $("#window").data("kendoWindow").refresh({ url: "@Url.Action("TestWindiw2", "PassProject")" });
 
-            $("#window").data("kendoWindow").content("123");
-            //$("#window").data("kendoWindow").refresh();
-            
+                $("#window").data("kendoWindow").content("123");
+                //$("#window").data("kendoWindow").refresh();
+
+            });
+
+            $("#window").kendoWindow({
+                width: "600px",
+                height: "400px",
+                title: "My Title",
+                visible: false,
+                actions: [
+                    "Pin",
+                    "Minimize",
+                    "Maximize",
+                    "Close"
+                ],
+                //open: F1,
+                //modal: true
+                //content: "http://www.telerik.com/"
+            });
+
+            /*
+            $("#window2").kendoWindow({
+                "title": "My Title2",
+                "content": "http://www.telerik.com/",
+                "width": 600,
+                "height": 400,
+                "visible": false,
+                "draggable": true,
+                "modal": true,
+                "pinned": false,
+                "autoFocus": true,
+                "iframe": true,
+                "resizable": true,
+                "position": {
+                    "top": 0,
+                    "left": 0
+                },
+                "actions": [
+                    "Close"
+                ]
+            });
+            */
+
         });
 
-        $("#undo3").click(function() {
-            $("#window").data("kendoWindow").content("123");
-            //$("#window").data("kendoWindow").refresh();
-            
-        });
+        function F1() {
+            alert(this.title());
+        }
 
+        function F2(sender) {
+            alert(sender.title());
+        }
 
-    $("#window").kendoWindow({
-        width: "600px",
-        height: "400px",
-        title: "My Title",
-        visible: false,
-        actions: [
-            "Pin",
-            "Minimize",
-            "Maximize",
-            "Close"
-        ],
-        //open: F1,
-        //modal: true
-        //content: "http://www.telerik.com/"
-    });
-
-    /*
-    $("#window2").kendoWindow({
-        "title": "My Title2",
-        "content": "http://www.telerik.com/",
-        "width": 600,
-        "height": 400,
-        "visible": false,
-        "draggable": true,
-        "modal": true,
-        "pinned": false,
-        "autoFocus": true,
-        "iframe": true,
-        "resizable": true,
-        "position": {
-            "top": 0,
-            "left": 0
-        },
-        "actions": [
-            "Close"
-        ]
-    });
-    */
-
-    });
-
-    function F1() {
-        alert(this.title());
-    }
-
-    function F2(sender) {
-        alert(sender.title());
-    }
-
-</script>
+    </script>
 
 

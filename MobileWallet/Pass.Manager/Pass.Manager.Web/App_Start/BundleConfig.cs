@@ -11,6 +11,7 @@ namespace Pass.Manager.Web
                         "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+                        "~/Scripts/jquery.unobtrusive-ajax.js",
                         "~/Scripts/jquery.validate*"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
@@ -35,8 +36,11 @@ namespace Pass.Manager.Web
 
             //Kendo
             bundles.Add(new StyleBundle("~/content/kendo").Include(
-                      "~/Content/kendo/2014.2.716/kendo.common.min.css",
-                      "~/Content/kendo/2014.2.716/kendo.default.min.css"));
+                "~/Content/kendo/2014.2.716/kendo.common-bootstrap.min.css",
+                "~/Content/kendo/2014.2.716/kendo.bootstrap.min.css",
+                //"~/Content/kendo/2014.2.716/kendo.common.min.css",
+                "~/Content/kendo/2014.2.716/kendo.default.min.css"));
+
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
                 "~/Scripts/kendo/2014.2.716/kendo.core.min.js",
                 //TabStrip
@@ -49,6 +53,7 @@ namespace Pass.Manager.Web
 
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
+                "~/Scripts/jquery.form.js",
                 "~/Scripts/FormAutoFill/jquery.formautofill.js",
                 "~/Scripts/Grid.js",
                 "~/Scripts/Action.js",

@@ -1,9 +1,11 @@
-﻿@using (Ajax.BeginForm(new AjaxOptions(){UpdateTargetId = "popupWindowContent"}))
+﻿@using (Ajax.BeginForm(null, null, null, new AjaxOptions() { UpdateTargetId = "popupWindowContent", OnSuccess = "OnModalSuccess" }, new { id="popupWindowForm", @class = "form-horizontal" }))
 {
     @Html.ValidationSummary()
     @Html.AntiForgeryToken()
     <div class="container-fluid">
+
         @RenderBody()
+
         <div class="form-group">
             @if (IsSectionDefined("Actions"))
             {
@@ -11,10 +13,18 @@
             }
             else
             {
-                @Html.FormActionSubmit("buttonCreate", "Apply")
-                @Html.FormActionButton("buttonCancel", "Cancel", string.Empty)
+                @Html.FormActionSubmit("btnCreate", "Apply")
+                @Html.FormActionButton("btnCancel", "Cancel", string.Empty)
             }
         </div>
+
     </div>
 }
 
+
+
+<script type="text/javascript">
+    function OnModalSuccess(result) {
+        //alert(result);
+    }
+</script>
