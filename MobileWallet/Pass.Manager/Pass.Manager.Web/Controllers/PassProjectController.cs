@@ -33,7 +33,7 @@ namespace Pass.Manager.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                return JsonEx();
             }
             return PartialView("FieldForm", model);
         }

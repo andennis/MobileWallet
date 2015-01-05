@@ -52,13 +52,13 @@
     <div id="window"></div>
 
     @(Html.PopupDialog()
-    .Name("window2")
-    .Width(600)
-    //.Height(400)
-    .Title("My Title2")
-    .Modal(true)
-    .LoadContentFrom(Url.Action("CreateField", "PassProject", new { passProjectId = Model.PassProjectId }))
-            //.Events(e => e.Open("F2"))
+        .Name("window2")
+        .Width(650)
+        //.Height(400)
+        .Title("My Title2")
+        .Modal(true)
+        .LoadContentFrom(Url.Action("CreateField", "PassProject", new { passProjectId = Model.PassProjectId }))
+        .Events(e => e.Success("OnSuccess1"))
     )
 
 
@@ -123,6 +123,9 @@
 
         function F2(sender) {
             alert(sender.title());
+        }
+        function OnSuccess1(result) {
+            alert(result);
         }
 
     </script>

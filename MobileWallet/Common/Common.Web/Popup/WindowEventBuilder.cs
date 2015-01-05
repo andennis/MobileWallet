@@ -59,5 +59,10 @@ namespace Common.Web.Popup
             AddHandler(Window.EventDataHandler, handler);
             return this;
         }
+        public WindowEventBuilder Success(string handler)
+        {
+            AddHandler(Window.EventSuccess, handler);
+            return this;
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿@using (Ajax.BeginForm(null, null, null, new AjaxOptions() { UpdateTargetId = "popupWindowContent", OnSuccess = "OnModalSuccess" }, new { id="popupWindowForm", @class = "form-horizontal" }))
+﻿@using (Ajax.BeginForm(null, null, null, new AjaxOptions() { UpdateTargetId = "popupWindowContent", OnSuccess = "window.PopupWindow.ajaxOnSuccess" }, new { id = "popupWindowForm", @class = "form-horizontal" }))
 {
     @Html.ValidationSummary()
     @Html.AntiForgeryToken()
@@ -20,11 +20,3 @@
 
     </div>
 }
-
-
-
-<script type="text/javascript">
-    function OnModalSuccess(result) {
-        //alert(result);
-    }
-</script>

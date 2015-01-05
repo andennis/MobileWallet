@@ -19,6 +19,7 @@ namespace Common.Web.Popup
         public const string EventRefresh = "refresh";
         public const string EventError = "error";
         public const string EventDataHandler = "datahandler";
+        public const string EventSuccess = "success";
 
         private WindowPositionSettings _positionSettings;
         private WindowResizingSettings _resizingSettings;
@@ -66,9 +67,11 @@ namespace Common.Web.Popup
             if (!string.IsNullOrEmpty(ContentUrl))
                 writer.AddAttribute("data-popup-action", ContentUrl);
 
-            string dataHandler;
-            if (Events.TryGetValue(EventDataHandler, out dataHandler))
-                writer.AddAttribute("data-popup-datahandler", dataHandler);
+            string eventHandler;
+            if (Events.TryGetValue(EventDataHandler, out eventHandler))
+                writer.AddAttribute("data-popup-datahandler", eventHandler);
+            if (Events.TryGetValue(EventSuccess, out eventHandler))
+                writer.AddAttribute("data-popup-success", eventHandler);
 
             writer.RenderBeginTag(HtmlTextWriterTag.Div);
             writer.RenderEndTag();
@@ -124,6 +127,8 @@ namespace Common.Web.Popup
 
             [JsonConverter(typeof(JsonValueWithoutQuotesConverter))]
             public string error { get; set; }
+
+            public string success { get; set; }
         }
 
         protected override void WriteInitializationScript(TextWriter writer)

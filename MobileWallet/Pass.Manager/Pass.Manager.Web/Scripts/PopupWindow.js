@@ -1,4 +1,10 @@
-﻿(function ($) {
+﻿(function (helper, $) {
+    var popupWindow = null;
+
+    helper.ajaxOnSuccess = function (data) {
+        if (data.Success)
+            close();
+    }
 
     var $ambientDiv = $($.parseHTML("<div id='popupWindowContent'></div>"));
 
@@ -6,42 +12,54 @@
         var wndAction = $wndDiv.data("popup-action");
         var dataHandler = $wndDiv.data("popup-datahandler");
         var prms = dataHandler ? eval(dataHandler + "()") : null;
-        var wnd = $wndDiv.data("kendoWindow");
+        popupWindow = $wndDiv.data("kendoWindow");
 
         $.get(wndAction, prms, function (data) {
             var $ambientDivCopy = $ambientDiv.clone();
             $ambientDivCopy.html(data);
-            wnd.content($ambientDivCopy[0].outerHTML);
+            popupWindow.content($ambientDivCopy[0].outerHTML);
 
             var $form = $("#popupWindowForm", $wndDiv);
             $("#btnCancel", $form).click(function () {
-                close($wndDiv);
+                close();
             });
 
+            /*
+            var fncSuccess = $wndDiv.data("popup-success");
+            if (fncSuccess)
+                $form.data("ajax-success", fncSuccess);
+            */
+
+            /*
             $form.submit(function(e) {
                 e.preventDefault();
                 close($wndDiv);
             });
+            */
 
-            wnd.center().open();
+            //wnd.unbind("close", windowClose);
+            popupWindow.bind("close", windowClose);
+            popupWindow.center().open();
         });
     }
 
-    function close($wndDiv) {
-        var wnd = $wndDiv.data("kendoWindow");
-        $.post()
-        wnd.close($wndDiv);
+    function close() {
+        popupWindow.close();
+    }
+
+    function windowClose(e) {
+        e.sender.unbind("close", windowClose);
+        e.sender.content(null);
     }
 
     function init() {
         $('body').on('click', '[data-popup-window]', null, function (e) {
             e.preventDefault();
-            var $this = $(this);
-            var wndId = $this.data("popup-window");
+            var wndId = $(this).data("popup-window");
             show($("#" + wndId));
         });
     }
 
     init();
 
-}(jQuery));
+}(window.PopupWindow = window.PopupWindow || {}, jQuery));
