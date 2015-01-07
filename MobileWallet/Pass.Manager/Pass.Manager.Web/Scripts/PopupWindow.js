@@ -9,7 +9,6 @@
                 eval(fncSuccess + "(data)");
 
             close();
-
         }
     }
 
@@ -31,20 +30,6 @@
                 close();
             });
 
-            /*
-            var fncSuccess = $wndDiv.data("popup-success");
-            if (fncSuccess)
-                $form.data("ajax-success", fncSuccess);
-            */
-
-            /*
-            $form.submit(function(e) {
-                e.preventDefault();
-                close($wndDiv);
-            });
-            */
-
-            //wnd.unbind("close", windowClose);
             popupWindow.bind("close", windowClose);
             popupWindow.center().open();
         });
@@ -52,7 +37,6 @@
 
     function close() {
         popupWindow.close();
-        //popupWindow.destroy();
         popupWindow = null;
         $popupWindowDiv = null;
     }
@@ -65,8 +49,16 @@
     function init() {
         $('body').on('click', '[data-popup-window]', null, function (e) {
             e.preventDefault();
-            var wndId = $(this).data("popup-window");
+            var $this = $(this);
+            var wndId = $this.data("popup-window");
             $popupWindowDiv = $("#" + wndId);
+
+            var action = $this.attr("href");
+            if (action == null)
+                action = $this.data("action");
+            if (action)
+                $popupWindowDiv.data("popup-action", action);
+
             show($popupWindowDiv);
         });
     }

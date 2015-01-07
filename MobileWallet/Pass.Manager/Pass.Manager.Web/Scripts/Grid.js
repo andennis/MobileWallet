@@ -8,7 +8,10 @@
                 if (!actionUrl)
                     return;
 
-                if (!confirm("Are you sure you want to delete?"))
+                var confMsg = $(this).attr("confirmMessage");
+                if (!confMsg)
+                    confMsg = "Are you sure you want to perform the operation?";
+                if (!confirm(confMsg))
                     return;
 
                 var postResult = $.post(actionUrl, function (data) {

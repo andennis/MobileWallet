@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq.Expressions;
-using Pass.Manager.Core;
-using Common.Repository;
 using System.Linq;
+using System.Linq.Expressions;
+using Common.Repository;
+using Pass.Manager.Core;
 using Pass.Manager.Core.SearchFilters;
+using Pass.Manager.Core.Services;
 
-namespace Pass.Manager.BL
+namespace Pass.Manager.BL.Services
 {
     public abstract class BaseService<TEntity, TSearchFilter, TUnitOfWork> : IBaseService<TEntity, TSearchFilter>
         where TEntity : class, new()

@@ -3,8 +3,9 @@ using System.Linq;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.SearchFilters;
+using Pass.Manager.Core.Services;
 
-namespace Pass.Manager.BL
+namespace Pass.Manager.BL.Services
 {
     public class PassSiteUserService : BaseService<PassSiteUser, PassSiteUserFilter, IPassManagerUnitOfWork>, IPassSiteUserService
     {

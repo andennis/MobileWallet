@@ -1,0 +1,34 @@
+﻿@model int
+
+@(Html.ActionLinkExt<PassProjectFieldController>(a => a.CreateField(0), "Add New", new { passProjectId = Model }, new { @class = "btn btn-default", data_popup_window = "wndPassProjectField" }))
+@(Html.PopupDialog()
+              .Name("wndPassProjectField")
+              .Width(800)
+              .Title("Pass Project Field")
+              .Events(e => e.Success("OnEditFieldSuccess"))
+)
+
+@(Html.Grid<PassProjectFieldViewModel>()
+              .Name("grdPassProjectFields")
+              .CssClass("pm-grid")
+              .Pageable()
+              .DataSource(ds => ds.Read(@Url.Action("GridSearch", "PassProjectField", new { PassProjectId = Model })))
+              .Columns(c =>
+                       {
+                           c.Bound(p => p.PassProjectFieldId).Title("ID").Width("100px");
+                           c.BoundLink(p => p.Name, Url.Action("Edit", "PassProjectField"), id => id.PassProjectFieldId, new { data_popup_window = "wndPassProjectField" });
+                           c.Bound(p => p.DefaultLabel).Title("Default Label");
+                           c.Bound(p => p.DefaultValue).Title("Default Value");
+                           c.Bound(p => p.PassProjectFieldId).Title("Action").GridAjaxAction("Delete", Url.Action("Delete", "PassProjectField"));
+                       }))
+
+<script>
+    $(document).ready(function () {
+        window.grid.Init($("#grdPassProjectFields"));
+    });
+
+    function OnEditFieldSuccess() {
+        window.grid.Reload($("#grdPassProjectFields"));
+    }
+</script>
+

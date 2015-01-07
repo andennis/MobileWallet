@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Security;
 using Pass.Manager.Core;
+using Pass.Manager.Core.Services;
 using Pass.Manager.Web.Models;
 
 namespace Pass.Manager.Web.Controllers

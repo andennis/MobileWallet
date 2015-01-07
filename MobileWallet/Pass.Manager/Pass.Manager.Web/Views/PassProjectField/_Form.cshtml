@@ -1,12 +1,8 @@
 ﻿@model PassProjectFieldViewModel
 
-@{
-    Layout = "~/Views/Shared/_LayoutPopupWindow.cshtml";
-}
-
 @Html.HiddenForExt(m => m.PassProjectId)
 @Html.HiddenForExt(m => m.PassProjectFieldId)
 
 @Html.TextBoxFormForExt(m => m.Name)
-@Html.TextBoxFormForExt(m => m.DefaultLabel)
-@Html.TextBoxFormForExt(m => m.DefaultValue)
+@Html.TextBoxFormForExt(m => m.DefaultLabel, "Default Label")
+@Html.TextBoxFormForExt(m => m.DefaultValue, "Default Value")

@@ -5,6 +5,7 @@ using Common.Web.Grid;
 using Pass.Manager.Core;
 using AutoMapper;
 using Pass.Manager.Core.SearchFilters;
+using Pass.Manager.Core.Services;
 
 namespace Pass.Manager.Web.Common
 {
@@ -33,7 +34,7 @@ namespace Pass.Manager.Web.Common
             var model = new TEntityViewModel();
             SetDefaultReturnUrl(model);
             PrepareModelToCreateView(model);
-            return View(model);
+            return CreateView(model);
         }
 
         [HttpPost]
@@ -44,10 +45,21 @@ namespace Pass.Manager.Web.Common
             {
                 TEntity entity = Mapper.Map<TEntityViewModel, TEntity>(model);
                 _service.Create(entity);
+
+                if (Request.IsAjaxRequest())
+                    return JsonEx();
                 return RedirectTo(model);
             }
 
             PrepareModelToCreateView(model);
+            return CreateView(model);
+        }
+
+        private ActionResult CreateView(object model)
+        {
+            if (Request.IsAjaxRequest())
+                return PartialView("_Create", model);
+
             return View(model);
         }
 
@@ -58,7 +70,7 @@ namespace Pass.Manager.Web.Common
             TEntityViewModel model = Mapper.Map<TEntity, TEntityViewModel>(entity);
             SetDefaultReturnUrl(model);
             PrepareModelToEditView(model);
-            return View(model);
+            return EditView(model);
         }
 
         [HttpPost]
@@ -70,10 +82,21 @@ namespace Pass.Manager.Web.Common
                 TEntity entity = _service.Get(model.EntityId);
                 entity = Mapper.Map<TEntityViewModel, TEntity>(model, entity);
                 _service.Update(entity);
+
+                if (Request.IsAjaxRequest())
+                    return JsonEx();
                 return RedirectTo(model);
             }
 
             PrepareModelToEditView(model);
+            return EditView(model);
+        }
+
+        private ActionResult EditView(object model)
+        {
+            if (Request.IsAjaxRequest())
+                return PartialView("_Edit", model);
+
             return View(model);
         }
 

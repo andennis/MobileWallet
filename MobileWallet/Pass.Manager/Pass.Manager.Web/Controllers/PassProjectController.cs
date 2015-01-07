@@ -2,6 +2,7 @@
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.SearchFilters;
+using Pass.Manager.Core.Services;
 using Pass.Manager.Web.Common;
 using Pass.Manager.Web.Models;
 
@@ -22,40 +23,10 @@ namespace Pass.Manager.Web.Controllers
             return View("Create", model);
         }
 
-        public ActionResult CreateField(int passProjectId)
+        public ActionResult TabFields(int id)
         {
-            return PartialView("Field", new PassProjectFieldViewModel() { PassProjectId = passProjectId });
+            return PartialView("Tabs/_Fields", id);
         }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CreateField(PassProjectFieldViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                return JsonEx();
-            }
-            return PartialView("Field", model);
-        }
-
-        public ActionResult TestWindiw()
-        {
-            return Content("<b>Hello1</b>");
-        }
-
-        public ActionResult TestWindiw2()
-        {
-            return Content("<b>Hello2</b>");
-        }
-
-        /*
-        public ActionResult PassDesigner(int passProjectId)
-        {
-            PassProject prj = _service.Get(passProjectId);
-            //Do something
-            return RedirectToAction("EmptyCardDesigner", "PassDesigner", new { passProjectId });
-        }
-        */
 
     }
 }

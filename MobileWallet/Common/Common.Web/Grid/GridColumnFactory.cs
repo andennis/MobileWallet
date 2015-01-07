@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Web.Mvc;
+using System.Web.Routing;
 using Common.Extensions;
 
 namespace Common.Web.Grid
@@ -31,7 +32,7 @@ namespace Common.Web.Grid
             return builder;
         }
 
-        public GridBoundColumnBuilder<TModel> BoundLink<TValue, TId>(Expression<Func<TModel, TValue>> expression, string url, Expression<Func<TModel, TId>> expressionId)
+        public GridBoundColumnBuilder<TModel> BoundLink<TValue, TId>(Expression<Func<TModel, TValue>> expression, string url, Expression<Func<TModel, TId>> expressionId, object htmlAttributes = null)
         {
             var builder = new GridBoundColumnBuilder<TModel>(_htmlHelper, expression.GetPropertyName());
             string idColName = expressionId.GetPropertyName();
@@ -42,7 +43,15 @@ namespace Common.Web.Grid
             else
                 url = url + string.Format("/#={0}#", idColName);
 
-            builder.ClientTemplate(string.Format("<a id=\"{0}.#={1}#\" href=\"{2}\">#={0}#</a>", builder.ColName, idColName, url));
+            var tb = new TagBuilder("a");
+            tb.Attributes.Add("id", string.Format("{0}.#={1}#", builder.ColName, idColName));
+            tb.Attributes.Add("href", url);
+            tb.SetInnerText(string.Format("#={0}#", builder.ColName));
+
+            if (htmlAttributes != null)
+                tb.MergeAttributes(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
+
+            builder.ClientTemplate(tb.ToString());
             Columns.Add(builder);
             return builder;
         }

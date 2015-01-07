@@ -60,25 +60,27 @@
     <Compile Include="Entities\PassContentStyle.cs" />
     <Compile Include="Entities\TextAlignment.cs" />
     <Compile Include="Entities\User.cs" />
-    <Compile Include="IBaseService.cs" />
-    <Compile Include="IPassCertificateService.cs" />
+    <Compile Include="Services\IBaseService.cs" />
+    <Compile Include="Services\IPassCertificateService.cs" />
     <Compile Include="IPassManagerConfig.cs" />
     <Compile Include="IPassManagerUnitOfWork.cs" />
-    <Compile Include="IPassProjectService.cs" />
-    <Compile Include="IPassSiteCertificateService.cs" />
-    <Compile Include="IPassSiteService.cs" />
-    <Compile Include="IPassSiteUserService.cs" />
-    <Compile Include="IUserService.cs" />
+    <Compile Include="Services\IPassProjectService.cs" />
+    <Compile Include="Services\IPassSiteCertificateService.cs" />
+    <Compile Include="Services\IPassSiteService.cs" />
+    <Compile Include="Services\IPassSiteUserService.cs" />
+    <Compile Include="Services\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IPassSiteCertificateRepository.cs" />
     <Compile Include="Repositories\IPassSiteRepository.cs" />
     <Compile Include="Repositories\IPassSiteUserRepository.cs" />
     <Compile Include="SearchContext.cs" />
+    <Compile Include="SearchFilters\PassProjectFieldFilter.cs" />
     <Compile Include="SearchFilters\PassProjectFilter.cs" />
     <Compile Include="SearchFilters\PassSiteCertificateFilter.cs" />
     <Compile Include="SearchFilters\PassSiteUserFilter.cs" />
     <Compile Include="SearchFilters\SearchFilterBase.cs" />
     <Compile Include="SearchResult.cs" />
+    <Compile Include="Services\IPassProjectFieldService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common.Repository\Common.Repository.csproj">

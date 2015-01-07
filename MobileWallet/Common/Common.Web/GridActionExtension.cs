@@ -1,4 +1,5 @@
-﻿using Common.Web.Grid;
+﻿using System.Web.Mvc;
+using Common.Web.Grid;
 
 namespace Common.Web
 {
@@ -22,7 +23,7 @@ namespace Common.Web
             template += string.Format("<a id=\"{0}\" href=\"{1}\">{2}</a>", linkId, url, linkText);
             return columnBuilder.ClientTemplate(template);
         }
-        public static GridBoundColumnBuilder<TModel> GridAjaxAction<TModel>(this GridBoundColumnBuilder<TModel> columnBuilder, string linkText, string url, string name = null)
+        public static GridBoundColumnBuilder<TModel> GridAjaxAction<TModel>(this GridBoundColumnBuilder<TModel> columnBuilder, string linkText, string url, string name = null, string confirmMessage = null)
             where TModel : class
         {
             string template = columnBuilder.ColClientTemplate;
@@ -37,7 +38,17 @@ namespace Common.Web
             else
                 url = url + string.Format("/#={0}#", columnBuilder.ColName);
 
-            template += string.Format("<a id=\"{0}\" href=\"javascript:void(0)\" data-action=\"{1}\">{2}</a>", linkId, url, linkText);
+            var tb = new TagBuilder("a");
+            if (linkId != string.Empty)
+                tb.Attributes.Add("id", linkId);
+            tb.Attributes.Add("href", "javascript:void(0)");
+            tb.Attributes.Add("data-action", url);
+            if (string.IsNullOrEmpty(confirmMessage))
+                confirmMessage = string.Format("Are you sure you want to {0}?", linkText.ToLower());
+            tb.Attributes.Add("confirmMessage", confirmMessage);
+            tb.SetInnerText(linkText);
+
+            template += tb.ToString();
             return columnBuilder.ClientTemplate(template);
         }
 

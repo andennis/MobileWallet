@@ -1,0 +1,11 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutPopupWindow.cshtml";
+}
+
+@Html.Partial("_Form")
+
+@section Actions
+{
+    @Html.FormActionSubmit("btnCreate", "Create")
+    @Html.FormActionButton("btnCancel", "Cancel")
+}

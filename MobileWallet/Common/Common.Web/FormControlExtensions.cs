@@ -56,14 +56,15 @@ namespace Common.Web
 
             return new MvcHtmlString(tb.ToString());
         }
-        public static MvcHtmlString FormActionButton<TModel>(this HtmlHelper<TModel> html, string name, string caption, string actionUrl)
+        public static MvcHtmlString FormActionButton<TModel>(this HtmlHelper<TModel> html, string name, string caption, string actionUrl = null)
         {
             var tb = new TagBuilder("input");
             tb.Attributes.Add("id", name);
             tb.Attributes.Add("type", "button");
             tb.Attributes.Add("value", caption);
             tb.AddCssClass("btn btn-default");
-            tb.Attributes.Add("data-action", actionUrl);
+            if (!string.IsNullOrEmpty(actionUrl))
+                tb.Attributes.Add("data-action", actionUrl);
 
             return new MvcHtmlString(tb.ToString());
         }

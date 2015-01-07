@@ -1,4 +1,5 @@
-﻿@model PassProjectViewModel
+﻿@using Common.Web.Tab
+@model PassProjectViewModel
        
 @Html.HiddenForExt(m => m.PassProjectId)
 @if (!Model.IsNew)
@@ -18,24 +19,13 @@
             @Html.ActionLinkExt("Pass Designer", "Edit", "PassDesigner", new {passProjectId = Model.PassProjectId})
         </div>    
     </div>
+
+    <div class="row">
+        @(Html.TabStrip()
+            .Name("projectTabs")
+            .Items(tab => tab.Add().Text("Pass Fields").LoadContentFrom(Url.Action("TabFields", new { id = Model.PassProjectId})).Selected(true)))
+    </div>
+    
 }
-
-<a id="undo2" class="k-button" data-popup-window="window2">window2</a>
-@*Html.ActionLinkExt("Add New Field", htmlAttributes: new { @class = "btn btn-default" })*@
-
-@(Html.PopupDialog()
-    .Name("window2")
-    .Width(650)
-    .Title("My Title2")
-    .LoadContentFrom(Url.Action("CreateField", "PassProject", new { passProjectId = Model.PassProjectId }))
-    //.Events(e => e.Success("OnSuccess1"))
-)
-
-
-<script>
-    $(document).ready(function () {
-
-    });
-</script>
 
 
