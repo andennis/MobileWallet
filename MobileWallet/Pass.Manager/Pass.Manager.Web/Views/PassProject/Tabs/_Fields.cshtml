@@ -3,7 +3,7 @@
 @(Html.ActionLinkExt<PassProjectFieldController>(a => a.CreateField(0), "Add New", new { passProjectId = Model }, new { @class = "btn btn-default", data_popup_window = "wndPassProjectField" }))
 @(Html.PopupDialog()
               .Name("wndPassProjectField")
-              .Width(800)
+              .Width(600)
               .Title("Pass Project Field")
               .Events(e => e.Success("OnEditFieldSuccess"))
 )

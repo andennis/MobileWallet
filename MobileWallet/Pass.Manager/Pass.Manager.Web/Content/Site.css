@@ -16,10 +16,8 @@ textarea {
     max-width: 280px;
 }
 
-.k-state-active
-{
+.k-state-active {
     border-color: inherit !important;
-    
 }
 
 /*
@@ -86,13 +84,125 @@ textarea {
 .col-xs-12,
 .col-sm-12,
 .col-md-12,
-.col-lg-12
-{
+.col-lg-12 {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
+#btnApply {
+    margin-right: 6px;
+    margin-left: 20px;
+}
+
+#btnCreate {
+    margin-right: 2px;
+    margin-left: 20px;
+}
+
+.k-window-titlebar.k-header {
+    background-image: none;
+    background-color: #eceff1;
+    color: #384A5C;
+    font-weight: bold;
+    border: none;
+    font-size: 1.3em;
+}
+
+.k-content {
+    color: #737C86;
+}
+
+.btn-default {
+    background-color: #BCC4C7;
+    color: white;
+    border: none;
+    padding: 8px 22px;
+    -webkit-transition: background 0.2s ease,color 0.2s ease;
+    -moz-transition: background 0.2s ease,color 0.2s ease;
+    -ms-transition: background 0.2s ease,color 0.2s ease;
+    -o-transition: background 0.2s ease,color 0.2s ease;
+    transition: background 0.2s ease,color 0.2s ease;
+    margin: 7px 0;
+}
+
+    .btn-default:hover {
+        background-color: #D8D7D7;
+    }
+
+.btn-primary {
+    background-color: #1abc9c;
+}
+
+    .btn-primary:hover {
+        background-color: #2fe2bf;
+    }
+
+.form-control {
+    max-width: 350px;
+}
+
+    .form-control:focus {
+        border-color: #1AB899;
+        -webkit-box-shadow: inset 0 1px 1px rgba(26,184,153,.075), 0 0 8px rgba(26,184,153, .6);
+        -ms-box-shadow: inset 0 1px 1px rgba(26,184,153,.075), 0 0 8px rgba(26,184,153, .6);
+        box-shadow: inset 0 1px 1px rgba(26,184,153,.075), 0 0 8px rgba(26,184,153, .6);
+    }
+
+.well {
+    color: #737C86;
+    background-color: #eceff1;
+}
+
+h3 {
+    color: #384A5C;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.k-tabstrip {
+    color: #737C86;
+}
+
+.dataTables_length, .sorting_disabled {
+    color: #384A5C !important;
+}
+
+.table.dataTable thead th, .table.dataTable tbody td {
+    border: 1px solid #ccc;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: #BCC4C7;
+    color: white !important;
+    border: none;
+    padding: 0.3em 0.5em;
+}
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+        background: #2fe2bf;
+        border: none;
+        -webkit-transition: background 0.2s ease,color 0.2s ease;
+        -moz-transition: background 0.2s ease,color 0.2s ease;
+        -ms-transition: background 0.2s ease,color 0.2s ease;
+        -o-transition: background 0.2s ease,color 0.2s ease;
+        transition: background 0.2s ease,color 0.2s ease;
+    }
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    border: none;
+    padding: 0.3em 0.5em;
+}
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        background: #2fe2bf;
+        border: none;
+        -webkit-transition: background 0.2s ease,color 0.2s ease;
+        -moz-transition: background 0.2s ease,color 0.2s ease;
+        -ms-transition: background 0.2s ease,color 0.2s ease;
+        -o-transition: background 0.2s ease,color 0.2s ease;
+        transition: background 0.2s ease,color 0.2s ease;
+    }
 /*
 .form-control.k-widget
 {

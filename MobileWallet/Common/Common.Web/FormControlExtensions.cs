@@ -237,7 +237,7 @@ namespace Common.Web
         {
             IDictionary<string, object> labelAttrs = new Dictionary<string, object>()
                                                      {
-                                                         {"class", "control-label col-sm-3 col-md-2"}
+                                                         {"class", "control-label col-sm-4 col-md-3"}
                                                      };
             if (labelHtmlAttributes != null)
             {
@@ -256,7 +256,7 @@ namespace Common.Web
             formGroupDiv.InnerHtml = html.LabelFor(expression, labelText, labelAttrs).ToHtmlString();
 
             var controlDiv = new TagBuilder("div");
-            controlDiv.AddCssClass("col-sm-9 col-md-10");
+            controlDiv.AddCssClass("col-sm-8 col-md-9");
             controlDiv.InnerHtml = funcControl().ToHtmlString();
 
             formGroupDiv.InnerHtml += controlDiv.ToString();
