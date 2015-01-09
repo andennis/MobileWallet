@@ -1,6 +1,23 @@
 ﻿body {
     padding-top: 150px;
     padding-bottom: 20px;
+    font-family: 'WOL_Reg','Segoe UI',Tahoma,Helvetica,sans-serif;
+    font-size: 15px;
+}
+
+a {
+    color: #2979FF;
+}
+
+    a:hover {
+        color: #2fe2bf;
+    }
+
+h3 {
+    color: #384A5C;
+    /*font-weight: bold;*/
+    margin-bottom: 35px;
+    font-size: 32px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -93,6 +110,11 @@ textarea {
 #btnApply {
     margin-right: 6px;
     margin-left: 20px;
+    -moz-min-width: 41px;
+    -ms-min-width: 41px;
+    -o-min-width: 41px;
+    -webkit-min-width: 41px;
+    min-width: 41px;
 }
 
 #btnCreate {
@@ -132,32 +154,41 @@ textarea {
 
 .btn-primary {
     background-color: #1abc9c;
+    -moz-min-width: 85px;
+    -ms-min-width: 85px;
+    -o-min-width: 85px;
+    -webkit-min-width: 85px;
+    min-width: 85px;
 }
 
-    .btn-primary:hover {
+    .btn-primary:hover,.btn-primary:focus,.btn-primary:active {
         background-color: #2fe2bf;
+        border-color: #2fe2bf;
     }
 
 .form-control {
     max-width: 350px;
 }
 
-    .form-control:focus {
-        border-color: #1AB899;
-        -webkit-box-shadow: inset 0 1px 1px rgba(26,184,153,.075), 0 0 8px rgba(26,184,153, .6);
-        -ms-box-shadow: inset 0 1px 1px rgba(26,184,153,.075), 0 0 8px rgba(26,184,153, .6);
+    /*.form-control:focus, .valid:focus {
+        border-color: #1AB899 !important;
+        -webkit-box-shadow: inset 0 1px 1px #1ab899, 0 0 8px #1ab899;
+        -ms-box-shadow: inset 0 1px 1px #1ab899, 0 0 8px #1ab899;
+        box-shadow: inset 0 1px 1px #1ab899, 0 0 8px #1ab899;
         box-shadow: inset 0 1px 1px rgba(26,184,153,.075), 0 0 8px rgba(26,184,153, .6);
+    }*/
+
+    .form-control:focus, .valid:focus {
+        border-color: #2979FF !important;
+        -webkit-box-shadow: inset 0 1px 1px #2979FF, 0 0 8px #2979FF;
+        -ms-box-shadow: inset 0 1px 1px #2979FF, 0 0 8px #2979FF;
+        box-shadow: inset 0 1px 1px #2979FF, 0 0 8px #2979FF;
+        box-shadow: inset 0 1px 1px rgba(41,121,255,.075), 0 0 8px rgba(41,121,255, .6);
     }
 
 .well {
     color: #737C86;
     background-color: #eceff1;
-}
-
-h3 {
-    color: #384A5C;
-    font-weight: bold;
-    margin-bottom: 20px;
 }
 
 .k-tabstrip {
@@ -181,6 +212,7 @@ h3 {
 
     .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
         background: #2fe2bf;
+        color: white !important;
         border: none;
         -webkit-transition: background 0.2s ease,color 0.2s ease;
         -moz-transition: background 0.2s ease,color 0.2s ease;
@@ -197,6 +229,27 @@ h3 {
     .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
         background: #2fe2bf;
         border: none;
+        -webkit-transition: background 0.2s ease,color 0.2s ease;
+        -moz-transition: background 0.2s ease,color 0.2s ease;
+        -ms-transition: background 0.2s ease,color 0.2s ease;
+        -o-transition: background 0.2s ease,color 0.2s ease;
+        transition: background 0.2s ease,color 0.2s ease;
+    }
+
+    .navbar {
+        max-width: 1140px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .navbar-default .navbar-nav > li > a {
+        font-size: 19px;
+        color: #384A5C;
+    }
+
+    .navbar-default .navbar-nav > li > a:hover {
+        background: #2fe2bf;
+        color: white;
         -webkit-transition: background 0.2s ease,color 0.2s ease;
         -moz-transition: background 0.2s ease,color 0.2s ease;
         -ms-transition: background 0.2s ease,color 0.2s ease;
