@@ -188,8 +188,6 @@
     <Content Include="Content\createCard\bootstrap.css" />
     <Content Include="Content\createCard\skeleton.css" />
     <Content Include="Content\createCard\style.css" />
-    <Content Include="Content\MainPage\component.css" />
-    <Content Include="Content\MainPage\default.css" />
     <Content Include="Content\MainPage\promoSite.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\bpicons\bpicons.svg" />
@@ -263,6 +261,7 @@
     <Content Include="Images\MainPage\iphoneInHand.png" />
     <Content Include="Images\MainPage\iphoneInHand2.png" />
     <Content Include="Images\MainPage\macbookDesigner.png" />
+    <Content Include="Images\MainPage\mainPhoto.jpg" />
     <Content Include="Images\MainPage\megaphone9.svg" />
     <Content Include="Images\MainPage\MessagingIcon.png" />
     <Content Include="Images\MainPage\MessagingIcon1.png" />

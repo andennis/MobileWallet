@@ -7,63 +7,34 @@
 <script src="~/Scripts/MainPage/promoSite.js">
 </script>
 
-<div class="mainBlock topBlock">
-    <img src="/Images/MainPage/store1.jpg" class="storeImg" />
-    <img src="/Images/MainPage/iphoneInHand2.png" class="iphoneInHandImg" />
-    <p class="mainHeader mainHeader1">СИСТЕМА ЛОЯЛЬНОСТИ В</p>
-    <p class="mainHeader mainHeader2">СМАРФОНАХ ВАШИХ</p>
-    <p class="mainHeader mainHeader3">КЛИЕНТОВ</p>
-    <p class="mainHeaderSmall mainHeaderSmall1">
-        Создавайте дисконтные, бонусные
-    </p>
-    <p class="mainHeaderSmall mainHeaderSmall2">
-        и другие мобильные карты
-    </p>
-    <p class="mainHeaderSmall mainHeaderSmall3">
-        и распространяйте прямо на смартфоны клиентов
-    </p>
-</div>
-<div class="mainBlock appLogoBlock" id="divUsedApp">
-    <p class="pHeader pHeaderAppLogo">Используемые приложения</p>
-    <table id="usedApp">
-        <tbody>
-            <tr>
-                <td class="appLogoPromptTd" rowspan="2">
-                    <div id="passbookPrompt">
-                        <span>Passbook</span> — это приложение для
-                        iPhone, которое позволяет
-                        хранить в одном месте
-                        электронные дисконтные
-                        карты, купоны и билеты (пассы).<br />
-                        <span>
-                            Passbook есть в каждом
-                            iPhone с момента покупки.
-                        </span>
-                    </div>
-                </td>
-                <td id="passbookLogoImgTd" class="appLogoTd">
-                    <img class="passbookLogoImg" id="passbookLogoImg" src="/Images/MainPage/passbookLogo.png" />
-                    <br />
-                    <p class="appLogoName">Passbook</p>
-                </td>
-                <td id="passwalletLogoImgTd" class="appLogoTd">
-                    <img class="passwalletLogoImg" id="passwalletLogoImg" src="/Images/MainPage/passwalletLogo.png" />
-                    <br />
-                    <p class="appLogoName">PassWallet</p>
-                </td>
-                <td class="appLogoPromptTd" rowspan="2">
-                    <div id="passwalletPrompt">
-                        <span>PassWallet</span> — это приложение для
-                        платформ Android,
-                        Windows Phone и Blackberry, которое позволяет
-                        хранить в одном месте
-                        электронные дисконтные
-                        карты, купоны и билеты (пассы).
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+<div class="mainBlock topBlock col-md-12">
+    @*<img src="/Images/MainPage/store1.jpg" class="storeImg" />*@
+    <img src="/Images/MainPage/mainPhoto.jpg" class="mainPhoto" />
+    <div class="mainHeaderContainer">
+        <p class="mainHeader">
+            Система лояльности <br />
+            в смартфонах Ваших клиентов
+        </p>
+        <p class="mainHeaderSmall">
+            Создавайте дисконтные, бонусные <br />
+            и другие мобильные карты <br />
+            и распространяйте прямо на смартфоны клиентов
+        </p>
+    </div>
+
+    @*<img src="/Images/MainPage/iphoneInHand2.png" class="iphoneInHandImg" />*@
+    @*<p class="mainHeader mainHeader1">СИСТЕМА ЛОЯЛЬНОСТИ В</p>
+        <p class="mainHeader mainHeader2">СМАРФОНАХ ВАШИХ</p>
+        <p class="mainHeader mainHeader3">КЛИЕНТОВ</p>*@
+    @*<p class="mainHeaderSmall mainHeaderSmall1">
+            Создавайте дисконтные, бонусные
+        </p>
+        <p class="mainHeaderSmall mainHeaderSmall2">
+            и другие мобильные карты
+        </p>
+        <p class="mainHeaderSmall mainHeaderSmall3">
+            и распространяйте прямо на смартфоны клиентов
+        </p>*@
 </div>
 <div class="mainBlock howItWorkBlock">
     <div class="blockContent howItWorkBlockContent">
@@ -73,18 +44,17 @@
         <table id="howItWorkTable">
             <tr>
                 <td class="tdIcon">
-                    <img class="imgIcon" src="~/Images/MainPage/MessagingIcon1.png" />
+                    @*<img class="imgIcon" src="~/Images/MainPage/MessagingIcon1.png" />*@
+                    <img id="distribIcon" class="imgIcon" src="~/Images/MainPage/megaphone9.svg" />
                 </td>
                 <td class="tdText">
-                    Вы доносите до ваших клиентов информацию о возможности
-                    получать электронные версии карт покупателя,
-                    купонов на скидку, билетов и т.п., удобным для вас способом,
-                    которым вы обычно с ними взаимодействуете.
+                    Вы распространяете Вашим клиентам электронные версии карт с помощью уникальной ссылки удобным для вас способом
+                    (через e-mail, SMS, социальные сети или разместив QR-код на своём сайте, постере в магазине для работы с новыми клиентами)
                 </td>
             </tr>
             <tr>
                 <td class="tdIcon">
-                    <img class="imgIcon" src="~/Images/MainPage/UsersIcon.png" />
+                    @*<img class="imgIcon" src="~/Images/MainPage/UsersIcon.png" />*@
                 </td>
                 <td class="tdText">
                     Клиент добавляет электронную карту к себе в Passbook или PassWallet (путем считывания QR-кода или пройдя по ссылке).
@@ -92,7 +62,8 @@
             </tr>
             <tr>
                 <td class="tdIcon">
-                    <img class="imgIcon" src="~/Images/MainPage/ApprovalIcon.png" />
+                    @*<img class="imgIcon" src="~/Images/MainPage/ApprovalIcon.png" />*@
+                    <img id="doneIcon" class="imgIcon" src="~/Images/MainPage/approval1 (1).svg" />
                 </td>
                 <td class="tdText">
                     После этого, чтобы получить скидку или пройти
@@ -104,15 +75,61 @@
         </table>
     </div>
 </div>
+<div class="applicationsBlock">
+    <div class="mainBlock appLogoBlock" id="divUsedApp">
+        <p class="pHeader pHeaderAppLogo">Используемые приложения</p>
+        <table id="usedApp">
+            <tbody>
+                <tr>
+                    <td class="appLogoPromptTd" rowspan="2">
+                        <div id="passbookPrompt">
+                            <span>Passbook</span> — это приложение для
+                            iPhone, которое позволяет
+                            хранить в одном месте
+                            электронные дисконтные
+                            карты, купоны и билеты (пассы).<br />
+                            <span>
+                                Passbook есть в каждом
+                                iPhone с момента покупки.
+                            </span>
+                        </div>
+                    </td>
+                    <td id="passbookLogoImgTd" class="appLogoTd">
+                        <img class="passbookLogoImg" id="passbookLogoImg" src="/Images/MainPage/passbookLogo.png" />
+                        <br />
+                        <p class="appLogoName">Passbook</p>
+                    </td>
+                    <td id="passwalletLogoImgTd" class="appLogoTd">
+                        <img class="passwalletLogoImg" id="passwalletLogoImg" src="/Images/MainPage/passwalletLogo.png" />
+                        <br />
+                        <p class="appLogoName">PassWallet</p>
+                    </td>
+                    <td class="appLogoPromptTd" rowspan="2">
+                        <div id="passwalletPrompt">
+                            <span>PassWallet</span> — это приложение для
+                            платформ Android,
+                            Windows Phone и Blackberry, которое позволяет
+                            хранить в одном месте
+                            электронные дисконтные
+                            карты, купоны и билеты (пассы).
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div> 
+</div>
+
+
 <div class="mainBlock advantageBlock">
-    <p class="pHeader">Почему наше решение Вам подойдет?</p>
+    <p class="pHeader">Преимущества для Вашего бизнеса</p>
     <table id="advantageTable">
         <tbody>
             <tr>
                 <td id="advTableTd1" class="advTableTd advTableLeftTd">
-                    Ваши клиенты смогут забыть про поиск подарочных карт,
-                    купонов, пропусков и билетов в своем кошельке. Ведь теперь
-                    они все аккуратно собраны в телефоне и всегда под рукой.
+                    Распространение мобильных карт прямо на телефоны клиентов гарантирует,
+                    что Ваши купоны, билеты, карты лояльности всегда будут под рукой
+                    и готовы к использованию.
                 </td>
                 <td class="plusIconTd">
                     <img id="plusIcon1" src="~/Images/MainPage/plusIcon.png" class="plusIcon" />
@@ -128,16 +145,17 @@
                     <img id="bluePlusIcon2" src="~/Images/MainPage/plusIconBlue.png" class="plusIcon displayNone" />
                 </td>
                 <td id="advTableTd2" class="advTableTd advTableRightTd">
-                    Владелец «серебрянной» карты может узнать сумму,
-                    которую необходимо потратить для получения «золотой»,
-                    разве не сильный мотиватор для совершения еще большего числа покупок?
+                    Вы можете обновлять мобильные карты всего за несколько щелчков мыши.
+                    Держите Ваших клиентов в курсе последней информации, такой как баланс карты покупателя или время события.
+                    Клиенты увидят push-уведомление о обновлении карты на экране блокировки телефона.
                 </td>
             </tr>
             <tr>
                 <td id="advTableTd3" class="advTableTd advTableLeftTd">
-                    Ваш клиент в любой момент может просто быть проинформирован
-                    об новых акциях, достав телефон из кармана и увидев уведомление
-                    сразу на экране блокировки!
+                    Однажды добавив мобильную карту в теефон клиента, вы можете отправлять абсолютно новый купон или
+                    предложение, просто обновив её содержимое.
+                    Эта "вечная мобильная карта" даёт постоянную линию связи с вашим клиентом, что позволяет
+                    заработать на сезонных предложениях и новых схемах лояльности.
                 </td>
                 <td class="plusIconTd">
                     <img id="plusIcon3" src="~/Images/MainPage/plusIcon.png" class="plusIcon" />
@@ -203,18 +221,34 @@
     </svg>
 </div>
 <div class="mainBlock footerContact">
-    <p>
-        Хотите оказаться в смартфонах своих клиентов
+    <div class="blockContent footerContactBlock">
+        <p>
+            Хотите оказаться в смартфонах своих клиентов
+            <br />
+            или узнать больше информации?
+            <br />
+            Свяжитесь с нами!
+        </p>
         <br />
-        или узнать больше информации?
+        <div class="col-md-6">
+            <div class="col-md-12 footerContactLabel">Email</div>
+            <div class="col-md-12 footerContactValue">
+                <a href="mailto:passlight@gmail.com" id="emailText" class="contactText">passlight@gmail.com</a>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-12 footerContactLabel">Телефон</div>
+            <div class="col-md-12 footerContactValue">
+                <a href="tel:+375447242246">+37544 724-22-46</a>
+            </div>
+        </div>
         <br />
-        Свяжитесь с нами!
-    </p>
-    <br />
-    <a class="bigContactButton" href="~/Home/Contact">Наши контакты</a>
-    <br />
-    <br />
-    <p class="footer">2014 Passlight</p>
+        <br />
+        <br />
+        <br />
+        <p class="footer">2015 Passlight</p>
+    </div>
+
 </div>
 
 
