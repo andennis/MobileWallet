@@ -1327,6 +1327,15 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="3549c14a-bc77-4486-9f61-286a0389231b">
+            <enumerationMoniker
+              Id="db16d02f-05a6-4249-a482-de542072e655"
+              LastKnownName="PassContentStyle"
+              LastKnownLocation="PassModeling.uml" />
+          </dependency>
+        </suppliersInternal>
         <targetEnds>
           <association
             Id="efa0f62b-e1ac-47eb-85ee-83d39874320a"
@@ -1521,7 +1530,7 @@
             Id="e137094c-d80c-46d8-9bac-fc79c15343be">
             <enumerationMoniker
               Id="3adebc65-c82c-4682-b067-e5542d9ccf9f"
-              LastKnownName="FieldKind"
+              LastKnownName="PassContentFieldKind"
               LastKnownLocation="PassModeling.uml" />
           </dependency>
         </suppliersInternal>
@@ -1619,7 +1628,7 @@
     <packageHasNamedElement>
       <enumeration
         Id="3adebc65-c82c-4682-b067-e5542d9ccf9f"
-        name="FieldKind"
+        name="PassContentFieldKind"
         isAbstract="false"
         isLeaf="false">
         <ownedLiterals>
@@ -1638,6 +1647,31 @@
           <enumerationLiteral
             Id="e850e2f1-70c5-4b1a-9da2-8cdd8bb29078"
             name="Back" />
+        </ownedLiterals>
+      </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <enumeration
+        Id="db16d02f-05a6-4249-a482-de542072e655"
+        name="PassContentStyle"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedLiterals>
+          <enumerationLiteral
+            Id="0cec8958-4ee5-4194-a25f-9dc6044ffc4d"
+            name="BoardingPass" />
+          <enumerationLiteral
+            Id="eb896d19-7fff-41a4-8121-7686ae8e302f"
+            name="Coupon" />
+          <enumerationLiteral
+            Id="4d2ee794-25ee-479f-a135-5def009842a0"
+            name="EventTicket" />
+          <enumerationLiteral
+            Id="b3f5e5a1-a00f-4e7f-ad66-cafdc5079d26"
+            name="StoreCard" />
+          <enumerationLiteral
+            Id="bce01ff1-1eeb-421f-809a-5c57eb549829"
+            name="Custom" />
         </ownedLiterals>
       </enumeration>
     </packageHasNamedElement>

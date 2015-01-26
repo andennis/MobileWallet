@@ -193,6 +193,12 @@
     <logicalClassDesignerModelHasTypes>
       <class Id="35303514-6579-431b-a5b4-1793d070254a" name="PassContentTemplate" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="3c632d66-5e52-4e22-8aab-faf18a87d7ba" />
+        <suppliersInternal>
+          <dependency Id="96512f47-2a01-4cea-b0f8-3d58a6f090cc">
+            <enumerationMoniker Id="8c543eca-3e29-45ef-9c7b-660a7afcb275" LastKnownName="PassContentStyle" />
+            <elementDefinition Id="3549c14a-bc77-4486-9f61-286a0389231b" />
+          </dependency>
+        </suppliersInternal>
         <targetEnds>
           <association Id="4733febb-0ad2-4ec7-a0e5-5856a5e62154" isDerived="false" sourceEndRoleName="PassContent" targetEndRoleName="Location" isLeaf="false" isAbstract="false">
             <classMoniker Id="d2a20942-16cd-4cf4-b79f-220f7e2790d8" LastKnownName="PassLocation" />
@@ -290,7 +296,7 @@
         <elementDefinition Id="2801c02d-a28b-4d90-937f-b3e08b4e6b46" />
         <suppliersInternal>
           <dependency Id="67ea8fd6-b700-4b43-b673-4f56fe3f7db4">
-            <enumerationMoniker Id="99637b9a-dcbe-4261-bfce-9d9f47614b48" LastKnownName="FieldKind" />
+            <enumerationMoniker Id="99637b9a-dcbe-4261-bfce-9d9f47614b48" LastKnownName="PassContentFieldKind" />
             <elementDefinition Id="e137094c-d80c-46d8-9bac-fc79c15343be" />
           </dependency>
         </suppliersInternal>
@@ -336,7 +342,7 @@
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <enumeration Id="99637b9a-dcbe-4261-bfce-9d9f47614b48" name="FieldKind" isAbstract="false" isLeaf="false">
+      <enumeration Id="99637b9a-dcbe-4261-bfce-9d9f47614b48" name="PassContentFieldKind" isAbstract="false" isLeaf="false">
         <elementDefinition Id="3adebc65-c82c-4682-b067-e5542d9ccf9f" />
         <ownedLiterals>
           <enumerationLiteral Id="48a5e4cf-312f-408f-bf00-6f0a009fb557" name="Header">
@@ -353,6 +359,28 @@
           </enumerationLiteral>
           <enumerationLiteral Id="c4e796b6-bfe0-4881-a063-927c1e790554" name="Back">
             <elementDefinition Id="e850e2f1-70c5-4b1a-9da2-8cdd8bb29078" />
+          </enumerationLiteral>
+        </ownedLiterals>
+      </enumeration>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <enumeration Id="8c543eca-3e29-45ef-9c7b-660a7afcb275" name="PassContentStyle" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="db16d02f-05a6-4249-a482-de542072e655" />
+        <ownedLiterals>
+          <enumerationLiteral Id="408608eb-c491-4a39-b78d-e4a40fc0b2cc" name="BoardingPass">
+            <elementDefinition Id="0cec8958-4ee5-4194-a25f-9dc6044ffc4d" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="f83e0354-393f-40a6-b1e2-70204a317957" name="Coupon">
+            <elementDefinition Id="eb896d19-7fff-41a4-8121-7686ae8e302f" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="d9c3f128-b691-4a14-9377-168335db6ad1" name="EventTicket">
+            <elementDefinition Id="4d2ee794-25ee-479f-a135-5def009842a0" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="e085210b-0c15-4769-8497-83686d8afb52" name="StoreCard">
+            <elementDefinition Id="b3f5e5a1-a00f-4e7f-ad66-cafdc5079d26" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="76f2f13b-5159-4746-8687-ef67f727a289" name="Custom">
+            <elementDefinition Id="bce01ff1-1eeb-421f-809a-5c57eb549829" />
           </enumerationLiteral>
         </ownedLiterals>
       </enumeration>
