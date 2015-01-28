@@ -60,9 +60,11 @@
     <Folder Include="Security" />
     <Folder Include="Scripts" />
     <Folder Include="Scripts\Quartz.NET" />
+    <Folder Include="Tables" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Security\pn.sql" />
+    <Build Include="Tables\PushNotificationQueue.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\Quartz.NET\DbSchemeScript.sql" />
