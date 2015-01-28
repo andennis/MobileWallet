@@ -20,6 +20,17 @@ namespace Pass.Notification.Service
                 var configuration = Host.UseAppConfig<PushTaskService>()
                                         .AllowMultipleInstances()
                                         .WithRegistrations(p => p.RegisterModule(new PushTaskModule()));
+                                        /*ADDITIONAL FUNCTIONALITY
+                                         // something to do before the service is actually started
+                                        .BeforeStart(Init)
+                                        // can fluently name the service, display names and descriptions are optional
+                                        .Named("TheServiceName", "Friendly Display Name", "My Service written by My Company or something")
+                                        // can optionally pass the command line arguments into Atlas.  If no arguments are passed in, default arguments are used.
+                                        .WithArguments(args)
+                                        // can tell atlas that in order for my service to run I require that this other service is started
+                                        // will attempt to start the service if it is not running, there is an overload to provide a time in seconds to wait
+                                        .WithDependencyOnServiceNamed("MSSQLSERVER");*/
+
                 if (args != null && args.Any())
                     configuration = configuration.WithArguments(args);
 

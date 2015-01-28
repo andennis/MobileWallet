@@ -15,7 +15,9 @@ namespace Pass.Notification.Service.Quartz
         public void Start()
         {
             Logger.Info("PushTaskService starting");
+            PushNotificationServiceHost.StartPushNotificationServiceHosts();
 
+            Logger.Info("Push Notification sheduler starting");
             var job = JobBuilder.Create<PushJob>()
                                 .WithIdentity("PushJob", "PushTaskService")
                                 .Build();                   
@@ -37,7 +39,11 @@ namespace Pass.Notification.Service.Quartz
         public void Stop()
         {
             Logger.Info("PushTaskService stopping");
+            PushNotificationServiceHost.StopPushNotificationServiceHosts();
+
+            Logger.Info("Push Notification sheduler stopping");
             this.Scheduler.Shutdown();
+
             Logger.Info("PushTaskService stopped");
         }
 

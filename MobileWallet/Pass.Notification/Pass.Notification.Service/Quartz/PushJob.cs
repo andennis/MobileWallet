@@ -9,11 +9,11 @@ namespace Pass.Notification.Service.Quartz
        
         public void Execute(IJobExecutionContext context)
         {
-            Logger.Info("Application executing");
+            Logger.Info("Push notifications executing");
 
             this.PushLogicLayer.Run();
 
-            Logger.Info("Application executed");
+            Logger.Info("Push notifications executed");
         }
     }
 }
