@@ -69,22 +69,13 @@ namespace Pass.Notification.BL.Utils
             ThreadContext.Properties["ThreadId"] = Thread.CurrentThread.ManagedThreadId;
         }
 
-        private static ILog InitLogger(int? siteId = null)
-        {
-            string siteIdStr = siteId.HasValue ? siteId.ToString() : string.Empty;
-            string repositoryName = siteIdStr + "Repository";
-            ILoggerRepository loggerRepository = LogManager.GetAllRepositories()
-                .FirstOrDefault(r => r.Name == repositoryName)
-                                                 ?? LogManager.CreateRepository(repositoryName);
+        private static ILog InitLogger()
+        {           
+            const string repositoryName = "Repository";
+            ILoggerRepository loggerRepository = LogManager.GetAllRepositories().FirstOrDefault(r => r.Name == repositoryName) ?? LogManager.CreateRepository(repositoryName);
 
             log4net.Config.XmlConfigurator.Configure(loggerRepository);
             ILog log = LogManager.GetLogger(repositoryName, "Logger");
-            IAppender appender = loggerRepository.GetAppenders().ToList().FirstOrDefault(a => a.Name.Contains("Console"));
-            if (appender != null)
-            {
-                appender.Close();
-            }
-
             return log;
         }
 
