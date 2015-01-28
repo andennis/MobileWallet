@@ -5,6 +5,7 @@
 body {
     padding-top: 0;
     padding-bottom: 0;
+    font-family: "Segoe UI", Helvetica, Arial, Sans-Serif;
 }
 
 ::selection {
@@ -70,20 +71,39 @@ input[type="checkbox"].input-validation-error {
 
 .passlightLogoBlock {
     position: relative;
-    padding-right: 28px;
 }
 
 .passlightLogoImg {
     margin-top: 8px;
-    width: 175px;
+    width: 265px;
 }
 
 /*main menu*/
+.mainMenuBlock {
+    background-color: #2d586f;
+    height: 70px;
+    opacity: 0.9;
+}
+
+.mainMenu {
+    /*margin-right: auto;
+    margin-left: auto;
+    width: 100%;*/
+    -moz-min-width: 640px;
+    -ms-min-width: 640px;
+    -o-min-width: 640px;
+    -webkit-min-width: 640px;
+    min-width: 640px;
+    /*max-width: 1145px;*/
+    text-align: left;
+    min-height: 62px;
+}
+
 .menu {
     margin: 0 auto;
     padding: 0;
-    font-family: "Segoe UI", Helvetica, Arial, Sans-Serif;
-    font-size: 1.8rem;
+    /*font-family: "Segoe UI", Helvetica, Arial, Sans-Serif;*/
+    font-size: 1.9rem;
     position: relative;
     float: left;
     z-index: 1000;
@@ -123,12 +143,12 @@ input[type="checkbox"].input-validation-error {
 .menu ul li a {
     display: block;
     text-decoration: none;
-    color: #D8D7D7;
+    color: white;
     padding: 5px 10px 5px 10px;
 }
 
     .menu ul li a.active {
-        font-weight: bold;
+        color: #02d5ac;
     }
 
 /*.menu ul li a:hover {
@@ -143,25 +163,40 @@ input[type="checkbox"].input-validation-error {
                 background: #fadd1e;
     }*/
 
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-    color: white;
-    text-decoration: none;
-    background-color: #D8D7D7;
-    -webkit-transition: background 0.3s ease,color 0.2s ease;
-    -moz-transition: background 0.3s ease,color 0.2s ease;
-    -ms-transition: background 0.3s ease,color 0.2s ease;
-    -o-transition: background 0.3s ease,color 0.2s ease;
-    transition: background 0.3s ease,color 0.2s ease;
+.navbar-default {
+    background-color: #2d586f;
+    border-color: #2d586f;
 }
 
-.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-    background-color: #2fe2bf;
-    color: white;
-}
+    .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+        color: #02d5ac;
+        text-decoration: none;
+        /*background-color: #2d586f;*/
+        -webkit-transition: color 0.2s ease;
+        -moz-transition: color 0.2s ease;
+        -ms-transition: color 0.2s ease;
+        -o-transition: color 0.2s ease;
+        transition: color 0.2s ease;
+    }
 
-.navbar-default .navbar-nav > li > a {
-    color: #737C86;
-}
+    .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+        color: #02d5ac;
+        background-color: #2d586f;
+    }
+
+    .navbar-default .navbar-nav > li > a {
+        color: white;
+    }
+
+    .navbar-default .navbar-nav > .dropdown > a .caret {
+        border-top-color: white;
+        border-bottom-color: white;
+    }
+
+    .navbar-default .navbar-nav > .dropdown > a:hover .caret, .navbar-default .navbar-nav > .dropdown > a:focus .caret {
+        border-top-color: #02d5ac;
+        border-bottom-color: #02d5ac;
+    }
 
 .dropdown-menu {
     -webkit-box-shadow: none;
@@ -184,6 +219,7 @@ input[type="checkbox"].input-validation-error {
             -o-transition: background 0.3s ease,color 0.2s ease;
             transition: background 0.3s ease,color 0.2s ease;
         }
+
 
 /*.menu li:hover ul {
             display: block;
@@ -217,8 +253,6 @@ li:hover a {
     color: white;
     padding: 0 4px;
     font-size: 1.8rem;
-    font-family: "Segoe UI", Helvetica, Arial, Sans-Serif;
-    margin-left: 280px;
 }
 
     .logInButton:hover {
@@ -241,7 +275,7 @@ li:hover a {
     margin-left: auto;
     margin-right: auto;
     color: #95a0bb;
-    font-family: "Segoe UI", Helvetica, Arial, Sans-Serif;
+    /*font-family: "Segoe UI", Helvetica, Arial, Sans-Serif;*/
     font-size: 1.6rem;
     text-align: left;
 }

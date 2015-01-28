@@ -9,17 +9,14 @@
 
 
 
-    <style>
-        
-    </style>
 </head>
 <body>
-    <div>
-        <div style="margin-right: auto; margin-left: auto; width: 100%; -moz-min-width: 640px; -ms-min-width: 640px; -o-min-width: 640px; -webkit-min-width: 640px; min-width: 640px; max-width: 1000px; text-align: left; min-height: 62px;">
-            <nav class="navbar navbar-default" role="navigation">
-                <div class="navbar-header passlightLogoBlock">
+    <div class="mainMenuBlock col-md-12">
+        <div class="mainMenu  col-md-8 col-md-offset-2">
+            <nav class="navbar navbar-default col-md-12" role="navigation">
+                <div class="navbar-header passlightLogoBlock col-md-4">
                     <a href="~/Home/MainPage">
-                        <img src="/Images/MainPage/PassLightLogo.png" class="passlightLogoImg">
+                        <img src="/Images/MainPage/passLightWhiteLogo.png" class="passlightLogoImg">
                     </a>
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                         <span class="sr-only">Toggle navigation</span>
@@ -28,9 +25,9 @@
                         <span class="icon-bar"></span>
                     </button>
                 </div>
-                <div class="menu navbar-collapse navbar-ex1-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        @*<li><a href="~/Home/MainPage" class="active">Главная</a></li>*@
+                <div class="menu navbar-collapse navbar-ex1-collapse collapse col-md-8">
+                    <ul class="nav navbar-nav navbar-right col-md-12">
+                        <li><a href="~/Home/MainPage" class="active">Главная</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 Стратегии
@@ -58,12 +55,12 @@
                         <li>@Html.ActionLink("Контакты", "Contact", "Home")</li>
                         <li><a class="logInButton" href="~/Account/Login" target="_blank">Войти</a></li>
                     </ul>
-                    
+
                 </div>
-                
+
             </nav>
 
-            
+
         </div>
     </div>
 
