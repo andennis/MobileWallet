@@ -1,11 +1,18 @@
-﻿html {
-    font-size: 9.4px;
+﻿@font-face {
+	font-family: HelveticaNeueCyr-Light;
+	src: url('../fonts/HelveticaNeueCyr-Light.otf') format('opentype');
 }
+
+html {
+    font-size: 9.4px;
+    }
 
 body {
     padding-top: 0;
     padding-bottom: 0;
-    font-family: "Segoe UI", Helvetica, Arial, Sans-Serif;
+    font-family:HelveticaNeueCyr-Light;
+    color: #2d586f;
+    font-size: 1.7rem;
 }
 
 ::selection {

@@ -14,73 +14,65 @@
 });
 
 $(function () {
-    $('.advTableTd').hover(
+    $('.advantageText').hover(
         function () {
             switch ($(this).attr('id')) {
-                case 'advTableTd1':
+                case 'advantageText1':
                     {
                         $('#advTableTd2, #advTableTd3, #advTableTd4').css('opacity', '0.4');
                         $('#advantageImg2, #advantageImg3').css('display', 'none');
                         $('#advantageImg1').css('display', 'block');
-                        $('#plusIcon1').css('display', 'none');
-                        $('#bluePlusIcon1').css('display', 'block');
+                        $('#advNumberCircle1').css('background-color', 'white').css('color', '#2d586f');
                         break;
                     }
-                case 'advTableTd2':
+                case 'advantageText2':
                     {
                         $('#advTableTd1, #advTableTd3, #advTableTd4').css('opacity', '0.4');
                         $('#advantageImg1, #advantageImg3').css('display', 'none');
                         $('#advantageImg2').css('display', 'block');
-                        $('#plusIcon2').css('display', 'none');
-                        $('#bluePlusIcon2').css('display', 'block');
+                        $('#advNumberCircle2').css('background-color', 'white').css('color', '#2d586f');
                         break;
                     }
-                case 'advTableTd3':
+                case 'advantageText3':
                     {
                         $('#advTableTd1, #advTableTd2, #advTableTd4').css('opacity', '0.4');
                         $('#advantageImg1, #advantageImg2').css('display', 'none');
                         $('#advantageImg3').css('display', 'block');
-                        $('#plusIcon3').css('display', 'none');
-                        $('#bluePlusIcon3').css('display', 'block');
+                        $('#advNumberCircle3').css('background-color', 'white').css('color', '#2d586f');
                         break;
                     }
-                case 'advTableTd4':
+                case 'advantageText4':
                     {
                         $('#advTableTd1, #advTableTd2, #advTableTd3').css('opacity', '0.4');
-                        $('#plusIcon4').css('display', 'none');
-                        $('#bluePlusIcon4').css('display', 'block');
+                        $('#advNumberCircle4').css('background-color', 'white').css('color', '#2d586f');
                         break;
                     }
             }
         },
         function () {
             switch ($(this).attr('id')) {
-                case 'advTableTd1':
+                case 'advantageText1':
                     {
                         $('#advTableTd2, #advTableTd3, #advTableTd4').css('opacity', '1');
-                        $('#plusIcon1').css('display', 'block');
-                        $('#bluePlusIcon1').css('display', 'none');
+                        $('#advNumberCircle1').css('background-color', '#2d586f').css('color', 'white');
                         break;
                     }
-                case 'advTableTd2':
+                case 'advantageText2':
                     {
                         $('#advTableTd1, #advTableTd3, #advTableTd4').css('opacity', '1');
-                        $('#plusIcon2').css('display', 'block');
-                        $('#bluePlusIcon2').css('display', 'none');
+                        $('#advNumberCircle2').css('background-color', '#2d586f').css('color', 'white');
                         break;
                     }
-                case 'advTableTd3':
+                case 'advantageText3':
                     {
                         $('#advTableTd1, #advTableTd2, #advTableTd4').css('opacity', '1');
-                        $('#plusIcon3').css('display', 'block');
-                        $('#bluePlusIcon3').css('display', 'none');
+                        $('#advNumberCircle3').css('background-color', '#2d586f').css('color', 'white');
                         break;
                     }
-                case 'advTableTd4':
+                case 'advantageText4':
                     {
                         $('#advTableTd1, #advTableTd2, #advTableTd3').css('opacity', '1');
-                        $('#plusIcon4').css('display', 'block');
-                        $('#bluePlusIcon4').css('display', 'none');
+                        $('#advNumberCircle4').css('background-color', '#2d586f').css('color', 'white');
                         break;
                     }
             }
