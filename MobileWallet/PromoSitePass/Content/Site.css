@@ -63,14 +63,6 @@ input[type="checkbox"].input-validation-error {
     display: none;
 }
 
-
-
-.container {
-    max-width: 100%;
-    padding-right: 0px;
-    padding-left: 0px;
-}
-
 .body-content {
     padding-right: 0px;
     padding-left: 0px;
@@ -83,6 +75,7 @@ input[type="checkbox"].input-validation-error {
 .passlightLogoImg {
     margin-top: 8px;
     width: 265px;
+    height: 10px;
 }
 
 /*main menu*/
