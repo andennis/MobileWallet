@@ -1,18 +1,48 @@
 ﻿@font-face {
-	font-family: HelveticaNeueCyr-Light;
-	src: url('../fonts/HelveticaNeueCyr-Light.otf') format('opentype');
+    font-family: HelveticaNeueCyr-Light;
+    src: url('../fonts/HelveticaNeueCyr-Light.otf') format('opentype');
 }
 
 html {
     font-size: 9.4px;
-    }
+}
 
 body {
     padding-top: 0;
     padding-bottom: 0;
-    font-family:HelveticaNeueCyr-Light;
+    font-family: HelveticaNeueCyr-Light !important;
     color: #2d586f;
     font-size: 1.7rem;
+}
+
+h1 {
+    font-size: 4rem;
+    padding: 10px 0;
+    margin: 0 0 10px 0;
+    font-family: HelveticaNeueCyr-Light;
+    text-align: center;
+}
+
+h2 {
+    padding: 10px 0;
+    margin: 0 0 10px 0;
+    font-family: HelveticaNeueCyr-Light;
+    text-align: center;
+}
+
+h3 {
+    padding: 3px 0;
+    margin: 0 0;
+    font-family: HelveticaNeueCyr-Light;
+    text-align: center;
+    font-size: 2.4rem;
+}
+
+h4 {
+    padding: 3px 0;
+    margin: 0 0;
+    font-family: HelveticaNeueCyr-Light;
+    text-align: center;
 }
 
 ::selection {
@@ -22,13 +52,6 @@ body {
 .col-md-12 {
     padding-left: 0;
     padding-right: 0;
-}
-
-
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-right: 15px;
-    padding-left: 15px;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -69,45 +92,36 @@ input[type="checkbox"].input-validation-error {
 }
 
 .passlightLogoBlock {
-    position: relative;
+    height: 70px;
 }
 
 .passlightLogoImg {
-    margin-top: 8px;
     width: 265px;
-    height: 10px;
 }
 
 /*main menu*/
 .mainMenuBlock {
     background-color: #2d586f;
-    height: 70px;
+    -ms-opacity: 0.9;
     opacity: 0.9;
 }
 
-.mainMenu {
-    /*margin-right: auto;
-    margin-left: auto;
-    width: 100%;*/
-    -moz-min-width: 640px;
-    -ms-min-width: 640px;
-    -o-min-width: 640px;
-    -webkit-min-width: 640px;
-    min-width: 640px;
-    /*max-width: 1145px;*/
-    text-align: left;
-    min-height: 62px;
+.menu {
+    font-size: 1.9rem;
+    padding-top: 20px;
 }
 
-.menu {
-    margin: 0 auto;
-    padding: 0;
-    /*font-family: "Segoe UI", Helvetica, Arial, Sans-Serif;*/
-    font-size: 1.9rem;
-    position: relative;
+.menuPanel1 {
     float: left;
-    z-index: 1000;
-    top: 19px;
+    margin-right: 80px;
+}
+
+    .menuPanel1 .leaf {
+        padding-right: 10px;
+    }
+
+.menuPanel2 {
+    float: left;
 }
 
 .menuItem {
@@ -115,29 +129,6 @@ input[type="checkbox"].input-validation-error {
     padding: 0 0;
     border-bottom: 1px solid #444;
     width: 100%;
-}
-
-.menu ul {
-    border: 0;
-    float: left;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    text-align: left;
-}
-
-    .menu ul li {
-        display: block;
-        position: relative;
-        float: left;
-        border: 0;
-        float: left;
-        margin: 0;
-        padding: 0 5px 0 0;
-    }
-
-.menu li ul {
-    display: none;
 }
 
 .menu ul li a {
@@ -151,27 +142,15 @@ input[type="checkbox"].input-validation-error {
         color: #02d5ac;
     }
 
-/*.menu ul li a:hover {
-        color: white;
-        text-decoration: none;
-        background-color: #ffd800;
-        background-color: #02d5ac;
-    }*/
-
-/*.menu ul li a.active:hover {
-        color: #006d8c;
-                background: #fadd1e;
-    }*/
-
 .navbar-default {
     background-color: #2d586f;
     border-color: #2d586f;
 }
 
-    .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
         color: #02d5ac;
         text-decoration: none;
-        /*background-color: #2d586f;*/
+        background-color: #2d586f;
         -webkit-transition: color 0.2s ease;
         -moz-transition: color 0.2s ease;
         -ms-transition: color 0.2s ease;
@@ -184,19 +163,36 @@ input[type="checkbox"].input-validation-error {
         background-color: #2d586f;
     }
 
+    .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+        color: #02d5ac;
+        background-color: #2d586f;
+    }
+
     .navbar-default .navbar-nav > li > a {
         color: white;
     }
 
-    .navbar-default .navbar-nav > .dropdown > a .caret {
-        border-top-color: white;
-        border-bottom-color: white;
+.nav .caret {
+    border-top-color: white;
+    border-bottom-color: white;
+}
+
+.nav a:hover .caret, .navbar-default .navbar-nav > .open > a .caret, .navbar-default .navbar-nav > .open > a:hover .caret, .navbar-default .navbar-nav > .open > a:focus .caret {
+    border-top-color: #02d5ac;
+    border-bottom-color: #02d5ac;
+}
+
+.navbar-toggle {
+    border-color: white;
+}
+
+    .navbar-toggle .icon-bar {
+        background-color: white;
     }
 
-    .navbar-default .navbar-nav > .dropdown > a:hover .caret, .navbar-default .navbar-nav > .dropdown > a:focus .caret {
-        border-top-color: #02d5ac;
-        border-bottom-color: #02d5ac;
-    }
+.navbar-btn {
+    margin-bottom: 0;
+}
 
 .dropdown-menu {
     -webkit-box-shadow: none;
@@ -220,51 +216,29 @@ input[type="checkbox"].input-validation-error {
             transition: background 0.3s ease,color 0.2s ease;
         }
 
-
-/*.menu li:hover ul {
-            display: block;
-            position: absolute;
-        }*/
-
-/*.menu li:hover li {
-            float: none;
-            border-bottom: 1px solid #444;
-            padding: 0 0 0 0;
-        }*/
-
-li:hover a {
-    /*background: #5d5d5d;*/
-}
-
-/*.menu li:hover li a {
-            background: rgba(0,0,0,0.8);
-            color: white;
-        }*/
-
-/*.menu li:hover li a:hover {
-                background-color: black;
-                color: #ffd800;
-                color: #02d5ac;
-            }*/
-
 .logInButton {
-    background-color: #BCC4C7;
-    float: right;
-    color: white;
-    padding: 0 4px;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
 }
 
-    .logInButton:hover {
-        cursor: pointer;
-        background-color: #02d5ac !important;
+.registrationButton a {
+    font-size: 1.5rem;
+    background-color: #02d5ac;
+    padding: 3px 9px !important;
+    color: white;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    margin-top: 2px;
+}
+
+    .registrationButton a:hover {
+        background-color: #fd678a !important;
         color: white !important;
-        text-decoration: none;
-        -webkit-transition: background 0.3s ease,color 0.2s ease;
-        -moz-transition: background 0.3s ease,color 0.2s ease;
-        -ms-transition: background 0.3s ease,color 0.2s ease;
-        -o-transition: background 0.3s ease,color 0.2s ease;
-        transition: background 0.3s ease,color 0.2s ease;
+        text-decoration: none !important;
+        -webkit-transition: background-color 0.5s ease !important;
+        -moz-transition: background-color 0.5s ease !important;
+        -ms-transition: background-color 0.5s ease !important;
+        -o-transition: background-color 0.5s ease !important;
+        transition: background-color 0.5s ease !important;
     }
 
 .footerIcon {

@@ -24,9 +24,9 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container blockContent">
+    <h1>Как работает наша система?</h1>
     <div class="row">
-        <h2 class="pHeader">Как работает наша система?</h2>
         <div class="col-lg-4 col-md-4 col-xs-12">
             <div class="howItWorkIcon"></div>
             <div class="howItWorkNumbering">
@@ -61,52 +61,9 @@
     </div>
 </div>
 
-
-
-
-
-
-
-
-
-@*<div class="blockContent howItWorkBlock">
-    <p class="pHeader">Как работает наша система?</p>
-    <div class="col-md-4">
-        <div class="howItWorkIcon col-md-12"></div>
-        <div class="howItWorkNumbering col-md-12">
-            <div class="howItWorkNumberCircle">1</div>
-        </div>
-        <div class="col-md-12">
-            Вы распространяете Вашим клиентам электронные версии карт с помощью уникальной ссылки удобным для вас способом
-            (через e-mail, SMS, социальные сети или разместив QR-код на своём сайте, постере в магазине).
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="howItWorkIcon col-md-12"></div>
-        <div class="howItWorkNumbering col-md-12">
-            <div class="howItWorkNumberCircle">2</div>
-        </div>
-        <div class="col-md-12">
-            Клиент добавляет электронную карту к себе в <span class="appLink">Passbook</span> или <span class="appLink">PassWallet</span> (путем считывания QR-кода или пройдя по ссылке).
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="howItWorkIcon col-md-12"></div>
-        <div class="howItWorkNumbering col-md-12">
-            <div class="howItWorkNumberCircle">3</div>
-        </div>
-        <div class="col-md-12">
-            После этого, чтобы получить скидку или пройти
-            на мероприятие, клиент просто предъявляет
-            свой телефон с открытой картой, штрих-код на
-            которой может считывается другим смартфоном.
-        </div>
-    </div>
-</div>*@
-
 <div class="advantageBlock">
-    <div class="blockContent">
-        <p class="pHeader">Преимущества для Вашего бизнеса</p>
+    <div class="container blockContent">
+        <h1>Преимущества для Вашего бизнеса</h1>
         <table id="advantageTable">
             <tbody>
                 <tr>
@@ -118,13 +75,13 @@
                             и готовы к использованию.
                         </div>
                     </td>
-                    <td class="arrowTd"></td>
+                    <td id="arrowTd1" class="arrowTd"></td>
                     <td rowspan="2">
                         <img id="advantageImg1" class="advantageImg" src="~/Images/MainPage/blackIphone1.png" />
                         <img id="advantageImg2" class="advantageImg displayNone" src="~/Images/MainPage/blackIphone2.png" />
                         <img id="advantageImg3" class="advantageImg displayNone" src="~/Images/MainPage/blackIphone3.png" />
                     </td>
-                    <td class="arrowTd"></td>
+                    <td id="arrowTd2" class="arrowTd"></td>
                     <td id="advTableTd2" class="advTableTd">
                         <div id="advantageText2" class="advantageText advRightBlock">
                             <div id="advNumberCircle2" class="advNumberCircle">2</div>
@@ -144,8 +101,8 @@
                             заработать на сезонных предложениях и новых схемах лояльности.
                         </div>
                     </td>
-                    <td class="arrowTd"></td>
-                    <td class="arrowTd"></td>
+                    <td id="arrowTd3" class="arrowTd"></td>
+                    <td id="arrowTd4" class="arrowTd"></td>
                     <td id="advTableTd4" class="advTableTd">
                         <div id="advantageText4" class="advantageText advRightBlock">
                             <div id="advNumberCircle4" class="advNumberCircle">4</div>
@@ -161,86 +118,68 @@
     </div>
 </div>
 
+<div class="container blockContent">
+    <h1>Легко создавайте мобильные карты (пассы)</h1>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-xs-12">
+            <img src="~/Images/MainPage/macbookDesigner.png" class="mackbookDesignerImg" />
+        </div>
+        <div class="col-lg-6 col-md-6 col-xs-12 passDesignerDescription">
+            <p>
+                Онлайн дизайнер пассов поможет Вам создать мобильную карту и увидеть
+                как ее содержимое выглядит в реальном времени
+            </p>
+            <br />
+            <p class="tickText"><img class="tickIcon" src="~/Images/icons/tick%201.png" /> Выберите шаблон (бизнес стратегию)</p>
+            <p class="tickText"><img class="tickIcon" src="~/Images/icons/tick%201.png" /> Загрузите свои картинки</p>
+            <p class="tickText"><img class="tickIcon" src="~/Images/icons/tick%201.png" /> Введите свое содержимое</p>
+            <p class="tickText"><img class="tickIcon" src="~/Images/icons/tick%201.png" /> Отправте на смартфоны клиентов</p>
+            <br />
+            <a class="bigButton" href="~/PassDesigner/EmptyCardDesigner" target="_blank">Cоздай карту</a>
+        </div>
+    </div>
+</div>
 
-<div class="mainBlock passDesignerPromoBlock">
-    <div class="blockContent passDesignerPromoContent">
-        <p class="pHeader pHeaderPassDesigner">Легко создавайте мобильные карты (пассы)</p>
-        <table id="passDesignerTable" class="passDesignerTable">
-            <tr>
-                <td class="passDesignerTdImg" rowspan="3">
-                    <img src="~/Images/MainPage/macbookDesigner.png" class="mackbookDesignerImg" />
-                </td>
-                <td class="passDesignerTd">
-                    <p class="passDesignerDescription">
-                        Онлайн дизайнер пассов поможет Вам создать мобильную карту и увидеть
-                        как ее содержимое выглядит в реальном времени
+<div class="usedAppBlock">
+    <div class="container blockContent">
+        <h1>Используемые приложения</h1>
+        <br />
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="appBlock">
+                    <h2 class="appHeader">
+                        для iPhone
+                        <img class="OSLogo" src="~/Images/MainPage/appleLogo.png" /> 
+                    </h2>
+                    <img class="passbookLogoImg" id="passbookLogoImg" src="/Images/MainPage/passbookLogo.png" />
+                    <p>
+                        <span>Passbook</span> — это приложение для
+                        iPhone, которое позволяет хранить в одном месте
+                        электронные дисконтныекарты, купоны и билеты (пассы).<br />
+                        <span>
+                            Passbook есть в каждом iPhone с момента покупки.
+                        </span>
                     </p>
-                </td>
-            </tr>
-            <tr>
-                <td class="passDesignerTd passDesignerInstruction">
-                    <p class="tickText"><img class="tickIcon" src="~/Images/icons/tick%201.png" /> Выберите шаблон (бизнес стратегию)</p>
-                    <p class="tickText"><img class="tickIcon" src="~/Images/icons/tick%201.png" /> Загрузите свои картинки</p>
-                    <p class="tickText"><img class="tickIcon" src="~/Images/icons/tick%201.png" /> Введите свое содержимое</p>
-                    <p class="tickText"><img class="tickIcon" src="~/Images/icons/tick%201.png" /> Отправте на смартфоны клиентов</p>
-                </td>
-            </tr>
-            <tr class="bigButtonTr">
-                <td class="passDesignerTd bigButtonTd">
-                    <a class="bigButton" href="~/PassDesigner/EmptyCardDesigner" target="_blank">Cоздать мобильную карту</a>
-                </td>
-            </tr>
-        </table>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="appBlock">
+                    <h2 class="appHeader">
+                        для android
+                        <img class="OSLogo" src="~/Images/MainPage/androidLogo.png" />
+                    </h2>
+                    <img class="passwalletLogoImg" id="passwalletLogoImg" src="/Images/MainPage/passwalletLogo.png" />
+                    <p>
+                        <span>PassWallet</span> — это приложение для
+                        платформ Android и Windows Phone, которое позволяет
+                        хранить в одном месте электронные дисконтные
+                        карты, купоны и билеты (пассы).
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
-<div class="applicationsBlock">
-    <div class="mainBlock appLogoBlock" id="divUsedApp">
-        <p class="pHeader pHeaderAppLogo">Используемые приложения</p>
-        <table id="usedApp">
-            <tbody>
-                <tr>
-                    <td class="appLogoPromptTd" rowspan="2">
-                        <div id="passbookPrompt">
-                            <span>Passbook</span> — это приложение для
-                            iPhone, которое позволяет
-                            хранить в одном месте
-                            электронные дисконтные
-                            карты, купоны и билеты (пассы).<br />
-                            <span>
-                                Passbook есть в каждом
-                                iPhone с момента покупки.
-                            </span>
-                        </div>
-                    </td>
-                    <td id="passbookLogoImgTd" class="appLogoTd">
-                        <img class="passbookLogoImg" id="passbookLogoImg" src="/Images/MainPage/passbookLogo.png" />
-                        <br />
-                        <p class="appLogoName">Passbook</p>
-                    </td>
-                    <td id="passwalletLogoImgTd" class="appLogoTd">
-                        <img class="passwalletLogoImg" id="passwalletLogoImg" src="/Images/MainPage/passwalletLogo.png" />
-                        <br />
-                        <p class="appLogoName">PassWallet</p>
-                    </td>
-                    <td class="appLogoPromptTd" rowspan="2">
-                        <div id="passwalletPrompt">
-                            <span>PassWallet</span> — это приложение для
-                            платформ Android,
-                            Windows Phone и Blackberry, которое позволяет
-                            хранить в одном месте
-                            электронные дисконтные
-                            карты, купоны и билеты (пассы).
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-
-
 
 <div class="upArrowBlock">
     <?xml version="1.0" encoding="iso-8859-1" ?>
@@ -256,35 +195,34 @@
 
     </svg>
 </div>
-<div class="mainBlock footerContact">
-    <div class="blockContent footerContactBlock">
-        <p>
-            Хотите оказаться в смартфонах своих клиентов
-            <br />
-            или узнать больше информации?
-            <br />
-            Свяжитесь с нами!
-        </p>
+
+<div class="footerContactBlock">
+    <div class="container blockContent">
+        <h3>Хотите оказаться в смартфонах своих клиентов</h3>
+        <h3>или узнать больше информации?</h3>
+        <h3>Свяжитесь с нами!</h3>
         <br />
-        <div class="col-md-6">
-            <div class="col-md-12 footerContactLabel">Email</div>
-            <div class="col-md-12 footerContactValue">
-                <a href="mailto:passlight@gmail.com" id="emailText" class="contactText">passlight@gmail.com</a>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <h4>
+                    E-mail:
+                    <img class="mailIcon" src="~/Images/MainPage/mailIcon.png" />
+                </h4>
+                <h2><a href="mailto:passlight@gmail.com" id="emailText" class="footerContactValue">info@passlight.com</a></h2>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <h4>
+                    Телефон:
+                    <img class="phonesIcon" src="~/Images/MainPage/pnonesIcon.png" />
+                </h4>
+                <h2><a href="tel:+375447242246" class="footerContactValue">+37544 724-22-46</a></h2>
+
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="col-md-12 footerContactLabel">Телефон</div>
-            <div class="col-md-12 footerContactValue">
-                <a href="tel:+375447242246">+37544 724-22-46</a>
-            </div>
-        </div>
-        <br />
-        <br />
-        <br />
         <br />
         <p class="footer">2015 Passlight</p>
     </div>
-
 </div>
+
 
 
