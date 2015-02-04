@@ -25,9 +25,9 @@
     -webkit-background-size: cover;
     background-size: cover;
     background-position: center left;
-    -moz-background-position-x: 0%;
-    -o-background-position-x: 0%;
-    background-position-x: 0%;
+    -moz-background-position-x: 50%;
+    -o-background-position-x: 50%;
+    background-position-x: 50%;
     -moz-background-position-y: 50%;
     -o-background-position-y: 50%;
     background-position-y: 50%;
@@ -103,9 +103,9 @@
     -webkit-background-size: cover;
     background-size: cover;
     background-position: center left;
-    -moz-background-position-x: 0%;
-    -o-background-position-x: 0%;
-    background-position-x: 0%;
+    -moz-background-position-x: 50%;
+    -o-background-position-x: 50%;
+    background-position-x: 50%;
     -moz-background-position-y: 50%;
     -o-background-position-y: 50%;
     background-position-y: 50%;

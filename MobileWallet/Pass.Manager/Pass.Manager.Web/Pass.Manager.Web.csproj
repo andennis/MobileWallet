@@ -443,6 +443,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="fonts\HelveticaNeueCyr-Light.otf" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Images\createCard\barcode\aztec.png" />
     <Content Include="Images\createCard\barcode\aztecPass.png" />
@@ -472,6 +473,7 @@
     <Content Include="Images\logo&amp;strip\cleverLogo.png" />
     <Content Include="Images\logo&amp;strip\storeStrip7.jpg" />
     <Content Include="Images\logo&amp;strip\Tulips.jpg" />
+    <Content Include="Images\passLightWhiteLogo.png" />
     <Content Include="Scripts\Action.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

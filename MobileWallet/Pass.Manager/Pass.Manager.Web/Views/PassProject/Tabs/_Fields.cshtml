@@ -1,6 +1,6 @@
 ﻿@model int
 
-@(Html.ActionLinkExt<PassProjectFieldController>(a => a.CreateField(0), "Add New", new { passProjectId = Model }, new { @class = "btn btn-default", data_popup_window = "wndPassProjectField" }))
+@(Html.ActionLinkExt<PassProjectFieldController>(a => a.CreateField(0), "Add New", new { passProjectId = Model }, new { @class = "btn btn-default btn-primary", data_popup_window = "wndPassProjectField" }))
 @(Html.PopupDialog()
               .Name("wndPassProjectField")
               .Width(600)

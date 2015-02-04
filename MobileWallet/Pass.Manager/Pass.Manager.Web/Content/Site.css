@@ -1,7 +1,13 @@
-﻿body {
-    padding-top: 150px;
+﻿@font-face {
+    font-family: HelveticaNeueCyr-Light;
+    src: url('../fonts/HelveticaNeueCyr-Light.otf') format('opentype');
+}
+
+body {
+    /*padding-top: 150px;*/
     padding-bottom: 20px;
-    font-family: 'WOL_Reg','Segoe UI',Tahoma,Helvetica,sans-serif;
+    /*font-family: 'WOL_Reg','Segoe UI',Tahoma,Helvetica,sans-serif;*/
+    font-family: HelveticaNeueCyr-Light !important;
     font-size: 15px;
 }
 
@@ -10,12 +16,15 @@ a {
 }
 
     a:hover {
-        color: #2fe2bf;
+        color: #02d5ac;
     }
 
+h1 {
+    text-align: center;
+}
+
 h3 {
-    color: #384A5C;
-    /*font-weight: bold;*/
+    text-align: center;
     margin-bottom: 35px;
     font-size: 32px;
 }
@@ -136,24 +145,29 @@ textarea {
 }
 
 .btn-default {
-    background-color: #BCC4C7;
+    /*background-color: #BCC4C7;*/
+    background-color: #AABBC4;
     color: white;
     border: none;
+    -ms-border-radius: 7px;
+    border-radius: 7px;
     padding: 8px 22px;
-    -webkit-transition: background 0.2s ease,color 0.2s ease;
-    -moz-transition: background 0.2s ease,color 0.2s ease;
-    -ms-transition: background 0.2s ease,color 0.2s ease;
-    -o-transition: background 0.2s ease,color 0.2s ease;
-    transition: background 0.2s ease,color 0.2s ease;
+    -webkit-transition: background-color 0.2s ease,color 0.2s ease;
+    -moz-transition: background-color 0.2s ease,color 0.2s ease;
+    -ms-transition: background-color 0.2s ease,color 0.2s ease;
+    -o-transition: background-color 0.2s ease,color 0.2s ease;
+    transition: background-color 0.2s ease,color 0.2s ease;
     margin: 7px 0;
 }
 
     .btn-default:hover {
-        background-color: #D8D7D7;
+        /*background-color: #D8D7D7;*/
+        background-color: #D4DCE1;
+        color: #2d586f;
     }
 
 .btn-primary {
-    background-color: #1abc9c;
+    background-color: #02d5ac;
     -moz-min-width: 85px;
     -ms-min-width: 85px;
     -o-min-width: 85px;
@@ -161,9 +175,10 @@ textarea {
     min-width: 85px;
 }
 
-    .btn-primary:hover,.btn-primary:focus,.btn-primary:active {
-        background-color: #2fe2bf;
-        border-color: #2fe2bf;
+    .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+        background-color: #fd678a;
+        border-color: #fd678a;
+        color: white;
     }
 
 .form-control {
@@ -187,8 +202,11 @@ textarea {
     }
 
 .well {
-    color: #737C86;
-    background-color: #eceff1;
+    /*color: #737C86;*/
+    color: #2d586f;
+    /*background-color: #eceff1;*/
+    background-color: #F4F6F7;
+    margin-top: 60px;
 }
 
 .k-tabstrip {
@@ -196,7 +214,8 @@ textarea {
 }
 
 .dataTables_length, .sorting_disabled {
-    color: #384A5C !important;
+    /*color: #384A5C !important;*/
+    color: #2d586f !important;
 }
 
 .table.dataTable thead th, .table.dataTable tbody td {
@@ -204,14 +223,14 @@ textarea {
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-    background: #BCC4C7;
+    background: #AABBC4;
     color: white !important;
     border: none;
     padding: 0.3em 0.5em;
 }
 
     .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
-        background: #2fe2bf;
+        background: #02d5ac;
         color: white !important;
         border: none;
         -webkit-transition: background 0.2s ease,color 0.2s ease;
@@ -236,16 +255,16 @@ textarea {
         transition: background 0.2s ease,color 0.2s ease;
     }
 
-    .navbar {
-        max-width: 1140px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+/*.navbar {
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-    .navbar-default .navbar-nav > li > a {
-        font-size: 19px;
-        color: #384A5C;
-    }
+.navbar-default .navbar-nav > li > a {
+    font-size: 19px;
+    color: #384A5C;
+}
 
     .navbar-default .navbar-nav > li > a:hover {
         background: #2fe2bf;
@@ -255,10 +274,90 @@ textarea {
         -ms-transition: background 0.2s ease,color 0.2s ease;
         -o-transition: background 0.2s ease,color 0.2s ease;
         transition: background 0.2s ease,color 0.2s ease;
-    }
-/*
-.form-control.k-widget
-{
-    padding: 0;
+    }*/
+
+.navbar {
+    margin-bottom: 0;
 }
-*/
+
+.navbar-btn {
+    margin-bottom: 0;
+}
+
+.navbar-default {
+    background-color: transparent;
+    border: none;
+}
+
+    .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+        background-color: #2d586f;
+        color: #02d5ac;
+        -webkit-transition: color 0.2s ease;
+        -moz-transition: color 0.2s ease;
+        -ms-transition: color 0.2s ease;
+        -o-transition: color 0.2s ease;
+        transition: color 0.2s ease;
+    }
+
+    .navbar-default .navbar-nav > li > a {
+        color: white;
+    }
+
+        .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+            color: #02d5ac;
+        }
+
+.mainMenuBlock {
+    background-color: #2d586f;
+    -ms-opacity: 0.9;
+    opacity: 0.9;
+}
+
+.passlightLogoBlock {
+    height: 70px;
+    margin-right: 80px !important;
+}
+
+.menu {
+    font-size: 1.9rem;
+    padding-top: 20px;
+}
+
+    .menu ul li a {
+        display: block;
+        text-decoration: none;
+        padding: 5px 10px 5px 10px;
+    }
+
+.navbar-toggle {
+    border-color: white;
+}
+
+    .navbar-toggle .icon-bar {
+        background-color: white;
+    }
+
+.logInButton {
+    font-size: 1.5rem;
+}
+
+.registrationButton a {
+    font-size: 1.5rem;
+    background-color: #02d5ac;
+    padding: 3px 9px !important;
+    color: white;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    margin-top: 2px;
+}
+
+    .registrationButton a:hover {
+        background-color: #fd678a !important;
+        color: white !important;
+        text-decoration: none !important;
+        -webkit-transition: background-color 0.5s ease !important;
+        -moz-transition: background-color 0.5s ease !important;
+        -ms-transition: background-color 0.5s ease !important;
+        -o-transition: background-color 0.5s ease !important;
+        transition: background-color 0.5s ease !important;
+    }
