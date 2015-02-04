@@ -7,7 +7,7 @@ using Pass.Notification.Repository.Core.Entities;
 
 namespace Pass.Notification.Repository.EF
 {
-    public sealed class PushNotificationUnitOfWork : UnitOfWork, IPushNotificationUnitOfWork
+    public class PushNotificationUnitOfWork : UnitOfWork, IPushNotificationUnitOfWork
     {
         private IPushNotificationRepository _pushNotificationRepository;
         private readonly HashSet<Type> _allowedRepositoryEntities;

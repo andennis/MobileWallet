@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PushNotificationConfig.cs" />
     <Compile Include="PushNotificationService.cs" />
     <Compile Include="PushNotificationServiceHost.cs" />
     <Compile Include="Quartz\IPushLogicLayer.cs" />
@@ -81,9 +82,33 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.Configuration\Common.Configuration.csproj">
+      <Project>{DFABDFCC-3B69-434A-BD2A-6838CD7608A8}</Project>
+      <Name>Common.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Common.Repository.EF\Common.Repository.EF.csproj">
+      <Project>{925EC36B-DF88-4CDE-BC59-FE03C0173CAE}</Project>
+      <Name>Common.Repository.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Common.Repository\Common.Repository.csproj">
+      <Project>{F36371D6-812F-49F5-9E9B-043265660647}</Project>
+      <Name>Common.Repository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pass.Notification.BL\Pass.Notification.BL.csproj">
       <Project>{7b2ec480-9f20-4379-bf24-89162dd4cae5}</Project>
       <Name>Pass.Notification.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pass.Notification.Core\Pass.Notification.Core.csproj">
+      <Project>{B080DCAE-231C-4F9E-8A01-B6E0DE3C2FE2}</Project>
+      <Name>Pass.Notification.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pass.Notification.Repository.EF\Pass.Notification.Repository.EF.csproj">
+      <Project>{B5E5AB90-F76C-48D9-A3C8-935A8AAC2DCA}</Project>
+      <Name>Pass.Notification.Repository.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pass.Notification.Repository\Pass.Notification.Repository.Core.csproj">
+      <Project>{6B068323-4CA0-46DD-B820-9DBACC77E86F}</Project>
+      <Name>Pass.Notification.Repository.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

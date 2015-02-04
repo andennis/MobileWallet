@@ -5,8 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Atlas;
 using Autofac;
+using Common.Repository;
 using log4net;
+using Pass.Notification.BL;
 using Pass.Notification.BL.Utils;
+using Pass.Notification.Core;
+using Pass.Notification.Repository.Core;
+using Pass.Notification.Repository.EF;
 using Pass.Notification.Service.Quartz;
 
 namespace Pass.Notification.Service
@@ -18,8 +23,13 @@ namespace Pass.Notification.Service
             try
             {
                 var configuration = Host.UseAppConfig<PushTaskService>()
-                                        .AllowMultipleInstances()
-                                        .WithRegistrations(p => p.RegisterModule(new PushTaskModule()));
+                    .AllowMultipleInstances()
+                    .WithRegistrations(p => p.RegisterModule(new PushTaskModule()))
+                    .WithRegistrations(b => b.Register(c => new PushNotificationConfig()).As<IPushNotificationConfig>())
+                    .WithRegistrations(b => b.Register(c => new PushNotificationConfig()).As<IDbConfig>())
+                    .WithRegistrations(b => b.Register(c => new PushNotificationUnitOfWork(c.Resolve<IDbConfig>())).As<IPushNotificationUnitOfWork>())
+                    .WithRegistrations(b => b.Register(c => new PushSharpNotificationWorker()).As<IPushNotificationWorker>())
+                    .WithRegistrations(b => b.Register(c => new PassNotificationService(c.Resolve<IPushNotificationUnitOfWork>(), c.Resolve<IPushNotificationWorker>())).As<IPassNotificationService>());
                                         /*ADDITIONAL FUNCTIONALITY
                                          // something to do before the service is actually started
                                         .BeforeStart(Init)

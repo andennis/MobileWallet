@@ -5,6 +5,7 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using Pass.Notification.BL.Utils;
+using Pass.Notification.Core;
 
 namespace Pass.Notification.Service
 {
@@ -12,11 +13,11 @@ namespace Pass.Notification.Service
     {
         private static ServiceHost _pushNotificationServiceHost;
 
-        public static void StartPushNotificationServiceHosts()
+        public static void StartPushNotificationServiceHosts(IPassNotificationService passNotificationService)
         {
             StopPushNotificationServiceHosts();
 
-            _pushNotificationServiceHost = new ServiceHost(new PushNotificationService());
+            _pushNotificationServiceHost = new ServiceHost(new PushNotificationService(passNotificationService));
             _pushNotificationServiceHost.Open();
             Logger.Info("Push notification service (WCF) has been started");
         }

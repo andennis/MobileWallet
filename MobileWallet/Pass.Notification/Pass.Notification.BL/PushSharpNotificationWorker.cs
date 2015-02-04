@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using Pass.Notification.Core;
 using PushSharp;
 using PushSharp.Android;
 using PushSharp.Apple;
@@ -12,7 +13,7 @@ using PushSharp.Core;
 
 namespace Pass.Notification.BL
 {
-    public class PushSharpNotificationWorker
+    public class PushSharpNotificationWorker : IPushNotificationWorker
     {
         public void SendNotification(X509Certificate2 certificate, string deviceToken)
         {

@@ -1,6 +1,7 @@
 ﻿using System.Configuration;
 using Atlas;
 using Pass.Notification.BL.Utils;
+using Pass.Notification.Core;
 using Quartz;
 using Quartz.Spi;
 
@@ -8,14 +9,20 @@ namespace Pass.Notification.Service.Quartz
 {
     public class PushTaskService : IAmAHostedProcess
     {
+        private readonly IPassNotificationService _passNotificationService;
         public IScheduler Scheduler { get; set; }    
         public IJobFactory JobFactory { get; set; }       
-        public IJobListener JobListener { get; set; }      
+        public IJobListener JobListener { get; set; }
+
+        public PushTaskService(IPassNotificationService passNotificationService)
+        {
+            _passNotificationService = passNotificationService;
+        }
 
         public void Start()
         {
             Logger.Info("PushTaskService starting");
-            PushNotificationServiceHost.StartPushNotificationServiceHosts();
+            PushNotificationServiceHost.StartPushNotificationServiceHosts(_passNotificationService);
 
             Logger.Info("Push Notification sheduler starting");
             var job = JobBuilder.Create<PushJob>()

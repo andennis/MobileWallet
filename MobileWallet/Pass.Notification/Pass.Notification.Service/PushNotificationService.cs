@@ -4,6 +4,9 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using Pass.Notification.BL;
+using Pass.Notification.Core;
+using Pass.Notification.Repository.Core.Enums;
 
 namespace Pass.Notification.Service
 {
@@ -11,10 +14,17 @@ namespace Pass.Notification.Service
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class PushNotificationService
     {
-        [OperationContract]
-        public bool SendNotifications(int certificateStorageId, IEnumerable<string> pushTockenIds)
+        private readonly IPassNotificationService _passNotificationService;
+
+        public PushNotificationService(IPassNotificationService passNotificationService)
         {
-            return true;
+            _passNotificationService = passNotificationService;
+        }
+
+        [OperationContract]
+        public void SendAppleNotifications(int certificateStorageId, IEnumerable<string> pushTockenIds)
+        {
+            _passNotificationService.AddPushNotificationToQueue(certificateStorageId, pushTockenIds, PushNotificationServiceType.Apple);
         }
     }
 }
