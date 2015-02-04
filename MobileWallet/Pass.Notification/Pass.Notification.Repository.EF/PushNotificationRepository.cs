@@ -12,12 +12,7 @@ namespace Pass.Notification.Repository.EF
             : base(dbContext)
         {
         }
-
-        public void AddPushNotification(int certificateStorageId, IEnumerable<string> pushTockenIds)
-        {
-           throw new NotImplementedException();
-        }
-
+       
         public void ClearFileStorage()
         {
             //using (var trn = new TransactionScope())

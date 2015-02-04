@@ -47,6 +47,7 @@
     <Compile Include="Entities\PassNotificationApple.cs" />
     <Compile Include="Entities\PassNotificationBase.cs" />
     <Compile Include="IPushNotificationService.cs" />
+    <Compile Include="IPushNotificationWorker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using Pass.Notification.Repository.Core;
 using Pass.Notification.Repository.Core.Entities;
+using Pass.Notification.Repository.Core.Enums;
 
 namespace Pass.Notification.Repository.EF.Tests
 {
@@ -29,7 +30,7 @@ namespace Pass.Notification.Repository.EF.Tests
                 var fiRep = unitOfWork.GetRepository<PushNotificationItem>();
                 Assert.NotNull(fiRep);
 
-                var fi1 = new PushNotificationItem() { CertificateStorageId = 1, PushTockenId = "1234567890", Status = 1};
+                var fi1 = new PushNotificationItem() { CertificateStorageId = 1, PushTockenId = "1234567890", Status = PushStatus.Pending, PushNotificationServiceType = PushNotificationServiceType.Apple};
                 Assert.DoesNotThrow(() => fiRep.Insert(fi1));
                 Assert.DoesNotThrow(unitOfWork.Save);
                 Assert.Greater(fi1.PushNotificationItemId, 0);

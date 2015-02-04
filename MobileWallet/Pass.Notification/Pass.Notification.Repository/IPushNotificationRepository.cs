@@ -6,7 +6,6 @@ namespace Pass.Notification.Repository.Core
 {
     public interface IPushNotificationRepository: IRepository<PushNotificationItem>
     {
-        void AddPushNotification(int certificateStorageId, IEnumerable<string> pushTockenIds);
         void ClearFileStorage();
     }
 }

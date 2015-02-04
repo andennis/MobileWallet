@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\PushNotificationItem.cs" />
+    <Compile Include="Enums\PushNotificationServiceType.cs" />
+    <Compile Include="Enums\PushStatus.cs" />
     <Compile Include="IPushNotificationRepository.cs" />
     <Compile Include="IPushNotificationUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

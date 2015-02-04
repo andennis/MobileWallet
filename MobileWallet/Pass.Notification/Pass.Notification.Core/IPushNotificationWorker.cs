@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Pass.Notification.Core
 {
-    public interface IPushNotificationService
+    public interface IPushNotificationWorker
     {
+        void SendNotification();
     }
 }

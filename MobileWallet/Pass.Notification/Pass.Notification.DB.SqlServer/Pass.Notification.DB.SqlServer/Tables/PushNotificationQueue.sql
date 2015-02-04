@@ -5,6 +5,7 @@
     [PushTockenId]  NVARCHAR(400) NOT NULL,
     [CreatedDate]  DATETIME NOT NULL,
     [UpdatedDate]  DATETIME NOT NULL,
-    [Status]  INT NOT NULL
+    [Status]  INT NOT NULL,
+	[PushNotificationServiceType]  INT NOT NULL
 );
 
