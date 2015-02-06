@@ -14,41 +14,30 @@
 });
 
 $(function () {
-    $('.advantageText').hover(
+    $('.advantage').hover(
         function () {
             switch ($(this).attr('id')) {
                 case 'advantageText1':
                     {
-                        //$('#advTableTd2, #advTableTd3, #advTableTd4').css('opacity', '0.4');
-                        $('#advantageImg2, #advantageImg3').css('display', 'none');
-                        $('#advantageImg1').css('display', 'block');
+
                         $('#advNumberCircle1').css('background-color', 'white').css('color', '#2d586f');
-                        $('#advantageText1').addClass('advHover');
                         break;
                     }
                 case 'advantageText2':
                     {
-                        //$('#advTableTd1, #advTableTd3, #advTableTd4').css('opacity', '0.4');
-                        $('#advantageImg1, #advantageImg3').css('display', 'none');
-                        $('#advantageImg2').css('display', 'block');
+
                         $('#advNumberCircle2').css('background-color', 'white').css('color', '#2d586f');
-                        $('#advantageText2').addClass('advHover');
                         break;
                     }
                 case 'advantageText3':
                     {
-                        //$('#advTableTd1, #advTableTd2, #advTableTd4').css('opacity', '0.4');
-                        $('#advantageImg1, #advantageImg2').css('display', 'none');
-                        $('#advantageImg3').css('display', 'block');
+
                         $('#advNumberCircle3').css('background-color', 'white').css('color', '#2d586f');
-                        $('#advantageText3').addClass('advHover');
                         break;
                     }
                 case 'advantageText4':
                     {
-                        //$('#advTableTd1, #advTableTd2, #advTableTd3').css('opacity', '0.4');
                         $('#advNumberCircle4').css('background-color', 'white').css('color', '#2d586f');
-                        $('#advantageText4').addClass('advHover');
                         break;
                     }
             }
@@ -57,30 +46,22 @@ $(function () {
             switch ($(this).attr('id')) {
                 case 'advantageText1':
                     {
-                        //$('#advTableTd2, #advTableTd3, #advTableTd4').css('opacity', '1');
                         $('#advNumberCircle1').css('background-color', '#2d586f').css('color', 'white');
-                        $('#advantageText1').removeClass('advHover');
                         break;
                     }
                 case 'advantageText2':
                     {
-                        //$('#advTableTd1, #advTableTd3, #advTableTd4').css('opacity', '1');
                         $('#advNumberCircle2').css('background-color', '#2d586f').css('color', 'white');
-                        $('#advantageText2').removeClass('advHover');
                         break;
                     }
                 case 'advantageText3':
                     {
-                        //$('#advTableTd1, #advTableTd2, #advTableTd4').css('opacity', '1');
                         $('#advNumberCircle3').css('background-color', '#2d586f').css('color', 'white');
-                        $('#advantageText3').removeClass('advHover');
                         break;
                     }
                 case 'advantageText4':
                     {
-                        //$('#advTableTd1, #advTableTd2, #advTableTd3').css('opacity', '1');
                         $('#advNumberCircle4').css('background-color', '#2d586f').css('color', 'white');
-                        $('#advantageText4').removeClass('advHover');
                         break;
                     }
             }

@@ -276,6 +276,29 @@ textarea {
         transition: background 0.2s ease,color 0.2s ease;
     }*/
 
+.dropdown-menu {
+    -webkit-box-shadow: none;
+    -ms-box-shadow: none;
+    box-shadow: none;
+    background-color: transparent;
+    border: none;
+    margin-top: 14px !important;
+}
+
+    .dropdown-menu > li > a {
+        background: rgba(45, 88, 111, 0.9);
+        color: white;
+    }
+
+        .dropdown-menu > li > a:hover {
+            background: #02d5ac !important;
+            -webkit-transition: background 0.3s ease,color 0.2s ease;
+            -moz-transition: background 0.3s ease,color 0.2s ease;
+            -ms-transition: background 0.3s ease,color 0.2s ease;
+            -o-transition: background 0.3s ease,color 0.2s ease;
+            transition: background 0.3s ease,color 0.2s ease;
+        }
+
 .navbar {
     margin-bottom: 0;
 }
@@ -306,6 +329,11 @@ textarea {
         .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
             color: #02d5ac;
         }
+
+    .navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav .open .dropdown-menu > li > a,
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: white;
+    }
 
 .mainMenuBlock {
     background-color: #2d586f;

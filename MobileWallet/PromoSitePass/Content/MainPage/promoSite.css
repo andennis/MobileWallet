@@ -1,4 +1,189 @@
-﻿.mainBlock {
+﻿@media (max-width: 767px) {
+    html {
+        font-size: 8.4px;
+    }
+
+    .advantage {
+        background-color: white;
+        margin-bottom: 20px;
+        -ms-border-radius: 8px;
+        border-radius: 8px;
+        padding: 15px 20px;
+    }
+
+    /*.advantage:hover {
+            background-color: #2d586f;
+            color: white;
+        }*/
+
+    .advNumberCircle {
+        display: none;
+    }
+
+    .mAdvNumberCircle {
+        background-color: #2d586f;
+        color: white;
+        -ms-border-radius: 50%;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        float: left;
+        padding: 2px 5px;
+        margin-right: 5px;
+    }
+
+    .appBlock {
+        min-height: 189px;
+    }
+
+    .topBlock {
+        margin-top: -70px;
+    }
+}
+
+@media (min-width: 768px) {
+
+    html {
+        font-size: 8.6px;
+    }
+
+    .advantage {
+        text-align: left;
+        -ms-background-size: 100% 100% !important;
+        -moz-background-size: 100% 100% !important;
+        -o-background-size: 100% 100% !important;
+        -webkit-background-size: 100% 100% !important;
+        background-size: 100% 100% !important;
+    }
+
+    .advLeft {
+        margin: 0 -50px 10px -15px;
+        padding: 10px 30px 10px 20px;
+    }
+
+    .advRight {
+        margin: 0 -15px 10px -50px;
+        padding: 10px 20px 10px 30px;
+    }
+
+    .advantage:hover {
+        color: white;
+    }
+
+    .advImage {
+        background: url('/Images/MainPage/blackIphone1.png');
+        -ms-background-size: 61% auto;
+        -moz-background-size: 61% auto;
+        -o-background-size: 61% auto;
+        -webkit-background-size: 61% auto;
+        background-size: 61% auto;
+        background-repeat: no-repeat;
+        -moz-background-position-x: 50%;
+        -o-background-position-x: 50%;
+        background-position-x: 50%;
+        -moz-background-position-y: 50%;
+        -o-background-position-y: 50%;
+        background-position-y: 50%;
+        height: 410px;
+    }
+
+    .advantage1 {
+        background: url('/Images/MainPage/buble1_1.png');
+    }
+
+        .advantage1:hover {
+            background: url('/Images/MainPage/buble1_2.png');
+        }
+
+    .advantage2 {
+        background: url('/Images/MainPage/buble2_1.png');
+    }
+
+        .advantage2:hover {
+            background: url('/Images/MainPage/buble2_2.png');
+        }
+
+    .advantage3 {
+        background: url('/Images/MainPage/buble3_1.png');
+    }
+
+        .advantage3:hover {
+            background: url('/Images/MainPage/buble3_2.png');
+        }
+
+    .advantage4 {
+        background: url('/Images/MainPage/buble4_1.png');
+    }
+
+        .advantage4:hover {
+            background: url('/Images/MainPage/buble4_2.png');
+        }
+
+    .advNumberCircle {
+        background-color: #2d586f;
+        color: white;
+        -ms-border-radius: 50%;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        float: left;
+        padding: 0 6px;
+        margin-right: 5px;
+    }
+
+    .mAdvNumberCircle {
+        display: none;
+    }
+
+    .topBlock {
+        margin-top: -140px;
+    }
+
+    .appBlock {
+        height: 190px;
+    }
+}
+
+@media (min-width: 992px) {
+    html {
+        font-size: 9px;
+    }
+
+    .advLeft {
+        margin: 0 -50px 50px 10px;
+        padding: 30px 65px 25px 25px;
+    }
+
+    .advRight {
+        margin: 0 10px 50px -50px;
+        padding: 30px 25px 25px 65px;
+    }
+
+    .advImage {
+        height: 520px;
+    }
+
+    .appBlock {
+        height: 224px;
+    }
+}
+
+
+@media (min-width: 1200px) {
+    .advImage {
+        height: 508px;
+    }
+
+    .topBlock {
+        margin-top: -70px;
+    }
+
+    .appBlock {
+        height: 203px;
+    }
+}
+
+.mainBlock {
     -moz-min-width: 711px;
     -ms-min-width: 711px;
     -o-min-width: 711px;
@@ -9,11 +194,11 @@
 .blockContent {
     padding-top: 33px;
     padding-bottom: 45px;
-    -moz-min-width: 680px;
+    /*-moz-min-width: 680px;
     -ms-min-width: 680px;
     -o-min-width: 680px;
     -webkit-min-width: 680px;
-    min-width: 680px;
+    min-width: 680px;*/
     text-align: center;
 }
 
@@ -55,8 +240,8 @@
 
 .topBlock {
     height: 573px;
-    overflow: hidden;
-    margin-top: -70px;
+    /*overflow: hidden;*/
+    /*margin-top: -70px;*/
     z-index: -1;
     background-image: url('/Images/MainPage/mainPhoto.jpg');
     -ms-background-size: cover;
@@ -94,7 +279,7 @@
     padding-left: 10px;
 }
 
-.advantageBlock {
+.advantagesBlock {
     height: auto;
     background-image: url('/Images/MainPage/bg-2.jpg');
     -ms-background-size: cover;
@@ -128,101 +313,6 @@
     text-align: left;
 }
 
-.advantageImg {
-    margin-left: auto;
-    margin-right: auto;
-    width: 85%;
-}
-
-.advTableTd {
-    width: 35%;
-    vertical-align: text-top;
-}
-
-.advantageText {
-    width: 100%;
-    background: white;
-    position: relative;
-    padding: 20px 25px;
-    -moz-border-radius: 12px;
-    -webkit-border-radius: 12px;
-    -ms-border-radius: 12px;
-    border-radius: 12px;
-    text-align: left;
-}
-
-    .advantageText:hover {
-        background-color: #2d586f;
-        color: white;
-        -webkit-transition: background-color 0.2s ease,color 0.2s ease;
-        -moz-transition: background-color 0.2s ease,color 0.2s ease;
-        -ms-transition: background-color 0.2s ease,color 0.2s ease;
-        -o-transition: background-color 0.2s ease,color 0.2s ease;
-        transition: background-color 0.2s ease,color 0.2s ease;
-    }
-
-.advLeftBlock:after {
-    content: "";
-    position: absolute;
-    left: 100%;
-    top: 50%;
-    width: 0;
-    height: 0;
-    border-top: 13px solid transparent;
-    border-left: 26px solid white;
-    border-bottom: 13px solid transparent;
-}
-
-.advLeftBlock.advHover:after {
-    border-top: 13px solid transparent;
-    border-left: 26px solid #2d586f;
-    border-bottom: 13px solid transparent;
-    -webkit-transition: border-bottom 0.2s ease;
-    -moz-transition: border-bottom 0.2s ease;
-    -ms-transition: border-bottom 0.2s ease;
-    -o-transition: border-bottom 0.2s ease;
-    transition: border-bottom 0.2s ease;
-}
-
-.advRightBlock:before {
-    content: "";
-    position: absolute;
-    right: 100%;
-    top: 50%;
-    width: 0;
-    height: 0;
-    border-top: 13px solid transparent;
-    border-right: 26px solid white;
-    border-bottom: 13px solid transparent;
-}
-
-.advRightBlock.advHover:before {
-    border-top: 13px solid transparent;
-    border-right: 26px solid #2d586f;
-    border-bottom: 13px solid transparent;
-    -webkit-transition: border-bottom 0.2s ease;
-    -moz-transition: border-bottom 0.2s ease;
-    -ms-transition: border-bottom 0.2s ease;
-    -o-transition: border-bottom 0.2s ease;
-    transition: border-bottom 0.2s ease;
-}
-
-.advNumberCircle {
-    background-color: #2d586f;
-    color: white;
-    -ms-border-radius: 50%;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    float: left;
-    padding: 0px 5px;
-    margin-right: 5px;
-}
-
-.arrowTd {
-    width: 3%;
-}
-
 .pHeaderPassDesigner {
     line-height: 53px;
 }
@@ -253,7 +343,8 @@
 }
 
 .tickIcon {
-    height: 21px;
+    height: 16px;
+    margin: 0 5px 3px 0;
 }
 
 .tickText {
