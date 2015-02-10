@@ -228,10 +228,8 @@
     <Content Include="Images\logo&amp;strip\cleverLogo.png" />
     <Content Include="Images\logo&amp;strip\storeStrip7.jpg" />
     <Content Include="Images\logo&amp;strip\Tulips.jpg" />
-    <Content Include="Images\MainPage\add101.svg" />
     <Content Include="Images\MainPage\androidLogo.png" />
     <Content Include="Images\MainPage\appleLogo.png" />
-    <Content Include="Images\MainPage\approval1 %281%29.svg" />
     <Content Include="Images\MainPage\bg-2.jpg" />
     <Content Include="Images\MainPage\bg-3.jpg" />
     <Content Include="Images\MainPage\blackIphone.png" />
@@ -247,8 +245,7 @@
     <Content Include="Images\MainPage\buble4_1.png" />
     <Content Include="Images\MainPage\buble4_2.png" />
     <Content Include="Images\MainPage\galka.png" />
-    <Content Include="Images\MainPage\iphoneInHand.png" />
-    <Content Include="Images\MainPage\macbookDesigner.png" />
+    <Content Include="Images\MainPage\i-mac.png" />
     <Content Include="Images\MainPage\mailIcon.png" />
     <Content Include="Images\MainPage\mainPhoto.jpg" />
     <Content Include="Images\MainPage\passbookLogo.png" />
@@ -256,7 +253,9 @@
     <Content Include="Images\MainPage\passLightWhiteLogo.png" />
     <Content Include="Images\MainPage\passwalletLogo.png" />
     <Content Include="Images\MainPage\pnonesIcon.png" />
-    <Content Include="Images\MainPage\up21.svg" />
+    <Content Include="Images\MainPage\step1.jpg" />
+    <Content Include="Images\MainPage\step2.jpg" />
+    <Content Include="Images\MainPage\step3.jpg" />
     <Content Include="Images\MainPage\upArrow.svg" />
     <Content Include="Images\SampleCard\couponTemplate.png" />
     <Content Include="Images\SampleCard\eventticketTemplate.png" />

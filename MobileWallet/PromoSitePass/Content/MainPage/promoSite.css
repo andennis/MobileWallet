@@ -39,6 +39,35 @@
     .topBlock {
         margin-top: -70px;
     }
+
+    .howItWorkIcon {
+        margin-top: 30px;
+    }
+
+    .mainHeader {
+        position: absolute;
+        margin-top: 125px;
+    }
+
+        .mainHeader h1 {
+            text-align: left;
+            margin: 0 0;
+            padding: 0 0;
+        }
+
+    .mainHeaderSmall {
+        position: absolute;
+        margin-top: 270px;
+    }
+
+    .mainBlockButton {
+        margin-top: 400px;
+        position: absolute;
+    }
+
+    .mackbookDesignerImg {
+        margin-bottom: 35px;
+    }
 }
 
 @media (min-width: 768px) {
@@ -142,6 +171,35 @@
     .appBlock {
         height: 190px;
     }
+
+    .howItWorkIcon {
+        margin-top: 30px;
+    }
+
+    .mainHeader {
+        position: absolute;
+        margin-top: 151px;
+    }
+
+        .mainHeader h1 {
+            text-align: left;
+            margin: 0 0;
+            padding: 3px 0;
+        }
+
+    .mainHeaderSmall {
+        position: absolute;
+        margin-top: 253px;
+    }
+
+    .mainBlockButton {
+        margin-top: 378px;
+        position: absolute;
+    }
+
+    .mackbookDesignerImg {
+        margin-bottom: 35px;
+    }
 }
 
 @media (min-width: 992px) {
@@ -165,6 +223,10 @@
 
     .appBlock {
         height: 224px;
+    }
+
+    .mackbookDesignerImg {
+        margin-bottom: 0;
     }
 }
 
@@ -194,11 +256,6 @@
 .blockContent {
     padding-top: 33px;
     padding-bottom: 45px;
-    /*-moz-min-width: 680px;
-    -ms-min-width: 680px;
-    -o-min-width: 680px;
-    -webkit-min-width: 680px;
-    min-width: 680px;*/
     text-align: center;
 }
 
@@ -258,18 +315,14 @@
     background-position-y: 32%;
 }
 
-.mainHeader {
-    position: absolute;
-    font-size: 3.6rem;
-    line-height: 4.6rem;
-    margin-top: 151px;
-}
 
-.mainHeaderSmall {
-    position: absolute;
-    font-size: 2.1rem;
-    line-height: 2.7rem;
-    margin-top: 253px;
+
+
+
+
+
+.mainHeaderSmall h4 {
+    text-align: left;
 }
 
 .mainHeaderContainer {
@@ -318,11 +371,11 @@
 }
 
 .mackbookDesignerImg {
-    width: 95%;
+    width: 88%;
 }
 
 .passDesignerDescription {
-    text-align: left;
+    text-align: left !important;
 }
 
 .upArrowBlock {
@@ -344,12 +397,7 @@
 
 .tickIcon {
     height: 16px;
-    margin: 0 5px 3px 0;
-}
-
-.tickText {
-    line-height: 24px;
-    font-size: 1.8rem;
+    margin: 0 5px 12px 0;
 }
 
 .stepImgTd {
@@ -509,14 +557,11 @@
         transition: background-color 0.5s ease;
     }
 
-.mainBlockButton {
-    margin-top: 378px;
-    position: absolute;
-}
 
-    .mainBlockButton:hover {
-        cursor: pointer;
-    }
+
+.mainBlockButton:hover {
+    cursor: pointer;
+}
 
 .pText {
     font-size: 1.7rem;
@@ -677,7 +722,27 @@
 }
 
 .howItWorkIcon {
-    height: 132px;
+    height: 120px;
+}
+
+    .howItWorkIcon img {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+.step1Img {
+    margin-top: 13px;
+}
+
+.step2Img {
+    height: 85px;
+    margin-top: 8px;
+}
+
+.step3Img {
+    height: 105px;
+    padding-left: 45px;
+    margin-top: -14px;
 }
 
 .howItWorkNumbering {
@@ -691,8 +756,7 @@
     border-radius: 50%;
     width: 33px;
     height: 33px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
     font-size: 2.4rem;
     padding: 1px 0;
 }

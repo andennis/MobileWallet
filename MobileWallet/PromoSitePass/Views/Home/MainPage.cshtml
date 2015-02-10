@@ -9,15 +9,15 @@
 
 <div class="mainBlock topBlock">
     <div class="mainHeaderContainer">
-        <p class="mainHeader">
-            Система лояльности в смартфонах<br />
-            Ваших клиентов
-        </p>
-        <p class="mainHeaderSmall">
-            Создавайте дисконтные, бонусные и другие<br />
-            мобильные карты и распространяйте прямо на <br />
-            смартфоны клиентов
-        </p>
+        <div class="mainHeader">
+            <h1>Система лояльности в смартфонах</h1>
+            <h1>Ваших клиентов</h1>
+        </div>
+        <div class="mainHeaderSmall">
+            <h4>Создавайте дисконтные, бонусные и другие</h4>
+            <h4>мобильные карты и распространяйте прямо на</h4>
+            <h4>смартфоны клиентов</h4>
+         </div>
         <div class="mainBlockButton">
             <a class="bigButton" href="~/PassDesigner/EmptyCardDesigner" target="_blank">Cоздай карту</a>
         </div>
@@ -26,9 +26,12 @@
 
 <div class="container blockContent">
     <h1>Как работает наша система?</h1>
+    <br/>
     <div class="row">
         <div class="col-lg-4 col-md-4 col-xs-12">
-            <div class="howItWorkIcon"></div>
+            <div class="howItWorkIcon">
+                <img class="step1Img" src="~/Images/MainPage/step1.jpg" />
+            </div>
             <div class="howItWorkNumbering">
                 <div class="howItWorkNumberCircle">1</div>
             </div>
@@ -38,7 +41,9 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-4 col-xs-12">
-            <div class="howItWorkIcon"></div>
+            <div class="howItWorkIcon">
+                <img class="step2Img" src="~/Images/MainPage/step2.jpg" />
+            </div>
             <div class="howItWorkNumbering">
                 <div class="howItWorkNumberCircle">2</div>
             </div>
@@ -47,7 +52,9 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-4 col-xs-12">
-            <div class="howItWorkIcon"></div>
+            <div class="howItWorkIcon">
+                <img class="step3Img" src="~/Images/MainPage/step3.jpg" />
+            </div>
             <div class="howItWorkNumbering">
                 <div class="howItWorkNumberCircle">3</div>
             </div>
@@ -65,6 +72,7 @@
 <div class="advantagesBlock">
     <div class="container blockContent">
         <h1>Преимущества для Вашего бизнеса</h1>
+        <br />
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <div id="advantageText1" class="advantage advantage1 advLeft">
@@ -105,80 +113,25 @@
     </div>
 </div>
 
-
-@*<div class="advantageBlock">
-    <div class="container blockContent">
-        <h1>Преимущества для Вашего бизнеса</h1>
-        <table id="advantageTable">
-            <tbody>
-                <tr>
-                    <td id="advTableTd1" class="advTableTd">
-                        <div id="advantageText1" class="advantageText advLeftBlock">
-                            <div id="advNumberCircle1" class="advNumberCircle">1</div>
-                            Распространение мобильных карт прямо на телефоны клиентов гарантирует,
-                            что Ваши купоны, билеты, карты лояльности всегда будут под рукой
-                            и готовы к использованию.
-                        </div>
-                    </td>
-                    <td id="arrowTd1" class="arrowTd"></td>
-                    <td rowspan="2">
-                        <img id="advantageImg1" class="advantageImg" src="~/Images/MainPage/blackIphone1.png" />
-                        <img id="advantageImg2" class="advantageImg displayNone" src="~/Images/MainPage/blackIphone2.png" />
-                        <img id="advantageImg3" class="advantageImg displayNone" src="~/Images/MainPage/blackIphone3.png" />
-                    </td>
-                    <td id="arrowTd2" class="arrowTd"></td>
-                    <td id="advTableTd2" class="advTableTd">
-                        <div id="advantageText2" class="advantageText advRightBlock">
-                            <div id="advNumberCircle2" class="advNumberCircle">2</div>
-                            Вы можете обновлять мобильные карты всего за несколько щелчков мыши.
-                            Держите Ваших клиентов в курсе последней информации, такой как баланс карты покупателя или время события.
-                            Клиенты увидят push-уведомление о обновлении карты на экране блокировки телефона.
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td id="advTableTd3" class="advTableTd">
-                        <div id="advantageText3" class="advantageText advLeftBlock">
-                            <div id="advNumberCircle3" class="advNumberCircle">3</div>
-                            Однажды добавив мобильную карту в теефон клиента, вы можете отправлять абсолютно новый купон или
-                            предложение, просто обновив её содержимое.
-                            Эта "вечная мобильная карта" даёт постоянную линию связи с вашим клиентом, что позволяет
-                            заработать на сезонных предложениях и новых схемах лояльности.
-                        </div>
-                    </td>
-                    <td id="arrowTd3" class="arrowTd"></td>
-                    <td id="arrowTd4" class="arrowTd"></td>
-                    <td id="advTableTd4" class="advTableTd">
-                        <div id="advantageText4" class="advantageText advRightBlock">
-                            <div id="advNumberCircle4" class="advNumberCircle">4</div>
-                            Passbook использует данные о местонахождении,
-                            поэтому находясь неподалеку от магазина сети, ваш клиент
-                            может получать на свой телефон уведомления, приглашающее
-                            посетить магазин, о котором он, возможно еще не знает.
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>*@
-
 <div class="container blockContent">
     <h1>Легко создавайте мобильные карты (пассы)</h1>
+    <br />
     <div class="row">
         <div class="col-lg-6 col-md-6 col-xs-12">
-            <img src="~/Images/MainPage/macbookDesigner.png" class="mackbookDesignerImg" />
+            <img src="~/Images/MainPage/i-mac.png" class="mackbookDesignerImg" />
+            <br/>
         </div>
         <div class="col-lg-6 col-md-6 col-xs-12 passDesignerDescription">
-            <p>
-                Онлайн дизайнер пассов поможет Вам создать мобильную карту и увидеть
-                как ее содержимое выглядит в реальном времени
-            </p>
+            <h4>Онлайн дизайнер пассов поможет Вам создать</h4>
+            <h4>мобильную карту и увидеть как ее содержимое</h4>
+            <h4>выглядит в реальном времени</h4>
             <br />
-            <p class="tickText"><img class="tickIcon" src="~/Images/MainPage/galka.png" /> Выберите шаблон (бизнес стратегию)</p>
-            <p class="tickText"><img class="tickIcon" src="~/Images/MainPage/galka.png" /> Загрузите свои картинки</p>
-            <p class="tickText"><img class="tickIcon" src="~/Images/MainPage/galka.png" /> Введите свое содержимое</p>
-            <p class="tickText"><img class="tickIcon" src="~/Images/MainPage/galka.png" /> Отправте на смартфоны клиентов</p>
+            <br />
+            <h4><img class="tickIcon" src="~/Images/MainPage/galka.png" /> Выберите шаблон (бизнес стратегию)</h4>
+            <h4><img class="tickIcon" src="~/Images/MainPage/galka.png" /> Загрузите свои картинки</h4>
+            <h4><img class="tickIcon" src="~/Images/MainPage/galka.png" /> Введите свое содержимое</h4>
+            <h4><img class="tickIcon" src="~/Images/MainPage/galka.png" /> Отправте на смартфоны клиентов</h4>
+            <br />
             <br />
             <a class="bigButton" href="~/PassDesigner/EmptyCardDesigner" target="_blank">Cоздай карту</a>
         </div>
@@ -225,6 +178,8 @@
         </div>
     </div>
 </div>
+
+<div class="blueLine"></div>
 
 <div class="upArrowBlock">
     <?xml version="1.0" encoding="iso-8859-1" ?>
