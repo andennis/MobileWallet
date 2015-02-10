@@ -53,6 +53,8 @@ namespace Pass.Manager.Web
             Mapper.CreateMap<PassProjectFieldViewModel, PassProjectField>();
             Mapper.CreateMap<PassProjectField, PassProjectFieldViewModel>();
 
+            Mapper.CreateMap<PassContentTemplateViewModel, PassContentTemplate>();
+            Mapper.CreateMap<PassContentTemplate, PassContentTemplateViewModel>();
         }
 
         private static PassStyle PassProjectTypeToPassStyle(PassProjectType passProjectType)

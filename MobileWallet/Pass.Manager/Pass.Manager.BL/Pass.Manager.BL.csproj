@@ -43,6 +43,7 @@
     <Compile Include="Services\PassCertificateService.cs" />
     <Compile Include="PassManagerConfig.cs" />
     <Compile Include="PassManagerException.cs" />
+    <Compile Include="Services\PassContentTemplateService.cs" />
     <Compile Include="Services\PassProjectService.cs" />
     <Compile Include="Services\PassSiteCertificateService.cs" />
     <Compile Include="Services\PassSiteService.cs" />

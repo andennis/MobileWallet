@@ -67,6 +67,16 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd Id="f1817331-7fed-4a65-9e25-a3b5e8f32630" name="PassContent" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <lowerValueInternal>
+                    <literalString Id="93109e10-bc4e-40a4-b5b0-98b30fa59f38" name="Lower" value="*">
+                      <elementDefinition Id="4bf7be2b-1e4c-4905-b151-7589bd0fd2c9" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="1a01c897-bc62-4e5c-b115-8e3a6c51fc79" name="Upper" value="*">
+                      <elementDefinition Id="cfcd1546-51a6-42ff-88e3-1ffebdab6a58" />
+                    </literalString>
+                  </upperValueInternal>
                   <elementDefinition Id="28234391-f967-4aa3-84ef-d8388331fdfa" />
                 </memberEnd>
               </associationHasOwnedEnds>

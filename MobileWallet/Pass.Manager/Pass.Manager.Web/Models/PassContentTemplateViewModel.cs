@@ -1,12 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using Common.Repository;
+using System.Linq;
+using System.Web;
+using FluentValidation.Attributes;
+using Pass.Manager.Core.Entities;
+using Pass.Manager.Web.Common;
+using Pass.Manager.Web.Validators;
 
-namespace Pass.Manager.Core.Entities
+namespace Pass.Manager.Web.Models
 {
-    public class PassContentTemplate : EntityVersionable
+    [Validator(typeof(PassContentTemplateViewModelValidator))]
+    public class PassContentTemplateViewModel : BaseViewModel
     {
+        public override string DisplayName { get { return "Pass Content"; } }
+        public override int EntityId
+        {
+            get { return PassContentTemplateId; }
+        }
+
         public int PassContentTemplateId { get; set; }
         public string Description { get; set; }
         public string OrganizationName { get; set; }
@@ -20,7 +32,7 @@ namespace Pass.Manager.Core.Entities
         public string BarcodeMessageEncoding { get; set; }
         */
         #endregion
-        
+
         public int? MaxDistance { get; set; }
         public DateTime? RelevantDate { get; set; }
 
@@ -35,8 +47,6 @@ namespace Pass.Manager.Core.Entities
         public bool? SuppressStripShine { get; set; }
 
         public int PassProjectId { get; set; }
-        public PassProject PassProject { get; set; }
 
-        public ICollection<PassContentTemplateField> PassContentTemplateFields { get; set; }
     }
 }

@@ -9,8 +9,8 @@ namespace Pass.Manager.Web.Controllers
 {
     public class PassProjectFieldController : BaseEntityController<PassProjectFieldViewModel, PassProjectField, IPassProjectFieldService, PassProjectFieldFilter>
     {
-        public PassProjectFieldController(IPassProjectFieldService passService)
-            : base(passService)
+        public PassProjectFieldController(IPassProjectFieldService fieldService)
+            : base(fieldService)
         {
         }
 

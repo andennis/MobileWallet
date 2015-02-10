@@ -22,9 +22,7 @@ namespace Pass.Manager.Core.Entities
         //public int PassCertificateId { get; set; }
         //public PassCertificate PassCertificate { get; set; }
 
+        public ICollection<PassContentTemplate> PassContentTemplates { get; set; }
         public ICollection<PassProjectField> PassFields { get; set; }
-
-        //public int PassContentTemplateId { get; set; }
-        public PassContentTemplate PassContentTemplate { get; set; }
     }
 }

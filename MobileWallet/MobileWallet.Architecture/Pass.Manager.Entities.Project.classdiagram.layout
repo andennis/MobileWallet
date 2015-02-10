@@ -77,7 +77,7 @@
         <OperationElementListCompartment Id="7c337a99-2772-489e-83b4-0da1b65c22ec" absoluteBounds="8.14, 4.0113281125823654, 1.8450000000000002, 0.2011718675494194" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(4.75 : 3.69140623509884); (8.125 : 3.69140623509884)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110" sourceMultiplicity="1" targetMultiplicity="1">
+    <associationConnector edgePoints="[(4.75 : 3.69140623509884); (8.125 : 3.69140623509884)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110" sourceMultiplicity="1" targetMultiplicity="*">
       <associationMoniker Id="3e385d3a-60de-4ad7-8721-d4f4e34a41ea" />
       <relativeChildShapes />
       <nodes>
@@ -159,7 +159,7 @@
         <LiteralElementListCompartment Id="3407b9af-8e4f-4c62-9794-8d58bf8e4db5" absoluteBounds="6.265, 7.515, 1.7200000000000002, 1.0019530927141505" name="LiteralsCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </enumerationShape>
-    <dependencyConnector edgePoints="[(7.125 : 6.31249998013178); (7.125 : 7.125)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black">
+    <dependencyConnector edgePoints="[(7.125 : 6.31249998013178); (7.125 : 7.125)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="Black">
       <dependencyMoniker Id="67ea8fd6-b700-4b43-b673-4f56fe3f7db4" />
       <relativeChildShapes />
       <nodes>
@@ -173,7 +173,7 @@
         <LiteralElementListCompartment Id="d840fd5a-0875-452f-934e-07b11a0d090e" absoluteBounds="8.89, 6.015, 1.4700000000000002, 1.0019530927141507" name="LiteralsCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </enumerationShape>
-    <dependencyConnector edgePoints="[(9.21002325943234 : 4.31249998013178); (9.21002325943234 : 5.625)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black">
+    <dependencyConnector edgePoints="[(9.21002325943234 : 4.31249998013178); (9.21002325943234 : 5.625)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="Black">
       <dependencyMoniker Id="96512f47-2a01-4cea-b0f8-3d58a6f090cc" />
       <relativeChildShapes />
       <nodes>

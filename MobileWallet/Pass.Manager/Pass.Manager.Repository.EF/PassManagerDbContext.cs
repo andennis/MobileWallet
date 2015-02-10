@@ -40,7 +40,6 @@ namespace Pass.Manager.Repository.EF
             modelBuilder.Entity<PassProject>().Property(x => x.Name).IsRequired().HasMaxLength(FieldLenName);
             modelBuilder.Entity<PassProject>().HasRequired(x => x.PassSite).WithMany(x => x.Projects).HasForeignKey(x => x.PassSiteId);
             //modelBuilder.Entity<PassProject>().HasRequired(x => x.PassCertificate).WithRequiredDependent().WillCascadeOnDelete(false);
-            modelBuilder.Entity<PassProject>().HasRequired(x => x.PassContentTemplate).WithRequiredPrincipal(x => x.PassProject);
 
             //User
             modelBuilder.Entity<User>().ToTable("User", DbScheme);
@@ -80,6 +79,7 @@ namespace Pass.Manager.Repository.EF
             modelBuilder.Entity<PassContentTemplate>().Property(x => x.Version).IsConcurrencyToken();
             modelBuilder.Entity<PassContentTemplate>().Property(x => x.Description).IsRequired();
             modelBuilder.Entity<PassContentTemplate>().Property(x => x.OrganizationName).IsRequired().HasMaxLength(FieldLenName);
+            modelBuilder.Entity<PassContentTemplate>().HasRequired(x => x.PassProject).WithMany(x => x.PassContentTemplates).HasForeignKey(x => x.PassProjectId).WillCascadeOnDelete(false);
 
             modelBuilder.Entity<PassBeacon>().ToTable("PassBeacon", DbScheme);
             modelBuilder.Entity<PassBeacon>().Property(x => x.Version).IsConcurrencyToken();

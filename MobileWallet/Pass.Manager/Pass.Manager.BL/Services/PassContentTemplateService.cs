@@ -6,14 +6,14 @@ using Pass.Manager.Core.Services;
 
 namespace Pass.Manager.BL.Services
 {
-    public class PassProjectFieldService : BaseService<PassProjectField, PassProjectFieldFilter, IPassManagerUnitOfWork>, IPassProjectFieldService
+    public class PassContentTemplateService : BaseService<PassContentTemplate, PassContentTemplateFilter, IPassManagerUnitOfWork>, IPassContentTemplateService
     {
-        public PassProjectFieldService(IPassManagerUnitOfWork unitOfWork)
+        public PassContentTemplateService(IPassManagerUnitOfWork unitOfWork)
             : base(unitOfWork)
         {
         }
 
-        public override SearchResult<PassProjectField> Search(SearchContext searchContext, PassProjectFieldFilter searchFilter = null)
+        public override SearchResult<PassContentTemplate> Search(SearchContext searchContext, PassContentTemplateFilter searchFilter = null)
         {
             if (searchFilter == null)
                 throw new ArgumentNullException("searchFilter");
