@@ -244,6 +244,7 @@
     <Content Include="Images\MainPage\buble3_2.png" />
     <Content Include="Images\MainPage\buble4_1.png" />
     <Content Include="Images\MainPage\buble4_2.png" />
+    <Content Include="Images\MainPage\footer.jpg" />
     <Content Include="Images\MainPage\galka.png" />
     <Content Include="Images\MainPage\i-mac.png" />
     <Content Include="Images\MainPage\mailIcon.png" />

@@ -245,14 +245,6 @@
     }
 }
 
-.mainBlock {
-    -moz-min-width: 711px;
-    -ms-min-width: 711px;
-    -o-min-width: 711px;
-    -webkit-min-width: 711px;
-    min-width: 711px;
-}
-
 .blockContent {
     padding-top: 33px;
     padding-bottom: 45px;
@@ -381,15 +373,32 @@
 .upArrowBlock {
     position: relative;
     width: 100%;
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 1170px;
+    margin: 0 auto;
 }
 
 .footer {
-    font-size: 1.4rem;
-    margin-top: 10px;
+    background-image: url('/Images/MainPage/footer.jpg');
+    height: 40px;
+    -moz-background-position-x: 50%;
+    -o-background-position-x: 50%;
+    background-position-x: 50%;
 }
+
+.footerLink {
+    font-size: 1.3rem;
+    text-align: center;
+    height: 25px;
+    padding-top: 5px;
+}
+
+    .footerLink a {
+        color: #2d586f;
+    }
+
+    .footerLink span {
+        font-style: italic;
+    }
 
 .displayNone {
     display: none;
@@ -570,9 +579,7 @@
 
 .upArrow {
     position: absolute;
-    left: 15px;
-    top: 175px;
-    /*fill: #aeb6cb;*/
+    top: 260px;
     fill: white;
     z-index: 100;
 }
@@ -741,7 +748,7 @@
 
 .step3Img {
     height: 105px;
-    padding-left: 45px;
+    padding-left: 43px;
     margin-top: -14px;
 }
 
@@ -783,4 +790,30 @@
 .OSLogo {
     width: 20px;
     margin: 0 0 5px 5px;
+}
+
+.strategyBlock {
+    max-width: 900px;
+}
+
+.couponClientImg1 {
+    background-image: url('/Images/MainPage/blackIphone.png');
+    -ms-background-size: contain;
+    background-size: contain;
+    background-repeat: no-repeat;
+    -moz-background-position-x: 50%;
+    -o-background-position-x: 50%;
+    background-position-x: 50%;
+    height: 438px;
+}
+
+.arrowRight {
+    background-image: url('/Images/couponsStrategy/blueArrow.png');
+    -ms-background-size: contain;
+    background-size: contain;
+    background-repeat: no-repeat;
+    -moz-background-position-y: 50%;
+    -o-background-position-y: 50%;
+    background-position-y: 50%;
+    height: 438px;
 }
