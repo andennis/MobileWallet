@@ -46,6 +46,11 @@ namespace PromoSitePass.Controllers
             return View();
         }
 
+        public ActionResult CouponRedemption()
+        {
+            return View();
+        }
+
         public ActionResult MembershipStrategy()
         {
             return View();

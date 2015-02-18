@@ -225,6 +225,7 @@
     <Content Include="Images\createCard\Vitalik.png" />
     <Content Include="Images\icons\qr-code.gif" />
     <Content Include="Images\icons\qrcode.png" />
+    <Content Include="Images\iPhone.png" />
     <Content Include="Images\logo&amp;strip\cleverLogo.png" />
     <Content Include="Images\logo&amp;strip\storeStrip7.jpg" />
     <Content Include="Images\logo&amp;strip\Tulips.jpg" />
@@ -335,6 +336,7 @@
     <Content Include="Views\PassDesigner\_LockScreenTab.cshtml" />
     <Content Include="Views\PassDesigner\_PassDesigner.cshtml" />
     <Content Include="Views\PassDesigner\_PassSettingsTab.cshtml" />
+    <Content Include="Views\Home\CouponRedemption.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
