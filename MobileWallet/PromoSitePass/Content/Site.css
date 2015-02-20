@@ -42,6 +42,7 @@ h4 {
     padding: 3px 0;
     margin: 0 0;
     font-family: HelveticaNeueCyr-Light;
+    line-height: 2.5rem;
 }
 
 ::selection {

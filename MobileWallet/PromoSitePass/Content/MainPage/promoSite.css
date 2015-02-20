@@ -453,7 +453,27 @@
         transition: background-color 0.5s ease;
     }
 
+.strategyButton {
+    background-color: #02d5ac;
+    padding: 5px 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 2.5rem;
+    -ms-border-radius: 10px;
+    border-radius: 10px;
+}
 
+    .strategyButton:hover {
+        background-color: #fd678a;
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+        -webkit-transition: background-color 0.5s ease;
+        -moz-transition: background-color 0.5s ease;
+        -ms-transition: background-color 0.5s ease;
+        -o-transition: background-color 0.5s ease;
+        transition: background-color 0.5s ease;
+    }
 
 .mainBlockButton:hover {
     cursor: pointer;
@@ -707,4 +727,14 @@
     padding: 4px 6px;
     margin-top: 25px;
     margin-bottom: 25px;
+}
+
+.CouponDescriptImg {
+    width: 100%;
+    margin-left: 5%;
+}
+
+.pointItem {
+    color: #2fe2bf;
+    font-size: 2.2rem;
 }
