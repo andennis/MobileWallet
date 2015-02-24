@@ -103,13 +103,13 @@
                                     <img id="thumbnailImagePass" class="generic" src="@Url.Action("GetImage", "PassDesigner", new { path = Model.TemplatePath, imageName = "thumbnail.png" })" />
                                 </span>
                             </div>
-                            <div id="flexContainerPrimaryValues" class="flexContainerPrimaryFields primaryFieldLabels">
-                                <div id="divPrimaryValuePass1" class="valueTextPrimary valueText leftAlignPassText">@Model.FieldDetails.PrimaryFields[0].Label</div>
-                                <div id="divPrimaryValuePass2" class="valueTextPrimary valueText rightAlignPassText">@Model.FieldDetails.PrimaryFields[1].Label</div>
+                            <div id="flexContainerPrimaryLabels" class="flexContainerPrimaryFields primaryFieldLabels">
+                                <div id="divPrimaryLabelPass1" class="labelTextPrimary labelText leftAlignPassText">@Model.FieldDetails.PrimaryFields[0].Label</div>
+                                <div id="divPrimaryLabelPass2" class="labelTextPrimary labelText rightAlignPassText">@Model.FieldDetails.PrimaryFields[1].Label</div>
                             </div>
-                            <div id="flexContainerPrimaryLabels" class="flexContainerPrimaryFields primaryFieldValues">
-                                <div id="divPrimaryLabelPass1" class="labelTextPrimary labelText leftAlignPassText">@Model.FieldDetails.PrimaryFields[0].Value</div>
-                                <div id="divPrimaryLabelPass2" class="labelTextPrimary labelText rightAlignPassText">@Model.FieldDetails.PrimaryFields[1].Value</div>
+                            <div id="flexContainerPrimaryValues" class="flexContainerPrimaryFields primaryFieldValues">
+                                <div id="divPrimaryValuePass1" class="valueTextPrimary valueText leftAlignPassText">@Model.FieldDetails.PrimaryFields[0].Value</div>
+                                <div id="divPrimaryValuePass2" class="valueTextPrimary valueText rightAlignPassText">@Model.FieldDetails.PrimaryFields[1].Value</div>
                             </div>
 
                             <!--Auxiliary area on pass-->
@@ -940,19 +940,19 @@
         @switch (Model.PassStyle)
         {
             case PassStyle.BoardingPass:
-                @:jQuery('#boardingPassImg').trigger('click');
+                @:jQuery('#boardingPassType').prop('checked', true).change();
                 break;
             case PassStyle.Coupon:
-                @:jQuery('#couponImg').trigger('click');
+                @:jQuery('#couponType').prop('checked', true).change();
                 break;
             case PassStyle.EventTicket:
-                @:jQuery('#eventTicketImg').trigger('click');
+                @:jQuery('#eventTicketType').prop('checked', true).change();
                 break;
             case PassStyle.Generic:
-                @:jQuery('#genericImg').trigger('click');
+                @:jQuery('#genericType').prop('checked', true).change();
                 break;
             case PassStyle.StoreCard:
-                @:jQuery('#storeCardImg').trigger('click');
+                @:jQuery('#storeCardType').prop('checked', true).change();
                 break;
         }
     });

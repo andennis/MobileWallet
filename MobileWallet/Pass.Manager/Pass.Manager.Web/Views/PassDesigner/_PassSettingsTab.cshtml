@@ -2,10 +2,49 @@
 
 <div class="clearBlock"></div>
 <br />
-<p class="title">Выберите тип пасса</p>
+@*<p class="title">Выберите тип пасса</p>*@
+
 
 <!--Pass type radio button-->
-<div id="divPassType" class="passTypes" style="height: 125px;">
+<p class="labelInput labelInputPassSettings">
+    <span data-toggle="tooltip" title="Выберите необходимый тип карты">Выберите тип карты<span class="spanRed">*</span></span>
+</p>
+<div id="divPassType" style="display: inline-block; padding-top: 6px;">
+    <div class="radio radioPassType">
+        <label>
+            <input type="radio" id="boardingPassType" name="PassStyle" value="boardingPass" onchange="ChangesDependingPassType(value)">
+            Билет на проезд
+        </label>
+    </div>
+    <div class="radio radioPassType">
+        <label>
+            <input type="radio" id="couponType" name="PassStyle" value="coupon" onchange="ChangesDependingPassType(value)">
+            Купон
+        </label>
+    </div>
+    <div class="radio radioPassType">
+        <label>
+            <input type="radio" id="storeCardType" name="PassStyle" value="storeCard" onchange="ChangesDependingPassType(value)">
+            Накопительная карта
+        </label>
+    </div>
+    <div class="radio radioPassType">
+        <label>
+            <input type="radio" id="genericType" name="PassStyle" value="generic" onchange="ChangesDependingPassType(value)">
+            Карта клиента
+        </label>
+    </div>
+    <div class="radio radioPassType">
+        <label>
+            <input type="radio" id="eventTicketType" name="PassStyle" value="eventTicket" onchange="ChangesDependingPassType(value)">
+            Билет на событие
+        </label>
+    </div>
+</div>
+
+
+<!--Pass type radio button-->
+@*<div id="divPassType" class="passTypes" style="height: 125px;">
     <div class="passType">
         <p>
             <input type="radio" class="passT" id="boardingPassType" name="PassStyle" value="boardingPass">
@@ -52,7 +91,7 @@
         </p>
     </div>
 </div>
-<br>
+<br>*@
 
 <!--Event ticket type radio button-->
 <div id="divEventTicketTypeRadio">
@@ -109,7 +148,7 @@
 
 <!--Pass description text area-->
 <p class="labelInput labelInputPassSettings">
-    <span data-toggle="tooltip" title="Каждому пассу необходимо дать краткое описание специальных возможностей">Описание пасса<span class="spanRed">*</span></span>
+    <span data-toggle="tooltip" title="Каждому пассу необходимо дать краткое описание специальных возможностей">Описание карты<span class="spanRed">*</span></span>
 </p>
 <textarea id="passDescriptionTextarea" class="form-control textInputPassSetting" name="PassDescription" maxlength="20" placeholder="Обязательное" rows="3">@Model.PassDescription</textarea>
 <br>
@@ -125,7 +164,7 @@
 
 <!--Pass serial number radio button-->
 <p class="labelInput labelInputPassSettings">
-    <span data-toggle="tooltip" title="Число или код, необходимый для для распознания пасса">Серийный номер пасса<span class="spanRed">*</span></span>
+    <span data-toggle="tooltip" title="Число или код, необходимый для для распознания пасса">Серийный номер карты<span class="spanRed">*</span></span>
 </p>
 <div id="serialNumber" style="display: inline-block; padding-top: 6px;">
     <div class="radio radioSerialNumber" style="width: 370px;">
