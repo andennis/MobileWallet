@@ -224,18 +224,18 @@ function ChangeBarcodeType(itemValue) {
     if (itemValue === 'aztecCode' || itemValue === 'qrCode') {
         jQuery('#tab5').css('top', '340px').css('height', '126px');
         jQuery('#divFooterImagePass').css('margin-top', '178px');
-        if (jQuery('.passTypeImg.selected').attr('data-pass') === 'generic') {
+        if (jQuery('input[name=PassStyle]:checked').val() === 'generic') {
             jQuery('#auxiliaryAreaPass').css('display', 'none');
             jQuery('#tab3').css('display', 'none');
         }
     } else {
         jQuery('#tab5').css('top', '359px').css('height', '102px');
-        if (jQuery('.passTypeImg.selected').attr('data-pass') === 'generic') {
+        if (jQuery('input[name=PassStyle]:checked').val() === 'generic') {
             jQuery('#auxiliaryAreaPass').css('display', 'block');
             jQuery('#tab3').css('display', 'block');
         }
     }
-    if (jQuery('.passTypeImg.selected').attr('data-pass') === 'eventTicket' && jQuery('#eventTicketType input:checked').attr('value') === 'option2') {
+    if (jQuery('input[name=PassStyle]:checked').val() === 'eventTicket' && jQuery('#eventTicketType input:checked').attr('value') === 'option2') {
         ChangesDependingPassType('eventTicket');
     };
 }
