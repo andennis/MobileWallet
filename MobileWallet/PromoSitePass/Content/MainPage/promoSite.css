@@ -103,8 +103,42 @@
         color: white;
     }
 
-    .advImage {
-        background: url('/Images/MainPage/blackIphone1.png');
+    .advImage1 {
+        background: url('/Images/MainPage/pass-1.png');
+        -ms-background-size: 61% auto;
+        -moz-background-size: 61% auto;
+        -o-background-size: 61% auto;
+        -webkit-background-size: 61% auto;
+        background-size: 61% auto;
+        background-repeat: no-repeat;
+        -moz-background-position-x: 50%;
+        -o-background-position-x: 50%;
+        background-position-x: 50%;
+        -moz-background-position-y: 50%;
+        -o-background-position-y: 50%;
+        background-position-y: 50%;
+        height: 410px;
+    }
+
+    .advImage2 {
+        background: url('/Images/MainPage/pass-2.png');
+        -ms-background-size: 61% auto;
+        -moz-background-size: 61% auto;
+        -o-background-size: 61% auto;
+        -webkit-background-size: 61% auto;
+        background-size: 61% auto;
+        background-repeat: no-repeat;
+        -moz-background-position-x: 50%;
+        -o-background-position-x: 50%;
+        background-position-x: 50%;
+        -moz-background-position-y: 50%;
+        -o-background-position-y: 50%;
+        background-position-y: 50%;
+        height: 410px;
+    }
+
+    .advImage3 {
+        background: url('/Images/MainPage/pass-3.png');
         -ms-background-size: 61% auto;
         -moz-background-size: 61% auto;
         -o-background-size: 61% auto;

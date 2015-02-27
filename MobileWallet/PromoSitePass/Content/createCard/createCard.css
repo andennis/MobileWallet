@@ -18,7 +18,12 @@ input {
 
 .headerBlockContentDesigner {
     height: 50px;
-    width: 1000px;
+    -moz-min-width: 1000px;
+    -ms-min-width: 1000px;
+    -o-min-width: 1000px;
+    -webkit-min-width: 1000px;
+    min-width: 1000px;
+    max-width: 1300px;
     margin-left: auto;
     margin-right: auto;
     padding-top: 7px;
@@ -30,7 +35,12 @@ input {
 
 .bodyPassDesigner {
     height: 600px;
-    width: 1000px;
+    -moz-min-width: 1000px;
+    -ms-min-width: 1000px;
+    -o-min-width: 1000px;
+    -webkit-min-width: 1000px;
+    min-width: 1000px;
+    max-width: 1300px;
     border: dashed 0px;
 }
 
@@ -39,7 +49,12 @@ input {
 }
 
 .leftPanelDesigner {
-    width: 350px;
+    -moz-min-width: 350px;
+    -ms-min-width: 350px;
+    -o-min-width: 350px;
+    -webkit-min-width: 350px;
+    min-width: 350px;
+    width: 35%;
     height: 650px;
     border: dashed 0px;
     float: left;
@@ -47,30 +62,28 @@ input {
 }
 
 .phoneBlockLeftPanel {
-    background-image: url(/Images/createCard/myImages/iphonePassDesigner.png);
+    background-image: url(/Images/createCard/iPhone6_passBook.png);
+    background-repeat: no-repeat;
     width: 320px;
-    height: 613px;
-    position: absolute;
+    height: 637px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .passBodyBlock {
     visibility: visible;
     height: 342px;
     width: 270px;
-    margin-left: 25px;
-    margin-top: 165px;
+    margin-left: 18px;
+    margin-top: 127px;
     position: absolute;
     display: block;
 }
 
 .backgroundImgPassBlock {
-    margin-top: 32px;
     position: absolute;
     display: block;
-}
-
-.backgroundImgCanvas {
-    display: none;
 }
 
 .passTypeImg {
@@ -80,7 +93,12 @@ input {
 
 .passType {
     float: left;
-    width: 106px;
+    -moz-min-width: 106px;
+    -ms-min-width: 106px;
+    -o-min-width: 106px;
+    -webkit-min-width: 106px;
+    min-width: 106px;
+    width: 17%;
     height: 145px;
 }
 
@@ -110,7 +128,21 @@ input {
         }
 
 .labelInputPassSettings {
-    width: 195px;
+    -moz-min-width: 195px;
+    -ms-min-width: 195px;
+    -o-min-width: 195px;
+    -webkit-min-width: 195px;
+    min-width: 195px;
+    width: 28%;
+}
+
+.labelInputDesign {
+    -moz-min-width: 138px;
+    -ms-min-width: 138px;
+    -o-min-width: 138px;
+    -webkit-min-width: 138px;
+    min-width: 138px;
+    width: 23%;
 }
 
 .labelInputBarcode {
@@ -179,7 +211,7 @@ input {
 }
 
 .peter-river-flat-button {
-    width: 126px;
+    width: 12.5%;
     height: 30px;
     padding: 0;
     font-size: 12px;
@@ -188,9 +220,11 @@ input {
     -webkit-box-shadow: none;
     -ms-box-shadow: none;
     box-shadow: none;
+    background: #2d586f;
+    background: rgba(45, 88, 111, 1);
 }
 
-    .peter-river-flat-button:active {
+.peter-river-flat-button:active {
         top: 1px;
         outline: none;
         -webkit-box-shadow: none;
@@ -205,7 +239,13 @@ input {
     border-radius: 0 0 0 0;
     float: left;
     padding: 6px 5px;
+    -ms-text-shadow: none;
     text-shadow: none;
+    -webkit-transition: background 0.3s ease,color 0.3s ease;
+    -moz-transition: background 0.3s ease,color 0.3s ease;
+    -ms-transition: background 0.3s ease,color 0.3s ease;
+    -o-transition: background 0.3s ease,color 0.3s ease;
+    transition: background 0.3s ease,color 0.3s ease;
 }
 
     .tabMain.active, .tabMain.active:hover, .tabMain:focus {
@@ -219,12 +259,12 @@ input {
     }
 
     .tabMain:hover {
-        background: #e67e22;
+        background: #fd678a;
     }
 
 .saveTab {
-    width: 110px;
-    background: #16a085;
+    width: 11%;
+    background: #02d5ac;
 }
 
     .saveTab:hover, .saveTab.active:hover {
@@ -237,12 +277,12 @@ input {
         color: white;
     }
 
-    .logoImagePassBlock {
-        margin-left: 5px;
-         margin-top: 5px; 
-         position: absolute; 
-         display: block;
-    }
+.logoImagePassBlock {
+    margin-left: 5px;
+    margin-top: 5px;
+    position: absolute;
+    display: block;
+}
 
 .spanLogoImagePass {
     max-width: 250px;
@@ -262,9 +302,9 @@ input {
     height: 100%;
 }
 
-.spanBackgroundImagePass {
-    width: 0px;
-    max-height: 0px;
+.backgroundSvgPass {
+    width: 270px;
+    height: 342px;
 }
 
 #thumbnailImagePass.generic {
@@ -286,6 +326,18 @@ input {
     box-shadow: none;
     margin-top: 38px;
     margin-left: 186px;
+}
+
+.footerImagePassBlock {
+    position: absolute;
+    width: 270px;
+}
+
+.spanFooterImagePass {
+    max-width: 233px;
+    max-height: 13px;
+    margin: 0 auto;
+    display: block;
 }
 
 .customFile {
@@ -388,8 +440,7 @@ input {
     display: none;
 }
 
-#wrapper p.active {
-    color: black;
+.linkTabFrontContent.active {
     cursor: default;
     font-weight: bold;
     text-decoration: none;
@@ -400,16 +451,71 @@ input {
     width: 100%;
 }
 
-#wrapper p.tabFrontContent {
+.frontTabPassBlock {
+    display: none;
+}
+
+.linkTabFrontContent {
     background-color: gray;
     position: absolute;
     -ms-opacity: 0.4;
     opacity: 0.4;
+    z-index: 1;
+    color: white;
+    -ms-border-bottom-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    -ms-border-top-right-radius: 5px;
+    border-top-right-radius: 5px;
+    text-align: right;
 }
 
-    #wrapper p.tabFrontContent:hover {
+    .linkTabFrontContent:hover {
         cursor: pointer;
     }
+
+.frontTabPass1 {
+    left: 84px;
+    top: 130px;
+    width: 268px;
+    height: 46px;
+}
+
+.frontTabPass2 {
+    left: -44px;
+    top: 184px;
+    width: 328px;
+    height: 94px;
+    text-align: left;
+    -ms-border-bottom-right-radius: 0;
+    border-bottom-right-radius: 0;
+    -ms-border-top-right-radius: 0;
+    border-top-right-radius: 0;
+    -ms-border-bottom-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    -ms-border-top-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.frontTabPass3 {
+    left: 23px;
+    top: 291px;
+    width: 330px;
+    height: 43px;
+}
+
+.frontTabPass4 {
+    left: 23px;
+    top: 291px;
+    width: 330px;
+    height: 43px;
+}
+
+.frontTabPass5 {
+    left: 23px;
+    top: 348px;
+    width: 330px;
+    height: 126px;
+}
 
 .labelTextHeader {
     font-size: 10px;
@@ -449,12 +555,12 @@ input {
 }
 
 .primaryFieldLabels {
-    height: 70px; 
+    height: 70px;
     top: 48px;
 }
 
 .primaryFieldValues {
-    height: 36px; 
+    height: 36px;
     top: 122px;
 }
 
@@ -497,12 +603,12 @@ input {
 }
 
 .auxiliaryFieldLabels {
-    height: 12px; 
+    height: 12px;
     top: 168px;
 }
 
 .auxiliaryFieldValues {
-    height: 16px; 
+    height: 16px;
     top: 181px;
 }
 
@@ -709,6 +815,12 @@ input {
 .explanations {
     color: #7B7D81;
     font-size: 13px;
+    -moz-min-width: 605px;
+    -ms-min-width: 605px;
+    -o-min-width: 605px;
+    -webkit-min-width: 605px;
+    min-width: 605px;
+    width: 88%;
 }
 
 .collapseLinkContent {
@@ -725,6 +837,15 @@ input {
 .textInputNameContent {
     width: 300px;
     height: 28px;
+}
+
+.textInputPassSetting {
+    -moz-min-width: 300px;
+    -ms-min-width: 300px;
+    -o-min-width: 300px;
+    -webkit-min-width: 300px;
+    min-width: 300px;
+    width: 51%;
 }
 
 .textInputBarcode {
@@ -833,6 +954,14 @@ label.checkboxCollapseLabel {
     width: 370px;
 }
 
+.radioPassType {
+    width: 370px;
+}
+
+.radioPassType.radio {
+    width: 370px;
+}
+
 .divCheckboxLabelAndValue {
     margin-left: 129px;
     margin-top: 5px;
@@ -913,7 +1042,7 @@ label.checkboxCollapseLabel {
 .divTabEditor {
     max-height: 610px;
     height: 610px;
-    width: auto;
+    width: 100%;
     margin-right: 3px;
     padding-right: 20px;
     max-height: 610px;
@@ -1056,12 +1185,9 @@ label.checkboxCollapseLabel {
     -webkit-box-shadow: 0 0 4px 3px #e67e22 !important;
     -ms-box-shadow: 0 0 4px 3px #e67e22 !important;
     box-shadow: 0 0 4px 3px #e67e22 !important;
-}
-
-#backgroundCanvas {
-    height: 342px !important;
-    width: 270px !important;
-    margin-top: -32px;
+    -webkit-box-shadow: 0 0 4px 3px #fd678a !important;
+    -ms-box-shadow: 0 0 4px 3px #fd678a !important;
+    box-shadow: 0 0 4px 3px #fd678a !important;
 }
 
 #divPassBody {
@@ -1094,38 +1220,30 @@ label.checkboxCollapseLabel {
     height: 32px;
 }
 
-.airIconPass {
-    -webkit-transform: rotate(90deg);
-    -o-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    transform: rotate(90deg);
-}
-
 .logoTextPass {
-    display: inline-block; 
-    left: 70px; 
-    position: relative; 
-    top: 13px; 
-    width: 150px; 
-    height: 20px; 
-    border: dashed 0px; 
-    font-size: 16px; 
-    color: white; 
-    overflow: hidden; 
-    -ms-text-overflow: ellipsis; 
-    -o-text-overflow: ellipsis; 
-    -moz-text-overflow: ellipsis; 
+    display: inline-block;
+    left: 70px;
+    position: relative;
+    top: 13px;
+    width: 150px;
+    height: 20px;
+    border: dashed 0px;
+    font-size: 16px;
+    color: white;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    -moz-text-overflow: ellipsis;
     text-overflow: ellipsis;
 }
 
 .headerFieldsLabels {
-    height: 12px; 
+    height: 12px;
     top: 12px;
 }
 
 .headerFieldsValues {
-    height: 16px; 
+    height: 16px;
     top: 24px;
 }
 
@@ -1135,87 +1253,104 @@ label.checkboxCollapseLabel {
 }
 
 .leftAlignPassText {
-   margin-right: auto; 
+    margin-right: auto;
+}
+
+.rightAlignPassText {
+    text-align: right;
+    padding-right: 10px;
 }
 
 .aztecCodeImgPass {
-    position: relative; 
-    width: 40%; 
-    top: 201px; 
+    position: relative;
+    width: 40%;
+    top: 201px;
     left: 81px;
 }
 
 .qrCodeImgPass {
-    max-width: 117px; 
-    height: 119px; 
-    max-height: 119px; 
-    position: relative; 
-    top: 197px; 
+    max-width: 117px;
+    height: 119px;
+    max-height: 119px;
+    position: relative;
+    top: 197px;
     left: 77px;
 }
 
 .pdf417CodeImgPass {
-    position: relative; 
-    top: 215px; 
+    position: relative;
+    top: 215px;
     left: 44px;
 }
 
 .backAreaPass {
     display: none;
-   }
+}
 
 .backPassBackgroundImg {
-    width: 100%; 
+    width: 100%;
     position: absolute;
 }
 
 .backPassBlock {
-    width: 262px; 
-    min-height: 311px; 
-    max-height: 330px; 
-    overflow-y: auto; 
-    position: absolute; 
-    top: 38px; left: 4px; 
-    overflow: hidden; 
+    width: 262px;
+    min-height: 311px;
+    max-height: 330px;
+    overflow-y: auto;
+    position: absolute;
+    top: 38px;
+    left: 4px;
+    overflow: hidden;
     background: white;
 }
 
 .backHackBlock {
-    width: 107%; 
-    overflow-y: auto; 
-    overflow-x: hidden; 
-    height: 290px; 
-    top: 5px; 
+    width: 107%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 290px;
+    top: 5px;
     position: absolute;
 }
 
 .automaticUpdateImg {
-    width: 263px; 
+    width: 263px;
     position: absolute;
 }
 
 .backPassContentBlock {
-    min-height: 30px; 
-    width: 248px; 
-    border: 1px solid #E4DEDE; 
-    padding: 0 10px 8px; 
-    overflow: hidden; 
-    margin-top: 49px; 
-    margin-left: 7px; 
-    position: absolute; 
+    min-height: 30px;
+    width: 248px;
+    border: 1px solid #E4DEDE;
+    padding: 0 10px 8px;
+    overflow: hidden;
+    margin-top: 49px;
+    margin-left: 7px;
+    position: absolute;
+    -ms-border-radius: 5px;
     border-radius: 5px;
 }
 
 .clearPanel {
-    width: 40px; 
-    height: 640px; 
+    -moz-min-width: 40px;
+    -ms-min-width: 40px;
+    -o-min-width: 40px;
+    -webkit-min-width: 40px;
+    min-width: 40px;
+    width: 4%;
+    height: 640px;
     float: left;
 }
 
 .rightPanelDesigner {
-    width: 610px; 
-    float: right; 
-    border: dashed 0px; 
+    -moz-min-width: 610px;
+    -ms-min-width: 610px;
+    -o-min-width: 610px;
+    -webkit-min-width: 610px;
+    min-width: 610px;
+    width: 61%;
+    float: right;
+    border: dashed 0px;
     display: block;
 }
 
@@ -1224,8 +1359,13 @@ label.checkboxCollapseLabel {
 }
 
 .colorPickerInput {
-    height: 30px; 
-    width: 200px;
+    height: 30px;
+    -moz-min-width: 200px;
+    -ms-min-width: 200px;
+    -o-min-width: 200px;
+    -webkit-min-width: 200px;
+    min-width: 200px;
+    width: 38%;
 }
 
 .dividingLine {
@@ -1233,12 +1373,20 @@ label.checkboxCollapseLabel {
 }
 
 .addFieldButton {
-    width:120px;
-    margin-left:0px;
-    margin-top:18px;
-    position:relative;
+    width: 120px;
+    margin-left: 20px;
+    margin-top: 18px;
+    position: relative;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    -ms-box-shadow: none;
+    box-shadow: none;
+    -ms-text-shadow: none;
+    -moz-text-shadow: none;
+    -webkit-text-shadow: none;
+    text-shadow: none;
 }
 
 .dataStyleSelectlist {
-    width:175px;
+    width: 175px;
 }

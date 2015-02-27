@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace PromoSitePass.Models.GeneralPassTemplate
+namespace Pass.Manager.Web.Models.GeneralPassTemplate
 {
     public class FieldDetails
     {
@@ -42,20 +42,20 @@ namespace PromoSitePass.Models.GeneralPassTemplate
     [JsonConverter(typeof(StringEnumConverter))]
     public enum Transit
     {
-        [XmlEnum(Name = "air")]
-        [EnumMember(Value = "air")]
+        [XmlEnum(Name = "Air")]
+        [EnumMember(Value = "Air")]
         Air = 0,
-        [XmlEnum(Name = "boat")]
-        [EnumMember(Value = "boat")]
+        [XmlEnum(Name = "Boat")]
+        [EnumMember(Value = "Boat")]
         Boat = 1,
-        [XmlEnum(Name = "bus")]
-        [EnumMember(Value = "bus")]
+        [XmlEnum(Name = "Bus")]
+        [EnumMember(Value = "Bus")]
         Bus = 2,
-        [XmlEnum(Name = "generic")]
-        [EnumMember(Value = "generic")]
+        [XmlEnum(Name = "Generic")]
+        [EnumMember(Value = "Generic")]
         Generic = 3,
-        [XmlEnum(Name = "train")]
-        [EnumMember(Value = "train")]
+        [XmlEnum(Name = "Train")]
+        [EnumMember(Value = "Train")]
         Train = 4
     }
 

@@ -1,14 +1,53 @@
-﻿@model PromoSitePass.Models.GeneralPassTemplate.GeneralPassTemplate
+﻿@model Pass.Manager.Web.Models.GeneralPassTemplate.PassTemplateViewModel
 
 <div class="clearBlock"></div>
 <br />
-<p class="title">Выберите тип пасса</p>
+@*<p class="title">Выберите тип пасса</p>*@
+
 
 <!--Pass type radio button-->
-<div id="divPassType" class="passTypes" style="height: 125px;">
+<p class="labelInput labelInputPassSettings">
+    <span data-toggle="tooltip" title="Выберите необходимый тип карты">Выберите тип карты<span class="spanRed">*</span></span>
+</p>
+<div id="divPassType" style="display: inline-block; padding-top: 6px;">
+    <div class="radio radioPassType">
+        <label>
+            <input type="radio" id="boardingPassType" name="PassStyle" value="boardingPass" onchange="ChangesDependingPassType(value)">
+            Билет на проезд
+        </label>
+    </div>
+    <div class="radio radioPassType">
+        <label>
+            <input type="radio" id="couponType" name="PassStyle" value="coupon" onchange="ChangesDependingPassType(value)">
+            Купон
+        </label>
+    </div>
+    <div class="radio radioPassType">
+        <label>
+            <input type="radio" id="storeCardType" name="PassStyle" value="storeCard" onchange="ChangesDependingPassType(value)">
+            Накопительная карта
+        </label>
+    </div>
+    <div class="radio radioPassType">
+        <label>
+            <input type="radio" id="genericType" name="PassStyle" value="generic" onchange="ChangesDependingPassType(value)">
+            Карта клиента
+        </label>
+    </div>
+    <div class="radio radioPassType">
+        <label>
+            <input type="radio" id="eventTicketType" name="PassStyle" value="eventTicket" onchange="ChangesDependingPassType(value)">
+            Билет на событие
+        </label>
+    </div>
+</div>
+
+
+<!--Pass type radio button-->
+@*<div id="divPassType" class="passTypes" style="height: 125px;">
     <div class="passType">
         <p>
-            <input type="radio" class="passT" id="boardingPassType" name="pt" value="boardingPass">
+            <input type="radio" class="passT" id="boardingPassType" name="PassStyle" value="boardingPass">
             <label id="boardingPassLabel" for="boardingPassType">
                 Transit<br>
                 <img id="boardingPassImg" src="https://d1ye292yvr7tf6.cloudfront.net/images/PFR-transport.png" alt="Boarding Pass" class="passTypeImg" data-pass="boardingPass">
@@ -17,7 +56,7 @@
     </div>
     <div class="passType">
         <p>
-            <input type="radio" class="passT" id="couponType" checked="checked" name="pt" value="coupon">
+            <input type="radio" class="passT" id="couponType" checked="checked" name="PassStyle" value="coupon">
             <label id="couponLabel" for="couponType">
                 Coupon<br>
                 <img id="couponImg" src="https://d1ye292yvr7tf6.cloudfront.net/images/PFR-coupon.png" alt="Coupon" class="passTypeImg selected" data-pass="coupon">
@@ -26,7 +65,7 @@
     </div>
     <div class="passType">
         <p>
-            <input type="radio" class="passT" id="storeCardType" name="pt" value="storeCard">
+            <input type="radio" class="passT" id="storeCardType" name="PassStyle" value="storeCard">
             <label id="storeCardLabel" for="storeCardType">
                 Store Card<br>
                 <img id="storeCardImg" src="https://d1ye292yvr7tf6.cloudfront.net/images/PFR-Store-Card.png" alt="Store Card" class="passTypeImg" data-pass="storeCard">
@@ -35,7 +74,7 @@
     </div>
     <div class="passType">
         <p>
-            <input type="radio" class="passT" id="genericType" name="pt" value="generic">
+            <input type="radio" class="passT" id="genericType" name="PassStyle" value="generic">
             <label id="genericLabel" for="genericType">
                 Membership<br>
                 <img id="genericImg" src="https://d1ye292yvr7tf6.cloudfront.net/images/PFR-member.png" alt="Generic Pass" class="passTypeImg" data-pass="generic">
@@ -44,7 +83,7 @@
     </div>
     <div class="passType">
         <p>
-            <input type="radio" class="passT" id="eventType" name="pt" value="eventTicket">
+            <input type="radio" class="passT" id="eventType" name="PassStyle" value="eventTicket">
             <label id="eventTicketLabel" for="eventType">
                 Event Ticket<br>
                 <img id="eventTicketImg" src="https://d1ye292yvr7tf6.cloudfront.net/images/PFR-ticket-blur.png" alt="Event Ticket" class="passTypeImg" data-pass="eventTicket">
@@ -52,7 +91,7 @@
         </p>
     </div>
 </div>
-<br>
+<br>*@
 
 <!--Event ticket type radio button-->
 <div id="divEventTicketTypeRadio">
@@ -83,14 +122,14 @@
 <p class="labelInput labelInputPassSettings">
     <span data-toggle="tooltip" title="Каждому созданному Вами шаблону пасса требуется уникальное название. Название шаблона не может быть изменено после сохранения пасса">Название шаблона<span class="spanRed">*</span></span>
 </p>
-<input id="templateNameInput" class="form-control textInputNameContent" maxlength="20" value="@Model.TemplateName" placeholder="Обязательное"/>
+<input id="templateNameInput" class="form-control textInputPassSetting" name="TemplateName" maxlength="20" value="@Model.TemplateName" placeholder="Обязательное" />
 <br>
 
 <!--Pass Certificate select-->
 <p class="labelInput labelInputPassSettings">
     <span data-toggle="tooltip" title="Компания Apple требует, чтобы все пассы были подписаны специальным цифровым сертификатом. Сертификат пасса не может быть изменен после сохранения пасса">Сертификат пасса<span class="spanRed">*</span></span>
 </p>
-<select id="passCertificSelect" class="form-control textInputNameContent">
+<select id="passCertificSelect" class="form-control textInputPassSetting" name="PassCertificate">
     <optgroup label="Ваш сертификат">
         <option>Нет</option>
     </optgroup>
@@ -104,14 +143,14 @@
 <p class="labelInput labelInputPassSettings">
     <span data-toggle="tooltip" title="Название Вашей организации будет отображаться в уведомлении об изменении при каждом обновлении пасса">Название организации<span class="spanRed">*</span></span>
 </p>
-<input id="organizationNameInput" class="form-control textInputNameContent" maxlength="20" value="@Model.OrganizationName" placeholder="Обязательное"/>
+<input id="organizationNameInput" class="form-control textInputPassSetting" maxlength="20" name="OrganizationName" value="@Model.OrganizationName" placeholder="Обязательное" />
 <br>
 
 <!--Pass description text area-->
 <p class="labelInput labelInputPassSettings">
-    <span data-toggle="tooltip" title="Каждому пассу необходимо дать краткое описание специальных возможностей">Описание пасса<span class="spanRed">*</span></span>
+    <span data-toggle="tooltip" title="Каждому пассу необходимо дать краткое описание специальных возможностей">Описание карты<span class="spanRed">*</span></span>
 </p>
-<textarea id="passDescriptionTextarea" class="form-control textInputNameContent" maxlength="20" placeholder="Обязательное" rows="3">@Model.PassDescription</textarea>
+<textarea id="passDescriptionTextarea" class="form-control textInputPassSetting" name="PassDescription" maxlength="20" placeholder="Обязательное" rows="3">@Model.PassDescription</textarea>
 <br>
 
 <!--Grouping identifier input-->
@@ -119,30 +158,30 @@
     <p class="labelInput labelInputPassSettings">
         <span data-toggle="tooltip" title="Пассы с одинаковым названием группы будут отображаться сгруппированными в Passbook-е пользователя">Название группы</span>
     </p>
-    <input id="groupingIdentifierInput" class="form-control textInputNameContent" value="@Model.GroupingIdentifier" maxlength="20" placeholder="Необязательное" />
+    <input id="groupingIdentifierInput" class="form-control textInputPassSetting" value="@Model.GroupingIdentifier" name="GroupingIdentifier" maxlength="20" placeholder="Необязательное" />
     <br>
 </div>
 
 <!--Pass serial number radio button-->
 <p class="labelInput labelInputPassSettings">
-    <span data-toggle="tooltip" title="Число или код, необходимый для для распознания пасса">Серийный номер пасса<span class="spanRed">*</span></span>
+    <span data-toggle="tooltip" title="Число или код, необходимый для для распознания пасса">Серийный номер карты<span class="spanRed">*</span></span>
 </p>
 <div id="serialNumber" style="display: inline-block; padding-top: 6px;">
     <div class="radio radioSerialNumber" style="width: 370px;">
         <label>
-            <input type="radio" name="optionsRadiosSerialNumber" id="optionsRadiosSerialNumber1" value="autoGgenerated" onchange="DisplayNoneSerialNumberInput()" checked>
+            <input type="radio" id="optionsRadiosSerialNumber1" value="autoGgenerated" name="PassSerialNumberType" onchange="DisplayNoneSerialNumberInput()" checked>
             Генерируется автоматически
         </label>
     </div>
     <div class="radio radioSerialNumber" style="width: 370px;">
         <label>
-            <input type="radio" name="optionsRadiosSerialNumber" id="optionsRadiosSerialNumber2" value="provided" onchange="DisplayNoneSerialNumberInput()">
+            <input type="radio" id="optionsRadiosSerialNumber2" value="provided" name="PassSerialNumberType" onchange="DisplayNoneSerialNumberInput()">
             Введенный при создании пасса
         </label>
     </div>
     <div class="radio radioSerialNumber" style="width: 370px;">
         <label>
-            <input type="radio" name="optionsRadiosSerialNumber" id="optionsRadiosSerialNumber3" value="sameForEachPass" onchange="DisplayBlockSerialNumberInput()">
+            <input type="radio" id="optionsRadiosSerialNumber3" value="sameForEachPass" name="PassSerialNumberType" onchange="DisplayBlockSerialNumberInput()">
             Использовать один серийный номер для каждого пасса
         </label>
     </div>
@@ -152,7 +191,7 @@
     <p class="labelInput labelInputPassSettings">
         <span data-toggle="tooltip" title="Укажите число или код, который будет использоваться для распознания пасса">Серийный номер<span class="spanRed">*</span></span>
     </p>
-    <input id="serialNumberInput" class="form-control textInputNameContent" maxlength="40" placeholder="Обязательное" />
+    <input id="serialNumberInput" class="form-control textInputPassSetting" maxlength="40" placeholder="Обязательное" />
 </div>
 <br>
 <br>
@@ -161,7 +200,7 @@
 <p class="labelInput labelInputPassSettings">
     <span data-toggle="tooltip" title="Если пасс будет использоваться в отличном от Вашего часовом поясе, то Вы можете настроить часовой пояс сдесь">Часовой пояс</span>
 </p>
-<select id="passTz" class="form-control textInputNameContent">
+<select id="passTz" class="form-control textInputPassSetting" name="PassTimezone">
     <option value="Z">Z</option>
     <option value="+01:00">+01:00</option>
     <option value="+02:00" selected>+02:00</option>

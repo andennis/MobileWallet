@@ -19,24 +19,25 @@ $(function () {
             switch ($(this).attr('id')) {
                 case 'advantageText1':
                     {
-
+                        $('.advImage').removeClass('advImage1').removeClass('advImage2').removeClass('advImage3').addClass('advImage1');
                         $('#advNumberCircle1').css('background-color', 'white').css('color', '#2d586f');
                         break;
                     }
                 case 'advantageText2':
                     {
-
+                        $('.advImage').removeClass('advImage1').removeClass('advImage2').removeClass('advImage3').addClass('advImage2');
                         $('#advNumberCircle2').css('background-color', 'white').css('color', '#2d586f');
                         break;
                     }
                 case 'advantageText3':
                     {
-
+                        $('.advImage').removeClass('advImage1').removeClass('advImage2').removeClass('advImage3').addClass('advImage3');
                         $('#advNumberCircle3').css('background-color', 'white').css('color', '#2d586f');
                         break;
                     }
                 case 'advantageText4':
                     {
+                        $('.advImage').removeClass('advImage1').removeClass('advImage2').removeClass('advImage3').addClass('advImage1');
                         $('#advNumberCircle4').css('background-color', 'white').css('color', '#2d586f');
                         break;
                     }
@@ -68,15 +69,15 @@ $(function () {
         });
 });
 
-$(document).ready(function() {
-    $("#up").click(function() {
+$(document).ready(function () {
+    $("#up").click(function () {
         var curPos = $(document).scrollTop();
         var scrollTime = curPos / 1.73;
         $("body,html").animate({ "scrollTop": 0 }, scrollTime);
     });
 });
 
-$(function() {
+$(function () {
     $('.contactText').hover(function (evt) {
         var tempClassName = evt.target.id.replace('Text', 'Icon');
         $('.' + tempClassName).css('fill', '#2fe2bf');
@@ -89,13 +90,13 @@ $(function() {
 
 //Replace all SVG images with inline SVG
 
-jQuery(window).load(function() {
-    jQuery('img.imgIcon').each(function() {
+jQuery(window).load(function () {
+    jQuery('img.imgIcon').each(function () {
         var $img = jQuery(this);
         var imgID = $img.attr('id');
         var imgClass = $img.attr('class');
         var imgURL = $img.attr('src');
-        jQuery.get(imgURL, function(data) {
+        jQuery.get(imgURL, function (data) {
             // Get the SVG tag, ignore the rest
             var $svg = jQuery(data).find('svg');
 

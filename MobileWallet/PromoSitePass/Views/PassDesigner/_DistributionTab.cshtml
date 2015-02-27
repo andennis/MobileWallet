@@ -1,4 +1,4 @@
-﻿@model PromoSitePass.Models.GeneralPassTemplate.GeneralPassTemplate
+﻿@model Pass.Manager.Web.Models.GeneralPassTemplate.PassTemplateViewModel
 
 <div class="clearBlock"></div>
 <br>
@@ -15,8 +15,8 @@
                 </p>
                 <img src="~/Images/createCard/expand.png" class="expandImageCollapse" style="margin-left: 372px;" data-toggle="tooltip" title="Развернуть(свернуть) поле" />
             </a>
-            <select id="distTypeSelect" class="form-control distributionSelect">
-                <option selected="selected" value="public">Публичная</option>
+            <select id="distTypeSelect" class="form-control distributionSelect" name="DistributionDetails.PassLinkType">
+                <option value="public" selected>Публичная</option>
                 <option value="private">Приватная</option>
             </select>
         </div>
@@ -39,20 +39,20 @@
                 <span data-toggle="tooltip" title="При выборе этой функции все пассы будут поставляться с серыми штрихкодами и с
                       сообщением об истечении срока действия пасса. Влияет на пассы только на IOS7">Пассы недействительны</span>
             </p>
-            <input type="checkbox" name="voidedCheckbox" id="voidedCheckbox" class="checkboxCollapse">
+            <input id="voidedCheckbox" class="checkboxCollapse" type="checkbox" name="DistributionDetails.AllPassesAsExpired" value="true">
             <label for="voidedCheckbox" class="checkboxCollapseLabel" style="float: left;"></label>
             <p class="pDistributionCheckbox">
                 <span>Срок действия пассов истёк</span>
             </p>
             <br>
-            
+
             <!--Auto expire passes date time picker-->
             <p class="pDistribution">
-                <span data-toggle="tooltip" title="После того, как срок действия пасса истёк, штрих-код на нём станет серым, 
+                <span data-toggle="tooltip" title="После того, как срок действия пасса истёк, штрих-код на нём станет серым,
                       и сообщение об истечении действия пасса появится под штрих-кодом. Обратите внимание, что так произойдёт только на смартфонах с IOS 7.">Действие пасса истекает после</span>
             </p>
-            <input id="autoExpireInput" class="form-control distributionContentSelect" placeholder="Необязательное" value="@Model.DistributionDetails.ExpirationDate" onclick="ShowDateTimePicker(id);" />
-            <br/>
+            <input id="autoExpireInput" class="form-control distributionContentSelect" name="DistributionDetails.ExpirationDate" placeholder="Необязательное" value="@Model.DistributionDetails.ExpirationDate" onclick="ShowDateTimePicker(id);" />
+            <br />
 
             <!--Quantity restriction select-->
             <p class="pDistribution">
@@ -69,7 +69,7 @@
                 <p class="pDistribution">
                     <span data-toggle="tooltip" title="Введите количество пассов для распространения">Остановить выдачу пассов после<span class="spanRed">*</span></span>
                 </p>
-                <input id="distQuantityInput" class="form-control distributionContentSelect" value="@Model.DistributionDetails.QuantityRestriction" maxlength="10" placeholder="Обязательное" />
+                <input id="distQuantityInput" class="form-control distributionContentSelect" name="DistributionDetails.QuantityRestriction" value="@Model.DistributionDetails.QuantityRestriction" maxlength="10" placeholder="Обязательное" />
                 <br />
             </div>
 
@@ -88,7 +88,7 @@
                 <p class="pDistribution">
                     <span data-toggle="tooltip" title="Введите дату и время после которых пассы не будут выдаваться. Это поле использует часовой пояс, который может быть установлен в разделе &laquo;Настройки&raquo;">Остановить выдачу пассов после<span class="spanRed">*</span></span>
                 </p>
-                <input id="distDateRestrInput" class="form-control distributionContentSelect" value="@Model.DistributionDetails.DateRestriction" maxlength="30" placeholder="Обязательное" onclick="ShowDateTimePicker(id);" />
+                <input id="distDateRestrInput" class="form-control distributionContentSelect" name="DistributionDetails.DateRestriction" value="@Model.DistributionDetails.DateRestriction" maxlength="30" placeholder="Обязательное" onclick="ShowDateTimePicker(id);" />
                 <br />
             </div>
 
@@ -108,7 +108,7 @@
                 <p class="pDistribution">
                     <span data-toggle="tooltip" title="Введите пароль, который будет предоставляться перед выдачей пасса">Пароль для выдачи<span class="spanRed">*</span></span>
                 </p>
-                <input id="distIssuePasswdInput" class="form-control distributionContentSelect" value="@Model.DistributionDetails.PasswordToIssue" maxlength="30" placeholder="Обязательное" />
+                <input id="distIssuePasswdInput" class="form-control distributionContentSelect" name="DistributionDetails.PasswordToIssue" value="@Model.DistributionDetails.PasswordToIssue" maxlength="30" placeholder="Обязательное" />
                 <br />
             </div>
 
@@ -127,7 +127,7 @@
                 <p class="pDistribution">
                     <span data-toggle="tooltip" title="Введите пароль, который будет предоставляться перед обновлением пасса">Пароль для обновлления<span class="spanRed">*</span></span>
                 </p>
-                <input id="distUpdatePasswdInput" class="form-control distributionContentSelect" value="@Model.DistributionDetails.PasswordToUpdate" maxlength="30" placeholder="Обязательное" />
+                <input id="distUpdatePasswdInput" class="form-control distributionContentSelect" name="DistributionDetails.PasswordToUpdate" value="@Model.DistributionDetails.PasswordToUpdate" maxlength="30" placeholder="Обязательное" />
                 <br />
             </div>
 

@@ -2,7 +2,7 @@
 using System.Xml.Serialization;
 using Newtonsoft.Json;
 
-namespace PromoSitePass.Models.GeneralPassTemplate
+namespace Pass.Manager.Web.Models.GeneralPassTemplate
 {
     public class DistributionDetails
     {

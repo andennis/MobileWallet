@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using PromoSitePass.Models.GeneralPassTemplate;
+using Pass.Manager.Web.Models.GeneralPassTemplate;
 
 namespace PromoSitePass.Controllers
 {
@@ -30,12 +30,12 @@ namespace PromoSitePass.Controllers
         }
 
         [HttpPost]
-        public void GiveMeJson(GeneralPassTemplate passModel)
+        public void GiveMeJson(PassTemplateViewModel passModel)
         {
             Console.WriteLine(passModel);
         }
 
-        public ActionResult CreateCard(GeneralPassTemplate passModel)
+        public ActionResult CreateCard(PassTemplateViewModel passModel)
         {
 
             return View(passModel);

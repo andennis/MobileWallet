@@ -2,7 +2,7 @@
 using System.Xml.Serialization;
 using Newtonsoft.Json;
 
-namespace PromoSitePass.Models.GeneralPassTemplate
+namespace Pass.Manager.Web.Models.GeneralPassTemplate
 {
     public class LocationDetails
     {
@@ -19,17 +19,25 @@ namespace PromoSitePass.Models.GeneralPassTemplate
 
     public class GeneralLocation
     {
+        [XmlElement(ElementName = "isMarkedLocation")]
+        [JsonProperty(PropertyName = "isMarkedLocation", NullValueHandling = NullValueHandling.Ignore)]
+        public bool IsMarkedLocation { get; set; }
+
+        [XmlElement(ElementName = "address")]
+        [JsonProperty(PropertyName = "address", NullValueHandling = NullValueHandling.Ignore)]
+        public string Address { get; set; }
+
         [XmlElement(ElementName = "altitude")]
         [JsonProperty(PropertyName = "altitude", NullValueHandling = NullValueHandling.Ignore)]
         public double? Altitude { get; set; }
 
         [XmlElement(ElementName = "latitude")]
         [JsonProperty(PropertyName = "latitude", Required = Required.Always)]
-        public double Latitude { get; set; }
+        public double? Latitude { get; set; }
 
         [XmlElement(ElementName = "longitude")]
         [JsonProperty(PropertyName = "longitude", Required = Required.Always)]
-        public double Longitude { get; set; }
+        public double? Longitude { get; set; }
 
         [XmlElement(ElementName = "relevantText")]
         [JsonProperty(PropertyName = "relevantText", NullValueHandling = NullValueHandling.Ignore)]

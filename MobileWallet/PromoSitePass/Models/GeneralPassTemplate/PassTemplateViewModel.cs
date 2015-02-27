@@ -1,17 +1,44 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 using System.Drawing;
+using System.Web;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace PromoSitePass.Models.GeneralPassTemplate
+namespace Pass.Manager.Web.Models.GeneralPassTemplate
 {
     [Serializable]
     [XmlRoot(ElementName = "passTemplate", Namespace = "http://www.mobilewallet.com")]
-    public class GeneralPassTemplate
+    public class PassTemplateViewModel
     {
         private const string Namespace = "http://www.mobilewallet.com";
+
+        [JsonProperty(PropertyName = "passProjectId", Required = Required.Always)]
+        public int PassProjectId { get; set; }
+
+        #region Images Keys
+        public string TemplatePath { get; set; }
+
+        public HttpPostedFileBase Logo { get; set; }
+
+        public bool RemoveLogo { get; set; }
+
+        public HttpPostedFileBase Strip { get; set; }
+
+        public bool RemoveStrip { get; set; }
+
+        public HttpPostedFileBase Background { get; set; }
+
+        public bool RemoveBackground { get; set; }
+
+        public HttpPostedFileBase Thumbnail { get; set; }
+
+        public bool RemoveThumbnail { get; set; }
+
+        public HttpPostedFileBase Footer { get; set; }
+
+        public bool RemoveFooter { get; set; }
+        #endregion
 
         #region Standart keys
 
@@ -44,7 +71,8 @@ namespace PromoSitePass.Models.GeneralPassTemplate
         public string PassCertificate { get; set; }
 
         [XmlElement(ElementName = "teamIdentifier")]
-        [JsonProperty(PropertyName = "teamIdentifier", Required = Required.Always)]
+        //[JsonProperty(PropertyName = "teamIdentifier", Required = Required.Always)]
+        [JsonProperty(PropertyName = "teamIdentifier")]
         public string TeamIdentifier { get; set; }
 
         #endregion
@@ -52,17 +80,29 @@ namespace PromoSitePass.Models.GeneralPassTemplate
         #region Visual Appearance Keys
 
         //[RegularExpression("^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$", ErrorMessage = "Invalid Format")]
+        //[XmlElement(ElementName = "backgroundColor")]
+        //[JsonProperty(PropertyName = "backgroundColor", Required = Required.Always)]
+        //public Color BackgroundColor { get; set; }
+
+        //[XmlElement(ElementName = "labelTextColor")]
+        //[JsonProperty(PropertyName = "labelTextColor", Required = Required.Always)]
+        //public Color LabelTextColor { get; set; }
+
+        //[XmlElement(ElementName = "valueTextColor")]
+        //[JsonProperty(PropertyName = "valueTextColor", Required = Required.Always)]
+        //public Color ValueTextColor { get; set; }
+
         [XmlElement(ElementName = "backgroundColor")]
         [JsonProperty(PropertyName = "backgroundColor", Required = Required.Always)]
-        public Color BackgroundColor { get; set; }
+        public string BackgroundColor { get; set; }
 
         [XmlElement(ElementName = "labelTextColor")]
         [JsonProperty(PropertyName = "labelTextColor", Required = Required.Always)]
-        public Color LabelTextColor { get; set; }
+        public string LabelTextColor { get; set; }
 
         [XmlElement(ElementName = "valueTextColor")]
         [JsonProperty(PropertyName = "valueTextColor", Required = Required.Always)]
-        public Color ValueTextColor { get; set; }
+        public string ValueTextColor { get; set; }
 
         [XmlElement(ElementName = "suppressStripShine")]
         [JsonProperty(PropertyName = "suppressStripShine", NullValueHandling = NullValueHandling.Ignore)]
@@ -80,7 +120,8 @@ namespace PromoSitePass.Models.GeneralPassTemplate
 
         [XmlElement(ElementName = "passTimezone")]
         [JsonProperty(PropertyName = "passTimezone")]
-        public TimeZone PassTimezone { get; set; }
+        //public TimeZone PassTimezone { get; set; }
+        public string PassTimezone { get; set; }
 
         [XmlElement(ElementName = "logoText")]
         [JsonProperty(PropertyName = "logoText", NullValueHandling = NullValueHandling.Ignore)]
