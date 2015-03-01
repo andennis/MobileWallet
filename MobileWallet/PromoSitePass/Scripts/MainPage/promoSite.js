@@ -80,11 +80,11 @@ $(document).ready(function () {
 $(function () {
     $('.contactText').hover(function (evt) {
         var tempClassName = evt.target.id.replace('Text', 'Icon');
-        $('.' + tempClassName).css('fill', '#2fe2bf');
+        $('.' + tempClassName).css('fill', '#fd678a');
     },
     function (evt) {
         var tempClassName = evt.target.id.replace('Text', 'Icon');
-        $('.' + tempClassName).css('fill', '#1abc9c');
+        $('.' + tempClassName).css('fill', '#02d5ac');
     });
 });
 

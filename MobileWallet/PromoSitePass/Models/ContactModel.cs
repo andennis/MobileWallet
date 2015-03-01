@@ -22,6 +22,10 @@ namespace PromoSitePass.Models
         public string PhoneNumber { get; set; }
 
         [Required]
+        [Display(Name = "CompanyName")]
+        public string CompanyName { get; set; }
+
+        [Required]
         [Display(Name = "Message")]
         public string Message { get; set; }
 

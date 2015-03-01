@@ -250,6 +250,10 @@
         .arrowRightBlock.left {
             right: 44px;
         }
+
+    .contactTable {
+        margin-top: 65px;
+    }
 }
 
 @media (min-width: 992px) {
@@ -553,19 +557,14 @@
     float: left;
 }
 
-.headerMessageBlock {
-    font-size: 3rem;
-    color: #87898F;
-    margin: 0 0 10px 0;
-}
-
 .sendMessageForm {
-    height: 450px;
-    width: 500px;
+    height: 517px;
     text-align: center;
-    background-color: #f2f4f8;
-    background-color: #eceff1;
+    background: rgba(45, 88, 111, 0.1);
     padding: 5px 20px;
+    margin-bottom: 20px;
+    -ms-border-radius: 10px;
+    border-radius: 10px;
 }
 
 .controlGroup {
@@ -576,10 +575,19 @@
     height: 45px;
     max-width: 800px;
     font-size: 1.8rem;
-    color: #87898F;
+    color: #2d586f;
     -ms-border-radius: 0;
-    border-radius: 0;
+    -ms-border-radius: 10px;
+    border-radius: 10px;
 }
+
+    .messageFormInput:focus {
+        border-color: #02d5ac;
+        border-width: 2px;
+        -webkit-box-shadow: none;
+        -ms-box-shadow: none;
+        box-shadow: none;
+    }
 
 .form-control:-moz-placeholder {
     color: #CED7DF;
@@ -597,48 +605,42 @@
     color: #CED7DF;
 }
 
-.messageFormInput:focus {
-    border-color: #ffd800;
-    border-color: #1abc9c;
-    border-width: 2px;
-    -webkit-box-shadow: none;
-    -ms-box-shadow: none;
-    box-shadow: none;
-}
-
-.contactBlock {
-    width: 400px;
-    float: left;
-    color: black;
-    margin-top: 70px;
-    margin-bottom: 70px;
-}
-
 .sendEmailButton {
-    background-color: #ffd800;
-    background-color: #1abc9c;
+    background-color: #02d5ac;
     width: 100%;
     height: 50px;
-    padding: 7px 22px 11px 21px;
+    padding: 5px 20px;
     color: white;
-    font-size: 2.4rem;
+    font-size: 3rem;
     max-width: 800px;
     border: none;
+    -ms-border-radius: 10px;
+    border-radius: 10px;
 }
 
     .sendEmailButton:hover {
-        background-color: #2fe2bf;
+        background-color: #fd678a;
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+        -webkit-transition: background-color 0.5s ease;
+        -moz-transition: background-color 0.5s ease;
+        -ms-transition: background-color 0.5s ease;
+        -o-transition: background-color 0.5s ease;
+        transition: background-color 0.5s ease;
     }
 
 .contactTable {
     font-size: 2.6rem;
     line-height: 1rem;
-    color: #87898F;
+    color: #2d586f;
     text-align: left;
+    margin-left: auto;
+    margin-right: auto;
 }
 
     .contactTable a {
-        color: #87898F;
+        color: #2d586f;
     }
 
 .contactIcon {
@@ -646,27 +648,27 @@
 }
 
 .vkIcon {
-    fill: #1abc9c;
+    fill: #02d5ac;
 }
 
 .emailIcon {
-    fill: #1abc9c;
+    fill: #02d5ac;
 }
 
 .phoneIcon {
-    fill: #1abc9c;
+    fill: #02d5ac;
 }
 
 .vkIcon:hover {
-    fill: #2fe2bf;
+    fill: #fd678a;
 }
 
 .emailIcon:hover {
-    fill: #2fe2bf;
+    fill: #fd678a;
 }
 
 .phoneIcon:hover {
-    fill: #2fe2bf;
+    fill: #fd678a;
 }
 
 .howItWorkIcon {
