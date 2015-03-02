@@ -77,6 +77,7 @@ namespace Pass.Manager.Repository.EF
 
             modelBuilder.Entity<PassContentTemplate>().ToTable("PassContentTemplate", DbScheme);
             modelBuilder.Entity<PassContentTemplate>().Property(x => x.Version).IsConcurrencyToken();
+            modelBuilder.Entity<PassContentTemplate>().Property(x => x.Name).IsRequired().HasMaxLength(FieldLenName);
             modelBuilder.Entity<PassContentTemplate>().Property(x => x.Description).IsRequired();
             modelBuilder.Entity<PassContentTemplate>().Property(x => x.OrganizationName).IsRequired().HasMaxLength(FieldLenName);
             modelBuilder.Entity<PassContentTemplate>().HasRequired(x => x.PassProject).WithMany(x => x.PassContentTemplates).HasForeignKey(x => x.PassProjectId).WillCascadeOnDelete(false);

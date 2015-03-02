@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Web.Mvc;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.SearchFilters;
 using Pass.Manager.Core.Services;
@@ -15,6 +12,26 @@ namespace Pass.Manager.Web.Controllers
         public PassContentTemplateController(IPassContentTemplateService templateService)
             : base(templateService)
         {
+        }
+
+        [HttpGet]
+        public ActionResult CreateContent(int passProjectId)
+        {
+            ViewBag.PassProjectId = passProjectId;
+            return Create();
+        }
+
+        protected override void PrepareModelToCreateView(PassContentTemplateViewModel model)
+        {
+            base.PrepareModelToCreateView(model);
+            if (ViewBag.PassProjectId != null)
+                model.PassProjectId = ViewBag.PassProjectId;
+        }
+
+        [ActionName("CreateContent")]
+        public override ActionResult Create(PassContentTemplateViewModel model)
+        {
+            return base.Create(model);
         }
 
     }

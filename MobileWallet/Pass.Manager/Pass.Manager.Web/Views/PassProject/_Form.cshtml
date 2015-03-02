@@ -16,14 +16,19 @@
 {
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            @Html.ActionLinkExt("Pass Designer", "Edit", "PassDesigner", new {passProjectId = Model.PassProjectId})
+            @(Html.ActionLinkExt<PassDesignerController>(a => a.Edit(0), "Pass Designer", new { passProjectId = Model.PassProjectId }))
         </div>    
     </div>
 
     <div class="row">
         @(Html.TabStrip()
             .Name("projectTabs")
-            .Items(tab => tab.Add().Text("Pass Fields").LoadContentFrom(Url.Action("TabFields", new { id = Model.PassProjectId})).Selected(true)))
+            .Items(tab => 
+                {
+                    tab.Add().Text("Pass Fields").LoadContentFrom(Url.Action("TabFields", new {id = Model.PassProjectId})).Selected(true);
+                    tab.Add().Text("Contents").LoadContentFrom(Url.Action("TabContents", new { id = Model.PassProjectId }));
+                }
+            ))
     </div>
     
 }

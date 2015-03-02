@@ -1,5 +1,4 @@
 ﻿using System.Web.Mvc;
-using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.SearchFilters;
 using Pass.Manager.Core.Services;
@@ -26,6 +25,11 @@ namespace Pass.Manager.Web.Controllers
         public ActionResult TabFields(int id)
         {
             return PartialView("Tabs/_Fields", id);
+        }
+
+        public ActionResult TabContents(int id)
+        {
+            return PartialView("Tabs/_Contents", id);
         }
 
     }

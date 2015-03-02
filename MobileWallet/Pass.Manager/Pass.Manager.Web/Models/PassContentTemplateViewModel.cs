@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Web;
 using FluentValidation.Attributes;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Web.Common;
@@ -20,6 +18,7 @@ namespace Pass.Manager.Web.Models
         }
 
         public int PassContentTemplateId { get; set; }
+        public string Name { get; set; }
         public string Description { get; set; }
         public string OrganizationName { get; set; }
         public PassContentStyle PassStyle { get; set; }

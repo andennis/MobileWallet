@@ -8,4 +8,8 @@
         return { PassSiteId: $("#PassSiteId").val() };
     }
 
+    helper.CertificateDataHandler = function () {
+        return { PassSiteId: $("#PassSiteId").val() };
+    }
+
 }(window.PassSite = window.PassSite || {}, jQuery));
