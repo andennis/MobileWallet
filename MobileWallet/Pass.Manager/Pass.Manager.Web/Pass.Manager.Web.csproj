@@ -23,10 +23,6 @@
     <WebGreaseLibPath>..\..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <SccProjectName>Svn</SccProjectName>
-    <SccLocalPath>Svn</SccLocalPath>
-    <SccAuxPath>Svn</SccAuxPath>
-    <SccProvider>SubversionScc</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -1069,6 +1065,7 @@
     <Content Include="Views\Shared\_Edit.cshtml" />
     <Content Include="Views\PassProject\Tabs\_Fields.cshtml" />
     <Content Include="Views\PassProject\Tabs\_Contents.cshtml" />
+    <Content Include="Views\PassContentTemplate\_Form.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CertificateStorage\CertificateStorage.BL\CertificateStorage.BL.csproj">
@@ -1142,7 +1139,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\TemplateImages\" />
-    <Folder Include="Views\PassContentTemplate\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
