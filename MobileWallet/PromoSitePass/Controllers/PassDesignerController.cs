@@ -80,8 +80,8 @@ namespace PromoSitePass.Controllers
             var passModel = new PassTemplateViewModel
                             {
                                 PassStyle = PassStyle.BoardingPass,
-                                BackgroundColor = "#004460",
-                                LabelTextColor = "#000000",
+                                BackgroundColor = "#FD7C16",
+                                LabelTextColor = "#004151",
                                 ValueTextColor = "#ffffff",
                                 LogoText = "",
                                 LocationDetails = new LocationDetails()
@@ -109,29 +109,71 @@ namespace PromoSitePass.Controllers
                                                                   },
                                                    PrimaryFields = new List<GeneralField>()
                                                                    {
-                                                                       new GeneralField(),
-                                                                       new GeneralField()
+                                                                       new GeneralField
+                                                                       {
+                                                                           IsMarkedField = true,
+                                                                           Label = "СТ. ОТПРАВЛЕНИЯ",
+                                                                           Value = "МИНСК",
+                                                                           IsDynamicValue = true
+                                                                       },
+                                                                       new GeneralField
+                                                                       {
+                                                                           IsMarkedField = true,
+                                                                           Label = "СТ. НАЗНАЧЕНИЯ",
+                                                                           Value = "МОСКВА",
+                                                                           IsDynamicValue = true
+                                                                       }
                                                                    },
                                                    AuxiliaryFields = new List<GeneralField>(5)
                                                                      {
-                                                                         new GeneralField(),
-                                                                         new GeneralField(),
+                                                                         new GeneralField
+                                                                         {
+                                                                             IsMarkedField = true,
+                                                                             Label = "ОТПРАВЛЕНИЕ",
+                                                                             Value = "05/03/15 19:02",
+                                                                             IsDynamicValue = true
+                                                                         },
+                                                                         new GeneralField
+                                                                         {
+                                                                             IsMarkedField = true,
+                                                                             Label = "ПРИБЫТИЕ",
+                                                                             Value = "06/03/15 05:09",
+                                                                             IsDynamicValue = true
+                                                                         },
                                                                          new GeneralField(),
                                                                          new GeneralField(),
                                                                          new GeneralField()
                                                                      },
                                                    SecondaryFields = new List<GeneralField>()
                                                                      {
-                                                                         new GeneralField(),
-                                                                         new GeneralField(),
-                                                                         new GeneralField(),
+                                                                         new GeneralField
+                                                                         {
+                                                                             IsMarkedField = true,
+                                                                             Label = "ПАССАЖИР",
+                                                                             Value = "ИВАНОВ ИВАН",
+                                                                             IsDynamicValue = true
+                                                                         },
+                                                                         new GeneralField
+                                                                         {
+                                                                             IsMarkedField = true,
+                                                                             Label = "№ ВАГОНА",
+                                                                             Value = "3",
+                                                                             IsDynamicValue = true
+                                                                         },
+                                                                         new GeneralField
+                                                                         {
+                                                                             IsMarkedField = true,
+                                                                             Label = "МЕСТО",
+                                                                             Value = "10",
+                                                                             IsDynamicValue = true
+                                                                         },
                                                                          new GeneralField()
-                                                                     },
+                                                                         },
                                                    BackFields = new List<GeneralField>()
                                                                 {
                                                                     new GeneralField()
                                                                 },
-                                                   TransitType = Transit.Generic
+                                                   TransitType = Transit.Train
                                                }
                             };
 
@@ -181,8 +223,8 @@ namespace PromoSitePass.Controllers
                                                                        new GeneralField
                                                                        {
                                                                            IsMarkedField = true,
-                                                                           Label = "-40%",
-                                                                           Value = "на каждую вторую вещь",
+                                                                           Label = "НА КАЖДУЮ ВТОРУЮ ВЕЩЬ",
+                                                                           Value = "-40%",
                                                                            IsDynamicValue = true
                                                                        },
                                                                        new GeneralField()
@@ -192,14 +234,14 @@ namespace PromoSitePass.Controllers
                                                                          new GeneralField
                                                                          {
                                                                              IsMarkedField = true,
-                                                                             Label = "Номер клиента",
+                                                                             Label = "НОМЕР КЛИЕНТА",
                                                                              Value = "02387",
                                                                              IsDynamicValue = true
                                                                          },
                                                                          new GeneralField
                                                                          {
                                                                              IsMarkedField = true,
-                                                                             Label = "Период действия",
+                                                                             Label = "ПЕРИОД ДЕЙСТВИЯ",
                                                                              Value = "01.09 - 31.09.2014",
                                                                              IsDynamicValue = true
                                                                          },

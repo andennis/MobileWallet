@@ -30,22 +30,24 @@
             <div class="navbar-collapse navbar-right collapse menu">
                 <nav class="navbar navbar-default" role="navigation">
                     <ul class="nav navbar-nav menuPanel1">
-                        <li class="first active leaf"><a href="~/Home/MainPage" class="active">Главная</a></li>
-                        <li class="leaf">
+                        <li id="mainPageMenuItem" class="first active leaf" onclick="changeActiveMenuItem('mainPage');">
+                            <a href="~/Home/MainPage" class="active">Главная</a>
+                        </li>
+                        <li id="strategiesMenuItem" class="leaf">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 Стратегии
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li class="menuItem">@Html.ActionLink("Купоны", "CouponsStrategy", "Home")</li>
-                                <li class="menuItem disabled">@Html.ActionLink("Карты клиента", "MembershipStrategy", "Home")</li>
-                                <li class="menuItem disabled">@Html.ActionLink("Штамп карты", "StampStrategy", "Home")</li>
-                                <li class="menuItem disabled">@Html.ActionLink("Билеты на событие", "EventTicketsStrategy", "Home")</li>
-                                <li class="menuItem disabled">@Html.ActionLink("Билеты на проезд", "TransitTicketsStrategy", "Home")</li>
-                                <li class="menuItem disabled">@Html.ActionLink("Визитные карты", "BusinessCardStrategy", "Home")</li>
+                                <li class="menuItem" onclick="changeActiveMenuItem('strategies');">@Html.ActionLink("Купоны", "CouponsStrategy", "Home")</li>
+                                <li class="menuItem disabled" onclick="changeActiveMenuItem('strategies');">@Html.ActionLink("Карты клиента", "MembershipStrategy", "Home")</li>
+                                <li class="menuItem disabled" onclick="changeActiveMenuItem('strategies');">@Html.ActionLink("Штамп карты", "StampStrategy", "Home")</li>
+                                <li class="menuItem disabled" onclick="changeActiveMenuItem('strategies');">@Html.ActionLink("Билеты на событие", "EventTicketsStrategy", "Home")</li>
+                                <li class="menuItem" onclick="changeActiveMenuItem('strategies');">@Html.ActionLink("Билеты на проезд", "TransitTicketsStrategy", "Home")</li>
+                                <li class="menuItem disabled" onclick="changeActiveMenuItem('strategies');">@Html.ActionLink("Визитные карты", "BusinessCardStrategy", "Home")</li>
                             </ul>
                         </li>
-                        <li class="leaf">
+                        <li id="toolsMenuItem" class="leaf">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 Инструменты
                                 <span class="caret"></span>
@@ -54,7 +56,7 @@
                                 <li class="menuItem">@Html.ActionLink("Дизайнер пассов", "EmptyCardDesigner", new { controller = "PassDesigner" }, new { target = "blank" })</li>
                             </ul>
                         </li>
-                        <li class="leaf">@Html.ActionLink("Контакты", "Contact", "Home")</li>
+                        <li id="contactsMenuItem" class="leaf" onclick="changeActiveMenuItem('contact');">@Html.ActionLink("Контакты", "Contact", "Home")</li>
                     </ul>
 
                     <ul class="nav navbar-nav menuPanel2">

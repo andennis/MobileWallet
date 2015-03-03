@@ -197,7 +197,8 @@
     <Content Include="Images\Contact\social21.svg" />
     <Content Include="Images\Contact\telephone1.svg" />
     <Content Include="Images\Contact\vkcom.svg" />
-    <Content Include="Images\couponsStrategy\couponDescript.png" />
+    <Content Include="Images\Strategies\boardingDescript.png" />
+    <Content Include="Images\Strategies\couponDescript.png" />
     <Content Include="Images\createCardOnNotebook.png" />
     <Content Include="Images\createCard\barcode\aztecPass.png" />
     <Content Include="Images\createCard\barcode\pdf417Pass.png" />

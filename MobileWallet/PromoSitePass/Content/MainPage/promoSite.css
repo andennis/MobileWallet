@@ -765,9 +765,14 @@
     margin-bottom: 25px;
 }
 
-.CouponDescriptImg {
+.couponDescriptImg {
     width: 100%;
     margin-left: 5%;
+}
+
+.boardingDescriptImg {
+    width: 100%;
+    margin-left: -10%;
 }
 
 .pointItem {

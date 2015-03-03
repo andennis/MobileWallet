@@ -89,7 +89,6 @@ $(function () {
 });
 
 //Replace all SVG images with inline SVG
-
 jQuery(window).load(function () {
     jQuery('img.imgIcon').each(function () {
         var $img = jQuery(this);
@@ -119,3 +118,17 @@ jQuery(window).load(function () {
     });
 });
 
+//Change active menu item
+function changeActiveMenuItem(menuItem) {
+    $('.menuPanel1 li').removeClass('active');
+    switch (menuItem) {
+        case 'mainPage':
+            $('#mainPageMenuItem a').addClass('active'); break;
+        case 'strategies':
+            $('#strategiesMenuItem a').addClass('active'); break;
+        case 'contact':
+            $('#contactsMenuItem a').addClass('active'); break;
+        default:
+            $('#mainPageMenuItem').addClass('active'); break;
+    }
+}
