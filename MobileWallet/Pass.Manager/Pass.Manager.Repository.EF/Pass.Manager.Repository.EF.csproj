@@ -101,6 +101,10 @@
     <Compile Include="Migrations\201503021753350_M12.Designer.cs">
       <DependentUpon>201503021753350_M12.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503031825206_M13.cs" />
+    <Compile Include="Migrations\201503031825206_M13.Designer.cs">
+      <DependentUpon>201503031825206_M13.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PassManagerDbContext.cs" />
     <Compile Include="PassManagerUnitOfWork.cs" />
@@ -170,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503021753350_M12.resx">
       <DependentUpon>201503021753350_M12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503031825206_M13.resx">
+      <DependentUpon>201503031825206_M13.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

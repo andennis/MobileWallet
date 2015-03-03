@@ -13,6 +13,13 @@
 
 @section Actions
 {
-    @Html.FormActionSubmit("buttonCreate", "Create")
-    @Html.FormActionButton("buttonCancel", "Cancel", !string.IsNullOrEmpty(Model.RedirectUrl) ? Model.RedirectUrl : Url.Action("Index"))
+    @if (IsSectionDefined("Actions"))
+    {
+        @RenderSection("Actions")
+    }
+    else
+    {
+        @Html.FormActionSubmit("buttonCreate", "Create")
+        @Html.FormActionButton("buttonCancel", "Cancel", !string.IsNullOrEmpty(Model.RedirectUrl) ? Model.RedirectUrl : Url.Action("Index"))
+    }
 }

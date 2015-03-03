@@ -17,21 +17,7 @@ namespace Pass.Manager.Web.Controllers
         [HttpGet]
         public ActionResult CreateContent(int passProjectId)
         {
-            ViewBag.PassProjectId = passProjectId;
-            return Create();
-        }
-
-        protected override void PrepareModelToCreateView(PassContentTemplateViewModel model)
-        {
-            base.PrepareModelToCreateView(model);
-            if (ViewBag.PassProjectId != null)
-                model.PassProjectId = ViewBag.PassProjectId;
-        }
-
-        [ActionName("CreateContent")]
-        public override ActionResult Create(PassContentTemplateViewModel model)
-        {
-            return base.Create(model);
+            return Create(m => m.PassProjectId = passProjectId);
         }
 
     }

@@ -1066,6 +1066,7 @@
     <Content Include="Views\PassProject\Tabs\_Fields.cshtml" />
     <Content Include="Views\PassProject\Tabs\_Contents.cshtml" />
     <Content Include="Views\PassContentTemplate\_Form.cshtml" />
+    <Content Include="Views\PassContentTemplate\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CertificateStorage\CertificateStorage.BL\CertificateStorage.BL.csproj">

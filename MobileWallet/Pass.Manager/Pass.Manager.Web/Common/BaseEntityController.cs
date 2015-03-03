@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using Common.Web.Grid;
@@ -31,8 +32,17 @@ namespace Pass.Manager.Web.Common
         [HttpGet]
         public virtual ActionResult Create()
         {
+            return Create(x => { });
+        }
+
+        protected ActionResult Create(Action<TEntityViewModel> prepareModelAction)
+        {
             var model = new TEntityViewModel();
             SetDefaultReturnUrl(model);
+
+            if (prepareModelAction != null)
+                prepareModelAction(model);
+
             PrepareModelToCreateView(model);
             return CreateView(model);
         }
@@ -61,7 +71,7 @@ namespace Pass.Manager.Web.Common
             if (Request.IsAjaxRequest())
                 return PartialView("_Create", model);
 
-            return View(model);
+            return View("Create", model);
         }
 
         [HttpGet]

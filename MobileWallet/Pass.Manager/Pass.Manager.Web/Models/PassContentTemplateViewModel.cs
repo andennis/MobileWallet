@@ -43,7 +43,7 @@ namespace Pass.Manager.Web.Models
         public string GroupingIdentifier { get; set; }
         public Color? LabelColor { get; set; }
         public string LogoText { get; set; }
-        public bool? SuppressStripShine { get; set; }
+        public bool SuppressStripShine { get; set; }
 
         public int PassProjectId { get; set; }
 

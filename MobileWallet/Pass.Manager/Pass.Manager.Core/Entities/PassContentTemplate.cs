@@ -33,7 +33,7 @@ namespace Pass.Manager.Core.Entities
         public string GroupingIdentifier { get; set; }
         public Color? LabelColor { get; set; }
         public string LogoText { get; set; }
-        public bool? SuppressStripShine { get; set; }
+        public bool SuppressStripShine { get; set; }
 
         public int PassProjectId { get; set; }
         public PassProject PassProject { get; set; }
