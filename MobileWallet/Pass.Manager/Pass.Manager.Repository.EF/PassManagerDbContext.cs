@@ -82,6 +82,14 @@ namespace Pass.Manager.Repository.EF
             modelBuilder.Entity<PassContentTemplate>().Property(x => x.OrganizationName).IsRequired().HasMaxLength(FieldLenName);
             modelBuilder.Entity<PassContentTemplate>().HasRequired(x => x.PassProject).WithMany(x => x.PassContentTemplates).HasForeignKey(x => x.PassProjectId).WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<PassBarcode>().ToTable("PassBarcode", DbScheme);
+            modelBuilder.Entity<PassBarcode>().HasKey(x => x.PassContentTemplateId);
+            modelBuilder.Entity<PassBarcode>().Property(x => x.Version).IsConcurrencyToken();
+            modelBuilder.Entity<PassBarcode>().Property(x => x.Format).IsRequired();
+            modelBuilder.Entity<PassBarcode>().Property(x => x.Message).IsRequired().HasMaxLength(64);
+            modelBuilder.Entity<PassBarcode>().Property(x => x.MessageEncoding).HasMaxLength(32);
+            modelBuilder.Entity<PassBarcode>().HasRequired(x => x.PassContentTemplate).WithOptional(x => x.Barcode);
+
             modelBuilder.Entity<PassBeacon>().ToTable("PassBeacon", DbScheme);
             modelBuilder.Entity<PassBeacon>().Property(x => x.Version).IsConcurrencyToken();
             modelBuilder.Entity<PassBeacon>().Property(x => x.ProximityUuid).IsRequired().HasMaxLength(128);

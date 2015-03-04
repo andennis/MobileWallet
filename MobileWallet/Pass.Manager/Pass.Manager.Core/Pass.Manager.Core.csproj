@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\IEntityWithId.cs" />
+    <Compile Include="Entities\PassBarcode.cs" />
     <Compile Include="Entities\PassBarcodeFormat.cs" />
     <Compile Include="Entities\PassBeacon.cs" />
     <Compile Include="Entities\PassCertificate.cs" />

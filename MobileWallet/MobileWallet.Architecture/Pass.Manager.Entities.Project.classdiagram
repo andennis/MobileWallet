@@ -272,6 +272,16 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd Id="810e3c10-2271-4656-8235-6531b5a9a7dd" name="PassBarcode" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <lowerValueInternal>
+                    <literalString Id="2cad0d9a-c305-4360-a888-1085e3e4ec3f" name="Lower" value="0">
+                      <elementDefinition Id="71f99a58-0c80-4d0f-be04-1f9c0aa7f2af" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="1c128b0f-fec1-4db1-abb4-bbaf3031b5fe" name="Upper" value="1">
+                      <elementDefinition Id="cb340314-e795-4501-8c91-cc708b09e95a" />
+                    </literalString>
+                  </upperValueInternal>
                   <elementDefinition Id="e5f5c20d-05e0-4c4f-84ce-1faf640d8b7a" />
                 </memberEnd>
               </associationHasOwnedEnds>

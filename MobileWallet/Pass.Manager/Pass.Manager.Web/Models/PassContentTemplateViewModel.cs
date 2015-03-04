@@ -23,20 +23,13 @@ namespace Pass.Manager.Web.Models
         public string OrganizationName { get; set; }
         public PassContentStyle PassStyle { get; set; }
 
-        #region Barcode
-        /*
-        public string BarcodeAltText { get; set; }
-        public PassBarcodeFormat? BarcodeFormat { get; set; }
-        public string BarcodeMessage { get; set; }
-        public string BarcodeMessageEncoding { get; set; }
-        */
-        #endregion
+        public PassBarcodeViewModel Barcode { get; set; }
 
         public int? MaxDistance { get; set; }
         public DateTime? RelevantDate { get; set; }
 
-        public ICollection<PassBeacon> Beacons { get; set; }
-        public ICollection<PassLocation> Locations { get; set; }
+        public ICollection<PassBeaconViewModel> Beacons { get; set; }
+        public ICollection<PassLocationViewModel> Locations { get; set; }
 
         public Color? BackgroundColor { get; set; }
         public Color? ForegroundColor { get; set; }
