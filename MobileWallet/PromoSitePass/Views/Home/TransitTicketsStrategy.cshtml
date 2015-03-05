@@ -15,6 +15,8 @@
             <br />
             <h4><span class="pointItem">&#8226;</span> Через push-сообщения можно донести обновленную информацию о поездке (время отправления и т.д.).</h4>
             <br />
+            <h4><span class="pointItem">&#8226;</span> Для подтверждения подлинности билета, штрих-код на нем может считываться сканером или другим смартфоном.</h4>
+            <br />
             <h4><span class="pointItem">&#8226;</span> Ваш билет не потеряется, т.к. он хранится на нашем сервере и его можно восстановить.</h4>
         </div>
     </div>
@@ -24,3 +26,11 @@
     <a href="~/PassDesigner/TransitStrategyCard" target="_blank" class="strategyButton" style="">Пример купона</a>
     <br />
 </div>
+
+<script type="text/javascript">
+    //change menu active item
+    $(document).ready(function () {
+        $(".menuPanel1 li").removeClass("active");
+        $('#strategiesMenuItem').addClass('active');
+    });
+</script>

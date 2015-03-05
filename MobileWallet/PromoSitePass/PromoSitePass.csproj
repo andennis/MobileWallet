@@ -261,6 +261,7 @@
     <Content Include="Images\SampleCard\stampcardTemplate.png" />
     <Content Include="Images\SampleCard\storecardTemplate.png" />
     <Content Include="Images\SampleCard\transitticketTemplate.png" />
+    <Content Include="Images\Strategies\eventTicketDescript.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\HelveticaNeueCyr-Light.otf" />

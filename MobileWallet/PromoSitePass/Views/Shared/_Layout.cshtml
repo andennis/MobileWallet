@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
 
 
 
@@ -31,7 +32,7 @@
                 <nav class="navbar navbar-default" role="navigation">
                     <ul class="nav navbar-nav menuPanel1">
                         <li id="mainPageMenuItem" class="first active leaf" onclick="changeActiveMenuItem('mainPage');">
-                            <a href="~/Home/MainPage" class="active">Главная</a>
+                            <a href="~/Home/MainPage">Главная</a>
                         </li>
                         <li id="strategiesMenuItem" class="leaf">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -42,7 +43,7 @@
                                 <li class="menuItem" onclick="changeActiveMenuItem('strategies');">@Html.ActionLink("Купоны", "CouponsStrategy", "Home")</li>
                                 <li class="menuItem disabled" onclick="changeActiveMenuItem('strategies');">@Html.ActionLink("Карты клиента", "MembershipStrategy", "Home")</li>
                                 <li class="menuItem disabled" onclick="changeActiveMenuItem('strategies');">@Html.ActionLink("Штамп карты", "StampStrategy", "Home")</li>
-                                <li class="menuItem disabled" onclick="changeActiveMenuItem('strategies');">@Html.ActionLink("Билеты на событие", "EventTicketsStrategy", "Home")</li>
+                                <li class="menuItem" onclick="changeActiveMenuItem('strategies');">@Html.ActionLink("Билеты на событие", "EventTicketsStrategy", "Home")</li>
                                 <li class="menuItem" onclick="changeActiveMenuItem('strategies');">@Html.ActionLink("Билеты на проезд", "TransitTicketsStrategy", "Home")</li>
                                 <li class="menuItem disabled" onclick="changeActiveMenuItem('strategies');">@Html.ActionLink("Визитные карты", "BusinessCardStrategy", "Home")</li>
                             </ul>
@@ -98,7 +99,7 @@
     </div>
     <div class="footer"></div>
 
-    @Scripts.Render("~/bundles/jquery")
+  
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

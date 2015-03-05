@@ -775,6 +775,11 @@
     margin-left: -10%;
 }
 
+.eventTicketDescriptImg {
+    width: 100%;
+    margin-left: 3%;
+}
+
 .pointItem {
     color: #2fe2bf;
     font-size: 2.2rem;
