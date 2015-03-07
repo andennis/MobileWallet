@@ -22,11 +22,13 @@ namespace Pass.Manager.Web.Controllers
             return View("Create", model);
         }
 
+        [AjaxOnly]
         public ActionResult TabFields(int id)
         {
             return PartialView("Tabs/_Fields", id);
         }
 
+        [AjaxOnly]
         public ActionResult TabContents(int id)
         {
             return PartialView("Tabs/_Contents", id);

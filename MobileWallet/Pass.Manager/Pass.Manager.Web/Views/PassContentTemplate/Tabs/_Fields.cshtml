@@ -1,0 +1,35 @@
+﻿@model int
+
+@(Html.ActionLinkExt<PassContentTemplateFieldController>(a => a.CreateField(0), "Map Field", new { passProjectId = Model }, new { @class = "btn btn-default btn-primary", data_popup_window = "wndTemplateField" }))
+@(Html.PopupDialog()
+              .Name("wndTemplateField")
+              .Width(600)
+              .Title("Pass Project Field")
+              .Events(e => e.Success("OnEditFieldSuccess"))
+)
+
+@(Html.Grid<PassContentTemplateFieldViewModel>()
+              .Name("grdTemplateFields")
+              .CssClass("pm-grid")
+              .Pageable()
+              .DataSource(ds => ds.Read(@Url.Action("GridSearch", "PassContentTemplateField", new { PassProjectId = Model })))
+              .Columns(c =>
+                       {
+                           c.Bound(p => p.PassContentTemplateFieldId).Title("ID").Width("100px");
+                           c.BoundLink(p => p.PassProjectFieldId, Url.Action("Edit", "PassContentTemplateField"), id => id.PassContentTemplateFieldId, new { data_popup_window = "wndTemplateField" });
+                           c.Bound(p => p.Label);
+                           c.Bound(p => p.FieldKind).Title("Field Kind");
+                           c.Bound(p => p.PassContentTemplateFieldId).Title("Action").GridAjaxAction("Delete", Url.Action("Delete", "PassContentTemplateField"));
+                       }))
+
+<script>
+    $(document).ready(function () {
+        window.grid.Init($("#grdTemplateFields"));
+    });
+
+    function OnEditFieldSuccess() {
+        window.grid.Reload($("#grdTemplateFields"));
+    }
+</script>
+
+

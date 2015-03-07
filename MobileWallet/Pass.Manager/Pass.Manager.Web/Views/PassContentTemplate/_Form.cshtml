@@ -1,4 +1,5 @@
-﻿@model PassContentTemplateViewModel
+﻿@using Common.Web.Tab
+@model PassContentTemplateViewModel
        
 @Html.HiddenForExt(m => m.PassContentTemplateId)
 @Html.HiddenForExt(m => m.PassProjectId)
@@ -18,3 +19,14 @@
 @Html.CheckBoxFormForEx(m => m.SuppressStripShine, "Suppress Strip Shine")
 
 
+<div class="row">
+    @(Html.TabStrip()
+            .Name("contentTabs")
+            .Items(tab =>
+                {
+                    tab.Add().Text("Fields").LoadContentFrom(Url.Action("TabFields", new { id = Model.PassContentTemplateId})).Selected(true);
+                    tab.Add().Text("Beacons").LoadContentFrom(Url.Action("TabBeacons", new { id = Model.PassContentTemplateId }));
+                    tab.Add().Text("Locations").LoadContentFrom(Url.Action("TabLocations", new { id = Model.PassContentTemplateId }));
+                }
+            ))
+</div>

@@ -133,11 +133,20 @@ namespace Common.Web
 
         public static MvcHtmlString DropDownListFormForExt<TModel, TEnumProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TEnumProperty>> expression,
             string labelText = null, string optionLabel = null)
+            where TEnumProperty : struct  
+        {
+            SelectList listItems = EnumHelper.ToSelectList<TEnumProperty>();
+            return html.DropDownListFormForExt(expression, listItems, labelText, optionLabel);
+        }
+        public static MvcHtmlString DropDownListFormForExt<TModel, TEnumProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TEnumProperty?>> expression,
+            string labelText = null, string optionLabel = null)
             where TEnumProperty : struct 
         {
             SelectList listItems = EnumHelper.ToSelectList<TEnumProperty>();
             return html.DropDownListFormForExt(expression, listItems, labelText, optionLabel);
         }
+        
+
         
         #endregion
 

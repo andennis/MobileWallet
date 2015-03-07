@@ -1,0 +1,11 @@
+﻿@model PassContentTemplateFieldViewModel
+    
+@Html.HiddenForExt(m => m.PassContentTemplateId)
+@Html.HiddenForExt(m => m.PassContentTemplateFieldId)
+
+@Html.DropDownListFormForExt(m => m.PassProjectFieldId, Model.PassProjectFields, "Field Name", "- Select Field -")
+@Html.TextBoxFormForExt(m => m.Label)
+@Html.DropDownListFormForExt(m => m.FieldKind, "Field Kind", "- Select Field Kind -")
+@Html.TextBoxFormForExt(m => m.AttributedValue)
+@Html.TextBoxFormForExt(m => m.ChangeMessage)
+@Html.DropDownListFormForExt(m => m.TextAlignment, "Text Alignment", "- Select Text Alignment -")

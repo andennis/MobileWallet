@@ -59,13 +59,16 @@
     <Compile Include="Entities\PassSiteUser.cs" />
     <Compile Include="Entities\PassSiteUserState.cs" />
     <Compile Include="Entities\PassContentStyle.cs" />
+    <Compile Include="Entities\PassTransitType.cs" />
     <Compile Include="Entities\TextAlignment.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="SearchFilters\PassContentTemplateFieldFilter.cs" />
     <Compile Include="SearchFilters\PassContentTemplateFilter.cs" />
     <Compile Include="Services\IBaseService.cs" />
     <Compile Include="Services\IPassCertificateService.cs" />
     <Compile Include="IPassManagerConfig.cs" />
     <Compile Include="IPassManagerUnitOfWork.cs" />
+    <Compile Include="Services\IPassContentTemplateFieldService.cs" />
     <Compile Include="Services\IPassContentTemplateService.cs" />
     <Compile Include="Services\IPassProjectService.cs" />
     <Compile Include="Services\IPassSiteCertificateService.cs" />

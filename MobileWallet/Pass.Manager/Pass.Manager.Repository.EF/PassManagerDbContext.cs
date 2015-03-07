@@ -75,6 +75,7 @@ namespace Pass.Manager.Repository.EF
             modelBuilder.Entity<PassProjectField>().Property(x => x.Name).IsRequired().HasMaxLength(FieldLenName);
             modelBuilder.Entity<PassProjectField>().HasRequired(x => x.PassProject).WithMany(x => x.PassFields).HasForeignKey(x => x.PassProjectId).WillCascadeOnDelete(false);
 
+            //PassContentTemplate
             modelBuilder.Entity<PassContentTemplate>().ToTable("PassContentTemplate", DbScheme);
             modelBuilder.Entity<PassContentTemplate>().Property(x => x.Version).IsConcurrencyToken();
             modelBuilder.Entity<PassContentTemplate>().Property(x => x.Name).IsRequired().HasMaxLength(FieldLenName);
@@ -82,6 +83,7 @@ namespace Pass.Manager.Repository.EF
             modelBuilder.Entity<PassContentTemplate>().Property(x => x.OrganizationName).IsRequired().HasMaxLength(FieldLenName);
             modelBuilder.Entity<PassContentTemplate>().HasRequired(x => x.PassProject).WithMany(x => x.PassContentTemplates).HasForeignKey(x => x.PassProjectId).WillCascadeOnDelete(false);
 
+            //PassBarcode
             modelBuilder.Entity<PassBarcode>().ToTable("PassBarcode", DbScheme);
             modelBuilder.Entity<PassBarcode>().HasKey(x => x.PassContentTemplateId);
             modelBuilder.Entity<PassBarcode>().Property(x => x.Version).IsConcurrencyToken();
@@ -90,17 +92,20 @@ namespace Pass.Manager.Repository.EF
             modelBuilder.Entity<PassBarcode>().Property(x => x.MessageEncoding).HasMaxLength(32);
             modelBuilder.Entity<PassBarcode>().HasRequired(x => x.PassContentTemplate).WithOptional(x => x.Barcode);
 
+            //PassBeacon
             modelBuilder.Entity<PassBeacon>().ToTable("PassBeacon", DbScheme);
             modelBuilder.Entity<PassBeacon>().Property(x => x.Version).IsConcurrencyToken();
             modelBuilder.Entity<PassBeacon>().Property(x => x.ProximityUuid).IsRequired().HasMaxLength(128);
             modelBuilder.Entity<PassBeacon>().HasRequired(x => x.PassContentTemplate).WithMany(x => x.Beacons).HasForeignKey(x => x.PassContentTemplateId);
 
+            //PassLocation
             modelBuilder.Entity<PassLocation>().ToTable("PassLocation", DbScheme);
             modelBuilder.Entity<PassLocation>().Property(x => x.Version).IsConcurrencyToken();
             modelBuilder.Entity<PassLocation>().Property(x => x.Latitude).IsRequired();
             modelBuilder.Entity<PassLocation>().Property(x => x.Longitude).IsRequired();
             modelBuilder.Entity<PassLocation>().HasRequired(x => x.PassContentTemplate).WithMany(x => x.Locations).HasForeignKey(x => x.PassContentTemplateId);
 
+            //PassContentTemplateField
             modelBuilder.Entity<PassContentTemplateField>().ToTable("PassContentTemplateField", DbScheme);
             modelBuilder.Entity<PassContentTemplateField>().Property(x => x.Version).IsConcurrencyToken();
             modelBuilder.Entity<PassContentTemplateField>().Property(x => x.AttributedValue).HasMaxLength(128);

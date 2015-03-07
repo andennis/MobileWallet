@@ -159,6 +159,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PassCertificateController.cs" />
     <Compile Include="Controllers\PassContentTemplateController.cs" />
+    <Compile Include="Controllers\PassContentTemplateFieldController.cs" />
     <Compile Include="Controllers\PassDesignerController.cs" />
     <Compile Include="Controllers\PassProjectController.cs" />
     <Compile Include="Controllers\PassProjectFieldController.cs" />
@@ -182,6 +183,7 @@
     <Compile Include="Models\PassBeaconViewModel.cs" />
     <Compile Include="Models\PassCertificateAppleViewModel.cs" />
     <Compile Include="Models\PassCertificateViewModel.cs" />
+    <Compile Include="Models\PassContentTemplateFieldViewModel.cs" />
     <Compile Include="Models\PassContentTemplateViewModel.cs" />
     <Compile Include="Models\PassLocationViewModel.cs" />
     <Compile Include="Models\PassProjectFieldViewModel.cs" />
@@ -197,6 +199,7 @@
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PassSiteViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\PassContentTemplateFieldViewModelValidator.cs" />
     <Compile Include="Validators\PassContentTemplateViewModelValidator.cs" />
     <Compile Include="Validators\PassLocationViewModelValidator.cs" />
     <Compile Include="Validators\PassProjectFieldViewModelValidator.cs" />
@@ -1073,6 +1076,10 @@
     <Content Include="Views\PassProject\Tabs\_Contents.cshtml" />
     <Content Include="Views\PassContentTemplate\_Form.cshtml" />
     <Content Include="Views\PassContentTemplate\Create.cshtml" />
+    <Content Include="Views\PassContentTemplate\Tabs\_Fields.cshtml" />
+    <Content Include="Views\PassContentTemplate\Tabs\_Beacons.cshtml" />
+    <Content Include="Views\PassContentTemplate\Tabs\_Locations.cshtml" />
+    <Content Include="Views\PassContentTemplateField\_Form.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CertificateStorage\CertificateStorage.BL\CertificateStorage.BL.csproj">

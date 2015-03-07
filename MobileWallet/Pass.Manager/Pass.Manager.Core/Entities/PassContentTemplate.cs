@@ -11,7 +11,9 @@ namespace Pass.Manager.Core.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public string OrganizationName { get; set; }
+
         public PassContentStyle PassStyle { get; set; }
+        public PassTransitType? TransitType { get; set; }
 
         public PassBarcode Barcode { get; set; }
         
