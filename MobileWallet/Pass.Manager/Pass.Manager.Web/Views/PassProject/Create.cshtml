@@ -1,12 +1,7 @@
 ﻿@model PassProjectViewModel
 
 @{
-    Layout = "~/Views/Shared/_LayoutDetails.cshtml";
-}
-
-@section Title
-{
-    Create @Model.DisplayName
+    Layout = "~/Views/Shared/_LayoutCreate.cshtml";
 }
 
 @Html.PartialEx("_Form", Model)
