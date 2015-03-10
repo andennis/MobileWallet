@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Web.Mvc;
 using Common.Web;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.SearchFilters;
@@ -10,22 +12,19 @@ namespace Pass.Manager.Web.Controllers
 {
     public class PassContentTemplateFieldController : BaseEntityController<PassContentTemplateFieldViewModel, PassContentTemplateField, IPassContentTemplateFieldService, PassContentTemplateFieldFilter>
     {
-        private readonly IPassContentTemplateService _templateService;
-
-        public PassContentTemplateFieldController(IPassContentTemplateFieldService templateFieldService, IPassContentTemplateService templateService)
+        public PassContentTemplateFieldController(IPassContentTemplateFieldService templateFieldService)
             : base(templateFieldService)
         {
-            _templateService = templateService;
         }
 
         [HttpGet]
         public ActionResult CreateField(int contentTemplateId)
         {
-            //PassContentTemplate template = _templateService.Get(contentTemplateId);
+            IEnumerable<PassProjectField> projectFields = _service.GetUnmappedFields(contentTemplateId);
             return Create(m =>
                     {
                         m.PassContentTemplateId = contentTemplateId;
-                        m.PassProjectFields = new SelectListTyped<PassProjectField, int, string>(new PassProjectField[0], d => d.PassProjectFieldId, t => t.Name);
+                        m.PassProjectFields = new SelectListTyped<PassProjectField, int, string>(projectFields, d => d.PassProjectFieldId, t => t.Name);
                     });
 
         }

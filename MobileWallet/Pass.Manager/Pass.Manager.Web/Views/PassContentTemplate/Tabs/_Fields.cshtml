@@ -12,13 +12,13 @@
               .Name("grdTemplateFields")
               .CssClass("pm-grid")
               .Pageable()
-              .DataSource(ds => ds.Read(@Url.Action("GridSearch", "PassContentTemplateField", new { contentTemplateId = Model })))
+              .DataSource(ds => ds.Read(@Url.Action("GridSearch", "PassContentTemplateField", new { PassContentTemplateId = Model })))
               .Columns(c =>
                        {
                            c.Bound(p => p.PassContentTemplateFieldId).Title("ID").Width("100px");
                            c.BoundLink(p => p.PassProjectFieldId, Url.Action("Edit", "PassContentTemplateField"), id => id.PassContentTemplateFieldId, new { data_popup_window = "wndTemplateField" });
                            c.Bound(p => p.Label);
-                           c.Bound(p => p.FieldKind).Title("Field Kind");
+                           c.Bound(p => p.FieldKind).Title("Field Location");
                            c.Bound(p => p.PassContentTemplateFieldId).Title("Action").GridAjaxAction("Delete", Url.Action("Delete", "PassContentTemplateField"));
                        }))
 

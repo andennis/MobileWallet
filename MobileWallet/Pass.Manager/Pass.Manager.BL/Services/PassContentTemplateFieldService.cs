@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.SearchFilters;
@@ -21,5 +22,9 @@ namespace Pass.Manager.BL.Services
             return Search(searchContext, x => x.PassContentTemplateId == searchFilter.PassContentTemplateId);
         }
 
+        public IEnumerable<PassProjectField> GetUnmappedFields(int passContentTemplateId)
+        {
+            return _unitOfWork.PassContentTemplateFieldRepository.GetUnmappedFields(passContentTemplateId);
+        }
     }
 }

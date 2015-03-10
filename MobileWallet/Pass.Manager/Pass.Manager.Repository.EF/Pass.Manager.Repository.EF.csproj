@@ -118,6 +118,7 @@
       <DependentUpon>201503071829246_M16.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="PassContentTemplateFieldRepository.cs" />
     <Compile Include="PassManagerDbContext.cs" />
     <Compile Include="PassManagerUnitOfWork.cs" />
     <Compile Include="PassSiteCertificateRepository.cs" />

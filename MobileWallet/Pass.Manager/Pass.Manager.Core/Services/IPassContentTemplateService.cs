@@ -5,6 +5,6 @@ namespace Pass.Manager.Core.Services
 {
     public interface IPassContentTemplateService : IBaseService<PassContentTemplate, PassContentTemplateFilter>
     {
-         
+
     }
 }

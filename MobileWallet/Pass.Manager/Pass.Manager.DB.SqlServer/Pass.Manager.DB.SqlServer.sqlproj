@@ -74,6 +74,7 @@
     <Build Include="Tables\pm.PassCertificateApple.sql" />
     <Build Include="Security\pm.sql" />
     <Build Include="Stored Procedures\pm.PassSiteUser_GetUnassignedUsers.sql" />
+    <Build Include="Stored Procedures\pm.PassContentTemplateField_GetUnmappedFields.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Stored Procedures\pm.PassSiteCertificate_GetUnassignedCertificates.sql" />
