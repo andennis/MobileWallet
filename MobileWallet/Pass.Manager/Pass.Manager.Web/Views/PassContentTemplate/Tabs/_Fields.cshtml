@@ -1,9 +1,9 @@
 ﻿@model int
 
-@(Html.ActionLinkExt<PassContentTemplateFieldController>(a => a.CreateField(0), "Map Field", new { passProjectId = Model }, new { @class = "btn btn-default btn-primary", data_popup_window = "wndTemplateField" }))
+@(Html.ActionLinkExt<PassContentTemplateFieldController>(a => a.CreateField(0), "Map Field", new { contentTemplateId = Model }, new { @class = "btn btn-default btn-primary", data_popup_window = "wndTemplateField" }))
 @(Html.PopupDialog()
               .Name("wndTemplateField")
-              .Width(600)
+              .Width(650)
               .Title("Pass Content Template Field")
               .Events(e => e.Success("OnEditFieldSuccess"))
 )
@@ -12,7 +12,7 @@
               .Name("grdTemplateFields")
               .CssClass("pm-grid")
               .Pageable()
-              .DataSource(ds => ds.Read(@Url.Action("GridSearch", "PassContentTemplateField", new { PassProjectId = Model })))
+              .DataSource(ds => ds.Read(@Url.Action("GridSearch", "PassContentTemplateField", new { contentTemplateId = Model })))
               .Columns(c =>
                        {
                            c.Bound(p => p.PassContentTemplateFieldId).Title("ID").Width("100px");

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.SearchFilters;
 using Pass.Manager.Core.Services;

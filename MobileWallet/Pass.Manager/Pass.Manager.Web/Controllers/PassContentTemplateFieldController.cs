@@ -10,14 +10,18 @@ namespace Pass.Manager.Web.Controllers
 {
     public class PassContentTemplateFieldController : BaseEntityController<PassContentTemplateFieldViewModel, PassContentTemplateField, IPassContentTemplateFieldService, PassContentTemplateFieldFilter>
     {
-        public PassContentTemplateFieldController(IPassContentTemplateFieldService templateFieldService)
+        private readonly IPassContentTemplateService _templateService;
+
+        public PassContentTemplateFieldController(IPassContentTemplateFieldService templateFieldService, IPassContentTemplateService templateService)
             : base(templateFieldService)
         {
+            _templateService = templateService;
         }
 
         [HttpGet]
         public ActionResult CreateField(int contentTemplateId)
         {
+            //PassContentTemplate template = _templateService.Get(contentTemplateId);
             return Create(m =>
                     {
                         m.PassContentTemplateId = contentTemplateId;

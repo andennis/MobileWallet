@@ -50,11 +50,14 @@ namespace Pass.Manager.Web
 
             Mapper.CreateMap<PassProjectType, PassStyle>().ConvertUsing(PassProjectTypeToPassStyle);
 
-            Mapper.CreateMap<PassProjectFieldViewModel, PassProjectField>();
-            Mapper.CreateMap<PassProjectField, PassProjectFieldViewModel>();
+            Mapper.CreateMap<PassProjectField, PassProjectFieldViewModel>().ReverseMap();
+            //Mapper.CreateMap<PassProjectFieldViewModel, PassProjectField>();
 
-            Mapper.CreateMap<PassContentTemplateViewModel, PassContentTemplate>();
-            Mapper.CreateMap<PassContentTemplate, PassContentTemplateViewModel>();
+            Mapper.CreateMap<PassContentTemplate, PassContentTemplateViewModel>().ReverseMap();
+            //Mapper.CreateMap<PassContentTemplateViewModel, PassContentTemplate>();
+
+            Mapper.CreateMap<PassContentTemplateField, PassContentTemplateFieldViewModel>().ReverseMap();
+            //Mapper.CreateMap<PassContentTemplateFieldViewModel, PassContentTemplateField>();
         }
 
         private static PassStyle PassProjectTypeToPassStyle(PassProjectType passProjectType)
