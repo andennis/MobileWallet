@@ -1340,8 +1340,8 @@
           <association
             Id="efa0f62b-e1ac-47eb-85ee-83d39874320a"
             isDerived="false"
-            sourceEndRoleName="PassContent"
-            targetEndRoleName="Location"
+            sourceEndRoleName=""
+            targetEndRoleName=""
             isLeaf="false"
             isAbstract="false">
             <classMoniker
@@ -1352,7 +1352,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="05a7f5dc-f690-4229-934c-1dfb23994a3c"
-                  name="PassContent"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -1365,7 +1364,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="0b6e896f-cbcd-4d04-9216-7f03ffe6a3a3"
-                  name="Location"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -1442,8 +1440,8 @@
           <association
             Id="3b3142b8-7af6-4e22-a5b7-9b884517a2e3"
             isDerived="false"
-            sourceEndRoleName="PassContent"
-            targetEndRoleName="PassBarcode"
+            sourceEndRoleName=""
+            targetEndRoleName=""
             isLeaf="false"
             isAbstract="false">
             <classMoniker
@@ -1454,7 +1452,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="218d0c71-f6d9-4254-bb13-e0022401220d"
-                  name="PassContent"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -1467,7 +1464,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="e5f5c20d-05e0-4c4f-84ce-1faf640d8b7a"
-                  name="PassBarcode"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -1488,6 +1484,43 @@
                       value="1" />
                   </upperValueInternal>
                 </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="6242e7d2-eb5f-475b-9556-66ab9057d249"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="71543773-6fb7-4320-8521-fb8803c0576f"
+              LastKnownName="PassImage"
+              LastKnownLocation="PassModeling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="51fb41fe-4713-4d85-b32c-442346042e67"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="Composite"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5b44cbc8-2386-4e13-adfa-3a1cc3857c07"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="true" />
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
@@ -1685,6 +1718,87 @@
           <enumerationLiteral
             Id="bce01ff1-1eeb-421f-809a-5c57eb549829"
             name="Custom" />
+        </ownedLiterals>
+      </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="71543773-6fb7-4320-8521-fb8803c0576f"
+        name="PassImage"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="04857033-1315-4095-8eff-4e41dbf71627">
+            <enumerationMoniker
+              Id="2559504a-4910-4c68-80c3-3e939c8790ae"
+              LastKnownName="PassImageType"
+              LastKnownLocation="PassModeling.uml" />
+          </dependency>
+        </suppliersInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="b08aa459-832c-45b9-8578-86add49ae539"
+            name="FileStorageId"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="7e387df6-df06-4dd7-b39d-a6a278da9ab9"
+            name="FileStirage2xId"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="30e2af6c-76c6-49ae-ade1-e1c604ed676c"
+            name="ImageType"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <enumeration
+        Id="2559504a-4910-4c68-80c3-3e939c8790ae"
+        name="PassImageType"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedLiterals>
+          <enumerationLiteral
+            Id="2ee59c6d-a2cf-4c1a-b3ae-b4f64c978321"
+            name="Background" />
+          <enumerationLiteral
+            Id="4abaa813-72f7-497e-9202-c49f4a7f800d"
+            name="Footer" />
+          <enumerationLiteral
+            Id="f3e74014-770b-4c18-bafe-a863f59d9eb5"
+            name="Icon" />
+          <enumerationLiteral
+            Id="b2984391-8fc7-4472-b277-f94fa0c198b5"
+            name="Logo" />
+          <enumerationLiteral
+            Id="318d59fd-bb81-4c0c-b1b7-563fe2071d75"
+            name="Strip" />
+          <enumerationLiteral
+            Id="3d394246-9f82-4a95-a2f8-8ae249438eb5"
+            name="Thumbnail" />
         </ownedLiterals>
       </enumeration>
     </packageHasNamedElement>

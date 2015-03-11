@@ -57,16 +57,16 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="8c4caa64-63e3-4613-8cec-3877fbd53cdb" />
           </association>
-          <association Id="3e385d3a-60de-4ad7-8721-d4f4e34a41ea" isDerived="false" sourceEndRoleName="PassProject" targetEndRoleName="PassContent" isLeaf="false" isAbstract="false">
+          <association Id="3e385d3a-60de-4ad7-8721-d4f4e34a41ea" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
             <classMoniker Id="35303514-6579-431b-a5b4-1793d070254a" LastKnownName="PassContentTemplate" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="405634d1-2d9f-4da6-84b3-2c12b545eb41" name="PassProject" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                <memberEnd Id="405634d1-2d9f-4da6-84b3-2c12b545eb41" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
                   <elementDefinition Id="9a30ef71-fe96-4000-835d-190a0772020f" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="f1817331-7fed-4a65-9e25-a3b5e8f32630" name="PassContent" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                <memberEnd Id="f1817331-7fed-4a65-9e25-a3b5e8f32630" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
                   <lowerValueInternal>
                     <literalString Id="93109e10-bc4e-40a4-b5b0-98b30fa59f38" name="Lower" value="*">
                       <elementDefinition Id="4bf7be2b-1e4c-4905-b151-7589bd0fd2c9" />
@@ -210,16 +210,16 @@
           </dependency>
         </suppliersInternal>
         <targetEnds>
-          <association Id="4733febb-0ad2-4ec7-a0e5-5856a5e62154" isDerived="false" sourceEndRoleName="PassContent" targetEndRoleName="Location" isLeaf="false" isAbstract="false">
+          <association Id="4733febb-0ad2-4ec7-a0e5-5856a5e62154" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
             <classMoniker Id="d2a20942-16cd-4cf4-b79f-220f7e2790d8" LastKnownName="PassLocation" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="f9016546-bfde-4fca-af39-e8a9f28bb625" name="PassContent" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                <memberEnd Id="f9016546-bfde-4fca-af39-e8a9f28bb625" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
                   <elementDefinition Id="05a7f5dc-f690-4229-934c-1dfb23994a3c" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="e3c1ae0a-375e-4276-99c0-9e820b7ec410" name="Location" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                <memberEnd Id="e3c1ae0a-375e-4276-99c0-9e820b7ec410" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
                   <lowerValueInternal>
                     <literalString Id="3bc2063d-bce5-4c35-bf41-e21bb189c922" name="Lower" value="*">
                       <elementDefinition Id="6b6dbded-8e8e-483c-b686-4252a6f17009" />
@@ -262,16 +262,16 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="cbb21d64-f0e6-4c61-bd7f-a5ee02164fba" />
           </association>
-          <association Id="bfd83ae6-ab69-4015-a2d3-2c4559f3e259" isDerived="false" sourceEndRoleName="PassContent" targetEndRoleName="PassBarcode" isLeaf="false" isAbstract="false">
+          <association Id="bfd83ae6-ab69-4015-a2d3-2c4559f3e259" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
             <classMoniker Id="72da18c1-1213-49ee-9b0c-cc082fa60ae4" LastKnownName="PassBarcode" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="fc4268a1-f0bc-4921-beb9-1cd0fc05c65d" name="PassContent" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                <memberEnd Id="fc4268a1-f0bc-4921-beb9-1cd0fc05c65d" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
                   <elementDefinition Id="218d0c71-f6d9-4254-bb13-e0022401220d" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="810e3c10-2271-4656-8235-6531b5a9a7dd" name="PassBarcode" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                <memberEnd Id="810e3c10-2271-4656-8235-6531b5a9a7dd" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
                   <lowerValueInternal>
                     <literalString Id="2cad0d9a-c305-4360-a888-1085e3e4ec3f" name="Lower" value="0">
                       <elementDefinition Id="71f99a58-0c80-4d0f-be04-1f9c0aa7f2af" />
@@ -287,6 +287,22 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="3b3142b8-7af6-4e22-a5b7-9b884517a2e3" />
+          </association>
+          <association Id="ced9f4b4-2e0e-45a5-ab1d-c405b0634c57" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="c9eb5131-4678-4dd5-bce8-2f78f57cf887" LastKnownName="PassImage" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4afbc735-7e25-4b24-ab12-e44f4f4a8012" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="51fb41fe-4713-4d85-b32c-442346042e67" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="905cf6b4-6cc5-463c-a31a-37e8562ade2e" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="5b44cbc8-2386-4e13-adfa-3a1cc3857c07" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="6242e7d2-eb5f-475b-9556-66ab9057d249" />
           </association>
         </targetEnds>
         <ownedAttributesInternal>
@@ -401,6 +417,53 @@
           </enumerationLiteral>
           <enumerationLiteral Id="76f2f13b-5159-4746-8687-ef67f727a289" name="Custom">
             <elementDefinition Id="bce01ff1-1eeb-421f-809a-5c57eb549829" />
+          </enumerationLiteral>
+        </ownedLiterals>
+      </enumeration>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="c9eb5131-4678-4dd5-bce8-2f78f57cf887" name="PassImage" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="71543773-6fb7-4320-8521-fb8803c0576f" />
+        <suppliersInternal>
+          <dependency Id="d9afdee1-da14-47b1-9830-4718d29e186d">
+            <enumerationMoniker Id="3640300e-27b9-4ee9-af5e-24c0626cfeaa" LastKnownName="PassImageType" />
+            <elementDefinition Id="04857033-1315-4095-8eff-4e41dbf71627" />
+          </dependency>
+        </suppliersInternal>
+        <ownedAttributesInternal>
+          <property Id="2132db63-279c-4849-8b20-db4f673d7a1f" name="FileStorageId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="b08aa459-832c-45b9-8578-86add49ae539" />
+          </property>
+          <property Id="e5895509-dc5b-4616-b28d-abaa91479506" name="FileStirage2xId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="7e387df6-df06-4dd7-b39d-a6a278da9ab9" />
+          </property>
+          <property Id="fbb07677-0646-4bed-9487-da12a7c16e36" name="ImageType" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="30e2af6c-76c6-49ae-ade1-e1c604ed676c" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <enumeration Id="3640300e-27b9-4ee9-af5e-24c0626cfeaa" name="PassImageType" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="2559504a-4910-4c68-80c3-3e939c8790ae" />
+        <ownedLiterals>
+          <enumerationLiteral Id="15563e67-b4af-4e03-a045-46770c967387" name="Background">
+            <elementDefinition Id="2ee59c6d-a2cf-4c1a-b3ae-b4f64c978321" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="bcb025d1-c98e-49cb-bc19-a2b410454ddb" name="Footer">
+            <elementDefinition Id="4abaa813-72f7-497e-9202-c49f4a7f800d" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="680b595c-316f-4cc2-86b1-38ff08cef7bb" name="Icon">
+            <elementDefinition Id="f3e74014-770b-4c18-bafe-a863f59d9eb5" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="2ba35cab-9f3b-4cd1-84a1-79f16f314e9f" name="Logo">
+            <elementDefinition Id="b2984391-8fc7-4472-b277-f94fa0c198b5" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="6c24bf76-5d76-44a8-a56f-7604d33dafff" name="Strip">
+            <elementDefinition Id="318d59fd-bb81-4c0c-b1b7-563fe2071d75" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="440bc7a2-3c66-4807-bc0a-4315ee132a17" name="Thumbnail">
+            <elementDefinition Id="3d394246-9f82-4a95-a2f8-8ae249438eb5" />
           </enumerationLiteral>
         </ownedLiterals>
       </enumeration>

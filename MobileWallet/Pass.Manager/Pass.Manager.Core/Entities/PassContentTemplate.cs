@@ -22,6 +22,7 @@ namespace Pass.Manager.Core.Entities
 
         public ICollection<PassBeacon> Beacons { get; set; }
         public ICollection<PassLocation> Locations { get; set; }
+        public ICollection<PassImage> PassImages { get; set; }
 
         public Color? BackgroundColor { get; set; }
         public Color? ForegroundColor { get; set; }

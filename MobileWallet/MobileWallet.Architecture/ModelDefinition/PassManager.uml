@@ -361,8 +361,8 @@
           <association
             Id="d7bc09ce-d132-4100-9c19-9f695e2b4291"
             isDerived="false"
-            sourceEndRoleName="PassProject"
-            targetEndRoleName="PassContent"
+            sourceEndRoleName=""
+            targetEndRoleName=""
             isLeaf="false"
             isAbstract="false">
             <classMoniker
@@ -373,7 +373,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="9a30ef71-fe96-4000-835d-190a0772020f"
-                  name="PassProject"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -386,7 +385,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="28234391-f967-4aa3-84ef-d8388331fdfa"
-                  name="PassContent"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
