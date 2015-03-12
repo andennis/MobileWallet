@@ -1,5 +1,4 @@
-﻿
-namespace Pass.Manager.Web.Common
+﻿namespace Pass.Manager.Web.Common
 {
     public abstract class BaseViewModel : IViewModel
     {

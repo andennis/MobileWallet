@@ -6,6 +6,6 @@ namespace Pass.Manager.Core.Repositories
 {
     public interface IPassContentTemplateFieldRepository : IRepository<PassContentTemplateField>
     {
-        IEnumerable<PassProjectField> GetUnmappedFields(int passContentTemplateId); 
+        IEnumerable<PassProjectField> GetUnmappedFields(int passContentTemplateId, int? curPassProjectFieldId = null); 
     }
 }

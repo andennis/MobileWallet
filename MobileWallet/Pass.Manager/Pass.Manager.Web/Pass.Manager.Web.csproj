@@ -161,6 +161,7 @@
     <Compile Include="Controllers\PassContentTemplateController.cs" />
     <Compile Include="Controllers\PassContentTemplateFieldController.cs" />
     <Compile Include="Controllers\PassDesignerController.cs" />
+    <Compile Include="Controllers\PassImageController.cs" />
     <Compile Include="Controllers\PassProjectController.cs" />
     <Compile Include="Controllers\PassProjectFieldController.cs" />
     <Compile Include="Controllers\PassSiteCertificateController.cs" />
@@ -185,6 +186,7 @@
     <Compile Include="Models\PassCertificateViewModel.cs" />
     <Compile Include="Models\PassContentTemplateFieldViewModel.cs" />
     <Compile Include="Models\PassContentTemplateViewModel.cs" />
+    <Compile Include="Models\PassImageViewModel.cs" />
     <Compile Include="Models\PassLocationViewModel.cs" />
     <Compile Include="Models\PassProjectFieldViewModel.cs" />
     <Compile Include="Validators\PassBarcodeViewModelValidator.cs" />
@@ -201,6 +203,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validators\PassContentTemplateFieldViewModelValidator.cs" />
     <Compile Include="Validators\PassContentTemplateViewModelValidator.cs" />
+    <Compile Include="Validators\PassImageViewModelValidator.cs" />
     <Compile Include="Validators\PassLocationViewModelValidator.cs" />
     <Compile Include="Validators\PassProjectFieldViewModelValidator.cs" />
     <Compile Include="Validators\PassProjectViewModelValidator.cs" />
@@ -1080,6 +1083,8 @@
     <Content Include="Views\PassContentTemplate\Tabs\_Beacons.cshtml" />
     <Content Include="Views\PassContentTemplate\Tabs\_Locations.cshtml" />
     <Content Include="Views\PassContentTemplateField\_Form.cshtml" />
+    <Content Include="Views\PassContentTemplate\Tabs\_Images.cshtml" />
+    <Content Include="Views\PassImage\_Form.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CertificateStorage\CertificateStorage.BL\CertificateStorage.BL.csproj">
@@ -1097,6 +1102,10 @@
     <ProjectReference Include="..\..\CertificateStorage\CertificateStorage.Repository.EF\CertificateStorage.Repository.EF.csproj">
       <Project>{1dbbe809-d0ba-4031-9ae6-de6ff57354d7}</Project>
       <Name>CertificateStorage.Repository.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Common.BL\Common.BL.csproj">
+      <Project>{7542d78d-e82e-4953-b917-e3db9ad0fdb5}</Project>
+      <Name>Common.BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Common\Common.Extensions\Common.Extensions.csproj">
       <Project>{1628E173-1BE9-4DFC-BCBE-93334DE8EE46}</Project>

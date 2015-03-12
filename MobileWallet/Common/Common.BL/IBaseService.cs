@@ -1,6 +1,4 @@
-﻿using Pass.Manager.Core.SearchFilters;
-
-namespace Pass.Manager.Core.Services
+﻿namespace Common.BL
 {
     public interface IBaseService<TEntity, TSearchFilter> 
         where TEntity : class

@@ -1,4 +1,5 @@
-﻿
+﻿using Common.BL;
+
 namespace Pass.Manager.Core.SearchFilters
 {
     public class PassSiteUserFilter : SearchFilterBase

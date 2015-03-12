@@ -1,10 +1,10 @@
 ﻿using System.IO;
 using CertificateStorage.Core;
 using CertificateStorage.Core.Entities;
+using Common.BL;
 using Common.Extensions;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
-using Pass.Manager.Core.SearchFilters;
 using Pass.Manager.Core.Services;
 
 namespace Pass.Manager.BL.Services

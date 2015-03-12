@@ -2,11 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using Common.BL;
 using Common.Web.Grid;
-using Pass.Manager.Core;
 using AutoMapper;
-using Pass.Manager.Core.SearchFilters;
-using Pass.Manager.Core.Services;
 
 namespace Pass.Manager.Web.Common
 {

@@ -27,7 +27,8 @@
               .Items(tab =>
                      {
                          tab.Add().Text("Fields").LoadContentFrom(Url.Action("TabFields", new {id = Model.PassContentTemplateId})).Selected(true);
-                         tab.Add().Text("Beacons").LoadContentFrom(Url.Action("TabBeacons", new {id = Model.PassContentTemplateId}));
+                         tab.Add().Text("Images").LoadContentFrom(Url.Action("TabImages", new { id = Model.PassContentTemplateId }));
+                         tab.Add().Text("Beacons").LoadContentFrom(Url.Action("TabBeacons", new { id = Model.PassContentTemplateId }));
                          tab.Add().Text("Locations").LoadContentFrom(Url.Action("TabLocations", new {id = Model.PassContentTemplateId}));
                      }
               ))

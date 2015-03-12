@@ -1,4 +1,4 @@
-﻿namespace Pass.Manager.Core
+﻿namespace Common.BL
 {
     public class SearchContext
     {

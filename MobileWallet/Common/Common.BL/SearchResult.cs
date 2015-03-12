@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Pass.Manager.Core
+namespace Common.BL
 {
     public class SearchResult<TEntity> where TEntity : class 
     {

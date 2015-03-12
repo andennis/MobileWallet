@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using Common.Repository;
-using Pass.Manager.Core;
-using Pass.Manager.Core.SearchFilters;
-using Pass.Manager.Core.Services;
 
-namespace Pass.Manager.BL.Services
+namespace Common.BL
 {
     public abstract class BaseService<TEntity, TSearchFilter, TUnitOfWork> : IBaseService<TEntity, TSearchFilter>
         where TEntity : class, new()

@@ -9,7 +9,6 @@ namespace Pass.Manager.Web.Validators
         {
             RuleFor(x => x.Name).NotEmpty();
             RuleFor(x => x.Password).NotEmpty();
-            RuleFor(x => x.CertificateFile).NotEmpty();
         }
     }
 }

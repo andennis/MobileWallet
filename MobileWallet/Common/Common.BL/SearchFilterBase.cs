@@ -1,5 +1,4 @@
-﻿
-namespace Pass.Manager.Core.SearchFilters
+﻿namespace Common.BL
 {
     public class SearchFilterBase
     {

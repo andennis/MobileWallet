@@ -35,5 +35,11 @@ namespace Pass.Manager.Web.Controllers
             return base.Create(model);
         }
 
+        protected override void PrepareModelToEditView(PassContentTemplateFieldViewModel model)
+        {
+            base.PrepareModelToEditView(model);
+            IEnumerable<PassProjectField> projectFields = _service.GetUnmappedFields(model.PassContentTemplateId, model.PassProjectFieldId);
+            model.PassProjectFields = new SelectListTyped<PassProjectField, int, string>(projectFields, d => d.PassProjectFieldId, t => t.Name);
+        }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-
-namespace Pass.Manager.Web.Common
+﻿namespace Pass.Manager.Web.Common
 {
     public interface IViewModel
     {

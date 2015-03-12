@@ -2,7 +2,7 @@
 
 namespace Pass.Manager.Core.SearchFilters
 {
-    public class PassContentTemplateFieldFilter : SearchFilterBase
+    public class PassImageFilter : SearchFilterBase
     {
         public int PassContentTemplateId { get; set; }
     }

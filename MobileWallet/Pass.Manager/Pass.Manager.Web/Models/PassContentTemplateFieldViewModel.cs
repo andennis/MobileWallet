@@ -10,6 +10,12 @@ namespace Pass.Manager.Web.Models
     [Validator(typeof(PassContentTemplateFieldViewModelValidator))]
     public class PassContentTemplateFieldViewModel : BaseViewModel
     {
+        public override string DisplayName { get { return "Pass Content Template Field"; } }
+        public override int EntityId
+        {
+            get { return PassContentTemplateFieldId; }
+        }
+
         public int PassContentTemplateFieldId { get; set; }
         public PassContentFieldKind FieldKind { get; set; }
         public string AttributedValue { get; set; }

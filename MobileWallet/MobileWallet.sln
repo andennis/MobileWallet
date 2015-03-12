@@ -117,6 +117,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pass.Notification.Repositor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pass.Notification.Repository.EF.Tests", "Pass.Notification\Pass.Notification.Repository.EF.Tests\Pass.Notification.Repository.EF.Tests.csproj", "{60E303D7-D418-409D-BA4A-585019ABA9D3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.BL", "Common\Common.BL\Common.BL.csproj", "{7542D78D-E82E-4953-B917-E3DB9AD0FDB5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -545,6 +547,14 @@ Global
 		{60E303D7-D418-409D-BA4A-585019ABA9D3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{60E303D7-D418-409D-BA4A-585019ABA9D3}.Release|X64.ActiveCfg = Release|Any CPU
 		{60E303D7-D418-409D-BA4A-585019ABA9D3}.Release|x86.ActiveCfg = Release|Any CPU
+		{7542D78D-E82E-4953-B917-E3DB9AD0FDB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7542D78D-E82E-4953-B917-E3DB9AD0FDB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7542D78D-E82E-4953-B917-E3DB9AD0FDB5}.Debug|X64.ActiveCfg = Debug|Any CPU
+		{7542D78D-E82E-4953-B917-E3DB9AD0FDB5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7542D78D-E82E-4953-B917-E3DB9AD0FDB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7542D78D-E82E-4953-B917-E3DB9AD0FDB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7542D78D-E82E-4953-B917-E3DB9AD0FDB5}.Release|X64.ActiveCfg = Release|Any CPU
+		{7542D78D-E82E-4953-B917-E3DB9AD0FDB5}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -597,5 +607,6 @@ Global
 		{6B068323-4CA0-46DD-B820-9DBACC77E86F} = {4DB7EAF9-FDDE-4B8B-BC82-696E8E249F4B}
 		{B5E5AB90-F76C-48D9-A3C8-935A8AAC2DCA} = {4DB7EAF9-FDDE-4B8B-BC82-696E8E249F4B}
 		{60E303D7-D418-409D-BA4A-585019ABA9D3} = {4DB7EAF9-FDDE-4B8B-BC82-696E8E249F4B}
+		{7542D78D-E82E-4953-B917-E3DB9AD0FDB5} = {185AC291-63C8-48A7-B14C-288547273DA3}
 	EndGlobalSection
 EndGlobal

@@ -10,18 +10,10 @@ namespace Pass.Manager.Web
         public static void Configure()
         {
             Mapper.CreateMap<PassSite, PassSiteViewModel>().ReverseMap();
-            //Mapper.CreateMap<PassSiteViewModel, PassSite>();
-
             Mapper.CreateMap<User, UserViewModel>().ReverseMap();
-            //Mapper.CreateMap<UserViewModel, User>();
-
             Mapper.CreateMap<User, UserPasswordViewModel>();
-
             Mapper.CreateMap<PassProject, PassProjectViewModel>().ReverseMap();
-            //Mapper.CreateMap<PassProjectViewModel, PassProject>();
-
             Mapper.CreateMap<PassCertificateApple, PassCertificateAppleViewModel>().ReverseMap();
-            //Mapper.CreateMap<PassCertificateAppleViewModel, PassCertificateApple>();
 
             Mapper.CreateMap<PassSiteUser, PassSiteUserViewModel>()
                 .ForMember(dst => dst.UserId, x => x.MapFrom(src => src.User.UserId))
@@ -51,13 +43,9 @@ namespace Pass.Manager.Web
             Mapper.CreateMap<PassProjectType, PassStyle>().ConvertUsing(PassProjectTypeToPassStyle);
 
             Mapper.CreateMap<PassProjectField, PassProjectFieldViewModel>().ReverseMap();
-            //Mapper.CreateMap<PassProjectFieldViewModel, PassProjectField>();
-
             Mapper.CreateMap<PassContentTemplate, PassContentTemplateViewModel>().ReverseMap();
-            //Mapper.CreateMap<PassContentTemplateViewModel, PassContentTemplate>();
-
             Mapper.CreateMap<PassContentTemplateField, PassContentTemplateFieldViewModel>().ReverseMap();
-            //Mapper.CreateMap<PassContentTemplateFieldViewModel, PassContentTemplateField>();
+            Mapper.CreateMap<PassImage, PassImageViewModel>().ReverseMap();
         }
 
         private static PassStyle PassProjectTypeToPassStyle(PassProjectType passProjectType)

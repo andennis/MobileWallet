@@ -32,9 +32,13 @@ namespace Common.Web.Grid
             return builder;
         }
 
-        public GridBoundColumnBuilder<TModel> BoundLink<TValue, TId>(Expression<Func<TModel, TValue>> expression, string url, Expression<Func<TModel, TId>> expressionId, object htmlAttributes = null)
+        public GridBoundColumnBuilder<TModel> BoundLink<TValue, TId>(Expression<Func<TModel, TValue>> expression, string url, Expression<Func<TModel, TId>> expressionId, 
+            object htmlAttributes = null, string colTitle = null)
         {
             var builder = new GridBoundColumnBuilder<TModel>(_htmlHelper, expression.GetPropertyName());
+            if (colTitle != null)
+                builder.ColTitle = colTitle;
+
             string idColName = expressionId.GetPropertyName();
 
             int i = url.IndexOf('?');

@@ -31,7 +31,8 @@ namespace Pass.Manager.Repository.EF
                                             typeof(PassSiteCertificate),
                                             typeof(PassProjectField),
                                             typeof(PassContentTemplate),
-                                            typeof(PassContentTemplateField)
+                                            typeof(PassContentTemplateField),
+                                            typeof(PassImage)
                                         };
 
             RegisterCustomRepository(PassSiteRepository);

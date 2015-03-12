@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Common.BL;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.SearchFilters;
@@ -14,6 +15,18 @@ namespace Pass.Manager.BL.Services
         {
         }
 
+        /*
+        public override PassContentTemplateField Get(int entityId)
+        {
+            IEnumerable<PassContentTemplateField> entity = _repository.Query()
+                .Filter(x => x.PassContentTemplateFieldId == entityId)
+                .Include(x => x.PassProjectField)
+                .Get();
+
+            return entity.FirstOrDefault();
+        }
+        */
+
         public override SearchResult<PassContentTemplateField> Search(SearchContext searchContext, PassContentTemplateFieldFilter searchFilter = null)
         {
             if (searchFilter == null)
@@ -22,9 +35,9 @@ namespace Pass.Manager.BL.Services
             return Search(searchContext, x => x.PassContentTemplateId == searchFilter.PassContentTemplateId);
         }
 
-        public IEnumerable<PassProjectField> GetUnmappedFields(int passContentTemplateId)
+        public IEnumerable<PassProjectField> GetUnmappedFields(int passContentTemplateId, int? curPassProjectFieldId = null)
         {
-            return _unitOfWork.PassContentTemplateFieldRepository.GetUnmappedFields(passContentTemplateId);
+            return _unitOfWork.PassContentTemplateFieldRepository.GetUnmappedFields(passContentTemplateId, curPassProjectFieldId);
         }
     }
 }

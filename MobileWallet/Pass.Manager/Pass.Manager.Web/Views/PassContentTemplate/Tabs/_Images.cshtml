@@ -1,0 +1,35 @@
+﻿@model int
+
+@(Html.ActionLinkExt<PassImageController>(a => a.CreateImage(0), "Add New", new { contentTemplateId = Model }, new { @class = "btn btn-default btn-primary", data_popup_window = "wndPassImage" }))
+@(Html.PopupDialog()
+              .Name("wndPassImage")
+              .Width(600)
+              .Title("Pass Image")
+              .Events(e => e.Success("OnEditImageSuccess"))
+)
+
+@(Html.Grid<PassImageViewModel>()
+              .Name("grdImages")
+              .CssClass("pm-grid")
+              .Pageable()
+              .DataSource(ds => ds.Read(@Url.Action("GridSearch", "PassImage", new { PassContentTemplateId = Model })))
+              .Columns(c =>
+                       {
+                           c.Bound(p => p.PassImageId).Title("ID").Width("100px");
+                           c.BoundLink(p => p.Name, Url.Action("Edit", "PassImage"), id => id.PassImageId, new { data_popup_window = "wndPassImage" });
+                           c.Bound(p => p.ImageType);
+                           c.Bound(p => p.PassImageId).Title("Action").GridAjaxAction("Delete", Url.Action("Delete", "PassImage"));
+                       }))
+
+<script>
+    $(document).ready(function () {
+        window.grid.Init($("#grdImages"));
+    });
+
+    function OnEditImageSuccess() {
+        window.grid.Reload($("#grdImages"));
+    }
+</script>
+
+
+

@@ -38,6 +38,11 @@ namespace Pass.Manager.Web.Controllers
             return PartialView("Tabs/_Locations", id);
         }
 
+        [AjaxOnly]
+        public ActionResult TabImages(int id)
+        {
+            return PartialView("Tabs/_Images", id);
+        }
 
     }
 }
