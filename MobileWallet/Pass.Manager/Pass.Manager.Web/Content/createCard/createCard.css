@@ -224,7 +224,7 @@ input {
     background: rgba(45, 88, 111, 1);
 }
 
-.peter-river-flat-button:active {
+    .peter-river-flat-button:active {
         top: 1px;
         outline: none;
         -webkit-box-shadow: none;
@@ -958,9 +958,9 @@ label.checkboxCollapseLabel {
     width: 370px;
 }
 
-.radioPassType.radio {
-    width: 370px;
-}
+    .radioPassType.radio {
+        width: 370px;
+    }
 
 .divCheckboxLabelAndValue {
     margin-left: 129px;
@@ -1389,4 +1389,17 @@ label.checkboxCollapseLabel {
 
 .dataStyleSelectlist {
     width: 175px;
+}
+
+label.error {
+    font-weight: 100;
+    color: #fd678a;
+}
+
+.form-control.error {
+    background: rgba(253, 103, 138, 0.2);
+}
+
+#passDescriptionTextarea-error {
+    margin-left: 222px;
 }

@@ -55,7 +55,7 @@ jQuery('img.transitIconPass').each(function () {
         // Replace image with new SVG
         $img.replaceWith($svg);
         //$svg.css('fill', jQuery('#labelColorPicker').val());
-        
+
         jQuery('#' + imgID + ' path').css('fill', jQuery('#labelColorPicker').val());
     }, 'xml');
 
@@ -215,7 +215,7 @@ function ChangeBarcodeType(itemValue) {
     jQuery('#divBarcodePass img').removeClass('active');
     if (itemValue !== 'doNotDisplay') {
         jQuery('#' + itemValue + 'Pass').addClass('active');
-        } else {
+    } else {
         jQuery('#divFooterImagePass').css('margin-top', '280px');
     }
     if (itemValue == 'pdf417Code') {
@@ -1249,6 +1249,51 @@ function ChangesDependingPassType(passType) {
             break;
     }
 }
+
+jQuery.validator.setDefaults({ ignore: null });
+jQuery('#passDesignerForm').validate({
+    onclick: false,
+    rules: {
+        TemplateName: {
+            required: true
+        },
+        OrganizationName: {
+            required: true
+        },
+        PassDescription: {
+            required: true
+        },
+        "DistributionDetails.QuantityRestriction": {
+            required: true,
+            min: 1
+        }
+
+    },
+    messages: {
+        TemplateName: {
+            required: "Введите, пожалуйста, название шаблона"
+        },
+        OrganizationName: {
+            required: "Введите, пожалуйста, название организации"
+        },
+        PassDescription: {
+            required: "Введите, пожалуйста, описание карты"
+        },
+        "DistributionDetails.QuantityRestriction": {
+            required: "Данное поле обязательное",
+            min: "Введите числовое значение больше 0"
+        }
+    },
+    invalidHandler: function(event, validator) {
+        var errors = validator.numberOfInvalids();
+        alert('Не все обязательные поля заполнены (' + errors + ')');
+    },
+    submitHandler: function (form) { // for demo
+        alert('valid form submitted'); // for demo
+        return false; // for demo
+        //$(form).ajaxSubmit();
+    }
+});
 
 ////Hex to rgb conversion
 //function HexToRgb(hex) {

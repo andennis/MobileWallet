@@ -231,7 +231,7 @@
     }
 
     .mainBlockButton {
-        margin-top: 378px;
+        margin-top: 372px;
         position: absolute;
     }
 
@@ -424,6 +424,10 @@
     text-align: left !important;
 }
 
+.passDesignerButtonBlock {
+    position: absolute;
+}
+
 .upArrowBlock {
     position: relative;
     width: 100%;
@@ -470,26 +474,38 @@
 }
 
 .bigButton {
-    background-color: #02d5ac;
-    padding: 10px 40px;
     color: white;
     text-decoration: none;
     font-size: 3.2rem;
-    -ms-border-radius: 10px;
-    border-radius: 10px;
 }
 
-    .bigButton:hover {
-        background-color: #fd678a;
-        color: white;
+    .bigButton:hover, .bigButton:focus {
         text-decoration: none;
-        cursor: pointer;
-        -webkit-transition: background-color 0.5s ease;
-        -moz-transition: background-color 0.5s ease;
-        -ms-transition: background-color 0.5s ease;
-        -o-transition: background-color 0.5s ease;
-        transition: background-color 0.5s ease;
+         color: white;
     }
+
+    .bigButton div {
+        background-color: #02d5ac;
+        padding: 6px 44px;
+        -ms-border-radius: 10px;
+        border-radius: 10px;
+        -webkit-transition: background-color 0.5s ease, transform 0.5s ease;
+        -moz-transition: background-color 0.5s ease, transform 0.5s ease;
+        -ms-transition: background-color 0.5s ease, transform 0.5s ease;
+        -o-transition: background-color 0.5s ease, transform 0.5s ease;
+        transition: background-color 0.5s ease, transform 0.5s ease;
+    }
+
+        .bigButton div:hover {
+            background-color: #fd678a;
+            color: white;
+            cursor: pointer;
+            -webkit-transform: scale(1.1);
+            -moz-transform: scale(1.1);
+            -ms-transform: scale(1.1);
+            -o-transform: scale(1.1);
+            transform: scale(1.1);
+        }
 
 .strategyButton {
     background-color: #02d5ac;
