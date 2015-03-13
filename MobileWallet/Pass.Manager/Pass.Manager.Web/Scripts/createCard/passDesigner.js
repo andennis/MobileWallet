@@ -1250,6 +1250,7 @@ function ChangesDependingPassType(passType) {
     }
 }
 
+//Client side validation
 jQuery.validator.setDefaults({ ignore: null });
 jQuery('#passDesignerForm').validate({
     onclick: false,
@@ -1264,36 +1265,53 @@ jQuery('#passDesignerForm').validate({
             required: true
         },
         "DistributionDetails.QuantityRestriction": {
-            required: true,
             min: 1
         }
 
     },
     messages: {
         TemplateName: {
-            required: "Введите, пожалуйста, название шаблона"
+            required: 'Поле "Название шаблона" обязательное'
         },
         OrganizationName: {
-            required: "Введите, пожалуйста, название организации"
+            required: 'Поле "Название организации" обязательное'
         },
         PassDescription: {
-            required: "Введите, пожалуйста, описание карты"
+            required: 'Поле "Описание карты" обязательное'
         },
         "DistributionDetails.QuantityRestriction": {
-            required: "Данное поле обязательное",
             min: "Введите числовое значение больше 0"
         }
     },
-    invalidHandler: function(event, validator) {
+    invalidHandler: function (event, validator) {
         var errors = validator.numberOfInvalids();
-        alert('Не все обязательные поля заполнены (' + errors + ')');
+        jQuery('#validateModalBody').html('Не все обязательные поля заполнены (' + errors + ')');
+        jQuery('#validateModal').modal({
+            keyboard: false,
+            backdrop: true
+        });
+
+        //Go to error input after hide modal window
+        jQuery('#validateModal').on('hide.bs.modal', function (e) {
+            var firstErrorInputId = validator.errorList[0].element.id;
+            var mainTabButtonId = jQuery('#' + firstErrorInputId).closest('.tabMainContent')[0].id.replace('content', '');
+            jQuery('#' + mainTabButtonId).trigger('click');
+        });
+
     },
-    submitHandler: function (form) { // for demo
-        alert('valid form submitted'); // for demo
-        return false; // for demo
+    submitHandler: function (form) { 
+        alert('valid form submitted'); 
+        return false; 
         //$(form).ajaxSubmit();
     }
 });
+
+//Hide validate modal after fix button click
+jQuery('#validateFixButton').click(function () {
+    jQuery('#validateModal').modal('hide');
+});
+
+
 
 ////Hex to rgb conversion
 //function HexToRgb(hex) {

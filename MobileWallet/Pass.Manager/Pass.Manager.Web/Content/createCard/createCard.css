@@ -1403,3 +1403,7 @@ label.error {
 #passDescriptionTextarea-error {
     margin-left: 222px;
 }
+
+.modal-backdrop.in {
+    height: 100%;
+}
