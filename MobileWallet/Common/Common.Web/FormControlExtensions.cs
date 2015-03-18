@@ -50,7 +50,7 @@ namespace Common.Web
             tb.Attributes.Add("id", name);
             tb.Attributes.Add("type", "submit");
             tb.Attributes.Add("value", caption);
-            tb.AddCssClass("btn btn-default btn-primary");
+            tb.AddCssClass("btn btn-default");
             if (actionUrl != null)
                 tb.Attributes.Add("data-action", actionUrl);
 

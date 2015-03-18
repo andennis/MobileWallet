@@ -19,6 +19,8 @@ namespace Pass.Manager.Web.Models.GeneralPassTemplate
         #region Images Keys
         public string TemplatePath { get; set; }
 
+        public HttpPostedFileBase Icon { get; set; }
+
         public HttpPostedFileBase Logo { get; set; }
 
         public bool RemoveLogo { get; set; }

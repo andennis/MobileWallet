@@ -39,6 +39,28 @@
 </div>
 <br>
 
+<!--Icon image input-->
+<div id="divIconImage" class="designItemBlock">
+    <p class="labelInput">
+        <a data-toggle="tooltip" title="Изображение, которое будет отображаться рядом с push-сообщениями во время обновления карты. Обязательное для каждой карты.">Иконка<span class="spanRed">*</span></a>
+    </p>
+    <input class="customFile" type="file" id="iconImageInput" name="Icon" accept="image/*" />
+    <div class="emerald-flat-button">Добавить...</div>
+    <div class="blocker"></div>
+    <div id="iconName" class="FileName">Файл не выбран</div>
+    <div id="removeIcon" class="removeImage" data-toggle="tooltip" title="Удалить изображение">X</div>
+    <input id="checkLoadIcon" type="hidden" value="true" />
+    <br />
+    <br />
+</div>
+<div id="divIconImagePass" class="iconImagePassBlock">
+    <span>
+        <img id="iconImage" class="spanIconImagePass" src="@Url.Action("GetImage", "PassDesigner", new { path = Model.TemplatePath, imageName = "icon.png" })" />
+    </span>
+    <br/>
+</div>
+<div style="color: #DBDBDB;">-------------------------------------------------------------------------------------------------------</div>
+
 <!--Logo image input-->
 <div id="divLogoImage" class="designItemBlock">
     <p class="labelInput">

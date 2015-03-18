@@ -1,5 +1,5 @@
 ﻿@model int
-@Html.ActionLinkExt("Add User", "AddUser", "PassSiteUser", new { passSiteId = Model }, new { @class = "btn btn-default btn-primary" })
+@Html.ActionLinkExt("Add User", "AddUser", "PassSiteUser", new { passSiteId = Model }, new { @class = "btn btn-default" })
 @(Html.Grid<PassSiteUserViewModel>()
     .Name("grdUsers")
     .CssClass("pm-grid")

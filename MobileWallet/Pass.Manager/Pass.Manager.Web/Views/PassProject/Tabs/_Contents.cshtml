@@ -1,6 +1,6 @@
 ﻿@model int
 
-@(Html.ActionLinkExt<PassContentTemplateController>(a => a.CreateContent(0), "Add New", new { passProjectId = Model }, new { @class = "btn btn-default btn-primary" }))
+@(Html.ActionLinkExt<PassContentTemplateController>(a => a.CreateContent(0), "Add New", new { passProjectId = Model }, new { @class = "btn btn-default" }))
 @(Html.Grid<PassContentTemplateViewModel>()
     .Name("grdContents")
     .CssClass("pm-grid")

@@ -64,8 +64,8 @@ jQuery('img.transitIconPass').each(function () {
 //Images inputs
 function handleFileSelect(evt) {
     var files = evt.target.files,
-    className = evt.target.id.replace('logo', 'spanLogo').replace('strip', 'spanStrip').replace('thumbnail', 'spanThumbnail').replace('background', 'spanBackground').replace('footer', 'spanFooter').replace('Input', 'Pass'),
-    divId = evt.target.id.replace('logo', 'divLogo').replace('strip', 'divStrip').replace('thumbnail', 'divThumbnail').replace('background', 'divBackground').replace('footer', 'divFooter').replace('Input', 'Pass'),
+    className = evt.target.id.replace('icon', 'spanIcon').replace('logo', 'spanLogo').replace('strip', 'spanStrip').replace('thumbnail', 'spanThumbnail').replace('background', 'spanBackground').replace('footer', 'spanFooter').replace('Input', 'Pass'),
+    divId = evt.target.id.replace('icon', 'divIcon').replace('logo', 'divLogo').replace('strip', 'divStrip').replace('thumbnail', 'divThumbnail').replace('background', 'divBackground').replace('footer', 'divFooter').replace('Input', 'Pass'),
     imgId = evt.target.id.replace('Input', 'Pass'),
     span = document.createElement('span'),
     passStyle,
@@ -74,6 +74,8 @@ function handleFileSelect(evt) {
     if (divId == 'divThumbnailImagePass') {
         passStyle = jQuery('input[name="PassStyle"]:checked').val();
         className += ' ' + passStyle;
+    } else if (divId == 'divIconImagePass') {
+        jQuery('#iconImageInput').rules('remove');
     }
 
     // Only process image files.
@@ -97,6 +99,7 @@ function handleFileSelect(evt) {
     reader.readAsDataURL(files[0]);
     ChangeLeftPropertyLogoText();
 }
+document.getElementById('iconImageInput').addEventListener('change', handleFileSelect, false);
 document.getElementById('logoImageInput').addEventListener('change', handleFileSelect, false);
 document.getElementById('stripImageInput').addEventListener('change', handleFileSelect, false);
 document.getElementById('thumbnailImageInput').addEventListener('change', handleFileSelect, false);
@@ -123,6 +126,16 @@ jQuery('.removeImage').click(function (evt) {
     document.getElementById('div' + itemId + 'ImagePass').innerHTML = '';
     itemId = itemId.toLowerCase();
     document.getElementById(itemId + 'Name').innerHTML = 'Файл не выбран';
+    var imageInput = jQuery("#" + itemId + 'ImageInput');
+    imageInput.val('');
+    if (itemId == 'icon') {
+        jQuery('#iconImageInput').rules("add", {
+            required: true,
+            messages: {
+                required: "Иконка обязательна для каждой карты. Она будет отображаться рядом с push-сообщениями во время обновления карты"
+            }
+        });
+    }
     RepositionRemoveIcon();
 });
 
@@ -133,8 +146,9 @@ jQuery('img, image').error(function () {
 
 //Reposition remove icon
 function RepositionRemoveIcon() {
-    var max = Math.max(document.getElementById('logoName').offsetWidth, document.getElementById('stripName')
+    var max = Math.max(document.getElementById('iconName').offsetWidth, document.getElementById('logoName').offsetWidth, document.getElementById('stripName')
     .offsetWidth, document.getElementById('thumbnailName').offsetWidth, document.getElementById('backgroundName').offsetWidth, document.getElementById('footerName').offsetWidth);
+    document.getElementById('removeIcon').style.marginLeft = max + 203 + 'px';
     document.getElementById('removeLogo').style.marginLeft = max + 203 + 'px';
     document.getElementById('removeStrip').style.marginLeft = max + 203 + 'px';
     document.getElementById('removeThumbnail').style.marginLeft = max + 203 + 'px';
@@ -1250,6 +1264,19 @@ function ChangesDependingPassType(passType) {
     }
 }
 
+//Check loading icon image and add or remove validate rule to icon input
+jQuery('#iconImage').load(function () {
+    jQuery('#checkLoadIcon').val("false");
+    jQuery('#iconImageInput').rules("remove");
+}).error(function () {
+    jQuery('#iconImageInput').rules("add", {
+        required: true,
+        messages: {
+            required: "Иконка обязательна для каждой карты. Она будет отображаться рядом с push-сообщениями во время обновления карты"
+        }
+    });
+});
+
 //Client side validation
 jQuery.validator.setDefaults({ ignore: null });
 jQuery('#passDesignerForm').validate({
@@ -1267,7 +1294,6 @@ jQuery('#passDesignerForm').validate({
         "DistributionDetails.QuantityRestriction": {
             min: 1
         }
-
     },
     messages: {
         TemplateName: {
@@ -1299,10 +1325,9 @@ jQuery('#passDesignerForm').validate({
         });
 
     },
-    submitHandler: function (form) { 
-        alert('valid form submitted'); 
-        return false; 
-        //$(form).ajaxSubmit();
+    submitHandler: function (form) {
+        alert('valid form submitted');
+        $(form).ajaxSuKUbmit();
     }
 });
 

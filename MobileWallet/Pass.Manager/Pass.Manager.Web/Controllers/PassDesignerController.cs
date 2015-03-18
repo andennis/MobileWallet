@@ -84,6 +84,12 @@ namespace Pass.Manager.Web.Controllers
                     _passProjectService.Update(prj);
                 }
 
+                if (model.Icon != null)
+                {
+                    model.Icon.SaveAs(path + "\\icon.png");
+                    model.Icon = null;
+                }
+
                 if (model.Logo != null)
                 {
                     model.Logo.SaveAs(path + "\\logo.png");

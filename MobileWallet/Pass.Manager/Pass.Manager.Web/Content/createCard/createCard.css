@@ -277,6 +277,18 @@ input {
         color: white;
     }
 
+.iconImagePassBlock {
+    position: relative;
+    display: block;
+    min-height: 20px;
+}
+
+.spanIconImagePass {
+    margin-left: 106px;
+    width: 60px;
+    height: 60px;
+}
+
 .logoImagePassBlock {
     margin-left: 5px;
     margin-top: 5px;
@@ -1406,4 +1418,9 @@ label.error {
 
 .modal-backdrop.in {
     height: 100%;
+}
+
+#iconImageInput-error {
+    position: absolute;
+    margin: 40px 0 0 -133px;
 }
