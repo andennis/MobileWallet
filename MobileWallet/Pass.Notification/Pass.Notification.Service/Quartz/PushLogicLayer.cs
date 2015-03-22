@@ -6,7 +6,7 @@ namespace Pass.Notification.Service.Quartz
     {
         public void Run()
         {
-            Logger.Info("This has been run");
+            Logger.Info("Push has been run");
         }
 
         public void Dispose()

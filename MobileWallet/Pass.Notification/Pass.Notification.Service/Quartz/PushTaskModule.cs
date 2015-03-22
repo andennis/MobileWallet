@@ -1,6 +1,9 @@
 ﻿using System.Reflection;
 using Atlas;
 using Autofac;
+using Pass.Notification.BL;
+using Pass.Notification.Core;
+using Pass.Notification.Repository.EF;
 using Quartz;
 using Quartz.Impl;
 using Quartz.Spi;
@@ -33,6 +36,8 @@ namespace Pass.Notification.Service.Quartz
       
         private void LoadServices(ContainerBuilder builder)
         {
+            builder.Register(c => new PassNotificationService(new PushNotificationUnitOfWork(new PushNotificationConfig()), new PushSharpNotificationWorker()))
+                .As<IPassNotificationService>();
             builder.RegisterType<PushTaskService>()
                    .As<IAmAHostedProcess>()
                    .PropertiesAutowired();     
