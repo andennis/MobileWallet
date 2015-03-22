@@ -4,18 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4C8A7278-A086-463B-BE87-AD30DC586580}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{4E01DE18-6226-4343-84ED-940A18E1A055}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Pass.Notification.Service</RootNamespace>
-    <AssemblyName>Pass.Notification.Service</AssemblyName>
+    <RootNamespace>Pass.Notification.Factory</RootNamespace>
+    <AssemblyName>Pass.Notification.Factory</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -25,7 +24,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -34,29 +32,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Atlas">
-      <HintPath>..\..\packages\Atlas.1.8.0.0\lib\net40\Atlas.dll</HintPath>
-    </Reference>
-    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Practices.Unity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+      <HintPath>..\..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
-    <Reference Include="Common.Logging">
-      <HintPath>..\..\packages\Common.Logging.3.0.0\lib\net40\Common.Logging.dll</HintPath>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="Common.Logging.Core">
-      <HintPath>..\..\packages\Common.Logging.Core.3.0.0\lib\net40\Common.Logging.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="Quartz">
-      <HintPath>..\..\packages\Quartz.2.3.1\lib\net40\Quartz.dll</HintPath>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention">
+      <HintPath>..\..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -64,46 +52,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PushNotificationService.cs" />
-    <Compile Include="PushNotificationServiceHost.cs" />
-    <Compile Include="Quartz\IPushLogicLayer.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="PassNotificationFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Quartz\PushJobFactory.cs" />
-    <Compile Include="Quartz\PushJobListener.cs" />
-    <Compile Include="Quartz\PushLogicLayer.cs" />
-    <Compile Include="Quartz\PushJob.cs" />
-    <Compile Include="Quartz\PushTaskModule.cs" />
-    <Compile Include="Quartz\PushTaskService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\Common.Configuration\Common.Configuration.csproj">
-      <Project>{DFABDFCC-3B69-434A-BD2A-6838CD7608A8}</Project>
-      <Name>Common.Configuration</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\Common.Repository.EF\Common.Repository.EF.csproj">
-      <Project>{925EC36B-DF88-4CDE-BC59-FE03C0173CAE}</Project>
-      <Name>Common.Repository.EF</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Common\Common.Repository\Common.Repository.csproj">
       <Project>{F36371D6-812F-49F5-9E9B-043265660647}</Project>
       <Name>Common.Repository</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Pass.Notification.BL\Pass.Notification.BL.csproj">
-      <Project>{7b2ec480-9f20-4379-bf24-89162dd4cae5}</Project>
-      <Name>Pass.Notification.BL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Pass.Notification.Core\Pass.Notification.Core.csproj">
       <Project>{B080DCAE-231C-4F9E-8A01-B6E0DE3C2FE2}</Project>
       <Name>Pass.Notification.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pass.Notification.Repository.EF\Pass.Notification.Repository.EF.csproj">
-      <Project>{B5E5AB90-F76C-48D9-A3C8-935A8AAC2DCA}</Project>
-      <Name>Pass.Notification.Repository.EF</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pass.Notification.Repository\Pass.Notification.Repository.Core.csproj">
       <Project>{6B068323-4CA0-46DD-B820-9DBACC77E86F}</Project>

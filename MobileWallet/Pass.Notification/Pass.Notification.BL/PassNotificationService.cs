@@ -40,5 +40,12 @@ namespace Pass.Notification.BL
 
             _pnUnitOfWork.Save();
         }
+
+        #region IDisposable
+        public void Dispose()
+        {
+            _pnUnitOfWork.Dispose();
+        }
+        #endregion
     }
 }
