@@ -64,7 +64,7 @@ namespace Pass.Manager.Web.Common
             return CreateView(model);
         }
 
-        private ActionResult CreateView(object model)
+        protected ActionResult CreateView(object model)
         {
             if (Request.IsAjaxRequest())
                 return PartialView("_Create", model);

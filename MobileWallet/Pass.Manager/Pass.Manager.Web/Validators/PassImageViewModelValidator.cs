@@ -7,7 +7,9 @@ namespace Pass.Manager.Web.Validators
     {
         public PassImageViewModelValidator()
         {
-            RuleFor(x => x.Name).NotEmpty();
+            //RuleFor(x => x.FileStorageId).NotEmpty();
+            //When(m => m.IsNew, );
+
         }
     }
 }
