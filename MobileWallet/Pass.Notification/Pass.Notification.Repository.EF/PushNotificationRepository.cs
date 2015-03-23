@@ -12,8 +12,10 @@ namespace Pass.Notification.Repository.EF
             : base(dbContext)
         {
         }
+
        
-        public void ClearFileStorage()
+
+        public void ClearPushNotification()
         {
             //using (var trn = new TransactionScope())
             {

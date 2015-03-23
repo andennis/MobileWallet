@@ -6,6 +6,6 @@ namespace Pass.Notification.Repository.Core
 {
     public interface IPushNotificationRepository: IRepository<PushNotificationItem>
     {
-        void ClearFileStorage();
+        void ClearPushNotification();
     }
 }

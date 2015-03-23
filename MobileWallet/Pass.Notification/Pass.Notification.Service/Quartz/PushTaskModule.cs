@@ -1,6 +1,12 @@
 ﻿using System.Reflection;
 using Atlas;
 using Autofac;
+using CertificateStorage.BL;
+using CertificateStorage.Core;
+using CertificateStorage.Repository.EF;
+using FileStorage.BL;
+using FileStorage.Core;
+using FileStorage.Repository.EF;
 using Pass.Notification.BL;
 using Pass.Notification.Core;
 using Pass.Notification.Repository.EF;
@@ -36,7 +42,14 @@ namespace Pass.Notification.Service.Quartz
       
         private void LoadServices(ContainerBuilder builder)
         {
-            builder.Register(c => new PassNotificationService(new PushNotificationUnitOfWork(new PushNotificationConfig()), new PushSharpNotificationWorker()))
+            ICertificateStorageConfig certificateStorageConfig = new CertificateStorageConfig();
+            IFileStorageConfig fileStorageConfig = new FileStorageConfig();
+            builder.Register(c => new PassNotificationService(
+                new PushNotificationUnitOfWork(new PushNotificationConfig()),
+                new PushSharpNotificationWorker(),
+                new CertificateStorageService(certificateStorageConfig,
+                    new CertificateStorageUnitOfWork(certificateStorageConfig),
+                    new FileStorageService(fileStorageConfig, new FileStorageUnitOfWork(fileStorageConfig)))))
                 .As<IPassNotificationService>();
             builder.RegisterType<PushTaskService>()
                    .As<IAmAHostedProcess>()
