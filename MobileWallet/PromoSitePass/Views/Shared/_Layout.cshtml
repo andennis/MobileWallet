@@ -7,8 +7,8 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
-
-
+    <link href="~/Content/MainPage/animate.css" rel="stylesheet" />
+    <script src="~/Scripts/MainPage/wow.min.js"></script>
 
 </head>
 <body>
@@ -75,19 +75,19 @@
     
     <div class="footerContactBlock">
         <div class="container blockContent">
-            <h3>Хотите оказаться в смартфонах своих клиентов</h3>
-            <h3>или узнать больше информации?</h3>
-            <h3>Свяжитесь с нами!</h3>
+            <h3 class="wow fadeInUp" data-wow-duration="1.5s" data-wow-offset="30">Хотите оказаться в смартфонах своих клиентов</h3>
+            <h3 class="wow fadeInUp" data-wow-duration="1.5s" data-wow-offset="30">или узнать больше информации?</h3>
+            <h3 class="wow fadeInUp" data-wow-duration="1.5s" data-wow-offset="30">Свяжитесь с нами!</h3>
             <br />
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12 wow fadeInLeft" data-wow-duration="1.5s" data-wow-offset="30">
                     <h4>
                         E-mail:
                         <img class="mailIcon" src="~/Images/MainPage/mailIcon.png" />
                     </h4>
                     <h2><a href="mailto:passlight@gmail.com" id="emailText" class="footerContactValue">info@passlight.com</a></h2>
                 </div>
-                <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12 wow fadeInRight" data-wow-duration="1.5s" data-wow-offset="30">
                     <h4>
                         Телефон:
                         <img class="phonesIcon" src="~/Images/MainPage/pnonesIcon.png" />
@@ -98,7 +98,9 @@
         </div>
     </div>
     <div class="footer"></div>
-
+    <script type="text/javascript">
+        new WOW().init();
+    </script>
   
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

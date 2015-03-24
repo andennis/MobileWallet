@@ -188,6 +188,7 @@
     <Content Include="Content\createCard\bootstrap.css" />
     <Content Include="Content\createCard\skeleton.css" />
     <Content Include="Content\createCard\style.css" />
+    <Content Include="Content\MainPage\animate.css" />
     <Content Include="Content\MainPage\promoSite.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -197,6 +198,8 @@
     <Content Include="Images\Contact\social21.svg" />
     <Content Include="Images\Contact\telephone1.svg" />
     <Content Include="Images\Contact\vkcom.svg" />
+    <Content Include="Images\MainPage\bg2.jpg" />
+    <Content Include="Images\MainPage\bg3.jpg" />
     <Content Include="Images\Strategies\boardingDescript.png" />
     <Content Include="Images\Strategies\couponDescript.png" />
     <Content Include="Images\createCardOnNotebook.png" />
@@ -228,8 +231,6 @@
     <Content Include="Images\logo&amp;strip\Tulips.jpg" />
     <Content Include="Images\MainPage\androidLogo.png" />
     <Content Include="Images\MainPage\appleLogo.png" />
-    <Content Include="Images\MainPage\bg-2.jpg" />
-    <Content Include="Images\MainPage\bg-3.jpg" />
     <Content Include="Images\MainPage\buble1_1.png" />
     <Content Include="Images\MainPage\buble1_2.png" />
     <Content Include="Images\MainPage\buble2_1.png" />
@@ -280,6 +281,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\MainPage\promoSite.js" />
+    <Content Include="Scripts\MainPage\wow.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />

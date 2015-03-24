@@ -306,7 +306,7 @@
 }
 
 .usedAppBlock {
-    background-image: url('/Images/MainPage/bg-3.jpg');
+    background-image: url('/Images/MainPage/bg3.jpg');
     -ms-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -319,6 +319,7 @@
     -moz-background-position-y: 50%;
     -o-background-position-y: 50%;
     background-position-y: 50%;
+    background-attachment: fixed;
 }
 
 .appBlock {
@@ -359,13 +360,8 @@
     -moz-background-position-y: 32%;
     -o-background-position-y: 32%;
     background-position-y: 32%;
+    background-attachment: fixed;
 }
-
-
-
-
-
-
 
 .mainHeaderSmall h4 {
     text-align: left;
@@ -380,7 +376,7 @@
 
 .advantagesBlock {
     height: auto;
-    background-image: url('/Images/MainPage/bg-2.jpg');
+    background-image: url('/Images/MainPage/bg2.jpg');
     -ms-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -393,6 +389,7 @@
     -moz-background-position-y: 50%;
     -o-background-position-y: 50%;
     background-position-y: 50%;
+    background-attachment: fixed;
 }
 
 .passbookLogoImg {

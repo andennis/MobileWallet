@@ -13,3 +13,4 @@
 /// <reference path="createcard/mcolorpicker.js" />
 /// <reference path="createcard/passdesigner.js" />
 /// <reference path="mainpage/promosite.js" />
+/// <reference path="mainpage/wow.js" />
