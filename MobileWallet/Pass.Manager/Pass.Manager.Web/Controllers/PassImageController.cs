@@ -22,6 +22,7 @@ namespace Pass.Manager.Web.Controllers
         [HttpGet]
         public ActionResult CreateImage(int contentTemplateId)
         {
+            SetFormAttributes(new { enctype = "multipart/form-data" });
             return Create(m => m.PassContentTemplateId = contentTemplateId);
         }
 
@@ -31,13 +32,9 @@ namespace Pass.Manager.Web.Controllers
             if (ModelState.IsValid)
             {
                 if (model.ImageFile != null && model.ImageFile.ContentLength > 0)
-                {
                     model.FileStorageId = _fileStorageService.Put(model.ImageFile.InputStream);
-                }
                 if (model.ImageFile2x != null && model.ImageFile2x.ContentLength > 0)
-                {
                     model.FileStorageId = _fileStorageService.Put(model.ImageFile2x.InputStream);
-                }
 
                 PassImage entity = Mapper.Map<PassImageViewModel, PassImage>(model);
                 _service.Create(entity);
@@ -47,6 +44,7 @@ namespace Pass.Manager.Web.Controllers
     
                 return RedirectTo(model);
             }
+
             return CreateView(model);
         }
 

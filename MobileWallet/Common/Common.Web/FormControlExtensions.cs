@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
+using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
+using System.Web.Routing;
 using Common.Extensions;
 
 namespace Common.Web
@@ -38,8 +40,18 @@ namespace Common.Web
         }
         public static MvcForm BeginFormExt(this HtmlHelper html, string actionName = null, string controllerName = null, object htmlAttributes = null)
         {
-            IDictionary<string, object> attributes = MergeHtmlAttributes(_initFormAttributes, htmlAttributes);
+            IDictionary<string, object> attributes = _initFormAttributes.MergeHtmlAttributes(htmlAttributes)
+                .MergeHtmlAttributes((object)html.ViewBag.HtmlFormAttributes);
             return html.BeginForm(actionName, controllerName, FormMethod.Post, attributes);
+        }
+
+        public static MvcForm BeginFormExt(this AjaxHelper ajaxHelper, string actionName = null, string controllerName = null, object routeValues = null,
+            string updateTargetId = null, string onSuccess = null, object htmlAttributes = null)
+        {
+            IDictionary<string, object> attributes = _initFormAttributes.MergeHtmlAttributes(htmlAttributes)
+                .MergeHtmlAttributes((object)ajaxHelper.ViewBag.HtmlFormAttributes);
+            var ajaxOptions = new AjaxOptions() {UpdateTargetId = updateTargetId, OnSuccess = onSuccess};
+            return ajaxHelper.BeginForm(actionName, controllerName, new RouteValueDictionary(routeValues), ajaxOptions, attributes);
         }
         #endregion
 
@@ -222,7 +234,7 @@ namespace Common.Web
             public string Action { get; set; }
         }
 
-        private static IDictionary<string, object> MergeHtmlAttributes(IDictionary<string, object> dst, object src)
+        private static IDictionary<string, object> MergeHtmlAttributes(this IDictionary<string, object> dst, object src)
         {
             if (src != null)
                 return dst.Union(HtmlHelper.AnonymousObjectToHtmlAttributes(src)).ToDictionary(key => key.Key, val => val.Value);

@@ -19,14 +19,14 @@ namespace Pass.Manager.Web.Controllers
 
         public override ActionResult Create()
         {
-            ViewBag.HtmlFormAttributes = new {enctype = "multipart/form-data"};
+            SetFormAttributes(new {enctype = "multipart/form-data"});
             //TODO temp solution to specify ExpDate
             return View(new PassCertificateAppleViewModel() { ExpDate = DateTime.Today });
         }
 
         public override ActionResult Edit(int id)
         {
-            ViewBag.HtmlFormAttributes = new { enctype = "multipart/form-data" };
+            SetFormAttributes(new { enctype = "multipart/form-data" });
             return base.Edit(id);
         }
 

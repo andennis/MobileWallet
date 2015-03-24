@@ -149,5 +149,10 @@ namespace Pass.Manager.Web.Common
                    };
         }
 
+        protected void SetFormAttributes(object htmlAttributes)
+        {
+            ViewBag.HtmlFormAttributes = htmlAttributes;
+        }
+
     }
 }
