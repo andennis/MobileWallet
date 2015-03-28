@@ -5,14 +5,15 @@ using System.Web.Mvc;
 using Common.BL;
 using Common.Web.Grid;
 using AutoMapper;
+using Pass.Manager.Core.Services;
 
 namespace Pass.Manager.Web.Common
 {
     [Authorize]
     public abstract class BaseEntityController<TEntityViewModel, TEntity, TService, TSearchFilter> : BaseController
         where TEntityViewModel : class, IViewModel, new() 
-        where TEntity : class
-        where TService : class, IBaseService<TEntity, TSearchFilter>
+        where TEntity : class, new()
+        where TService : IPassManagerServiceBase<TEntity, TSearchFilter>
         where TSearchFilter : SearchFilterBase
     {
         protected readonly TService _service;
@@ -121,6 +122,14 @@ namespace Pass.Manager.Web.Common
         public virtual ActionResult GridSearch(GridDataRequest request, TSearchFilter searchFilter = null)
         {
             SearchResult<TEntity> result = _service.Search(GridRequestToSearchContext(request), searchFilter);
+            IEnumerable<TEntityViewModel> resultView = Mapper.Map<IEnumerable<TEntity>, IEnumerable<TEntityViewModel>>(result.Data);
+            return Json(GridDataResponse.Create(request, resultView, result.TotalCount), JsonRequestBehavior.AllowGet);
+        }
+
+        [AjaxOnly]
+        public virtual ActionResult GridSearchView(GridDataRequest request, TSearchFilter searchFilter = null)
+        {
+            SearchResult<TEntity> result = _service.SearchView(GridRequestToSearchContext(request), searchFilter);
             IEnumerable<TEntityViewModel> resultView = Mapper.Map<IEnumerable<TEntity>, IEnumerable<TEntityViewModel>>(result.Data);
             return Json(GridDataResponse.Create(request, resultView, result.TotalCount), JsonRequestBehavior.AllowGet);
         }

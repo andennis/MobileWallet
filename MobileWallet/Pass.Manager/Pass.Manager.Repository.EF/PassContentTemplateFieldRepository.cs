@@ -8,7 +8,7 @@ using Pass.Manager.Core.Repositories;
 
 namespace Pass.Manager.Repository.EF
 {
-    public class PassContentTemplateFieldRepository : Repository<PassContentTemplateField>, IPassContentTemplateFieldRepository
+    public class PassContentTemplateFieldRepository : PassManagerRepository<PassContentTemplateField>, IPassContentTemplateFieldRepository
     {
         public PassContentTemplateFieldRepository(DbContextBase dbContext)
             : base(dbContext)

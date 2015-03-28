@@ -8,7 +8,7 @@ using Pass.Manager.Core.Services;
 
 namespace Pass.Manager.BL.Services
 {
-    public class PassSiteUserService : BaseService<PassSiteUser, PassSiteUserFilter, IPassManagerUnitOfWork>, IPassSiteUserService
+    public class PassSiteUserService : PassManagerServiceBase<PassSiteUser, PassSiteUserFilter>, IPassSiteUserService
     {
         public PassSiteUserService(IPassManagerUnitOfWork unitOfWork)
             : base(unitOfWork)

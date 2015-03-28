@@ -52,8 +52,6 @@ namespace Common.Repository.EF
         public virtual IRepository<TEntity> GetRepository<TEntity>() where TEntity : class
         {
             Type entityType = typeof(TEntity);
-            if (!AllowedRepositoryEntities.Contains(entityType))
-                throw new Exception(string.Format("Repository<{0}> has not been registered for the UnitOfType", entityType.Name));
 
             object repository;
             if (_repositories.TryGetValue(entityType, out repository))
@@ -65,10 +63,18 @@ namespace Common.Repository.EF
                 return (IRepository<TEntity>)repository;
             }
 
-            var repositoryType = typeof(Repository<>);
-            _repositories.Add(entityType, Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), _dbContext));
+            if (!AllowedRepositoryEntities.Contains(entityType))
+                throw new Exception(string.Format("Repository<{0}> has not been registered for the UnitOfType", entityType.Name));
 
-            return (IRepository<TEntity>)_repositories[entityType];
+            var repositoryType = this.GetDefaultRepositoryType;
+            object rep = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), _dbContext);
+            _repositories.Add(entityType, rep);
+            return (IRepository<TEntity>)rep;
+        }
+
+        protected virtual Type GetDefaultRepositoryType
+        {
+            get { return typeof(Repository<>); }
         }
 
         public void Save()

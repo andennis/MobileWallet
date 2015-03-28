@@ -1,10 +1,9 @@
-﻿using Common.BL;
-using Pass.Manager.Core.Entities;
+﻿using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.SearchFilters;
 
 namespace Pass.Manager.Core.Services
 {
-    public interface IPassImageService : IBaseService<PassImage, PassImageFilter>
+    public interface IPassImageService : IPassManagerServiceBase<PassImage, PassImageFilter>
     {
          
     }

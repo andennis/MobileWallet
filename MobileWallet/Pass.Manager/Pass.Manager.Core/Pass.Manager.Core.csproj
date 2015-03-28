@@ -74,6 +74,7 @@
     <Compile Include="Services\IPassContentTemplateFieldService.cs" />
     <Compile Include="Services\IPassContentTemplateService.cs" />
     <Compile Include="Services\IPassImageService.cs" />
+    <Compile Include="Services\IPassManagerServiceBase.cs" />
     <Compile Include="Services\IPassProjectService.cs" />
     <Compile Include="Services\IPassSiteCertificateService.cs" />
     <Compile Include="Services\IPassSiteService.cs" />

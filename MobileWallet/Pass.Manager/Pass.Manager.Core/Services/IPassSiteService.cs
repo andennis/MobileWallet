@@ -3,7 +3,7 @@ using Pass.Manager.Core.Entities;
 
 namespace Pass.Manager.Core.Services
 {
-    public interface IPassSiteService : IBaseService<PassSite, SearchFilterBase>
+    public interface IPassSiteService : IPassManagerServiceBase<PassSite, SearchFilterBase>
     {
         /*
         SearchResult<PassSiteUser> GetUsers(SearchContext searchContext, int passSiteId);

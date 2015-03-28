@@ -9,7 +9,7 @@ using Pass.Manager.Core.Services;
 
 namespace Pass.Manager.BL.Services
 {
-    public class PassCertificateService : BaseService<PassCertificateApple, SearchFilterBase, IPassManagerUnitOfWork>, IPassCertificateService
+    public class PassCertificateService : PassManagerServiceBase<PassCertificateApple, SearchFilterBase>, IPassCertificateService
     {
         private readonly ICertificateStorageService _certificateStorageService;
 

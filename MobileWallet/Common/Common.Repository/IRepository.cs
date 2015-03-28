@@ -2,7 +2,7 @@
 
 namespace Common.Repository
 {
-    public interface IRepository<TEntity> where TEntity : class
+    public interface IRepository<TEntity> where TEntity : class 
     {
         void Insert(TEntity entity);
         void Update(TEntity entity);
@@ -12,9 +12,9 @@ namespace Common.Repository
         TEntity Find(params object[] keyValues);
         IRepositoryQuery<TEntity> Query();
         IQueryable<TEntity> SqlQuery(string query, params object[] parameters);
+        IQueryable<T> SqlQuery<T>(string query, params object[] parameters);
         T SqlQueryScalar<T>(string query, params object[] parameters);
         void ExecuteCommand(string commandText, params object[] parameters);
 
-        //void SaveChanges();
     }
 }

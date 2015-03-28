@@ -7,7 +7,7 @@ using Pass.Manager.Core.Services;
 
 namespace Pass.Manager.BL.Services
 {
-    public class UserService : BaseService<User, SearchFilterBase, IPassManagerUnitOfWork>, IUserService
+    public class UserService : PassManagerServiceBase<User, SearchFilterBase>, IUserService
     {
         public UserService(IPassManagerUnitOfWork unitOfWork)
             : base(unitOfWork)

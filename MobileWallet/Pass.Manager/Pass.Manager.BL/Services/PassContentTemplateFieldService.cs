@@ -8,7 +8,7 @@ using Pass.Manager.Core.Services;
 
 namespace Pass.Manager.BL.Services
 {
-    public class PassContentTemplateFieldService : BaseService<PassContentTemplateField, PassContentTemplateFieldFilter, IPassManagerUnitOfWork>, IPassContentTemplateFieldService
+    public class PassContentTemplateFieldService : PassManagerServiceBase<PassContentTemplateField, PassContentTemplateFieldFilter>, IPassContentTemplateFieldService
     {
         public PassContentTemplateFieldService(IPassManagerUnitOfWork unitOfWork)
             : base(unitOfWork)

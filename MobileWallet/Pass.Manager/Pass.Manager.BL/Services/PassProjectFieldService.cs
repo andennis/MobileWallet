@@ -7,7 +7,7 @@ using Pass.Manager.Core.Services;
 
 namespace Pass.Manager.BL.Services
 {
-    public class PassProjectFieldService : BaseService<PassProjectField, PassProjectFieldFilter, IPassManagerUnitOfWork>, IPassProjectFieldService
+    public class PassProjectFieldService : PassManagerServiceBase<PassProjectField, PassProjectFieldFilter>, IPassProjectFieldService
     {
         public PassProjectFieldService(IPassManagerUnitOfWork unitOfWork)
             : base(unitOfWork)

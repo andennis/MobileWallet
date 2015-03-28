@@ -23,6 +23,7 @@ namespace Common.Repository.EF
         {
             return _dbSet.Find(keyValues);
         }
+
         public virtual IQueryable<TEntity> SqlQuery(string query, params object[] parameters)
         {
             return _dbSet.SqlQuery(query, parameters).AsQueryable();
@@ -66,8 +67,7 @@ namespace Common.Repository.EF
 
         public virtual IRepositoryQuery<TEntity> Query()
         {
-            var repositoryGetFluentHelper = new RepositoryQuery<TEntity>(this);
-            return repositoryGetFluentHelper;
+            return new RepositoryQuery<TEntity>(this);
         }
 
         internal IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null,
@@ -96,11 +96,5 @@ namespace Common.Repository.EF
             return query;
         }
 
-        /*
-        public void SaveChanges()
-        {
-            _dbContext.SaveChanges();
-        }
-        */
     }
 }

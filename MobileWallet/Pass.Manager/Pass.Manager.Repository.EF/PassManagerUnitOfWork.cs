@@ -70,7 +70,6 @@ namespace Pass.Manager.Repository.EF
                 return _passSiteCertificateRepository ?? (_passSiteCertificateRepository = new PassSiteCertificateRepository(_dbContext));
             }
         }
-
         public IPassContentTemplateFieldRepository PassContentTemplateFieldRepository
         {
             get
@@ -79,5 +78,9 @@ namespace Pass.Manager.Repository.EF
             }
         }
 
+        protected override Type GetDefaultRepositoryType
+        {
+            get { return typeof(PassManagerRepository<>); }
+        }
     }
 }

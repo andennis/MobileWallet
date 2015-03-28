@@ -7,7 +7,7 @@ using Pass.Manager.Core.Services;
 
 namespace Pass.Manager.BL.Services
 {
-    public class PassProjectService : BaseService<PassProject, PassProjectFilter, IPassManagerUnitOfWork>, IPassProjectService
+    public class PassProjectService : PassManagerServiceBase<PassProject, PassProjectFilter>, IPassProjectService
     {
         private readonly IFileStorageService _fileStorageService;
 

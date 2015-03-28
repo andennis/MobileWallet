@@ -7,7 +7,7 @@ using Pass.Manager.Core.Services;
 
 namespace Pass.Manager.BL.Services
 {
-    public class PassImageService : BaseService<PassImage, PassImageFilter, IPassManagerUnitOfWork>, IPassImageService
+    public class PassImageService : PassManagerServiceBase<PassImage, PassImageFilter>, IPassImageService
     {
         public PassImageService(IPassManagerUnitOfWork unitOfWork)
             : base(unitOfWork)
