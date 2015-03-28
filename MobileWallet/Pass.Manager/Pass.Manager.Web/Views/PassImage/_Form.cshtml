@@ -5,5 +5,5 @@
 
 @Html.DropDownListFormForExt(m => m.ImageType, "Image Type", "- Select Image Type -")
 
-@Html.FileUploadEx("ImageFile")
-@Html.FileUploadEx("ImageFile2x")
+@Html.FileUploadFormForEx(m => m.ImageFile, "Image File")
+@Html.FileUploadFormForEx(m => m.ImageFile2x, "Image File (2x)")

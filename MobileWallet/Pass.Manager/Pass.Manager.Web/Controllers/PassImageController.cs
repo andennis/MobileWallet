@@ -34,7 +34,7 @@ namespace Pass.Manager.Web.Controllers
                 if (model.ImageFile != null && model.ImageFile.ContentLength > 0)
                     model.FileStorageId = _fileStorageService.Put(model.ImageFile.InputStream);
                 if (model.ImageFile2x != null && model.ImageFile2x.ContentLength > 0)
-                    model.FileStorageId = _fileStorageService.Put(model.ImageFile2x.InputStream);
+                    model.FileStorage2xId = _fileStorageService.Put(model.ImageFile2x.InputStream);
 
                 PassImage entity = Mapper.Map<PassImageViewModel, PassImage>(model);
                 _service.Create(entity);

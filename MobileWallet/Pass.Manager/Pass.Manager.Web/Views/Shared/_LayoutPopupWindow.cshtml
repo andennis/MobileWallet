@@ -1,6 +1,4 @@
-﻿@*using (Ajax.BeginForm(null, null, null, new AjaxOptions() { UpdateTargetId = "popupWindowContent", OnSuccess = "window.PopupWindow.ajaxOnSuccess" }, new { id = "popupWindowForm", @class = "form-horizontal", role = "form" }))*@
-@using (Ajax.BeginFormExt(updateTargetId: "popupWindowContent", onSuccess: "window.PopupWindow.ajaxOnSuccess", htmlAttributes: new { id = "popupWindowForm" }))
-
+﻿@using (Html.BeginFormExt(null, null, new { id="popupWindowForm" }))
 {
     @Html.ValidationSummary()
     @Html.AntiForgeryToken()
@@ -23,5 +21,10 @@
 <script type="text/javascript">
     $(document).ready(function () {
         window.action.InitForm($("#popupWindowForm"));
+
+        $("#popupWindowForm").ajaxForm({
+            target: "#popupWindowContent",
+            success: window.PopupWindow.ajaxOnSuccess
+        });
     })
 </script>

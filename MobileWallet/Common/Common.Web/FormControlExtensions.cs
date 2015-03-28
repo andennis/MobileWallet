@@ -212,15 +212,28 @@ namespace Common.Web
         #endregion
 
         #region FileUpload
-        public static MvcHtmlString FileUploadEx(this HtmlHelper html, string name, string saveUrl = null, string removeUrl = null, string fileExts = null)
+
+        public static MvcHtmlString FileUploadFormForEx<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string labelText = null, string fileExts = null)
+        {
+            return html.LabelWithControl(expression, labelText, null, () => html.FileUploadForEx(expression, fileExts, _initControlAttributes));
+        }
+
+        public static MvcHtmlString FileUploadForEx<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string fileExts = null, object htmlAttributes = null)
+        {
+            string propName = expression.GetPropertyName();
+            return html.FileUploadEx(propName, fileExts, htmlAttributes);
+        }
+
+        public static MvcHtmlString FileUploadEx(this HtmlHelper html, string name, string fileExts = null, object htmlAttributes = null)
         {
             var inputTag = new TagBuilder("input");
-            //inputTag.GenerateId(name);
+            inputTag.GenerateId(name);
             inputTag.Attributes.Add("name", name);
             inputTag.Attributes.Add("type", "file");
             if (!string.IsNullOrEmpty(fileExts))
                 inputTag.Attributes.Add("accept", fileExts);
 
+            inputTag.Attributes.AddHtmlAttributes(htmlAttributes);
             return new MvcHtmlString(inputTag.ToString());
 
             //string htmlStr = html.FileUpload().Name(name).ToHtmlString();
@@ -240,6 +253,21 @@ namespace Common.Web
                 return dst.Union(HtmlHelper.AnonymousObjectToHtmlAttributes(src)).ToDictionary(key => key.Key, val => val.Value);
 
             return dst;
+        }
+        private static void AddHtmlAttributes(this IDictionary<string, string> dst, object src)
+        {
+            if (src == null)
+                return;
+
+            foreach (var attr in HtmlHelper.AnonymousObjectToHtmlAttributes(src))
+            {
+                string newVal = Convert.ToString(attr.Value);
+                string oldVal;
+                if (dst.ContainsKey(attr.Key))
+                    dst[attr.Key] = newVal;
+                else
+                    dst.Add(attr.Key, newVal);
+            }
         }
 
         private static ActionInfo GetActionInfo<TController>(Expression<Action<TController>> action)
