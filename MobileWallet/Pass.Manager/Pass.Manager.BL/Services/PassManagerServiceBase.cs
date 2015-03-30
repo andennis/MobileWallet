@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Common.BL;
 using Common.Extensions;
@@ -31,7 +32,8 @@ namespace Pass.Manager.BL.Services
         public SearchResult<TEntityView> SearchView(SearchContext searchContext, TSearchFilter searchFilter)
         {
             IDictionary<string, object> searchParams = searchFilter.ObjectPropertiesToDictionary();
-            IEnumerable<TEntityView> result = ((PassManagerRepository<TEntity>)_repository).Search<TEntityView>(searchParams);
+            searchParams = searchParams.Union(searchContext.ObjectPropertiesToDictionary()).ToDictionary(k => k.Key, v => v.Value ?? DBNull.Value);
+            IEnumerable<TEntityView> result = ((PassManagerDefaultRepository<TEntity>)_repository).Search<TEntityView>(searchParams);//.ToList();???
 
             return new SearchResult<TEntityView>()
                     {

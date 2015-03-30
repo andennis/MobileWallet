@@ -66,15 +66,15 @@ namespace Common.Repository.EF
             if (!AllowedRepositoryEntities.Contains(entityType))
                 throw new Exception(string.Format("Repository<{0}> has not been registered for the UnitOfType", entityType.Name));
 
-            var repositoryType = this.GetDefaultRepositoryType;
-            object rep = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), _dbContext);
+            object rep = CreateDefaultRepository(typeof(TEntity));
             _repositories.Add(entityType, rep);
             return (IRepository<TEntity>)rep;
         }
 
-        protected virtual Type GetDefaultRepositoryType
+        protected virtual object CreateDefaultRepository(Type entityType)
         {
-            get { return typeof(Repository<>); }
+            Type repositoryType = typeof(Repository<>);
+            return Activator.CreateInstance(repositoryType.MakeGenericType(entityType), _dbContext);
         }
 
         public void Save()

@@ -176,6 +176,15 @@ namespace FileStorage.Repository.EF.Tests
             }
         }
 
+        [Test]
+        public void GetStorageItemTest()
+        {
+            using (var unitOfWork = GetFileStorageUnitOfWork())
+            {
+                Assert.DoesNotThrow(() => unitOfWork.FileStorageRepository.GetStorageItem(0));
+            }
+        }
+
         private IFileStorageUnitOfWork GetFileStorageUnitOfWork()
         {
             return new FileStorageUnitOfWork(TestHelper.DbConfig);

@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using FileStorage.Core;
+using FileStorage.Core.Entities;
 using NUnit.Framework;
 
 namespace FileStorage.BL.Tests
@@ -306,6 +307,26 @@ namespace FileStorage.BL.Tests
                 Assert.IsNotNullOrEmpty(path);
                 Assert.True(path.StartsWith(_fsConfig.StoragePath));
                 Assert.True(Directory.Exists(path));
+            }
+        }
+
+        [Test]
+        public void GetFileTest()
+        {
+            using (var fsService = GetFileStorageService())
+            {
+                int id = fsService.Put(TestFilePath);
+                StorageFileInfo fileInfo = fsService.GetFile(id);
+                Assert.NotNull(fileInfo);
+                Assert.IsNotNullOrEmpty(fileInfo.Name);
+                Assert.AreEqual(Path.GetFileName(TestFilePath), fileInfo.OriginalName);
+                Assert.Null(fileInfo.FileStream);
+
+                using (fileInfo = fsService.GetFile(id, true))
+                {
+                    Assert.NotNull(fileInfo);
+                    Assert.NotNull(fileInfo.FileStream);
+                }
             }
         }
 

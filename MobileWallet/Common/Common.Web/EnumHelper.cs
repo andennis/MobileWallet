@@ -24,5 +24,12 @@ namespace Common.Web
             IEnumerable<SelectListItem> items = ToSelectListItems<TEnum>();
             return new SelectList(items, "Value", "Text");
         }
+
+        public static IDictionary<string, int> ToDictionary<TEnum>() where TEnum : struct
+        {
+            return Enum.GetValues(typeof(TEnum))
+                .Cast<TEnum>()
+                .ToDictionary(k => k.ToString(), v => Convert.ToInt32(v));
+        }
     }
 }

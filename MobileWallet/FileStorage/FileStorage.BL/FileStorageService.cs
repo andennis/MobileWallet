@@ -5,6 +5,7 @@ using System.Linq;
 using Common.Repository;
 using Common.Utils;
 using FileStorage.Core;
+using FileStorage.Core.Entities;
 using FileStorage.Repository.Core;
 using FileStorage.Repository.Core.Entities;
 
@@ -45,12 +46,12 @@ namespace FileStorage.BL
             bool isDir = (File.GetAttributes(fileOrDirPath) & FileAttributes.Directory) == FileAttributes.Directory;
             if (isDir)
             {
-                newStorageItem = PutFolder(fileOrDirPath, dstPath, parentFolder, move);
+                newStorageItem = PutFolder(fileOrDirPath, dstPath, move);
             }
             else
             {
                 dstPath += Path.GetExtension(fileOrDirPath);
-                newStorageItem = PutFile(fileOrDirPath, dstPath, parentFolder, move);
+                newStorageItem = PutFile(fileOrDirPath, dstPath, move);
             }
 
             return CreateStorageItem(parentFolder, newStorageItem);
@@ -92,7 +93,7 @@ namespace FileStorage.BL
 
             return CreateStorageItem(parentFolder, newStorageItem);
         }
-        private StorageItem PutFile(string srcFilePath, string dstFilePath, FolderItem parentFolder, bool moveFile = false)
+        private StorageItem PutFile(string srcFilePath, string dstFilePath, bool moveFile = false)
         {
             //Copy\move file to specified location
             if (moveFile)
@@ -109,7 +110,7 @@ namespace FileStorage.BL
                         Size = new FileInfo(dstFilePath).Length
                     };
         }
-        private StorageItem PutFolder(string srcFolderPath, string dstFolderPath, FolderItem parentFolder, bool moveFolder = false)
+        private StorageItem PutFolder(string srcFolderPath, string dstFolderPath, bool moveFolder = false)
         {
             //Copy\move folder to specified location
             if (moveFolder)
@@ -136,6 +137,27 @@ namespace FileStorage.BL
             path = GetPathWithoutRootFolder(path);
             return Path.Combine(_config.StoragePath, path);
         }
+
+        public StorageFileInfo GetFile(int itemId, bool fileStream = false)
+        {
+            StorageItem si =  _fsUnitOfWork.FileStorageRepository.GetStorageItem(itemId);
+            var sfi = new StorageFileInfo()
+            {
+                Id = si.StorageItemId,
+                Name = si.Name,
+                OriginalName = si.OriginalName,
+                Size = si.Size
+            };
+
+            if (fileStream)
+            {
+                string path = GetStorageItemPath(itemId);
+                sfi.FileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
+            }
+
+            return sfi;
+        }
+
         public int CreateStorageFolder(out string folderPath)
         {
             //Get new file path

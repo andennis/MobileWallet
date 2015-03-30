@@ -45,7 +45,13 @@ namespace Pass.Manager.Web
             Mapper.CreateMap<PassProjectField, PassProjectFieldViewModel>().ReverseMap();
             Mapper.CreateMap<PassContentTemplate, PassContentTemplateViewModel>().ReverseMap();
             Mapper.CreateMap<PassContentTemplateField, PassContentTemplateFieldViewModel>().ReverseMap();
-            Mapper.CreateMap<PassImage, PassImageViewModel>().ReverseMap();
+
+            Mapper.CreateMap<PassImage, PassImageViewModel>()
+                .ForMember(dst => dst.ImageFile, x => x.Ignore())
+                .ForMember(dst => dst.ImageFile2x, x => x.Ignore());
+            Mapper.CreateMap<PassImageViewModel, PassImage>()
+                .ForMember(dst => dst.ImageFile, x => x.MapFrom(src => src.ImageFile != null ? src.ImageFile.InputStream : null))
+                .ForMember(dst => dst.ImageFile2x, x => x.MapFrom(src => src.ImageFile2x != null ? src.ImageFile2x.InputStream : null));
         }
 
         private static PassStyle PassProjectTypeToPassStyle(PassProjectType passProjectType)

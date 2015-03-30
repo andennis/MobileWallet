@@ -118,6 +118,8 @@ namespace Pass.Manager.Repository.EF
             modelBuilder.Entity<PassImage>().ToTable("PassImage", DbScheme);
             modelBuilder.Entity<PassImage>().Property(x => x.Version).IsConcurrencyToken();
             modelBuilder.Entity<PassImage>().HasRequired(x => x.PassContentTemplate).WithMany(x => x.PassImages).HasForeignKey(x => x.PassContentTemplateId);
+            modelBuilder.Entity<PassImage>().Ignore(x => x.ImageFile);
+            modelBuilder.Entity<PassImage>().Ignore(x => x.ImageFile2x);
 
             base.OnModelCreating(modelBuilder);
         }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using NUnit.Framework;
@@ -33,6 +32,18 @@ namespace Common.Web.Tests
             SelectListItem[] arr = sl.ToArray();
             Assert.AreEqual("V1", arr[0].Text);
             Assert.AreEqual("1", arr[0].Value);
+        }
+
+        [Test]
+        public void ToDictionaryTest()
+        {
+            IDictionary<string, int> dict = EnumHelper.ToDictionary<MyEnum>();
+            Assert.AreEqual(2, dict.Count());
+            int val;
+            Assert.True(dict.TryGetValue("V1", out val));
+            Assert.AreEqual(1, val);
+            Assert.True(dict.TryGetValue("V2", out val));
+            Assert.AreEqual(2, val);
         }
 
     }

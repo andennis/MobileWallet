@@ -7,7 +7,7 @@ using Pass.Manager.Core.Repositories;
 
 namespace Pass.Manager.Repository.EF
 {
-    public class PassSiteUserRepository : PassManagerRepository<PassSiteUser>, IPassSiteUserRepository
+    public class PassSiteUserRepository : PassManagerDefaultRepository<PassSiteUser>, IPassSiteUserRepository
     {
         public PassSiteUserRepository(DbContextBase dbContext)
             : base(dbContext)

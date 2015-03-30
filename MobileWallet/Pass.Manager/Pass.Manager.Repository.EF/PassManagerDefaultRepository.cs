@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace Pass.Manager.Repository.EF
 {
-    public class PassManagerRepository<TEntity> : Repository<TEntity> where TEntity : class
+    public class PassManagerDefaultRepository<TEntity> : Repository<TEntity> where TEntity : class
     {
-        public PassManagerRepository(DbContextBase dbContext)
+        public PassManagerDefaultRepository(DbContextBase dbContext)
             :base(dbContext)
         {
         }

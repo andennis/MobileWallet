@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Common.Extensions;
@@ -18,16 +20,34 @@ namespace Common.Web.Grid
         }
         public IList<GridBoundColumnBuilder<TModel>> Columns { get; private set; }
 
+        /*
         public GridBoundColumnBuilder<TModel> Bound()
         {
             var builder = new GridBoundColumnBuilder<TModel>(_htmlHelper);
             Columns.Add(builder);
             return builder;
         }
+        */
 
         public GridBoundColumnBuilder<TModel> Bound<TValue>(Expression<Func<TModel, TValue>> expression)
         {
             var builder = new GridBoundColumnBuilder<TModel>(_htmlHelper, expression.GetPropertyName(), typeof(TValue));
+            Columns.Add(builder);
+            return builder;
+        }
+
+        public GridBoundColumnBuilder<TModel> BoundEnum<TValue>(Expression<Func<TModel, TValue>> expression) where TValue : struct
+        {
+            var builder = new GridBoundColumnBuilder<TModel>(_htmlHelper, expression.GetPropertyName(), typeof(TValue));
+
+            var sbTemplate = new StringBuilder();
+            IDictionary<string, int> enumDict = EnumHelper.ToDictionary<TValue>();
+            foreach (KeyValuePair<string, int> item in enumDict)
+            {
+                sbTemplate.AppendFormat(" {0}if({1}=={2}) {{#{3}#}}", sbTemplate.Length > 0 ? "else " : string.Empty, builder.ColName, item.Value, item.Key);
+            }
+
+            builder.ClientTemplate(string.Format("# {0} #", sbTemplate));
             Columns.Add(builder);
             return builder;
         }

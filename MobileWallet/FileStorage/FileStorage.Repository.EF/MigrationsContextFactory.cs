@@ -6,7 +6,7 @@ namespace FileStorage.Repository.EF
     {
         public FileStorageDbContext Create()
         {
-            return new FileStorageDbContext("MobileWalletConnection");
+            return new FileStorageDbContext("Data Source=localhost;Initial Catalog=MobileWallet;User ID=sa;Password=sa1");
         }
     }
 }

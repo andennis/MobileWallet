@@ -36,6 +36,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\StorageFileInfo.cs" />
     <Compile Include="FileStorageException.cs" />
     <Compile Include="IFileStorageConfig.cs" />
     <Compile Include="IFileStorageService.cs" />

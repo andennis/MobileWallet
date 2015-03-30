@@ -7,7 +7,7 @@ using Pass.Manager.Core.Repositories;
 
 namespace Pass.Manager.Repository.EF
 {
-    public class PassSiteCertificateRepository : PassManagerRepository<PassSiteCertificate>, IPassSiteCertificateRepository
+    public class PassSiteCertificateRepository : PassManagerDefaultRepository<PassSiteCertificate>, IPassSiteCertificateRepository
     {
         public PassSiteCertificateRepository(DbContextBase dbContext)
             : base(dbContext)

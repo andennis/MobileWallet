@@ -16,7 +16,7 @@
               .Columns(c =>
                        {
                            c.BoundLink(p => p.PassImageId, Url.Action("Edit", "PassImage"), id => id.PassImageId, new { data_popup_window = "wndPassImage" }, "ID").Width("100px");
-                           c.Bound(p => p.ImageType);
+                           c.BoundEnum(p => p.ImageType).Title("Image Type");
                            c.Bound(p => p.PassImageId).Title("Action").GridAjaxAction("Delete", Url.Action("Delete", "PassImage"));
                        }))
 

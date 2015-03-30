@@ -32,6 +32,11 @@ namespace FileStorage.Repository.EF
                                           new SqlParameter("StorageItemId", storageItemId));
         }
 
+        public StorageItem GetStorageItem(int storageItemId)
+        {
+            return ((FileStorageDbContext)_dbContext).StorageItems.FirstOrDefault(x => x.StorageItemId == storageItemId && x.Status == ItemStatus.Active);
+        }
+
         public void ClearFileStorage()
         {
             //using (var trn = new TransactionScope())

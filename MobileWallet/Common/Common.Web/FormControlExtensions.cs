@@ -133,7 +133,8 @@ namespace Common.Web
         #endregion
 
         #region DropDownList
-        public static MvcHtmlString DropDownListForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems,  object htmlAttributes = null)
+        public static MvcHtmlString DropDownListForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems,  
+            object htmlAttributes = null)
         {
             return html.DropDownListFor(expression, listItems, htmlAttributes);
         }
@@ -157,8 +158,6 @@ namespace Common.Web
             SelectList listItems = EnumHelper.ToSelectList<TEnumProperty>();
             return html.DropDownListFormForExt(expression, listItems, labelText, optionLabel);
         }
-        
-
         
         #endregion
 

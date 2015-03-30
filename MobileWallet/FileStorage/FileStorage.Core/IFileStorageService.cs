@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using FileStorage.Core.Entities;
 
 namespace FileStorage.Core
 {
@@ -14,6 +15,7 @@ namespace FileStorage.Core
         int Put(string fileOrDirPath, bool move = false);
         int Put(Stream fileStream);
         string GetStorageItemPath(int itemId);
+        StorageFileInfo GetFile(int itemId, bool fileStream = false);
 
         /// <summary>
         /// Create storage item as folder
