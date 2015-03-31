@@ -16,9 +16,8 @@
               .Columns(c =>
                        {
                            c.Bound(p => p.PassContentTemplateFieldId).Title("ID").Width("100px");
-                           c.BoundLink(p => p.PassProjectFieldId, Url.Action("Edit", "PassContentTemplateField"), id => id.PassContentTemplateFieldId, 
+                           c.BoundLink(p => p.FieldName, Url.Action("Edit", "PassContentTemplateField"), id => id.PassContentTemplateFieldId, 
                                new { data_popup_window = "wndTemplateField" }, "Field Name");
-                           c.Bound(p => p.FieldName).Title("Field Name");
                            c.Bound(p => p.Label);
                            c.BoundEnum(p => p.FieldKind).Title("Field Location");
                            c.Bound(p => p.PassContentTemplateFieldId).Title("Action").GridAjaxAction("Delete", Url.Action("Delete", "PassContentTemplateField"));

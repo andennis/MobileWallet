@@ -114,9 +114,6 @@ namespace Pass.Manager.Repository.EF
             modelBuilder.Entity<PassContentTemplateField>().HasRequired(x => x.PassContentTemplate).WithMany(x => x.PassContentTemplateFields).HasForeignKey(x => x.PassContentTemplateId);
             modelBuilder.Entity<PassContentTemplateField>().HasRequired(x => x.PassProjectField).WithMany().HasForeignKey(x => x.PassProjectFieldId);
 
-            modelBuilder.Entity<PassContentTemplateFieldView>().ToTable("PassContentTemplateFieldView", DbScheme);
-            modelBuilder.Entity<PassContentTemplateFieldView>().HasKey(x => x.PassContentTemplateFieldId);
-
             //PassImage
             modelBuilder.Entity<PassImage>().ToTable("PassImage", DbScheme);
             modelBuilder.Entity<PassImage>().Property(x => x.Version).IsConcurrencyToken();
