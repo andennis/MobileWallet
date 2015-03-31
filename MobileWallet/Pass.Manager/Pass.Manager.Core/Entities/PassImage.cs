@@ -14,8 +14,8 @@ namespace Pass.Manager.Core.Entities
         public int PassContentTemplateId { get; set; }
         public PassContentTemplate PassContentTemplate { get; set; }
 
-        public Stream ImageFile { get; set; }
-        public Stream ImageFile2x { get; set; }
+        public FileContentInfo ImageFile { get; set; }
+        public FileContentInfo ImageFile2x { get; set; }
 
         public void Dispose()
         {

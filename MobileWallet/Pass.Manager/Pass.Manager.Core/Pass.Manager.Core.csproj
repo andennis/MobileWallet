@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\FileContentInfo.cs" />
     <Compile Include="Entities\IEntityWithId.cs" />
     <Compile Include="Entities\PassBarcode.cs" />
     <Compile Include="Entities\PassBarcodeFormat.cs" />

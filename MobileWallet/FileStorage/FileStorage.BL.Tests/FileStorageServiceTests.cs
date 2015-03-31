@@ -168,6 +168,12 @@ namespace FileStorage.BL.Tests
                 string dstFilePath = fsService.GetStorageItemPath(id);
                 Assert.IsNotNullOrEmpty(dstFilePath);
                 Assert.True(File.Exists(dstFilePath));
+
+                fs.Position = 0;
+                id = fsService.Put(fs, "File1.txt");
+                Assert.Greater(id, 0);
+                StorageFileInfo sfi = fsService.GetFile(id);
+                Assert.AreEqual("File1.txt", sfi.Name);
             }
         }
 
@@ -319,7 +325,7 @@ namespace FileStorage.BL.Tests
                 StorageFileInfo fileInfo = fsService.GetFile(id);
                 Assert.NotNull(fileInfo);
                 Assert.IsNotNullOrEmpty(fileInfo.Name);
-                Assert.AreEqual(Path.GetFileName(TestFilePath), fileInfo.OriginalName);
+                Assert.AreEqual(Path.GetFileName(TestFilePath), fileInfo.Name);
                 Assert.Null(fileInfo.FileStream);
 
                 using (fileInfo = fsService.GetFile(id, true))

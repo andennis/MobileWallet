@@ -31,7 +31,8 @@ namespace Pass.Manager.Web.Controllers
 
         public ActionResult GetImage(int id)
         {
-            return File("", "");
+            FileContentInfo fci = _service.GetImage(id);
+            return File(fci.ContentStream, fci.ContentType);
         }
     }
 }

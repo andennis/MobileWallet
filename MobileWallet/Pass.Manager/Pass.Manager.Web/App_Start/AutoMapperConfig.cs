@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Web;
+using AutoMapper;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Web.Models;
 using Pass.Manager.Web.Models.GeneralPassTemplate;
@@ -50,8 +51,22 @@ namespace Pass.Manager.Web
                 .ForMember(dst => dst.ImageFile, x => x.Ignore())
                 .ForMember(dst => dst.ImageFile2x, x => x.Ignore());
             Mapper.CreateMap<PassImageViewModel, PassImage>()
-                .ForMember(dst => dst.ImageFile, x => x.MapFrom(src => src.ImageFile != null ? src.ImageFile.InputStream : null))
-                .ForMember(dst => dst.ImageFile2x, x => x.MapFrom(src => src.ImageFile2x != null ? src.ImageFile2x.InputStream : null));
+                .ForMember(dst => dst.ImageFile, x => x.MapFrom(src => HttpPostedFileToFileContentInfo(src.ImageFile)))
+                .ForMember(dst => dst.ImageFile2x, x => x.MapFrom(src => HttpPostedFileToFileContentInfo(src.ImageFile2x)));
+        }
+
+
+        private static FileContentInfo HttpPostedFileToFileContentInfo(HttpPostedFileBase file)
+        {
+            if (file == null)
+                return null;
+
+            return new FileContentInfo()
+                   {
+                       FileName = file.FileName,
+                       ContentStream = file.InputStream,
+                       ContentType = file.ContentType
+                   };
         }
 
         private static PassStyle PassProjectTypeToPassStyle(PassProjectType passProjectType)

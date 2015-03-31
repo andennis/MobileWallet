@@ -56,13 +56,13 @@ namespace FileStorage.BL
 
             return CreateStorageItem(parentFolder, newStorageItem);
         }
-        public int Put(Stream fileStream)
+        public int Put(Stream fileStream, string fileName = null)
         {
             if (fileStream == null)
                 throw new ArgumentNullException("fileStream");
 
             //Get new file path
-            string srcFileName = (fileStream is FileStream) ? ((FileStream)fileStream).Name : string.Empty;
+            string srcFileName = fileName ?? ((fileStream is FileStream) ? ((FileStream)fileStream).Name : string.Empty);
             FolderItem parentFolder;
             string dstFilePath = GetNewStorageItemPath(out parentFolder) + Path.GetExtension(srcFileName);
 
@@ -144,8 +144,7 @@ namespace FileStorage.BL
             var sfi = new StorageFileInfo()
             {
                 Id = si.StorageItemId,
-                Name = si.Name,
-                OriginalName = si.OriginalName,
+                Name = si.OriginalName ?? si.Name,
                 Size = si.Size
             };
 

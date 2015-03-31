@@ -13,7 +13,7 @@ namespace FileStorage.Core
         /// <param name="move"></param>
         /// <returns>Storage item ID</returns>
         int Put(string fileOrDirPath, bool move = false);
-        int Put(Stream fileStream);
+        int Put(Stream fileStream, string fileName = null);
         string GetStorageItemPath(int itemId);
         StorageFileInfo GetFile(int itemId, bool fileStream = false);
 

@@ -4,20 +4,26 @@
 @Html.HiddenForExt(m => m.PassContentTemplateId)
 @Html.HiddenForExt(m => m.PassProjectId)
 
-@if (!Model.IsNew)
-{
-    Html.TextBlockFormForExt(m => m.PassContentTemplateId, "ID");
-}
-@Html.TextBoxFormForExt(m => m.Name)
-@Html.TextAreaFormForExt(m => m.Description)
-@Html.TextAreaFormForExt(m => m.OrganizationName, "Organization Name")
-@Html.DropDownListFormForExt(m => m.PassStyle, "Pass Style", "- Select Pass Style -")
-@Html.DropDownListFormForExt(m => m.TransitType, "Transit Type", "- Select Transit Type -")
-@Html.TextBoxFormForExt(m => m.MaxDistance)
-@*Html.DatePickerFormForExt(m => m.RelevantDate, "Relevant Date")*@
+<div class="row">
+    <div class="col-md-6">
+        @if (!Model.IsNew)
+        {
+            @Html.TextBlockFormForExt(m => m.PassContentTemplateId, "ID");
+        }
+        @Html.TextBoxFormForExt(m => m.Name)
+        @Html.TextAreaFormForExt(m => m.Description)
+        @Html.TextAreaFormForExt(m => m.OrganizationName, "Organization Name")
+    </div>
+    <div class="col-md-6">
+        @Html.DropDownListFormForExt(m => m.PassStyle, "Pass Style", "- Select Pass Style -")
+        @Html.DropDownListFormForExt(m => m.TransitType, "Transit Type", "- Select Transit Type -")
+        @Html.TextBoxFormForExt(m => m.MaxDistance)
+        @*Html.DatePickerFormForExt(m => m.RelevantDate, "Relevant Date")*@
 
-@Html.TextBoxFormForExt(m => m.LogoText, "Logo Text")
-@Html.CheckBoxFormForEx(m => m.SuppressStripShine, "Suppress Strip Shine")
+        @Html.TextBoxFormForExt(m => m.LogoText, "Logo Text")
+        @Html.CheckBoxFormForEx(m => m.SuppressStripShine, "Suppress Strip Shine")
+    </div>
+</div>
 
 @if (!Model.IsNew)
 {
