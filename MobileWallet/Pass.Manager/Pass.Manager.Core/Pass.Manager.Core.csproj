@@ -51,6 +51,7 @@
     <Compile Include="Entities\PassContentTemplate.cs" />
     <Compile Include="Entities\PassContentTemplateField.cs" />
     <Compile Include="Entities\PassContentFieldKind.cs" />
+    <Compile Include="Entities\PassContentTemplateFieldView.cs" />
     <Compile Include="Entities\PassImage.cs" />
     <Compile Include="Entities\PassImageType.cs" />
     <Compile Include="Entities\PassProjectField.cs" />

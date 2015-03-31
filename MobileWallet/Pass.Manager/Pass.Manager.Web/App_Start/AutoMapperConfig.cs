@@ -45,7 +45,9 @@ namespace Pass.Manager.Web
 
             Mapper.CreateMap<PassProjectField, PassProjectFieldViewModel>().ReverseMap();
             Mapper.CreateMap<PassContentTemplate, PassContentTemplateViewModel>().ReverseMap();
+
             Mapper.CreateMap<PassContentTemplateField, PassContentTemplateFieldViewModel>().ReverseMap();
+            Mapper.CreateMap<PassContentTemplateFieldView, PassContentTemplateFieldViewModel>().ReverseMap();
 
             Mapper.CreateMap<PassImage, PassImageViewModel>()
                 .ForMember(dst => dst.ImageFile, x => x.Ignore())

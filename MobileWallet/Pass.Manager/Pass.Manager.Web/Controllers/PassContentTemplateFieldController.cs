@@ -10,7 +10,7 @@ using Pass.Manager.Web.Models;
 
 namespace Pass.Manager.Web.Controllers
 {
-    public class PassContentTemplateFieldController : BaseEntityController<PassContentTemplateFieldViewModel, PassContentTemplateField, IPassContentTemplateFieldService, PassContentTemplateFieldFilter>
+    public class PassContentTemplateFieldController : BaseEntityController<PassContentTemplateFieldViewModel, PassContentTemplateField, PassContentTemplateFieldView, IPassContentTemplateFieldService, PassContentTemplateFieldFilter>
     {
         public PassContentTemplateFieldController(IPassContentTemplateFieldService templateFieldService)
             : base(templateFieldService)

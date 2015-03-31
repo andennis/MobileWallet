@@ -24,8 +24,10 @@ namespace Pass.Manager.Web.Models
         public TextAlignment? TextAlignment { get; set; }
 
         public int PassProjectFieldId { get; set; }
-        public int PassContentTemplateId { get; set; }
+        public string FieldName { get; set; }
 
+        public int PassContentTemplateId { get; set; }
+        
         public IEnumerable<SelectListItem> PassProjectFields { get; set; }
     }
 }

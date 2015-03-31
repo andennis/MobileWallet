@@ -9,10 +9,23 @@ using Pass.Manager.Core.Services;
 
 namespace Pass.Manager.Web.Common
 {
+    public abstract class BaseEntityController<TEntityViewModel, TEntity, TService, TSearchFilter> : BaseEntityController<TEntityViewModel, TEntity, TEntity, TService, TSearchFilter>
+        where TEntityViewModel : class, IViewModel, new()
+        where TEntity : class, new()
+        where TService : IPassManagerServiceBase<TEntity, TSearchFilter>
+        where TSearchFilter : SearchFilterBase
+    {
+        protected BaseEntityController(TService service)
+            :base(service)
+        {
+        }
+    }
+
     [Authorize]
-    public abstract class BaseEntityController<TEntityViewModel, TEntity, TService, TSearchFilter> : BaseController
+    public abstract class BaseEntityController<TEntityViewModel, TEntity, TEntityView, TService, TSearchFilter> : BaseController
         where TEntityViewModel : class, IViewModel, new() 
         where TEntity : class, new()
+        where TEntityView : class
         where TService : IPassManagerServiceBase<TEntity, TSearchFilter>
         where TSearchFilter : SearchFilterBase
     {
@@ -129,8 +142,8 @@ namespace Pass.Manager.Web.Common
         [AjaxOnly]
         public virtual ActionResult GridSearchView(GridDataRequest request, TSearchFilter searchFilter = null)
         {
-            SearchResult<TEntity> result = _service.SearchView(GridRequestToSearchContext(request), searchFilter);
-            IEnumerable<TEntityViewModel> resultView = Mapper.Map<IEnumerable<TEntity>, IEnumerable<TEntityViewModel>>(result.Data);
+            SearchResult<TEntityView> result = _service.SearchView<TEntityView>(GridRequestToSearchContext(request), searchFilter);
+            IEnumerable<TEntityViewModel> resultView = Mapper.Map<IEnumerable<TEntityView>, IEnumerable<TEntityViewModel>>(result.Data);
             return Json(GridDataResponse.Create(request, resultView, result.TotalCount), JsonRequestBehavior.AllowGet);
         }
 

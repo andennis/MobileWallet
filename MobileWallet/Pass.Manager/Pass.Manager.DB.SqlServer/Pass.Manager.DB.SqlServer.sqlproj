@@ -63,6 +63,7 @@
     <Folder Include="Tables\" />
     <Folder Include="Security\" />
     <Folder Include="Stored Procedures" />
+    <Folder Include="Views" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\pm.PassCertificate.sql" />
@@ -75,6 +76,8 @@
     <Build Include="Security\pm.sql" />
     <Build Include="Stored Procedures\pm.PassSiteUser_GetUnassignedUsers.sql" />
     <Build Include="Stored Procedures\pm.PassContentTemplateField_GetUnmappedFields.sql" />
+    <Build Include="Stored Procedures\pm.PassContentTemplateField_Search.sql" />
+    <Build Include="Views\pm.PassContentTemplateFieldView.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Stored Procedures\pm.PassSiteCertificate_GetUnassignedCertificates.sql" />

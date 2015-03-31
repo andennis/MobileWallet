@@ -15,18 +15,6 @@ namespace Pass.Manager.BL.Services
         {
         }
 
-        /*
-        public override PassContentTemplateField Get(int entityId)
-        {
-            IEnumerable<PassContentTemplateField> entity = _repository.Query()
-                .Filter(x => x.PassContentTemplateFieldId == entityId)
-                .Include(x => x.PassProjectField)
-                .Get();
-
-            return entity.FirstOrDefault();
-        }
-        */
-
         public override SearchResult<PassContentTemplateField> Search(SearchContext searchContext, PassContentTemplateFieldFilter searchFilter = null)
         {
             if (searchFilter == null)

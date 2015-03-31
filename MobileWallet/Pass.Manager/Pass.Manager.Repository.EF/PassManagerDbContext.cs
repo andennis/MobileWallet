@@ -13,7 +13,7 @@ namespace Pass.Manager.Repository.EF
         public PassManagerDbContext(string nameOrConnectionString)
             :base(nameOrConnectionString)
         {
-            //Database.SetInitializer<PassManagerDbContext>(null);
+            Database.SetInitializer<PassManagerDbContext>(null);
             //this.Configuration.LazyLoadingEnabled = false;
         }
 
@@ -113,6 +113,9 @@ namespace Pass.Manager.Repository.EF
             modelBuilder.Entity<PassContentTemplateField>().Property(x => x.Label).HasMaxLength(128);
             modelBuilder.Entity<PassContentTemplateField>().HasRequired(x => x.PassContentTemplate).WithMany(x => x.PassContentTemplateFields).HasForeignKey(x => x.PassContentTemplateId);
             modelBuilder.Entity<PassContentTemplateField>().HasRequired(x => x.PassProjectField).WithMany().HasForeignKey(x => x.PassProjectFieldId);
+
+            modelBuilder.Entity<PassContentTemplateFieldView>().ToTable("PassContentTemplateFieldView", DbScheme);
+            modelBuilder.Entity<PassContentTemplateFieldView>().HasKey(x => x.PassContentTemplateFieldId);
 
             //PassImage
             modelBuilder.Entity<PassImage>().ToTable("PassImage", DbScheme);

@@ -9,6 +9,7 @@ using Pass.Manager.Repository.EF;
 
 namespace Pass.Manager.BL.Services
 {
+    /*
     public abstract class PassManagerServiceBase<TEntity, TSearchFilter> : PassManagerServiceBase<TEntity, TEntity, TSearchFilter>
         where TEntity : class, new()
         where TSearchFilter : SearchFilterBase
@@ -18,10 +19,11 @@ namespace Pass.Manager.BL.Services
         {
         }
     }
+    */
 
-    public abstract class PassManagerServiceBase<TEntity, TEntityView, TSearchFilter> : BaseService<TEntity, TSearchFilter, IPassManagerUnitOfWork>, IPassManagerServiceBase<TEntity, TEntityView, TSearchFilter> 
+    public abstract class PassManagerServiceBase<TEntity, TSearchFilter> : BaseService<TEntity, TSearchFilter, IPassManagerUnitOfWork>, IPassManagerServiceBase<TEntity, TSearchFilter> 
         where TEntity : class, new()
-        where TEntityView : class, new()
+        //where TEntityView : class, new()
         where TSearchFilter : SearchFilterBase
     {
         protected PassManagerServiceBase(IPassManagerUnitOfWork unitOfWork)
@@ -29,16 +31,17 @@ namespace Pass.Manager.BL.Services
         {
         }
 
-        public SearchResult<TEntityView> SearchView(SearchContext searchContext, TSearchFilter searchFilter)
+        public virtual SearchResult<TEntityView> SearchView<TEntityView>(SearchContext searchContext, TSearchFilter searchFilter) where TEntityView : class
         {
             IDictionary<string, object> searchParams = searchFilter.ObjectPropertiesToDictionary();
             searchParams = searchParams.Union(searchContext.ObjectPropertiesToDictionary()).ToDictionary(k => k.Key, v => v.Value ?? DBNull.Value);
-            IEnumerable<TEntityView> result = ((PassManagerDefaultRepository<TEntity>)_repository).Search<TEntityView>(searchParams);//.ToList();???
+            int totalRecords;
+            IEnumerable<TEntityView> result = ((PassManagerDefaultRepository<TEntity>)_repository).Search<TEntityView>(searchParams, out totalRecords);//.ToList();???
 
             return new SearchResult<TEntityView>()
                     {
                         Data = result,
-                        TotalCount = result.Count()
+                        TotalCount = totalRecords
                     };
         }
     }
