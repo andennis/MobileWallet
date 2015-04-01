@@ -1,6 +1,4 @@
 ﻿using System.Web.Mvc;
-using AutoMapper;
-using FileStorage.Core;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.SearchFilters;
 using Pass.Manager.Core.Services;
@@ -32,6 +30,9 @@ namespace Pass.Manager.Web.Controllers
         public ActionResult GetImage(int id)
         {
             FileContentInfo fci = _service.GetImage(id);
+            if (fci == null)
+                return Content(string.Empty);
+
             return File(fci.ContentStream, fci.ContentType);
         }
     }

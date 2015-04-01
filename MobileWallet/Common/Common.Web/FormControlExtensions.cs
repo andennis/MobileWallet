@@ -240,6 +240,17 @@ namespace Common.Web
         }
         #endregion
 
+        #region DatePicker
+        public static MvcHtmlString DatePickerForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, object htmlAttributes = null)
+        {
+            return html.TextBoxFor(expression, htmlAttributes);
+        }
+        public static MvcHtmlString DatePickerFormForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string labelText = null)
+        {
+            return html.LabelWithControl(expression, labelText, null, () => html.TextBoxFor(expression, _initControlAttributes));
+        }
+        #endregion
+
         private class ActionInfo
         {
             public string Controller { get; set; }

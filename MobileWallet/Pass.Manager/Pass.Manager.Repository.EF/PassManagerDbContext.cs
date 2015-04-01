@@ -13,7 +13,7 @@ namespace Pass.Manager.Repository.EF
         public PassManagerDbContext(string nameOrConnectionString)
             :base(nameOrConnectionString)
         {
-            Database.SetInitializer<PassManagerDbContext>(null);
+            //Database.SetInitializer<PassManagerDbContext>(null);
             //this.Configuration.LazyLoadingEnabled = false;
         }
 

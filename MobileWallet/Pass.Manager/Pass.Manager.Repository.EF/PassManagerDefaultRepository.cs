@@ -15,6 +15,24 @@ namespace Pass.Manager.Repository.EF
         {
         }
 
+        /// <summary>
+        /// It executes the SP with name pattern: 
+        ///     [TEntity type name].Search
+        /// 
+        /// The minimal set of parameters:
+        /// ------------------------------
+        ///     @PageIndex INT,
+        ///     @PageSize INT,
+        ///     @SortBy VARCHAR(64),
+        ///     @SortDirection INT,
+        ///     @TotalRecords INT OUTPUT,
+        ///     @SearchText NVARCHAR(MAX)
+        /// ------------------------------
+        /// </summary>
+        /// <typeparam name="TEntityView"></typeparam>
+        /// <param name="searchParams"></param>
+        /// <param name="totalRecords"></param>
+        /// <returns></returns>
         public virtual IEnumerable<TEntityView> Search<TEntityView>(IDictionary<string, object> searchParams, out int totalRecords)
         {
             IList<object> sqlPrms = searchParams != null

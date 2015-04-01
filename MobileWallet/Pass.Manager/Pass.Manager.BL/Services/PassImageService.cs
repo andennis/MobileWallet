@@ -78,6 +78,9 @@ namespace Pass.Manager.BL.Services
         public FileContentInfo GetImage(int imageId)
         {
             StorageFileInfo sfi = _fileStorageService.GetFile(imageId, true);
+            if (sfi == null)
+                return null;
+
             return new FileContentInfo()
                    {
                        FileName = sfi.Name, 

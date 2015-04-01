@@ -73,6 +73,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalendarView.cs" />
+    <Compile Include="DatePicker\DatePicker.cs" />
+    <Compile Include="DatePicker\DatePickerBase.cs" />
+    <Compile Include="DatePicker\DatePickerBuilder.cs" />
+    <Compile Include="DatePicker\MonthTemplate.cs" />
+    <Compile Include="DatePicker\MonthTemplateBuilder.cs" />
+    <Compile Include="Effects.cs" />
     <Compile Include="EnumHelper.cs" />
     <Compile Include="EventBuilder.cs" />
     <Compile Include="FileUpload\FileUploadBuilder.cs" />
@@ -98,6 +105,7 @@
     <Compile Include="Grid\GridViewModel.cs" />
     <Compile Include="Grid\GridAjaxRequest.cs" />
     <Compile Include="HtmlHelperExtension.cs" />
+    <Compile Include="PopupAnimation.cs" />
     <Compile Include="Popup\Window.cs" />
     <Compile Include="Popup\WindowActionsBuilder.cs" />
     <Compile Include="Popup\WindowBuilder.cs" />
@@ -133,6 +141,7 @@
       <Name>Common.Extensions</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

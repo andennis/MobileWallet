@@ -141,6 +141,9 @@ namespace FileStorage.BL
         public StorageFileInfo GetFile(int itemId, bool fileStream = false)
         {
             StorageItem si =  _fsUnitOfWork.FileStorageRepository.GetStorageItem(itemId);
+            if (si == null)
+                return null;
+
             var sfi = new StorageFileInfo()
             {
                 Id = si.StorageItemId,
