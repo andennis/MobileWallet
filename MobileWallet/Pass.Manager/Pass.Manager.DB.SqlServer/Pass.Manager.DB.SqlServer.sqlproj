@@ -78,8 +78,13 @@
     <Build Include="Stored Procedures\pm.PassContentTemplateField_GetUnmappedFields.sql" />
     <Build Include="Stored Procedures\pm.PassContentTemplateField_Search.sql" />
     <Build Include="Views\pm.PassContentTemplateFieldView.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Stored Procedures\pm.PassSiteCertificate_GetUnassignedCertificates.sql" />
+    <Build Include="Tables\pm.PassProjectField.sql" />
+    <Build Include="Tables\pm.PassLocation.sql" />
+    <Build Include="Tables\pm.PassImage.sql" />
+    <Build Include="Tables\pm.PassContentTemplateField.sql" />
+    <Build Include="Tables\pm.PassContentTemplate.sql" />
+    <Build Include="Tables\pm.PassBeacon.sql" />
+    <Build Include="Tables\pm.PassBarcode.sql" />
+    <Build Include="Stored Procedures\pm.PassSiteCertificate_GetUnassignedCertificates.sql" />
   </ItemGroup>
 </Project>

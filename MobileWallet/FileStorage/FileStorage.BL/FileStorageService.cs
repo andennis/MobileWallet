@@ -97,7 +97,7 @@ namespace FileStorage.BL
         {
             //Copy\move file to specified location
             if (moveFile)
-                File.Move(srcFilePath, dstFilePath);
+                MoveFile(srcFilePath, dstFilePath);
             else
                 File.Copy(srcFilePath, dstFilePath);
 
@@ -114,7 +114,7 @@ namespace FileStorage.BL
         {
             //Copy\move folder to specified location
             if (moveFolder)
-                Directory.Move(srcFolderPath, dstFolderPath);
+                MoveDirectory(srcFolderPath, dstFolderPath);
             else
                 FileHelper.DirectoryCopy(srcFolderPath, dstFolderPath, true, true);
 
@@ -195,7 +195,7 @@ namespace FileStorage.BL
             {
                 dstDirPath = Path.Combine(dstDirPath, Path.GetFileName(srcFileOrDirPath));
                 if (move)
-                    Directory.Move(srcFileOrDirPath, dstDirPath);
+                    MoveDirectory(srcFileOrDirPath, dstDirPath);
                 else
                     FileHelper.DirectoryCopy(srcFileOrDirPath, dstDirPath, true, true);
             }
@@ -204,7 +204,7 @@ namespace FileStorage.BL
                 string fileName = Path.GetFileName(srcFileOrDirPath);
                 dstDirPath = Path.Combine(dstDirPath, fileName);
                 if (move)
-                    File.Move(srcFileOrDirPath, dstDirPath);
+                    MoveFile(srcFileOrDirPath, dstDirPath);
                 else
                     File.Copy(srcFileOrDirPath, dstDirPath);
             }
@@ -230,6 +230,37 @@ namespace FileStorage.BL
         public void PurgeDeletedItems()
         {
             throw new NotImplementedException();
+        }
+
+        private void MoveFile(string src, string dst)
+        {
+            if (ArePathsOnEqualDrives(src, dst))
+            {
+                File.Move(src, dst);
+            }
+            else
+            {
+                File.Copy(src, dst);
+                File.Delete(src);
+            }
+        }
+
+        private void MoveDirectory(string src, string dst)
+        {
+            if (ArePathsOnEqualDrives(src, dst))
+            {
+                Directory.Move(src, dst);
+            }
+            else
+            {
+                FileHelper.DirectoryCopy(src, dst, true, true);
+                Directory.Delete(src, true);
+            }
+        }
+
+        private bool ArePathsOnEqualDrives(string path1, string path2)
+        {
+            return (Directory.GetDirectoryRoot(path1) == Directory.GetDirectoryRoot(path2));
         }
 
         private string GetNewStorageItemPath(out FolderItem parentFolder)
@@ -282,22 +313,6 @@ namespace FileStorage.BL
             if (parentFolder.ChildFolders == null)
                 parentFolder.ChildFolders = new Collection<FolderItem>();
 
-            /*
-            string newFolderName = GenerateFolderName();
-            bool isExist = _fsUnitOfWork.FileStorageRepository.Query()
-               .Filter(x => x.Parent.FolderItemId == parentFolder.FolderItemId && x.Name == newFolderName)
-               .Get().Any();
-            int n = 0;
-            while (isExist && n++ < 5)
-            {
-                newFolderName = GenerateFolderName();
-                isExist = _fsUnitOfWork.FileStorageRepository.Query()
-                   .Filter(x => x.Parent.FolderItemId == parentFolder.FolderItemId && x.Name == newFolderName)
-                   .Get().Any();
-            } 
-            if (isExist)
-                throw new FileStorageException("Unique folder name cannot be generated");
-            */
             var newFolder = new FolderItem() {Name = GenerateFolderName()};
             parentFolder.ChildFolders.Add(newFolder);
                 

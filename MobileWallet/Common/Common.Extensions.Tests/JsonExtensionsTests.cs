@@ -82,10 +82,10 @@ namespace Common.Extensions.Tests
             string json = dict.DictionaryToJsonAsObject();
             Assert.IsNotNullOrEmpty(json);
 
-            Assert.True(json.Contains("\"Name\": \"Name1\""));
-            Assert.True(json.Contains("\"Value\": 5"));
-            Assert.True(json.Contains("\"P1\": \"123\""));
-            Assert.True(json.Contains("\"Fnc\": Fnc1"));
+            Assert.True(json.Contains("\"Name\":\"Name1\""));
+            Assert.True(json.Contains("\"Value\":5"));
+            Assert.True(json.Contains("\"P1\":\"123\""));
+            Assert.True(json.Contains("\"Fnc\":Fnc1"));
         }
 
         /*

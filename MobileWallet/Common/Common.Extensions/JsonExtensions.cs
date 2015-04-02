@@ -10,12 +10,12 @@ namespace Common.Extensions
         private readonly static JsonSerializerSettings _serializerSettings = new JsonSerializerSettings()
                                                                              {
                                                                                  NullValueHandling = NullValueHandling.Ignore, 
-                                                                                 Formatting = Formatting.Indented
+                                                                                 //Formatting = Formatting.Indented
                                                                              };
         private readonly static JsonSerializerSettings _dictionaryToObjectJsonSettings = new JsonSerializerSettings()
                                                                             {
                                                                                 NullValueHandling = NullValueHandling.Ignore,
-                                                                                Formatting = Formatting.Indented,
+                                                                                //Formatting = Formatting.Indented,
                                                                                 Converters = new JsonConverter[] { new DictionaryToObjectJsonConverter() }
                                                                             };
 
