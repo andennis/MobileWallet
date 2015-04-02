@@ -11,7 +11,7 @@ namespace CertificateStorage.Repository.EF
         public CertificateStorageDbContext(string nameOrConnectionString)
             :base(nameOrConnectionString)
         {
-            //Database.SetInitializer<PassCertificateStorageDbContext>(null);
+            Database.SetInitializer<CertificateStorageDbContext>(null);
             //this.Configuration.LazyLoadingEnabled = false;
         }
 
