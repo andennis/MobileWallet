@@ -6,10 +6,25 @@ namespace Common.Web.DatePicker
     public class DatePickerBuilder : WidgetBuilderBase<DatePicker, DatePickerBuilder>
     {
         private MonthTemplateBuilder _monthTemplateBuilder;
+        private DatePickerEventBuilder _eventBuilder;
+        private PopupAnimationBuilder _popupAnimationBuilder;
+
         public DatePickerBuilder(DatePicker component)
             :base(component)
         {
-            _monthTemplateBuilder = new MonthTemplateBuilder(component.MonthTemplate);
+        }
+
+        private DatePickerEventBuilder EventBuilder
+        {
+            get { return _eventBuilder ?? (_eventBuilder = new DatePickerEventBuilder(_component.Events)); }
+        }
+        private MonthTemplateBuilder MonthTemplateBuilder
+        {
+            get { return _monthTemplateBuilder ?? (_monthTemplateBuilder = new MonthTemplateBuilder(_component.MonthTemplate)); }
+        }
+        private PopupAnimationBuilder PopupAnimationBuilder
+        {
+            get { return _popupAnimationBuilder ?? (_popupAnimationBuilder = new PopupAnimationBuilder(_component.Animation)); }
         }
 
         
@@ -69,7 +84,7 @@ namespace Common.Web.DatePicker
 
         public DatePickerBuilder MonthTemplate(Action<MonthTemplateBuilder> monthTemplateAction)
         {
-            monthTemplateAction(_monthTemplateBuilder);
+            monthTemplateAction(MonthTemplateBuilder);
             return this;
         }
 
@@ -84,6 +99,58 @@ namespace Common.Web.DatePicker
             _component.Max = date.Date;
             return this;
         }
+
+        public DatePickerBuilder Animation(bool enable)
+        {
+            _component.Animation.Enabled = enable;
+            return this;
+        }
+        public DatePickerBuilder Animation(Action<PopupAnimationBuilder> animationAction)
+        {
+            animationAction(PopupAnimationBuilder);
+            return this;
+        }
+
+        public DatePickerBuilder Culture(string culture)
+        {
+            _component.Culture = culture;
+            return this;
+        }
+
+        public DatePickerBuilder Events(Action<DatePickerEventBuilder> clientEventsAction)
+        {
+            clientEventsAction(EventBuilder);
+            return this;
+        }
+
+        public DatePickerBuilder Format(string format)
+        {
+            _component.Format = format;
+            return this;
+        }
+        public DatePickerBuilder Enable(bool value)
+        {
+            _component.Enabled = value;
+            return this;
+        }
+
+        public DatePickerBuilder Value(DateTime? date)
+        {
+            _component.Value = date;
+            return this;
+        }
+
+        /*
+        public DatePickerBuilder ParseFormats(IEnumerable<string> formats)
+        {
+            return this;
+        }
+        public DatePickerBuilder Value(string date)
+        {
+            return this;
+        }
+        */
+
 
     }
 }

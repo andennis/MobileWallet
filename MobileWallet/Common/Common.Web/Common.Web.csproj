@@ -74,12 +74,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalendarView.cs" />
+    <Compile Include="Controls\AnimationDuration.cs" />
+    <Compile Include="Controls\ExpandDirection.cs" />
+    <Compile Include="Controls\FadeDirection.cs" />
+    <Compile Include="Controls\SlideDirection.cs" />
+    <Compile Include="Controls\ZoomDirection.cs" />
     <Compile Include="DatePicker\DatePicker.cs" />
-    <Compile Include="DatePicker\DatePickerBase.cs" />
     <Compile Include="DatePicker\DatePickerBuilder.cs" />
+    <Compile Include="DatePicker\DatePickerEventBuilder.cs" />
     <Compile Include="DatePicker\MonthTemplate.cs" />
     <Compile Include="DatePicker\MonthTemplateBuilder.cs" />
+    <Compile Include="DatePicker\PopupAnimationBuilder.cs" />
     <Compile Include="Effects.cs" />
+    <Compile Include="EffectsBuilder.cs" />
     <Compile Include="EnumHelper.cs" />
     <Compile Include="EventBuilder.cs" />
     <Compile Include="FileUpload\FileUploadBuilder.cs" />

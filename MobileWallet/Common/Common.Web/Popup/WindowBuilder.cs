@@ -14,19 +14,19 @@ namespace Common.Web.Popup
         {
         }
 
-        public WindowEventBuilder EventBuilder
+        private WindowEventBuilder EventBuilder
         {
             get { return _eventBuilder ?? (_eventBuilder = new WindowEventBuilder(_component.Events)); }
         }
-        public WindowResizingSettingsBuilder ResizingSettingsBuilder
+        private WindowResizingSettingsBuilder ResizingSettingsBuilder
         {
             get { return _resizingSettingsBuilder ?? (_resizingSettingsBuilder = new WindowResizingSettingsBuilder(_component.ResizingSettings)); }
         }
-        public WindowActionsBuilder ActionsBuilder
+        private WindowActionsBuilder ActionsBuilder
         {
             get { return _actionsBuilder ?? (_actionsBuilder = new WindowActionsBuilder(_component.Actions)); }
         }
-        public WindowPositionSettingsBuilder PositionSettingsBuilder
+        private WindowPositionSettingsBuilder PositionSettingsBuilder
         {
             get { return _positionSettingsBuilder ?? (_positionSettingsBuilder = new WindowPositionSettingsBuilder(_component.PositionSettings)); }
         }
