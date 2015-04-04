@@ -16,12 +16,13 @@
 
 
 
+
+
 GO
 CREATE NONCLUSTERED INDEX [IX_PassSiteId]
     ON [pm].[PassProject]([PassSiteId] ASC);
 
 
 GO
-CREATE NONCLUSTERED INDEX [IX_PassProjectId]
-    ON [pm].[PassProject]([PassProjectId] ASC);
+
 

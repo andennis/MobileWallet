@@ -14,10 +14,12 @@ namespace Common.Web
 
         public EffectsBuilder Fade(FadeDirection direction)
         {
+            //Effects.Container.Add(direction == FadeDirection.In ? "fadeIn" : "fadeOut");
             return this;
         }
         public EffectsBuilder Zoom(ZoomDirection direction)
         {
+            //Effects.Container.Add(direction == ZoomDirection.In ? "zoom:in" : "zoom:out");
             return this;
         }
         public EffectsBuilder SlideIn(SlideDirection direction)

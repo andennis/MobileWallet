@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Linq;
+using System.Web.Mvc;
 using System.Web.UI;
 using Common.Extensions;
 using Common.Extensions.JsonNetConverters;
@@ -25,7 +26,8 @@ namespace Common.Web.Popup
         private WindowResizingSettings _resizingSettings;
         private WindowButtons _actions;
 
-        public Window()
+        public Window(ViewContext viewContext)
+            :base(viewContext)
         {
             //TitleVisible = true;
             Draggable = true;
@@ -131,9 +133,6 @@ namespace Common.Web.Popup
 
         protected override void WriteInitializationScript(TextWriter writer)
         {
-            //string customOpenHandler;
-            //Events.TryGetValue(EventOpen, out customOpenHandler);
-
             var settings = new WindowSettings
             {
                 title = Title,
@@ -154,7 +153,6 @@ namespace Common.Web.Popup
                 minHeight = _resizingSettings != null ? _resizingSettings.MinHeight : null,
                 actions = _actions != null ? _actions.Container.Select(x => x.ToString()).ToArray() : null,
 
-                //open = GetOpenEvent(ContentUrl, null, customOpenHandler),
                 open = Events.ContainsKey(EventOpen) ? Events[EventOpen] : null,
                 activate = Events.ContainsKey(EventActivate) ? Events[EventActivate] : null,
                 deactivate = Events.ContainsKey(EventDeactivate) ? Events[EventDeactivate] : null,

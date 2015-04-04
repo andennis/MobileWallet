@@ -380,16 +380,16 @@ textarea {
     margin-top: 2px;
 }
 
-    .registrationButton a:hover {
-        background-color: #fd678a !important;
-        color: white !important;
-        text-decoration: none !important;
-        -webkit-transition: background-color 0.5s ease !important;
-        -moz-transition: background-color 0.5s ease !important;
-        -ms-transition: background-color 0.5s ease !important;
-        -o-transition: background-color 0.5s ease !important;
-        transition: background-color 0.5s ease !important;
-    }
+.registrationButton a:hover {
+    background-color: #fd678a !important;
+    color: white !important;
+    text-decoration: none !important;
+    -webkit-transition: background-color 0.5s ease !important;
+    -moz-transition: background-color 0.5s ease !important;
+    -ms-transition: background-color 0.5s ease !important;
+    -o-transition: background-color 0.5s ease !important;
+    transition: background-color 0.5s ease !important;
+}
 
 .imgImageFile {
     max-width: 300px;

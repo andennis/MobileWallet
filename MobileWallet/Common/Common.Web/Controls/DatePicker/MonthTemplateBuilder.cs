@@ -1,5 +1,5 @@
 ﻿
-namespace Common.Web.DatePicker
+namespace Common.Web.Controls.DatePicker
 {
     public class MonthTemplateBuilder
     {
@@ -30,4 +30,5 @@ namespace Common.Web.DatePicker
         }
         protected MonthTemplate MonthTemplate { get; private set; }
     }
+
 }

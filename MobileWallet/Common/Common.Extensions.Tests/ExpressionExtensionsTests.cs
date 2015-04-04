@@ -20,6 +20,7 @@ namespace Common.Extensions.Tests
                 
             }
             public int P1 { get { return 0; }}
+            public string P2 { get; set; }
         }
 
         [Test]
@@ -34,6 +35,15 @@ namespace Common.Extensions.Tests
 
             Expression<Func<MyClass, string>> expMemeber1 = x => x.Member1;
             Assert.Throws<ArgumentException>(() => expMemeber1.GetPropertyName());
+        }
+
+        [Test]
+        public void GetPropertyValueTest()
+        {
+            var mc = new MyClass(){P2 = "123"};
+            Expression<Func<MyClass, string>> expP2 = x => x.P2;
+            string val = expP2.GetPropertyValue(mc);
+            Assert.AreEqual("123", val);
         }
 
         [Test]

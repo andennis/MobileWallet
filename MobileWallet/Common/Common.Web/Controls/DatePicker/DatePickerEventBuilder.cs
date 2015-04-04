@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Common.Web.DatePicker
+namespace Common.Web.Controls.DatePicker
 {
     public class DatePickerEventBuilder : EventBuilder
     {
@@ -11,17 +11,17 @@ namespace Common.Web.DatePicker
 
         public DatePickerEventBuilder Change(string handler)
         {
-            AddHandler(DatePicker.EventChange, handler);
+            AddHandler(Controls.DatePicker.DatePicker.EventChange, handler);
             return this;
         }
         public DatePickerEventBuilder Open(string handler)
         {
-            AddHandler(DatePicker.EventOpen, handler);
+            AddHandler(Controls.DatePicker.DatePicker.EventOpen, handler);
             return this;
         }
         public DatePickerEventBuilder Close(string handler)
         {
-            AddHandler(DatePicker.EventClose, handler);
+            AddHandler(Controls.DatePicker.DatePicker.EventClose, handler);
             return this;
         }
 

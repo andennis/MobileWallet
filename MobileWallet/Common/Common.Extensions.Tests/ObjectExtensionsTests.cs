@@ -22,5 +22,13 @@ namespace Common.Extensions.Tests
             obj1 = null;
             Assert.Throws<ArgumentNullException>(() => obj1.ObjectPropertiesToDictionary());
         }
+
+        [Test]
+        public void GetPropertyValueTest()
+        {
+            var obj1 = new { P1 = 10, P2 = "123" };
+            object val =  obj1.GetPropertyValue("P1");
+            Assert.AreEqual(10, val);
+        }
     }
 }

@@ -2,13 +2,18 @@
 using System.IO;
 using System.Web.Mvc;
 using System.Web.UI;
+using Common.Extensions;
 
 namespace Common.Web
 {
     public class WidgetBase
     {
-        protected WidgetBase()
+        private IDictionary<string, object> _htmlAttributes = new Dictionary<string, object>();
+        protected readonly ViewContext _viewContext;
+
+        protected WidgetBase(ViewContext viewContext)
         {
+            _viewContext = viewContext;
             Events = new Dictionary<string, string>();
         }
 
@@ -18,6 +23,7 @@ namespace Common.Web
         }
 
         public string Name { get; set; }
+        public IDictionary<string, object> HtmlAttributes { get { return _htmlAttributes; } }
 
         public IDictionary<string, string> Events { get; private set; }
 
@@ -50,9 +56,20 @@ namespace Common.Web
 
         protected string GetDocumentReadyScript(string widgetInitScript)
         {
-            var scriptTag = new TagBuilder("script");
-            scriptTag.InnerHtml = string.Format(@"$(document).ready(function(){{{0}}})", widgetInitScript);
+            var scriptTag = new TagBuilder("script")
+                            {
+                                InnerHtml = string.Format(@"$(document).ready(function(){{{0}}})", widgetInitScript)
+                            };
             return scriptTag.ToString();
+        }
+        protected string GetEvent(string eventKey)
+        {
+            return Events.ContainsKey(eventKey) ? Events[eventKey] : null;
+        }
+
+        protected object GetModelValue()
+        {
+            return _viewContext.ViewData.Model.GetPropertyValue(Name);
         }
     }
 }

@@ -17,5 +17,14 @@ namespace Common.Extensions
 
             return properties.ToDictionary(key => key.Name, val => val.GetValue(obj));
         }
+
+        public static object GetPropertyValue(this object obj, string propName)
+        {
+            if (obj == null)
+                return null;
+
+            PropertyInfo pi = obj.GetType().GetProperty(propName);
+            return pi.GetValue(obj);
+        }
     }
 }

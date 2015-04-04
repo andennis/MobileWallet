@@ -6,11 +6,11 @@ namespace Pass.Manager.Web.Common
     {
         protected void SetDefaultReturnUrl(IViewModel model)
         {
-            if (Request.UrlReferrer != null)
+            if (model.RedirectUrl == null && Request.UrlReferrer != null)
                 model.RedirectUrl = Request.UrlReferrer.ToString();
         }
 
-        protected ActionResult RedirectTo(IViewModel model)
+        protected virtual ActionResult RedirectTo(IViewModel model)
         {
             if (model.RedirectUrl == null)
                 return RedirectToAction("Index");

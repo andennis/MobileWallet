@@ -7,6 +7,7 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using Common.Extensions;
+using Common.Web.Controls.DatePicker;
 
 namespace Common.Web
 {
@@ -234,20 +235,38 @@ namespace Common.Web
 
             inputTag.Attributes.AddHtmlAttributes(htmlAttributes);
             return new MvcHtmlString(inputTag.ToString());
-
-            //string htmlStr = html.FileUpload().Name(name).ToHtmlString();
-            //return new MvcHtmlString(htmlStr);
         }
         #endregion
 
         #region DatePicker
-        public static MvcHtmlString DatePickerForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, object htmlAttributes = null)
+        public static MvcHtmlString DatePickerForEx<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, DateTime? value = null,
+            DateTime? minValue = null, DateTime? maxValue = null, string dateFormat = null, object htmlAttributes = null)
         {
-            return html.TextBoxFor(expression, htmlAttributes);
+            string propName = expression.GetPropertyName();
+            return html.DatePickerEx(propName, value, minValue, maxValue, dateFormat, htmlAttributes);
         }
-        public static MvcHtmlString DatePickerFormForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string labelText = null)
+        public static MvcHtmlString DatePickerFormForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string labelText = null,
+            DateTime? value = null, DateTime? minValue = null, DateTime? maxValue = null, string dateFormat = null, object htmlAttributes = null)
         {
-            return html.LabelWithControl(expression, labelText, null, () => html.TextBoxFor(expression, _initControlAttributes));
+            return html.LabelWithControl(expression, labelText, null, () => html.DatePickerForEx(expression, value, minValue, maxValue, dateFormat, htmlAttributes));
+        }
+
+        public static MvcHtmlString DatePickerEx(this HtmlHelper html, string name, DateTime? value = null, DateTime? minValue = null, DateTime? maxValue = null, 
+            string dateFormat = null, object htmlAttributes = null)
+        {
+            DatePickerBuilder builder = html.Widget().DatePicker()
+                .Name(name)
+                //.Format(dateFormat ?? "dd.MM.yyyy")
+                .HtmlAttributes(_initControlAttributes.MergeHtmlAttributes(htmlAttributes));
+
+            if (minValue.HasValue)
+                builder.Min(minValue.Value);
+            if (maxValue.HasValue)
+                builder.Max(maxValue.Value);
+            if (value.HasValue)
+                builder.Value(value.Value);
+
+            return new MvcHtmlString(builder.ToHtmlString());
         }
         #endregion
 

@@ -9,8 +9,6 @@
     @PassContentTemplateId INT
 AS
 BEGIN
-    --SET @TotalRecords = 0
-
     SELECT * FROM pm.PassContentTemplateFieldView
     WHERE PassContentTemplateId = @PassContentTemplateId
 

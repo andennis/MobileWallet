@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Common.Web.DatePicker
+namespace Common.Web.Controls.DatePicker
 {
     public class PopupAnimationBuilder
     {
@@ -34,4 +34,5 @@ namespace Common.Web.DatePicker
         //protected PopupAnimation Animation { get { return _animation; } }
 
     }
+
 }

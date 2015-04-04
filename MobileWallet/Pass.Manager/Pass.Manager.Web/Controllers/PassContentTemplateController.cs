@@ -20,6 +20,14 @@ namespace Pass.Manager.Web.Controllers
             return Create(m => m.PassProjectId = passProjectId);
         }
 
+        protected override ActionResult RedirectTo(IViewModel model)
+        {
+            if (model.RedirectUrl == null)
+                return RedirectToAction("Edit", "PassProject", new {id = ((PassContentTemplateViewModel) model).PassProjectId});
+
+            return Redirect(model.RedirectUrl);
+        }
+
         [AjaxOnly]
         public ActionResult TabFields(int id)
         {

@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Common.Web.DatePicker
+namespace Common.Web.Controls.DatePicker
 {
     public class DatePickerBuilder : WidgetBuilderBase<DatePicker, DatePickerBuilder>
     {
-        private MonthTemplateBuilder _monthTemplateBuilder;
+        //private MonthTemplateBuilder _monthTemplateBuilder;
+        //private PopupAnimationBuilder _popupAnimationBuilder;
         private DatePickerEventBuilder _eventBuilder;
-        private PopupAnimationBuilder _popupAnimationBuilder;
 
-        public DatePickerBuilder(DatePicker component)
+        public DatePickerBuilder(Controls.DatePicker.DatePicker component)
             :base(component)
         {
         }
@@ -18,6 +18,8 @@ namespace Common.Web.DatePicker
         {
             get { return _eventBuilder ?? (_eventBuilder = new DatePickerEventBuilder(_component.Events)); }
         }
+
+        /*
         private MonthTemplateBuilder MonthTemplateBuilder
         {
             get { return _monthTemplateBuilder ?? (_monthTemplateBuilder = new MonthTemplateBuilder(_component.MonthTemplate)); }
@@ -26,7 +28,7 @@ namespace Common.Web.DatePicker
         {
             get { return _popupAnimationBuilder ?? (_popupAnimationBuilder = new PopupAnimationBuilder(_component.Animation)); }
         }
-
+        */
         
         public DatePickerBuilder ARIATemplate(string template)
         {
@@ -84,8 +86,15 @@ namespace Common.Web.DatePicker
 
         public DatePickerBuilder MonthTemplate(Action<MonthTemplateBuilder> monthTemplateAction)
         {
-            monthTemplateAction(MonthTemplateBuilder);
-            return this;
+            throw new NotImplementedException();
+            //monthTemplateAction(MonthTemplateBuilder);
+            //return this;
+        }
+        public DatePickerBuilder Animation(Action<PopupAnimationBuilder> animationAction)
+        {
+            throw new NotImplementedException();
+            //animationAction(PopupAnimationBuilder);
+            //return this;
         }
 
         public DatePickerBuilder Min(DateTime date)
@@ -103,11 +112,6 @@ namespace Common.Web.DatePicker
         public DatePickerBuilder Animation(bool enable)
         {
             _component.Animation.Enabled = enable;
-            return this;
-        }
-        public DatePickerBuilder Animation(Action<PopupAnimationBuilder> animationAction)
-        {
-            animationAction(PopupAnimationBuilder);
             return this;
         }
 
