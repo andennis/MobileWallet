@@ -9,7 +9,9 @@
 @Html.FileUploadFormForEx(m => m.ImageFile, "Image File")
 <div class="form-group">
     <div class="col-sm-offset-4 col-md-offset-3 col-sm-8 col-md-9">
-        <img id="imgImageFile" src="@(Url.Action<PassImageController>(a => a.GetImage(0), new{id = Model.FileStorageId}))" />
+        <br/>
+        <img id="imgImageFile" class="imgImageFile" src="@(Url.Action<PassImageController>(a => a.GetImage(0), new{id = Model.FileStorageId}))" />
+        <div id="imgRemoveIcon" class="imgRemoveIcon" data-toggle="tooltip" data-placement="right" title="Удалить">x</div>
     </div>
 </div>
 
@@ -17,7 +19,9 @@
 @Html.FileUploadFormForEx(m => m.ImageFile2x, "Image File (2x)")
 <div class="form-group">
     <div class="col-sm-offset-4 col-md-offset-3 col-sm-8 col-md-9">
-        <img id="imgImageFile2x" src="@(Url.Action<PassImageController>(a => a.GetImage(0), new{id = Model.FileStorage2xId}))" />
+        <br />
+        <img id="imgImageFile2x" class="imgImageFile" src="@(Url.Action<PassImageController>(a => a.GetImage(0), new{id = Model.FileStorage2xId}))" />
+        <div id="imgRemoveIcon2x" class="imgRemoveIcon" data-toggle="tooltip" data-placement="right" title="Удалить">x</div>
     </div>
 </div>
 
@@ -31,6 +35,36 @@
         $("#ImageFile2x").change(function () {
             ShowImage(this, $("#imgImageFile2x"));
         });
+
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    });
+
+    //Show or hide image and remove icon depending on loading image
+    $('#imgImageFile').load(function () {
+        $(this).show();
+        $('#imgRemoveIcon').show();
+    }).error(function() {
+        $(this).hide();
+        $('#imgRemoveIcon').hide();
+    });
+
+    $('#imgImageFile2x').load(function () {
+        $(this).show();
+        $('#imgRemoveIcon2x').show();
+    }).error(function () {
+        $(this).hide();
+        $('#imgRemoveIcon2x').hide();
+    });
+
+    //Remove image
+    $('.imgRemoveIcon').click(function(e) {
+        var imgId = e.target.id.replace('RemoveIcon', 'ImageFile');
+        var imgInputId = e.target.id.replace('imgRemoveIcon', 'ImageFile');
+        $('#' + imgId).hide();
+        $('#' + imgInputId).val("");
+        $(this).hide();
     });
 
     function ShowImage(input, $img) {
@@ -40,8 +74,7 @@
 
             reader.onload = function (e) {
                 $img.attr("src", e.target.result);
-            }
-
+            };
             reader.readAsDataURL(input.files[0]);
         }
     }
