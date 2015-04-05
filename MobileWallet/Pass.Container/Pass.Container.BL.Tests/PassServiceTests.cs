@@ -176,14 +176,14 @@ namespace Pass.Container.BL.Tests
                 field1 = fields1.First(x => x.Name == "Key02");
                 field2 = fields2.FirstOrDefault(x => x.Name == field1.Name);
                 Assert.NotNull(field2);
-                Assert.AreEqual(field1.Label, field2.Label);
+                Assert.AreEqual("LKey02", field2.Label);
                 Assert.AreEqual(field1.Value, field2.Value);
 
                 field1 = fields1.First(x => x.Name == "Key03");
                 field2 = fields2.FirstOrDefault(x => x.Name == field1.Name);
                 Assert.NotNull(field2);
                 Assert.AreEqual(field1.Label, field2.Label);
-                Assert.AreEqual(field1.Value, field2.Value);
+                Assert.AreEqual("VKey03", field2.Value);
 
                 field2 = fields2.FirstOrDefault(x => x.Name == "Key04");
                 Assert.NotNull(field2);

@@ -52,6 +52,7 @@ namespace Pass.Container.BL.Tests
         [Test]
         public void RegisterDeviceTest()
         {
+            throw new NotImplementedException();
             using (var appleDevicePassProcessingService = GetAppleDevicePassProcessingService())
             {
                 //appleDevicePassProcessingService.RegisterDevice();
@@ -60,26 +61,28 @@ namespace Pass.Container.BL.Tests
         [Test]
         public void UnregisterDeviceTest()
         {
-
+            throw new NotImplementedException();
         }
         [Test]
         public void GetSerialNumbersOfPassesTest()
         {
-
+            throw new NotImplementedException();
         }
         [Test]
         public void GetPassTest()
         {
-
+            throw new NotImplementedException();
         }
         [Test]
         public void LogTest()
         {
-
+            throw new NotImplementedException();
         }
 
         private void CreatePass()
         {
+            throw new NotImplementedException();
+
             int passTemplateId;
             using (var passTemplateService = GetPassTemplateService())
             {
@@ -94,8 +97,7 @@ namespace Pass.Container.BL.Tests
                                                                                        Name = x.Name,
                                                                                        Value = x.PassFieldId + "_Value"
                                                                                    }).ToList();
-
-            throw new NotImplementedException();
+            
         }
 
         private IPassTemplateService GetPassTemplateService()

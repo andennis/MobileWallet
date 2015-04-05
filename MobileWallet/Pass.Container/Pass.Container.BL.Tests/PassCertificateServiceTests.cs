@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using CertificateStorage.Core;
 using CertificateStorage.Core.Entities;
@@ -20,8 +21,8 @@ namespace Pass.Container.BL.Tests
             {
                 var certInfo = new CertificateInfo()
                                    {
-                                       //Name = Guid.NewGuid().ToString(), 
-                                       Name = "pass.com.passlight.dev.test",
+                                       Name = Guid.NewGuid().ToString(), 
+                                       //Name = "pass.com.passlight.dev.test",
                                        Password = TestHelper.CertificateApplePassword.ConvertToSecureString()
                                    };
                 using (var fs = new FileStream(TestHelper.CertificateFileApple, FileMode.Open, FileAccess.Read))

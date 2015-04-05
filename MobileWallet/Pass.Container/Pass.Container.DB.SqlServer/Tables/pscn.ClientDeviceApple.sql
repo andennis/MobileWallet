@@ -1,9 +1,11 @@
 ﻿CREATE TABLE [pscn].[ClientDeviceApple] (
-    [ClientDeviceId] INT           NOT NULL,
-    [PushToken]      NVARCHAR (64) NOT NULL,
+    [ClientDeviceId] INT          NOT NULL,
+    [PushToken]      VARCHAR (64) NOT NULL,
     CONSTRAINT [PK_pscn.ClientDeviceApple] PRIMARY KEY CLUSTERED ([ClientDeviceId] ASC),
     CONSTRAINT [FK_pscn.ClientDeviceApple_pscn.ClientDevice_ClientDeviceId] FOREIGN KEY ([ClientDeviceId]) REFERENCES [pscn].[ClientDevice] ([ClientDeviceId])
 );
+
+
 
 
 
