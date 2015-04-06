@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using AutoMapper;
 using Common.Web;
-using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.SearchFilters;
 using Pass.Manager.Core.Services;
@@ -26,10 +22,12 @@ namespace Pass.Manager.Web.Controllers
 
         public ActionResult AddCertificate(int passSiteId)
         {
-            var model = new PassSiteCertificateViewModel() { PassSiteId = passSiteId };
-            SetDefaultReturnUrl(model);
-            model.Certificates = new SelectListTyped<PassCertificate, int, string>(_service.GetUnassignedCertificates(passSiteId), x => x.PassCertificateId, x => x.Name);
-            return View("Create", model);
+            IEnumerable<PassCertificate> certificates = _service.GetUnassignedCertificates(passSiteId);
+            return Create(m =>
+                          {
+                              m.PassSiteId = passSiteId;
+                              m.Certificates = new SelectListTyped<PassCertificate, int, string>(certificates, x => x.PassCertificateId, x => x.Name);
+                          });
         }
 
         public override ActionResult Create(PassSiteCertificateViewModel model)

@@ -39,7 +39,7 @@ namespace Common.BL
         {
             return _repository.Find(entityId);
         }
-        public virtual SearchResult<TEntity> Search(SearchContext searchContext, TSearchFilter searchFilter = null)
+        public virtual SearchResult<TEntity> Search(SearchContext searchContext, TSearchFilter searchFilter)
         {
             return Search(searchContext, x => true);
         }

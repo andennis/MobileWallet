@@ -7,6 +7,7 @@
     Html.TextBlockFormForExt(m => m.PassProjectId, "ID");
 }
 @Html.TextBoxFormForExt(m => m.Name)
+@Html.DropDownListFormForExt(m => m.PassCertificateId, Model.PassCertificates, "Certificate", "- Select Certificate -")
 @*Html.DropDownListFormForExt(m => m.ProjectType, "Project Type", "- Select Project Type -")*@
 @Html.TextAreaFormForExt(m => m.Description)
 @Html.HiddenForExt(m => m.PassTemplateId)

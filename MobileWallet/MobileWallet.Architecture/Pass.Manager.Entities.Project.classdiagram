@@ -91,8 +91,8 @@
           <property Id="bfd8419a-16bd-400f-965b-6219bd76e2e2" name="PassTemplateId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="bd0ed808-72ed-4296-9921-b5804f6ca06c" />
           </property>
-          <property Id="3f1d36a9-c08f-448a-8707-5aba4e0a6b46" name="CertificateId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="274b1968-18a1-49f5-a013-bd0c2345c264" />
+          <property Id="27136a09-89fb-44fb-80af-0d06c749d26b" name="CertificateId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="4f6eb20b-57ab-4a8d-9cbd-cb5dcff137bf" />
           </property>
         </ownedAttributesInternal>
       </class>

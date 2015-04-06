@@ -39,7 +39,7 @@ namespace Pass.Manager.Repository.EF
             modelBuilder.Entity<PassProject>().Property(x => x.Version).IsConcurrencyToken();
             modelBuilder.Entity<PassProject>().Property(x => x.Name).IsRequired().HasMaxLength(FieldLenName);
             modelBuilder.Entity<PassProject>().HasRequired(x => x.PassSite).WithMany(x => x.Projects).HasForeignKey(x => x.PassSiteId);
-            //modelBuilder.Entity<PassProject>().HasRequired(x => x.PassCertificate).WithRequiredDependent().WillCascadeOnDelete(false);
+            modelBuilder.Entity<PassProject>().HasRequired(x => x.PassCertificate).WithMany().HasForeignKey(x => x.PassCertificateId).WillCascadeOnDelete(false);
 
             //User
             modelBuilder.Entity<User>().ToTable("User", DbScheme);

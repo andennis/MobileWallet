@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Common.BL;
 using Pass.Manager.Core;
@@ -17,16 +18,31 @@ namespace Pass.Manager.BL.Services
 
         public override PassSiteCertificate Get(int entityId)
         {
-            return _repository.Query().Filter(x => x.PassSiteCertificateId == entityId).Include(x => x.PassCertificate).Get().First();
+            return _repository.Query()
+                .Filter(x => x.PassSiteCertificateId == entityId)
+                .Include(x => x.PassCertificate)
+                .Get()
+                .First();
         }
 
         public IEnumerable<PassCertificate> GetUnassignedCertificates(int passSiteId)
         {
             return _unitOfWork.PassSiteCertificateRepository.GetUnassignedCertificates(passSiteId);
         }
-
-        public override SearchResult<PassSiteCertificate> Search(SearchContext searchContext, PassSiteCertificateFilter searchFilter = null)
+        public IEnumerable<PassCertificate> GetCertificates(int passSiteId)
         {
+            return _repository.Query()
+                .Filter(x => x.PassSiteId == passSiteId)
+                .Include(x => x.PassCertificate)
+                .Get()
+                .Select(x => x.PassCertificate);
+        }
+
+        public override SearchResult<PassSiteCertificate> Search(SearchContext searchContext, PassSiteCertificateFilter searchFilter)
+        {
+            if (searchFilter == null)
+                throw new ArgumentNullException("searchFilter");
+
             IEnumerable<PassSiteCertificate> data = _repository.Query()
                 .Filter(x => x.PassSiteId == searchFilter.PassSiteId)
                 .Include(x => x.PassCertificate)

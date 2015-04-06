@@ -8,6 +8,6 @@
         void Update(TEntity entity);
         void Delete(int entityId);
         TEntity Get(int entityId);
-        SearchResult<TEntity> Search(SearchContext searchContext, TSearchFilter searchFilter = null);
+        SearchResult<TEntity> Search(SearchContext searchContext, TSearchFilter searchFilter);
     }
 }
