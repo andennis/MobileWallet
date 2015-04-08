@@ -9,6 +9,6 @@ namespace Pass.Notification.Core
 {
     public interface IPushNotificationWorker
     {
-        void SendNotification(X509Certificate2 certificate, string deviceToken);
+        void SendNotification(X509Certificate2 certificate, IList<string> deviceTokenlList);
     }
 }

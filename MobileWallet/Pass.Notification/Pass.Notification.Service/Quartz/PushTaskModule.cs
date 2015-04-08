@@ -6,6 +6,7 @@ using CertificateStorage.Core;
 using CertificateStorage.Repository.EF;
 using FileStorage.BL;
 using FileStorage.Core;
+using FileStorage.Factory;
 using FileStorage.Repository.EF;
 using Pass.Notification.BL;
 using Pass.Notification.Core;
@@ -46,10 +47,10 @@ namespace Pass.Notification.Service.Quartz
             IFileStorageConfig fileStorageConfig = new FileStorageConfig();
             builder.Register(c => new PassNotificationService(
                 new PushNotificationUnitOfWork(new PushNotificationConfig()),
-                new PushSharpNotificationWorker(),
+                new PushSharpNotificationWorker(new PushNotificationUnitOfWork(new PushNotificationConfig())),
                 new CertificateStorageService(certificateStorageConfig,
                     new CertificateStorageUnitOfWork(certificateStorageConfig),
-                    new FileStorageService(fileStorageConfig, new FileStorageUnitOfWork(fileStorageConfig)))))
+                    FileStorageFactory.Create(fileStorageConfig))))
                 .As<IPassNotificationService>();
             builder.RegisterType<PushTaskService>()
                    .As<IAmAHostedProcess>()

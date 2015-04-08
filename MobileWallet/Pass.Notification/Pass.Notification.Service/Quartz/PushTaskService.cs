@@ -25,11 +25,12 @@ namespace Pass.Notification.Service.Quartz
             PushNotificationServiceHost.StartPushNotificationServiceHosts(_passNotificationService);
 
             Logger.Info("Push Notification sheduler starting");
-            var job = JobBuilder.Create<PushJob>()
+            IJobDetail job = JobBuilder.Create<PushJob>()
                                 .WithIdentity("PushJob", "PushTaskService")
-                                .Build();                   
+                                .Build();
+            job.JobDataMap.Add("PassNotificationService", _passNotificationService);    
 
-            var trigger = TriggerBuilder.Create()
+            ITrigger trigger = TriggerBuilder.Create()
                                         .WithIdentity("PushTrigger", "PushTaskService")
                                         .WithCronSchedule(ConfigurationManager.AppSettings["CronExpression"])
                                         .ForJob("PushJob", "PushTaskService")

@@ -10,5 +10,6 @@ namespace Pass.Notification.Core
     public interface IPassNotificationService : IDisposable
     {
         void AddPushNotificationToQueue(int certificateStorageId, IEnumerable<string> pushTockenIds, PushNotificationServiceType serviceType);
+        void SendPushNotifications();
     }
 }

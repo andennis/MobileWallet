@@ -5,7 +5,10 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using Common.Repository;
 using Pass.Notification.Core;
+using Pass.Notification.Repository.Core;
+using Pass.Notification.Repository.Core.Entities;
 using PushSharp;
 using PushSharp.Android;
 using PushSharp.Apple;
@@ -15,7 +18,14 @@ namespace Pass.Notification.BL
 {
     public class PushSharpNotificationWorker : IPushNotificationWorker
     {
-        public void SendNotification(X509Certificate2 certificate, string deviceToken)
+        private readonly IPushNotificationUnitOfWork _pnUnitOfWork;
+        private readonly IRepository<PushNotificationItem> _repPushNotificationItem;
+        public PushSharpNotificationWorker(IPushNotificationUnitOfWork pnUnitOfWork)
+        {
+            _pnUnitOfWork = pnUnitOfWork;
+            _repPushNotificationItem = pnUnitOfWork.GetRepository<PushNotificationItem>();
+        }
+        public void SendNotification(X509Certificate2 certificate, IList<string> deviceTokenlList)
         {
             //Create our push services broker
             var push = new PushBroker();
@@ -33,7 +43,10 @@ namespace Pass.Notification.BL
             // APPLE NOTIFICATIONS
             //-------------------------
             push.RegisterAppleService(new ApplePushChannelSettings(true, certificate, true));
-            push.QueueNotification(new AppleNotification().ForDeviceToken(deviceToken));
+            foreach (string deviceToken in deviceTokenlList)
+            {
+                push.QueueNotification(new AppleNotification().ForDeviceToken(deviceToken));
+            }
 
             //"Waiting for Queue to Finish..."
 
@@ -43,7 +56,7 @@ namespace Pass.Notification.BL
 
         static void NotificationSent(object sender, INotification notification)
         {
-            
+           
         }
 
         static void NotificationFailed(object sender, INotification notification, Exception notificationFailureException)

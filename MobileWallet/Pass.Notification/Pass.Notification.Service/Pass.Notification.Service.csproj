@@ -126,6 +126,10 @@
       <Project>{06EBD357-60DC-4BD9-AD9B-0A736DCC2203}</Project>
       <Name>FileStorage.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\FileStorage\FileStorage.Factory\FileStorage.Factory.csproj">
+      <Project>{690C70A1-EC80-47EB-A707-FC9B09597102}</Project>
+      <Name>FileStorage.Factory</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\FileStorage\FileStorage.Repository.Core\FileStorage.Repository.Core.csproj">
       <Project>{CEFDB101-184E-4484-9CF8-9616D68AE52A}</Project>
       <Name>FileStorage.Repository.Core</Name>
