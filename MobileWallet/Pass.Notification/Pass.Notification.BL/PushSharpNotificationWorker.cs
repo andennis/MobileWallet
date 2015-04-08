@@ -9,6 +9,7 @@ using Common.Repository;
 using Pass.Notification.Core;
 using Pass.Notification.Repository.Core;
 using Pass.Notification.Repository.Core.Entities;
+using Pass.Notification.Repository.Core.Enums;
 using PushSharp;
 using PushSharp.Android;
 using PushSharp.Apple;
@@ -59,8 +60,20 @@ namespace Pass.Notification.BL
            
         }
 
-        static void NotificationFailed(object sender, INotification notification, Exception notificationFailureException)
-        {}
+         void NotificationFailed(object sender, INotification notification, Exception notificationFailureException)
+        {
+            var appleNotification = (AppleNotification) notification;
+            var deviceTocken = appleNotification.DeviceToken;
+
+            IQueryable<PushNotificationItem> failPushNotificationItems = _repPushNotificationItem.Query()
+                .Filter(x => x.PushTockenId == deviceTocken && x.Status == PushStatus.InProcess)
+                .Get();
+            foreach (PushNotificationItem pushNotificationItem in failPushNotificationItems)
+            {
+                pushNotificationItem.Status = PushStatus.Error;
+            }
+            _pnUnitOfWork.Save();
+        }
 
         static void ChannelException(object sender, IPushChannel channel, Exception exception)
         {}

@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using Atlas;
 using Pass.Notification.BL.Utils;
 using Pass.Notification.Core;
@@ -7,7 +8,7 @@ using Quartz.Spi;
 
 namespace Pass.Notification.Service.Quartz
 {
-    public class PushTaskService : IAmAHostedProcess
+    public class PushTaskService : IAmAHostedProcess, IDisposable
     {
         private readonly IPassNotificationService _passNotificationService;
         public IScheduler Scheduler { get; set; }    
@@ -69,6 +70,11 @@ namespace Pass.Notification.Service.Quartz
             Logger.Info("PushTaskService pausing");
             this.Scheduler.PauseAll();
             Logger.Info("PushTaskService paused");
+        }
+
+        public void Dispose()
+        {
+            PushNotificationServiceHost.StopPushNotificationServiceHosts();
         }
     }
 }

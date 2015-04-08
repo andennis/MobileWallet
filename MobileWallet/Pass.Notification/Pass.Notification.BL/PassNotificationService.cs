@@ -47,17 +47,21 @@ namespace Pass.Notification.BL
 
         public void SendPushNotifications()
         {
-            IQueryable<PushNotificationItem> allPushNotifications = _repPushNotificationItem.Query().Filter(x => x.Status == PushStatus.Pending).Get();
+            List<PushNotificationItem> allPushNotifications = _repPushNotificationItem.Query().Filter(x => x.Status == PushStatus.Pending).Get().ToList();
             if (allPushNotifications == null)
                 return;
 
+            IEnumerable<IGrouping<int, PushNotificationItem>> pushNotificationsByCertificates = allPushNotifications.GroupBy(x => x.CertificateStorageId);
+
+            //TODO stored procedure to set status
             foreach (PushNotificationItem pushNotification in allPushNotifications)
             {
                 pushNotification.Status = PushStatus.InProcess;
                 _repPushNotificationItem.Update(pushNotification);
             }
+            _pnUnitOfWork.Save();
         
-            IEnumerable<IGrouping<int, PushNotificationItem>> pushNotificationsByCertificates = allPushNotifications.GroupBy(x => x.CertificateStorageId);
+            
             foreach (IGrouping<int, PushNotificationItem> pushNotifications in pushNotificationsByCertificates)
             {
                 X509Certificate2 certificate = GetCertificate(pushNotifications.Key);
