@@ -1,1 +1,15 @@
-﻿
+﻿@model int
+
+@(Html.Grid<PassBeaconViewModel>()
+              .Name("grdTemplateBeacons")
+              .CssClass("pm-grid")
+              .Pageable()
+              .DataSource(ds => ds.Read(@Url.Action("GridSearchView", "PassBeacon", new { PassContentTemplateId = Model })))
+              .Columns(c =>
+                       {
+                           c.Bound(p => p.PassBeaconId).Title("ID").Width("100px");
+                           c.BoundLink(p => p.ProximityUuid, Url.Action("Edit", "PassBeacon"), id => id.PassBeaconId,
+                               new { data_popup_window = "wndTemplateField" }, "ProximityUuid");
+                           c.Bound(p => p.RelevantText);
+                           c.Bound(p => p.PassBeaconId).Title("Action").GridAjaxAction("Delete", Url.Action("Delete", "PassBeacon"));
+                       }))

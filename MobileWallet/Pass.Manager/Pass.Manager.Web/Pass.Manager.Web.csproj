@@ -157,6 +157,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Common\BaseEntityController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PassBeaconController.cs" />
     <Compile Include="Controllers\PassCertificateController.cs" />
     <Compile Include="Controllers\PassContentTemplateController.cs" />
     <Compile Include="Controllers\PassContentTemplateFieldController.cs" />
@@ -1162,6 +1163,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\TemplateImages\" />
+    <Folder Include="Views\PassBeacon\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

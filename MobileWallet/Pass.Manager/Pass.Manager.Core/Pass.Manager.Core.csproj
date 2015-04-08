@@ -67,9 +67,11 @@
     <Compile Include="Entities\TextAlignment.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Repositories\IPassContentTemplateFieldRepository.cs" />
+    <Compile Include="SearchFilters\PassBeaconFilter.cs" />
     <Compile Include="SearchFilters\PassContentTemplateFieldFilter.cs" />
     <Compile Include="SearchFilters\PassContentTemplateFilter.cs" />
     <Compile Include="SearchFilters\PassImageFilter.cs" />
+    <Compile Include="Services\IPassBeaconService.cs" />
     <Compile Include="Services\IPassCertificateService.cs" />
     <Compile Include="IPassManagerConfig.cs" />
     <Compile Include="IPassManagerUnitOfWork.cs" />
