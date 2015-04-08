@@ -22,6 +22,24 @@ namespace Pass.Manager.Repository.EF.Tests
             return new PassManagerUnitOfWork(DbConfig);
         }
 
+        public static PassCertificate CreatePassCertificate()
+        {
+            using (var unitOfWork = GetPassManagerUnitOfWork())
+            {
+                var repPassCertificate = unitOfWork.GetRepository<PassCertificate>();
+                var passCertificate = new PassCertificate()
+                {
+                    Name = Guid.NewGuid().ToString(),
+                    Description = Guid.NewGuid().ToString(),
+                    ExpDate = DateTime.Now,
+                    CertificateStorageId = 1
+                };
+                repPassCertificate.Insert(passCertificate);
+                unitOfWork.Save();
+                return passCertificate;
+            }
+        }
+
         public static PassSite CreatePassSite()
         {
             using (var unitOfWork = GetPassManagerUnitOfWork())

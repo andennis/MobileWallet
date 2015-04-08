@@ -49,11 +49,13 @@ namespace Pass.Manager.Repository.EF.Tests
         public void PassProjectTest()
         {
             PassSite passSite = TestHelper.CreatePassSite();
+            PassCertificate passCertificate = TestHelper.CreatePassCertificate();
             var passPrj1 = new PassProject()
                           {
                               Name = Guid.NewGuid().ToString(),
                               Description = Guid.NewGuid().ToString(),
-                              PassSiteId = passSite.PassSiteId
+                              PassSiteId = passSite.PassSiteId,
+                              PassCertificateId = passCertificate.PassCertificateId 
                           };
             CreateEntity(passPrj1);
             Assert.Greater(passPrj1.PassProjectId, 0);
