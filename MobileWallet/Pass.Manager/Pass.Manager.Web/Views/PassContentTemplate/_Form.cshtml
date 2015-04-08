@@ -13,6 +13,7 @@
         @Html.TextBoxFormForExt(m => m.Name)
         @Html.TextAreaFormForExt(m => m.Description)
         @Html.TextAreaFormForExt(m => m.OrganizationName, "Organization Name")
+        @Html.CheckBoxFormForEx(m => m.IsDefault, "Is Default")
     </div>
     <div class="col-md-6">
         @Html.DropDownListFormForExt(m => m.PassStyle, "Pass Style", "- Select Pass Style -")

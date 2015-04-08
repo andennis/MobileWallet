@@ -83,6 +83,15 @@ namespace Pass.Manager.Repository.EF
             modelBuilder.Entity<PassContentTemplate>().Property(x => x.OrganizationName).IsRequired().HasMaxLength(FieldLenName);
             modelBuilder.Entity<PassContentTemplate>().HasRequired(x => x.PassProject).WithMany(x => x.PassContentTemplates).HasForeignKey(x => x.PassProjectId).WillCascadeOnDelete(false);
 
+            //PassContentTemplateField
+            modelBuilder.Entity<PassContentTemplateField>().ToTable("PassContentTemplateField", DbScheme);
+            modelBuilder.Entity<PassContentTemplateField>().Property(x => x.Version).IsConcurrencyToken();
+            modelBuilder.Entity<PassContentTemplateField>().Property(x => x.AttributedValue).HasMaxLength(128);
+            modelBuilder.Entity<PassContentTemplateField>().Property(x => x.ChangeMessage).HasMaxLength(128);
+            modelBuilder.Entity<PassContentTemplateField>().Property(x => x.Label).HasMaxLength(128);
+            modelBuilder.Entity<PassContentTemplateField>().HasRequired(x => x.PassContentTemplate).WithMany(x => x.PassContentTemplateFields).HasForeignKey(x => x.PassContentTemplateId);
+            modelBuilder.Entity<PassContentTemplateField>().HasRequired(x => x.PassProjectField).WithMany().HasForeignKey(x => x.PassProjectFieldId);
+
             //PassBarcode
             modelBuilder.Entity<PassBarcode>().ToTable("PassBarcode", DbScheme);
             modelBuilder.Entity<PassBarcode>().HasKey(x => x.PassContentTemplateId);
@@ -104,15 +113,6 @@ namespace Pass.Manager.Repository.EF
             modelBuilder.Entity<PassLocation>().Property(x => x.Latitude).IsRequired();
             modelBuilder.Entity<PassLocation>().Property(x => x.Longitude).IsRequired();
             modelBuilder.Entity<PassLocation>().HasRequired(x => x.PassContentTemplate).WithMany(x => x.Locations).HasForeignKey(x => x.PassContentTemplateId);
-
-            //PassContentTemplateField
-            modelBuilder.Entity<PassContentTemplateField>().ToTable("PassContentTemplateField", DbScheme);
-            modelBuilder.Entity<PassContentTemplateField>().Property(x => x.Version).IsConcurrencyToken();
-            modelBuilder.Entity<PassContentTemplateField>().Property(x => x.AttributedValue).HasMaxLength(128);
-            modelBuilder.Entity<PassContentTemplateField>().Property(x => x.ChangeMessage).HasMaxLength(128);
-            modelBuilder.Entity<PassContentTemplateField>().Property(x => x.Label).HasMaxLength(128);
-            modelBuilder.Entity<PassContentTemplateField>().HasRequired(x => x.PassContentTemplate).WithMany(x => x.PassContentTemplateFields).HasForeignKey(x => x.PassContentTemplateId);
-            modelBuilder.Entity<PassContentTemplateField>().HasRequired(x => x.PassProjectField).WithMany().HasForeignKey(x => x.PassProjectFieldId);
 
             //PassImage
             modelBuilder.Entity<PassImage>().ToTable("PassImage", DbScheme);

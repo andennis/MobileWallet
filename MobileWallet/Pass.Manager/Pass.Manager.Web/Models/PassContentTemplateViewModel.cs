@@ -18,6 +18,7 @@ namespace Pass.Manager.Web.Models
         }
 
         public int PassContentTemplateId { get; set; }
+        public bool IsDefault { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string OrganizationName { get; set; }

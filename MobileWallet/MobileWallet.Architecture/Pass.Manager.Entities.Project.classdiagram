@@ -88,9 +88,6 @@
           <property Id="6dd1ffce-1695-498f-81a6-4970b0f63521" name="Name" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="b996d7c7-a1fc-4403-b77b-0a565b46a1a7" />
           </property>
-          <property Id="bfd8419a-16bd-400f-965b-6219bd76e2e2" name="PassTemplateId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="bd0ed808-72ed-4296-9921-b5804f6ca06c" />
-          </property>
           <property Id="27136a09-89fb-44fb-80af-0d06c749d26b" name="CertificateId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="4f6eb20b-57ab-4a8d-9cbd-cb5dcff137bf" />
           </property>
@@ -308,6 +305,9 @@
         <ownedAttributesInternal>
           <property Id="0b65a071-d3ae-4b7e-a3f1-8896db352db4" name="PassStyle" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="9de43d6d-c33c-4606-8970-d060ef9bb916" />
+          </property>
+          <property Id="8b500318-c50f-4e27-a3da-b3eb734f0f97" name="IsDefault" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="1614a744-8d83-491b-8ab0-1955b107221d" />
           </property>
         </ownedAttributesInternal>
       </class>

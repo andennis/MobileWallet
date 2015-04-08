@@ -422,17 +422,6 @@
             aggregation="None"
             isComposite="false" />
           <property
-            Id="bd0ed808-72ed-4296-9921-b5804f6ca06c"
-            name="PassTemplateId"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false" />
-          <property
             Id="4f6eb20b-57ab-4a8d-9cbd-cb5dcff137bf"
             name="CertificateId"
             isLeaf="false"
