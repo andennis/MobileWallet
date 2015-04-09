@@ -43,13 +43,20 @@ namespace Pass.Manager.Web
 
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
                 "~/Scripts/kendo/2014.2.716/kendo.core.min.js",
+                //Culture scripts
+                "~/Scripts/kendo/2014.2.716/cultures/kendo.culture.ru-RU.min.js",
+                "~/Scripts/kendo/2014.2.716/cultures/kendo.culture.en-US.min.js",
+                "~/Scripts/kendo/2014.2.716/cultures/kendo.culture.en-GB.min.js",
+
                 //TabStrip
                 "~/Scripts/kendo/2014.2.716/kendo.data.min.js",
                 "~/Scripts/kendo/2014.2.716/kendo.tabstrip.min.js",
+
                 //Window
                 "~/Scripts/kendo/2014.2.716/kendo.userevents.min.js",
                 "~/Scripts/kendo/2014.2.716/kendo.draganddrop.min.js",
                 "~/Scripts/kendo/2014.2.716/kendo.window.min.js",
+
                 //DatePicker
                 "~/Scripts/kendo/2014.2.716/kendo.calendar.min.js",
                 "~/Scripts/kendo/2014.2.716/kendo.popup.min.js",

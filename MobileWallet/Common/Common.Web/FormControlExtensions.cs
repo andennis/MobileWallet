@@ -256,7 +256,6 @@ namespace Common.Web
         {
             DatePickerBuilder builder = html.Widget().DatePicker()
                 .Name(name)
-                //.Format(dateFormat ?? "dd.MM.yyyy")
                 .HtmlAttributes(_initControlAttributes.MergeHtmlAttributes(htmlAttributes));
 
             if (minValue.HasValue)
@@ -265,6 +264,8 @@ namespace Common.Web
                 builder.Max(maxValue.Value);
             if (value.HasValue)
                 builder.Value(value.Value);
+            if (!string.IsNullOrEmpty(dateFormat))
+                builder.Format(dateFormat);
 
             return new MvcHtmlString(builder.ToHtmlString());
         }
