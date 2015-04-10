@@ -163,6 +163,7 @@
     <Compile Include="Controllers\PassContentTemplateFieldController.cs" />
     <Compile Include="Controllers\PassDesignerController.cs" />
     <Compile Include="Controllers\PassImageController.cs" />
+    <Compile Include="Controllers\PassLocationController.cs" />
     <Compile Include="Controllers\PassProjectController.cs" />
     <Compile Include="Controllers\PassProjectFieldController.cs" />
     <Compile Include="Controllers\PassSiteCertificateController.cs" />
@@ -1087,6 +1088,7 @@
     <Content Include="Views\PassContentTemplate\Tabs\_Images.cshtml" />
     <Content Include="Views\PassImage\_Form.cshtml" />
     <Content Include="Views\PassBeacon\_Form.cshtml" />
+    <Content Include="Views\PassLocation\_Form.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CertificateStorage\CertificateStorage.BL\CertificateStorage.BL.csproj">

@@ -7,25 +7,24 @@ using Pass.Manager.Web.Models;
 
 namespace Pass.Manager.Web.Controllers
 {
-    public class PassBeaconController : BaseEntityController<PassBeaconViewModel, PassBeacon, IPassBeaconService, PassBeaconFilter>
-    
+    public class PassLocationController : BaseEntityController<PassLocationViewModel, PassLocation, IPassLocationService, PassLocationFilter>
     {
-        public PassBeaconController(IPassBeaconService beaconService)
-            : base(beaconService)
+        public PassLocationController(IPassLocationService locationService)
+            : base(locationService)
         {
         }
 
         [HttpGet]
-        public ActionResult CreateBeacon(int contentTemplateId)
+        public ActionResult CreateLocation(int contentTemplateId)
         {
             return Create(m => m.PassContentTemplateId = contentTemplateId);
 
         }
 
-        [ActionName("CreateBeacon")]
-        public override ActionResult Create(PassBeaconViewModel model)
+        [ActionName("CreateLocation")]
+        public override ActionResult Create(PassLocationViewModel model)
         {
             return base.Create(model);
         }
-	}
+    }
 }

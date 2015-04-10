@@ -71,6 +71,7 @@
     <Compile Include="SearchFilters\PassContentTemplateFieldFilter.cs" />
     <Compile Include="SearchFilters\PassContentTemplateFilter.cs" />
     <Compile Include="SearchFilters\PassImageFilter.cs" />
+    <Compile Include="SearchFilters\PassLocationFilter.cs" />
     <Compile Include="Services\IPassBeaconService.cs" />
     <Compile Include="Services\IPassCertificateService.cs" />
     <Compile Include="IPassManagerConfig.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Services\IPassContentTemplateFieldService.cs" />
     <Compile Include="Services\IPassContentTemplateService.cs" />
     <Compile Include="Services\IPassImageService.cs" />
+    <Compile Include="Services\IPassLocationService.cs" />
     <Compile Include="Services\IPassManagerServiceBase.cs" />
     <Compile Include="Services\IPassProjectService.cs" />
     <Compile Include="Services\IPassSiteCertificateService.cs" />

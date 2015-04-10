@@ -33,7 +33,8 @@ namespace Pass.Manager.Repository.EF
                                             typeof(PassContentTemplate),
                                             typeof(PassContentTemplateField),
                                             typeof(PassImage),
-                                            typeof(PassBeacon)
+                                            typeof(PassBeacon),
+                                            typeof(PassLocation)
                                         };
 
             RegisterCustomRepository(PassSiteRepository);

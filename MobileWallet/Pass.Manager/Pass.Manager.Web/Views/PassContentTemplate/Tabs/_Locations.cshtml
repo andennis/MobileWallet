@@ -1,1 +1,37 @@
-﻿
+﻿@model int
+
+@(Html.ActionLinkExt<PassLocationController>(a => a.CreateLocation(0), "Add New", new { contentTemplateId = Model }, new { @class = "btn btn-default btn-primary", data_popup_window = "wndPassLocation" }))
+@(Html.PopupDialog()
+              .Name("wndPassLocation")
+              .Width(600)
+              .Title("Pass Location")
+              .Events(e => e.Success("OnEditLocationSuccess"))
+)
+
+
+@(Html.Grid<PassLocationViewModel>()
+              .Name("grdLocations")
+              .CssClass("pm-grid")
+              .Pageable()
+                  .DataSource(ds => ds.Read(@Url.Action("GridSearch", "PassLocation", new { PassContentTemplateId = Model })))
+              .Columns(c =>
+                       {
+                           c.BoundLink(p => p.PassLocationId, Url.Action("Edit", "PassLocation"), id => id.PassLocationId,
+                               new { data_popup_window = "wndPassLocation" }, "ID");
+                           c.Bound(p => p.Altitude);
+                           c.Bound(p => p.Latitude);
+                           c.Bound(p => p.Longitude);
+                           c.Bound(p => p.RelevantText);
+                           c.Bound(p => p.PassLocationId).Title("Action").GridAjaxAction("Delete", Url.Action("Delete", "PassLocation"));
+                       }))
+
+
+<script>
+    $(document).ready(function () {
+        window.grid.Init($("#grdLocations"));
+    });
+
+    function OnEditLocationSuccess() {
+        window.grid.Reload($("#grdLocations"));
+    }
+</script>
