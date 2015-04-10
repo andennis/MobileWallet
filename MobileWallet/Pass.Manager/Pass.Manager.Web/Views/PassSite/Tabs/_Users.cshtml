@@ -9,7 +9,7 @@
     .Columns(c =>
     {
         c.Bound(m => m.UserId).Title("ID").Width("100px");
-        c.BoundLink(m => m.UserName, Url.Action("Edit", "PassSiteUser"), m => m.PassSiteUserId ).Title("Login");
+        c.BoundLink(m => m.UserName, Url.Action("Edit", "PassSiteUser"), m => m.PassSiteUserId, null, "Login");
         c.Bound(m => m.FullName).Title("Name");
         c.BoundEnum(m => m.UserState).Title("State");
         c.Bound(m => m.PassSiteUserId).Title("Action").GridAjaxAction("Remove", Url.Action("Delete", "PassSiteUser"));

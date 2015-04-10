@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Security.Cryptography;
 using System.Text;
 using System.Web.Mvc;
-using System.Web.Routing;
 using Common.Extensions;
 
 namespace Common.Web.Grid
@@ -20,15 +18,6 @@ namespace Common.Web.Grid
         }
         public IList<GridBoundColumnBuilder<TModel>> Columns { get; private set; }
 
-        /*
-        public GridBoundColumnBuilder<TModel> Bound()
-        {
-            var builder = new GridBoundColumnBuilder<TModel>(_htmlHelper);
-            Columns.Add(builder);
-            return builder;
-        }
-        */
-
         public GridBoundColumnBuilder<TModel> Bound<TValue>(Expression<Func<TModel, TValue>> expression)
         {
             var builder = new GridBoundColumnBuilder<TModel>(_htmlHelper, expression.GetPropertyName(), typeof(TValue));
@@ -39,27 +28,32 @@ namespace Common.Web.Grid
         public GridBoundColumnBuilder<TModel> BoundEnum<TValue>(Expression<Func<TModel, TValue>> expression) where TValue : struct
         {
             var builder = new GridBoundColumnBuilder<TModel>(_htmlHelper, expression.GetPropertyName(), typeof(TValue));
-
-            var sbTemplate = new StringBuilder();
-            IDictionary<string, int> enumDict = EnumHelper.ToDictionary<TValue>();
-            foreach (KeyValuePair<string, int> item in enumDict)
-            {
-                sbTemplate.AppendFormat(" {0}if({1}=={2}) {{#{3}#}}", sbTemplate.Length > 0 ? "else " : string.Empty, builder.ColName, item.Value, item.Key);
-            }
-
+            var sbTemplate = GetColEnumClientTemplete<TValue>(builder.ColName);
             builder.ClientTemplate(string.Format("# {0} #", sbTemplate));
             Columns.Add(builder);
             return builder;
         }
 
+        public GridBoundColumnBuilder<TModel> BoundEnumLink<TValue, TId>(Expression<Func<TModel, TValue>> expression, string url, Expression<Func<TModel, TId>> expressionId,
+            object htmlAttributes = null, string colTitle = null)
+            where TValue : struct
+        {
+            string colName = expression.GetPropertyName();
+            var template = GetColEnumClientTemplete<TValue>(colName);
+            return BoundLink(colName, url, expressionId.GetPropertyName(), template, htmlAttributes, colTitle);
+        }
+
         public GridBoundColumnBuilder<TModel> BoundLink<TValue, TId>(Expression<Func<TModel, TValue>> expression, string url, Expression<Func<TModel, TId>> expressionId, 
             object htmlAttributes = null, string colTitle = null)
         {
-            var builder = new GridBoundColumnBuilder<TModel>(_htmlHelper, expression.GetPropertyName());
+            return BoundLink(expression.GetPropertyName(), url, expressionId.GetPropertyName(), null, htmlAttributes, colTitle);
+        }
+
+        private GridBoundColumnBuilder<TModel> BoundLink(string colName, string url, string idColName, string colTemplate, object htmlAttributes, string colTitle)
+        {
+            var builder = new GridBoundColumnBuilder<TModel>(_htmlHelper, colName);
             if (colTitle != null)
                 builder.ColTitle = colTitle;
-
-            string idColName = expressionId.GetPropertyName();
 
             int i = url.IndexOf('?');
             if (i != -1)
@@ -70,7 +64,9 @@ namespace Common.Web.Grid
             var tb = new TagBuilder("a");
             tb.Attributes.Add("id", string.Format("{0}.#={1}#", builder.ColName, idColName));
             tb.Attributes.Add("href", url);
-            tb.SetInnerText(string.Format("#={0}#", builder.ColName));
+
+            string innerText = string.IsNullOrEmpty(colTemplate) ? string.Format("#={0}#", builder.ColName) : string.Format("# {0} #", colTemplate);
+            tb.SetInnerText(innerText);
 
             if (htmlAttributes != null)
                 tb.MergeAttributes(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
@@ -80,23 +76,15 @@ namespace Common.Web.Grid
             return builder;
         }
 
-        public GridBoundColumnBuilder<TModel> BoundLink<TId>(string linkText, string url, Expression<Func<TModel, TId>> expressionId, string colName = null)
+        private string GetColEnumClientTemplete<TEnum>(string colName) where TEnum : struct
         {
-            var builder = new GridBoundColumnBuilder<TModel>(_htmlHelper, colName);
-            string idColName = expressionId.GetPropertyName();
-
-            int i = url.IndexOf('?');
-            if (i != -1)
-                url = url.Insert(i, string.Format("/#={0}#", idColName));
-            else
-                url = url + string.Format("/#={0}#", idColName);
-
-            string template = string.IsNullOrEmpty(colName)
-                ? string.Format("<a href=\"{0}\">{1}</a>", url, linkText)
-                : string.Format("<a id=\"{0}.#={1}#\" href=\"{2}\">{3}</a>", colName, idColName, url, linkText);
-            builder.ClientTemplate(template);
-            Columns.Add(builder);
-            return builder;
+            var sb = new StringBuilder();
+            IDictionary<string, int> enumDict = EnumHelper.ToDictionary<TEnum>();
+            foreach (KeyValuePair<string, int> item in enumDict)
+            {
+                sb.AppendFormat(" {0}if({1}=={2}) {{#{3}#}}", (sb.Length > 0 ? "else " : string.Empty), colName, item.Value, item.Key);
+            }
+            return sb.ToString();
         }
         
     }

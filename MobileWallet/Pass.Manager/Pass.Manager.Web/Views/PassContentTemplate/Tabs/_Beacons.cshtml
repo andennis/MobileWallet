@@ -20,6 +20,8 @@
                                new { data_popup_window = "wndPassBeacon" }, "ID");
                            c.Bound(p => p.ProximityUuid);
                            c.Bound(p => p.RelevantText);
+                           c.Bound(p => p.Major);
+                           c.Bound(p => p.Minor);
                            c.Bound(p => p.PassBeaconId).Title("Action").GridAjaxAction("Delete", Url.Action("Delete", "PassBeacon"));
                        }))
 
