@@ -1086,6 +1086,7 @@
     <Content Include="Views\PassContentTemplateField\_Form.cshtml" />
     <Content Include="Views\PassContentTemplate\Tabs\_Images.cshtml" />
     <Content Include="Views\PassImage\_Form.cshtml" />
+    <Content Include="Views\PassBeacon\_Form.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\CertificateStorage\CertificateStorage.BL\CertificateStorage.BL.csproj">
@@ -1163,7 +1164,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\TemplateImages\" />
-    <Folder Include="Views\PassBeacon\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

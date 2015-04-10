@@ -10,28 +10,24 @@ using Pass.Manager.Web.Models;
 namespace Pass.Manager.Web.Controllers
 {
     public class PassBeaconController : BaseEntityController<PassBeaconViewModel, PassBeacon, IPassBeaconService, PassBeaconFilter>
+    
     {
-        public PassBeaconController(IPassBeaconService imageService)
-            : base(imageService)
+        public PassBeaconController(IPassBeaconService beaconService)
+            : base(beaconService)
         {
         }
 
-        //[HttpGet]
-        //public ActionResult CreateBeacon(int contentTemplateId)
-        //{
-        //    IEnumerable<PassProjectField> projectFields = _service.GetUnmappedFields(contentTemplateId);
-        //    return Create(m =>
-        //    {
-        //        m.PassContentTemplateId = contentTemplateId;
-        //        m.PassProjectFields = new SelectListTyped<PassProjectField, int, string>(projectFields, d => d.PassProjectFieldId, t => t.Name);
-        //    });
+        [HttpGet]
+        public ActionResult CreateBeacon(int contentTemplateId)
+        {
+            return Create(m => m.PassContentTemplateId = contentTemplateId);
 
-        //}
+        }
 
-        //[ActionName("CreateField")]
-        //public override ActionResult Create(PassContentTemplateFieldViewModel model)
-        //{
-        //    return base.Create(model);
-        //}
+        [ActionName("CreateBeacon")]
+        public override ActionResult Create(PassBeaconViewModel model)
+        {
+            return base.Create(model);
+        }
 	}
 }

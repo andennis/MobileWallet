@@ -6,6 +6,6 @@ namespace Pass.Manager.Core.Services
 {
     public interface IPassBeaconService : IPassManagerServiceBase<PassBeacon, PassBeaconFilter>
     {
-        SearchResult<PassBeacon> Search(SearchContext searchContext, PassBeaconFilter searchFilter = null);
+
     }
 }

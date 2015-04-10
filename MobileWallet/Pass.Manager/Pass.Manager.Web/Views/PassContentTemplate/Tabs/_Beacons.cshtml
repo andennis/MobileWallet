@@ -1,15 +1,35 @@
 ﻿@model int
 
+@(Html.ActionLinkExt<PassBeaconController>(a => a.CreateBeacon(0), "Add New", new { contentTemplateId = Model }, new { @class = "btn btn-default btn-primary", data_popup_window = "wndPassBeacon" }))
+@(Html.PopupDialog()
+              .Name("wndPassBeacon")
+              .Width(600)
+              .Title("Pass Beacon")
+              .Events(e => e.Success("OnEditBeaconSuccess"))
+)
+
+
 @(Html.Grid<PassBeaconViewModel>()
-              .Name("grdTemplateBeacons")
+              .Name("grdBeacons")
               .CssClass("pm-grid")
               .Pageable()
-              .DataSource(ds => ds.Read(@Url.Action("GridSearchView", "PassBeacon", new { PassContentTemplateId = Model })))
+                  .DataSource(ds => ds.Read(@Url.Action("GridSearch", "PassBeacon", new { PassContentTemplateId = Model })))
               .Columns(c =>
                        {
                            c.Bound(p => p.PassBeaconId).Title("ID").Width("100px");
                            c.BoundLink(p => p.ProximityUuid, Url.Action("Edit", "PassBeacon"), id => id.PassBeaconId,
-                               new { data_popup_window = "wndTemplateField" }, "ProximityUuid");
+                               new { data_popup_window = "wndPassBeacon" }, "ProximityUuid");
                            c.Bound(p => p.RelevantText);
                            c.Bound(p => p.PassBeaconId).Title("Action").GridAjaxAction("Delete", Url.Action("Delete", "PassBeacon"));
                        }))
+
+
+<script>
+    $(document).ready(function () {
+        window.grid.Init($("#grdBeacons"));
+    });
+
+    function OnEditBeaconSuccess() {
+        window.grid.Reload($("#grdBeacons"));
+    }
+</script>

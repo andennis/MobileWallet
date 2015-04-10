@@ -55,6 +55,9 @@ namespace Pass.Manager.Web
             Mapper.CreateMap<PassImageViewModel, PassImage>()
                 .ForMember(dst => dst.ImageFile, x => x.MapFrom(src => HttpPostedFileToFileContentInfo(src.ImageFile)))
                 .ForMember(dst => dst.ImageFile2x, x => x.MapFrom(src => HttpPostedFileToFileContentInfo(src.ImageFile2x)));
+
+            Mapper.CreateMap<PassBeaconViewModel, PassBeacon>().ReverseMap();
+            Mapper.CreateMap<PassBeacon, PassBeaconViewModel>().ReverseMap();
         }
 
 
