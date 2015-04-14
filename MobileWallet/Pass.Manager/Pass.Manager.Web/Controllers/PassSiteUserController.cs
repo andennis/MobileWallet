@@ -28,6 +28,7 @@ namespace Pass.Manager.Web.Controllers
             return View("Create", model);
         }
 
+        [ActionName("AddUser")]
         public override ActionResult Create(PassSiteUserViewModel model)
         {
             if (ModelState.IsValid)
@@ -44,6 +45,13 @@ namespace Pass.Manager.Web.Controllers
 
             PrepareModelToCreateView(model);
             return View(model);
+        }
+
+        protected override void SetDefaultReturnUrl(IViewModel model)
+        {
+            base.SetDefaultReturnUrl(model);
+            if (string.IsNullOrEmpty(model.RedirectUrl))
+                model.RedirectUrl = Url.Action("Edit", "PassSite", new { id = ((PassSiteUserViewModel)model).PassSiteId });
         }
 
         public override ActionResult Edit(PassSiteUserViewModel model)

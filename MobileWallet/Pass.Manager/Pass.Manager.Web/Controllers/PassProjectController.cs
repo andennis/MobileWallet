@@ -30,6 +30,19 @@ namespace Pass.Manager.Web.Controllers
                           });
         }
 
+        [ActionName("CreateProject")]
+        public override ActionResult Create(PassProjectViewModel model)
+        {
+            return base.Create(model);
+        }
+
+        protected override void SetDefaultReturnUrl(IViewModel model)
+        {
+            base.SetDefaultReturnUrl(model);
+            if (string.IsNullOrEmpty(model.RedirectUrl))
+                model.RedirectUrl = Url.Action("Edit", "PassSite", new {id = ((PassProjectViewModel) model).PassSiteId});
+        }
+
         protected override void PrepareModelToEditView(PassProjectViewModel model)
         {
             IEnumerable<PassCertificate> certificates = _siteCertificateService.GetCertificates(model.PassSiteId);

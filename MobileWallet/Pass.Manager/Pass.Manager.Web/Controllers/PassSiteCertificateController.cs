@@ -30,6 +30,7 @@ namespace Pass.Manager.Web.Controllers
                           });
         }
 
+        [ActionName("AddCertificate")]
         public override ActionResult Create(PassSiteCertificateViewModel model)
         {
             if (ModelState.IsValid)
@@ -46,6 +47,14 @@ namespace Pass.Manager.Web.Controllers
 
             return View(model);
         }
+
+        protected override void SetDefaultReturnUrl(IViewModel model)
+        {
+            base.SetDefaultReturnUrl(model);
+            if (string.IsNullOrEmpty(model.RedirectUrl))
+                model.RedirectUrl = Url.Action("Edit", "PassSite", new { id = ((PassSiteCertificateViewModel)model).PassSiteId });
+        }
+
 
         public override ActionResult Edit(PassSiteCertificateViewModel model)
         {

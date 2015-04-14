@@ -20,12 +20,17 @@ namespace Pass.Manager.Web.Controllers
             return Create(m => m.PassProjectId = passProjectId);
         }
 
-        protected override ActionResult RedirectTo(IViewModel model)
+        [ActionName("CreateContent")]
+        public override ActionResult Create(PassContentTemplateViewModel model)
         {
-            if (model.RedirectUrl == null)
-                return RedirectToAction("Edit", "PassProject", new {id = ((PassContentTemplateViewModel) model).PassProjectId});
+            return base.Create(model);
+        }
 
-            return Redirect(model.RedirectUrl);
+        protected override void SetDefaultReturnUrl(IViewModel model)
+        {
+            base.SetDefaultReturnUrl(model);
+            if (string.IsNullOrEmpty(model.RedirectUrl))
+                model.RedirectUrl = Url.Action("Edit", "PassProject", new { id = ((PassContentTemplateViewModel)model).PassProjectId });
         }
 
         [AjaxOnly]

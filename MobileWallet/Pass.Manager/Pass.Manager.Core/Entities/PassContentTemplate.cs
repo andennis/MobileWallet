@@ -36,5 +36,7 @@ namespace Pass.Manager.Core.Entities
         public PassProject PassProject { get; set; }
 
         public ICollection<PassContentTemplateField> PassContentTemplateFields { get; set; }
+
+        //public int? PassContainerTemplateId { get; set; }
     }
 }

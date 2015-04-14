@@ -4,7 +4,7 @@ namespace Pass.Manager.Web.Common
 {
     public abstract class BaseController : Controller
     {
-        protected void SetDefaultReturnUrl(IViewModel model)
+        protected virtual void SetDefaultReturnUrl(IViewModel model)
         {
             if (model.RedirectUrl == null && Request.UrlReferrer != null)
                 model.RedirectUrl = Request.UrlReferrer.ToString();
