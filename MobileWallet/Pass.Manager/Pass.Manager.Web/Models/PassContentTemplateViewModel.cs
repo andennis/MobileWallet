@@ -11,7 +11,7 @@ namespace Pass.Manager.Web.Models
     [Validator(typeof(PassContentTemplateViewModelValidator))]
     public class PassContentTemplateViewModel : BaseViewModel
     {
-        public override string DisplayName { get { return "Pass Content"; } }
+        public override string DisplayName { get { return "Pass Content Template"; } }
         public override int EntityId
         {
             get { return PassContentTemplateId; }

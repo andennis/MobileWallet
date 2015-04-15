@@ -161,6 +161,7 @@
     <Compile Include="Controllers\PassCertificateController.cs" />
     <Compile Include="Controllers\PassContentTemplateController.cs" />
     <Compile Include="Controllers\PassContentTemplateFieldController.cs" />
+    <Compile Include="Controllers\PassContentController.cs" />
     <Compile Include="Controllers\PassDesignerController.cs" />
     <Compile Include="Controllers\PassImageController.cs" />
     <Compile Include="Controllers\PassLocationController.cs" />
@@ -188,6 +189,7 @@
     <Compile Include="Models\PassCertificateViewModel.cs" />
     <Compile Include="Models\PassContentTemplateFieldViewModel.cs" />
     <Compile Include="Models\PassContentTemplateViewModel.cs" />
+    <Compile Include="Models\PassContentViewModel.cs" />
     <Compile Include="Models\PassImageViewModel.cs" />
     <Compile Include="Models\PassLocationViewModel.cs" />
     <Compile Include="Models\PassProjectFieldViewModel.cs" />
@@ -205,6 +207,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validators\PassContentTemplateFieldViewModelValidator.cs" />
     <Compile Include="Validators\PassContentTemplateViewModelValidator.cs" />
+    <Compile Include="Validators\PassContentViewModelValidator.cs" />
     <Compile Include="Validators\PassImageViewModelValidator.cs" />
     <Compile Include="Validators\PassLocationViewModelValidator.cs" />
     <Compile Include="Validators\PassProjectFieldViewModelValidator.cs" />

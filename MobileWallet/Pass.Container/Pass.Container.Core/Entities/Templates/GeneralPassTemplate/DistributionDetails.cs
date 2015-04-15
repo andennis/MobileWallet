@@ -22,6 +22,7 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
         [JsonProperty(PropertyName = "expirationDate", NullValueHandling = NullValueHandling.Ignore)]
         public string ExpirationDate { get; set; }
 
+        /*
         [XmlElement(ElementName = "quantityRestriction")]
         [JsonProperty(PropertyName = "quantityRestriction", NullValueHandling = NullValueHandling.Ignore)]
         public int? QuantityRestriction { get; set; }
@@ -37,6 +38,7 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
         [XmlElement(ElementName = "passwordToUpdate")]
         [JsonProperty(PropertyName = "passwordToUpdate", NullValueHandling = NullValueHandling.Ignore)]
         public string PasswordToUpdate { get; set; }//??
+        */
     }
 
     public enum PassLinkType

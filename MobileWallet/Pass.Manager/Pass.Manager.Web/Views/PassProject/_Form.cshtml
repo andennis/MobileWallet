@@ -1,17 +1,16 @@
 ﻿@using Common.Web.Tab
 @model PassProjectViewModel
-       
+
+@Html.HiddenForExt(m => m.PassSiteId)       
 @Html.HiddenForExt(m => m.PassProjectId)
+
 @if (!Model.IsNew)
 {
     Html.TextBlockFormForExt(m => m.PassProjectId, "ID");
 }
 @Html.TextBoxFormForExt(m => m.Name)
 @Html.DropDownListFormForExt(m => m.PassCertificateId, Model.PassCertificates, "Certificate", "- Select Certificate -")
-@*Html.DropDownListFormForExt(m => m.ProjectType, "Project Type", "- Select Project Type -")*@
 @Html.TextAreaFormForExt(m => m.Description)
-@Html.HiddenForExt(m => m.PassTemplateId)
-@Html.HiddenForExt(m => m.PassSiteId)
 
 @if (!Model.IsNew)
 {
@@ -26,8 +25,8 @@
             .Name("projectTabs")
             .Items(tab => 
                 {
-                    tab.Add().Text("Pass Fields").LoadContentFrom(Url.Action("TabFields", new {id = Model.PassProjectId})).Selected(true);
-                    tab.Add().Text("Contents").LoadContentFrom(Url.Action("TabContents", new { id = Model.PassProjectId }));
+                    tab.Add().Text("Fields").LoadContentFrom(Url.Action<PassProjectController>(a => a.TabFields(0), new { id = Model.PassProjectId })).Selected(true);
+                    tab.Add().Text("Pass Contents").LoadContentFrom(Url.Action<PassProjectController>(a => a.TabContents(0), new { id = Model.PassProjectId }));
                 }
             ))
     </div>

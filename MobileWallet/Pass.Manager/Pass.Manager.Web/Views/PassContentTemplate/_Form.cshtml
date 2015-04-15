@@ -28,6 +28,14 @@
 
 @if (!Model.IsNew)
 {
+    @*
+    <div class="row">
+        @Html.FormActionButton("btnOnline", "Online")
+        @Html.FormActionButton("btnOffline", "Offline")
+        @Html.FormActionButton("btnDownload", "Download")
+        @Html.FormActionButton("btnPasses", "Passes", Url.Action<PassContentController>(a => a.Index(), Model.PassContentTemplateId))
+    </div>
+    *@
     <div class="row">
         @(Html.TabStrip()
               .Name("contentTabs")
