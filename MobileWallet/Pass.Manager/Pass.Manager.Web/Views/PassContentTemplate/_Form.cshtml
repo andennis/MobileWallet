@@ -4,38 +4,42 @@
 @Html.HiddenForExt(m => m.PassContentTemplateId)
 @Html.HiddenForExt(m => m.PassProjectId)
 
-<div class="row">
-    <div class="col-md-6">
-        @if (!Model.IsNew)
-        {
-            @Html.TextBlockFormForExt(m => m.PassContentTemplateId, "ID");
-        }
-        @Html.TextBoxFormForExt(m => m.Name)
-        @Html.TextAreaFormForExt(m => m.Description)
-        @Html.TextAreaFormForExt(m => m.OrganizationName, "Organization Name")
-        @Html.CheckBoxFormForEx(m => m.IsDefault, "Is Default")
+@if (!Model.IsNew)
+{
+    <div class="row text-right action-block">
+        @(Html.ActionLinkExt<PassContentTemplateController>(a => a.Online(0), "Online", new { id = Model.PassContentTemplateId }))
+        @(Html.ActionLinkExt<PassContentTemplateController>(a => a.Offline(0), "Offline", new { id = Model.PassContentTemplateId }))
+        @(Html.ActionLinkExt<PassContentTemplateController>(a => a.Download(0), "Download", new { id = Model.PassContentTemplateId }))
     </div>
-    <div class="col-md-6">
-        @Html.DropDownListFormForExt(m => m.PassStyle, "Pass Style", "- Select Pass Style -")
-        @Html.DropDownListFormForExt(m => m.TransitType, "Transit Type", "- Select Transit Type -")
-        @Html.TextBoxFormForExt(m => m.MaxDistance, "Max Distance")
-        @Html.DatePickerFormForExt(m => m.RelevantDate, "Relevant Date")
+}
 
-        @Html.TextBoxFormForExt(m => m.LogoText, "Logo Text")
-        @Html.CheckBoxFormForEx(m => m.SuppressStripShine, "Suppress Strip Shine")
+<fieldset>
+    <legend></legend>
+    <div class="row">
+        <div class="col-md-6">
+            @if (!Model.IsNew)
+            {
+                @Html.TextBlockFormForExt(m => m.PassContentTemplateId, "ID");
+            }
+            @Html.TextBoxFormForExt(m => m.Name)
+            @Html.TextAreaFormForExt(m => m.Description)
+            @Html.TextBoxFormForExt(m => m.OrganizationName, "Organization Name")
+            @Html.CheckBoxFormForEx(m => m.IsDefault, "Is Default")
+        </div>
+        <div class="col-md-6">
+            @Html.DropDownListFormForExt(m => m.PassStyle, "Pass Style", "- Select Pass Style -")
+            @Html.DropDownListFormForExt(m => m.TransitType, "Transit Type", "- Select Transit Type -")
+            @Html.TextBoxFormForExt(m => m.MaxDistance, "Max Distance")
+            @Html.DatePickerFormForExt(m => m.RelevantDate, "Relevant Date")
+
+            @Html.TextBoxFormForExt(m => m.LogoText, "Logo Text")
+            @Html.CheckBoxFormForEx(m => m.SuppressStripShine, "Suppress Strip Shine")
+        </div>
     </div>
-</div>
+</fieldset>
 
 @if (!Model.IsNew)
 {
-    @*
-    <div class="row">
-        @Html.FormActionButton("btnOnline", "Online")
-        @Html.FormActionButton("btnOffline", "Offline")
-        @Html.FormActionButton("btnDownload", "Download")
-        @Html.FormActionButton("btnPasses", "Passes", Url.Action<PassContentController>(a => a.Index(), Model.PassContentTemplateId))
-    </div>
-    *@
     <div class="row">
         @(Html.TabStrip()
               .Name("contentTabs")

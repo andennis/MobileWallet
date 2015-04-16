@@ -445,3 +445,8 @@ textarea {
     -ms-box-shadow: inset 0 0 3px 4px #02d5ac;
     box-shadow: inset 0 0 3px 4px #02d5ac;
 }
+
+.action-block {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
