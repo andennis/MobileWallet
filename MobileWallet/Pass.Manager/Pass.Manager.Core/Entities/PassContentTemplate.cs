@@ -8,6 +8,7 @@ namespace Pass.Manager.Core.Entities
     public class PassContentTemplate : EntityVersionable
     {
         public int PassContentTemplateId { get; set; }
+        public EntityStatus Status { get; set; }
         public bool IsDefault { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
@@ -37,6 +38,6 @@ namespace Pass.Manager.Core.Entities
 
         public ICollection<PassContentTemplateField> PassContentTemplateFields { get; set; }
 
-        //public int? PassContainerTemplateId { get; set; }
+        public int? PassContainerTemplateId { get; set; }
     }
 }

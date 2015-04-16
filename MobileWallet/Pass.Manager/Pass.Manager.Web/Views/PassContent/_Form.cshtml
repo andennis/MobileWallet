@@ -1,0 +1,18 @@
+﻿@model PassContentViewModel
+
+@Html.HiddenForExt(m => m.PassContentId)
+@Html.HiddenForExt(m => m.PassContentTemplateId)
+
+<div class="row">
+    @if (!Model.IsNew)
+    {
+        @Html.TextBlockFormForExt(m => m.PassContentTemplateId, "ID");
+    }
+    @Html.TextBoxFormForExt(m => m.SerialNumber)
+</div>
+
+@if (!Model.IsNew)
+{
+    <div class="row">
+    </div>
+}

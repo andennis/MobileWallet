@@ -969,6 +969,8 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Views\PassProject\Tabs\_PassContents.cshtml" />
+    <Content Include="Views\PassContent\_Form.cshtml" />
     <None Include="Web.Base.config">
       <SubType>Designer</SubType>
     </None>
@@ -1079,7 +1081,7 @@
     <Content Include="Views\Shared\_Create.cshtml" />
     <Content Include="Views\Shared\_Edit.cshtml" />
     <Content Include="Views\PassProject\Tabs\_Fields.cshtml" />
-    <Content Include="Views\PassProject\Tabs\_Contents.cshtml" />
+    <Content Include="Views\PassProject\Tabs\_PassContentTemplates.cshtml" />
     <Content Include="Views\PassContentTemplate\_Form.cshtml" />
     <Content Include="Views\PassContentTemplate\Tabs\_Fields.cshtml" />
     <Content Include="Views\PassContentTemplate\Tabs\_Beacons.cshtml" />

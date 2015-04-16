@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using Common.Repository;
 using FluentValidation.Attributes;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Web.Common;
@@ -18,6 +19,7 @@ namespace Pass.Manager.Web.Models
         }
 
         public int PassContentTemplateId { get; set; }
+        public EntityStatus Status { get; set; }
         public bool IsDefault { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
