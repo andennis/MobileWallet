@@ -67,6 +67,7 @@
     <Compile Include="Entities\PassTransitType.cs" />
     <Compile Include="Entities\TextAlignment.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Exceptions\PassManagerGeneralException.cs" />
     <Compile Include="Repositories\IPassContentTemplateFieldRepository.cs" />
     <Compile Include="SearchFilters\PassBeaconFilter.cs" />
     <Compile Include="SearchFilters\PassContentFilter.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Services\IPassSiteCertificateService.cs" />
     <Compile Include="Services\IPassSiteService.cs" />
     <Compile Include="Services\IPassSiteUserService.cs" />
+    <Compile Include="Services\IPassTemplateOnlineService.cs" />
     <Compile Include="Services\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IPassSiteCertificateRepository.cs" />

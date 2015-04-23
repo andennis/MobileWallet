@@ -73,6 +73,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AjaxActionOptions.cs" />
     <Compile Include="CalendarView.cs" />
     <Compile Include="Controls\AnimationDuration.cs" />
     <Compile Include="Controls\ExpandDirection.cs" />

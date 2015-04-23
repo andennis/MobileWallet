@@ -22,6 +22,7 @@ namespace Pass.Container.BL
     public class PassTemplateService : IPassTemplateService
     {
         private const string TemplateFileName = "template.xml";
+        private const string TemplateImagesFolderName = "Images";
 
         private readonly IPassTemplateConfig _ptConfig;
         private readonly IPassContainerUnitOfWork _pcUnitOfWork;
@@ -67,7 +68,7 @@ namespace Pass.Container.BL
 
             string srcTemplateFilePath = Path.Combine(passTemplatePath, TemplateFileName);
             var generalPassTemplate = srcTemplateFilePath.LoadFromXml<GeneralPassTemplate>();
-            string srcImageFilesPath = Path.Combine(passTemplatePath, ApplePass.TemplateImageFolder);
+            string srcImageFilesPath = Path.Combine(passTemplatePath, TemplateImagesFolderName);
             BuildNativeTemplates(generalPassTemplate, templateStorageId, srcImageFilesPath);
 
             var passTemplate = new PassTemplate
@@ -123,7 +124,7 @@ namespace Pass.Container.BL
 
             string srcTemplateFilePath = Path.Combine(passTemplatePath, TemplateFileName);
             var generalPassTemplate = srcTemplateFilePath.LoadFromXml<GeneralPassTemplate>();
-            string srcImageFilesPath = Path.Combine(passTemplatePath, ApplePass.TemplateImageFolder);
+            string srcImageFilesPath = Path.Combine(passTemplatePath, TemplateImagesFolderName);
             BuildNativeTemplates(generalPassTemplate, templateStorageId, srcImageFilesPath);
 
             IEnumerable<GeneralField> newFields = GetDynamicFields(generalPassTemplate);

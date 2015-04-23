@@ -65,7 +65,7 @@ namespace Common.Web
             tb.Attributes.Add("value", caption);
             tb.AddCssClass("btn btn-default");
             if (actionUrl != null)
-                tb.Attributes.Add("data-action", actionUrl);
+                tb.Attributes.Add("data-form-action", actionUrl);
 
             return new MvcHtmlString(tb.ToString());
         }
@@ -77,11 +77,63 @@ namespace Common.Web
             tb.Attributes.Add("value", caption);
             tb.AddCssClass("btn btn-default");
             if (!string.IsNullOrEmpty(actionUrl))
-                tb.Attributes.Add("data-action", actionUrl);
+                tb.Attributes.Add("data-form-action", actionUrl);
 
             return new MvcHtmlString(tb.ToString());
         }
         #endregion
+
+        #region ActionLink
+        public static MvcHtmlString ActionLinkExt<TController>(this HtmlHelper html, Expression<Action<TController>> action,
+            string linkText, object routeValues = null, object htmlAttributes = null)
+            where TController : Controller
+        {
+            ActionInfo actionInfo = GetActionInfo(action);
+            return html.ActionLinkExt(linkText, actionInfo.Action, actionInfo.Controller, routeValues, htmlAttributes);
+        }
+        public static MvcHtmlString ActionLinkExt(this HtmlHelper html, string linkText, string actionName, string controllerName = null, object routeValues = null, object htmlAttributes = null)
+        {
+            return html.ActionLink(linkText, actionName, controllerName, routeValues, htmlAttributes);
+        }
+        #endregion
+
+        #region ActionLinkAjax
+        public static MvcHtmlString ActionLinkAjaxExt<TController>(this HtmlHelper html, Expression<Action<TController>> action, string linkText, string confirmMessage, 
+            object routeValues = null, object htmlAttributes = null, AjaxActionOptions ajaxOptions = null)
+            where TController : Controller
+        {
+            ActionInfo actionInfo = GetActionInfo(action);
+            return html.ActionLinkAjaxExt(linkText, confirmMessage, actionInfo.Action, actionInfo.Controller, routeValues, htmlAttributes, ajaxOptions);
+        }
+
+        public static MvcHtmlString ActionLinkAjaxExt(this HtmlHelper html, string linkText, string confirmMessage, 
+            string actionName, string controllerName = null, object routeValues = null, object htmlAttributes = null, AjaxActionOptions ajaxOptions = null)
+        {
+            var tb = new TagBuilder("a");
+            tb.Attributes.Add("href", "javascript:void(0)");
+
+            var urlHelper = new UrlHelper(html.ViewContext.RequestContext);
+            string url = urlHelper.Action(actionName, controllerName, routeValues);
+            tb.Attributes.Add("data-ajax-action", url);
+
+            if (string.IsNullOrEmpty(confirmMessage))
+                confirmMessage = string.Format("Are you sure you want to {0}?", linkText.ToLower());
+            tb.Attributes.Add("confirmMessage", confirmMessage);
+
+            if (ajaxOptions != null)
+            {
+                if (!string.IsNullOrEmpty(ajaxOptions.OnSuccess))
+                    tb.Attributes.Add("data-on-success", ajaxOptions.OnSuccess);
+                if (!string.IsNullOrEmpty(ajaxOptions.OnFail))
+                    tb.Attributes.Add("data-on-fail", ajaxOptions.OnFail);
+            }
+
+            tb.SetInnerText(linkText);
+
+            return new MvcHtmlString(tb.ToString());
+        }
+        #endregion
+
 
         #region Partial
 
@@ -104,9 +156,11 @@ namespace Common.Web
 
         private static MvcHtmlString TextBlockFor<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string format = null)
         {
-            if (typeof(TProperty) == typeof(DateTime))
+            if (typeof (TProperty) == typeof (DateTime))
+            {
                 if (string.IsNullOrEmpty(format))
                     format = "d";
+            }
 
             string dataFmt = (!string.IsNullOrEmpty(format) ? string.Format("{{0:{0}}}", format) : null);
             IDictionary<string,object> attributes = _initControlAttributes
@@ -194,20 +248,6 @@ namespace Common.Web
         public static MvcHtmlString CheckBoxFormForEx<TModel>(this HtmlHelper<TModel> html, Expression<Func<TModel, bool>> expression, string labelText = null)
         {
             return html.LabelWithControl(expression, labelText, null, () => html.CheckBoxFor(expression, new {@class = "checkbox"}));
-        }
-        #endregion
-
-        #region ActionLink
-        public static MvcHtmlString ActionLinkExt<TController>(this HtmlHelper html, Expression<Action<TController>> action, 
-            string linkText, object routeValues = null, object htmlAttributes = null)
-            where TController : Controller
-        {
-            ActionInfo actionInfo = GetActionInfo(action);
-            return html.ActionLinkExt(linkText, actionInfo.Action, actionInfo.Controller, routeValues, htmlAttributes);
-        }
-        public static MvcHtmlString ActionLinkExt(this HtmlHelper html, string linkText, string actionName, string controllerName = null, object routeValues = null, object htmlAttributes = null)
-        {
-            return html.ActionLink(linkText, actionName, controllerName, routeValues, htmlAttributes);
         }
         #endregion
 

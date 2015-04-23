@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -56,6 +57,7 @@
     <Compile Include="Services\PassSiteUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\PassProjectFieldService.cs" />
+    <Compile Include="Services\PassTemplateOnlineService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -90,6 +92,10 @@
     <ProjectReference Include="..\..\FileStorage\FileStorage.Core\FileStorage.Core.csproj">
       <Project>{06ebd357-60dc-4bd9-ad9b-0a736dcc2203}</Project>
       <Name>FileStorage.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pass.Container\Pass.Container.Core\Pass.Container.Core.csproj">
+      <Project>{062e8da0-3ef1-4481-8fcf-cfeb54a39771}</Project>
+      <Name>Pass.Container.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pass.Manager.Core\Pass.Manager.Core.csproj">
       <Project>{DC28CC0D-F87E-4D65-8812-3BAF31C9C359}</Project>

@@ -39,12 +39,13 @@ namespace Common.BL
         {
             return _repository.Find(entityId);
         }
+
         public virtual SearchResult<TEntity> Search(SearchContext searchContext, TSearchFilter searchFilter)
         {
             return Search(searchContext, x => true);
         }
 
-        protected SearchResult<TEntity> Search(SearchContext searchContext, Expression<Func<TEntity, bool>> searchExpression = null)
+        protected SearchResult<TEntity> Search(SearchContext searchContext, Expression<Func<TEntity, bool>> searchExpression)
         {
             //TODO paging
             //int totalCount;

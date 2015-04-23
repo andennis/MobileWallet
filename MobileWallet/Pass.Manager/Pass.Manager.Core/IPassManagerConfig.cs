@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Common.Repository;
+﻿using Common.Repository;
 
 namespace Pass.Manager.Core
 {
     public interface IPassManagerConfig : IDbConfig
     {
-        string SecurityKey { get; }
+        //string SecurityKey { get; }
+        string WorkingFolder { get; }
     }
 }

@@ -22,11 +22,11 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
 
         [XmlElement(ElementName = "major")]
         [JsonProperty(PropertyName = "major", NullValueHandling = NullValueHandling.Ignore)]
-        public Int16? Major { get; set; }
+        public int? Major { get; set; }
 
         [XmlElement(ElementName = "minor")]
         [JsonProperty(PropertyName = "minor", NullValueHandling = NullValueHandling.Ignore)]
-        public Int16? Minor { get; set; }
+        public int? Minor { get; set; }
 
         [XmlElement(ElementName = "proximityUUID")]
         [JsonProperty(PropertyName = "proximityUUID", Required = Required.Always)]

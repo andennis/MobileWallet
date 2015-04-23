@@ -10,9 +10,17 @@ namespace Pass.Manager.BL
         {
         }
 
+        /*
         public string SecurityKey
         {
             get { return GetValue("SecurityKey"); }
         }
+        */
+
+        public string WorkingFolder
+        {
+            get { return GetValue("WorkingFolder"); }
+        }
+
     }
 }

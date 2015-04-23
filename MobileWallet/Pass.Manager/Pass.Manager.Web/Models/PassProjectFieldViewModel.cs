@@ -18,5 +18,6 @@ namespace Pass.Manager.Web.Models
         public string Name { get; set; }
         public string DefaultValue { get; set; }
         public string DefaultLabel { get; set; }
+        public string Description { get; set; }
     }
 }

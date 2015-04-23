@@ -61,33 +61,36 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
         #region Visual Appearance Keys
 
         [XmlIgnore]
-        public Color BackgroundColor { get; set; }
+        public Color? BackgroundColor { get; set; }
+
         [XmlElement(ElementName = "backgroundColor")]
-        [JsonProperty(PropertyName = "backgroundColor", Required = Required.Always)]
-        public int BackgroundColorAsArgb
+        [JsonProperty(PropertyName = "backgroundColor", Required = Required.AllowNull)]
+        public int? BackgroundColorAsArgb
         {
-            get { return BackgroundColor.ToArgb(); }
-            set { BackgroundColor = Color.FromArgb(value); }
+            get { return BackgroundColor.HasValue ? BackgroundColor.Value.ToArgb() : (int?)null; }
+            set { BackgroundColor = value.HasValue ? Color.FromArgb(value.Value) : (Color?)null; }
         }
 
         [XmlIgnore]
-        public Color LabelTextColor { get; set; }
+        public Color? LabelTextColor { get; set; }
+
         [XmlElement(ElementName = "labelTextColor")]
-        [JsonProperty(PropertyName = "labelTextColor", Required = Required.Always)]
-        public int LabelTextColorAsArgb
+        [JsonProperty(PropertyName = "labelTextColor", Required = Required.AllowNull)]
+        public int? LabelTextColorAsArgb
         {
-            get { return LabelTextColor.ToArgb(); }
-            set { LabelTextColor = Color.FromArgb(value); }
+            get { return LabelTextColor.HasValue ? LabelTextColor.Value.ToArgb() : (int?)null; }
+            set { LabelTextColor = value.HasValue ? Color.FromArgb(value.Value) : (Color?)null; }
         }
         
         [XmlIgnore]
-        public Color ValueTextColor { get; set; }
+        public Color? ValueTextColor { get; set; }
+
         [XmlElement(ElementName = "valueTextColor")]
-        [JsonProperty(PropertyName = "valueTextColor", Required = Required.Always)]
-        public int ValueTextColorAsArgb
+        [JsonProperty(PropertyName = "valueTextColor", Required = Required.AllowNull)]
+        public int? ValueTextColorAsArgb
         {
-            get { return ValueTextColor.ToArgb(); }
-            set { ValueTextColor = Color.FromArgb(value); }
+            get { return ValueTextColor.HasValue ? ValueTextColor.Value.ToArgb() : (int?)null; }
+            set { ValueTextColor = value.HasValue ? Color.FromArgb(value.Value) : (Color?)null; }
         }
 
         [XmlElement(ElementName = "suppressStripShine")]

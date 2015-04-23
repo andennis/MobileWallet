@@ -34,23 +34,6 @@ namespace Pass.Manager.Web.Controllers
         }
 
         [AjaxOnly]
-        public ActionResult Online(int id)
-        {
-            return null;
-        }
-
-        [AjaxOnly]
-        public ActionResult Offline(int id)
-        {
-            return null;
-        }
-
-        public ActionResult Download(int id)
-        {
-            return null;
-        }
-
-        [AjaxOnly]
         public ActionResult TabFields(int id)
         {
             return PartialView("Tabs/_Fields", id);

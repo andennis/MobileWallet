@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Web;
 using Common.BL;
 using FileStorage.Core;
@@ -70,11 +71,25 @@ namespace Pass.Manager.BL.Services
                 _fileStorageService.DeleteStorageItem(pi.FileStorage2xId.Value);
         }
 
-        private static bool IsImageEmpty(FileContentInfo imageInfo)
+        public PassImage GetDetails(int entityId)
         {
-            return (imageInfo != null && imageInfo.ContentStream != null && imageInfo.ContentStream.Length > 0);
-        }
+            PassImage pi = _repository.Query()
+                .Filter(x => x.PassImageId == entityId)
+                .Include(x => x.PassContentTemplate)
+                .Get()
+                .FirstOrDefault();
 
+            if (pi == null)
+                return null;
+
+            if (pi.FileStorageId.HasValue)
+                pi.ImageFile = GetImage(pi.FileStorageId.Value);
+
+            if (pi.FileStorage2xId.HasValue)
+                pi.ImageFile2x = GetImage(pi.FileStorage2xId.Value);
+
+            return pi;
+        }
         public FileContentInfo GetImage(int imageId)
         {
             StorageFileInfo sfi = _fileStorageService.GetFile(imageId, true);
@@ -95,6 +110,11 @@ namespace Pass.Manager.BL.Services
                 throw new ArgumentNullException("searchFilter");
 
             return Search(searchContext, x => x.PassContentTemplateId == searchFilter.PassContentTemplateId);
+        }
+
+        private static bool IsImageEmpty(FileContentInfo imageInfo)
+        {
+            return (imageInfo != null && imageInfo.ContentStream != null && imageInfo.ContentStream.Length > 0);
         }
 
     }

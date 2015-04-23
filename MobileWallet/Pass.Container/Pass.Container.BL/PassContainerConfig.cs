@@ -3,7 +3,7 @@ using Pass.Container.Core;
 
 namespace Pass.Container.BL
 {
-    public sealed class PassContainerConfig : AppConfigBase, IPassContainerConfig
+    public sealed class PassContainerConfig : AppDbConfig, IPassContainerConfig
     {
         public PassContainerConfig()
             : base("PassContainer")
@@ -14,13 +14,6 @@ namespace Pass.Container.BL
         public string PassTemplateWorkingFolder
         {
             get { return GetValue("PassTemplateWorkingFolder"); }
-        }
-        #endregion
-
-        #region IDbConfig
-        public string ConnectionString
-        {
-            get { return GetValue("ConnectionStringName"); }
         }
         #endregion
 

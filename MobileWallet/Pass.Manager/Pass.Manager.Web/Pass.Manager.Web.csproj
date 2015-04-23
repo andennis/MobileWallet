@@ -170,6 +170,7 @@
     <Compile Include="Controllers\PassSiteCertificateController.cs" />
     <Compile Include="Controllers\PassSiteController.cs" />
     <Compile Include="Controllers\PassSiteUserController.cs" />
+    <Compile Include="Controllers\PassTemplateOnlineController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1144,6 +1145,26 @@
     <ProjectReference Include="..\..\FileStorage\FileStorage.Repository.EF\FileStorage.Repository.EF.csproj">
       <Project>{2378c604-fff4-44f9-9934-bb17013c27fb}</Project>
       <Name>FileStorage.Repository.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pass.Container\Pass.Container.BL\Pass.Container.BL.csproj">
+      <Project>{c26e7afb-a944-48e6-9688-44b791bd697e}</Project>
+      <Name>Pass.Container.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pass.Container\Pass.Container.Core\Pass.Container.Core.csproj">
+      <Project>{062e8da0-3ef1-4481-8fcf-cfeb54a39771}</Project>
+      <Name>Pass.Container.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pass.Container\Pass.Container.Repository.Core\Pass.Container.Repository.Core.csproj">
+      <Project>{9e9bcf53-d0d8-40e5-a3b1-35d9564d8ccd}</Project>
+      <Name>Pass.Container.Repository.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pass.Container\Pass.Container.Repository.EF\Pass.Container.Repository.EF.csproj">
+      <Project>{3ffd32fb-90aa-4bbc-ba28-8431915b78b1}</Project>
+      <Name>Pass.Container.Repository.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pass.Manager.Resources\Pass.Manager.Resources.csproj">
+      <Project>{32be1934-e3f4-499f-8083-9528f372a1c1}</Project>
+      <Name>Pass.Manager.Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pass.Manager.BL\Pass.Manager.BL.csproj">
       <Project>{24182974-603e-417f-8ba6-034038ec1b89}</Project>

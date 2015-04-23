@@ -48,6 +48,7 @@
     <Compile Include="DateTimeExtensions.cs" />
     <Compile Include="DictionaryExtensions.cs" />
     <Compile Include="ExpressionExtensions.cs" />
+    <Compile Include="FileExtensions.cs" />
     <Compile Include="JsonExtensions.cs" />
     <Compile Include="JsonNetConverters\DateTimeToJavaScriptDateConverter.cs" />
     <Compile Include="JsonNetConverters\DictionaryToObjectJsonConverter.cs" />

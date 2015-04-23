@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Web.Mvc;
 using AutoMapper;
 using Common.BL;
@@ -20,8 +19,7 @@ namespace Pass.Manager.Web.Controllers
         public override ActionResult Create()
         {
             SetFormAttributes(new {enctype = "multipart/form-data"});
-            //TODO temp solution to specify ExpDate
-            return View(new PassCertificateAppleViewModel() { ExpDate = DateTime.Today });
+            return base.Create();
         }
 
         public override ActionResult Edit(int id)
@@ -43,7 +41,7 @@ namespace Pass.Manager.Web.Controllers
                     return RedirectTo(model);
                 }
 
-                ModelState.AddModelError(string.Empty, "Certificate file should be specified");
+                ModelState.AddModelError(string.Empty, Resources.Resources.CertificateFileNotSpecified);
             }
 
             return View(model);

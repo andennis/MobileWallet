@@ -42,7 +42,7 @@ namespace Common.Web
             if (linkId != string.Empty)
                 tb.Attributes.Add("id", linkId);
             tb.Attributes.Add("href", "javascript:void(0)");
-            tb.Attributes.Add("data-action", url);
+            tb.Attributes.Add("data-grid-action", url);
             if (string.IsNullOrEmpty(confirmMessage))
                 confirmMessage = string.Format("Are you sure you want to {0}?", linkText.ToLower());
             tb.Attributes.Add("confirmMessage", confirmMessage);

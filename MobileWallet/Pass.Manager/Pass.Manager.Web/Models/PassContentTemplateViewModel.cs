@@ -44,6 +44,7 @@ namespace Pass.Manager.Web.Models
         public bool SuppressStripShine { get; set; }
 
         public int PassProjectId { get; set; }
+        public int? PassContainerTemplateId { get; set; }
 
     }
 }

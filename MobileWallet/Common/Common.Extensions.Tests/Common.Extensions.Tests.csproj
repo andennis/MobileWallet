@@ -52,6 +52,7 @@
     <Compile Include="DateTimeExtensionsTests.cs" />
     <Compile Include="DictionaryExtensionsTests.cs" />
     <Compile Include="ExpressionExtensionsTests.cs" />
+    <Compile Include="FileExtensionsTests.cs" />
     <Compile Include="JsonExtensionsTests.cs" />
     <Compile Include="JsonNetConverterTests.cs" />
     <Compile Include="ObjectExtensionsTests.cs" />

@@ -1,5 +1,4 @@
-﻿@using Common.Web.Tab
-@model PassContentTemplateViewModel
+﻿@model PassContentTemplateViewModel
        
 @Html.HiddenForExt(m => m.PassContentTemplateId)
 @Html.HiddenForExt(m => m.PassProjectId)
@@ -7,9 +6,14 @@
 @if (!Model.IsNew)
 {
     <div class="row text-right action-block">
-        @(Html.ActionLinkExt<PassContentTemplateController>(a => a.Online(0), "Online", new { id = Model.PassContentTemplateId }))
-        @(Html.ActionLinkExt<PassContentTemplateController>(a => a.Offline(0), "Offline", new { id = Model.PassContentTemplateId }))
-        @(Html.ActionLinkExt<PassContentTemplateController>(a => a.Download(0), "Download", new { id = Model.PassContentTemplateId }))
+        @if (!Model.PassContainerTemplateId.HasValue)
+        {
+            @(Html.ActionLinkAjaxExt<PassTemplateOnlineController>(a => a.Register(0), Resources.RegisterOnlineLink, Resources.RegisterTemplateOnlineConformation, new { id = Model.PassContentTemplateId }))
+        }
+        else
+        {
+            @(Html.ActionLinkExt<PassTemplateOnlineController>(a => a.Download(0), "Download", new { id = Model.PassContentTemplateId }))
+        }
     </div>
 }
 

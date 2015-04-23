@@ -6,6 +6,8 @@ namespace Pass.Manager.Core.Entities
     public class PassBeacon : EntityVersionable
     {
         public int PassBeaconId { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
         public int? Major { get; set; }
         public int? Minor { get; set; }
         public string ProximityUuid { get; set; }

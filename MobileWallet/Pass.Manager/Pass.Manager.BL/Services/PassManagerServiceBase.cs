@@ -9,21 +9,8 @@ using Pass.Manager.Repository.EF;
 
 namespace Pass.Manager.BL.Services
 {
-    /*
-    public abstract class PassManagerServiceBase<TEntity, TSearchFilter> : PassManagerServiceBase<TEntity, TEntity, TSearchFilter>
-        where TEntity : class, new()
-        where TSearchFilter : SearchFilterBase
-    {
-        protected PassManagerServiceBase(IPassManagerUnitOfWork unitOfWork)
-            : base(unitOfWork)
-        {
-        }
-    }
-    */
-
     public abstract class PassManagerServiceBase<TEntity, TSearchFilter> : BaseService<TEntity, TSearchFilter, IPassManagerUnitOfWork>, IPassManagerServiceBase<TEntity, TSearchFilter> 
         where TEntity : class, new()
-        //where TEntityView : class, new()
         where TSearchFilter : SearchFilterBase
     {
         protected PassManagerServiceBase(IPassManagerUnitOfWork unitOfWork)

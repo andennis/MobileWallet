@@ -9,7 +9,12 @@
 @Html.TextBoxFormForExt(m => m.TeamId)
 @Html.TextBoxFormForExt(m => m.PassTypeId)
 @Html.TextAreaFormForExt(m => m.Description)
-@Html.TextBlockFormForExt(m => m.ExpDate, "Expiration Date")
+
+@if (!Model.IsNew)
+{
+    @Html.TextBlockFormForExt(m => m.ExpDate, "Expiration Date")
+}
+
 @Html.TextBoxFormForExt(m => m.Password)
 @Html.HiddenForExt(m => m.CertificateStorageId)
 

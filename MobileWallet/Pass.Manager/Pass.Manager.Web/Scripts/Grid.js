@@ -2,9 +2,9 @@
     grid.Init = function($grid) {
         $grid.on('draw.dt', function() {
 
-            $("[data-action]", $grid).click(function (e) {
+            $("[data-grid-action]", $grid).click(function (e) {
                 e.preventDefault();
-                var actionUrl = $(this).data("action");
+                var actionUrl = $(this).data("grid-action");
                 if (!actionUrl)
                     return;
 
@@ -15,16 +15,24 @@
                     return;
 
                 var postResult = $.post(actionUrl, function (data) {
+
+                    grid.Reload($grid);
+                    if (data.Message)
+                        alert(data.Message);
+
+                    /*
                     if (data.Success != null) {
-                        if (data.Success) {
+                        if (data.Success) 
                             grid.Reload($grid);
-                        }
                         else
                             alert(data.Message);
-                    } else {
+                    }
+                    else {
                         grid.Reload($grid);
                     }
+                    */
                 });
+
                 postResult.fail(function () {
                     alert("An error occurred");
                 });

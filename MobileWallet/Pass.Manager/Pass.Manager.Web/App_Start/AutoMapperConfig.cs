@@ -74,6 +74,7 @@ namespace Pass.Manager.Web
                    };
         }
 
+        //TODO it should be removed
         private static PassStyle PassProjectTypeToPassStyle(PassProjectType passProjectType)
         {
             switch (passProjectType)

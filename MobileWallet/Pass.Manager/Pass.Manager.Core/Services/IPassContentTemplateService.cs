@@ -5,6 +5,6 @@ namespace Pass.Manager.Core.Services
 {
     public interface IPassContentTemplateService : IPassManagerServiceBase<PassContentTemplate, PassContentTemplateFilter>
     {
-
+        PassContentTemplate GetDetails(int entityId);
     }
 }

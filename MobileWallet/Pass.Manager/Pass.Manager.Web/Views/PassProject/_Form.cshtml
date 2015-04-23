@@ -26,7 +26,7 @@
             .Items(tab => 
                 {
                     tab.Add().Text("Fields").LoadContentFrom(Url.Action<PassProjectController>(a => a.TabFields(0), new { id = Model.PassProjectId })).Selected(true);
-                    tab.Add().Text("Pass Content Templates").LoadContentFrom(Url.Action<PassProjectController>(a => a.TabPassContentTemplates(0), new { id = Model.PassProjectId }));
+                    tab.Add().Text("Pass Templates").LoadContentFrom(Url.Action<PassProjectController>(a => a.TabPassContentTemplates(0), new { id = Model.PassProjectId }));
                     tab.Add().Text("Passes").LoadContentFrom(Url.Action<PassProjectController>(a => a.TabPassContents(0), new { id = Model.PassProjectId }));
                 }
             ))

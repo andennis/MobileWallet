@@ -22,6 +22,7 @@ namespace Common.Extensions
             return sb.ToString();
         }
 
+        //TODO it should be revised. Something was wrong with BlockCopy
         public static byte[] GetBytes(this string str)
         {
             var bytes = new byte[str.Length * sizeof(char)];

@@ -98,9 +98,16 @@ namespace Pass.Container.BL.PassTemplateGenerators
             applePassTemplate.AuthenticationToken = ApplePass.FieldAuthToken;
             
             //Visual Appearance Keys
-            applePassTemplate.BackgroundColor = "rgb(" + passTemplate.BackgroundColor.R + ", " + passTemplate.BackgroundColor.G + ", " + passTemplate.BackgroundColor.B + ")";
-            applePassTemplate.ForegroundColor = "rgb(" + passTemplate.ValueTextColor.R + ", " + passTemplate.ValueTextColor.G + ", " + passTemplate.ValueTextColor.B + ")";
-            applePassTemplate.LabelColor = "rgb(" + passTemplate.LabelTextColor.R + ", " + passTemplate.LabelTextColor.G + ", " + passTemplate.LabelTextColor.B + ")";
+
+            if (passTemplate.BackgroundColor.HasValue)
+                applePassTemplate.BackgroundColor = "rgb(" + passTemplate.BackgroundColor.Value.R + ", " + passTemplate.BackgroundColor.Value.G + ", " + passTemplate.BackgroundColor.Value.B + ")";
+
+            if (passTemplate.ValueTextColor.HasValue)
+                applePassTemplate.ForegroundColor = "rgb(" + passTemplate.ValueTextColor.Value.R + ", " + passTemplate.ValueTextColor.Value.G + ", " + passTemplate.ValueTextColor.Value.B + ")";
+
+            if (passTemplate.LabelTextColor.HasValue)
+                applePassTemplate.LabelColor = "rgb(" + passTemplate.LabelTextColor.Value.R + ", " + passTemplate.LabelTextColor.Value.G + ", " + passTemplate.LabelTextColor.Value.B + ")";
+
             if (!string.IsNullOrEmpty(passTemplate.LogoText))
                 applePassTemplate.LogoText = passTemplate.LogoText;
             if (passTemplate.SuppressStripShine != null)
@@ -134,8 +141,9 @@ namespace Pass.Container.BL.PassTemplateGenerators
             //Expiration Keys
             if (passTemplate.DistributionDetails != null)
             {
-                if (passTemplate.DistributionDetails.ExpirationDate != null)
-                    applePassTemplate.ExpirationDate = DateTime.Parse(passTemplate.DistributionDetails.ExpirationDate).ToString(@"yyyy-MM-ddTHH\:mmzzz");
+                if (passTemplate.DistributionDetails.ExpirationDate.HasValue)
+                    applePassTemplate.ExpirationDate = passTemplate.DistributionDetails.ExpirationDate.Value.ToString(@"yyyy-MM-ddTHH\:mmzzz");
+
                 if (passTemplate.DistributionDetails.AllPassesAsExpired != null)
                     applePassTemplate.Voided = passTemplate.DistributionDetails.AllPassesAsExpired;
             }
@@ -148,12 +156,17 @@ namespace Pass.Container.BL.PassTemplateGenerators
                 foreach (GeneralBeacon beacon in passTemplate.BeaconDetails.Beacons)
                 {
                     var appleBeacon = new Beacon { ProximityUuid = beacon.ProximityUuid };
-                    if (beacon.Major != null)
-                        appleBeacon.Major = beacon.Major;
-                    if (beacon.Minor != null)
-                        appleBeacon.Minor = beacon.Minor;
+                    if (beacon.Major.HasValue)
+                        appleBeacon.Major = Convert.ToInt16(beacon.Major.Value);
+
+                    if (beacon.Minor.HasValue)
+                        appleBeacon.Minor = Convert.ToInt16(beacon.Minor.Value);
+
+                    /*
                     if (beacon.RelevantText != null)
                         appleBeacon.RelevantText = beacon.RelevantText;
+                    */
+
                     beacons.Add(appleBeacon);
                 }
                 applePassTemplate.Beacons = beacons;

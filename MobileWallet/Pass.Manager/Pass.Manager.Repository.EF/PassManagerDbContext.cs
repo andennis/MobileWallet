@@ -104,12 +104,14 @@ namespace Pass.Manager.Repository.EF
             //PassBeacon
             modelBuilder.Entity<PassBeacon>().ToTable("PassBeacon", DbScheme);
             modelBuilder.Entity<PassBeacon>().Property(x => x.Version).IsConcurrencyToken();
+            modelBuilder.Entity<PassBeacon>().Property(x => x.Name).IsRequired().HasMaxLength(FieldLenName);
             modelBuilder.Entity<PassBeacon>().Property(x => x.ProximityUuid).IsRequired().HasMaxLength(128);
             modelBuilder.Entity<PassBeacon>().HasRequired(x => x.PassContentTemplate).WithMany(x => x.Beacons).HasForeignKey(x => x.PassContentTemplateId);
 
             //PassLocation
             modelBuilder.Entity<PassLocation>().ToTable("PassLocation", DbScheme);
             modelBuilder.Entity<PassLocation>().Property(x => x.Version).IsConcurrencyToken();
+            modelBuilder.Entity<PassLocation>().Property(x => x.Name).IsRequired().HasMaxLength(FieldLenName);
             modelBuilder.Entity<PassLocation>().Property(x => x.Latitude).IsRequired();
             modelBuilder.Entity<PassLocation>().Property(x => x.Longitude).IsRequired();
             modelBuilder.Entity<PassLocation>().HasRequired(x => x.PassContentTemplate).WithMany(x => x.Locations).HasForeignKey(x => x.PassContentTemplateId);
