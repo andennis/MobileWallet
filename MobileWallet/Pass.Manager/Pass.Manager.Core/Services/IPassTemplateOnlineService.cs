@@ -1,5 +1,5 @@
 ﻿using Common.Repository;
-using Pass.Manager.Core.Entities;
+using Common.Utils;
 
 namespace Pass.Manager.Core.Services
 {

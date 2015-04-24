@@ -9,6 +9,7 @@ using Common.Extensions;
 using Common.Repository;
 using Common.Utils;
 using FileStorage.Core;
+using FileStorage.Core.Entities;
 
 namespace CertificateStorage.BL
 {
@@ -39,11 +40,14 @@ namespace CertificateStorage.BL
             if (certInfo.CertificateFile == null)
                 throw new CertificateStorageException("Certificate file is not specified");
 
+            if (certInfo.CertificateFile.ContentStream.CanSeek)
+                certInfo.CertificateFile.ContentStream.Seek(0, SeekOrigin.Begin);
+
             var cert = new Certificate() { Name = certInfo.Name };
             string psw = certInfo.Password.ConvertToUnsecureString();
             cert.Password = Crypto.EncryptString(psw, _config.SecurityKey, SecurityVector);
             cert.Status = EntityStatus.Active;
-            cert.FileId = _fileStorageService.Put(certInfo.CertificateFile);
+            cert.FileId = _fileStorageService.Put(certInfo.CertificateFile.ContentStream, certInfo.CertificateFile.FileName);
             _certRepository.Insert(cert);
             _unitOfWork.Save();
 
@@ -82,7 +86,13 @@ namespace CertificateStorage.BL
             string psw = Crypto.DecryptString(cert.Password, _config.SecurityKey, SecurityVector);
             certInfo.Password = psw.ConvertToSecureString();
             string certFilePath = _fileStorageService.GetStorageItemPath(cert.FileId);
-            certInfo.CertificateFile = new FileStream(certFilePath, FileMode.Open, FileAccess.Read);
+            StorageFileInfo fileInfo = _fileStorageService.GetFile(cert.FileId, true);
+            certInfo.CertificateFile = new FileContentInfo()
+                                       {
+                                           FileName = fileInfo.Name,
+                                           ContentStream = fileInfo.FileStream
+                                       };
+                
             return certInfo;
         }
 
@@ -90,6 +100,11 @@ namespace CertificateStorage.BL
         {
             if (certInfo == null)
                 throw new ArgumentNullException("certInfo");
+
+            /*
+            if (certInfo.CertificateFile == null)
+                throw new CertificateStorageException("Certificate file is not specified");
+            */
 
             Certificate cert = _certRepository.Find(certInfo.CertificateId);
             if (cert == null)
@@ -103,7 +118,12 @@ namespace CertificateStorage.BL
 
             int oldFileId = cert.FileId;
             if (certInfo.CertificateFile != null)
-                cert.FileId = _fileStorageService.Put(certInfo.CertificateFile);
+            {
+                if (certInfo.CertificateFile.ContentStream.CanSeek)
+                    certInfo.CertificateFile.ContentStream.Seek(0, SeekOrigin.Begin);
+
+                cert.FileId = _fileStorageService.Put(certInfo.CertificateFile.ContentStream, certInfo.CertificateFile.FileName);
+            }
 
             _certRepository.Update(cert);
             _unitOfWork.Save();
@@ -117,6 +137,7 @@ namespace CertificateStorage.BL
             Certificate cert = _certRepository.Query()
                 .Filter(x => x.CertificateId == certId && x.Status != EntityStatus.Deleted)
                 .Get().FirstOrDefault();
+
             if (cert == null)
                 return;
 

@@ -1,6 +1,6 @@
 ﻿using System;
-using System.IO;
 using System.Security;
+using Common.Utils;
 
 namespace CertificateStorage.Core.Entities
 {
@@ -8,7 +8,7 @@ namespace CertificateStorage.Core.Entities
     {
         public int CertificateId { get; set; }
         public string Name { get; set; }
-        public Stream CertificateFile { get; set; }
+        public FileContentInfo CertificateFile { get; set; }
         public SecureString Password { get; set; }
 
         #region IDisposable

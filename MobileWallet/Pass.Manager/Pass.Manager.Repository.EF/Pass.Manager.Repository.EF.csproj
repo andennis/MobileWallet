@@ -180,6 +180,10 @@
       <Project>{f36371d6-812f-49f5-9e9b-043265660647}</Project>
       <Name>Common.Repository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Common\Common.Utils\Common.Utils.csproj">
+      <Project>{f1cad860-50fc-456c-96cd-1332cc48d03f}</Project>
+      <Name>Common.Utils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Pass.Container\Pass.Container.Repository.Core\Pass.Container.Repository.Core.csproj">
       <Project>{9E9BCF53-D0D8-40E5-A3B1-35D9564D8CCD}</Project>
       <Name>Pass.Container.Repository.Core</Name>

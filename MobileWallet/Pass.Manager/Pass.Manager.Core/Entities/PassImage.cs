@@ -1,5 +1,6 @@
 ﻿using System;
 using Common.Repository;
+using Common.Utils;
 
 namespace Pass.Manager.Core.Entities
 {

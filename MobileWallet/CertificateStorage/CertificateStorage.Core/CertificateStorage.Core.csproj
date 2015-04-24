@@ -49,6 +49,10 @@
       <Project>{f36371d6-812f-49f5-9e9b-043265660647}</Project>
       <Name>Common.Repository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Common\Common.Utils\Common.Utils.csproj">
+      <Project>{f1cad860-50fc-456c-96cd-1332cc48d03f}</Project>
+      <Name>Common.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

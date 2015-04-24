@@ -46,5 +46,7 @@ namespace Pass.Manager.Web.Models
         public int PassProjectId { get; set; }
         public int? PassContainerTemplateId { get; set; }
 
+        public bool IsOnline { get { return PassContainerTemplateId.HasValue; } }
+
     }
 }

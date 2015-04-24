@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Common.Utils;
+using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.Services;
 using Pass.Manager.Web.Common;
 
@@ -32,7 +34,8 @@ namespace Pass.Manager.Web.Controllers
 
         public ActionResult Download(int id)
         {
-            throw new NotImplementedException();
+            FileContentInfo fileInfo = _templateOnlineService.GetTemplateArchive(id);
+            return File(fileInfo.ContentStream, fileInfo.ContentType, fileInfo.FileName);
         }
 
     }

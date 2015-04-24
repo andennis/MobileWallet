@@ -116,6 +116,10 @@
       <Project>{F36371D6-812F-49F5-9E9B-043265660647}</Project>
       <Name>Common.Repository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Common\Common.Utils\Common.Utils.csproj">
+      <Project>{f1cad860-50fc-456c-96cd-1332cc48d03f}</Project>
+      <Name>Common.Utils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pass.Notification.Core\Pass.Notification.Core.csproj">
       <Project>{B080DCAE-231C-4F9E-8A01-B6E0DE3C2FE2}</Project>
       <Name>Pass.Notification.Core</Name>

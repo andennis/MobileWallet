@@ -15,7 +15,7 @@
     @Html.TextBlockFormForExt(m => m.ExpDate, "Expiration Date")
 }
 
-@Html.TextBoxFormForExt(m => m.Password)
+@Html.PasswordFormForExt(m => m.Password)
 @Html.HiddenForExt(m => m.CertificateStorageId)
 
 @if (Model.CertificateFileName != null)

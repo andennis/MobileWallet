@@ -1,5 +1,4 @@
-﻿
-using FluentValidation.Attributes;
+﻿using FluentValidation.Attributes;
 using Pass.Manager.Web.Validators;
 
 namespace Pass.Manager.Web.Models

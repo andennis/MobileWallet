@@ -84,6 +84,10 @@
       <Project>{f36371d6-812f-49f5-9e9b-043265660647}</Project>
       <Name>Common.Repository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Common\Common.Utils\Common.Utils.csproj">
+      <Project>{f1cad860-50fc-456c-96cd-1332cc48d03f}</Project>
+      <Name>Common.Utils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\FileStorage\FileStorage.BL\FileStorage.BL.csproj">
       <Project>{f067da74-e48f-4de7-85d4-1217bb3670e3}</Project>
       <Name>FileStorage.BL</Name>
@@ -140,7 +144,6 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-
   <UsingTask TaskName="TransformXml" AssemblyFile="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v12.0\Web\Microsoft.Web.Publishing.Tasks.dll" />
   <Target Name="AfterCompile" Condition="exists('App.My.config')">
     <!-- Generate transformed app config in the intermediate directory -->

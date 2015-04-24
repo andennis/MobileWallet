@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using FluentValidation;
+﻿using FluentValidation;
 using Pass.Manager.Web.Models;
 
 namespace Pass.Manager.Web.Validators
@@ -11,8 +7,10 @@ namespace Pass.Manager.Web.Validators
     {
         public PassCertificateAppleViewModelValidator()
         {
+            RuleFor(x => x.Name).NotEmpty();
             RuleFor(x => x.PassTypeId).NotEmpty();
             RuleFor(x => x.TeamId).NotEmpty();
+            RuleFor(x => x.Password).NotEmpty().When(x => x.CertificateFile != null);
         }
     }
 }

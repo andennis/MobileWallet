@@ -74,7 +74,7 @@ namespace Pass.Notification.BL
             using (CertificateInfo certInfo = _certificateStorageService.Read(certId))
             {
                 var ms = new MemoryStream();
-                certInfo.CertificateFile.CopyTo(ms);
+                certInfo.CertificateFile.ContentStream.CopyTo(ms);
                 return new X509Certificate2(ms.ToArray(), certInfo.Password.ConvertToUnsecureString(),
                     X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.Exportable);
             }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Web;
 using CertificateStorage.Core.Entities;
 using Common.Extensions;
 using Common.Utils;
@@ -42,27 +43,25 @@ namespace Pass.Manager.BL.Services
         #region Operate single pass content templates
         public void Register(int passContentTempleteId)
         {
-            PassContentTemplate contentTemplate = _contentTemplateService.GetDetails(passContentTempleteId);
-            if (contentTemplate.PassContainerTemplateId.HasValue)
+            PassContentTemplate pct = _contentTemplateService.GetDetails(passContentTempleteId);
+            if (pct.PassContainerTemplateId.HasValue)
                 throw new PassManagerGeneralException(string.Format("PassContentTempleteId: {0} has already been registered", passContentTempleteId));
 
-            GeneralPassTemplate onlineTemplete = MapToContainerTemplete(contentTemplate);
+            GeneralPassTemplate onlineTemplete = MapToContainerTemplete(pct);
 
-            string tempFolder = Path.Combine(_pmConfig.WorkingFolder, FileHelper.GetRandomFolderName());
-            Directory.CreateDirectory(tempFolder);
-
+            string tempFolder = CreateWorkingSubFolder();
             onlineTemplete.SaveToXml(Path.Combine(tempFolder, TemplateFileName));
-            SaveImagesToTemplate(contentTemplate.PassImages, tempFolder);
+            SaveImagesToTemplate(pct.PassImages, tempFolder);
 
-            contentTemplate.PassContentTemplateId = _passTemplateService.CreatePassTemlate(tempFolder);
+            pct.PassContainerTemplateId = _passTemplateService.CreatePassTemlate(tempFolder);
 
             try
             {
-                _contentTemplateService.Update(contentTemplate);
+                _contentTemplateService.Update(pct);
             }
             catch (Exception)
             {
-                _passTemplateService.DeletePassTemplate(contentTemplate.PassContentTemplateId);
+                _passTemplateService.DeletePassTemplate(pct.PassContentTemplateId);
                 throw;
             }
             finally
@@ -131,9 +130,28 @@ namespace Pass.Manager.BL.Services
         }
         #endregion
 
-        public FileContentInfo GetTemplateArchive(int entityId)
+        public FileContentInfo GetTemplateArchive(int passContentTempleteId)
         {
-            throw new NotImplementedException();
+            PassContentTemplate pct = _contentTemplateService.Get(passContentTempleteId);
+            if (!pct.PassContainerTemplateId.HasValue)
+                throw new PassManagerGeneralException(string.Format("PassContentTempleteId: {0} has not been online yet", passContentTempleteId));
+
+            string tempFolder = CreateWorkingSubFolder();
+            string templateFolder = Path.Combine(tempFolder, "TemplateFiles");
+            Directory.CreateDirectory(templateFolder);
+
+            _passTemplateService.CopyPassTemplateFiles(pct.PassContainerTemplateId.Value, templateFolder);
+            string fileName = pct.Name + ".zip";
+            string zipFilePath = Path.Combine(tempFolder, fileName);
+            Compress.CompressDirectory(templateFolder, zipFilePath);
+            Directory.Delete(templateFolder, true);
+            var fs = new FileStream(zipFilePath, FileMode.Open, FileAccess.Read);
+            return new FileContentInfo()
+                   {
+                       ContentStream = fs,
+                       FileName = fileName,
+                       ContentType = MimeMapping.GetMimeMapping(fileName)
+                   };
         }
 
         private GeneralPassTemplate MapToContainerTemplete(PassContentTemplate template)
@@ -262,6 +280,13 @@ namespace Pass.Manager.BL.Services
             }
 
             return PassStyle.Generic;
+        }
+
+        private string CreateWorkingSubFolder()
+        {
+            string tempFolder = Path.Combine(_pmConfig.WorkingFolder, FileHelper.GetRandomFolderName());
+            Directory.CreateDirectory(tempFolder);
+            return tempFolder;
         }
 
     }

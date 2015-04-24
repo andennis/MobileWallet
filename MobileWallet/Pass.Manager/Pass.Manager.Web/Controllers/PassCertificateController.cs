@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using AutoMapper;
 using Common.BL;
+using Common.Utils;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.Services;
 using Pass.Manager.Web.Common;
@@ -35,7 +36,13 @@ namespace Pass.Manager.Web.Controllers
                 if (model.CertificateFile != null && model.CertificateFile.ContentLength > 0)
                 {
                     PassCertificateApple passCert = Mapper.Map<PassCertificateAppleViewModel, PassCertificateApple>(model);
-                    _service.UploadCertificate(passCert, model.Password, model.CertificateFile.InputStream);
+                    var fileInfo = new FileContentInfo()
+                    {
+                        FileName = model.CertificateFile.FileName,
+                        ContentStream = model.CertificateFile.InputStream,
+                        ContentType = model.CertificateFile.ContentType
+                    };
+                    _service.UploadCertificate(passCert, model.Password, fileInfo);
                     passCert.CertificateFileName = model.CertificateFile.FileName;
                     _service.Create(passCert);
                     return RedirectTo(model);
@@ -56,7 +63,13 @@ namespace Pass.Manager.Web.Controllers
 
                 if (model.CertificateFile != null && model.CertificateFile.ContentLength > 0)
                 {
-                    _service.UploadCertificate(passCert, model.Password, model.CertificateFile.InputStream);
+                    var fileInfo = new FileContentInfo()
+                                   {
+                                       FileName = model.CertificateFile.FileName, 
+                                       ContentStream = model.CertificateFile.InputStream,
+                                       ContentType = model.CertificateFile.ContentType
+                                   };
+                    _service.UploadCertificate(passCert, model.Password, fileInfo);
                     passCert.CertificateFileName = model.CertificateFile.FileName;
                 }
 

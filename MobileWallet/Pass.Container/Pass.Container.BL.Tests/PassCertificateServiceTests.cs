@@ -4,6 +4,7 @@ using System.Security.Cryptography.X509Certificates;
 using CertificateStorage.Core;
 using CertificateStorage.Core.Entities;
 using Common.Extensions;
+using Common.Utils;
 using NUnit.Framework;
 using Pass.Container.Core;
 using Pass.Container.Factory;
@@ -27,7 +28,7 @@ namespace Pass.Container.BL.Tests
                                    };
                 using (var fs = new FileStream(TestHelper.CertificateFileApple, FileMode.Open, FileAccess.Read))
                 {
-                    certInfo.CertificateFile = fs;
+                    certInfo.CertificateFile = new FileContentInfo() { FileName = TestHelper.CertificateFileApple, ContentStream = fs };
                     certId = certStorageService.Put(certInfo);
                 }
             }
@@ -37,7 +38,7 @@ namespace Pass.Container.BL.Tests
                 X509Certificate2 cert = passCertificateService.GetCertificate(certId);
                 Assert.IsNotNull(cert);
                 Assert.True(cert.HasPrivateKey);
-                Assert.AreEqual("60EDD24B5968C7A7", cert.SerialNumber);
+                Assert.AreEqual("30ECF878F4F4871C", cert.SerialNumber);
             }
         }
     }

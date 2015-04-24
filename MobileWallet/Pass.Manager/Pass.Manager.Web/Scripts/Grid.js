@@ -19,18 +19,6 @@
                     grid.Reload($grid);
                     if (data.Message)
                         alert(data.Message);
-
-                    /*
-                    if (data.Success != null) {
-                        if (data.Success) 
-                            grid.Reload($grid);
-                        else
-                            alert(data.Message);
-                    }
-                    else {
-                        grid.Reload($grid);
-                    }
-                    */
                 });
 
                 postResult.fail(function () {

@@ -62,7 +62,7 @@ namespace FileStorage.BL
                 throw new ArgumentNullException("fileStream");
 
             //Get new file path
-            string srcFileName = fileName ?? ((fileStream is FileStream) ? ((FileStream)fileStream).Name : string.Empty);
+            string srcFileName = Path.GetFileName(fileName) ?? ((fileStream is FileStream) ? ((FileStream)fileStream).Name : string.Empty);
             FolderItem parentFolder;
             string dstFilePath = GetNewStorageItemPath(out parentFolder) + Path.GetExtension(srcFileName);
 

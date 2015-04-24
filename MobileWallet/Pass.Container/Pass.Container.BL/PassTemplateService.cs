@@ -172,6 +172,7 @@ namespace Pass.Container.BL
 
             //Update pass template record
             passTemplate.Name = generalPassTemplate.TemplateName;
+            //TODO old template should be removed or versioned from pass template storage
             passTemplate.PackageId = templateStorageId;
             //passTemplate.PassFields = null;
             //passTemplate.NativeTemplates = null;
@@ -220,12 +221,25 @@ namespace Pass.Container.BL
                 .ToList();
         }
 
+        public void CopyPassTemplateFiles(int passTemplateId, string dstPath)
+        {
+            PassTemplate passTemplate = _repPassTemplate.Find(passTemplateId);
+            if (passTemplate == null)
+                throw new PassTemplateException(string.Format("Template ID:{0} not found", passTemplateId));
+            if (passTemplate.Status == EntityStatus.Deleted)
+                throw new PassTemplateException(string.Format("Pass template ID:{0} has deleted status", passTemplateId));
+
+            _ptsService.GetBaseTemplateFiles(passTemplate.PackageId, dstPath);
+        }
+
+        /*
         private bool ValidatePassTemplate(string passTemplateFilePath)
         {
             //TODO Pass template validation
             //check different key in field
             return true;
         }
+        */
 
         private IEnumerable<GeneralField> GetDynamicFields(GeneralPassTemplate generalPassTemplate)
         {

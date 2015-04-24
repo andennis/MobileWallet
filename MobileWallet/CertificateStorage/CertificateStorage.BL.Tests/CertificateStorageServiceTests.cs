@@ -4,6 +4,7 @@ using CertificateStorage.Core;
 using CertificateStorage.Core.Entities;
 using CertificateStorage.Repository.EF;
 using Common.Extensions;
+using Common.Utils;
 using FileStorage.BL;
 using FileStorage.Repository.EF;
 using NUnit.Framework;
@@ -37,7 +38,7 @@ namespace CertificateStorage.BL.Tests
 
             using (var fs = new FileStream(TestFile1, FileMode.Open, FileAccess.Read))
             {
-                cert.CertificateFile = fs;
+                cert.CertificateFile = new FileContentInfo(){ContentStream = fs, FileName = fs.Name};
                 certId = _certService.Put(cert);
                 Assert.Greater(certId, 0);
             }
@@ -49,8 +50,10 @@ namespace CertificateStorage.BL.Tests
                 Assert.AreEqual(cert.Name, cert2.Name);
                 Assert.AreEqual(psw, cert2.Password.ConvertToUnsecureString());
                 Assert.IsNotNull(cert2.CertificateFile);
+                Assert.IsNotNull(cert2.CertificateFile.ContentStream);
+                Assert.AreEqual(Path.GetFileName(TestFile1), cert2.CertificateFile.FileName);
 
-                var sr = new StreamReader(cert2.CertificateFile);
+                var sr = new StreamReader(cert2.CertificateFile.ContentStream);
                 string fileContent = sr.ReadToEnd();
                 Assert.AreEqual("Hello!!!", fileContent);
             }
@@ -62,8 +65,9 @@ namespace CertificateStorage.BL.Tests
                 Assert.AreEqual(cert.Name, cert3.Name);
                 Assert.AreEqual(psw, cert3.Password.ConvertToUnsecureString());
                 Assert.IsNotNull(cert3.CertificateFile);
+                Assert.IsNotNull(cert3.CertificateFile.ContentStream);
 
-                var sr = new StreamReader(cert3.CertificateFile);
+                var sr = new StreamReader(cert3.CertificateFile.ContentStream);
                 string fileContent = sr.ReadToEnd();
                 Assert.AreEqual("Hello!!!", fileContent);
             }
@@ -95,8 +99,9 @@ namespace CertificateStorage.BL.Tests
                 Assert.AreEqual(cert1.Name, cert2.Name);
                 Assert.AreEqual(psw, cert2.Password.ConvertToUnsecureString());
                 Assert.IsNotNull(cert2.CertificateFile);
+                Assert.IsNotNull(cert2.CertificateFile.ContentStream);
 
-                var sr = new StreamReader(cert2.CertificateFile);
+                var sr = new StreamReader(cert2.CertificateFile.ContentStream);
                 string fileContent = sr.ReadToEnd();
                 Assert.AreEqual("Hello!!!", fileContent);
             }
@@ -104,7 +109,7 @@ namespace CertificateStorage.BL.Tests
             //Update file
             using (var fs = new FileStream(TestFile2, FileMode.Open, FileAccess.Read))
             {
-                cert1.CertificateFile = fs;
+                cert1.CertificateFile = new FileContentInfo(){FileName = fs.Name, ContentStream = fs};
                 Assert.DoesNotThrow(() => _certService.Update(cert1));
             }
             using (CertificateInfo cert2 = _certService.Read(certId))
@@ -113,8 +118,10 @@ namespace CertificateStorage.BL.Tests
                 Assert.AreEqual(cert1.Name, cert2.Name);
                 Assert.AreEqual(psw, cert2.Password.ConvertToUnsecureString());
                 Assert.IsNotNull(cert2.CertificateFile);
+                Assert.IsNotNull(cert2.CertificateFile.ContentStream);
+                Assert.AreEqual(Path.GetFileName(TestFile2), cert2.CertificateFile.FileName);
 
-                var sr = new StreamReader(cert2.CertificateFile);
+                var sr = new StreamReader(cert2.CertificateFile.ContentStream);
                 string fileContent = sr.ReadToEnd();
                 Assert.AreEqual("World!!!", fileContent);
             }
@@ -135,7 +142,7 @@ namespace CertificateStorage.BL.Tests
             var cert = new CertificateInfo() { Name = name, Password = password.ConvertToSecureString() };
             using (var fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
             {
-                cert.CertificateFile = fs;
+                cert.CertificateFile = new FileContentInfo(){FileName = fs.Name, ContentStream = fs};
                 return _certService.Put(cert);
             }
         }

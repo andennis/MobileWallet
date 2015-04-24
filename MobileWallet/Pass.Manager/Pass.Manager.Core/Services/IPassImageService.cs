@@ -1,4 +1,5 @@
-﻿using Pass.Manager.Core.Entities;
+﻿using Common.Utils;
+using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.SearchFilters;
 
 namespace Pass.Manager.Core.Services

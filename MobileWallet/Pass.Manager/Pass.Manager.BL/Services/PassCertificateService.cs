@@ -4,6 +4,7 @@ using CertificateStorage.Core;
 using CertificateStorage.Core.Entities;
 using Common.BL;
 using Common.Extensions;
+using Common.Utils;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.Services;
@@ -20,17 +21,19 @@ namespace Pass.Manager.BL.Services
             _certificateStorageService = certificateStorageService;
         }
 
-        public void UploadCertificate(PassCertificateApple passCert, string certPassword, Stream fileStream)
+        public void UploadCertificate(PassCertificateApple passCert, string certPassword, FileContentInfo fileContent)
         {
             var memStream = new MemoryStream();
-            fileStream.CopyTo(memStream);
+            fileContent.ContentStream.CopyTo(memStream);
+            fileContent = (FileContentInfo)fileContent.Clone();
+            fileContent.ContentStream = memStream;
 
             var certInfo = new CertificateInfo
                            {
                                CertificateId = passCert.CertificateStorageId,
                                Name = string.Format("TID#{0}/PTID#{1}", passCert.TeamId, passCert.PassTypeId),
                                Password = certPassword.ConvertToSecureString(),
-                               CertificateFile = memStream
+                               CertificateFile = fileContent
                            };
 
             if (passCert.CertificateStorageId == 0)
@@ -46,7 +49,7 @@ namespace Pass.Manager.BL.Services
         public Stream DownloadCertificate(int certificateStorageId)
         {
             CertificateInfo certInfo = _certificateStorageService.Read(certificateStorageId);
-            return certInfo.CertificateFile;
+            return certInfo.CertificateFile.ContentStream;
         }
     }
 }

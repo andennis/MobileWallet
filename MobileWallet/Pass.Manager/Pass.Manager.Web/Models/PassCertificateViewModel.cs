@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Web;
-using FluentValidation.Attributes;
 using Pass.Manager.Web.Common;
-using Pass.Manager.Web.Validators;
 
 namespace Pass.Manager.Web.Models
 {
-    [Validator(typeof(PassCertificateViewModelValidator))]
     public abstract class PassCertificateViewModel : BaseViewModel
     {
         public override string DisplayName { get { return "Pass Certificate"; } }

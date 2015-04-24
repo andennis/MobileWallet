@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using AutoMapper;
+using Common.Utils;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Web.Models;
 using Pass.Manager.Web.Models.GeneralPassTemplate;
