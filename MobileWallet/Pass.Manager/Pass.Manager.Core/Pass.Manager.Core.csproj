@@ -48,6 +48,8 @@
     <Compile Include="Entities\PassCertificate.cs" />
     <Compile Include="Entities\PassCertificateApple.cs" />
     <Compile Include="Entities\PassContent.cs" />
+    <Compile Include="Entities\PassContentField.cs" />
+    <Compile Include="Entities\PassContentFieldView.cs" />
     <Compile Include="Entities\PassContentTemplate.cs" />
     <Compile Include="Entities\PassContentTemplateField.cs" />
     <Compile Include="Entities\PassContentFieldKind.cs" />
@@ -69,6 +71,7 @@
     <Compile Include="Exceptions\PassManagerGeneralException.cs" />
     <Compile Include="Repositories\IPassContentTemplateFieldRepository.cs" />
     <Compile Include="SearchFilters\PassBeaconFilter.cs" />
+    <Compile Include="SearchFilters\PassContentFieldFilter.cs" />
     <Compile Include="SearchFilters\PassContentFilter.cs" />
     <Compile Include="SearchFilters\PassContentTemplateFieldFilter.cs" />
     <Compile Include="SearchFilters\PassContentTemplateFilter.cs" />
@@ -78,6 +81,7 @@
     <Compile Include="Services\IPassCertificateService.cs" />
     <Compile Include="IPassManagerConfig.cs" />
     <Compile Include="IPassManagerUnitOfWork.cs" />
+    <Compile Include="Services\IPassContentFieldService.cs" />
     <Compile Include="Services\IPassContentService.cs" />
     <Compile Include="Services\IPassContentTemplateFieldService.cs" />
     <Compile Include="Services\IPassContentTemplateService.cs" />

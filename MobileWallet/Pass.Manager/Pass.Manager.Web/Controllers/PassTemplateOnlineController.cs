@@ -32,6 +32,13 @@ namespace Pass.Manager.Web.Controllers
             throw new NotImplementedException();
         }
 
+        [AjaxOnly]
+        public ActionResult Update(int id)
+        {
+            _templateOnlineService.UpdateOnlineTemplete(id);
+            return JsonEx();
+        }
+
         public ActionResult Download(int id)
         {
             FileContentInfo fileInfo = _templateOnlineService.GetTemplateArchive(id);

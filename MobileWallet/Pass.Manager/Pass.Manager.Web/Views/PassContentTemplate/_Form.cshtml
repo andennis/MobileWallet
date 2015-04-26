@@ -12,6 +12,7 @@
         }
         else
         {
+            @(Html.ActionLinkExt<PassTemplateOnlineController>(a => a.Update(0), "Update", new { id = Model.PassContentTemplateId }))
             @(Html.ActionLinkExt<PassTemplateOnlineController>(a => a.Download(0), "Download", new { id = Model.PassContentTemplateId }))
         }
     </div>
@@ -46,7 +47,7 @@
 {
     <div class="row">
         @(Html.TabStrip()
-              .Name("contentTabs")
+              .Name("templateTabs")
               .Items(tab =>
                      {
                          tab.Add().Text("Fields").LoadContentFrom(Url.Action("TabFields", new {id = Model.PassContentTemplateId})).Selected(true);

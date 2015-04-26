@@ -159,6 +159,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PassBeaconController.cs" />
     <Compile Include="Controllers\PassCertificateController.cs" />
+    <Compile Include="Controllers\PassContentFieldController.cs" />
     <Compile Include="Controllers\PassContentTemplateController.cs" />
     <Compile Include="Controllers\PassContentTemplateFieldController.cs" />
     <Compile Include="Controllers\PassContentController.cs" />
@@ -188,6 +189,7 @@
     <Compile Include="Models\PassBeaconViewModel.cs" />
     <Compile Include="Models\PassCertificateAppleViewModel.cs" />
     <Compile Include="Models\PassCertificateViewModel.cs" />
+    <Compile Include="Models\PassContentFieldViewModel.cs" />
     <Compile Include="Models\PassContentTemplateFieldViewModel.cs" />
     <Compile Include="Models\PassContentTemplateViewModel.cs" />
     <Compile Include="Models\PassContentViewModel.cs" />
@@ -205,6 +207,7 @@
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PassSiteViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\PassContentFieldViewModelValidator.cs" />
     <Compile Include="Validators\PassContentTemplateFieldViewModelValidator.cs" />
     <Compile Include="Validators\PassContentTemplateViewModelValidator.cs" />
     <Compile Include="Validators\PassContentViewModelValidator.cs" />
@@ -971,6 +974,8 @@
     </Content>
     <Content Include="Views\PassProject\Tabs\_PassContents.cshtml" />
     <Content Include="Views\PassContent\_Form.cshtml" />
+    <Content Include="Views\PassContentField\_Form.cshtml" />
+    <Content Include="Views\PassContent\Tabs\_Fields.cshtml" />
     <None Include="Web.Base.config">
       <SubType>Designer</SubType>
     </None>

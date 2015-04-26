@@ -93,6 +93,11 @@ namespace Pass.Distribution.Web.Controllers
             return File(path, "application/vnd.apple.pkpass", Path.GetFileName(path));
         }
 
+        public ActionResult PassTest()
+        {
+            return File(@"d:\Temp\PassBook\pass.pkpass", "application/vnd.apple.pkpass");
+        }
+
         public ActionResult NotSupported()
         {
             NotSupportedModel model = GetNotSupportedModel();

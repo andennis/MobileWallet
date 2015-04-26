@@ -15,7 +15,7 @@ namespace Pass.Manager.BL.Services
         {
         }
 
-        public override SearchResult<PassContentTemplateField> Search(SearchContext searchContext, PassContentTemplateFieldFilter searchFilter = null)
+        public override SearchResult<PassContentTemplateField> Search(SearchContext searchContext, PassContentTemplateFieldFilter searchFilter)
         {
             if (searchFilter == null)
                 throw new ArgumentNullException("searchFilter");

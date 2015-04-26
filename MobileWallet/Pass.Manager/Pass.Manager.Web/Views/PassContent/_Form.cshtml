@@ -4,15 +4,33 @@
 @Html.HiddenForExt(m => m.PassContentTemplateId)
 
 <div class="row">
-    @if (!Model.IsNew)
-    {
-        @Html.TextBlockFormForExt(m => m.PassContentTemplateId, "ID");
-    }
-    @Html.TextBoxFormForExt(m => m.SerialNumber)
+    @Html.DropDownListFormForExt(m => m.PassContentTemplateId, "Pass Template", "- Select Pass Template -")
+</div>
+<div class="row">
+    <fieldset>
+        <legend></legend>
+        @if (!Model.IsNew)
+        {
+            @Html.TextBlockFormForExt(m => m.PassContentTemplateId, "ID");
+            @Html.TextBoxFormForExt(m => m.SerialNumber)
+        }
+        @Html.DatePickerFormForExt(m => m.ExpDate, "Expiration Date")
+        @Html.CheckBoxFormForEx(m => m.IsValid, "Is Valid")
+    </fieldset>
 </div>
 
 @if (!Model.IsNew)
 {
     <div class="row">
+        @(Html.TabStrip()
+              .Name("passTabs")
+              .Items(tab =>
+                     {
+                         tab.Add().Text("Fields").LoadContentFrom(Url.Action("TabFields", new { id = Model.PassContentId })).Selected(true);
+                         //tab.Add().Text("Images").LoadContentFrom(Url.Action("TabImages", new { id = Model.PassContentTemplateId }));
+                         //tab.Add().Text("Beacons").LoadContentFrom(Url.Action("TabBeacons", new { id = Model.PassContentTemplateId }));
+                         //tab.Add().Text("Locations").LoadContentFrom(Url.Action("TabLocations", new { id = Model.PassContentTemplateId }));
+                     }
+              ))
     </div>
 }

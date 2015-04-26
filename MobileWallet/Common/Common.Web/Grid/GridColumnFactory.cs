@@ -33,6 +33,14 @@ namespace Common.Web.Grid
             Columns.Add(builder);
             return builder;
         }
+        public GridBoundColumnBuilder<TModel> BoundEnum<TValue>(Expression<Func<TModel, TValue?>> expression) where TValue : struct
+        {
+            var builder = new GridBoundColumnBuilder<TModel>(_htmlHelper, expression.GetPropertyName(), typeof(TValue));
+            var sbTemplate = GetColEnumClientTemplete<TValue>(builder.ColName);
+            builder.ClientTemplate(string.Format("# {0} #", sbTemplate));
+            Columns.Add(builder);
+            return builder;
+        }
 
         public GridBoundColumnBuilder<TModel> BoundEnumLink<TValue, TId>(Expression<Func<TModel, TValue>> expression, string url, Expression<Func<TModel, TId>> expressionId,
             object htmlAttributes = null, string colTitle = null)

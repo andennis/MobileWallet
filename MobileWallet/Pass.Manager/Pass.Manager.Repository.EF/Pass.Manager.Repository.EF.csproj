@@ -157,6 +157,18 @@
     <Compile Include="Migrations\201504231721113_M26.Designer.cs">
       <DependentUpon>201504231721113_M26.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504262133381_M27.cs" />
+    <Compile Include="Migrations\201504262133381_M27.Designer.cs">
+      <DependentUpon>201504262133381_M27.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504262137493_M28.cs" />
+    <Compile Include="Migrations\201504262137493_M28.Designer.cs">
+      <DependentUpon>201504262137493_M28.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504262151531_M29.cs" />
+    <Compile Include="Migrations\201504262151531_M29.Designer.cs">
+      <DependentUpon>201504262151531_M29.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PassContentTemplateFieldRepository.cs" />
     <Compile Include="PassManagerDbContext.cs" />
@@ -274,6 +286,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504231721113_M26.resx">
       <DependentUpon>201504231721113_M26.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504262133381_M27.resx">
+      <DependentUpon>201504262133381_M27.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504262137493_M28.resx">
+      <DependentUpon>201504262137493_M28.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504262151531_M29.resx">
+      <DependentUpon>201504262151531_M29.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

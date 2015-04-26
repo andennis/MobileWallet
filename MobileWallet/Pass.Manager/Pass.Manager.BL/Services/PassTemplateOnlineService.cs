@@ -104,7 +104,18 @@ namespace Pass.Manager.BL.Services
 
         public void UpdateOnlineTemplete(int passContentTempleteId)
         {
-            throw new NotImplementedException();
+            PassContentTemplate pct = _contentTemplateService.GetDetails(passContentTempleteId);
+            if (!pct.PassContainerTemplateId.HasValue)
+                throw new PassManagerGeneralException(string.Format("PassContentTempleteId: {0} has not been registered yet", passContentTempleteId));
+
+            GeneralPassTemplate onlineTemplete = MapToContainerTemplete(pct);
+
+            string tempFolder = CreateWorkingSubFolder();
+            onlineTemplete.SaveToXml(Path.Combine(tempFolder, TemplateFileName));
+            SaveImagesToTemplate(pct.PassImages, tempFolder);
+
+            _passTemplateService.UpdatePassTemlate(pct.PassContainerTemplateId.Value, tempFolder);
+            Directory.Delete(tempFolder, true);
         }
 
         public void SetOnlineStatus(int passContentTempleteId, Common.Repository.EntityStatus status)

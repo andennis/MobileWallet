@@ -1,0 +1,35 @@
+﻿@model int
+
+@(Html.PopupDialog()
+              .Name("wndPassField")
+              .Width(650)
+              .Title("Pass Field")
+              .Events(e => e.Success("OnEditPassFieldSuccess"))
+)
+
+@(Html.Grid<PassContentFieldViewModel>()
+              .Name("grdPassFields")
+              .CssClass("pm-grid")
+              .Pageable()
+              .DataSource(ds => ds.Read(Url.Action<PassContentFieldController>(a => a.GridSearchView(null,null), new { PassContentId = Model })))
+              .Columns(c =>
+                       {
+                           c.Bound(p => p.PassContentFieldId).Title("ID").Width("100px");
+                           c.BoundEnum(p => p.FieldKind).Title("Field Location");
+                           c.BoundLink(p => p.FieldName, Url.Action<PassContentFieldController>(a => a.Edit(null)), id => id.PassContentFieldId, 
+                               new { data_popup_window = "wndPassField" }, "Name");
+                           c.Bound(p => p.FieldLabel).Title("Label");
+                           c.Bound(p => p.FieldValue).Title("Value");
+                       }))
+
+<script>
+    $(document).ready(function () {
+        window.grid.Init($("#grdPassFields"));
+    });
+
+    function OnEditPassFieldSuccess() {
+        window.grid.Reload($("#grdPassFields"));
+    }
+</script>
+
+

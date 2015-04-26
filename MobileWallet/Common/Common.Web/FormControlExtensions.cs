@@ -134,7 +134,6 @@ namespace Common.Web
         }
         #endregion
 
-
         #region Partial
 
         public static MvcHtmlString PartialEx(this HtmlHelper html, string partialViewName, object model = null, ViewDataDictionary viewData = null)
@@ -279,6 +278,7 @@ namespace Common.Web
         #endregion
 
         #region DatePicker
+        //TODO TProperty should be replaced by DateTime
         public static MvcHtmlString DatePickerForEx<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, DateTime? value = null,
             DateTime? minValue = null, DateTime? maxValue = null, string dateFormat = null, object htmlAttributes = null)
         {

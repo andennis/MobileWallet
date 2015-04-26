@@ -1,4 +1,5 @@
-﻿using Common.Repository;
+﻿using System;
+using Common.Repository;
 using FluentValidation.Attributes;
 using Pass.Manager.Web.Common;
 using Pass.Manager.Web.Validators;
@@ -15,10 +16,12 @@ namespace Pass.Manager.Web.Models
         }
 
         public int PassContentId { get; set; }
+        public string SerialNumber { get; set; }
+        public string AuthToken { get; set; }
+        public DateTime? ExpDate { get; set; }
+        public bool IsValid { get; set; }
         public EntityStatus Status { get; set; }
         public int PassContentTemplateId { get; set; }
-        public string SerialNumber { get; set; }
-        //public string AuthToken { get; set; }
         public int PassProjectId { get; set; }//TODO it should be set manually
     }
 }

@@ -126,9 +126,17 @@ namespace Pass.Manager.Repository.EF
             //PassContent
             modelBuilder.Entity<PassContent>().ToTable("PassContent", DbScheme);
             modelBuilder.Entity<PassContent>().Property(x => x.Version).IsConcurrencyToken();
-            //modelBuilder.Entity<PassContent>().Property(x => x.AuthToken).IsRequired().HasMaxLength(64).IsUnicode(false);
+            modelBuilder.Entity<PassContent>().Property(x => x.AuthToken).IsRequired().HasMaxLength(64).IsUnicode(false);
             modelBuilder.Entity<PassContent>().Property(x => x.SerialNumber).IsRequired().HasMaxLength(64).IsUnicode(false);
             modelBuilder.Entity<PassContent>().HasRequired(x => x.PassContentTemplate).WithMany().HasForeignKey(x => x.PassContentTemplateId).WillCascadeOnDelete(false);
+
+            //PassContentFieldValue
+            modelBuilder.Entity<PassContentField>().ToTable("PassContentField", DbScheme);
+            modelBuilder.Entity<PassContentField>().Property(x => x.Version).IsConcurrencyToken();
+            modelBuilder.Entity<PassContentField>().HasRequired(x => x.PassProjectField).WithMany().HasForeignKey(x => x.PassProjectFieldId).WillCascadeOnDelete(false);
+            modelBuilder.Entity<PassContentField>().Property(x => x.FieldLabel).HasMaxLength(512);
+            modelBuilder.Entity<PassContentField>().Property(x => x.FieldValue).HasMaxLength(512);
+            modelBuilder.Entity<PassContentField>().HasRequired(x => x.PassContent).WithMany(x => x.Fields).HasForeignKey(x => x.PassContentId);
 
             base.OnModelCreating(modelBuilder);
         }

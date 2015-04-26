@@ -1,4 +1,6 @@
-﻿using Common.Repository;
+﻿using System;
+using System.Collections.Generic;
+using Common.Repository;
 
 namespace Pass.Manager.Core.Entities
 {
@@ -6,10 +8,15 @@ namespace Pass.Manager.Core.Entities
     {
         public int PassContentId { get; set; }
         public string SerialNumber { get; set; }
-        //public string AuthToken { get; set; }
+        public string AuthToken { get; set; }
+        public DateTime? ExpDate { get; set; }
+        public bool IsValid { get; set; }
         public EntityStatus Status { get; set; }
+
         public int PassContentTemplateId { get; set; }
         public PassContentTemplate PassContentTemplate { get; set; }
+
+        public ICollection<PassContentField> Fields { get; set; }
         
     }
 }
