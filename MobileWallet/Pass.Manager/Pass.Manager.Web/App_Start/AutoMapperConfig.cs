@@ -60,6 +60,9 @@ namespace Pass.Manager.Web
             Mapper.CreateMap<PassBeaconViewModel, PassBeacon>().ReverseMap();
             Mapper.CreateMap<PassLocationViewModel, PassLocation>().ReverseMap();
 
+            Mapper.CreateMap<PassContent, PassContentViewModel>().ReverseMap();
+            Mapper.CreateMap<PassContentView, PassContentViewModel>();
+
             Mapper.CreateMap<PassContentField, PassContentFieldViewModel>().ReverseMap();
             Mapper.CreateMap<PassContentFieldView, PassContentFieldViewModel>();
         }

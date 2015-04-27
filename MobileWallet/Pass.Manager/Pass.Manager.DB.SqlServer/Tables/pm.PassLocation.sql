@@ -8,9 +8,13 @@
     [Version]               INT            NOT NULL,
     [CreatedDate]           DATETIME       NOT NULL,
     [UpdatedDate]           DATETIME       NOT NULL,
+    [Name]                  NVARCHAR (512) DEFAULT ('') NOT NULL,
+    [Description]           NVARCHAR (MAX) NULL,
     CONSTRAINT [PK_pm.PassLocation] PRIMARY KEY CLUSTERED ([PassLocationId] ASC),
     CONSTRAINT [FK_pm.PassLocation_pm.PassContentTemplate_PassContentTemplateId] FOREIGN KEY ([PassContentTemplateId]) REFERENCES [pm].[PassContentTemplate] ([PassContentTemplateId]) ON DELETE CASCADE
 );
+
+
 
 
 GO

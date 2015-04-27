@@ -33,8 +33,8 @@ namespace Pass.Manager.Web.Models
         public int? MaxDistance { get; set; }
         public DateTime? RelevantDate { get; set; }
 
-        public ICollection<PassBeaconViewModel> Beacons { get; set; }
-        public ICollection<PassLocationViewModel> Locations { get; set; }
+        //public ICollection<PassBeaconViewModel> Beacons { get; set; }
+        //public ICollection<PassLocationViewModel> Locations { get; set; }
 
         public Color? BackgroundColor { get; set; }
         public Color? ForegroundColor { get; set; }

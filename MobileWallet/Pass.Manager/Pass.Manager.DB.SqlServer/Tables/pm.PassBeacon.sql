@@ -6,9 +6,15 @@
     [Version]               INT            NOT NULL,
     [CreatedDate]           DATETIME       NOT NULL,
     [UpdatedDate]           DATETIME       NOT NULL,
+    [Major]                 INT            NULL,
+    [Minor]                 INT            NULL,
+    [Name]                  NVARCHAR (512) DEFAULT ('') NOT NULL,
+    [Description]           NVARCHAR (MAX) NULL,
     CONSTRAINT [PK_pm.PassBeacon] PRIMARY KEY CLUSTERED ([PassBeaconId] ASC),
     CONSTRAINT [FK_pm.PassBeacon_pm.PassContentTemplate_PassContentTemplateId] FOREIGN KEY ([PassContentTemplateId]) REFERENCES [pm].[PassContentTemplate] ([PassContentTemplateId]) ON DELETE CASCADE
 );
+
+
 
 
 GO

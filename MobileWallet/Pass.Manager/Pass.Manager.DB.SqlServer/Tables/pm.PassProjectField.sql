@@ -7,9 +7,12 @@
     [Version]            INT            NOT NULL,
     [CreatedDate]        DATETIME       NOT NULL,
     [UpdatedDate]        DATETIME       NOT NULL,
+    [Description]        NVARCHAR (MAX) NULL,
     CONSTRAINT [PK_pm.PassProjectField] PRIMARY KEY CLUSTERED ([PassProjectFieldId] ASC),
     CONSTRAINT [FK_pm.PassProjectField_pm.PassProject_PassProjectId] FOREIGN KEY ([PassProjectId]) REFERENCES [pm].[PassProject] ([PassProjectId])
 );
+
+
 
 
 GO

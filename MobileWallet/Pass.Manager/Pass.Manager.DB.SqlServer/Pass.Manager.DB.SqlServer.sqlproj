@@ -86,5 +86,9 @@
     <Build Include="Tables\pm.PassBeacon.sql" />
     <Build Include="Tables\pm.PassBarcode.sql" />
     <Build Include="Stored Procedures\pm.PassSiteCertificate_GetUnassignedCertificates.sql" />
+    <Build Include="Views\pm.PassContentView.sql" />
+    <Build Include="Stored Procedures\pm.PassContent_Search.sql" />
+    <Build Include="Tables\pm.PassContentField.sql" />
+    <Build Include="Tables\pm.PassContent.sql" />
   </ItemGroup>
 </Project>

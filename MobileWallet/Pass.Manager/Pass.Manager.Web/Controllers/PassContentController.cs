@@ -1,4 +1,8 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+using Common.BL;
 using Common.Web;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.SearchFilters;
@@ -10,9 +14,23 @@ namespace Pass.Manager.Web.Controllers
 {
     public class PassContentController : BaseEntityController<PassContentViewModel, PassContent, IPassContentService, PassContentFilter>
     {
-        public PassContentController(IPassContentService passService)
+        private readonly IPassContentTemplateService _contentTemplateService;
+
+        public PassContentController(IPassContentService passService, IPassContentTemplateService contentTemplateService)
             : base(passService)
         {
+            _contentTemplateService = contentTemplateService;
+        }
+
+        public ActionResult Passes(int passProjectId)
+        {
+            SearchResult<PassContentTemplate> contentTemplates = _contentTemplateService.Search(new SearchContext(), new PassContentTemplateFilter() {PassProjectId = passProjectId});
+            var model = new PassContentListViewModel()
+            {
+                PassContentTemplateId = contentTemplates.Data.Count() == 1 ? contentTemplates.Data.First().PassContentTemplateId : (int?)null,
+                PassContentTemplates = new SelectListTyped<PassContentTemplate, int, string>(contentTemplates.Data, d => d.PassContentTemplateId, t => t.Name)
+            };
+            return View(model);
         }
 
         [HttpGet]
