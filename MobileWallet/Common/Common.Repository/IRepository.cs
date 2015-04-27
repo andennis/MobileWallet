@@ -15,6 +15,7 @@ namespace Common.Repository
         IQueryable<T> SqlQuery<T>(string query, params object[] parameters);
         T SqlQueryScalar<T>(string query, params object[] parameters);
         void ExecuteCommand(string commandText, params object[] parameters);
+        void ExecuteNonQueryStoredProc(string spName, params object[] parameters);
 
     }
 }

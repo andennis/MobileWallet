@@ -4,7 +4,7 @@
 @Html.HiddenForExt(m => m.PassContentTemplateId)
 
 <div class="row">
-    @Html.DropDownListFormForExt(m => m.PassContentTemplateId, "Pass Template", "- Select Pass Template -")
+    @Html.DropDownListFormForExt(m => m.PassContentTemplateId, Model.PassContentTemplates, "Pass Template", "- Select Pass Template -")
 </div>
 <div class="row">
     <fieldset>
@@ -13,9 +13,15 @@
         {
             @Html.TextBlockFormForExt(m => m.PassContentTemplateId, "ID");
             @Html.TextBoxFormForExt(m => m.SerialNumber)
+            @Html.TextBoxFormForExt(m => m.AuthToken)
         }
+        
         @Html.DatePickerFormForExt(m => m.ExpDate, "Expiration Date")
-        @Html.CheckBoxFormForEx(m => m.IsValid, "Is Valid")
+
+        @if (!Model.IsNew)
+        {
+            @Html.CheckBoxFormForEx(m => m.IsVoided, "Is Valid")
+        }
     </fieldset>
 </div>
 

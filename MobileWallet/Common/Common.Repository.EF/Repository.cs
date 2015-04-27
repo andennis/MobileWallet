@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
@@ -39,6 +40,16 @@ namespace Common.Repository.EF
 
         public void ExecuteCommand(string commandText, params object[] parameters)
         {
+            _dbContext.Database.ExecuteSqlCommand(commandText, parameters);
+        }
+
+        public void ExecuteNonQueryStoredProc(string spName, params object[] parameters)
+        {
+            IEnumerable<IDbDataParameter> dbParams = parameters.OfType<IDbDataParameter>();
+            string commandText = spName + (dbParams.Any()
+                ? " " + string.Join(",", dbParams.Select(x => "@"+x.ParameterName))
+                : string.Empty);
+            
             _dbContext.Database.ExecuteSqlCommand(commandText, parameters);
         }
 

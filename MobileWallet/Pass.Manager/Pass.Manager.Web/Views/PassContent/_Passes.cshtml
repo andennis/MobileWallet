@@ -1,14 +1,20 @@
 ﻿@model PassContentListViewModel
 
-@(Html.ActionLinkExt<PassContentController>(a => a.CreatePass(0), "Add New", null, new { @class = "btn btn-default" }))
+@(Html.ActionLinkExt<PassContentController>(a => a.CreatePass(0), "Add New", new { passProjectId = Model.PassProjectId }, new { @class = "btn btn-default" }))
 @Html.DropDownListForExt(m => m.PassContentTemplateId, Model.PassContentTemplates, "- Select Pass Templete -")
+
+<script>
+    function PassContentFilter() {
+        return { PassContentTemplateId: $("#PassContentTemplateId").val() };
+    }
+</script>
 
 @(Html.Grid<PassContentViewModel>()
     .Name("grdPassContent")
     .CssClass("pm-grid")
     .Pageable()
     .AutoBind(false)
-    .DataSource(ds => ds.Read(Url.Action<PassContentController>(a => a.GridSearch(null,null))).Data("PassContentFilter"))
+    .DataSource(ds => ds.Read(Url.Action<PassContentController>(a => a.GridSearch(null, null))).Data("PassContentFilter"))
     .Columns(c =>
     {
         c.BoundLink(m => m.PassContentId, Url.Action<PassContentController>(a => a.Edit(0)), m => m.PassContentId).Title("ID").Width("100px");
@@ -24,14 +30,11 @@
         window.grid.Init(grid);
         window.grid.Reload(grid);
 
-        $("#PassContentTemplateId").chnage(function () {
+        $("#PassContentTemplateId").change(function () {
             window.grid.Reload($("#grdPassContent"));
         });
     });
 
-    function PassContentFilter() {
-        return { PassContentTemplateId: $("#PassContentTemplateId").val() };
-    }
 </script>
 
 

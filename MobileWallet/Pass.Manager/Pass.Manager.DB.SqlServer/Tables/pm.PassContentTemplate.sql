@@ -15,11 +15,13 @@
     [Name]                    NVARCHAR (512) DEFAULT ('') NOT NULL,
     [TransitType]             INT            NULL,
     [IsDefault]               BIT            DEFAULT ((0)) NOT NULL,
-    [Status]                  INT            DEFAULT ((1)) NOT NULL,
+    [Status]                  INT            DEFAULT ((0)) NOT NULL,
     [PassContainerTemplateId] INT            NULL,
     CONSTRAINT [PK_pm.PassContentTemplate] PRIMARY KEY CLUSTERED ([PassContentTemplateId] ASC),
     CONSTRAINT [FK_pm.PassContentTemplate_pm.PassProject_PassProjectId] FOREIGN KEY ([PassProjectId]) REFERENCES [pm].[PassProject] ([PassProjectId])
 );
+
+
 
 
 

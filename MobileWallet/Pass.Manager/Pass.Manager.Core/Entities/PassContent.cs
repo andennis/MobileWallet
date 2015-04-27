@@ -10,7 +10,7 @@ namespace Pass.Manager.Core.Entities
         public string SerialNumber { get; set; }
         public string AuthToken { get; set; }
         public DateTime? ExpDate { get; set; }
-        public bool IsValid { get; set; }
+        public bool IsVoided { get; set; }
         public EntityStatus Status { get; set; }
 
         public int PassContentTemplateId { get; set; }

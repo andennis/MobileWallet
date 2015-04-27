@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 using Common.BL;
 using Common.Web;
@@ -27,16 +25,22 @@ namespace Pass.Manager.Web.Controllers
             SearchResult<PassContentTemplate> contentTemplates = _contentTemplateService.Search(new SearchContext(), new PassContentTemplateFilter() {PassProjectId = passProjectId});
             var model = new PassContentListViewModel()
             {
-                PassContentTemplateId = contentTemplates.Data.Count() == 1 ? contentTemplates.Data.First().PassContentTemplateId : (int?)null,
+                PassProjectId = passProjectId,
+                PassContentTemplateId = contentTemplates.Data.Any(x => x.IsDefault) ? contentTemplates.Data.First(x => x.IsDefault).PassContentTemplateId : (int?)null,
                 PassContentTemplates = new SelectListTyped<PassContentTemplate, int, string>(contentTemplates.Data, d => d.PassContentTemplateId, t => t.Name)
             };
-            return View(model);
+            return PartialView("_Passes", model);
         }
 
         [HttpGet]
-        public ActionResult CreatePass(int contentTempleteId)
+        public ActionResult CreatePass(int passProjectId)
         {
-            return Create(m => m.PassContentTemplateId = contentTempleteId);
+            SearchResult<PassContentTemplate> contentTemplates = _contentTemplateService.Search(new SearchContext(), new PassContentTemplateFilter() { PassProjectId = passProjectId });
+            return Create(m =>
+                          {
+                              m.PassContentTemplateId = contentTemplates.Data.Any(x => x.IsDefault) ? contentTemplates.Data.First(x => x.IsDefault).PassContentTemplateId : (int?) null;
+                              m.PassContentTemplates = new SelectListTyped<PassContentTemplate, int, string>(contentTemplates.Data, d => d.PassContentTemplateId, t => t.Name);
+                          });
         }
 
         [ActionName("CreatePass")]

@@ -973,10 +973,10 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\PassProject\Tabs\_PassContents.cshtml" />
     <Content Include="Views\PassContent\_Form.cshtml" />
     <Content Include="Views\PassContentField\_Form.cshtml" />
     <Content Include="Views\PassContent\Tabs\_Fields.cshtml" />
+    <Content Include="Views\PassContent\_Passes.cshtml" />
     <None Include="Web.Base.config">
       <SubType>Designer</SubType>
     </None>

@@ -11,6 +11,5 @@ namespace Pass.Manager.BL.Services
             : base(unitOfWork)
         {
         }
-
     }
 }

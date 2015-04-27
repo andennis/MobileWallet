@@ -27,7 +27,7 @@
                 {
                     tab.Add().Text("Fields").LoadContentFrom(Url.Action<PassProjectController>(a => a.TabFields(0), new { id = Model.PassProjectId })).Selected(true);
                     tab.Add().Text("Pass Templates").LoadContentFrom(Url.Action<PassProjectController>(a => a.TabPassContentTemplates(0), new { id = Model.PassProjectId }));
-                    tab.Add().Text("Passes").LoadContentFrom(Url.Action<PassProjectController>(a => a.TabPassContents(0), new { id = Model.PassProjectId }));
+                    tab.Add().Text("Passes").LoadContentFrom(Url.Action<PassContentController>(a => a.Passes(0), new { passProjectId = Model.PassProjectId }));
                 }
             ))
     </div>

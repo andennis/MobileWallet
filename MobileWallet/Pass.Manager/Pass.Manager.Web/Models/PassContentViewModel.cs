@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Web.Mvc;
 using Common.Repository;
 using FluentValidation.Attributes;
 using Pass.Manager.Web.Common;
@@ -19,9 +21,11 @@ namespace Pass.Manager.Web.Models
         public string SerialNumber { get; set; }
         public string AuthToken { get; set; }
         public DateTime? ExpDate { get; set; }
-        public bool IsValid { get; set; }
+        public bool IsVoided { get; set; }
         public EntityStatus Status { get; set; }
-        public int PassContentTemplateId { get; set; }
+        public int? PassContentTemplateId { get; set; }
         public int PassProjectId { get; set; }
+
+        public IEnumerable<SelectListItem> PassContentTemplates { get; set; }
     }
 }

@@ -61,11 +61,13 @@ namespace Pass.Manager.Web.Controllers
             return PartialView("Tabs/_PassContentTemplates", id);
         }
 
+        /*
         [AjaxOnly]
         public ActionResult TabPassContents(int id)
         {
             return PartialView("Tabs/_PassContents", id);
         }
+        */
 
     }
 }
