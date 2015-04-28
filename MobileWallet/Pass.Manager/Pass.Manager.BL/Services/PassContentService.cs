@@ -39,5 +39,6 @@ namespace Pass.Manager.BL.Services
                 .Get()
                 .FirstOrDefault();
         }
+
     }
 }

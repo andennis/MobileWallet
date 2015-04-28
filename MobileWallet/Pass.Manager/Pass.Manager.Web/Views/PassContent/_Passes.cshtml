@@ -14,12 +14,14 @@
     .CssClass("pm-grid")
     .Pageable()
     .AutoBind(false)
-    .DataSource(ds => ds.Read(Url.Action<PassContentController>(a => a.GridSearch(null, null))).Data("PassContentFilter"))
+    .DataSource(ds => ds.Read(Url.Action<PassContentController>(a => a.GridSearchView(null, null))).Data("PassContentFilter"))
     .Columns(c =>
     {
-        c.BoundLink(m => m.PassContentId, Url.Action<PassContentController>(a => a.Edit(0)), m => m.PassContentId).Title("ID").Width("100px");
-        c.Bound(m => m.PassContentTemplateId).Title("Template");
-        c.Bound(m => m.SerialNumber).Title("Serial Number");
+        c.Bound(m => m.PassContentId).Title("ID").Width("100px");
+        c.Bound(m => m.IsOnline).Title("Online");
+        c.BoundLink(m => m.SerialNumber, Url.Action<PassContentController>(a => a.Edit(0)), m => m.PassContentId).Title("Serial Number");
+        c.Bound(m => m.ExpDate).Title("Expiration Date");
+        c.Bound(m => m.IsVoided).Title("Voided");
         c.BoundEnum(m => m.Status);
         c.Bound(p => p.PassContentId).Title("Action").GridAjaxAction("Delete", Url.Action<PassContentController>(a => a.Delete(0)));
     }))

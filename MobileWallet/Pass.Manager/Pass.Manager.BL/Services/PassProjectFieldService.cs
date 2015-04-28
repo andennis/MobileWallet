@@ -14,7 +14,7 @@ namespace Pass.Manager.BL.Services
         {
         }
 
-        public override SearchResult<PassProjectField> Search(SearchContext searchContext, PassProjectFieldFilter searchFilter = null)
+        public override SearchResult<PassProjectField> Search(SearchContext searchContext, PassProjectFieldFilter searchFilter)
         {
             if (searchFilter == null)
                 throw new ArgumentNullException("searchFilter");

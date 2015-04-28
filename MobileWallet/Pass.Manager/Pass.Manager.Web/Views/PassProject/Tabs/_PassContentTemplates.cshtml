@@ -11,10 +11,10 @@
     {
         c.Bound(m => m.PassContentTemplateId).Title("ID").Width("100px");
         c.Bound(m => m.IsDefault).Width("100px").Title("Default");
+        c.Bound(m => m.IsOnline).Title("Online");
         c.BoundLink(m => m.Name, Url.Action("Edit", "PassContentTemplate"), m => m.PassContentTemplateId);
         c.Bound(m => m.Description);
         c.BoundEnum(m => m.Status);
-        c.Bound(m => m.IsOnline).Title("Online");
         c.Bound(p => p.PassContentTemplateId).Title("Action").GridAjaxAction("Delete", Url.Action("Delete", "PassContentTemplate"));
     }))
 

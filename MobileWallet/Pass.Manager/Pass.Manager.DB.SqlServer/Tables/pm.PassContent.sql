@@ -9,9 +9,12 @@
     [ExpDate]               DATETIME     NULL,
     [AuthToken]             VARCHAR (64) DEFAULT ('') NOT NULL,
     [IsVoided]              BIT          DEFAULT ((0)) NOT NULL,
+    [ContainerPassId]       INT          NULL,
     CONSTRAINT [PK_pm.PassContent] PRIMARY KEY CLUSTERED ([PassContentId] ASC),
     CONSTRAINT [FK_pm.PassContent_pm.PassContentTemplate_PassContentTemplateId] FOREIGN KEY ([PassContentTemplateId]) REFERENCES [pm].[PassContentTemplate] ([PassContentTemplateId])
 );
+
+
 
 
 

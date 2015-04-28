@@ -20,7 +20,7 @@ namespace Common.Web.Grid
             ColTitle = colName;
             IsVisible = true;
 
-            if (colType == typeof (DateTime))
+            if (colType == typeof (DateTime) || colType == typeof(DateTime?))
                 ColFormat = "d";
         }
 

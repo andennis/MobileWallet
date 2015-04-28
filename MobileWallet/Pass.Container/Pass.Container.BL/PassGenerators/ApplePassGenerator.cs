@@ -91,17 +91,13 @@ namespace Pass.Container.BL.PassGenerators
             //Replace field labels and values
             foreach (PassFieldInfo pfInfo in fields)
             {
-                if (pfInfo.Label != null)
-                {
-                    string labelFieldName = string.Format(ApplePass.FieldLabelFormat, pfInfo.Name); //@"Label$$" + pfInfo.Name + "$$";
-                    passContent = passContent.ReplaceFirst(labelFieldName, pfInfo.Label);
-                }
+                //Replace label
+                string labelFieldName = string.Format(ApplePass.FieldLabelFormat, pfInfo.Name);
+                passContent = passContent.ReplaceFirst(labelFieldName, pfInfo.Label);
 
-                if (pfInfo.Value != null)
-                {
-                    string valueFieldName = string.Format(ApplePass.FieldValueFormat, pfInfo.Name); //@"Value$$" + pfInfo.Name + "$$";
-                    passContent = passContent.ReplaceFirst(valueFieldName, pfInfo.Value);
-                }
+                //Replace value
+                string valueFieldName = string.Format(ApplePass.FieldValueFormat, pfInfo.Name);
+                passContent = passContent.ReplaceFirst(valueFieldName, pfInfo.Value);
             }
 
             return passContent;

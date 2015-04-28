@@ -110,6 +110,13 @@ namespace Common.Web
             string actionName, string controllerName = null, object routeValues = null, object htmlAttributes = null, AjaxActionOptions ajaxOptions = null)
         {
             var tb = new TagBuilder("a");
+
+            if (htmlAttributes != null)
+            {
+                foreach (var attr in HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes))
+                    tb.Attributes.Add(attr.Key, Convert.ToString(attr.Value));
+            }
+
             tb.Attributes.Add("href", "javascript:void(0)");
 
             var urlHelper = new UrlHelper(html.ViewContext.RequestContext);
@@ -337,7 +344,6 @@ namespace Common.Web
             foreach (var attr in HtmlHelper.AnonymousObjectToHtmlAttributes(src))
             {
                 string newVal = Convert.ToString(attr.Value);
-                string oldVal;
                 if (dst.ContainsKey(attr.Key))
                     dst[attr.Key] = newVal;
                 else

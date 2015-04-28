@@ -171,7 +171,7 @@ namespace Common.Web.Grid
 
         private string GetRenderJsFunc(GridBoundColumnBuilder<T> colBuilder)
         {
-            return (colBuilder.ColType == typeof(DateTime))
+            return (colBuilder.ColType == typeof(DateTime) || colBuilder.ColType == typeof(DateTime?))
                 ? GetRenderJsFuncDateTimeFormat(colBuilder.ColFormat)
                 : GetRenderJsFuncByClientTemplate(colBuilder);
         }
@@ -220,8 +220,11 @@ namespace Common.Web.Grid
                 return null;
 
             return @"function(data, type, row) {
-                        var date = eval(data.replace(/\/Date\((\d+)\)\//gi, ""new Date($1)""));
-                        return kendo.toString(date, """+dateTimeFormat+ @""");
+                        if (data) {
+                            var date = eval(data.replace(/\/Date\((\d+)\)\//gi, ""new Date($1)""));
+                            return kendo.toString(date, """+dateTimeFormat+ @""");
+                        }
+                        return null;
                      }";
             /*
             return @"function(data, type, row) {

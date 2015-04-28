@@ -229,8 +229,8 @@ namespace Pass.Container.BL
             if (passTemplate.Status == EntityStatus.Deleted)
                 throw new PassTemplateException(string.Format("Pass template ID:{0} has deleted status", passTemplateId));
 
-            _ptsService.GetBaseTemplateFiles(passTemplate.PackageId, dstPath);
-            _ptsService.GetNativeTemplateFiles(passTemplate.PackageId, ClientType.Apple, dstPath);
+            _ptsService.GetBaseTemplateFiles(passTemplate.PackageId, Path.Combine(dstPath, "BaseTemplate"));
+            _ptsService.GetNativeTemplateFiles(passTemplate.PackageId, ClientType.Apple, Path.Combine(dstPath, "Apple"));
             //_ptsService.GetNativeTemplateFiles(passTemplate.PackageId, ClientType.Browser, dstPath);
         }
 

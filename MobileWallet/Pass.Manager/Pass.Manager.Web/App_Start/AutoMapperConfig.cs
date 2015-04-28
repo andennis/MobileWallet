@@ -67,7 +67,6 @@ namespace Pass.Manager.Web
                 .ForMember(dst => dst.PassProjectId, x => x.MapFrom(src => src.PassContentTemplate.PassProjectId))
                 .ForMember(dst => dst.PassContentTemplateName, x => x.MapFrom(src => src.PassContentTemplate.Name));
             Mapper.CreateMap<PassContentViewModel, PassContent>()
-                .ForMember(dst => dst.PassContentTemplateId, x => x.Ignore())
                 .ForMember(dst => dst.ContainerPassId, x => x.Ignore());
 
             Mapper.CreateMap<PassContentFieldView, PassContentFieldViewModel>();

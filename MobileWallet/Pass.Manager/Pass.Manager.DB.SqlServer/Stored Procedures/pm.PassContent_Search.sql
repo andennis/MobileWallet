@@ -6,11 +6,11 @@
     @TotalRecords INT OUTPUT,
     @SearchText NVARCHAR(MAX),
 
-    @PassProjectId INT
+    @PassContentTemplateId INT
 AS
 BEGIN
     SELECT * FROM pm.PassContentView
-    WHERE PassProjectId = @PassProjectId
+    WHERE PassContentTemplateId = @PassContentTemplateId
 
     SET @TotalRecords = @@ROWCOUNT
 END
