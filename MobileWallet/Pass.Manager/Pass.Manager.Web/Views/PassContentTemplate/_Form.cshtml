@@ -8,12 +8,13 @@
     <div class="row text-right action-block">
         @if (!Model.PassContainerTemplateId.HasValue)
         {
-            @(Html.ActionLinkAjaxExt<PassTemplateOnlineController>(a => a.Register(0), Resources.RegisterOnlineLink, Resources.RegisterTemplateOnlineConformation, new { id = Model.PassContentTemplateId }))
+            @(Html.ActionLinkAjaxExt<PassTemplateOnlineController>(a => a.Register(0), Resources.RegisterOnlineLink, Resources.RegisterTemplateOnlineConformation,
+                        new { id = Model.PassContentTemplateId }, new {id = "lnkRegister"}, new AjaxActionOptions() { OnSuccess = "OnRegisterSuccess" }))
         }
         else
         {
-            @(Html.ActionLinkExt<PassTemplateOnlineController>(a => a.Update(0), "Update", new { id = Model.PassContentTemplateId }))
-            @(Html.ActionLinkExt<PassTemplateOnlineController>(a => a.Download(0), "Download", new { id = Model.PassContentTemplateId }))
+            @(Html.ActionLinkExt<PassTemplateOnlineController>(a => a.Update(0), "Update", new { id = Model.PassContentTemplateId }, new { id = "lnkUpdate" }))<br/>
+            @(Html.ActionLinkExt<PassTemplateOnlineController>(a => a.Download(0), "Download", new { id = Model.PassContentTemplateId }, new { id = "lnkDownload" }))
         }
     </div>
 }
@@ -58,3 +59,11 @@
               ))
     </div>
 }
+
+<script>
+    function OnRegisterSuccess(data) {
+        $("#lnkRegister").hide();
+        $("#lnkUpdate").show();
+        $("#lnkDownload").show();
+    }
+</script>

@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Common.Utils;
-using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.Services;
 using Pass.Manager.Web.Common;
 
@@ -23,7 +19,7 @@ namespace Pass.Manager.Web.Controllers
         public ActionResult Register(int id)
         {
             _templateOnlineService.Register(id);
-            return JsonEx();
+            return JsonEx(true, Resources.Resources.RegisterTemplateOnlineSuccess);
         }
 
         [AjaxOnly]

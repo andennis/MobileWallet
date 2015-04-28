@@ -1,4 +1,4 @@
-﻿ALTER PROCEDURE [pm].[PassContent_Insert]
+﻿CREATE PROCEDURE [pm].[PassContent_Insert]
 	@PassContentId INT OUTPUT,
 	@SerialNumber VARCHAR(64),
 	@AuthToken VARCHAR(64),

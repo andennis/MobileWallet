@@ -45,7 +45,7 @@ namespace Pass.Manager.Repository.EF
             else
                 sqlPrms = new List<object>() { prm };
 
-            string paramNames = string.Join(",", sqlPrms.Cast<SqlParameter>().Select(x => string.Format("@{0}=@{0}" + (x.Direction == ParameterDirection.Output ? " OUTPUT" : string.Empty), x.ParameterName)));
+            string paramNames = GetStoredProcParamsAsString(sqlPrms);
             string query = string.Format("{0}.{1}_Search {2}", DbScheme, typeof (TEntity).Name, paramNames);
             IEnumerable<TEntityView> result = SqlQuery<TEntityView>(query, sqlPrms.ToArray()).ToList();
             totalRecords = Convert.ToInt32(prm.Value);

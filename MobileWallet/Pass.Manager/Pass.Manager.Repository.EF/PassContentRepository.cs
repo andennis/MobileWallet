@@ -16,7 +16,7 @@ namespace Pass.Manager.Repository.EF
         {
             //TODO the SP should be run in transaction
             ExecuteNonQueryStoredProc(DbScheme + ".PassContent_Insert",
-                new SqlParameter("PassContentId", entity.PassContentId) {Direction = ParameterDirection.Output},
+                new SqlParameter("PassContentId", SqlDbType.Int) {Direction = ParameterDirection.Output},
                 new SqlParameter("SerialNumber", entity.SerialNumber),
                 new SqlParameter("AuthToken", entity.AuthToken),
                 new SqlParameter("ExpDate", entity.ExpDate),

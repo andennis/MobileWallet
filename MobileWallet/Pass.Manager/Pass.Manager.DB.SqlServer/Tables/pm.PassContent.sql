@@ -7,11 +7,13 @@
     [CreatedDate]           DATETIME     NOT NULL,
     [UpdatedDate]           DATETIME     NOT NULL,
     [ExpDate]               DATETIME     NULL,
-    [IsValid]               BIT          DEFAULT ((1)) NOT NULL,
     [AuthToken]             VARCHAR (64) DEFAULT ('') NOT NULL,
+    [IsVoided]              BIT          DEFAULT ((0)) NOT NULL,
     CONSTRAINT [PK_pm.PassContent] PRIMARY KEY CLUSTERED ([PassContentId] ASC),
     CONSTRAINT [FK_pm.PassContent_pm.PassContentTemplate_PassContentTemplateId] FOREIGN KEY ([PassContentTemplateId]) REFERENCES [pm].[PassContentTemplate] ([PassContentTemplateId])
 );
+
+
 
 
 GO

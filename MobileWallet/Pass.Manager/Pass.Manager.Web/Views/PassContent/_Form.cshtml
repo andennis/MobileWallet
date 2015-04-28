@@ -4,7 +4,14 @@
 @Html.HiddenForExt(m => m.PassContentTemplateId)
 
 <div class="row">
-    @Html.DropDownListFormForExt(m => m.PassContentTemplateId, Model.PassContentTemplates, "Pass Template", "- Select Pass Template -")
+    @if (Model.IsNew)
+    {
+        @Html.DropDownListFormForExt(m => m.PassContentTemplateId, Model.PassContentTemplates, "Pass Template", "- Select Pass Template -")
+    }
+    else
+    {
+        @*@Html.TextBlockFormForExt()*@
+    }
 </div>
 <div class="row">
     <fieldset>

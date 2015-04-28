@@ -27,30 +27,46 @@ namespace Common.Repository.EF
 
         public virtual IQueryable<TEntity> SqlQuery(string query, params object[] parameters)
         {
+            UpdateNulltoDBNull(parameters);
             return _dbSet.SqlQuery(query, parameters).AsQueryable();
         }
         public virtual IQueryable<T> SqlQuery<T>(string query, params object[] parameters)
         {
+            UpdateNulltoDBNull(parameters);
             return _dbContext.Database.SqlQuery<T>(query, parameters).AsQueryable();
         }
         public virtual T SqlQueryScalar<T>(string query, params object[] parameters)
         {
+            UpdateNulltoDBNull(parameters);
              return _dbContext.Database.SqlQuery<T>(query, parameters).FirstOrDefault();
         }
 
         public void ExecuteCommand(string commandText, params object[] parameters)
         {
+            UpdateNulltoDBNull(parameters);
             _dbContext.Database.ExecuteSqlCommand(commandText, parameters);
         }
 
         public void ExecuteNonQueryStoredProc(string spName, params object[] parameters)
         {
-            IEnumerable<IDbDataParameter> dbParams = parameters.OfType<IDbDataParameter>();
-            string commandText = spName + (dbParams.Any()
-                ? " " + string.Join(",", dbParams.Select(x => "@"+x.ParameterName))
-                : string.Empty);
-            
-            _dbContext.Database.ExecuteSqlCommand(commandText, parameters);
+            string commandText = spName + " " + GetStoredProcParamsAsString(parameters);
+            ExecuteCommand(commandText.TrimEnd(), parameters);
+        }
+
+        private void UpdateNulltoDBNull(IEnumerable<object> parameters)
+        {
+            foreach (IDbDataParameter prm in parameters.Cast<IDbDataParameter>())
+            {
+                if (prm.Value == null)
+                    prm.Value = DBNull.Value;
+            }
+        }
+        protected string GetStoredProcParamsAsString(IEnumerable<object> parameters)
+        {
+            if (parameters == null)
+                return string.Empty;
+
+            return string.Join(",", parameters.Cast<IDbDataParameter>().Select(x => string.Format("@{0}=@{0}" + (x.Direction == ParameterDirection.Output ? " OUTPUT" : string.Empty), x.ParameterName)));
         }
 
         public virtual void Insert(TEntity entity)
