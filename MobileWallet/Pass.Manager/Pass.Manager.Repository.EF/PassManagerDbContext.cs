@@ -19,6 +19,8 @@ namespace Pass.Manager.Repository.EF
 
         public override string DbScheme { get { return "pm"; } }
 
+
+        //TODO it might be rempved
         public DbSet<PassSite> PassSites { get; set; }
         public DbSet<PassProject> PassProjects { get; set; }
         public DbSet<User> Users { get; set; }
@@ -26,6 +28,7 @@ namespace Pass.Manager.Repository.EF
         public DbSet<PassCertificate> PassCertificates { get; set; }
         public DbSet<PassSiteCertificate> PassSiteCertificates { get; set; }
         public DbSet<PassProjectField> PassFields { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

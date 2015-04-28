@@ -12,8 +12,10 @@ namespace Pass.Manager.Web
         public static void Configure()
         {
             Mapper.CreateMap<PassSite, PassSiteViewModel>().ReverseMap();
+
             Mapper.CreateMap<User, UserViewModel>().ReverseMap();
             Mapper.CreateMap<User, UserPasswordViewModel>();
+
             Mapper.CreateMap<PassProject, PassProjectViewModel>().ReverseMap();
             Mapper.CreateMap<PassCertificateApple, PassCertificateAppleViewModel>().ReverseMap();
 
@@ -60,11 +62,20 @@ namespace Pass.Manager.Web
             Mapper.CreateMap<PassBeaconViewModel, PassBeacon>().ReverseMap();
             Mapper.CreateMap<PassLocationViewModel, PassLocation>().ReverseMap();
 
-            Mapper.CreateMap<PassContent, PassContentViewModel>().ReverseMap();
             Mapper.CreateMap<PassContentView, PassContentViewModel>();
+            Mapper.CreateMap<PassContent, PassContentViewModel>()
+                .ForMember(dst => dst.PassProjectId, x => x.MapFrom(src => src.PassContentTemplate.PassProjectId))
+                .ForMember(dst => dst.PassContentTemplateName, x => x.MapFrom(src => src.PassContentTemplate.Name));
+            Mapper.CreateMap<PassContentViewModel, PassContent>()
+                .ForMember(dst => dst.PassContentTemplateId, x => x.Ignore())
+                .ForMember(dst => dst.ContainerPassId, x => x.Ignore());
 
-            Mapper.CreateMap<PassContentField, PassContentFieldViewModel>().ReverseMap();
             Mapper.CreateMap<PassContentFieldView, PassContentFieldViewModel>();
+            //Mapper.CreateMap<PassContentField, PassContentFieldViewModel>();
+            Mapper.CreateMap<PassContentFieldViewModel, PassContentField>()
+                .ForMember(dst => dst.PassProjectFieldId, x => x.Ignore())
+                .ForMember(dst => dst.PassContentId, x => x.Ignore())
+                .ForMember(dst => dst.PassContentFieldId, x => x.Ignore());
         }
 
 

@@ -123,6 +123,12 @@
   <data name="RegisterOnlineLink" xml:space="preserve">
     <value>Register Online</value>
   </data>
+  <data name="RegisterPassOnlineConformation" xml:space="preserve">
+    <value>Are you sure you want to register this pass online?</value>
+  </data>
+  <data name="RegisterPassOnlineSuccess" xml:space="preserve">
+    <value>The pass has been registered successully</value>
+  </data>
   <data name="RegisterTemplateOnlineConformation" xml:space="preserve">
     <value>Are you sure you want to register this template online?</value>
   </data>

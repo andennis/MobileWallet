@@ -89,11 +89,16 @@ namespace Pass.Manager.Web.Common
         [HttpGet]
         public virtual ActionResult Edit(int id)
         {
-            TEntity entity = _service.Get(id);
-            TEntityViewModel model = Mapper.Map<TEntity, TEntityViewModel>(entity);
+            TEntityViewModel model = GetViewModel(id);
             SetDefaultReturnUrl(model);
             PrepareModelToEditView(model);
             return EditView(model);
+        }
+
+        protected virtual TEntityViewModel GetViewModel(int entityId)
+        {
+            TEntity entity = _service.Get(entityId);
+            return Mapper.Map<TEntity, TEntityViewModel>(entity);
         }
 
         [HttpPost]

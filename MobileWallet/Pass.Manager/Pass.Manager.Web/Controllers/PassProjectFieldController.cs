@@ -16,20 +16,8 @@ namespace Pass.Manager.Web.Controllers
 
         public ActionResult CreateField(int passProjectId)
         {
-            //ViewBag.PassProjectId = passProjectId;
-            //return Create();
-
             return Create(m => m.PassProjectId = passProjectId);
         }
-
-        /*
-        protected override void PrepareModelToCreateView(PassProjectFieldViewModel model)
-        {
-            base.PrepareModelToCreateView(model);
-            if (ViewBag.PassProjectId != null)
-                model.PassProjectId = ViewBag.PassProjectId;
-        }
-        */
 
         [ActionName("CreateField")]
         public override ActionResult Create(PassProjectFieldViewModel model)

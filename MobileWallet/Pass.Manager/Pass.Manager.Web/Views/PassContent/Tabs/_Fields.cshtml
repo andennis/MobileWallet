@@ -1,10 +1,10 @@
 ﻿@model int
 
 @(Html.PopupDialog()
-              .Name("wndPassField")
-              .Width(650)
-              .Title("Pass Field")
-              .Events(e => e.Success("OnEditPassFieldSuccess"))
+    .Name("wndPassField")
+    .Width(650)
+    .Title("Pass Field")
+    .Events(e => e.Success("OnEditPassFieldSuccess"))
 )
 
 @(Html.Grid<PassContentFieldViewModel>()
@@ -15,7 +15,7 @@
               .Columns(c =>
                        {
                            c.Bound(p => p.PassContentFieldId).Title("ID").Width("100px");
-                           c.BoundEnum(p => p.FieldKind).Title("Field Location");
+                           c.BoundEnum(p => p.FieldKind).Title("Location");
                            c.BoundLink(p => p.FieldName, Url.Action<PassContentFieldController>(a => a.Edit(null)), id => id.PassContentFieldId, 
                                new { data_popup_window = "wndPassField" }, "Name");
                            c.Bound(p => p.FieldLabel).Title("Label");

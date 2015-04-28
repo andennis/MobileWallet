@@ -52,6 +52,7 @@
     <Compile Include="Services\PassImageService.cs" />
     <Compile Include="Services\PassLocationService.cs" />
     <Compile Include="Services\PassManagerServiceBase.cs" />
+    <Compile Include="Services\PassOnlineService.cs" />
     <Compile Include="Services\PassProjectService.cs" />
     <Compile Include="Services\PassSiteCertificateService.cs" />
     <Compile Include="Services\PassSiteService.cs" />

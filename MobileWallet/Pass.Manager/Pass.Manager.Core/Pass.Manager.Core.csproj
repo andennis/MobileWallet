@@ -89,6 +89,7 @@
     <Compile Include="Services\IPassImageService.cs" />
     <Compile Include="Services\IPassLocationService.cs" />
     <Compile Include="Services\IPassManagerServiceBase.cs" />
+    <Compile Include="Services\IPassOnlineService.cs" />
     <Compile Include="Services\IPassProjectService.cs" />
     <Compile Include="Services\IPassSiteCertificateService.cs" />
     <Compile Include="Services\IPassSiteService.cs" />

@@ -1,11 +1,10 @@
 ﻿@model PassContentFieldViewModel
 
 @Html.HiddenForExt(m => m.PassContentFieldId)
-@Html.HiddenForExt(m => m.PassContentId)
 
 @if (Model.FieldKind.HasValue)
 {
-    @Html.TextBlockFormForExt(m => m.FieldKind, "Field Kind")
+    @Html.TextBlockFormForExt(m => m.FieldKind, "Location")
 }
 
 @Html.TextBlockFormForExt(m => m.FieldName, "Name")

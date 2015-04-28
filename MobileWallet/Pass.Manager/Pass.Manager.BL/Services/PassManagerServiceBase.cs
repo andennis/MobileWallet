@@ -18,6 +18,11 @@ namespace Pass.Manager.BL.Services
         {
         }
 
+        public virtual TEntityView GetView<TEntityView>(int entityId)
+        {
+            return ((PassManagerDefaultRepository<TEntity>) _repository).GetView<TEntityView>(entityId);
+        }
+
         public virtual SearchResult<TEntityView> SearchView<TEntityView>(SearchContext searchContext, TSearchFilter searchFilter) where TEntityView : class
         {
             IDictionary<string, object> searchParams = searchFilter.ObjectPropertiesToDictionary();

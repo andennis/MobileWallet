@@ -1,24 +1,35 @@
 ﻿@model PassContentViewModel
 
 @Html.HiddenForExt(m => m.PassContentId)
-@Html.HiddenForExt(m => m.PassContentTemplateId)
 
-<div class="row">
-    @if (Model.IsNew)
-    {
-        @Html.DropDownListFormForExt(m => m.PassContentTemplateId, Model.PassContentTemplates, "Pass Template", "- Select Pass Template -")
-    }
-    else
-    {
-        @*@Html.TextBlockFormForExt()*@
-    }
-</div>
+@if (!Model.IsNew)
+{
+    <div class="row text-right action-block">
+        @if (!Model.ContainerPassId.HasValue)
+        {
+            @(Html.ActionLinkAjaxExt<PassOnlineController>(a => a.Register(0), Resources.RegisterOnlineLink, Resources.RegisterPassOnlineConformation,
+                        new { id = Model.PassContentId }, new { id = "lnkRegister" }, new AjaxActionOptions() { OnSuccess = "OnRegisterPassSuccess" }))
+        }
+        else
+        {
+            @(Html.ActionLinkExt<PassOnlineController>(a => a.Update(0), "Update", new { id = Model.PassContentId }, new { id = "lnkUpdate" }))<br />
+            @(Html.ActionLinkExt<PassOnlineController>(a => a.Download(0), "Download", new { id = Model.PassContentId }, new { id = "lnkDownload" }))
+        }
+    </div>
+}
+
 <div class="row">
     <fieldset>
         <legend></legend>
-        @if (!Model.IsNew)
+
+        @if (Model.IsNew)
+        {
+            @Html.DropDownListFormForExt(m => m.PassContentTemplateId, Model.PassContentTemplates, "Pass Template", "- Select Pass Template -")
+        }
+        else
         {
             @Html.TextBlockFormForExt(m => m.PassContentTemplateId, "ID");
+            @Html.TextBlockFormForExt(m => m.PassContentTemplateName, "Pass Template")
             @Html.TextBoxFormForExt(m => m.SerialNumber)
             @Html.TextBoxFormForExt(m => m.AuthToken)
         }
@@ -27,7 +38,7 @@
 
         @if (!Model.IsNew)
         {
-            @Html.CheckBoxFormForEx(m => m.IsVoided, "Is Valid")
+            @Html.CheckBoxFormForEx(m => m.IsVoided, "Is Voided")
         }
     </fieldset>
 </div>
@@ -39,7 +50,7 @@
               .Name("passTabs")
               .Items(tab =>
                      {
-                         tab.Add().Text("Fields").LoadContentFrom(Url.Action("TabFields", new { id = Model.PassContentId })).Selected(true);
+                         tab.Add().Text("Fields").LoadContentFrom(Url.Action<PassContentController>(a => a.TabFields(0), new { id = Model.PassContentId })).Selected(true);
                          //tab.Add().Text("Images").LoadContentFrom(Url.Action("TabImages", new { id = Model.PassContentTemplateId }));
                          //tab.Add().Text("Beacons").LoadContentFrom(Url.Action("TabBeacons", new { id = Model.PassContentTemplateId }));
                          //tab.Add().Text("Locations").LoadContentFrom(Url.Action("TabLocations", new { id = Model.PassContentTemplateId }));
@@ -47,3 +58,11 @@
               ))
     </div>
 }
+
+<script>
+    function OnRegisterPassSuccess(data) {
+        $("#lnkRegister").hide();
+        $("#lnkUpdate").show();
+        $("#lnkDownload").show();
+    }
+</script>

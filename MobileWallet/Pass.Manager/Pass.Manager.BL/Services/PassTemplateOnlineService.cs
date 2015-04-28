@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
-using CertificateStorage.Core.Entities;
 using Common.Extensions;
 using Common.Utils;
 using Pass.Container.Core;
@@ -102,7 +101,7 @@ namespace Pass.Manager.BL.Services
             throw new NotImplementedException();
         }
 
-        public void UpdateOnlineTemplete(int passContentTempleteId)
+        public void UpdateOnline(int passContentTempleteId)
         {
             PassContentTemplate pct = _contentTemplateService.GetDetails(passContentTempleteId);
             if (!pct.PassContainerTemplateId.HasValue)

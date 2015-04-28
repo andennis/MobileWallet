@@ -93,5 +93,6 @@
     <Build Include="Views\pm.PassContentFieldView.sql" />
     <Build Include="Stored Procedures\pm.PassContentField_Search.sql" />
     <Build Include="Stored Procedures\pm.PassContent_Insert.sql" />
+    <Build Include="Stored Procedures\pm.PassContentField_GetView.sql" />
   </ItemGroup>
 </Project>

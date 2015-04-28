@@ -24,6 +24,8 @@ namespace Pass.Manager.Web.Models
         public bool IsVoided { get; set; }
         public EntityStatus Status { get; set; }
         public int? PassContentTemplateId { get; set; }
+        public string PassContentTemplateName { get; set; }
+        public int? ContainerPassId { get; set; }
         public int PassProjectId { get; set; }
 
         public IEnumerable<SelectListItem> PassContentTemplates { get; set; }

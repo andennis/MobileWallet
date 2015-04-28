@@ -1,4 +1,5 @@
-﻿using Pass.Manager.Core.Entities;
+﻿using AutoMapper;
+using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.SearchFilters;
 using Pass.Manager.Core.Services;
 using Pass.Manager.Web.Common;
@@ -13,5 +14,10 @@ namespace Pass.Manager.Web.Controllers
         {
         }
 
+        protected override PassContentFieldViewModel GetViewModel(int entityId)
+        {
+            var entity = _service.GetView<PassContentFieldView>(entityId);
+            return Mapper.Map<PassContentFieldView, PassContentFieldViewModel>(entity);
+        }
     }
 }

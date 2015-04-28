@@ -9,7 +9,7 @@
         @if (!Model.PassContainerTemplateId.HasValue)
         {
             @(Html.ActionLinkAjaxExt<PassTemplateOnlineController>(a => a.Register(0), Resources.RegisterOnlineLink, Resources.RegisterTemplateOnlineConformation,
-                        new { id = Model.PassContentTemplateId }, new {id = "lnkRegister"}, new AjaxActionOptions() { OnSuccess = "OnRegisterSuccess" }))
+                        new { id = Model.PassContentTemplateId }, new {id = "lnkRegister"}, new AjaxActionOptions() { OnSuccess = "OnRegisterTemplateSuccess" }))
         }
         else
         {
@@ -61,7 +61,7 @@
 }
 
 <script>
-    function OnRegisterSuccess(data) {
+    function OnRegisterTemplateSuccess(data) {
         $("#lnkRegister").hide();
         $("#lnkUpdate").show();
         $("#lnkDownload").show();

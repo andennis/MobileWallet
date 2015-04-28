@@ -7,7 +7,7 @@ namespace Pass.Manager.Core.Services
     {
         void Register(int passContentTempleteId);
         void Unregister(int passContentTempleteId);
-        void UpdateOnlineTemplete(int passContentTempleteId);
+        void UpdateOnline(int passContentTempleteId);
         void SetOnlineStatus(int passContentTempleteId, EntityStatus status);
 
         void RegisterProjectTempletes(int passProjectId);

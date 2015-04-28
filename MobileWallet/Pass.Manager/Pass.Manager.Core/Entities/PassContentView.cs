@@ -13,6 +13,7 @@ namespace Pass.Manager.Core.Entities
         public EntityStatus Status { get; set; }
 
         public int PassContentTemplateId { get; set; }
+        public int? ContainerPassId { get; set; }
         public int PassProjectId { get; set; }
 
     }

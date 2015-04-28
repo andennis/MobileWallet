@@ -17,6 +17,20 @@ namespace Pass.Manager.Repository.EF
 
         /// <summary>
         /// It executes the SP with name pattern: 
+        ///     [TEntity type name].GetView
+        /// The SP should take the parameter: @ID INT
+        /// </summary>
+        /// <typeparam name="TEntityView"></typeparam>
+        /// <param name="entityId"></param>
+        /// <returns></returns>
+        public virtual TEntityView GetView<TEntityView>(int entityId)
+        {
+            string query = string.Format("{0}.{1}_GetView {2}", DbScheme, typeof(TEntity).Name, "@ID");
+            return SqlQuery<TEntityView>(query, new SqlParameter("ID", entityId)).FirstOrDefault();
+        }
+
+        /// <summary>
+        /// It executes the SP with name pattern: 
         ///     [TEntity type name].Search
         /// 
         /// The minimal set of parameters:

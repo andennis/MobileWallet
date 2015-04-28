@@ -56,5 +56,10 @@ namespace Pass.Manager.Web.Controllers
                 model.RedirectUrl = Url.Action<PassProjectController>(a => a.Edit(0), new { id = ((PassContentViewModel)model).PassProjectId });
         }
 
+        [AjaxOnly]
+        public ActionResult TabFields(int id)
+        {
+            return PartialView(@"Tabs\_Fields", id);
+        }
     }
 }

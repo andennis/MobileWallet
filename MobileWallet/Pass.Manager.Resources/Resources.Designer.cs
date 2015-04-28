@@ -79,6 +79,24 @@ namespace Pass.Manager.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to register this pass online?.
+        /// </summary>
+        public static string RegisterPassOnlineConformation {
+            get {
+                return ResourceManager.GetString("RegisterPassOnlineConformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The pass has been registered successully.
+        /// </summary>
+        public static string RegisterPassOnlineSuccess {
+            get {
+                return ResourceManager.GetString("RegisterPassOnlineSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to register this template online?.
         /// </summary>
         public static string RegisterTemplateOnlineConformation {

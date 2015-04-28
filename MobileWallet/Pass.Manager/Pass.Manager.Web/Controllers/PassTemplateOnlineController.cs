@@ -31,7 +31,7 @@ namespace Pass.Manager.Web.Controllers
         [AjaxOnly]
         public ActionResult Update(int id)
         {
-            _templateOnlineService.UpdateOnlineTemplete(id);
+            _templateOnlineService.UpdateOnline(id);
             return JsonEx();
         }
 
