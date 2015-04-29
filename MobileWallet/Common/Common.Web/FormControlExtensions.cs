@@ -194,8 +194,14 @@ namespace Common.Web
         #endregion
 
         #region DropDownList
-        public static MvcHtmlString DropDownListForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems,  
+        public static MvcHtmlString DropDownListForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems,
             string optionLabel = null, object htmlAttributes = null)
+        {
+            return html.DropDownListFor(expression, listItems, optionLabel, HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
+        }
+
+        public static MvcHtmlString DropDownListForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems,  
+            string optionLabel = null, IDictionary<string, object> htmlAttributes = null)
         {
             return html.DropDownListFor(expression, listItems, optionLabel, htmlAttributes);
         }
