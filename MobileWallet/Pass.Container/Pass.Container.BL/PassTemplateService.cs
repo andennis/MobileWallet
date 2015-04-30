@@ -111,6 +111,7 @@ namespace Pass.Container.BL
 
             PassTemplate passTemplate = _repPassTemplate.Query()
                 .Include(x => x.PassFields)
+                .Include(x => x.NativeTemplates)
                 .Filter(x => x.PassTemplateId == passTemplateId)
                 .Get().FirstOrDefault();
 

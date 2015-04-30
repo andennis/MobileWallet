@@ -120,6 +120,9 @@
   <data name="CertificateFileNotSpecified" xml:space="preserve">
     <value>Certificate file should be specified</value>
   </data>
+  <data name="Download" xml:space="preserve">
+    <value>Download</value>
+  </data>
   <data name="RegisterOnlineLink" xml:space="preserve">
     <value>Register Online</value>
   </data>
@@ -134,5 +137,14 @@
   </data>
   <data name="RegisterTemplateOnlineSuccess" xml:space="preserve">
     <value>The template has been registered successully</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="UpdateTemplateOnlineConformation" xml:space="preserve">
+    <value>Are you sure you want to update this template online?</value>
+  </data>
+  <data name="UpdateTemplateOnlineSuccess" xml:space="preserve">
+    <value>The pass has been updated successully</value>
   </data>
 </root>

@@ -159,10 +159,10 @@ textarea {
     margin: 7px 0;
 }
 
-    .btn-default:hover {
-        background-color: #D4DCE1;
-        color: #2d586f;
-    }
+.btn-default:hover {
+    background-color: #D4DCE1;
+    color: #2d586f;
+}
 
 .btn-primary {
     /*background-color: #02d5ac;*/
@@ -174,33 +174,33 @@ textarea {
     min-width: 85px;
 }
 
-    .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
-        /*background-color: #fd678a;
-        border-color: #fd678a;*/
-        background-color: #D4DCE1;
-        border-color: #D4DCE1;
-        color: white;
-    }
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+    /*background-color: #fd678a;
+    border-color: #fd678a;*/
+    background-color: #D4DCE1;
+    border-color: #D4DCE1;
+    color: white;
+}
 
 .form-control {
     max-width: 350px;
 }
 
-    /*.form-control:focus, .valid:focus {
-        border-color: #1AB899 !important;
-        -webkit-box-shadow: inset 0 1px 1px #1ab899, 0 0 8px #1ab899;
-        -ms-box-shadow: inset 0 1px 1px #1ab899, 0 0 8px #1ab899;
-        box-shadow: inset 0 1px 1px #1ab899, 0 0 8px #1ab899;
-        box-shadow: inset 0 1px 1px rgba(26,184,153,.075), 0 0 8px rgba(26,184,153, .6);
-    }*/
+/*.form-control:focus, .valid:focus {
+    border-color: #1AB899 !important;
+    -webkit-box-shadow: inset 0 1px 1px #1ab899, 0 0 8px #1ab899;
+    -ms-box-shadow: inset 0 1px 1px #1ab899, 0 0 8px #1ab899;
+    box-shadow: inset 0 1px 1px #1ab899, 0 0 8px #1ab899;
+    box-shadow: inset 0 1px 1px rgba(26,184,153,.075), 0 0 8px rgba(26,184,153, .6);
+}*/
 
-    .form-control:focus, .valid:focus {
-        border-color: #2979FF !important;
-        -webkit-box-shadow: inset 0 1px 1px #2979FF, 0 0 8px #2979FF;
-        -ms-box-shadow: inset 0 1px 1px #2979FF, 0 0 8px #2979FF;
-        box-shadow: inset 0 1px 1px #2979FF, 0 0 8px #2979FF;
-        box-shadow: inset 0 1px 1px rgba(41,121,255,.075), 0 0 8px rgba(41,121,255, .6);
-    }
+.form-control:focus, .valid:focus {
+    border-color: #2979FF !important;
+    -webkit-box-shadow: inset 0 1px 1px #2979FF, 0 0 8px #2979FF;
+    -ms-box-shadow: inset 0 1px 1px #2979FF, 0 0 8px #2979FF;
+    box-shadow: inset 0 1px 1px #2979FF, 0 0 8px #2979FF;
+    box-shadow: inset 0 1px 1px rgba(41,121,255,.075), 0 0 8px rgba(41,121,255, .6);
+}
 
 .well {
     /*color: #737C86;*/
@@ -230,31 +230,31 @@ textarea {
     padding: 0.3em 0.5em;
 }
 
-    .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
-        background: #02d5ac;
-        color: white !important;
-        border: none;
-        -webkit-transition: background 0.2s ease,color 0.2s ease;
-        -moz-transition: background 0.2s ease,color 0.2s ease;
-        -ms-transition: background 0.2s ease,color 0.2s ease;
-        -o-transition: background 0.2s ease,color 0.2s ease;
-        transition: background 0.2s ease,color 0.2s ease;
-    }
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    background: #02d5ac;
+    color: white !important;
+    border: none;
+    -webkit-transition: background 0.2s ease,color 0.2s ease;
+    -moz-transition: background 0.2s ease,color 0.2s ease;
+    -ms-transition: background 0.2s ease,color 0.2s ease;
+    -o-transition: background 0.2s ease,color 0.2s ease;
+    transition: background 0.2s ease,color 0.2s ease;
+}
 
 .dataTables_wrapper .dataTables_paginate .paginate_button {
     border: none;
     padding: 0.3em 0.5em;
 }
 
-    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-        background: #2fe2bf;
-        border: none;
-        -webkit-transition: background 0.2s ease,color 0.2s ease;
-        -moz-transition: background 0.2s ease,color 0.2s ease;
-        -ms-transition: background 0.2s ease,color 0.2s ease;
-        -o-transition: background 0.2s ease,color 0.2s ease;
-        transition: background 0.2s ease,color 0.2s ease;
-    }
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: #2fe2bf;
+    border: none;
+    -webkit-transition: background 0.2s ease,color 0.2s ease;
+    -moz-transition: background 0.2s ease,color 0.2s ease;
+    -ms-transition: background 0.2s ease,color 0.2s ease;
+    -o-transition: background 0.2s ease,color 0.2s ease;
+    transition: background 0.2s ease,color 0.2s ease;
+}
 
 /*.navbar {
     max-width: 1140px;
@@ -286,19 +286,19 @@ textarea {
     margin-top: 14px !important;
 }
 
-    .dropdown-menu > li > a {
-        background: rgba(45, 88, 111, 0.9);
-        color: white;
-    }
+.dropdown-menu > li > a {
+    background: rgba(45, 88, 111, 0.9);
+    color: white;
+}
 
-        .dropdown-menu > li > a:hover {
-            background: #02d5ac !important;
-            -webkit-transition: background 0.3s ease,color 0.2s ease;
-            -moz-transition: background 0.3s ease,color 0.2s ease;
-            -ms-transition: background 0.3s ease,color 0.2s ease;
-            -o-transition: background 0.3s ease,color 0.2s ease;
-            transition: background 0.3s ease,color 0.2s ease;
-        }
+.dropdown-menu > li > a:hover {
+    background: #02d5ac !important;
+    -webkit-transition: background 0.3s ease,color 0.2s ease;
+    -moz-transition: background 0.3s ease,color 0.2s ease;
+    -ms-transition: background 0.3s ease,color 0.2s ease;
+    -o-transition: background 0.3s ease,color 0.2s ease;
+    transition: background 0.3s ease,color 0.2s ease;
+}
 
 .navbar {
     margin-bottom: 0;
@@ -313,28 +313,28 @@ textarea {
     border: none;
 }
 
-    .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-        background-color: #2d586f;
-        color: #02d5ac;
-        -webkit-transition: color 0.2s ease;
-        -moz-transition: color 0.2s ease;
-        -ms-transition: color 0.2s ease;
-        -o-transition: color 0.2s ease;
-        transition: color 0.2s ease;
-    }
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    background-color: #2d586f;
+    color: #02d5ac;
+    -webkit-transition: color 0.2s ease;
+    -moz-transition: color 0.2s ease;
+    -ms-transition: color 0.2s ease;
+    -o-transition: color 0.2s ease;
+    transition: color 0.2s ease;
+}
 
-    .navbar-default .navbar-nav > li > a {
-        color: white;
-    }
+.navbar-default .navbar-nav > li > a {
+    color: white;
+}
 
-        .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-            color: #02d5ac;
-        }
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #02d5ac;
+}
 
-    .navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav .open .dropdown-menu > li > a,
-    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-        color: white;
-    }
+.navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav .open .dropdown-menu > li > a,
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: white;
+}
 
 .mainMenuBlock {
     background-color: #2d586f;
@@ -352,19 +352,19 @@ textarea {
     padding-top: 20px;
 }
 
-    .menu ul li a {
-        display: block;
-        text-decoration: none;
-        padding: 5px 10px 5px 10px;
-    }
+.menu ul li a {
+    display: block;
+    text-decoration: none;
+    padding: 5px 10px 5px 10px;
+}
 
 .navbar-toggle {
     border-color: white;
 }
 
-    .navbar-toggle .icon-bar {
-        background-color: white;
-    }
+.navbar-toggle .icon-bar {
+    background-color: white;
+}
 
 .logInButton {
     font-size: 1.5rem;
@@ -380,16 +380,16 @@ textarea {
     margin-top: 2px;
 }
 
-    .registrationButton a:hover {
-        background-color: #fd678a !important;
-        color: white !important;
-        text-decoration: none !important;
-        -webkit-transition: background-color 0.5s ease !important;
-        -moz-transition: background-color 0.5s ease !important;
-        -ms-transition: background-color 0.5s ease !important;
-        -o-transition: background-color 0.5s ease !important;
-        transition: background-color 0.5s ease !important;
-    }
+.registrationButton a:hover {
+    background-color: #fd678a !important;
+    color: white !important;
+    text-decoration: none !important;
+    -webkit-transition: background-color 0.5s ease !important;
+    -moz-transition: background-color 0.5s ease !important;
+    -ms-transition: background-color 0.5s ease !important;
+    -o-transition: background-color 0.5s ease !important;
+    transition: background-color 0.5s ease !important;
+}
 
 .imgImageFile {
     max-width: 300px;
@@ -407,11 +407,11 @@ textarea {
     margin: -20px 0 0 5px;
 }
 
-    .imgRemoveIcon:hover {
-        background-color: #D4DCE1;
-        color: #2d586f;
-        cursor: pointer;
-    }
+.imgRemoveIcon:hover {
+    background-color: #D4DCE1;
+    color: #2d586f;
+    cursor: pointer;
+}
 
 /*For Kendo datepicker extention*/
 .k-widget.k-datepicker.k-header.form-control, .k-picker-wrap.k-state-default {
@@ -427,11 +427,11 @@ textarea {
 }
 
 .form-control.k-input:focus {
-        border: 1px solid #2979FF;
-        -webkit-box-shadow: inset 0 1px 1px rgba(41,121,255,.075), 0 0 8px rgba(41,121,255, .6);
-        -ms-box-shadow: inset 0 1px 1px rgba(41,121,255,.075), 0 0 8px rgba(41,121,255, .6);
-        box-shadow: inset 0 1px 1px rgba(41,121,255,.075), 0 0 8px rgba(41,121,255, .6);
-    }
+    border: 1px solid #2979FF;
+    -webkit-box-shadow: inset 0 1px 1px rgba(41,121,255,.075), 0 0 8px rgba(41,121,255, .6);
+    -ms-box-shadow: inset 0 1px 1px rgba(41,121,255,.075), 0 0 8px rgba(41,121,255, .6);
+    box-shadow: inset 0 1px 1px rgba(41,121,255,.075), 0 0 8px rgba(41,121,255, .6);
+}
 
 .k-state-selected, .k-state-selected:link, .k-state-selected:visited, .k-list > .k-state-selected, .k-list > .k-state-highlight,
 .k-panel > .k-state-selected, .k-ghost-splitbar-vertical, .k-ghost-splitbar-horizontal, .k-draghandle.k-state-selected:hover,
@@ -454,4 +454,8 @@ textarea {
 .vertical-align {
     display: flex;
     align-items: center;
+}
+
+a.action {
+    margin-right: 5px;
 }

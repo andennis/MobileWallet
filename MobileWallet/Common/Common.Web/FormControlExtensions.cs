@@ -93,7 +93,9 @@ namespace Common.Web
         }
         public static MvcHtmlString ActionLinkExt(this HtmlHelper html, string linkText, string actionName, string controllerName = null, object routeValues = null, object htmlAttributes = null)
         {
-            return html.ActionLink(linkText, actionName, controllerName, routeValues, htmlAttributes);
+            var attrs = new Dictionary<string, object>() {{"class", "action"}};
+            attrs.AddHtmlAttributes(htmlAttributes);
+            return html.ActionLink(linkText, actionName, controllerName, new RouteValueDictionary(routeValues), attrs);
         }
         #endregion
 
@@ -111,13 +113,10 @@ namespace Common.Web
         {
             var tb = new TagBuilder("a");
 
-            if (htmlAttributes != null)
-            {
-                foreach (var attr in HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes))
-                    tb.Attributes.Add(attr.Key, Convert.ToString(attr.Value));
-            }
-
             tb.Attributes.Add("href", "javascript:void(0)");
+            tb.Attributes.Add("class", "action");
+
+            tb.Attributes.AddHtmlAttributes(htmlAttributes);
 
             var urlHelper = new UrlHelper(html.ViewContext.RequestContext);
             string url = urlHelper.Action(actionName, controllerName, routeValues);
@@ -351,9 +350,37 @@ namespace Common.Web
             {
                 string newVal = Convert.ToString(attr.Value);
                 if (dst.ContainsKey(attr.Key))
-                    dst[attr.Key] = newVal;
+                {
+                    if (attr.Key.ToLower() == "class")
+                        dst["class"] += " " + newVal;
+                    else
+                        dst[attr.Key] = newVal;
+                }
                 else
+                {
                     dst.Add(attr.Key, newVal);
+                }
+            }
+        }
+        private static void AddHtmlAttributes(this IDictionary<string, object> dst, object src)
+        {
+            if (src == null)
+                return;
+
+            foreach (var attr in HtmlHelper.AnonymousObjectToHtmlAttributes(src))
+            {
+                string newVal = Convert.ToString(attr.Value);
+                if (dst.ContainsKey(attr.Key))
+                {
+                    if (attr.Key.ToLower() == "class")
+                        dst["class"] += " " + newVal;
+                    else
+                        dst[attr.Key] = newVal;
+                }
+                else
+                {
+                    dst.Add(attr.Key, newVal);
+                }
             }
         }
 

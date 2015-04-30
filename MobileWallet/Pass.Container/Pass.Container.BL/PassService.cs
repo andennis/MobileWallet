@@ -164,11 +164,11 @@ namespace Pass.Container.BL
                 throw new PassContainerException(string.Format("Pass ID:{0} not found", passId));
 
             string templateFolder = GetTemporaryTemplateFolder(pass.Template.PassTemplateId, clientType);
-            if (!Directory.Exists(templateFolder))
-            {
-                Directory.CreateDirectory(templateFolder);
-                _templateStorageService.GetNativeTemplateFiles(pass.Template.PackageId, clientType, templateFolder);
-            }
+            if (Directory.Exists(templateFolder))
+                Directory.Delete(templateFolder, true);
+
+            Directory.CreateDirectory(templateFolder);
+            _templateStorageService.GetNativeTemplateFiles(pass.Template.PackageId, clientType, templateFolder);
 
             string passFolder = GetTemporaryPassFolder(pass.Template.PassTemplateId, passId, clientType);
             if (Directory.Exists(passFolder))

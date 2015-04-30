@@ -9,15 +9,17 @@
         @if (!Model.PassContainerTemplateId.HasValue)
         {
             @(Html.ActionLinkAjaxExt<PassTemplateOnlineController>(a => a.Register(0), Resources.RegisterOnlineLink, Resources.RegisterTemplateOnlineConformation,
-                  new { id = Model.PassContentTemplateId }, new {id = "lnkRegister"}, new AjaxActionOptions() { OnSuccess = "OnRegisterTemplateSuccess" }))
+                    new { id = Model.PassContentTemplateId }, new {id = "lnkRegister"}, new AjaxActionOptions() { OnSuccess = "OnRegisterTemplateSuccess" }))
 
-            @*(Html.ActionLinkExt<PassTemplateOnlineController>(a => a.Update(0), "Update", new { id = Model.PassContentTemplateId }, new { id = "lnkUpdate" }))*@
-            @(Html.ActionLinkExt<PassTemplateOnlineController>(a => a.Download(0), "Download", new { id = Model.PassContentTemplateId }, new { id = "lnkDownload", style = "display:none" }))
+            @(Html.ActionLinkAjaxExt<PassTemplateOnlineController>(a => a.Update(0), Resources.Update, Resources.UpdateTemplateOnlineConformation, 
+                    new { id = Model.PassContentTemplateId }, new { id = "lnkUpdate", style = "display:none" }))
+            @(Html.ActionLinkExt<PassTemplateOnlineController>(a => a.Download(0), Resources.Download, new { id = Model.PassContentTemplateId }, new { id = "lnkDownload", style = "display:none" }))
         }
         else
         {
-            @*(Html.ActionLinkExt<PassTemplateOnlineController>(a => a.Update(0), "Update", new { id = Model.PassContentTemplateId }, new { id = "lnkUpdate" }))*@
-            @(Html.ActionLinkExt<PassTemplateOnlineController>(a => a.Download(0), "Download", new { id = Model.PassContentTemplateId }, new { id = "lnkDownload" }))
+            @(Html.ActionLinkAjaxExt<PassTemplateOnlineController>(a => a.Update(0), Resources.Update, Resources.UpdateTemplateOnlineConformation,
+                    new { id = Model.PassContentTemplateId }, new { id = "lnkUpdate" }))
+            @(Html.ActionLinkExt<PassTemplateOnlineController>(a => a.Download(0), Resources.Download, new { id = Model.PassContentTemplateId }, new { id = "lnkDownload" }))
         }
     </div>
 }
@@ -34,6 +36,10 @@
             @Html.TextAreaFormForExt(m => m.Description)
             @Html.TextBoxFormForExt(m => m.OrganizationName, "Organization Name")
             @Html.CheckBoxFormForEx(m => m.IsDefault, "Is Default")
+            @if (Model.PassContainerTemplateId.HasValue)
+            {
+                @Html.TextBlockFormForExt(m => m.PassContainerTemplateId, "Online Template ID")
+            }
         </div>
         <div class="col-md-6">
             @Html.DropDownListFormForExt(m => m.PassStyle, "Pass Style", "- Select Pass Style -")
@@ -46,6 +52,7 @@
         </div>
     </div>
 </fieldset>
+
 
 @if (!Model.IsNew)
 {

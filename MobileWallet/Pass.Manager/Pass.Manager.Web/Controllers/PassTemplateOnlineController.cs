@@ -32,7 +32,7 @@ namespace Pass.Manager.Web.Controllers
         public ActionResult Update(int id)
         {
             _templateOnlineService.UpdateOnline(id);
-            return JsonEx();
+            return JsonEx(true, Resources.Resources.UpdateTemplateOnlineSuccess);
         }
 
         public ActionResult Download(int id)
