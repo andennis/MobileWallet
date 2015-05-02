@@ -61,5 +61,12 @@ namespace Pass.Manager.Web.Controllers
         {
             return PartialView(@"Tabs\_Fields", id);
         }
+
+        [AjaxOnly]
+        public ActionResult TabRegistrations(int id)
+        {
+            return PartialView(@"Tabs\_Registrations", id);
+        }
+
     }
 }

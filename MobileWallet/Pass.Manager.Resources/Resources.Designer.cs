@@ -133,6 +133,24 @@ namespace Pass.Manager.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to update this pass online?.
+        /// </summary>
+        public static string UpdatePassOnlineConformation {
+            get {
+                return ResourceManager.GetString("UpdatePassOnlineConformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The pass has been updated successully.
+        /// </summary>
+        public static string UpdatePassOnlineSuccess {
+            get {
+                return ResourceManager.GetString("UpdatePassOnlineSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to update this template online?.
         /// </summary>
         public static string UpdateTemplateOnlineConformation {
@@ -142,7 +160,7 @@ namespace Pass.Manager.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The pass has been updated successully.
+        ///   Looks up a localized string similar to The pass template has been updated successully.
         /// </summary>
         public static string UpdateTemplateOnlineSuccess {
             get {

@@ -17,15 +17,15 @@ namespace Pass.Manager.Web.Controllers
         [AjaxOnly]
         public ActionResult Register(int id)
         {
-            _passOnlineService.Register(id);
-            return JsonEx(true, Resources.Resources.RegisterPassOnlineSuccess);
+            int containerPassId = _passOnlineService.Register(id);
+            return JsonEx(new {containerPassId}, true, Resources.Resources.RegisterPassOnlineSuccess);
         }
 
         [AjaxOnly]
         public ActionResult Update(int id)
         {
             _passOnlineService.UpdateOnline(id);
-            return JsonEx();
+            return JsonEx(true, Resources.Resources.UpdatePassOnlineSuccess);
         }
 
         public ActionResult Download(int id)

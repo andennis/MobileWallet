@@ -8,5 +8,5 @@ FROM pm.PassContentField pcf
 INNER JOIN pm.PassProjectField ppf ON ppf.PassProjectFieldId = pcf.PassProjectFieldId
 INNER JOIN pm.PassContent pc ON pcf.PassContentId = pc.PassContentId
 INNER JOIN pm.PassContentTemplate pct ON pct.PassContentTemplateId = pc.PassContentTemplateId
-LEFT JOIN pm.PassContentTemplateField pctf ON pctf.PassContentTemplateId = pct.PassContainerTemplateId 
+LEFT JOIN pm.PassContentTemplateField pctf ON pctf.PassContentTemplateId = pct.PassContentTemplateId
 										AND pctf.PassProjectFieldId = pcf.PassProjectFieldId

@@ -10,13 +10,15 @@
             @(Html.ActionLinkAjaxExt<PassOnlineController>(a => a.Register(0), Resources.RegisterOnlineLink, Resources.RegisterPassOnlineConformation,
                       new { id = Model.PassContentId }, new { id = "lnkRegister" }, new AjaxActionOptions() { OnSuccess = "OnRegisterPassSuccess" }))
 
-            @*(Html.ActionLinkExt<PassOnlineController>(a => a.Update(0), "Update", new { id = Model.PassContentId }, new { id = "lnkUpdate" }))*@
-            @(Html.ActionLinkExt<PassOnlineController>(a => a.Download(0), "Download", new { id = Model.PassContentId }, new { id = "lnkDownload", style="display:none" }))
+            @(Html.ActionLinkAjaxExt<PassOnlineController>(a => a.Update(0), Resources.Update, Resources.UpdatePassOnlineConformation,
+                    new { id = Model.PassContentId }, new { id = "lnkUpdate", style = "display:none" }))
+            @(Html.ActionLinkExt<PassOnlineController>(a => a.Download(0), Resources.Download, new { id = Model.PassContentId }, new { id = "lnkDownload", style = "display:none" }))
         }
         else
         {
-            @*(Html.ActionLinkExt<PassOnlineController>(a => a.Update(0), "Update", new { id = Model.PassContentId }, new { id = "lnkUpdate" }))*@
-            @(Html.ActionLinkExt<PassOnlineController>(a => a.Download(0), "Download", new { id = Model.PassContentId }, new { id = "lnkDownload" }))
+            @(Html.ActionLinkAjaxExt<PassOnlineController>(a => a.Update(0), Resources.Update, Resources.UpdatePassOnlineConformation,
+                    new { id = Model.PassContentId }, new { id = "lnkUpdate" }))
+            @(Html.ActionLinkExt<PassOnlineController>(a => a.Download(0), Resources.Download, new { id = Model.PassContentId }, new { id = "lnkDownload" }))
         }
     </div>
 }
@@ -38,11 +40,13 @@
         }
         
         @Html.DatePickerFormForExt(m => m.ExpDate, "Expiration Date")
-
         @if (!Model.IsNew)
         {
-            @Html.CheckBoxFormForEx(m => m.IsVoided, "Is Voided")
+            @Html.CheckBoxFormForEx(m => m.IsVoided, "Voided")
         }
+        <div id="divContainerPassId" style="display:@(Model.ContainerPassId.HasValue ? "block" : "none")">
+            @Html.TextBlockFormForExt(m => m.ContainerPassId, "Online Pass ID")
+        </div>
     </fieldset>
 </div>
 
@@ -54,6 +58,7 @@
               .Items(tab =>
                      {
                          tab.Add().Text("Fields").LoadContentFrom(Url.Action<PassContentController>(a => a.TabFields(0), new { id = Model.PassContentId })).Selected(true);
+                         tab.Add().Text("Registrations").LoadContentFrom(Url.Action<PassContentController>(a => a.TabRegistrations(0), new { id = Model.PassContentId }));
                          //tab.Add().Text("Images").LoadContentFrom(Url.Action("TabImages", new { id = Model.PassContentTemplateId }));
                          //tab.Add().Text("Beacons").LoadContentFrom(Url.Action("TabBeacons", new { id = Model.PassContentTemplateId }));
                          //tab.Add().Text("Locations").LoadContentFrom(Url.Action("TabLocations", new { id = Model.PassContentTemplateId }));
@@ -63,10 +68,12 @@
 }
 
 <script type="text/javascript">
-    function OnRegisterPassSuccess() {
-        //alert("OnRegisterPassSuccess");
+    function OnRegisterPassSuccess(data) {
         $("#lnkRegister").hide();
-        //$("#lnkUpdate").show();
+        $("#lnkUpdate").show();
         $("#lnkDownload").show();
+
+        $("#ContainerPassId").val(data.containerPassId);
+        $("#divContainerPassId").show();
     }
 </script>

@@ -141,10 +141,16 @@
   <data name="Update" xml:space="preserve">
     <value>Update</value>
   </data>
+  <data name="UpdatePassOnlineConformation" xml:space="preserve">
+    <value>Are you sure you want to update this pass online?</value>
+  </data>
+  <data name="UpdatePassOnlineSuccess" xml:space="preserve">
+    <value>The pass has been updated successully</value>
+  </data>
   <data name="UpdateTemplateOnlineConformation" xml:space="preserve">
     <value>Are you sure you want to update this template online?</value>
   </data>
   <data name="UpdateTemplateOnlineSuccess" xml:space="preserve">
-    <value>The pass has been updated successully</value>
+    <value>The pass template has been updated successully</value>
   </data>
 </root>

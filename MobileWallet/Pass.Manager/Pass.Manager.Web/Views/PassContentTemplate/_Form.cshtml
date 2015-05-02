@@ -36,10 +36,9 @@
             @Html.TextAreaFormForExt(m => m.Description)
             @Html.TextBoxFormForExt(m => m.OrganizationName, "Organization Name")
             @Html.CheckBoxFormForEx(m => m.IsDefault, "Is Default")
-            @if (Model.PassContainerTemplateId.HasValue)
-            {
+            <div id="divContainerTemplateId" style="display:@(Model.PassContainerTemplateId.HasValue ? "block" : "none")">
                 @Html.TextBlockFormForExt(m => m.PassContainerTemplateId, "Online Template ID")
-            }
+            </div>
         </div>
         <div class="col-md-6">
             @Html.DropDownListFormForExt(m => m.PassStyle, "Pass Style", "- Select Pass Style -")
@@ -71,9 +70,12 @@
 }
 
 <script type="text/javascript">
-    function OnRegisterTemplateSuccess() {
+    function OnRegisterTemplateSuccess(data) {
         $("#lnkRegister").hide();
-        //$("#lnkUpdate").show();
+        $("#lnkUpdate").show();
         $("#lnkDownload").show();
+
+        $("#PassContainerTemplateId").val(data.containerTemplateId);
+        $("#divContainerTemplateId").show();
     }
 </script>

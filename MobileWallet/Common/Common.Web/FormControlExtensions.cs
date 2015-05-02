@@ -150,16 +150,17 @@ namespace Common.Web
         #endregion
 
         #region TextBlock
-        public static MvcHtmlString TextBlockForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string format = null/*, object htmlAttributes = null*/)
+        public static MvcHtmlString TextBlockForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string format = null, object htmlAttributes = null)
         {
-            return html.TextBlockFor(expression, format);
+            return html.TextBlockFor(expression, format, htmlAttributes);
         }
-        public static MvcHtmlString TextBlockFormForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string labelText = null, string format = null)
+        public static MvcHtmlString TextBlockFormForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string labelText = null, string format = null, 
+            object htmlAttributes = null)
         {
-            return html.LabelWithControl(expression, labelText, null, () => html.TextBlockFor(expression, format));
+            return html.LabelWithControl(expression, labelText, null, () => html.TextBlockFor(expression, format, htmlAttributes));
         }
 
-        private static MvcHtmlString TextBlockFor<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string format = null)
+        private static MvcHtmlString TextBlockFor<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string format = null, object htmlAttributes = null)
         {
             if (typeof (TProperty) == typeof (DateTime))
             {
@@ -175,6 +176,8 @@ namespace Common.Web
                     { "data-format", format }
                 })
                 .ToDictionary(key => key.Key, val => val.Value);
+
+            attributes.AddHtmlAttributes(htmlAttributes);
 
             return html.TextBoxFor(expression, dataFmt, attributes);
         }

@@ -22,7 +22,7 @@ namespace Pass.Manager.BL.Services
             _passContentService = passContentService;
         }
 
-        public void Register(int passContentId)
+        public int Register(int passContentId)
         {
             PassContent pc = _passContentService.GetDetails(passContentId);
             if (pc.ContainerPassId.HasValue)
@@ -33,7 +33,8 @@ namespace Pass.Manager.BL.Services
             pc.ContainerPassId = _passService.CreatePass(pc.PassContentTemplate.PassContainerTemplateId.Value, pc.Fields.Select(ConvertTo).ToList(), pc.ExpDate);
             //TODO the pass should be removed from pass container if the update operation failed
             _passContentService.Update(pc);
-            
+
+            return pc.ContainerPassId.Value;
         }
 
         private PassFieldInfo ConvertTo(PassContentField field)
@@ -48,7 +49,11 @@ namespace Pass.Manager.BL.Services
 
         public void UpdateOnline(int passContentId)
         {
-            throw new NotImplementedException();
+            PassContent pc = _passContentService.GetDetails(passContentId);
+            if (!pc.ContainerPassId.HasValue)
+                throw new PassManagerGeneralException(string.Format("PassContentId: {0} has not been registered yet", passContentId));
+
+            _passService.UpdatePassFields(pc.ContainerPassId.Value, pc.Fields.Select(ConvertTo).ToList());
         }
 
         public FileContentInfo GetPassPackage(int passContentId)

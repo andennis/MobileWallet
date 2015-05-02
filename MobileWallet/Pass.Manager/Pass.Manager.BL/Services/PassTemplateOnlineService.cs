@@ -40,7 +40,7 @@ namespace Pass.Manager.BL.Services
         }
 
         #region Operate single pass content templates
-        public void Register(int passContentTempleteId)
+        public int Register(int passContentTempleteId)
         {
             PassContentTemplate pct = _contentTemplateService.GetDetails(passContentTempleteId);
             if (pct.PassContainerTemplateId.HasValue)
@@ -57,6 +57,7 @@ namespace Pass.Manager.BL.Services
             try
             {
                 _contentTemplateService.Update(pct);
+                return pct.PassContainerTemplateId.Value;
             }
             catch (Exception)
             {
@@ -67,7 +68,7 @@ namespace Pass.Manager.BL.Services
             {
                 Directory.Delete(tempFolder, true);    
             }
-
+            
         }
 
         private void SaveImagesToTemplate(IEnumerable<PassImage> passImages, string templateFolderPath)

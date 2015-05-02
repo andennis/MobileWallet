@@ -18,8 +18,8 @@ namespace Pass.Manager.Web.Controllers
         [AjaxOnly]
         public ActionResult Register(int id)
         {
-            _templateOnlineService.Register(id);
-            return JsonEx(true, Resources.Resources.RegisterTemplateOnlineSuccess);
+            var containerTemplateId = _templateOnlineService.Register(id);
+            return JsonEx(new { containerTemplateId }, true, Resources.Resources.RegisterTemplateOnlineSuccess);
         }
 
         [AjaxOnly]

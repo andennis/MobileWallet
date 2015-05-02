@@ -25,6 +25,7 @@ namespace Pass.Manager.Web
             bundles.Add(new StyleBundle("~/content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/DataTables-1.10.2/css/jquery.dataTables.css",
+                      "~/Content/common.css",
                       "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/datatables").Include(

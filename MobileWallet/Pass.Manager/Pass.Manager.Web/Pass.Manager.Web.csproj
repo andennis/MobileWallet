@@ -229,6 +229,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\common.css" />
     <Content Include="Content\createCard\bootstrap-theme.css" />
     <Content Include="Content\createCard\bootstrap.css" />
     <Content Include="Content\createCard\createCard.css" />
@@ -978,6 +979,7 @@
     <Content Include="Views\PassContentField\_Form.cshtml" />
     <Content Include="Views\PassContent\Tabs\_Fields.cshtml" />
     <Content Include="Views\PassContent\_Passes.cshtml" />
+    <Content Include="Views\PassContent\Tabs\_Registrations.cshtml" />
     <None Include="Web.Base.config">
       <SubType>Designer</SubType>
     </None>

@@ -5,7 +5,7 @@ namespace Pass.Manager.Core.Services
 {
     public interface IPassTemplateOnlineService
     {
-        void Register(int passContentTempleteId);
+        int Register(int passContentTempleteId);
         void Unregister(int passContentTempleteId);
         void UpdateOnline(int passContentTempleteId);
         void SetOnlineStatus(int passContentTempleteId, EntityStatus status);
