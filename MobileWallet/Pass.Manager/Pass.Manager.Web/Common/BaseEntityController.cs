@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using Common.BL;
-using Common.Web.Grid;
+using Common.Web.Controls.Grid;
 using AutoMapper;
 using Pass.Manager.Core.Services;
 

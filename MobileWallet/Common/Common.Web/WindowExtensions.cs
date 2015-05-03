@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using Common.Web.Popup;
+using Common.Web.Controls.Popup;
 
 namespace Common.Web
 {

@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using Common.Web.Grid;
+using Common.Web.Controls.Grid;
 
 namespace Common.Web
 {
