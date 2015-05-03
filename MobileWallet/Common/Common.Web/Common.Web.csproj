@@ -76,8 +76,17 @@
     <Compile Include="AjaxActionOptions.cs" />
     <Compile Include="Controls\CalendarView.cs" />
     <Compile Include="Controls\AnimationDuration.cs" />
+    <Compile Include="Controls\DropDownList\DropDownList.cs" />
+    <Compile Include="Controls\DropDownList\DropDownListBuilder.cs" />
+    <Compile Include="Controls\DropDownList\DropDownListEventBuilder.cs" />
+    <Compile Include="Controls\DropDownList\DropDownListItem.cs" />
+    <Compile Include="Controls\DropDownList\DropDownListItemBuilder.cs" />
+    <Compile Include="Controls\DropDownList\DropDownListItemFactory.cs" />
     <Compile Include="Controls\ExpandDirection.cs" />
     <Compile Include="Controls\FadeDirection.cs" />
+    <Compile Include="Controls\FilterType.cs" />
+    <Compile Include="Controls\ListBase.cs" />
+    <Compile Include="Controls\ListBuilderBase.cs" />
     <Compile Include="Controls\SlideDirection.cs" />
     <Compile Include="Controls\ZoomDirection.cs" />
     <Compile Include="Controls\DatePicker\DatePicker.cs" />

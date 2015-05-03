@@ -61,7 +61,15 @@ namespace Pass.Manager.Web
                 //DatePicker
                 "~/Scripts/kendo/2014.2.716/kendo.calendar.min.js",
                 "~/Scripts/kendo/2014.2.716/kendo.popup.min.js",
-                "~/Scripts/kendo/2014.2.716/kendo.datepicker.min.js"));
+                "~/Scripts/kendo/2014.2.716/kendo.datepicker.min.js",
+                
+                //DropDownList
+                "~/Scripts/kendo/2014.2.716/kendo.list.min.js",
+                "~/Scripts/kendo/2014.2.716/kendo.fx.min.js",
+                "~/Scripts/kendo/2014.2.716/kendo.userevents.min.js",
+                "~/Scripts/kendo/2014.2.716/kendo.draganddrop.min.js",
+                "~/Scripts/kendo/2014.2.716/kendo.mobile.scroller.min.js",
+                "~/Scripts/kendo/2014.2.716/kendo.dropdownlist.min.js"));
 
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
