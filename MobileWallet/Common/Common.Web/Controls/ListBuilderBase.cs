@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Common.Web.Controls.DatePicker;
+using Common.Web.Controls.DropDownList;
 
 namespace Common.Web.Controls
 {
@@ -8,10 +9,14 @@ namespace Common.Web.Controls
         where TDropDown : ListBase
         where TDropDownBuilder : ListBuilderBase<TDropDown, TDropDownBuilder>
     {
+        private ReadOnlyDataSourceBuilder _dataSourceBuilder;
+
         public ListBuilderBase(TDropDown component)
             :base(component)
         {
         }
+
+        private ReadOnlyDataSourceBuilder DataSourceBuilder{get { return _dataSourceBuilder ?? (_dataSourceBuilder = new ReadOnlyDataSourceBuilder()); }}
 
         public TDropDownBuilder Animation(bool enable)
         {
@@ -27,6 +32,7 @@ namespace Common.Web.Controls
 
         public TDropDownBuilder BindTo(IEnumerable data)
         {
+            //_component.
             return (TDropDownBuilder)this;
         }
 
@@ -36,12 +42,11 @@ namespace Common.Web.Controls
             return (TDropDownBuilder)this;
         }
 
-        /*
         public TDropDownBuilder DataSource(Action<ReadOnlyDataSourceBuilder> configurator)
         {
+            configurator(DataSourceBuilder);
            return (TDropDownBuilder)this;
         }
-        */
 
         public TDropDownBuilder Delay(int delay)
         {

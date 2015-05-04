@@ -82,6 +82,7 @@
     <Compile Include="Controls\DropDownList\DropDownListItem.cs" />
     <Compile Include="Controls\DropDownList\DropDownListItemBuilder.cs" />
     <Compile Include="Controls\DropDownList\DropDownListItemFactory.cs" />
+    <Compile Include="Controls\DropDownList\ReadOnlyDataSourceBuilder.cs" />
     <Compile Include="Controls\ExpandDirection.cs" />
     <Compile Include="Controls\FadeDirection.cs" />
     <Compile Include="Controls\FilterType.cs" />
