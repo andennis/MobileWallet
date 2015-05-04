@@ -5,6 +5,7 @@ using Pass.Manager.Web.Common;
 
 namespace Pass.Manager.Web.Controllers
 {
+    [Authorize]
     public class PassOnlineController : BaseController
     {
         private readonly IPassOnlineService _passOnlineService;

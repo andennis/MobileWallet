@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Net.Mime;
-using System.Web;
 using System.Web.Mvc;
-using Common.Extensions;
-using Common.Utils;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
 using Pass.Container.Core.Entities.Enums;
-using Pass.Container.Core.Exceptions;
 using Pass.Distribution.Web.Models;
 
 namespace Pass.Distribution.Web.Controllers
@@ -91,11 +84,6 @@ namespace Pass.Distribution.Web.Controllers
             PassTokenInfo tokenInfo = DecryptPassToken(token);
             string path = _passService.GetPassPackage(tokenInfo.Id, clientType);
             return File(path, "application/vnd.apple.pkpass", Path.GetFileName(path));
-        }
-
-        public ActionResult PassTest()
-        {
-            return File(@"d:\Temp\PassBook\pass.pkpass", "application/vnd.apple.pkpass");
         }
 
         public ActionResult NotSupported()

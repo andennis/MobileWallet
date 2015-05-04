@@ -16,7 +16,7 @@ namespace Common.Web.Controls
         {
         }
 
-        private ReadOnlyDataSourceBuilder DataSourceBuilder{get { return _dataSourceBuilder ?? (_dataSourceBuilder = new ReadOnlyDataSourceBuilder()); }}
+        private ReadOnlyDataSourceBuilder DataSourceBuilder{ get { return _dataSourceBuilder ?? (_dataSourceBuilder = new ReadOnlyDataSourceBuilder()); }}
 
         public TDropDownBuilder Animation(bool enable)
         {
