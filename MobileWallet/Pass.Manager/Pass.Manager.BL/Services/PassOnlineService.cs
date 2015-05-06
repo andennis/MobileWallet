@@ -67,7 +67,7 @@ namespace Pass.Manager.BL.Services
             return new FileContentInfo()
             {
                 ContentStream = fs,
-                FileName = string.Format("pass{0}.pkpass", pc.PassContentId),
+                FileName = Path.GetFileName(packagePath), //string.Format("pass{0}.pkpass", pc.PassContentId),
                 ContentType = "application/vnd.apple.pkpass"
             };
 

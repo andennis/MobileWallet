@@ -1,54 +1,52 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.IO;
+using System.Linq;
 using System.Web.Mvc;
-using Pass.Container.Core;
-using Pass.Container.Core.Entities;
+using Common.Utils;
 using Pass.Container.Core.Entities.Enums;
+using Pass.Distribution.Core.Entities;
+using Pass.Distribution.Core.Services;
 using Pass.Distribution.Web.Models;
 
 namespace Pass.Distribution.Web.Controllers
 {
     public class PassController : Controller
     {
-        private const string SequrityKey = "1234567890987654";
+        private readonly IPassDistributionService _distribService;
 
-        private readonly IPassService _passService;
-        private readonly IPassTemplateService _passTemplateService;
-
-        public PassController(IPassService passService, IPassTemplateService passTemplateService)
+        public PassController(IPassDistributionService distribService)
         {
-            _passService = passService;
-            _passTemplateService = passTemplateService;
+            _distribService = distribService;
         }
 
-        public ActionResult EditPass(int id)
+        [HttpGet]
+        public ActionResult Edit(int id)
         {
             ClientType clientType = GetClientType();
             if (clientType == ClientType.Unknown)
                 return RedirectToAction("NotSupported");
 
-            IList<PassFieldInfo> passFields = _passService.GetPassFields(id);
-
-            var tokenInfo = new PassTokenInfo(){Id = id};
-            var model = new PassModel()
-            {
-                PassToken = EncryptPassToken(tokenInfo),
-                PassFields = passFields
-            };
-
-            return View("Edit", model);
+            IEnumerable<DistribField> passFields = _distribService.GetPassFields(id);
+            var model = new PassDistributionModel()
+                        {
+                            PassContentId = id,
+                            PassFields = passFields.ToArray()
+                        };
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult EditPass(PassModel model)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(PassDistributionModel model)
         {
-            PassTokenInfo tokenInfo = DecryptPassToken(model.PassToken);
-            _passService.UpdatePassFields(tokenInfo.Id, model.PassFields);
-            return RedirectToAction("Download", new { token = model.PassToken });
+            _distribService.UpdatePassFields(model.PassContentId, model.PassFields);
+            string token = _distribService.GetPassToken(model.PassContentId);
+            return RedirectToAction("Download", new { token });
         }
 
-        public ActionResult CreatePass(int id)
+        /*
+        [HttpGet]
+        public ActionResult Create(int id)
         {
             ClientType clientType = GetClientType();
             if (clientType == ClientType.Unknown)
@@ -57,7 +55,7 @@ namespace Pass.Distribution.Web.Controllers
             IList<PassFieldInfo> passFields = _passTemplateService.GetPassTemplateFields(id);
 
             var tokenInfo = new PassTokenInfo() { Id = id };
-            var model = new PassModel()
+            var model = new PassDistributionModel()
             {
                 PassToken = EncryptPassToken(tokenInfo),
                 PassFields = passFields
@@ -67,13 +65,14 @@ namespace Pass.Distribution.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreatePass(PassModel model)
+        public ActionResult Create(PassDistributionModel model)
         {
             PassTokenInfo tokenInfo = DecryptPassToken(model.PassToken);
             tokenInfo.Id = _passService.CreatePass(tokenInfo.Id, model.PassFields);
             string token = EncryptPassToken(tokenInfo);
             return RedirectToAction("Download", new { token });
         }
+        */
 
         public ActionResult Download(string token)
         {
@@ -81,24 +80,14 @@ namespace Pass.Distribution.Web.Controllers
             if (clientType == ClientType.Unknown)
                 return RedirectToAction("NotSupported");
 
-            PassTokenInfo tokenInfo = DecryptPassToken(token);
-            string path = _passService.GetPassPackage(tokenInfo.Id, clientType);
-            return File(path, "application/vnd.apple.pkpass", Path.GetFileName(path));
+            FileContentInfo fileInfo = _distribService.GetPassPackage(token, clientType);
+            return File(fileInfo.ContentStream, "application/vnd.apple.pkpass", fileInfo.FileName);
         }
 
         public ActionResult NotSupported()
         {
             NotSupportedModel model = GetNotSupportedModel();
             return View(model);
-        }
-
-        private string EncryptPassToken(PassTokenInfo tokenInfo)
-        {
-            return PassDistribution.EncryptPassToken(tokenInfo, SequrityKey);
-        }
-        private PassTokenInfo DecryptPassToken(string passToken)
-        {
-            return PassDistribution.DecryptPassToken(passToken, SequrityKey);
         }
 
         private ClientType GetClientType()
@@ -109,10 +98,6 @@ namespace Pass.Distribution.Web.Controllers
                     return ClientType.Apple;
 
                 return ClientType.Unknown;
-                /*
-                throw new PassDistributionException(string.Format("The client '{0}' - '{1}' is not supported", 
-                    Request.Browser.MobileDeviceManufacturer, Request.Browser.MobileDeviceModel));
-                */
             }
             return ClientType.Browser;
         }

@@ -120,6 +120,9 @@
   <data name="CertificateFileNotSpecified" xml:space="preserve">
     <value>Certificate file should be specified</value>
   </data>
+  <data name="DistributionLink" xml:space="preserve">
+    <value>Distribution Link</value>
+  </data>
   <data name="Download" xml:space="preserve">
     <value>Download</value>
   </data>

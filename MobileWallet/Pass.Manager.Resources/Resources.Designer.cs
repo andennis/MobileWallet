@@ -70,6 +70,15 @@ namespace Pass.Manager.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Distribution Link.
+        /// </summary>
+        public static string DistributionLink {
+            get {
+                return ResourceManager.GetString("DistributionLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Download.
         /// </summary>
         public static string Download {

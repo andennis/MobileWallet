@@ -55,7 +55,6 @@
     <Compile Include="Services\PassContentService.cs" />
     <Compile Include="Services\PassContentTemplateFieldService.cs" />
     <Compile Include="Services\PassContentTemplateService.cs" />
-    <Compile Include="Services\PassDistributionService.cs" />
     <Compile Include="Services\PassImageService.cs" />
     <Compile Include="Services\PassLocationService.cs" />
     <Compile Include="Services\PassManagerServiceBase.cs" />

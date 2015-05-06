@@ -6,5 +6,6 @@ namespace Pass.Manager.Core
     {
         //string SecurityKey { get; }
         string WorkingFolder { get; }
+        string WebDistributionUrl { get; }
     }
 }

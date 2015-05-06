@@ -4,15 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3448D5D8-CFAB-4E56-A674-0E788DB51E65}</ProjectGuid>
+    <ProjectGuid>{3E88CFC5-6890-4D6A-9FB6-8B6D1405E6C8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Pass.Distribution.BL</RootNamespace>
-    <AssemblyName>Pass.Distribution.BL</AssemblyName>
+    <RootNamespace>Pass.Distribution.Core</RootNamespace>
+    <AssemblyName>Pass.Distribution.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,10 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,26 +39,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PassDistributionConfig.cs" />
+    <Compile Include="Entities\DistribField.cs" />
+    <Compile Include="IPassDistributionConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\PassDistributionService.cs" />
+    <Compile Include="Services\IPassDistributionService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Common\Common.BL\Common.BL.csproj">
-      <Project>{7542D78D-E82E-4953-B917-E3DB9AD0FDB5}</Project>
-      <Name>Common.BL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\Common.Configuration\Common.Configuration.csproj">
-      <Project>{DFABDFCC-3B69-434A-BD2A-6838CD7608A8}</Project>
-      <Name>Common.Configuration</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\Common.Extensions\Common.Extensions.csproj">
-      <Project>{1628E173-1BE9-4DFC-BCBE-93334DE8EE46}</Project>
-      <Name>Common.Extensions</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Common\Common.Repository\Common.Repository.csproj">
       <Project>{F36371D6-812F-49F5-9E9B-043265660647}</Project>
       <Name>Common.Repository</Name>
@@ -78,22 +58,11 @@
       <Name>Pass.Container.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Pass.Manager\Pass.Manager.Core\Pass.Manager.Core.csproj">
-      <Project>{dc28cc0d-f87e-4d65-8812-3baf31c9c359}</Project>
+      <Project>{DC28CC0D-F87E-4D65-8812-3BAF31C9C359}</Project>
       <Name>Pass.Manager.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pass.Distribution.Core\Pass.Distribution.Core.csproj">
-      <Project>{3e88cfc5-6890-4d6a-9fb6-8b6d1405e6c8}</Project>
-      <Name>Pass.Distribution.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

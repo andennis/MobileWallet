@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.IO;
+using System.Web.Mvc;
 using Common.Utils;
 using Pass.Manager.Core.Services;
 using Pass.Manager.Web.Common;
@@ -32,7 +33,8 @@ namespace Pass.Manager.Web.Controllers
         public ActionResult Download(int id)
         {
             FileContentInfo fileInfo = _passOnlineService.GetPassPackage(id);
-            return File(fileInfo.ContentStream, fileInfo.ContentType, fileInfo.FileName);
+            string fileName = string.Format("pass{0}{1}", id, Path.GetExtension(fileInfo.FileName));
+            return File(fileInfo.ContentStream, fileInfo.ContentType, fileName);
         }
 
     }

@@ -1,7 +1,10 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using Common.BL;
 using Common.Web;
+using Microsoft.Ajax.Utilities;
+using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.SearchFilters;
 using Pass.Manager.Core.Services;
@@ -13,10 +16,12 @@ namespace Pass.Manager.Web.Controllers
     public class PassContentController : BaseEntityController<PassContentViewModel, PassContent, PassContentView, IPassContentService, PassContentFilter>
     {
         private readonly IPassContentTemplateService _contentTemplateService;
+        private readonly IPassManagerConfig _pmConfig;
 
-        public PassContentController(IPassContentService passService, IPassContentTemplateService contentTemplateService)
+        public PassContentController(IPassManagerConfig pmConfig, IPassContentService passService, IPassContentTemplateService contentTemplateService)
             : base(passService)
         {
+            _pmConfig = pmConfig;
             _contentTemplateService = contentTemplateService;
         }
 
@@ -54,6 +59,12 @@ namespace Pass.Manager.Web.Controllers
             base.SetDefaultReturnUrl(model);
             if (string.IsNullOrEmpty(model.RedirectUrl))
                 model.RedirectUrl = Url.Action<PassProjectController>(a => a.Edit(0), new { id = ((PassContentViewModel)model).PassProjectId });
+        }
+
+        protected override void PrepareModelToEditView(PassContentViewModel model)
+        {
+            base.PrepareModelToEditView(model);
+            model.DistributionLink = _pmConfig.WebDistributionUrl.TrimEnd('/') + "/pass/edit/"+model.PassContentId;
         }
 
         [AjaxOnly]

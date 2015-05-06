@@ -29,7 +29,7 @@ namespace Pass.Manager.Web.Models
 
         public int? ContainerPassId { get; set; }
         public bool IsOnline { get { return ContainerPassId.HasValue; } }
-
+        public string DistributionLink { get; set; }
         public IEnumerable<SelectListItem> PassContentTemplates { get; set; }
     }
 }
