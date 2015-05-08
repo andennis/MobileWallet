@@ -22,8 +22,9 @@ namespace Pass.Manager.Web
         {
             container.LoadConfiguration("FileStorage");
             container.LoadConfiguration("CertificateStorage");
-            container.LoadConfiguration("PassManager");
             container.LoadConfiguration("PassContainer");
+            container.LoadConfiguration("PassManager");
+            container.LoadConfiguration("PassDistribution");
         }
     }
 }

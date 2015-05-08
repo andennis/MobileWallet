@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using Common.Utils;
 using Pass.Container.Core.Entities.Enums;
 using Pass.Distribution.Core.Entities;
+using Pass.Distribution.Core.Exceptions;
 using Pass.Distribution.Core.Services;
 using Pass.Distribution.Web.Models;
 
@@ -20,28 +21,44 @@ namespace Pass.Distribution.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Edit(int id)
+        [ActionName("e-t")]
+        public ActionResult Edit(string token)
         {
             ClientType clientType = GetClientType();
             if (clientType == ClientType.Unknown)
                 return RedirectToAction("NotSupported");
 
-            IEnumerable<DistribField> passFields = _distribService.GetPassFields(id);
+            PassTokenInfo pti = _distribService.DecryptPassToken(token);
+            if (!pti.PassContentId.HasValue)
+                throw new PassDistributionGeneralException("Token does not contain PassContentId");
+
+            IEnumerable<DistribField> passFields = _distribService.GetPassFields(pti.PassContentId.Value);
             var model = new PassDistributionModel()
-                        {
-                            PassContentId = id,
-                            PassFields = passFields.ToArray()
-                        };
-            return View(model);
+            {
+                PassToken = token,
+                PassFields = passFields.ToArray()
+            };
+            return View("Edit", model);
+        }
+
+        [HttpGet]
+        [ActionName("e-id")]
+        public ActionResult Edit(int id)
+        {
+            string token = _distribService.EncryptPassToken(new PassTokenInfo() {PassContentId = id});
+            return Edit(token);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(PassDistributionModel model)
         {
-            _distribService.UpdatePassFields(model.PassContentId, model.PassFields);
-            string token = _distribService.GetPassToken(model.PassContentId);
-            return RedirectToAction("Download", new { token });
+            PassTokenInfo pti = _distribService.DecryptPassToken(model.PassToken);
+            if (!pti.PassContentId.HasValue)
+                throw new PassDistributionGeneralException("Token does not contain PassContentId");
+
+            _distribService.UpdatePassFields(pti.PassContentId.Value, model.PassFields);
+            return RedirectToAction("Download", new { token = model.PassToken });
         }
 
         /*
@@ -80,7 +97,11 @@ namespace Pass.Distribution.Web.Controllers
             if (clientType == ClientType.Unknown)
                 return RedirectToAction("NotSupported");
 
-            FileContentInfo fileInfo = _distribService.GetPassPackage(token, clientType);
+            PassTokenInfo pti = _distribService.DecryptPassToken(token);
+            if (!pti.PassContentId.HasValue)
+                throw new PassDistributionGeneralException("Token does not contain PassContentId");
+
+            FileContentInfo fileInfo = _distribService.GetPassPackage(pti.PassContentId.Value, clientType);
             return File(fileInfo.ContentStream, "application/vnd.apple.pkpass", fileInfo.FileName);
         }
 

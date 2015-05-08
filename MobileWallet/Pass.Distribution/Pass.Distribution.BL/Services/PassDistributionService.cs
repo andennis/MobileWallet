@@ -11,6 +11,7 @@ using Pass.Container.Core.Entities;
 using Pass.Container.Core.Entities.Enums;
 using Pass.Distribution.Core;
 using Pass.Distribution.Core.Entities;
+using Pass.Distribution.Core.Exceptions;
 using Pass.Distribution.Core.Services;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.Exceptions;
@@ -29,15 +30,6 @@ namespace Pass.Distribution.BL.Services
         private readonly IPassDistributionConfig _config;
         private readonly IPassOnlineService _passOnlineService;
 
-        private class PassTokenInfo
-        {
-            [JsonProperty(PropertyName = "p")]
-            public int? PassContentId { get; set; }
-
-            [JsonProperty(PropertyName = "t")]
-            public int? PassContentTemplateId { get; set; }
-        }
-
         public PassDistributionService(IPassDistributionConfig config, 
             IPassContentService passContentService,
             IPassContentFieldService passContentFieldService, 
@@ -50,9 +42,13 @@ namespace Pass.Distribution.BL.Services
             _passOnlineService = passOnlineService;
         }
 
-        public string GetPassToken(int passContentId)
+        public string EncryptPassToken(PassTokenInfo tokenInfo)
         {
-            return EncryptPassToken(new PassTokenInfo() { PassContentId = passContentId }, _config.SecurityKey);
+            return EncryptPassToken(tokenInfo, _config.SecurityKey);
+        }
+        public PassTokenInfo DecryptPassToken(string passToken)
+        {
+            return DecryptPassToken(passToken, _config.SecurityKey);
         }
 
         /*
@@ -91,16 +87,19 @@ namespace Pass.Distribution.BL.Services
             _passOnlineService.UpdateOnline(passContentId);
         }
 
-        public FileContentInfo GetPassPackage(string token, ClientType clientType)
+        public FileContentInfo GetPassPackage(int passContentId, ClientType clientType)
         {
-            PassTokenInfo tokenInfo = DecryptPassToken(token, _config.SecurityKey);
-            if (tokenInfo.PassContentId.HasValue)
-                return _passOnlineService.GetPassPackage(tokenInfo.PassContentId.Value);
+            return _passOnlineService.GetPassPackage(passContentId);
+        }
 
-            if (tokenInfo.PassContentTemplateId.HasValue)
-                throw new NotImplementedException();
+        public IEnumerable<DistribField> GetPassTemplateFields(int passContentTemplateId)
+        {
+            throw new NotImplementedException();
+        }
 
-            return null;
+        public int CreatePass(int passContentTemplateId, IEnumerable<DistribField> passFields)
+        {
+            throw new NotImplementedException();
         }
 
         private static string EncryptPassToken(PassTokenInfo tokenInfo, string password)
@@ -111,6 +110,9 @@ namespace Pass.Distribution.BL.Services
         private static PassTokenInfo DecryptPassToken(string passToken, string password)
         {
             string decrypted = Crypto.DecryptString(passToken, password, SecurityVector);
+            if (decrypted == null)
+                throw new PassDistributionGeneralException("Incorrect token");
+
             return decrypted.JsonToObject<PassTokenInfo>();
         }
 

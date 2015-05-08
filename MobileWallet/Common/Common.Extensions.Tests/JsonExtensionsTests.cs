@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 namespace Common.Extensions.Tests
 {
@@ -36,6 +37,9 @@ namespace Common.Extensions.Tests
             var obj = json.JsonToObject<TestClass>();
             Assert.AreEqual("Name1", obj.Name);
             Assert.AreEqual(1, obj.Value);
+
+            json = null;
+            Assert.Throws<ArgumentNullException>(() => json.JsonToObject<TestClass>());
         }
 
         [Test]

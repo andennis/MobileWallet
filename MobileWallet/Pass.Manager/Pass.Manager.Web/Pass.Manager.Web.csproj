@@ -1170,6 +1170,14 @@
       <Project>{3ffd32fb-90aa-4bbc-ba28-8431915b78b1}</Project>
       <Name>Pass.Container.Repository.EF</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Pass.Distribution\Pass.Distribution.BL\Pass.Distribution.BL.csproj">
+      <Project>{3448d5d8-cfab-4e56-a674-0e788db51e65}</Project>
+      <Name>Pass.Distribution.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pass.Distribution\Pass.Distribution.Core\Pass.Distribution.Core.csproj">
+      <Project>{3e88cfc5-6890-4d6a-9fb6-8b6d1405e6c8}</Project>
+      <Name>Pass.Distribution.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Pass.Manager.Resources\Pass.Manager.Resources.csproj">
       <Project>{32be1934-e3f4-499f-8083-9528f372a1c1}</Project>
       <Name>Pass.Manager.Resources</Name>

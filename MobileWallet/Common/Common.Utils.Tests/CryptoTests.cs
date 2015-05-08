@@ -20,12 +20,12 @@ namespace Common.Utils.Tests
             Assert.IsNotNullOrEmpty(decrypted);
             Assert.AreEqual(textToEncrypt, decrypted);
 
-            key = "8234567812345678";
+            key = "1111111111111111"; //wrong key
             decrypted = Crypto.DecryptString(encrypted, key, iv);
             Assert.IsNull(decrypted);
 
             key = "1234567812345678";
-            iv = "8765432187654328";
+            iv = "2222222222222222"; //wrong vector
             decrypted = Crypto.DecryptString(encrypted, key, iv);
             Assert.AreNotEqual(textToEncrypt, decrypted);
         }

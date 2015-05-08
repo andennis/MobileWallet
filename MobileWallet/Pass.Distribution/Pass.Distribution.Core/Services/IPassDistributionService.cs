@@ -7,10 +7,15 @@ namespace Pass.Distribution.Core.Services
 {
     public interface IPassDistributionService
     {
-        string GetPassToken(int passContentId);
-        //string GetPassTemplateToken(int passContentTemplateId);
+        string EncryptPassToken(PassTokenInfo tokenInfo);
+        PassTokenInfo DecryptPassToken(string passToken);
+
         IEnumerable<DistribField> GetPassFields(int passContentId);
         void UpdatePassFields(int passContentId, IEnumerable<DistribField> passFields);
-        FileContentInfo GetPassPackage(string token, ClientType clientType);
+
+        IEnumerable<DistribField> GetPassTemplateFields(int passContentTemplateId);
+        int CreatePass(int passContentTemplateId, IEnumerable<DistribField> passFields);
+
+        FileContentInfo GetPassPackage(int passContentId, ClientType clientType);
     }
 }

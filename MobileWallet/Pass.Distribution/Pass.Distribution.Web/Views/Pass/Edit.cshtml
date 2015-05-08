@@ -11,10 +11,10 @@
         <p>Please enter your details to add this pass to your phone</p>    
     </div>
     
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Edit", "Pass"))
     {
         @Html.AntiForgeryToken();
-        @Html.HiddenFor(x => x.PassContentId);
+        @Html.HiddenFor(x => x.PassToken);
         
         if (Model.PassFields != null && Model.PassFields.Any())
         {

@@ -4,6 +4,8 @@ using System.Web.Mvc;
 using Common.BL;
 using Common.Web;
 using Microsoft.Ajax.Utilities;
+using Pass.Distribution.Core.Entities;
+using Pass.Distribution.Core.Services;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.SearchFilters;
@@ -17,12 +19,17 @@ namespace Pass.Manager.Web.Controllers
     {
         private readonly IPassContentTemplateService _contentTemplateService;
         private readonly IPassManagerConfig _pmConfig;
+        private readonly IPassDistributionService _distributionService;
 
-        public PassContentController(IPassManagerConfig pmConfig, IPassContentService passService, IPassContentTemplateService contentTemplateService)
+        public PassContentController(IPassManagerConfig pmConfig, 
+            IPassContentService passService, 
+            IPassContentTemplateService contentTemplateService,
+            IPassDistributionService distributionService)
             : base(passService)
         {
             _pmConfig = pmConfig;
             _contentTemplateService = contentTemplateService;
+            _distributionService = distributionService;
         }
 
         public ActionResult Passes(int passProjectId)
@@ -64,7 +71,8 @@ namespace Pass.Manager.Web.Controllers
         protected override void PrepareModelToEditView(PassContentViewModel model)
         {
             base.PrepareModelToEditView(model);
-            model.DistributionLink = _pmConfig.WebDistributionUrl.TrimEnd('/') + "/pass/edit/"+model.PassContentId;
+            string token = _distributionService.EncryptPassToken(new PassTokenInfo() {PassContentId = model.PassContentId});
+            model.DistributionLink = _pmConfig.WebDistributionUrl.TrimEnd('/') + "/pass/e-t?token=" + token;
         }
 
         [AjaxOnly]
