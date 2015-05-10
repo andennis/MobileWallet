@@ -71,7 +71,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PushNotificationService.cs" />
+    <Compile Include="NotificationService.cs" />
     <Compile Include="PushNotificationServiceHost.cs" />
     <Compile Include="Quartz\IPushLogicLayer.cs" />
     <Compile Include="Program.cs" />

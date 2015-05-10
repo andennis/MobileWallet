@@ -6,19 +6,19 @@ using Pass.Notification.Repository.Core.Enums;
 
 namespace Pass.Notification.Tests
 {
-    public class PassNotificationServiceTests
+    public class PushNotificationServiceTests
     {
-        private PassNotificationService _passNotificationService;
+        private PushNotificationService _passNotificationService;
         private readonly IPushNotificationConfig _pnConfig;
 
-        public PassNotificationServiceTests()
+        public PushNotificationServiceTests()
         {
             _pnConfig = new PushNotificationConfig();
         }
 
-        private IPassNotificationService GetPassNotificationService()
+        private IPushNotificationService GetPassNotificationService()
         {
-            return Factory.PassNotificationFactory.Create(_pnConfig);
+            return Factory.PushNotificationFactory.Create(_pnConfig);
         }
 
         [Test]

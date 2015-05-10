@@ -45,13 +45,13 @@ namespace Pass.Notification.Service.Quartz
         {
             ICertificateStorageConfig certificateStorageConfig = new CertificateStorageConfig();
             IFileStorageConfig fileStorageConfig = new FileStorageConfig();
-            builder.Register(c => new PassNotificationService(
+            builder.Register(c => new PushNotificationService(
                 new PushNotificationUnitOfWork(new PushNotificationConfig()),
                 new PushSharpNotificationWorker(new PushNotificationUnitOfWork(new PushNotificationConfig())),
                 new CertificateStorageService(certificateStorageConfig,
                     new CertificateStorageUnitOfWork(certificateStorageConfig),
                     FileStorageFactory.Create(fileStorageConfig))))
-                .As<IPassNotificationService>();
+                .As<IPushNotificationService>();
             builder.RegisterType<PushTaskService>()
                    .As<IAmAHostedProcess>()
                    .PropertiesAutowired();     

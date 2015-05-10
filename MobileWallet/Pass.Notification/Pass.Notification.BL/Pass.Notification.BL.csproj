@@ -88,7 +88,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PassNotificationService.cs" />
+    <Compile Include="PushNotificationService.cs" />
     <Compile Include="PushNotificationConfig.cs" />
     <Compile Include="Utils\Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

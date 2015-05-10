@@ -20,7 +20,7 @@ namespace Pass.Notification.Service.Quartz
             JobDataMap dataMap = context.JobDetail.JobDataMap;
 
 
-            IPassNotificationService passNotificationService = (IPassNotificationService)dataMap.Get("PassNotificationService");
+            IPushNotificationService passNotificationService = (IPushNotificationService)dataMap.Get("PassNotificationService");
             if (passNotificationService == null)
                 throw new NullReferenceException("PassNotificationService should not be null.");
             else

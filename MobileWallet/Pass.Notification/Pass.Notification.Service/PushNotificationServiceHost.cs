@@ -13,11 +13,11 @@ namespace Pass.Notification.Service
     {
         private static ServiceHost _pushNotificationServiceHost;
 
-        public static void StartPushNotificationServiceHosts(IPassNotificationService passNotificationService)
+        public static void StartPushNotificationServiceHosts(IPushNotificationService passNotificationService)
         {
             StopPushNotificationServiceHosts();
 
-            _pushNotificationServiceHost = new ServiceHost(new PushNotificationService(passNotificationService));
+            _pushNotificationServiceHost = new ServiceHost(new NotificationService(passNotificationService));
             _pushNotificationServiceHost.Open();
             Logger.Info("Push notification service (WCF) has been started");
         }

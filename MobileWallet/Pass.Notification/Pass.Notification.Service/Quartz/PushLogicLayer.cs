@@ -5,9 +5,9 @@ namespace Pass.Notification.Service.Quartz
 {
     public class PushLogicLayer: IPushLogicLayer
     {
-        public void Run(IPassNotificationService passNotificationService)
+        public void Run(IPushNotificationService passNotificationService)
         {
-            passNotificationService.SendPushNotifications();
+            passNotificationService.SendPushNotificationFromQueue();
             Logger.Info("Push has been run");
         }
 

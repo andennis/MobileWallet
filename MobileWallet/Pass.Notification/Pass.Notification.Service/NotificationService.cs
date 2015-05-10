@@ -12,11 +12,11 @@ namespace Pass.Notification.Service
 {
     [ServiceContract]
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
-    public class PushNotificationService
+    public class NotificationService
     {
-        private readonly IPassNotificationService _passNotificationService;
+        private readonly IPushNotificationService _passNotificationService;
 
-        public PushNotificationService(IPassNotificationService passNotificationService)
+        public NotificationService(IPushNotificationService passNotificationService)
         {
             _passNotificationService = passNotificationService;
         }

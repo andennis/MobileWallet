@@ -10,12 +10,12 @@ namespace Pass.Notification.Service.Quartz
 {
     public class PushTaskService : IAmAHostedProcess, IDisposable
     {
-        private readonly IPassNotificationService _passNotificationService;
+        private readonly IPushNotificationService _passNotificationService;
         public IScheduler Scheduler { get; set; }    
         public IJobFactory JobFactory { get; set; }       
         public IJobListener JobListener { get; set; }
 
-        public PushTaskService(IPassNotificationService passNotificationService)
+        public PushTaskService(IPushNotificationService passNotificationService)
         {
             _passNotificationService = passNotificationService;
         }

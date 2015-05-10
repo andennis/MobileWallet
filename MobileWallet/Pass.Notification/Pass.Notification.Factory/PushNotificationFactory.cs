@@ -6,18 +6,18 @@ using Pass.Notification.Repository.Core;
 
 namespace Pass.Notification.Factory
 {
-    public class PassNotificationFactory
+    public class PushNotificationFactory
     {
          private static readonly IUnityContainer _iocContainer = new UnityContainer();
 
-         static PassNotificationFactory()
+         static PushNotificationFactory()
         {
             _iocContainer.LoadConfiguration("PassNotification");
         }
 
-        public static IPassNotificationService Create(IPushNotificationConfig config = null)
+        public static IPushNotificationService Create(IPushNotificationConfig config = null)
         {
-            return _iocContainer.Resolve<IPassNotificationService>();
+            return _iocContainer.Resolve<IPushNotificationService>();
         }
     }
 }

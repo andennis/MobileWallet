@@ -65,13 +65,10 @@ namespace Pass.Notification.BL
             var appleNotification = (AppleNotification) notification;
             var deviceTocken = appleNotification.DeviceToken;
 
-            IQueryable<PushNotificationItem> failPushNotificationItems = _repPushNotificationItem.Query()
+            List<PushNotificationItem> failPushNotificationItems = _repPushNotificationItem.Query()
                 .Filter(x => x.PushTockenId == deviceTocken && x.Status == PushStatus.InProcess)
-                .Get();
-            foreach (PushNotificationItem pushNotificationItem in failPushNotificationItems)
-            {
-                pushNotificationItem.Status = PushStatus.Error;
-            }
+                .Get().ToList();
+            _pnUnitOfWork.PushNotificationRepository.SetPushNotificationStatus(failPushNotificationItems.Select(x => x.PushNotificationItemId).ToList(), PushStatus.Error);
             _pnUnitOfWork.Save();
         }
 

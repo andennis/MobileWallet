@@ -5,6 +5,6 @@ namespace Pass.Notification.Service.Quartz
 {
     public interface IPushLogicLayer : IDisposable
     {
-        void Run(IPassNotificationService passNotificationService);
+        void Run(IPushNotificationService passNotificationService);
     }
 }

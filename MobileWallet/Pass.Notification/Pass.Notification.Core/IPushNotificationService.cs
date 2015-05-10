@@ -7,9 +7,10 @@ using Pass.Notification.Repository.Core.Enums;
 
 namespace Pass.Notification.Core
 {
-    public interface IPassNotificationService : IDisposable
+    public interface IPushNotificationService : IDisposable
     {
         void AddPushNotificationToQueue(int certificateStorageId, IEnumerable<string> pushTockenIds, PushNotificationServiceType serviceType);
-        void SendPushNotifications();
+        void SendPushNotificationFromQueue();
+        void SendPushNotifications(int certificateId, IList<string> deviceTokenlList);
     }
 }
