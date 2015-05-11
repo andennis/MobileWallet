@@ -119,8 +119,13 @@ namespace Pass.Processing.Web.Controllers
                 }
                 //If the passesUpdatedSince parameter is present, return only the passes that have been updated since
                 //the time indicated by tag. Otherwise, return all passes for specified PassTypeId.
-                DateTime passesUpdatedSinceTime;
-                DateTime.TryParse(passesUpdatedSince, out passesUpdatedSinceTime);//TODO check date format
+                DateTime? passesUpdatedSinceTime = null;
+                if (!string.IsNullOrEmpty(passesUpdatedSince))
+                {
+                    DateTime dt;
+                    if (DateTime.TryParse(passesUpdatedSince, out dt)) //TODO check date format
+                        passesUpdatedSinceTime = dt;
+                }
 
                 ChangedPassesInfo changedPassesInfo;
                 PassProcessingStatus status = _passProcessingService.GetChangedPasses(deviceLibraryIdentifier, passTypeIdentifier.ToString(), passesUpdatedSinceTime, out changedPassesInfo);
