@@ -1,5 +1,4 @@
 ﻿using Pass.Container.Core.Entities;
-using Pass.Container.Core.Entities.Enums;
 using Pass.Container.Repository.Core.Entities;
 
 namespace Pass.Container.BL
@@ -17,6 +16,7 @@ namespace Pass.Container.BL
                     };
         }
 
+        /*
         public static ClientDeviceType ClientTypeToRepositoryClientDeviceType(ClientType clientType)
         {
             switch (clientType)
@@ -29,6 +29,6 @@ namespace Pass.Container.BL
                     return ClientDeviceType.Unknown;
             }
         }
-
+        */
     }
 }

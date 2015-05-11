@@ -47,6 +47,7 @@
     <Compile Include="Entities\PassFieldInfo.cs" />
     <Compile Include="Entities\PassPackageInfo.cs" />
     <Compile Include="Entities\ChangedPassesInfo.cs" />
+    <Compile Include="Entities\RegistrationInfo.cs" />
     <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\FieldDictionaryKeys\Field.cs" />
     <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\LowerLevelKeys\Barcode.cs" />
     <Compile Include="Entities\Templates\NativePassTemplates\ApplePassTemplate\LowerLevelKeys\Beacon.cs" />

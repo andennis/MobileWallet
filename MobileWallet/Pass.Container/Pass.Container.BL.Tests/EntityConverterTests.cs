@@ -42,12 +42,14 @@ namespace Pass.Container.BL.Tests
             Assert.AreEqual(pfv.Value, pfi.Value);
         }
 
+        /*
         [Test]
         public void ClientTypeToRepositoryClientDeviceTypeTest()
         {
-            Assert.AreEqual(ClientDeviceType.Unknown, EntityConverter.ClientTypeToRepositoryClientDeviceType(ClientType.Unknown));
-            Assert.AreEqual(ClientDeviceType.Apple, EntityConverter.ClientTypeToRepositoryClientDeviceType(ClientType.Apple));
-            Assert.AreEqual(ClientDeviceType.Browser, EntityConverter.ClientTypeToRepositoryClientDeviceType(ClientType.Browser));
+            Assert.AreEqual(ClientType.Unknown, EntityConverter.ClientTypeToRepositoryClientDeviceType(ClientType.Unknown));
+            Assert.AreEqual(ClientType.Apple, EntityConverter.ClientTypeToRepositoryClientDeviceType(ClientType.Apple));
+            Assert.AreEqual(ClientType.Browser, EntityConverter.ClientTypeToRepositoryClientDeviceType(ClientType.Browser));
         }
+        */
     }
 }

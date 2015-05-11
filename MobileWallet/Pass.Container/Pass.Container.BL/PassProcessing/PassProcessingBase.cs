@@ -54,7 +54,7 @@ namespace Pass.Container.BL.PassProcessing
             return PassProcessingStatus.Succeed;
         }
 
-        protected ClientDevice GetClientDevice(string deviceId, ClientDeviceType deviceType)
+        protected ClientDevice GetClientDevice(string deviceId, ClientType deviceType)
         {
             return _pcUnitOfWork.GetRepository<ClientDevice>().Query()
                 .Filter(x => x.DeviceId == deviceId && x.DeviceType == deviceType)

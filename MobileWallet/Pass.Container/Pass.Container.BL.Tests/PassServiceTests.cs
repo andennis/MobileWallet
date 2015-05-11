@@ -219,6 +219,12 @@ namespace Pass.Container.BL.Tests
             }
         }
 
+        [Test]
+        public void GetPassRegistrationsTest()
+        {
+            throw new NotImplementedException();
+        }
+
         private IPassService GetPassContainerService()
         {
             return PassContainerFactory.CreateContainerService(GetMockCertificateStorageService(), GetMockPassCertificateService());

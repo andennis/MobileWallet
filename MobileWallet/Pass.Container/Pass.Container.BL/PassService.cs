@@ -180,6 +180,26 @@ namespace Pass.Container.BL
             return pg.GeneratePass(pass.AuthToken, pass.SerialNumber, fields, passFolder);
         }
 
+        public IList<RegistrationInfo> GetPassRegistrations(int passId, EntityStatus? status)
+        {
+            IRepository<Registration> repReg = _pcUnitOfWork.GetRepository<Registration>();
+            IEnumerable<Registration> regs = repReg.Query()
+                .Filter(x => x.PassId == passId)
+                .Include(x => x.ClientDevice)
+                .Get()
+                .AsEnumerable();
+
+            return regs.Select(x => new RegistrationInfo()
+                                    {
+                                        PassId = x.PassId,
+                                        DeviceId = x.ClientDevice.DeviceId,
+                                        DeviceType = x.ClientDevice.DeviceType,
+                                        Status = x.Status,
+                                        CreatedDate = x.CreatedDate,
+                                        UpdatedDate = x.UpdatedDate
+                                    }).ToList();
+        }
+
         private string GetTemporaryTemplateFolder(int templateId, ClientType clientType)
         {
             return Path.Combine(_config.PassWorkingFolder, "T" + templateId, clientType.ToString());

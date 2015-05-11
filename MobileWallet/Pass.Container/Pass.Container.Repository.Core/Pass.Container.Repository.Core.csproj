@@ -39,7 +39,6 @@
     <Compile Include="Entities\ChangedPass.cs" />
     <Compile Include="Entities\ClientDevice.cs" />
     <Compile Include="Entities\ClientDeviceApple.cs" />
-    <Compile Include="Entities\ClientDeviceType.cs" />
     <Compile Include="Entities\Pass.cs" />
     <Compile Include="Entities\PassField.cs" />
     <Compile Include="Entities\PassFieldValue.cs" />
@@ -55,6 +54,10 @@
     <ProjectReference Include="..\..\Common\Common.Repository\Common.Repository.csproj">
       <Project>{f36371d6-812f-49f5-9e9b-043265660647}</Project>
       <Name>Common.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pass.Container.Core\Pass.Container.Core.csproj">
+      <Project>{062e8da0-3ef1-4481-8fcf-cfeb54a39771}</Project>
+      <Name>Pass.Container.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

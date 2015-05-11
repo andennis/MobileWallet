@@ -80,7 +80,7 @@ namespace Pass.Container.BL
             var passTemplateApple = new PassTemplateApple
                                     {
                                         PassTemplateId = passTemplate.PassTemplateId, 
-                                        DeviceType = ClientDeviceType.Apple,
+                                        DeviceType = ClientType.Apple,
                                         PassTypeId = generalPassTemplate.PassTypeIdentifier,
                                         CertificateId = GetCertificateId(generalPassTemplate, ClientType.Apple)
                                     };

@@ -1,10 +1,12 @@
-﻿namespace Pass.Container.Repository.Core.Entities
+﻿using Pass.Container.Core.Entities.Enums;
+
+namespace Pass.Container.Repository.Core.Entities
 {
     public class ClientDeviceApple : ClientDevice
     {
         public ClientDeviceApple()
         {
-            DeviceType = ClientDeviceType.Apple;
+            DeviceType = ClientType.Apple;
         }
         public string PushToken { get; set; }
     }

@@ -2,7 +2,7 @@
 
 namespace Pass.Container.Repository.Core.Entities
 {
-    public class Registration
+    public class Registration : EntityVersionable
     {
         public int PassId { get; set; }
         public int ClientDeviceId { get; set; }

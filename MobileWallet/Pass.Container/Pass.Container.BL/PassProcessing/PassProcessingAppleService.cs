@@ -64,7 +64,7 @@ namespace Pass.Container.BL.PassProcessing
         public PassProcessingStatus GetChangedPasses(string deviceLibraryIdentifier, string passTypeId, DateTime? passesUpdatedSince, out ChangedPassesInfo changedPassesInfo)
         {
             changedPassesInfo = null;
-            ClientDevice device = GetClientDevice(deviceLibraryIdentifier, ClientDeviceType.Apple);
+            ClientDevice device = GetClientDevice(deviceLibraryIdentifier, ClientType.Apple);
             if (device == null)
                 return PassProcessingStatus.NotFound;
 
@@ -117,7 +117,7 @@ namespace Pass.Container.BL.PassProcessing
         private ClientDeviceApple GetClientDevice(string deviceId)
         {
             return _repClientDeviceApple.Query()
-                .Filter(x => x.DeviceId == deviceId && x.DeviceType == ClientDeviceType.Apple)
+                .Filter(x => x.DeviceId == deviceId && x.DeviceType == ClientType.Apple)
                 .Get()
                 .FirstOrDefault();
         }
