@@ -141,6 +141,13 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <None Include="Web.Base.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web.My.config">
+      <DependentUpon>Web.Base.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -242,4 +249,10 @@
   </Target>
   <Target Name="AfterBuild">
   </Target> -->
+  <Target Name="BeforeBuild">
+    <PropertyGroup>
+      <TransformationFile Condition=" '$(TransformationFile)' == '' ">My</TransformationFile>
+    </PropertyGroup>
+    <TransformXml Source="Web.Base.config" Transform="Web.$(TransformationFile).config" Destination="Web.config" />
+  </Target>
 </Project>
