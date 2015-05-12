@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Common.Repository;
+using Common.BL;
 using Pass.Container.Core.Entities;
 using Pass.Container.Core.Entities.Enums;
+using Pass.Container.Core.SearchFilters;
 
 namespace Pass.Container.Core
 {
@@ -12,6 +13,6 @@ namespace Pass.Container.Core
         IList<PassFieldInfo> GetPassFields(int passId);
         void UpdatePassFields(int passId, IList<PassFieldInfo> newFieldValues);
         string GetPassPackage(int passId, ClientType deviceType);
-        IList<RegistrationInfo> GetPassRegistrations(int passId, EntityStatus? status);
+        SearchResult<RegistrationInfo> GetPassRegistrations(SearchContext searchContext, PassRegistrationFilter filter);
     }
 }

@@ -1,9 +1,11 @@
 ﻿using System.IO;
 using System.Linq;
+using Common.BL;
 using Common.Utils;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
 using Pass.Container.Core.Entities.Enums;
+using Pass.Container.Core.SearchFilters;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.Services;
 using Pass.Manager.Core.Exceptions;
@@ -71,6 +73,11 @@ namespace Pass.Manager.BL.Services
                 ContentType = "application/vnd.apple.pkpass"
             };
 
+        }
+
+        public SearchResult<RegistrationInfo> GetPassRegistrations(SearchContext searchContext, PassRegistrationFilter filter)
+        {
+            return _passService.GetPassRegistrations(searchContext, filter);
         }
 
     }

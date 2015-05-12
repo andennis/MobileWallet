@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
+using Common.BL;
 using Common.Repository;
 using Pass.Container.BL.PassGenerators;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
 using Pass.Container.Core.Entities.Enums;
 using Pass.Container.Core.Exceptions;
+using Pass.Container.Core.SearchFilters;
 using Pass.Container.Repository.Core;
 using Pass.Container.Repository.Core.Entities;
 using RepEntities = Pass.Container.Repository.Core.Entities;
@@ -180,16 +182,16 @@ namespace Pass.Container.BL
             return pg.GeneratePass(pass.AuthToken, pass.SerialNumber, fields, passFolder);
         }
 
-        public IList<RegistrationInfo> GetPassRegistrations(int passId, EntityStatus? status)
+        public SearchResult<RegistrationInfo> GetPassRegistrations(SearchContext searchContext, PassRegistrationFilter filter)
         {
             IRepository<Registration> repReg = _pcUnitOfWork.GetRepository<Registration>();
             IEnumerable<Registration> regs = repReg.Query()
-                .Filter(x => x.PassId == passId)
+                .Filter(x => x.PassId == filter.PassId)
                 .Include(x => x.ClientDevice)
                 .Get()
                 .AsEnumerable();
 
-            return regs.Select(x => new RegistrationInfo()
+            IEnumerable<RegistrationInfo> regInfos = regs.Select(x => new RegistrationInfo()
                                     {
                                         PassId = x.PassId,
                                         DeviceId = x.ClientDevice.DeviceId,
@@ -198,6 +200,13 @@ namespace Pass.Container.BL
                                         CreatedDate = x.CreatedDate,
                                         UpdatedDate = x.UpdatedDate
                                     }).ToList();
+
+            return new SearchResult<RegistrationInfo>()
+                    {
+                        Data = regInfos,
+                        TotalCount = regInfos.Count()
+                    };
+
         }
 
         private string GetTemporaryTemplateFolder(int templateId, ClientType clientType)
