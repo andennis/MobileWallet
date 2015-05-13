@@ -137,7 +137,7 @@ namespace Pass.Manager.Web.Common
         }
 
         [AjaxOnly]
-        public virtual ActionResult GridSearch(GridDataRequest request, TSearchFilter searchFilter = null)
+        public virtual ActionResult GridSearch(GridDataRequest request, TSearchFilter searchFilter)
         {
             SearchResult<TEntity> result = _service.Search(GridRequestToSearchContext(request), searchFilter);
             IEnumerable<TEntityViewModel> resultView = Mapper.Map<IEnumerable<TEntity>, IEnumerable<TEntityViewModel>>(result.Data);
@@ -145,7 +145,7 @@ namespace Pass.Manager.Web.Common
         }
 
         [AjaxOnly]
-        public virtual ActionResult GridSearchView(GridDataRequest request, TSearchFilter searchFilter = null)
+        public virtual ActionResult GridSearchView(GridDataRequest request, TSearchFilter searchFilter)
         {
             SearchResult<TEntityView> result = _service.SearchView<TEntityView>(GridRequestToSearchContext(request), searchFilter);
             IEnumerable<TEntityViewModel> resultView = Mapper.Map<IEnumerable<TEntityView>, IEnumerable<TEntityViewModel>>(result.Data);
@@ -165,15 +165,6 @@ namespace Pass.Manager.Web.Common
         }
         protected virtual void PrepareModelToEditView(TEntityViewModel model)
         {
-        }
-
-        protected SearchContext GridRequestToSearchContext(GridDataRequest request)
-        {
-            return new SearchContext()
-                   {
-                       PageIndex = request.start,
-                       PageSize = request.length
-                   };
         }
 
         protected void SetFormAttributes(object htmlAttributes)

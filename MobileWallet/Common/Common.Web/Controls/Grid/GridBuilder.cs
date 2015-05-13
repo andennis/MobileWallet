@@ -221,7 +221,7 @@ namespace Common.Web.Controls.Grid
 
             return @"function(data, type, row) {
                         if (data) {
-                            var date = eval(data.replace(/\/Date\((\d+)\)\//gi, ""new Date($1)""));
+                            var date = eval(data.replace(/\/Date\((-?\d+)\)\//gi, ""new Date($1)""));
                             return kendo.toString(date, """+dateTimeFormat+ @""");
                         }
                         return null;

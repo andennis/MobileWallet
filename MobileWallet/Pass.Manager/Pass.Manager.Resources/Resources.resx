@@ -120,6 +120,9 @@
   <data name="CertificateFileNotSpecified" xml:space="preserve">
     <value>Certificate file should be specified</value>
   </data>
+  <data name="CreatedDate" xml:space="preserve">
+    <value>Created Date</value>
+  </data>
   <data name="DistributionLink" xml:space="preserve">
     <value>Distribution Link</value>
   </data>
@@ -144,6 +147,9 @@
   <data name="Update" xml:space="preserve">
     <value>Update</value>
   </data>
+  <data name="UpdatedDate" xml:space="preserve">
+    <value>Updated Date</value>
+  </data>
   <data name="UpdatePassOnlineConformation" xml:space="preserve">
     <value>Are you sure you want to update this pass online?</value>
   </data>
@@ -155,5 +161,14 @@
   </data>
   <data name="UpdateTemplateOnlineSuccess" xml:space="preserve">
     <value>The pass template has been updated successully</value>
+  </data>
+  <data name="DeviceId" xml:space="preserve">
+    <value>Device ID</value>
+  </data>
+  <data name="DeviceType" xml:space="preserve">
+    <value>Device Type</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
   </data>
 </root>

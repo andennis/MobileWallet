@@ -1,4 +1,6 @@
 ﻿using System.Web.Mvc;
+using Common.BL;
+using Common.Web.Controls.Grid;
 
 namespace Pass.Manager.Web.Common
 {
@@ -36,5 +38,15 @@ namespace Pass.Manager.Web.Common
                            };
             return Json(ajaxResp, behavior);
         }
+
+        protected SearchContext GridRequestToSearchContext(GridDataRequest request)
+        {
+            return new SearchContext()
+            {
+                PageIndex = request.start,
+                PageSize = request.length
+            };
+        }
+
     }
 }

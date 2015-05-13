@@ -1,1 +1,23 @@
-﻿
+﻿@using Pass.Container.Core.Entities
+@model int
+    
+@(Html.Grid<RegistrationInfo>()
+              .Name("grdRegistrations")
+              .CssClass("pm-grid")
+              .Pageable()
+              .DataSource(ds => ds.Read(Url.Action<PassOnlineController>(a => a.Registrations(null, null), new { PassId = Model })))
+              .Columns(c =>
+                       {
+                           c.Bound(p => p.DeviceId).Title(Resources.DeviceId);
+                           c.BoundEnum(p => p.DeviceType).Title(Resources.DeviceType);
+                           c.BoundEnum(p => p.Status).Title(Resources.Status);
+                           c.Bound(p => p.CreatedDate).Title(Resources.CreatedDate);
+                           c.Bound(p => p.UpdatedDate).Title(Resources.UpdatedDate);
+                       }))
+
+<script>
+    $(document).ready(function () {
+        window.grid.Init($("#grdRegistrations"));
+    });
+</script>
+

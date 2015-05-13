@@ -61,7 +61,7 @@
               .Items(tab =>
                      {
                          tab.Add().Text("Fields").LoadContentFrom(Url.Action<PassContentController>(a => a.TabFields(0), new { id = Model.PassContentId })).Selected(true);
-                         tab.Add().Text("Registrations").LoadContentFrom(Url.Action<PassContentController>(a => a.TabRegistrations(0), new { id = Model.PassContentId }));
+                         tab.Add().Text("Registrations").LoadContentFrom(Url.Action<PassContentController>(a => a.TabRegistrations(0), new { id = Model.PassContentId })).Visible(Model.ContainerPassId.HasValue);
                          //tab.Add().Text("Images").LoadContentFrom(Url.Action("TabImages", new { id = Model.PassContentTemplateId }));
                          //tab.Add().Text("Beacons").LoadContentFrom(Url.Action("TabBeacons", new { id = Model.PassContentTemplateId }));
                          //tab.Add().Text("Locations").LoadContentFrom(Url.Action("TabLocations", new { id = Model.PassContentTemplateId }));
@@ -78,5 +78,8 @@
 
         $("#ContainerPassId").val(data.containerPassId);
         $("#divContainerPassId").show();
+
+        var passTabs = $("#passTabs").kendoTabStrip();
+        var itms = passTabs.items();
     }
 </script>
