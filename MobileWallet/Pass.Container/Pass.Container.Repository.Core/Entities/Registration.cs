@@ -1,4 +1,5 @@
-﻿using Common.Repository;
+﻿using System;
+using Common.Repository;
 
 namespace Pass.Container.Repository.Core.Entities
 {
@@ -9,5 +10,6 @@ namespace Pass.Container.Repository.Core.Entities
         public Pass Pass { get; set; }
         public ClientDevice ClientDevice { get; set; }
         public EntityStatus Status { get; set; }
+        public DateTime? UnregisterDate { get; set; }
     }
 }

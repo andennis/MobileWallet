@@ -196,6 +196,7 @@ namespace Pass.Container.BL
                                         PassId = x.PassId,
                                         DeviceId = x.ClientDevice.DeviceId,
                                         DeviceType = x.ClientDevice.DeviceType,
+                                        PushToken = x.ClientDevice is ClientDeviceApple ? ((ClientDeviceApple)x.ClientDevice).PushToken : null,
                                         Status = x.Status,
                                         CreatedDate = x.CreatedDate,
                                         UpdatedDate = x.UpdatedDate

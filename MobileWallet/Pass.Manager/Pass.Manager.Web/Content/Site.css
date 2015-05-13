@@ -455,3 +455,9 @@ textarea {
     display: flex;
     align-items: center;
 }
+
+.crop { 
+  overflow:hidden; 
+  white-space:nowrap; 
+  text-overflow:ellipsis; 
+}​

@@ -8,9 +8,11 @@ namespace Pass.Container.Core.Entities
     {
         public int PassId { get; set; }
         public string DeviceId { get; set; }
+        public string PushToken { get; set; }
         public ClientType DeviceType { get; set; }
         public EntityStatus Status { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
+        public DateTime UnregisterDate { get; set; }
     }
 }

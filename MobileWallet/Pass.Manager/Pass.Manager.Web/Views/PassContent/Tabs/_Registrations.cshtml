@@ -11,8 +11,10 @@
                            c.Bound(p => p.DeviceId).Title(Resources.DeviceId);
                            c.BoundEnum(p => p.DeviceType).Title(Resources.DeviceType);
                            c.BoundEnum(p => p.Status).Title(Resources.Status);
+                           c.Bound(p => p.PushToken).Title(Resources.PushToken).ClientTemplateId("CropPushToken");
                            c.Bound(p => p.CreatedDate).Title(Resources.CreatedDate);
                            c.Bound(p => p.UpdatedDate).Title(Resources.UpdatedDate);
+                           c.Bound(p => p.UnregisterDate).Title(Resources.UnregisterDate);
                        }))
 
 <script>
@@ -21,3 +23,8 @@
     });
 </script>
 
+<script id="CropPushToken" type="text/x-kendo-template">
+    <div class="crop" style="width:300px" title="#=PushToken#">
+        #=PushToken#
+    </div>
+</script>

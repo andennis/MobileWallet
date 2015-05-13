@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Common.Repository;
 using Pass.Container.Core.Entities.Enums;
 using Pass.Container.Repository.Core;
@@ -49,6 +50,7 @@ namespace Pass.Container.BL.PassProcessing
                 return PassProcessingStatus.AlreadyDone;
 
             reg.Status = EntityStatus.Deleted;
+            reg.UnregisterDate = DateTime.Now;
             regRep.Update(reg);
             //_pcUnitOfWork.Save();
             return PassProcessingStatus.Succeed;
