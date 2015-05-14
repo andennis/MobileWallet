@@ -463,10 +463,14 @@ textarea {
     text-overflow: ellipsis;
 }
 
-.boundBoolImg {
+img.boundBoolImg {
     width: 28px;
     height: 28px;
     margin-top: -8px;
     margin-bottom: -5px;
     margin-left: 39%;
+}
+
+img[src=""].boundBoolImg {
+    display: none;
 }

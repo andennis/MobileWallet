@@ -84,12 +84,12 @@ namespace Common.Web.Controls.Grid
             return builder;
         }
 
-        public GridBoundColumnBuilder<TModel> BoundBool<TValue>(Expression<Func<TModel, TValue>> expression, string textTrue, string textFalse)
+        public GridBoundColumnBuilder<TModel> BoundBool<TValue>(Expression<Func<TModel, TValue>> expression, string textTrue = "Yes", string textFalse = "No")
         {
             return BoundBool(expression.GetPropertyName(), textTrue, textFalse);
         }
 
-        private GridBoundColumnBuilder<TModel> BoundBool(string colName, string textTrue, string textFalse)
+        private GridBoundColumnBuilder<TModel> BoundBool(string colName, string textTrue = "Yes", string textFalse = "No")
         {
             var builder = new GridBoundColumnBuilder<TModel>(_htmlHelper, colName);
             var sb = new StringBuilder();
@@ -99,12 +99,12 @@ namespace Common.Web.Controls.Grid
             return builder;
         }
 
-        public GridBoundColumnBuilder<TModel> BoundBoolImg<TValue>(Expression<Func<TModel, TValue>> expression, string urlTrue, string urlFalse)
+        public GridBoundColumnBuilder<TModel> BoundBoolImg<TValue>(Expression<Func<TModel, TValue>> expression, string urlTrue = "/Pass.Manager.Web/Images/Grid/true.png", string urlFalse = null)
         {
             return BoundBoolImg(expression.GetPropertyName(), urlTrue, urlFalse);
         }
 
-        private GridBoundColumnBuilder<TModel> BoundBoolImg(string colName, string urlTrue, string urlFalse)
+        private GridBoundColumnBuilder<TModel> BoundBoolImg(string colName, string urlTrue = "/Pass.Manager.Web/Images/Grid/true.png", string urlFalse = null)
         {
             var builder = new GridBoundColumnBuilder<TModel>(_htmlHelper, colName);
             var tb = new TagBuilder("img");
