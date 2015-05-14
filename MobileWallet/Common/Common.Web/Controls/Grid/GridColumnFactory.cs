@@ -51,7 +51,7 @@ namespace Common.Web.Controls.Grid
             return BoundLink(colName, url, expressionId.GetPropertyName(), template, htmlAttributes, colTitle);
         }
 
-        public GridBoundColumnBuilder<TModel> BoundLink<TValue, TId>(Expression<Func<TModel, TValue>> expression, string url, Expression<Func<TModel, TId>> expressionId, 
+        public GridBoundColumnBuilder<TModel> BoundLink<TValue, TId>(Expression<Func<TModel, TValue>> expression, string url, Expression<Func<TModel, TId>> expressionId,
             object htmlAttributes = null, string colTitle = null)
         {
             return BoundLink(expression.GetPropertyName(), url, expressionId.GetPropertyName(), null, htmlAttributes, colTitle);
@@ -84,6 +84,39 @@ namespace Common.Web.Controls.Grid
             return builder;
         }
 
+        public GridBoundColumnBuilder<TModel> BoundBool<TValue>(Expression<Func<TModel, TValue>> expression, string textTrue, string textFalse)
+        {
+            return BoundBool(expression.GetPropertyName(), textTrue, textFalse);
+        }
+
+        private GridBoundColumnBuilder<TModel> BoundBool(string colName, string textTrue, string textFalse)
+        {
+            var builder = new GridBoundColumnBuilder<TModel>(_htmlHelper, colName);
+            var sb = new StringBuilder();
+            sb.AppendFormat("if(IsDefault) {{#{0}#}} else {{#{1}#}}", textTrue, textFalse);
+            builder.ClientTemplate(string.Format("# {0} #", sb));
+            Columns.Add(builder);
+            return builder;
+        }
+
+        public GridBoundColumnBuilder<TModel> BoundBoolImg<TValue>(Expression<Func<TModel, TValue>> expression, string urlTrue, string urlFalse)
+        {
+            return BoundBoolImg(expression.GetPropertyName(), urlTrue, urlFalse);
+        }
+
+        private GridBoundColumnBuilder<TModel> BoundBoolImg(string colName, string urlTrue, string urlFalse)
+        {
+            var builder = new GridBoundColumnBuilder<TModel>(_htmlHelper, colName);
+            var tb = new TagBuilder("img");
+            var sb = new StringBuilder();
+            sb.AppendFormat("if(IsDefault) {{#{0}#}} else {{#{1}#}}", urlTrue, urlFalse);
+            tb.Attributes.Add("src", string.Format("# {0} #", sb));
+            tb.Attributes.Add("class", "boundBoolImg");
+            builder.ClientTemplate(tb.ToString());
+            Columns.Add(builder);
+            return builder;
+        }
+
         private string GetColEnumClientTemplete<TEnum>(string colName) where TEnum : struct
         {
             var sb = new StringBuilder();
@@ -94,6 +127,6 @@ namespace Common.Web.Controls.Grid
             }
             return sb.ToString();
         }
-        
+
     }
 }
