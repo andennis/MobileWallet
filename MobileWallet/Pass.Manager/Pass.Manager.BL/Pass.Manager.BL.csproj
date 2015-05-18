@@ -58,6 +58,7 @@
     <Compile Include="Services\PassImageService.cs" />
     <Compile Include="Services\PassLocationService.cs" />
     <Compile Include="Services\PassManagerServiceBase.cs" />
+    <Compile Include="Services\PassNotificationService.cs" />
     <Compile Include="Services\PassOnlineService.cs" />
     <Compile Include="Services\PassProjectService.cs" />
     <Compile Include="Services\PassSiteCertificateService.cs" />
@@ -105,13 +106,13 @@
       <Project>{062e8da0-3ef1-4481-8fcf-cfeb54a39771}</Project>
       <Name>Pass.Container.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Pass.Notification\Pass.Notification.Core\Pass.Notification.Core.csproj">
+      <Project>{b080dcae-231c-4f9e-8a01-b6e0de3c2fe2}</Project>
+      <Name>Pass.Notification.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pass.Manager.Core\Pass.Manager.Core.csproj">
       <Project>{DC28CC0D-F87E-4D65-8812-3BAF31C9C359}</Project>
       <Name>Pass.Manager.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pass.Manager.Repository.EF\Pass.Manager.Repository.EF.csproj">
-      <Project>{929E8294-E96D-4D40-B326-C62415356D3D}</Project>
-      <Name>Pass.Manager.Repository.EF</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

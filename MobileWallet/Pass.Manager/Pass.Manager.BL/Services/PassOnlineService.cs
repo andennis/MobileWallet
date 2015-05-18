@@ -79,7 +79,7 @@ namespace Pass.Manager.BL.Services
         {
             PassContent pc = _passContentService.Get(filter.PassId);
             if (!pc.ContainerPassId.HasValue)
-                throw new PassManagerGeneralException(string.Format("PassContentId: {0} has not been online yet", filter.PassId));
+                return new SearchResult<RegistrationInfo>();
 
             filter.PassId = pc.ContainerPassId.Value;
             return _passService.GetPassRegistrations(searchContext, filter);

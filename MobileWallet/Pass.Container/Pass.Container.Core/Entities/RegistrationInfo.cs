@@ -6,6 +6,7 @@ namespace Pass.Container.Core.Entities
 {
     public class RegistrationInfo
     {
+        public int ClientDeviceId { get; set; }
         public int PassId { get; set; }
         public string DeviceId { get; set; }
         public string PushToken { get; set; }

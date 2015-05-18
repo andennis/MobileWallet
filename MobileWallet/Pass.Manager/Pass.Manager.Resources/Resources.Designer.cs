@@ -70,6 +70,15 @@ namespace Pass.Manager.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Actions.
+        /// </summary>
+        public static string ColumnActions {
+            get {
+                return ResourceManager.GetString("ColumnActions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Created Date.
         /// </summary>
         public static string CreatedDate {
@@ -111,6 +120,15 @@ namespace Pass.Manager.Resources {
         public static string Download {
             get {
                 return ResourceManager.GetString("Download", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Push notification has been sent successfully.
+        /// </summary>
+        public static string PushClientDeviceSuccess {
+            get {
+                return ResourceManager.GetString("PushClientDeviceSuccess", resourceCulture);
             }
         }
         

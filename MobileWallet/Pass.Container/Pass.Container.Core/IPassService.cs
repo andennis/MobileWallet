@@ -14,5 +14,6 @@ namespace Pass.Container.Core
         void UpdatePassFields(int passId, IList<PassFieldInfo> newFieldValues);
         string GetPassPackage(int passId, ClientType deviceType);
         SearchResult<RegistrationInfo> GetPassRegistrations(SearchContext searchContext, PassRegistrationFilter filter);
+        RegistrationInfo GetPassRegistration(int passId, int clientDeviceId);
     }
 }

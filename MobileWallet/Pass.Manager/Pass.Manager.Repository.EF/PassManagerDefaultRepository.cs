@@ -5,10 +5,11 @@ using System.Data.SqlClient;
 using Common.Repository.EF;
 using System.Collections.Generic;
 using System.Linq;
+using Pass.Manager.Core.Repositories;
 
 namespace Pass.Manager.Repository.EF
 {
-    public class PassManagerDefaultRepository<TEntity> : Repository<TEntity> where TEntity : class
+    public class PassManagerDefaultRepository<TEntity> : Repository<TEntity>, IPassManagerDefaultRepository where TEntity : class
     {
         public PassManagerDefaultRepository(DbContextBase dbContext)
             :base(dbContext)

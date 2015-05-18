@@ -8,13 +8,15 @@
               .DataSource(ds => ds.Read(Url.Action<PassOnlineController>(a => a.Registrations(null, null), new { PassId = Model })))
               .Columns(c =>
                        {
-                           c.Bound(p => p.DeviceId).Title(Resources.DeviceId);
+                           c.Bound(p => p.DeviceId).Title(Resources.DeviceId).ClientTemplateId("CropDeviceId");
                            c.BoundEnum(p => p.DeviceType).Title(Resources.DeviceType);
                            c.BoundEnum(p => p.Status).Title(Resources.Status);
                            c.Bound(p => p.PushToken).Title(Resources.PushToken).ClientTemplateId("CropPushToken");
                            c.Bound(p => p.CreatedDate).Title(Resources.CreatedDate);
                            c.Bound(p => p.UpdatedDate).Title(Resources.UpdatedDate);
                            c.Bound(p => p.UnregisterDate).Title(Resources.UnregisterDate);
+                           c.Bound(p => p.ClientDeviceId).Title(Resources.ColumnActions)
+                               .GridAjaxAction("Push", Url.Action<PassOnlineController>(a => a.NotifyClientDevice(0, 0), new { passContentId = Model }));
                        }))
 
 <script>
@@ -23,8 +25,14 @@
     });
 </script>
 
+<script id="CropDeviceId" type="text/x-kendo-template">
+    <div class="crop" style="width:220px" title="#=DeviceId#">
+        #=DeviceId#
+    </div>
+</script>
+
 <script id="CropPushToken" type="text/x-kendo-template">
-    <div class="crop" style="width:300px" title="#=PushToken#">
+    <div class="crop" style="width:250px" title="#=PushToken#">
         #=PushToken#
     </div>
 </script>

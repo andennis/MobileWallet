@@ -1182,6 +1182,22 @@
       <Project>{3e88cfc5-6890-4d6a-9fb6-8b6d1405e6c8}</Project>
       <Name>Pass.Distribution.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Pass.Notification\Pass.Notification.BL\Pass.Notification.BL.csproj">
+      <Project>{7b2ec480-9f20-4379-bf24-89162dd4cae5}</Project>
+      <Name>Pass.Notification.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pass.Notification\Pass.Notification.Core\Pass.Notification.Core.csproj">
+      <Project>{b080dcae-231c-4f9e-8a01-b6e0de3c2fe2}</Project>
+      <Name>Pass.Notification.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pass.Notification\Pass.Notification.Repository.EF\Pass.Notification.Repository.EF.csproj">
+      <Project>{b5e5ab90-f76c-48d9-a3c8-935a8aac2dca}</Project>
+      <Name>Pass.Notification.Repository.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Pass.Notification\Pass.Notification.Repository\Pass.Notification.Repository.Core.csproj">
+      <Project>{6b068323-4ca0-46dd-b820-9dbacc77e86f}</Project>
+      <Name>Pass.Notification.Repository.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pass.Manager.BL\Pass.Manager.BL.csproj">
       <Project>{24182974-603e-417f-8ba6-034038ec1b89}</Project>
       <Name>Pass.Manager.BL</Name>

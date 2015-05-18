@@ -4,8 +4,8 @@ using System.Linq;
 using Common.BL;
 using Common.Extensions;
 using Pass.Manager.Core;
+using Pass.Manager.Core.Repositories;
 using Pass.Manager.Core.Services;
-using Pass.Manager.Repository.EF;
 
 namespace Pass.Manager.BL.Services
 {
@@ -20,7 +20,7 @@ namespace Pass.Manager.BL.Services
 
         public virtual TEntityView GetView<TEntityView>(int entityId)
         {
-            return ((PassManagerDefaultRepository<TEntity>) _repository).GetView<TEntityView>(entityId);
+            return ((IPassManagerDefaultRepository) _repository).GetView<TEntityView>(entityId);
         }
 
         public virtual SearchResult<TEntityView> SearchView<TEntityView>(SearchContext searchContext, TSearchFilter searchFilter) where TEntityView : class
@@ -28,7 +28,7 @@ namespace Pass.Manager.BL.Services
             IDictionary<string, object> searchParams = searchFilter.ObjectPropertiesToDictionary();
             searchParams = searchParams.Union(searchContext.ObjectPropertiesToDictionary()).ToDictionary(k => k.Key, v => v.Value ?? DBNull.Value);
             int totalRecords;
-            IEnumerable<TEntityView> result = ((PassManagerDefaultRepository<TEntity>)_repository).Search<TEntityView>(searchParams, out totalRecords);//.ToList();???
+            IEnumerable<TEntityView> result = ((IPassManagerDefaultRepository)_repository).Search<TEntityView>(searchParams, out totalRecords);//.ToList();???
 
             return new SearchResult<TEntityView>()
                     {

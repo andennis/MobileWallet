@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Web.Mvc;
 using Common.BL;
 using Common.Utils;
@@ -14,10 +15,12 @@ namespace Pass.Manager.Web.Controllers
     public class PassOnlineController : BaseController
     {
         private readonly IPassOnlineService _passOnlineService;
+        private readonly IPassNotificationService _notificationService;
 
-        public PassOnlineController(IPassOnlineService passOnlineService)
+        public PassOnlineController(IPassOnlineService passOnlineService, IPassNotificationService notificationService)
         {
             _passOnlineService = passOnlineService;
+            _notificationService = notificationService;
         }
 
         [AjaxOnly]
@@ -41,10 +44,18 @@ namespace Pass.Manager.Web.Controllers
             return File(fileInfo.ContentStream, fileInfo.ContentType, fileName);
         }
 
+        [AjaxOnly]
         public ActionResult Registrations(GridDataRequest request, PassRegistrationFilter searchFilter)
         {
             SearchResult<RegistrationInfo> result = _passOnlineService.GetPassRegistrations(GridRequestToSearchContext(request), searchFilter);
             return Json(GridDataResponse.Create(request, result.Data, result.TotalCount), JsonRequestBehavior.AllowGet);
+        }
+
+        [AjaxOnly]
+        public ActionResult NotifyClientDevice(int passContentId, [Bind(Prefix = "id")]int clientDeviceId)
+        {
+            _notificationService.NotifyClientDevice(passContentId, clientDeviceId);
+            return JsonEx(true, Resources.Resources.PushClientDeviceSuccess);
         }
 
     }

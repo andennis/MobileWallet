@@ -191,23 +191,43 @@ namespace Pass.Container.BL
                 .Get()
                 .AsEnumerable();
 
-            IEnumerable<RegistrationInfo> regInfos = regs.Select(x => new RegistrationInfo()
-                                    {
-                                        PassId = x.PassId,
-                                        DeviceId = x.ClientDevice.DeviceId,
-                                        DeviceType = x.ClientDevice.DeviceType,
-                                        PushToken = x.ClientDevice is ClientDeviceApple ? ((ClientDeviceApple)x.ClientDevice).PushToken : null,
-                                        Status = x.Status,
-                                        CreatedDate = x.CreatedDate,
-                                        UpdatedDate = x.UpdatedDate
-                                    }).ToList();
-
+            IEnumerable<RegistrationInfo> regInfos = regs.Select(ConvertTo).ToList();
             return new SearchResult<RegistrationInfo>()
                     {
                         Data = regInfos,
                         TotalCount = regInfos.Count()
                     };
 
+        }
+
+        public RegistrationInfo GetPassRegistration(int passId, int clientDeviceId)
+        {
+            IRepository<Registration> repReg = _pcUnitOfWork.GetRepository<Registration>();
+            Registration reg = repReg.Query()
+                .Filter(x => x.PassId == passId && x.ClientDeviceId == clientDeviceId)
+                .Include(x => x.ClientDevice)
+                .Get()
+                .FirstOrDefault();
+
+            if (reg == null)
+                throw new PassContainerException(string.Format("Registration does not exist (PassId: {0}, ClientDeviceId: {1})", passId, clientDeviceId));
+
+            return ConvertTo(reg);
+        }
+
+        private RegistrationInfo ConvertTo(Registration reg)
+        {
+            return new RegistrationInfo()
+                   {
+                       ClientDeviceId = reg.ClientDeviceId,
+                       PassId = reg.PassId,
+                       DeviceId = reg.ClientDevice.DeviceId,
+                       DeviceType = reg.ClientDevice.DeviceType,
+                       PushToken = reg.ClientDevice is ClientDeviceApple ? ((ClientDeviceApple)reg.ClientDevice).PushToken : null,
+                       Status = reg.Status,
+                       CreatedDate = reg.CreatedDate,
+                       UpdatedDate = reg.UpdatedDate
+                   };
         }
 
         private string GetTemporaryTemplateFolder(int templateId, ClientType clientType)
@@ -258,3 +278,4 @@ namespace Pass.Container.BL
         #endregion
     }
 }
+

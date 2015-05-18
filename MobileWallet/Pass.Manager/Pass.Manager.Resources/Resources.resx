@@ -177,4 +177,10 @@
   <data name="UnregisterDate" xml:space="preserve">
     <value>Unregister Date</value>
   </data>
+  <data name="ColumnActions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="PushClientDeviceSuccess" xml:space="preserve">
+    <value>Push notification has been sent successfully</value>
+  </data>
 </root>

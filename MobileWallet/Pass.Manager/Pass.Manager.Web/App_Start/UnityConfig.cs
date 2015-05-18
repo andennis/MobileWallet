@@ -25,6 +25,7 @@ namespace Pass.Manager.Web
             container.LoadConfiguration("PassContainer");
             container.LoadConfiguration("PassManager");
             container.LoadConfiguration("PassDistribution");
+            container.LoadConfiguration("PassNotification");
         }
     }
 }

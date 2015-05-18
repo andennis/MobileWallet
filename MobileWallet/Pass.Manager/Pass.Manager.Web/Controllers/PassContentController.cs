@@ -84,6 +84,8 @@ namespace Pass.Manager.Web.Controllers
         [AjaxOnly]
         public ActionResult TabRegistrations(int id)
         {
+            PassContent pc = _service.Get(id);
+            PassContentTemplate pct = _contentTemplateService.GetDetails(pc.PassContentTemplateId);
             return PartialView(@"Tabs\_Registrations", id);
         }
 
