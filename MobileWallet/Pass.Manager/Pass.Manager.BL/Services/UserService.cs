@@ -14,6 +14,15 @@ namespace Pass.Manager.BL.Services
         {
         }
 
+        public bool IsAuthenticated(string userName, string password)
+        {
+            User user = Get(userName);
+            if (user != null)
+                return (user.Password == Crypto.CalculateHash(userName.ToLower(), password));
+
+            return false;
+        }
+
         public void ChangePassword(User user)
         {
             user.Password = Crypto.CalculateHash(user.UserName.ToLower(), user.Password);

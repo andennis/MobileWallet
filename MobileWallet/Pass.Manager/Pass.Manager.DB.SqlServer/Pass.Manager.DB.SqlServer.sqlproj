@@ -64,6 +64,8 @@
     <Folder Include="Security\" />
     <Folder Include="Stored Procedures" />
     <Folder Include="Views" />
+    <Folder Include="Scripts" />
+    <Folder Include="Scripts\Post-Deployment" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\pm.PassCertificate.sql" />
@@ -94,5 +96,6 @@
     <Build Include="Stored Procedures\pm.PassContentField_Search.sql" />
     <Build Include="Stored Procedures\pm.PassContent_Insert.sql" />
     <Build Include="Stored Procedures\pm.PassContentField_GetView.sql" />
+    <None Include="Scripts\Post-Deployment\01. AddAdminUser.sql" />
   </ItemGroup>
 </Project>

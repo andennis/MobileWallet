@@ -5,6 +5,7 @@ namespace Pass.Manager.Core.Services
 {
     public interface IUserService : IPassManagerServiceBase<User, SearchFilterBase>
     {
+        bool IsAuthenticated(string userName, string password);
         void ChangePassword(User user);
         User Get(string userName);
     }

@@ -183,4 +183,7 @@
   <data name="PushClientDeviceSuccess" xml:space="preserve">
     <value>Push notification has been sent successfully</value>
   </data>
+  <data name="AuthenticationFailed" xml:space="preserve">
+    <value>Invalid username or password</value>
+  </data>
 </root>

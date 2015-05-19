@@ -1,6 +1,8 @@
 ﻿using System.Web.Mvc;
 using System.Web.Security;
+using Common.Utils;
 using Pass.Manager.Core;
+using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.Services;
 using Pass.Manager.Web.Models;
 
@@ -27,21 +29,15 @@ namespace Pass.Manager.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel loginViewModel, string returnUrl)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
+                if (_userService.IsAuthenticated(loginViewModel.UserName, loginViewModel.Password))
                 {
-                    //User user = _userService.Get(loginViewModel.UserName);
-                    //if (user != null && loginViewModel.Password == Crypto.CalculateHash(user.UserName.ToLower(), user.Password))
-                    {
-                        FormsAuthentication.SetAuthCookie(loginViewModel.UserName, false);
-                        return RedirectToLocal(returnUrl);
-                    }
+                    FormsAuthentication.SetAuthCookie(loginViewModel.UserName, false);
+                    return RedirectToLocal(returnUrl);
                 }
-            }
-            catch
-            {
-                ModelState.AddModelError("", "Invalid username or password.");
+
+                ModelState.AddModelError("", Resources.Resources.AuthenticationFailed);
             }
             
             return View(loginViewModel);
