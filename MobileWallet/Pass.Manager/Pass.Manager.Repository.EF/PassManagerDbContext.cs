@@ -48,7 +48,10 @@ namespace Pass.Manager.Repository.EF
             modelBuilder.Entity<User>().ToTable("User", DbScheme);
             modelBuilder.Entity<User>().Property(x => x.Version).IsConcurrencyToken();
             modelBuilder.Entity<User>().Property(x => x.UserName).IsRequired().HasMaxLength(FieldLenName)
-                .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("IX_User_Name") { IsUnique = true })); 
+                .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("IX_User_Name") { IsUnique = true }));
+            modelBuilder.Entity<User>().Property(x => x.FirstName).HasMaxLength(FieldLenName);
+            modelBuilder.Entity<User>().Property(x => x.LastName).HasMaxLength(FieldLenName);
+            modelBuilder.Entity<User>().Property(x => x.Password).HasMaxLength(512);
 
             //PassSiteUser
             modelBuilder.Entity<PassSiteUser>().ToTable("PassSiteUser", DbScheme);
