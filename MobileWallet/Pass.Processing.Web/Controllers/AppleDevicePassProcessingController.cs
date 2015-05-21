@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -140,11 +141,9 @@ namespace Pass.Processing.Web.Controllers
                 {
                     var obj = new 
                         {
-                            serialNumbers = string.Join(", ", changedPassesInfo.SerialNumbers),
+                            serialNumbers = changedPassesInfo.SerialNumbers.ToArray(),
                             lastUpdated = changedPassesInfo.LastUpdated
                         };
-                    if (obj.serialNumbers.Length > 0)
-                        obj.serialNumbers.Remove(obj.serialNumbers.Length - 1);
 
                     return Request.CreateResponse(HttpStatusCode.OK, obj);
                 }
