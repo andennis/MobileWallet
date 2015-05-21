@@ -103,10 +103,11 @@ namespace Pass.Processing.Web.Controllers
         //Getting the Serial Numbers for Passes Associated with a Device
         [HttpGet]
         [Route("devices/{deviceLibraryIdentifier}/registrations/{passTypeIdentifier}")]
-        public HttpResponseMessage GetSerialNumbersOfPasses(string deviceLibraryIdentifier, object passTypeIdentifier, [FromUri]string passesUpdatedSince = null)
+        public HttpResponseMessage GetSerialNumbersOfPasses(string deviceLibraryIdentifier, string passTypeIdentifier, /*[FromUri]*/string passesUpdatedSince = null)
         {
             try
             {
+                /*
                 //Temporary solution to get passTypeIdentifier
                 if (passTypeIdentifier == null)
                 {
@@ -118,6 +119,8 @@ namespace Pass.Processing.Web.Controllers
                         ? passTypeIdentifierStr.Remove(passTypeIdentifierStr.IndexOf("/", StringComparison.InvariantCulture))
                         : passTypeIdentifierStr;
                 }
+                */
+
                 //If the passesUpdatedSince parameter is present, return only the passes that have been updated since
                 //the time indicated by tag. Otherwise, return all passes for specified PassTypeId.
                 DateTime? passesUpdatedSinceTime = null;
@@ -129,7 +132,7 @@ namespace Pass.Processing.Web.Controllers
                 }
 
                 ChangedPassesInfo changedPassesInfo;
-                PassProcessingStatus status = _passProcessingService.GetChangedPasses(deviceLibraryIdentifier, passTypeIdentifier.ToString(), passesUpdatedSinceTime, out changedPassesInfo);
+                PassProcessingStatus status = _passProcessingService.GetChangedPasses(deviceLibraryIdentifier, passTypeIdentifier, passesUpdatedSinceTime, out changedPassesInfo);
                 //Return:
                 //{ 
                     //“serialNumbers” : [ <serialNo.>, <serialNo.>, ... ],

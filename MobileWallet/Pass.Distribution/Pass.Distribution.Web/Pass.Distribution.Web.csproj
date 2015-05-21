@@ -366,6 +366,10 @@
       <Project>{DC28CC0D-F87E-4D65-8812-3BAF31C9C359}</Project>
       <Name>Pass.Manager.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Pass.Manager\Pass.Manager.Repository.EF\Pass.Manager.Repository.EF.csproj">
+      <Project>{929e8294-e96d-4d40-b326-c62415356d3d}</Project>
+      <Name>Pass.Manager.Repository.EF</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pass.Distribution.BL\Pass.Distribution.BL.csproj">
       <Project>{3448d5d8-cfab-4e56-a674-0e788db51e65}</Project>
       <Name>Pass.Distribution.BL</Name>

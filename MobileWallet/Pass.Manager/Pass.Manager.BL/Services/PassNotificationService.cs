@@ -13,16 +13,19 @@ namespace Pass.Manager.BL.Services
         private readonly IPushNotificationService _pushService;
         private readonly IPassContentService _passContentService;
         private readonly IPassContentTemplateService _passContentTemplateService;
+        private readonly Core.Services.IPassCertificateService _certificateService;
         private readonly IPassService _passService;
 
         public PassNotificationService(IPushNotificationService pushService, 
             IPassContentService passContentService,
-            IPassContentTemplateService passContentTemplateService, 
+            IPassContentTemplateService passContentTemplateService,
+            Core.Services.IPassCertificateService certificateService,
             IPassService passService)
         {
             _pushService = pushService;
             _passContentService = passContentService;
             _passContentTemplateService = passContentTemplateService;
+            _certificateService = certificateService;
             _passService = passService;
         }
 
@@ -33,9 +36,10 @@ namespace Pass.Manager.BL.Services
                 throw new PassManagerGeneralException(string.Format("PassContentId: {0} has not been registered yet", passContentId));
 
             PassContentTemplate pct = _passContentTemplateService.GetDetails(pc.PassContentTemplateId);
+            PassCertificate cert = _certificateService.Get(pct.PassProject.PassCertificateId);
             RegistrationInfo regInfo = _passService.GetPassRegistration(pc.ContainerPassId.Value, clientDeviceId);
 
-            _pushService.SendPushNotifications(pct.PassProject.PassCertificateId, new[] {regInfo.PushToken});
+            _pushService.SendPushNotifications(cert.CertificateStorageId, new[] { regInfo.PushToken });
         }
 
         public void NotifyPassClientDevices(int passContentId)

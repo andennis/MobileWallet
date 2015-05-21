@@ -123,6 +123,16 @@ namespace Pass.Container.BL
         {
             if (newFieldValues == null)
                 throw new ArgumentNullException("newFieldValues");
+            if (!newFieldValues.Any())
+                return;
+
+            IRepository<RepEntities.Pass> repPass = _pcUnitOfWork.GetRepository<RepEntities.Pass>();
+            RepEntities.Pass pass = repPass.Find(passId);
+            if (pass == null)
+                throw new PassContainerException(string.Format("Pass ID:{0} not found", passId));
+
+            pass.UpdatedDate = DateTime.Now;
+            repPass.Update(pass);
 
             IRepository<PassFieldValue> repPassFieldVal = _pcUnitOfWork.GetRepository<PassFieldValue>();
             IList<PassFieldValue> oldFieldValues = repPassFieldVal.Query()
@@ -130,13 +140,6 @@ namespace Pass.Container.BL
                 .Include(x => x.PassField)
                 .Get()
                 .ToList();
-
-            if (!oldFieldValues.Any())
-            {
-                IRepository<RepEntities.Pass> repPass = _pcUnitOfWork.GetRepository<RepEntities.Pass>();
-                if (repPass.Find(passId) == null)
-                    throw new PassContainerException(string.Format("Pass ID:{0} not found", passId));
-            }
 
             foreach (PassFieldInfo newFieldValue in newFieldValues)
             {
@@ -226,7 +229,8 @@ namespace Pass.Container.BL
                        PushToken = reg.ClientDevice is ClientDeviceApple ? ((ClientDeviceApple)reg.ClientDevice).PushToken : null,
                        Status = reg.Status,
                        CreatedDate = reg.CreatedDate,
-                       UpdatedDate = reg.UpdatedDate
+                       UpdatedDate = reg.UpdatedDate,
+                       UnregisterDate = reg.UnregisterDate
                    };
         }
 

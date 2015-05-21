@@ -72,7 +72,7 @@ namespace Pass.Container.BL.PassProcessing
             changedPassesInfo = new ChangedPassesInfo()
                                     {
                                         SerialNumbers = changedPasses.Select(x => x.SerialNumber).ToList(),
-                                        LastUpdated = changedPasses.Max(x => x.UpdatedDate)
+                                        LastUpdated = changedPasses.Any() ? changedPasses.Max(x => x.UpdatedDate) : (DateTime?)null
                                     };
 
             return PassProcessingStatus.Succeed;
