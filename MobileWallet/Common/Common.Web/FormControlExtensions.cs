@@ -8,6 +8,7 @@ using System.Web.Mvc.Html;
 using System.Web.Routing;
 using Common.Extensions;
 using Common.Web.Controls.DatePicker;
+using Common.Web.Controls.DropDownList;
 
 namespace Common.Web
 {
@@ -204,12 +205,12 @@ namespace Common.Web
             return html.DropDownListFor(expression, listItems, optionLabel, HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
         }
 
-        public static MvcHtmlString DropDownListForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems,  
+        public static MvcHtmlString DropDownListForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems,
             string optionLabel = null, IDictionary<string, object> htmlAttributes = null)
         {
             return html.DropDownListFor(expression, listItems, optionLabel, htmlAttributes);
         }
-        public static MvcHtmlString DropDownListFormForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems, 
+        public static MvcHtmlString DropDownListFormForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems,
             string labelText = null, string optionLabel = null)
         {
             return html.LabelWithControl(expression, labelText, null, () => html.DropDownListForExt(expression, listItems, optionLabel, _initControlAttributes));
@@ -234,7 +235,29 @@ namespace Common.Web
             SelectList listItems = EnumHelper.ToSelectList<TEnumProperty>();
             return html.DropDownListFormForExt(expression, listItems, labelText, optionLabel);
         }
-        
+
+
+
+
+        //public static MvcHtmlString DropDownListFormForEx<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems,
+        //    string labelText = null, string optionLabel = null)
+        //{
+        //    return html.LabelWithControl(expression, labelText, null, () => html.DropDownListForExt(expression, listItems, optionLabel, _initControlAttributes));
+        //}
+
+        //public static MvcHtmlString DropDownListForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems, 
+        //    string optionLabel = null, IDictionary<string, object> htmlAttributes = null)
+        //{
+        //    DropDownListBuilder builder = html.Widget().DropDownList()
+        //        .Name(expression.GetPropertyName())
+        //        .DataTextField("Text")
+        //        .DataValueField("Value")
+        //        .BindTo(listItems)
+        //        .HtmlAttributes(_initControlAttributes.MergeHtmlAttributes(htmlAttributes));
+
+        //    return new MvcHtmlString(builder.ToHtmlString());
+        //}
+
         #endregion
 
         #region TextArea

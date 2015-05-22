@@ -1,7 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Web.Mvc;
 using System.Web.UI;
+using Common.Extensions;
+using Common.Extensions.JsonNetConverters;
+using Newtonsoft.Json;
 
 namespace Common.Web.Controls.DropDownList
 {
@@ -21,20 +25,12 @@ namespace Common.Web.Controls.DropDownList
         {
         }
 
-        public IList<DropDownListItem> Items { get { return _items ?? (_items = new List<DropDownListItem>()); } } 
+        public IList<DropDownListItem> Items { get { return _items ?? (_items = new List<DropDownListItem>()); } }
 
         public string Template { get; set; }
         public string TemplateId { get; set; }
         public string Value { get; set; }
 
-        protected override void WriteInitializationScript(TextWriter writer)
-        {
-        }
-
-        protected override void WriteHtml(HtmlTextWriter writer)
-        {
-            
-        }
         public bool? AutoBind { get; set; }
         public string CascadeFrom { get; set; }
         public string CascadeFromField { get; set; }
@@ -45,5 +41,78 @@ namespace Common.Web.Controls.DropDownList
         public string ValueTemplate { get; set; }
         public string ValueTemplateId { get; set; }
 
+        public class DropDownListSettings
+        {
+            public bool? autoBind;
+            public string cascadeFrom;
+            public string cascadeFromField;
+            public string dataTextField;
+            public string dataValueField;
+            public object optionLabel;
+            public int? selectedIndex;
+            public string valueTemplate;
+
+            public string template;
+            public string value;
+
+            [JsonConverter(typeof(JsonValueWithoutQuotesConverter))]
+            public string select;
+
+            [JsonConverter(typeof(JsonValueWithoutQuotesConverter))]
+            public string change;
+
+            [JsonConverter(typeof(JsonValueWithoutQuotesConverter))]
+            public string dataBound;
+
+            [JsonConverter(typeof(JsonValueWithoutQuotesConverter))]
+            public string open;
+
+            [JsonConverter(typeof(JsonValueWithoutQuotesConverter))]
+            public string close;
+
+            [JsonConverter(typeof(JsonValueWithoutQuotesConverter))]
+            public string cascade;
+        }
+
+        protected override void WriteInitializationScript(TextWriter writer)
+        {
+            var settings = new DropDownListSettings
+            {
+                autoBind = AutoBind,
+                cascadeFrom = CascadeFrom,
+                cascadeFromField = CascadeFromField,
+                dataTextField = DataTextField,
+                dataValueField = DataValueField,
+                optionLabel = OptionLabel,
+                selectedIndex = SelectedIndex,
+                valueTemplate = ValueTemplate,
+                template = Template,
+                value = Value,
+                select = GetEvent(EventSelect),
+                change = GetEvent(EventChange),
+                dataBound = GetEvent(EventDataBound),
+                open = GetEvent(EventOpen),
+                close = GetEvent(EventClose),
+                cascade = GetEvent(EventCascade)
+            };
+
+            string jsonSettings = settings.ObjectToJson();
+            string widgetScript = string.Format("$(\"#{0}\").kendoDropDownList({1})", Name, jsonSettings);
+            string script = GetDocumentReadyScript(widgetScript);
+            writer.WriteLine(script);
+        }
+
+        protected override void WriteHtml(HtmlTextWriter writer)
+        {
+            writer.AddAttribute(HtmlTextWriterAttribute.Id, Name);
+            writer.AddAttribute(HtmlTextWriterAttribute.Name, Name);
+            foreach (KeyValuePair<string, object> attr in HtmlAttributes)
+            {
+                writer.AddAttribute(attr.Key, Convert.ToString(attr.Value));
+            }
+
+            writer.RenderBeginTag(HtmlTextWriterTag.Input);
+            writer.RenderEndTag();
+        }
     }
 }
