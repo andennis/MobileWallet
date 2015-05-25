@@ -199,64 +199,77 @@ namespace Common.Web
         #endregion
 
         #region DropDownList
-        public static MvcHtmlString DropDownListForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems,
-            string optionLabel = null, object htmlAttributes = null)
-        {
-            return html.DropDownListFor(expression, listItems, optionLabel, HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
-        }
+        //public static MvcHtmlString DropDownListForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems,
+        //    string optionLabel = null, object htmlAttributes = null)
+        //{
+        //    return html.DropDownListFor(expression, listItems, optionLabel, HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
+        //}
 
-        public static MvcHtmlString DropDownListForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems,
-            string optionLabel = null, IDictionary<string, object> htmlAttributes = null)
-        {
-            return html.DropDownListFor(expression, listItems, optionLabel, htmlAttributes);
-        }
-        public static MvcHtmlString DropDownListFormForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems,
-            string labelText = null, string optionLabel = null)
-        {
-            return html.LabelWithControl(expression, labelText, null, () => html.DropDownListForExt(expression, listItems, optionLabel, _initControlAttributes));
-        }
-        public static MvcHtmlString DropDownListExt(this HtmlHelper html, string name, IEnumerable<SelectListItem> listItems, string optionLabel = null, object htmlAttributes = null)
-        {
-            return html.DropDownList(name, listItems, optionLabel, htmlAttributes);
-        }
-
-
-        public static MvcHtmlString DropDownListFormForExt<TModel, TEnumProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TEnumProperty>> expression,
-            string labelText = null, string optionLabel = null)
-            where TEnumProperty : struct  
-        {
-            SelectList listItems = EnumHelper.ToSelectList<TEnumProperty>();
-            return html.DropDownListFormForExt(expression, listItems, labelText, optionLabel);
-        }
-        public static MvcHtmlString DropDownListFormForExt<TModel, TEnumProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TEnumProperty?>> expression,
-            string labelText = null, string optionLabel = null)
-            where TEnumProperty : struct 
-        {
-            SelectList listItems = EnumHelper.ToSelectList<TEnumProperty>();
-            return html.DropDownListFormForExt(expression, listItems, labelText, optionLabel);
-        }
-
-
-
-
-        //public static MvcHtmlString DropDownListFormForEx<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems,
+        //public static MvcHtmlString DropDownListForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems,
+        //    string optionLabel = null, IDictionary<string, object> htmlAttributes = null)
+        //{
+        //    return html.DropDownListFor(expression, listItems, optionLabel, htmlAttributes);
+        //}
+        //public static MvcHtmlString DropDownListFormForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems,
         //    string labelText = null, string optionLabel = null)
         //{
         //    return html.LabelWithControl(expression, labelText, null, () => html.DropDownListForExt(expression, listItems, optionLabel, _initControlAttributes));
         //}
-
-        //public static MvcHtmlString DropDownListForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems, 
-        //    string optionLabel = null, IDictionary<string, object> htmlAttributes = null)
+        //public static MvcHtmlString DropDownListExt(this HtmlHelper html, string name, IEnumerable<SelectListItem> listItems, string optionLabel = null, object htmlAttributes = null)
         //{
-        //    DropDownListBuilder builder = html.Widget().DropDownList()
-        //        .Name(expression.GetPropertyName())
-        //        .DataTextField("Text")
-        //        .DataValueField("Value")
-        //        .BindTo(listItems)
-        //        .HtmlAttributes(_initControlAttributes.MergeHtmlAttributes(htmlAttributes));
-
-        //    return new MvcHtmlString(builder.ToHtmlString());
+        //    return html.DropDownList(name, listItems, optionLabel, htmlAttributes);
         //}
+
+
+        //public static MvcHtmlString DropDownListFormForExt<TModel, TEnumProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TEnumProperty>> expression,
+        //    string labelText = null, string optionLabel = null)
+        //    where TEnumProperty : struct  
+        //{
+        //    SelectList listItems = EnumHelper.ToSelectList<TEnumProperty>();
+        //    return html.DropDownListFormForExt(expression, listItems, labelText, optionLabel);
+        //}
+        //public static MvcHtmlString DropDownListFormForExt<TModel, TEnumProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TEnumProperty?>> expression,
+        //    string labelText = null, string optionLabel = null)
+        //    where TEnumProperty : struct 
+        //{
+        //    SelectList listItems = EnumHelper.ToSelectList<TEnumProperty>();
+        //    return html.DropDownListFormForExt(expression, listItems, labelText, optionLabel);
+        //}
+
+        public static MvcHtmlString DropDownListFormForExt<TModel, TEnumProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TEnumProperty>> expression,
+            string labelText = null, string optionLabel = null)
+            where TEnumProperty : struct
+        {
+            SelectList listItems = EnumHelper.ToSelectList<TEnumProperty>();
+            return html.DropDownListFormForExt(expression, listItems, labelText, optionLabel);
+        }
+
+        public static MvcHtmlString DropDownListFormForExt<TModel, TEnumProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TEnumProperty?>> expression,
+            string labelText = null, string optionLabel = null)
+            where TEnumProperty : struct
+        {
+            SelectList listItems = EnumHelper.ToSelectList<TEnumProperty>();
+            return html.DropDownListFormForExt(expression, listItems, labelText, optionLabel);
+        }
+
+        public static MvcHtmlString DropDownListFormForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems,
+            string labelText = null, string optionLabel = null, object htmlAttributes = null)
+        {
+            return html.LabelWithControl(expression, labelText, null, () => html.DropDownListForExt(expression, listItems, optionLabel, htmlAttributes));
+        }
+
+        public static MvcHtmlString DropDownListForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems,
+            string optionLabel = null, object htmlAttributes = null)
+        {
+            DropDownListBuilder builder = html.Widget().DropDownList()
+                .Name(expression.GetPropertyName())
+                .DataTextField("Text")
+                .DataValueField("Value")
+                .BindTo(listItems)
+                .HtmlAttributes(_initControlAttributes.MergeHtmlAttributes(htmlAttributes));
+
+            return new MvcHtmlString(builder.ToHtmlString());
+        }
 
         #endregion
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Web.Mvc;
 using System.Web.UI;
 using Common.Extensions;
@@ -44,6 +45,7 @@ namespace Common.Web.Controls.DropDownList
         public class DropDownListSettings
         {
             public bool? autoBind;
+            public string dataSource;
             public string cascadeFrom;
             public string cascadeFromField;
             public string dataTextField;
@@ -74,11 +76,22 @@ namespace Common.Web.Controls.DropDownList
             public string cascade;
         }
 
+        private string GetDataSource()
+        {
+            var sb = new StringBuilder();
+            sb.AppendFormat("{{Text: '{0}', Value: {1}}}", Items[0].Text, Items[0].Value);
+            for (int i = 1; i < Items.Count; i++)
+            {
+                sb.AppendFormat(",{{Text: '{0}', Value: {1}}}", Items[i].Text, Items[i].Value);
+            }
+            return string.Format("[{0}]", sb);
+        }
         protected override void WriteInitializationScript(TextWriter writer)
         {
             var settings = new DropDownListSettings
             {
                 autoBind = AutoBind,
+                dataSource = GetDataSource(),
                 cascadeFrom = CascadeFrom,
                 cascadeFromField = CascadeFromField,
                 dataTextField = DataTextField,
@@ -98,7 +111,7 @@ namespace Common.Web.Controls.DropDownList
 
             string jsonSettings = settings.ObjectToJson();
             string widgetScript = string.Format("$(\"#{0}\").kendoDropDownList({1})", Name, jsonSettings);
-            string script = GetDocumentReadyScript(widgetScript);
+            string script = GetDocumentReadyScript(widgetScript).Replace("\"[", "[").Replace("]\"", "]");
             writer.WriteLine(script);
         }
 

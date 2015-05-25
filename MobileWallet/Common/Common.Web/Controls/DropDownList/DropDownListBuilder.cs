@@ -10,7 +10,7 @@ namespace Common.Web.Controls.DropDownList
         private DropDownListItemFactory _itemFactory;
 
         public DropDownListBuilder(DropDownList component)
-            :base(component)
+            : base(component)
         {
         }
 
@@ -30,12 +30,24 @@ namespace Common.Web.Controls.DropDownList
         }
         public DropDownListBuilder BindTo(IEnumerable<DropDownListItem> dataSource)
         {
-            base.BindTo(dataSource);
+            var itemFactory = ItemFactory;
+            foreach (var dataItem in dataSource)
+            {
+                itemFactory.Add().Text(dataItem.Text)
+                    .Value(dataItem.Value)
+                    .Selected(dataItem.Selected);
+            }
             return this;
         }
         public DropDownListBuilder BindTo(IEnumerable<SelectListItem> dataSource)
         {
-            base.BindTo(dataSource);
+            var itemFactory = ItemFactory;
+            foreach (var dataItem in dataSource)
+            {
+                itemFactory.Add().Text(dataItem.Text)
+                    .Value(dataItem.Value)
+                    .Selected(dataItem.Selected);
+            }
             return this;
         }
         public DropDownListBuilder DataValueField(string field)

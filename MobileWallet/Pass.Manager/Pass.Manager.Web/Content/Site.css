@@ -377,10 +377,15 @@ textarea {
     }
 
 /*For Kendo datepicker extention*/
-.k-widget.k-datepicker.k-header.form-control, .k-picker-wrap.k-state-default {
+.k-widget.k-datepicker.k-header.form-control,.k-widget.k-dropdown.k-header.form-control, .k-picker-wrap.k-state-default {
     padding: 0;
     border: none;
 }
+
+/*.k-widget.k-dropdown.k-header.form-control, .k-picker-wrap.k-state-default {
+    padding: 0;
+    border: none;
+}*/
 
 .form-control.k-input {
     height: 34px;
