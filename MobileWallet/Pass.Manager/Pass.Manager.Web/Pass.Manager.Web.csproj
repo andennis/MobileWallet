@@ -472,6 +472,9 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="fonts\HelveticaNeueCyr-Light.otf" />
+    <None Include="Properties\PublishProfiles\Local.pubxml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Images\createCard\barcode\aztecPass.png" />
     <Content Include="Images\createCard\barcode\pdf417Pass.png" />
