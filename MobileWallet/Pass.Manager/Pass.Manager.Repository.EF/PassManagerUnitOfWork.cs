@@ -91,11 +91,5 @@ namespace Pass.Manager.Repository.EF
             }
         }
 
-        protected override object CreateDefaultRepository(Type entityType)
-        {
-            Type repositoryType = typeof(PassManagerDefaultRepository<>);
-            return Activator.CreateInstance(repositoryType.MakeGenericType(entityType), _dbContext);
-        }
-
     }
 }

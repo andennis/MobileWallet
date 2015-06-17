@@ -11,7 +11,7 @@ using Pass.Manager.Core.Services;
 
 namespace Pass.Manager.BL.Services
 {
-    public class PassCertificateService : PassManagerServiceBase<PassCertificateApple, SearchFilterBase>, IPassCertificateService
+    public class PassCertificateService : BaseService<PassCertificateApple, SearchFilterBase, IPassManagerUnitOfWork>, IPassCertificateService
     {
         private readonly ICertificateStorageService _certificateStorageService;
 

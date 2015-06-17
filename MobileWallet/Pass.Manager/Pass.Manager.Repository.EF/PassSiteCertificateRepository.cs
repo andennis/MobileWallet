@@ -7,7 +7,7 @@ using Pass.Manager.Core.Repositories;
 
 namespace Pass.Manager.Repository.EF
 {
-    public class PassSiteCertificateRepository : PassManagerDefaultRepository<PassSiteCertificate>, IPassSiteCertificateRepository
+    public class PassSiteCertificateRepository : Repository<PassSiteCertificate>, IPassSiteCertificateRepository
     {
         public PassSiteCertificateRepository(DbContextBase dbContext)
             : base(dbContext)
@@ -16,7 +16,7 @@ namespace Pass.Manager.Repository.EF
 
         public IEnumerable<PassCertificate> GetUnassignedCertificates(int passSiteId)
         {
-            return SqlQuery<PassCertificate>(DbScheme + ".PassSiteCertificate_GetUnassignedCertificates @PassSiteId",
+            return SqlQueryStoredProc<PassCertificate>(DbScheme + ".PassSiteCertificate_GetUnassignedCertificates",
                                           new SqlParameter("PassSiteId", passSiteId)).ToList();
         }
 

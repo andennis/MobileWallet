@@ -31,5 +31,6 @@ namespace Common.Web
                 .Cast<TEnum>()
                 .ToDictionary(k => k.ToString(), v => Convert.ToInt32(v));
         }
+
     }
 }

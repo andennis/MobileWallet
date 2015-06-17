@@ -14,6 +14,5 @@ namespace Pass.Container.Core.Entities
         public EntityStatus Status { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
-        public DateTime? UnregisterDate { get; set; }
     }
 }

@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using Common.BL;
+using Common.Repository;
 using Common.Web;
 using Microsoft.Ajax.Utilities;
 using Pass.Distribution.Core.Entities;
@@ -84,8 +87,13 @@ namespace Pass.Manager.Web.Controllers
         [AjaxOnly]
         public ActionResult TabRegistrations(int id)
         {
-            PassContent pc = _service.Get(id);
-            PassContentTemplate pct = _contentTemplateService.GetDetails(pc.PassContentTemplateId);
+            var statuses = new List<SelectListItem>()
+                     {
+                         new SelectListItem(){Value = ((int)EntityStatus.Active).ToString(), Text = Resources.Resources.EntityStatusActive},
+                         new SelectListItem(){Value = ((int)EntityStatus.Inactive).ToString(), Text = Resources.Resources.EntityStatusInactive}
+                     };
+
+            ViewBag.RegStatses = new SelectList(statuses, "Value", "Text", ((int)EntityStatus.Active).ToString());
             return PartialView(@"Tabs\_Registrations", id);
         }
 

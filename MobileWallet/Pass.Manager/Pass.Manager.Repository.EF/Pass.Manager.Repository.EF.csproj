@@ -187,7 +187,6 @@
     <Compile Include="PassContentRepository.cs" />
     <Compile Include="PassContentTemplateFieldRepository.cs" />
     <Compile Include="PassManagerDbContext.cs" />
-    <Compile Include="PassManagerDefaultRepository.cs" />
     <Compile Include="PassManagerUnitOfWork.cs" />
     <Compile Include="PassSiteCertificateRepository.cs" />
     <Compile Include="PassSiteRepository.cs" />

@@ -2,6 +2,7 @@
 using System.IO;
 using System.Web.Mvc;
 using Common.BL;
+using Common.Repository;
 using Common.Utils;
 using Common.Web.Controls.Grid;
 using Pass.Container.Core.SearchFilters;
@@ -56,6 +57,13 @@ namespace Pass.Manager.Web.Controllers
         {
             _notificationService.NotifyClientDevice(passContentId, clientDeviceId);
             return JsonEx(true, Resources.Resources.PushClientDeviceSuccess);
+        }
+
+        [AjaxOnly]
+        public ActionResult NotifyClientDevices(int passContentId)
+        {
+            _notificationService.NotifyClientDevices(passContentId);
+            return JsonEx(true, Resources.Resources.PushClientDevicesSuccess);
         }
 
     }

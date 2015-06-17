@@ -28,6 +28,7 @@ namespace Common.Repository.EF
             if (_repositories.ContainsKey(entityType))
                 throw new Exception(string.Format("Repository has already been registered for the the entity type: {0}", entityType.Name));
 
+            //TODO Lazy should be removed
             var lazyRep = new Lazy<IRepository<TEntity>>(() => repository);
             _repositories.Add(entityType, lazyRep);
         }

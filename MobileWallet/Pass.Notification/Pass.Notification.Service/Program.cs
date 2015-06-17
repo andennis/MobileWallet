@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Atlas;
 using Autofac;
-using Common.Repository;
-using Common.Repository.EF;
-using log4net;
-using Pass.Notification.BL;
 using Pass.Notification.BL.Utils;
-using Pass.Notification.Core;
-using Pass.Notification.Repository.Core;
-using Pass.Notification.Repository.EF;
 using Pass.Notification.Service.Quartz;
 
 namespace Pass.Notification.Service

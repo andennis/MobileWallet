@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Common.BL;
+using Common.Repository;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.SearchFilters;
@@ -8,7 +9,7 @@ using Pass.Manager.Core.Services;
 
 namespace Pass.Manager.BL.Services
 {
-    public class PassSiteUserService : PassManagerServiceBase<PassSiteUser, PassSiteUserFilter>, IPassSiteUserService
+    public class PassSiteUserService : BaseService<PassSiteUser, PassSiteUserFilter, IPassManagerUnitOfWork>, IPassSiteUserService
     {
         public PassSiteUserService(IPassManagerUnitOfWork unitOfWork)
             : base(unitOfWork)

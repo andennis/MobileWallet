@@ -1,38 +1,65 @@
 ﻿@using Pass.Container.Core.Entities
 @model int
-    
+
+<script type="text/javascript">
+    function PassRegistrationFilter() {
+        return {
+            PassId: @Model,
+            StatusId: $("#ddlRegStatus").val()
+        };
+    }
+
+    function OnRegStatusChanged() {
+        window.grid.Reload($("#grdRegistrations"));
+    }
+</script>
+
+<div id="divPassRegActions" class="text-right action-block">
+    @(Html.ActionLinkAjaxExt<PassOnlineController>(a => a.NotifyClientDevices(0), Resources.PushAllDevices, Resources.PushAllDevicesConfirmation, new { passContentId = Model }))
+</div>
+
+<div class="grid-filter">
+    <div class="form-group">
+        <label for="ddlRegStatus" class="control-label col-sm-2 col-md-1">Status</label>
+        <div class="col-sm-10 col-md-11">
+            @Html.DropDownListExt("ddlRegStatus", (SelectList)ViewBag.RegStatses, Resources.All, null, "OnRegStatusChanged")
+        </div>
+    </div>
+</div>
+
 @(Html.Grid<RegistrationInfo>()
-              .Name("grdRegistrations")
-              .CssClass("pm-grid")
-              .Pageable()
-              .DataSource(ds => ds.Read(Url.Action<PassOnlineController>(a => a.Registrations(null, null), new { PassId = Model })))
-              .Columns(c =>
-                       {
-                           c.Bound(p => p.DeviceId).Title(Resources.DeviceId).ClientTemplateId("CropDeviceId");
-                           c.BoundEnum(p => p.DeviceType).Title(Resources.DeviceType);
-                           c.BoundEnum(p => p.Status).Title(Resources.Status);
-                           c.Bound(p => p.PushToken).Title(Resources.PushToken).ClientTemplateId("CropPushToken");
-                           c.Bound(p => p.CreatedDate).Title(Resources.CreatedDate);
-                           c.Bound(p => p.UpdatedDate).Title(Resources.UpdatedDate);
-                           c.Bound(p => p.UnregisterDate).Title(Resources.UnregisterDate);
-                           c.Bound(p => p.ClientDeviceId).Title(Resources.ColumnActions)
-                               .GridAjaxAction("Push", Url.Action<PassOnlineController>(a => a.NotifyClientDevice(0, 0), new { passContentId = Model }));
-                       }))
+    .Name("grdRegistrations")
+    .CssClass("pm-grid")
+    .Pageable()
+    .DataSource(ds => ds.Read(Url.Action<PassOnlineController>(a => a.Registrations(null, null))).Data("PassRegistrationFilter"))
+    .Columns(c =>
+            {
+                c.Bound(p => p.DeviceId).Title(Resources.DeviceId).ClientTemplateId("CropDeviceId");
+                c.BoundEnum(p => p.DeviceType).Title(Resources.DeviceType);
+                c.BoundEnum(p => p.Status).Title(Resources.Status);
+                c.Bound(p => p.PushToken).Title(Resources.PushToken).ClientTemplateId("CropPushToken");
+                c.Bound(p => p.CreatedDate).Title(Resources.CreatedDate).Format("g");
+                c.Bound(p => p.UpdatedDate).Title(Resources.UpdatedDate).Format("g");
+                c.Bound(p => p.ClientDeviceId).Title(Resources.ColumnActions)
+                    .GridAjaxAction("Push", Url.Action<PassOnlineController>(a => a.NotifyClientDevice(0, 0), new { passContentId = Model }), confirmMessage: Resources.PushDeviceConfirmation);
+            }))
+
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         window.grid.Init($("#grdRegistrations"));
+        window.action.InitForm($("#divPassRegActions"));
     });
 </script>
 
 <script id="CropDeviceId" type="text/x-kendo-template">
-    <div class="crop" style="width:220px" title="#=DeviceId#">
+    <div class="crop" style="width:200px" title="#=DeviceId#">
         #=DeviceId#
     </div>
 </script>
 
 <script id="CropPushToken" type="text/x-kendo-template">
-    <div class="crop" style="width:250px" title="#=PushToken#">
+    <div class="crop" style="width:200px" title="#=PushToken#">
         #=PushToken#
     </div>
 </script>

@@ -3,7 +3,8 @@ using Pass.Manager.Core.Entities;
 
 namespace Pass.Manager.Core.Services
 {
-    public interface IPassSiteService : IPassManagerServiceBase<PassSite, SearchFilterBase>
+    //TODO It is not used
+    public interface IPassSiteService : IBaseService<PassSite, SearchFilterBase>
     {
         /*
         SearchResult<PassSiteUser> GetUsers(SearchContext searchContext, int passSiteId);

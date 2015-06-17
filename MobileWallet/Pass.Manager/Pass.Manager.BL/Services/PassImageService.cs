@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using Common.BL;
+using Common.Repository;
 using Common.Utils;
 using FileStorage.Core;
 using FileStorage.Core.Entities;
@@ -13,7 +14,7 @@ using Pass.Manager.Core.Services;
 
 namespace Pass.Manager.BL.Services
 {
-    public class PassImageService : PassManagerServiceBase<PassImage, PassImageFilter>, IPassImageService
+    public class PassImageService : BaseService<PassImage, PassImageFilter, IPassManagerUnitOfWork>, IPassImageService
     {
         private readonly IFileStorageService _fileStorageService;
 

@@ -5,7 +5,7 @@ using Pass.Manager.Core.Entities;
 
 namespace Pass.Manager.Repository.EF
 {
-    public class PassContentRepository : PassManagerDefaultRepository<PassContent>
+    public class PassContentRepository : Repository<PassContent>
     {
         public PassContentRepository(DbContextBase dbContext)
             : base(dbContext)

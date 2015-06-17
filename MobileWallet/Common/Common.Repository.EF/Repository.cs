@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -41,6 +42,22 @@ namespace Common.Repository.EF
              return _dbContext.Database.SqlQuery<T>(query, parameters).FirstOrDefault();
         }
 
+        public virtual IQueryable<TEntity> SqlQueryStoredProc(string spName, params object[] parameters)
+        {
+            string commandText = GetSqlCommandText(spName, parameters);
+            return SqlQuery(commandText.TrimEnd(), parameters);
+        }
+        public virtual IQueryable<T> SqlQueryStoredProc<T>(string spName, params object[] parameters)
+        {
+            string commandText = GetSqlCommandText(spName, parameters);
+            return SqlQuery<T>(commandText.TrimEnd(), parameters);
+        }
+        public virtual T SqlQueryScalarStoredProc<T>(string spName, params object[] parameters)
+        {
+            string commandText = GetSqlCommandText(spName, parameters);
+            return SqlQueryScalar<T>(commandText.TrimEnd(), parameters);
+        }
+
         public void ExecuteCommand(string commandText, params object[] parameters)
         {
             UpdateNulltoDBNull(parameters);
@@ -49,7 +66,7 @@ namespace Common.Repository.EF
 
         public void ExecuteNonQueryStoredProc(string spName, params object[] parameters)
         {
-            string commandText = spName + " " + GetStoredProcParamsAsString(parameters);
+            string commandText = GetSqlCommandText(spName, parameters);
             ExecuteCommand(commandText.TrimEnd(), parameters);
         }
 
@@ -61,12 +78,14 @@ namespace Common.Repository.EF
                     prm.Value = DBNull.Value;
             }
         }
-        protected string GetStoredProcParamsAsString(IEnumerable<object> parameters)
-        {
-            if (parameters == null)
-                return string.Empty;
 
-            return string.Join(",", parameters.Cast<IDbDataParameter>().Select(x => string.Format("@{0}=@{0}" + (x.Direction == ParameterDirection.Output ? " OUTPUT" : string.Empty), x.ParameterName)));
+        protected string GetSqlCommandText(string spName, params object[] parameters)
+        {
+            if (parameters == null || !parameters.Any())
+                return spName;
+
+            string prmNames = string.Join(",", parameters.Cast<IDbDataParameter>().Select(x => string.Format("@{0}=@{0}" + (x.Direction == ParameterDirection.Output ? " OUTPUT" : string.Empty), x.ParameterName)));
+            return spName + (prmNames!=string.Empty ? " " + prmNames : string.Empty);
         }
 
         public virtual void Insert(TEntity entity)
@@ -121,6 +140,56 @@ namespace Common.Repository.EF
                     .Take(pageSize.Value);
             }
             return query;
+        }
+
+        /// <summary>
+        /// It executes the SP with name pattern: 
+        ///     [Db scheme].[TEntity type name].GetView
+        /// The SP should take the parameter: @ID INT
+        /// </summary>
+        /// <typeparam name="TEntityView"></typeparam>
+        /// <param name="entityId"></param>
+        /// <returns></returns>
+        public virtual TEntityView GetView<TEntityView>(int entityId)
+        {
+            string spName = string.Format("{0}.{1}_GetView", DbScheme, typeof(TEntity).Name);
+            return SqlQueryStoredProc<TEntityView>(spName, new SqlParameter("ID", entityId)).FirstOrDefault();
+        }
+
+        /// <summary>
+        /// It executes the SP with name pattern: 
+        ///     [Db scheme].[TEntity type name].Search
+        /// 
+        /// The minimal set of parameters:
+        /// ------------------------------
+        ///     @PageIndex INT,
+        ///     @PageSize INT,
+        ///     @SortBy VARCHAR(64),
+        ///     @SortDirection INT,
+        ///     @TotalRecords INT OUTPUT,
+        ///     @SearchText NVARCHAR(MAX)
+        /// ------------------------------
+        /// </summary>
+        /// <typeparam name="TEntityView"></typeparam>
+        /// <param name="searchParams"></param>
+        /// <param name="totalRecords"></param>
+        /// <returns></returns>
+        public virtual IEnumerable<TEntityView> Search<TEntityView>(IEnumerable<QueryParameter> searchParams, out int totalRecords)
+        {
+            IList<object> sqlPrms = searchParams != null
+                ? searchParams.Select(x => (object)new SqlParameter(x.Name, x.Value)).ToList()
+                : null;
+
+            var prm = new SqlParameter("TotalRecords", SqlDbType.Int) { Direction = ParameterDirection.Output };
+            if (sqlPrms != null)
+                sqlPrms.Add(prm);
+            else
+                sqlPrms = new List<object>() { prm };
+
+            string spName = string.Format("{0}.{1}_Search", DbScheme, typeof(TEntity).Name);
+            IEnumerable<TEntityView> result = SqlQueryStoredProc<TEntityView>(spName, sqlPrms.ToArray()).ToList();
+            totalRecords = Convert.ToInt32(prm.Value);
+            return result;
         }
 
     }

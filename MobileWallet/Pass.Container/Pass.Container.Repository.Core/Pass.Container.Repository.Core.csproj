@@ -46,6 +46,7 @@
     <Compile Include="Entities\PassTemplateApple.cs" />
     <Compile Include="Entities\PassTemplateNative.cs" />
     <Compile Include="Entities\Registration.cs" />
+    <Compile Include="Entities\RegistrationView.cs" />
     <Compile Include="IPassContainerUnitOfWork.cs" />
     <Compile Include="IPassRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

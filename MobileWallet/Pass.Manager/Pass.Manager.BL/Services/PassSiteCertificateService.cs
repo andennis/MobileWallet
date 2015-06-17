@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Common.BL;
+using Common.Repository;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.SearchFilters;
@@ -9,7 +10,7 @@ using Pass.Manager.Core.Services;
 
 namespace Pass.Manager.BL.Services
 {
-    public class PassSiteCertificateService : PassManagerServiceBase<PassSiteCertificate, PassSiteCertificateFilter>, IPassSiteCertificateService
+    public class PassSiteCertificateService : BaseService<PassSiteCertificate, PassSiteCertificateFilter, IPassManagerUnitOfWork>, IPassSiteCertificateService
     {
         public PassSiteCertificateService(IPassManagerUnitOfWork unitOfWork)
             : base(unitOfWork)

@@ -5,7 +5,7 @@ using Pass.Manager.Core.Entities;
 
 namespace Pass.Manager.Core.Services
 {
-    public interface IPassCertificateService : IPassManagerServiceBase<PassCertificateApple, SearchFilterBase>
+    public interface IPassCertificateService : IBaseService<PassCertificateApple, SearchFilterBase>
     {
         void UploadCertificate(PassCertificateApple passCert, string certPassword, FileContentInfo fileContent);
         Stream DownloadCertificate(int certificateStorageId);

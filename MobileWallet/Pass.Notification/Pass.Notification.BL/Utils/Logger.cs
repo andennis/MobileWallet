@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using log4net;
-using log4net.Appender;
-using log4net.Core;
 using log4net.Repository;
 
 namespace Pass.Notification.BL.Utils

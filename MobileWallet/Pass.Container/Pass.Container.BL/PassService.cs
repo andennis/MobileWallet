@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using Common.BL;
+using Common.Extensions;
 using Common.Repository;
 using Pass.Container.BL.PassGenerators;
 using Pass.Container.Core;
@@ -187,18 +188,17 @@ namespace Pass.Container.BL
 
         public SearchResult<RegistrationInfo> GetPassRegistrations(SearchContext searchContext, PassRegistrationFilter filter)
         {
-            IRepository<Registration> repReg = _pcUnitOfWork.GetRepository<Registration>();
-            IEnumerable<Registration> regs = repReg.Query()
-                .Filter(x => x.PassId == filter.PassId)
-                .Include(x => x.ClientDevice)
-                .Get()
-                .AsEnumerable();
+            IEnumerable<QueryParameter> searchParams = filter.ObjectPropertiesToDictionary().Select(x => new QueryParameter(){Name = x.Key, Value = x.Value});
+            searchParams = searchParams.Union(searchContext.ObjectPropertiesToDictionary().Select(x => new QueryParameter(){Name = x.Key, Value = x.Value}));
 
-            IEnumerable<RegistrationInfo> regInfos = regs.Select(ConvertTo).ToList();
+            int totalRecords;
+            IRepository<Registration> repReg = _pcUnitOfWork.GetRepository<Registration>();
+            IEnumerable<RegistrationInfo> regs = repReg.Search<RegistrationInfo>(searchParams, out totalRecords);
+
             return new SearchResult<RegistrationInfo>()
                     {
-                        Data = regInfos,
-                        TotalCount = regInfos.Count()
+                        Data = regs,
+                        TotalCount = totalRecords
                     };
 
         }
@@ -229,8 +229,7 @@ namespace Pass.Container.BL
                        PushToken = reg.ClientDevice is ClientDeviceApple ? ((ClientDeviceApple)reg.ClientDevice).PushToken : null,
                        Status = reg.Status,
                        CreatedDate = reg.CreatedDate,
-                       UpdatedDate = reg.UpdatedDate,
-                       UnregisterDate = reg.UnregisterDate
+                       UpdatedDate = reg.UpdatedDate
                    };
         }
 

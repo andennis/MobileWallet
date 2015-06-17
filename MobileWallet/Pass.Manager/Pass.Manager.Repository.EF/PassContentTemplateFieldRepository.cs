@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using Common.Repository.EF;
@@ -8,7 +7,7 @@ using Pass.Manager.Core.Repositories;
 
 namespace Pass.Manager.Repository.EF
 {
-    public class PassContentTemplateFieldRepository : PassManagerDefaultRepository<PassContentTemplateField>, IPassContentTemplateFieldRepository
+    public class PassContentTemplateFieldRepository : Repository<PassContentTemplateField>, IPassContentTemplateFieldRepository
     {
         public PassContentTemplateFieldRepository(DbContextBase dbContext)
             : base(dbContext)
@@ -17,9 +16,9 @@ namespace Pass.Manager.Repository.EF
 
         public IEnumerable<PassProjectField> GetUnmappedFields(int passContentTemplateId, int? curPassProjectFieldId = null)
         {
-            return SqlQuery<PassProjectField>(DbScheme + ".PassContentTemplateField_GetUnmappedFields @PassContentTemplateId, @CurPassProjectFieldId",
+            return SqlQueryStoredProc<PassProjectField>(DbScheme + ".PassContentTemplateField_GetUnmappedFields",
                                           new SqlParameter("PassContentTemplateId", passContentTemplateId),
-                                          new SqlParameter("CurPassProjectFieldId", curPassProjectFieldId ?? (object)DBNull.Value)).ToList();
+                                          new SqlParameter("CurPassProjectFieldId", curPassProjectFieldId/* ?? (object)DBNull.Value*/)).ToList();
         }
     }
 }

@@ -442,3 +442,7 @@ img.boundBoolImg {
 img[src=""].boundBoolImg {
     display: none;
 }
+
+.grid-filter {
+    margin-bottom: 5px
+}

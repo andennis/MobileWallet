@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Linq;
+using Common.BL;
+using Common.Repository;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
+using Pass.Container.Core.SearchFilters;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.Exceptions;
 using Pass.Manager.Core.Services;
 using Pass.Notification.Core;
+using Pass.Notification.Core.Enums;
 
 namespace Pass.Manager.BL.Services
 {
@@ -42,12 +47,21 @@ namespace Pass.Manager.BL.Services
             _pushService.SendPushNotifications(cert.CertificateStorageId, new[] { regInfo.PushToken });
         }
 
-        public void NotifyPassClientDevices(int passContentId)
+        public void NotifyClientDevices(int passContentId)
         {
-            throw new NotImplementedException();
+            PassContent pc = _passContentService.Get(passContentId);
+            if (!pc.ContainerPassId.HasValue)
+                throw new PassManagerGeneralException(string.Format("PassContentId: {0} has not been registered yet", passContentId));
+
+            PassContentTemplate pct = _passContentTemplateService.GetDetails(pc.PassContentTemplateId);
+            PassCertificate cert = _certificateService.Get(pct.PassProject.PassCertificateId);
+            SearchResult<RegistrationInfo> regInfos = _passService.GetPassRegistrations(new SearchContext(), 
+                new PassRegistrationFilter(){PassId = pc.ContainerPassId.Value, StatusId = (int)EntityStatus.Active});
+
+            _pushService.AddPushNotificationToQueue(cert.CertificateStorageId, regInfos.Data.Select(x => x.PushToken), PushNotificationServiceType.Apple);
         }
 
-        public void NotifyPassTemplateClientDevices(int passContentTemplateId)
+        public void NotifyTemplateClientDevices(int passContentTemplateId)
         {
             throw new NotImplementedException();
         }

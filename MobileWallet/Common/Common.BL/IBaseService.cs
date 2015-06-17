@@ -1,4 +1,6 @@
-﻿namespace Common.BL
+﻿using Common.Repository;
+
+namespace Common.BL
 {
     public interface IBaseService<TEntity, TSearchFilter> 
         where TEntity : class
@@ -9,5 +11,8 @@
         void Delete(int entityId);
         TEntity Get(int entityId);
         SearchResult<TEntity> Search(SearchContext searchContext, TSearchFilter searchFilter);
+
+        TEntityView GetView<TEntityView>(int entityId);
+        SearchResult<TEntityView> SearchView<TEntityView>(SearchContext searchContext, TSearchFilter searchFilter) where TEntityView : class;
     }
 }

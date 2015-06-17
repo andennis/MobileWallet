@@ -1,4 +1,5 @@
 ﻿using Common.BL;
+using Common.Repository;
 using FileStorage.Core;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
@@ -7,7 +8,7 @@ using Pass.Manager.Core.Services;
 
 namespace Pass.Manager.BL.Services
 {
-    public class PassProjectService : PassManagerServiceBase<PassProject, PassProjectFilter>, IPassProjectService
+    public class PassProjectService : BaseService<PassProject, PassProjectFilter, IPassManagerUnitOfWork>, IPassProjectService
     {
         private readonly IFileStorageService _fileStorageService;
 

@@ -5,8 +5,8 @@ using System.Security.Cryptography.X509Certificates;
 using CertificateStorage.Core;
 using CertificateStorage.Core.Entities;
 using Common.Extensions;
-using Common.Repository;
 using Pass.Notification.Core;
+using Pass.Notification.Core.Enums;
 using Pass.Notification.Repository.Core;
 using Pass.Notification.Repository.Core.Entities;
 using Pass.Notification.Repository.Core.Enums;
@@ -26,9 +26,9 @@ namespace Pass.Notification.BL
             _certificateStorageService = certificateStorageService;
         }
 
-        public void AddPushNotificationToQueue(int certificateStorageId, IEnumerable<string> pushTockenIds, PushNotificationServiceType serviceType)
+        public void AddPushNotificationToQueue(int certificateStorageId, IEnumerable<string> pushTockens, PushNotificationServiceType serviceType)
         {
-            foreach (string pushTockenId in pushTockenIds)
+            foreach (string pushTockenId in pushTockens)
             {
                 var pushNotification = new PushNotificationItem
                                        {
@@ -56,10 +56,10 @@ namespace Pass.Notification.BL
                 this.SendPushNotifications(pushNotifications.Key, pushNotifications.Select(x => x.PushTockenId).ToList());
         }
 
-        public void SendPushNotifications(int certificateId, IList<string> deviceTokenlList)
+        public void SendPushNotifications(int certificateId, IList<string> pushTockens)
         {
             X509Certificate2 certificate = GetCertificate(certificateId);
-            _pushNotificationWorker.SendNotification(certificate, deviceTokenlList);
+            _pushNotificationWorker.SendNotification(certificate, pushTockens);
         }
 
         private X509Certificate2 GetCertificate(int certId)

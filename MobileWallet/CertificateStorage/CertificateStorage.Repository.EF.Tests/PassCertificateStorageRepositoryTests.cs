@@ -34,7 +34,7 @@ namespace CertificateStorage.Repository.EF.Tests
                 Assert.AreEqual(cert1.Status, cert2.Status);
 
                 cert1.Password = "321";
-                cert1.Status = EntityStatus.InActive;
+                cert1.Status = EntityStatus.Inactive;
                 certRep.Update(cert1);
                 unitOfWork.Save();
                 cert2 = certRep.Find(cert1.CertificateId);

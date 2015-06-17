@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
-using Pass.Notification.BL;
 using Pass.Notification.Core;
-using Pass.Notification.Repository.Core.Enums;
+using Pass.Notification.Core.Enums;
 
 namespace Pass.Notification.Service
 {

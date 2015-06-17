@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Common.Repository;
 using Pass.Container.Core.Entities.Enums;
 using Pass.Container.Repository.Core;
@@ -19,7 +18,7 @@ namespace Pass.Container.BL.PassProcessing
         protected PassProcessingStatus AddPassToClientDevice(int passId, ClientDevice clientDevice)
         {
             IRepository<Registration> regRep = _pcUnitOfWork.GetRepository<Registration>();
-            var reg = regRep.Find(passId, clientDevice.ClientDeviceId);
+            Registration reg = regRep.Find(clientDevice.ClientDeviceId, passId);
             if (reg != null)
             {
                 if (reg.Status == EntityStatus.Active)
@@ -49,8 +48,7 @@ namespace Pass.Container.BL.PassProcessing
             if (reg == null || reg.Status != EntityStatus.Active)
                 return PassProcessingStatus.AlreadyDone;
 
-            reg.Status = EntityStatus.Deleted;
-            reg.UnregisterDate = DateTime.Now;
+            reg.Status = EntityStatus.Inactive;
             regRep.Update(reg);
             //_pcUnitOfWork.Save();
             return PassProcessingStatus.Succeed;

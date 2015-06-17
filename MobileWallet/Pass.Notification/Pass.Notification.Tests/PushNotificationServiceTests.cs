@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using Pass.Notification.BL;
 using Pass.Notification.Core;
-using Pass.Notification.Repository.Core.Enums;
+using Pass.Notification.Core.Enums;
 
 namespace Pass.Notification.Tests
 {

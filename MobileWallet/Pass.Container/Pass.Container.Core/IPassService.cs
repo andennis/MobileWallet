@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Common.BL;
+using Common.Repository;
 using Pass.Container.Core.Entities;
 using Pass.Container.Core.Entities.Enums;
 using Pass.Container.Core.SearchFilters;

@@ -71,7 +71,6 @@
     <Compile Include="Entities\User.cs" />
     <Compile Include="Exceptions\PassManagerGeneralException.cs" />
     <Compile Include="Repositories\IPassContentTemplateFieldRepository.cs" />
-    <Compile Include="Repositories\IPassManagerDefaultRepository.cs" />
     <Compile Include="SearchFilters\PassBeaconFilter.cs" />
     <Compile Include="SearchFilters\PassContentFieldFilter.cs" />
     <Compile Include="SearchFilters\PassContentFilter.cs" />
@@ -89,7 +88,6 @@
     <Compile Include="Services\IPassContentTemplateService.cs" />
     <Compile Include="Services\IPassImageService.cs" />
     <Compile Include="Services\IPassLocationService.cs" />
-    <Compile Include="Services\IPassManagerServiceBase.cs" />
     <Compile Include="Services\IPassNotificationService.cs" />
     <Compile Include="Services\IPassOnlineService.cs" />
     <Compile Include="Services\IPassProjectService.cs" />

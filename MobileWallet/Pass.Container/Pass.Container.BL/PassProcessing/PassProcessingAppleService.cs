@@ -69,6 +69,9 @@ namespace Pass.Container.BL.PassProcessing
                 return PassProcessingStatus.NotFound;
 
             IList<ChangedPass> changedPasses = _pcUnitOfWork.PassRepository.GetChangedPassesApple(deviceLibraryIdentifier, passTypeId, passesUpdatedSince);
+            if (!changedPasses.Any())
+                return PassProcessingStatus.NoContent;
+
             changedPassesInfo = new ChangedPassesInfo()
                                     {
                                         SerialNumbers = changedPasses.Select(x => x.SerialNumber).ToList(),

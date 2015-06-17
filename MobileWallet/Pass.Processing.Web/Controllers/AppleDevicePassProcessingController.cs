@@ -29,8 +29,8 @@ namespace Pass.Processing.Web.Controllers
             try
             {
                 string authToken = GetAuthTokenFromRequestHeader();
-                if (authToken == null)
-                    return Request.CreateResponse(HttpStatusCode.Unauthorized);
+                //if (authToken == null)
+                //    return Request.CreateResponse(HttpStatusCode.Unauthorized);
 
                 PassProcessingStatus status = _passProcessingService.RegisterDevice(deviceLibraryIdentifier, passTypeIdentifier, serialNumber, devicePushToken.PushToken, authToken);
 
@@ -71,8 +71,8 @@ namespace Pass.Processing.Web.Controllers
             try
             {
                 string authToken = GetAuthTokenFromRequestHeader();
-                if (authToken == null)
-                    return Request.CreateResponse(HttpStatusCode.Unauthorized);
+                //if (authToken == null)
+                //    return Request.CreateResponse(HttpStatusCode.Unauthorized);
 
                 PassProcessingStatus status = _passProcessingService.UnregisterDevice(deviceLibraryIdentifier, passTypeIdentifier, serialNumber, authToken);
 
@@ -178,8 +178,8 @@ namespace Pass.Processing.Web.Controllers
             try
             {
                 string authToken = GetAuthTokenFromRequestHeader();
-                if (authToken == null)
-                    return Request.CreateResponse(HttpStatusCode.Unauthorized);
+                //if (authToken == null)
+                //    return Request.CreateResponse(HttpStatusCode.Unauthorized);
 
                 //Support standard HTTP caching on this endpoint: check for the If-Modified-Since header and return HTTP
                 //status code 304 if the pass has not changed.

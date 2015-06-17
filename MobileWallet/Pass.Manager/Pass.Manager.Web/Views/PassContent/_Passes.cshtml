@@ -19,13 +19,12 @@
         .Name("grdPassContent")
         .CssClass("pm-grid")
         .Pageable()
-        .AutoBind(false)
         .DataSource(ds => ds.Read(Url.Action<PassContentController>(a => a.GridSearchView(null, null))).Data("PassContentFilter"))
         .Columns(c =>
                 {
                     c.Bound(m => m.PassContentId).Title("ID").Width("100px");
                     c.Bound(m => m.IsOnline).Title("Online");
-                    c.BoundLink(m => m.SerialNumber, Url.Action<PassContentController>(a => a.Edit(0)), m => m.PassContentId).Title("Serial Number");
+                    c.BoundLink(m => m.SerialNumber, Url.Action<PassContentController>(a => a.Edit(0)), m => m.PassContentId).Title("Serial Number");//.ClientTemplateId("CropSerNum");
                     c.Bound(m => m.ExpDate).Title("Expiration Date");
                     c.Bound(m => m.IsVoided).Title("Voided");
                     c.BoundEnum(m => m.Status);
@@ -42,7 +41,14 @@
             window.grid.Reload($("#grdPassContent"));
         });
     });
-
 </script>
+
+<!--
+<script id="CropSerNum" type="text/x-kendo-template">
+    <div class="crop" style="width:220px" title="#=SerialNumber#">
+        #=SerialNumber#
+    </div>
+</script>
+-->
 
 

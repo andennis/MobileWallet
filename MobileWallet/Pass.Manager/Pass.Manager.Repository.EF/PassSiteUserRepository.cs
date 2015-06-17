@@ -7,7 +7,7 @@ using Pass.Manager.Core.Repositories;
 
 namespace Pass.Manager.Repository.EF
 {
-    public class PassSiteUserRepository : PassManagerDefaultRepository<PassSiteUser>, IPassSiteUserRepository
+    public class PassSiteUserRepository : Repository<PassSiteUser>, IPassSiteUserRepository
     {
         public PassSiteUserRepository(DbContextBase dbContext)
             : base(dbContext)
@@ -16,7 +16,7 @@ namespace Pass.Manager.Repository.EF
 
         public IEnumerable<User> GetUnassignedUsers(int passSiteId)
         {
-            return SqlQuery<User>(DbScheme + ".PassSiteUser_GetUnassignedUsers @PassSiteId",
+            return SqlQueryStoredProc<User>(DbScheme + ".PassSiteUser_GetUnassignedUsers",
                                           new SqlParameter("PassSiteId", passSiteId)).ToList();
         }
 

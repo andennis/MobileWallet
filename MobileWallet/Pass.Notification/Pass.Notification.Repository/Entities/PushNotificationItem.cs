@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Common.Repository;
+﻿using Common.Repository;
+using Pass.Notification.Core.Enums;
 using Pass.Notification.Repository.Core.Enums;
 
 namespace Pass.Notification.Repository.Core.Entities

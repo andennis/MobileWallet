@@ -43,6 +43,10 @@
     <Compile Include="SortDirection.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common.Extensions\Common.Extensions.csproj">
+      <Project>{1628E173-1BE9-4DFC-BCBE-93334DE8EE46}</Project>
+      <Name>Common.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Common.Repository\Common.Repository.csproj">
       <Project>{f36371d6-812f-49f5-9e9b-043265660647}</Project>
       <Name>Common.Repository</Name>

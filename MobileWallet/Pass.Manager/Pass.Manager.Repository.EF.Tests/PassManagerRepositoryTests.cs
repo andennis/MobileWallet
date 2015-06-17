@@ -168,7 +168,7 @@ namespace Pass.Manager.Repository.EF.Tests
                            {
                                PassSiteId = passSite.PassSiteId,
                                UserId = user.UserId,
-                               Status = EntityStatus.InActive
+                               Status = EntityStatus.Inactive
                            };
             CreateEntity(siteUser1);
             var siteUser2 = ReadEntity<PassSiteUser>(siteUser1.PassSiteUserId);

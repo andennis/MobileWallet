@@ -5,7 +5,7 @@ using Pass.Manager.Core.Services;
 
 namespace Pass.Manager.BL.Services
 {
-    public class PassSiteService : PassManagerServiceBase<PassSite, SearchFilterBase>, IPassSiteService
+    public class PassSiteService : BaseService<PassSite, SearchFilterBase, IPassManagerUnitOfWork>, IPassSiteService
     {
         public PassSiteService(IPassManagerUnitOfWork unitOfWork)
             : base(unitOfWork)

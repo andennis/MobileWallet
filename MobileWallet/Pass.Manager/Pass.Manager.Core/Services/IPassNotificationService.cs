@@ -3,7 +3,7 @@
     public interface IPassNotificationService
     {
         void NotifyClientDevice(int passContentId, int clientDeviceId);
-        void NotifyPassClientDevices(int passContentId);
-        void NotifyPassTemplateClientDevices(int passContentTemplateId);
+        void NotifyClientDevices(int passContentId);
+        void NotifyTemplateClientDevices(int passContentTemplateId);
     }
 }

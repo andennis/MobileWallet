@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework;
+using Pass.Notification.Core.Enums;
 using Pass.Notification.Repository.Core;
 using Pass.Notification.Repository.Core.Entities;
 using Pass.Notification.Repository.Core.Enums;

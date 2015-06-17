@@ -45,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\PushNotificationItem.cs" />
-    <Compile Include="Enums\PushNotificationServiceType.cs" />
     <Compile Include="Enums\PushStatus.cs" />
     <Compile Include="IPushNotificationRepository.cs" />
     <Compile Include="IPushNotificationUnitOfWork.cs" />
@@ -58,6 +57,10 @@
     <ProjectReference Include="..\..\Common\Common.Repository\Common.Repository.csproj">
       <Project>{F36371D6-812F-49F5-9E9B-043265660647}</Project>
       <Name>Common.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pass.Notification.Core\Pass.Notification.Core.csproj">
+      <Project>{b080dcae-231c-4f9e-8a01-b6e0de3c2fe2}</Project>
+      <Name>Pass.Notification.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

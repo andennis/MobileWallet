@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Common.Extensions;
 using Common.Repository;
 
 namespace Common.BL
@@ -60,6 +61,26 @@ namespace Common.BL
             };
 
         }
+
+        public virtual TEntityView GetView<TEntityView>(int entityId)
+        {
+            return _repository.GetView<TEntityView>(entityId);
+        }
+
+        public virtual SearchResult<TEntityView> SearchView<TEntityView>(SearchContext searchContext, TSearchFilter searchFilter) where TEntityView : class
+        {
+            IEnumerable<QueryParameter> searchParams = searchFilter.ObjectPropertiesToDictionary().Select(x => new QueryParameter(){Name = x.Key, Value = x.Value});
+            searchParams = searchParams.Union(searchContext.ObjectPropertiesToDictionary().Select(x => new QueryParameter(){Name = x.Key, Value = x.Value}));
+            int totalRecords;
+            IEnumerable<TEntityView> result = _repository.Search<TEntityView>(searchParams, out totalRecords);
+
+            return new SearchResult<TEntityView>()
+            {
+                Data = result,
+                TotalCount = totalRecords
+            };
+        }
+
 
     }
 }

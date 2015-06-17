@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Common.BL;
+using Common.Repository;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.SearchFilters;
@@ -8,7 +9,7 @@ using Pass.Manager.Core.Services;
 
 namespace Pass.Manager.BL.Services
 {
-    public class PassContentTemplateService : PassManagerServiceBase<PassContentTemplate, PassContentTemplateFilter>, IPassContentTemplateService
+    public class PassContentTemplateService : BaseService<PassContentTemplate, PassContentTemplateFilter, IPassManagerUnitOfWork>, IPassContentTemplateService
     {
         public PassContentTemplateService(IPassManagerUnitOfWork unitOfWork)
             : base(unitOfWork)

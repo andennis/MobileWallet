@@ -261,12 +261,24 @@ namespace Common.Web
         public static MvcHtmlString DropDownListForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems,
             string optionLabel = null, object htmlAttributes = null)
         {
+            return html.DropDownListExt(expression.GetPropertyName(), listItems, optionLabel, htmlAttributes);
+        }
+
+        public static MvcHtmlString DropDownListExt<TModel>(this HtmlHelper<TModel> html, string name, IEnumerable<SelectListItem> listItems,
+            string optionLabel = null, object htmlAttributes = null, string changeHandler = null)
+        {
             DropDownListBuilder builder = html.Widget().DropDownList()
-                .Name(expression.GetPropertyName())
+                .Name(name)
                 .DataTextField("Text")
                 .DataValueField("Value")
                 .BindTo(listItems)
                 .HtmlAttributes(_initControlAttributes.MergeHtmlAttributes(htmlAttributes));
+
+            if (!string.IsNullOrEmpty(optionLabel))
+                builder.OptionLabel(optionLabel);
+
+            if (!string.IsNullOrEmpty(changeHandler))
+                builder.Events(x => x.Change(changeHandler));
 
             return new MvcHtmlString(builder.ToHtmlString());
         }

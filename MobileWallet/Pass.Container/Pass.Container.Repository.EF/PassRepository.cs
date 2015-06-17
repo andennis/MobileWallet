@@ -17,10 +17,10 @@ namespace Pass.Container.Repository.EF
 
         public IList<ChangedPass> GetChangedPassesApple(string deviceId, string passTypeId, DateTime? updateTag)
         {
-            return SqlQuery<ChangedPass>(DbScheme + ".GetChangedPassesApple @DeviceId, @PassTypeId, @UpdateTag",
+            return SqlQueryStoredProc<ChangedPass>(DbScheme + ".GetChangedPassesApple",
                                           new SqlParameter("DeviceId", deviceId),
                                           new SqlParameter("PassTypeId", passTypeId),
-                                          new SqlParameter("UpdateTag", (object)updateTag ?? DBNull.Value)).ToList();
+                                          new SqlParameter("UpdateTag", /*(object)*/updateTag/* ?? DBNull.Value*/)).ToList();
         }
 
     }

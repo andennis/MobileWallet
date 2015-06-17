@@ -61,6 +61,15 @@ namespace Pass.Manager.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All.
+        /// </summary>
+        public static string All {
+            get {
+                return ResourceManager.GetString("All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid username or password.
         /// </summary>
         public static string AuthenticationFailed {
@@ -133,11 +142,74 @@ namespace Pass.Manager.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Active.
+        /// </summary>
+        public static string EntityStatusActive {
+            get {
+                return ResourceManager.GetString("EntityStatusActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleted.
+        /// </summary>
+        public static string EntityStatusDeleted {
+            get {
+                return ResourceManager.GetString("EntityStatusDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inactive.
+        /// </summary>
+        public static string EntityStatusInactive {
+            get {
+                return ResourceManager.GetString("EntityStatusInactive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Push All Devices.
+        /// </summary>
+        public static string PushAllDevices {
+            get {
+                return ResourceManager.GetString("PushAllDevices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to send push notifications to all the devices of the pass?.
+        /// </summary>
+        public static string PushAllDevicesConfirmation {
+            get {
+                return ResourceManager.GetString("PushAllDevicesConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Push notifications have been queued successfully and will be sent in nearest time by notification service.
+        /// </summary>
+        public static string PushClientDevicesSuccess {
+            get {
+                return ResourceManager.GetString("PushClientDevicesSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Push notification has been sent successfully.
         /// </summary>
         public static string PushClientDeviceSuccess {
             get {
                 return ResourceManager.GetString("PushClientDeviceSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to send push notifications to the device?.
+        /// </summary>
+        public static string PushDeviceConfirmation {
+            get {
+                return ResourceManager.GetString("PushDeviceConfirmation", resourceCulture);
             }
         }
         
@@ -162,9 +234,9 @@ namespace Pass.Manager.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to register this pass online?.
         /// </summary>
-        public static string RegisterPassOnlineConformation {
+        public static string RegisterPassOnlineConfirmation {
             get {
-                return ResourceManager.GetString("RegisterPassOnlineConformation", resourceCulture);
+                return ResourceManager.GetString("RegisterPassOnlineConfirmation", resourceCulture);
             }
         }
         
@@ -201,15 +273,6 @@ namespace Pass.Manager.Resources {
         public static string Status {
             get {
                 return ResourceManager.GetString("Status", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Unregister Date.
-        /// </summary>
-        public static string UnregisterDate {
-            get {
-                return ResourceManager.GetString("UnregisterDate", resourceCulture);
             }
         }
         

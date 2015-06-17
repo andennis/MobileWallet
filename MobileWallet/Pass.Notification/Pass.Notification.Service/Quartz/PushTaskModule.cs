@@ -7,7 +7,6 @@ using CertificateStorage.Repository.EF;
 using FileStorage.BL;
 using FileStorage.Core;
 using FileStorage.Factory;
-using FileStorage.Repository.EF;
 using Pass.Notification.BL;
 using Pass.Notification.Core;
 using Pass.Notification.Repository.EF;

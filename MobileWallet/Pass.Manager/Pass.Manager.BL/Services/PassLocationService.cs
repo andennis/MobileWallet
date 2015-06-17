@@ -1,5 +1,6 @@
 ﻿using System;
 using Common.BL;
+using Common.Repository;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.SearchFilters;
@@ -7,7 +8,7 @@ using Pass.Manager.Core.Services;
 
 namespace Pass.Manager.BL.Services
 {
-    class PassLocationService : PassManagerServiceBase<PassLocation, PassLocationFilter>, IPassLocationService
+    class PassLocationService : BaseService<PassLocation, PassLocationFilter, IPassManagerUnitOfWork>, IPassLocationService
     {
         public PassLocationService(IPassManagerUnitOfWork unitOfWork)
             : base(unitOfWork)

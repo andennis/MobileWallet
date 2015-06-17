@@ -3,16 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using Common.BL;
+using Common.Repository;
 using Common.Web.Controls.Grid;
 using AutoMapper;
-using Pass.Manager.Core.Services;
 
 namespace Pass.Manager.Web.Common
 {
     public abstract class BaseEntityController<TEntityViewModel, TEntity, TService, TSearchFilter> : BaseEntityController<TEntityViewModel, TEntity, TEntity, TService, TSearchFilter>
         where TEntityViewModel : class, IViewModel, new()
         where TEntity : class, new()
-        where TService : IPassManagerServiceBase<TEntity, TSearchFilter>
+        where TService : IBaseService<TEntity, TSearchFilter>
         where TSearchFilter : SearchFilterBase
     {
         protected BaseEntityController(TService service)
@@ -26,7 +26,7 @@ namespace Pass.Manager.Web.Common
         where TEntityViewModel : class, IViewModel, new() 
         where TEntity : class, new()
         where TEntityView : class
-        where TService : IPassManagerServiceBase<TEntity, TSearchFilter>
+        where TService : IBaseService<TEntity, TSearchFilter>
         where TSearchFilter : SearchFilterBase
     {
         protected readonly TService _service;
