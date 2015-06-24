@@ -7,6 +7,9 @@ using System.Security.Cryptography.X509Certificates;
 using Common.BL;
 using Common.Extensions;
 using Common.Repository;
+using Common.Utils;
+using FileStorage.Core;
+using FileStorage.Core.Entities;
 using Pass.Container.BL.PassGenerators;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
@@ -25,16 +28,19 @@ namespace Pass.Container.BL
         private readonly IPassContainerUnitOfWork _pcUnitOfWork;
         private readonly IPassCertificateService _certService;
         private readonly IPassTemplateStorageService _templateStorageService;
+        private readonly IFileStorageService _fileStorageService;
 
         public PassService(IPassContainerConfig config, 
             IPassContainerUnitOfWork pcUnitOfWork, 
             IPassCertificateService certService,
-            IPassTemplateStorageService templateStorageService)
+            IPassTemplateStorageService templateStorageService,
+            IFileStorageService fileStorageService)
         {
             _config = config;
             _pcUnitOfWork = pcUnitOfWork;
             _certService = certService;
             _templateStorageService = templateStorageService;
+            _fileStorageService = fileStorageService;
         }
 
         public int CreatePass(int passTemplateId, IList<PassFieldInfo> fieldValues, DateTime? expDate = null)
@@ -42,6 +48,7 @@ namespace Pass.Container.BL
             IRepository<PassFieldValue> repPassFieldVal = _pcUnitOfWork.GetRepository<PassFieldValue>();
             IRepository<PassField> repPassField = _pcUnitOfWork.GetRepository<PassField>();
             IRepository<RepEntities.Pass> repPass = _pcUnitOfWork.GetRepository<RepEntities.Pass>();
+            IRepository<PassApple> repPassApple = _pcUnitOfWork.GetRepository<PassApple>();
             IRepository<PassTemplate> repPassTemplate = _pcUnitOfWork.GetRepository<PassTemplate>();
 
             PassTemplate passTemplate = repPassTemplate.Query()
@@ -53,21 +60,28 @@ namespace Pass.Container.BL
             if (passTemplate == null)
                 throw new PassContainerException(string.Format("Pass template ID: {0} not found", passTemplateId));
 
-            PassTemplateApple ptApple = passTemplate.NativeTemplates.OfType<PassTemplateApple>().FirstOrDefault();
-            if (ptApple == null)
-                throw new PassContainerException(string.Format("Apple native templte for pass template ID: {0} not found", passTemplateId));
-
             //Create Pass
             var pass = new RepEntities.Pass()
                            {
                                PassTemplateId = passTemplateId,
                                SerialNumber = GenerateSerialNumber(),
-                               PassTypeId = ptApple.PassTypeId,
+                               //PassTypeId = ptApple.PassTypeId,
                                AuthToken = GenerateAuthToken(),
                                Status = EntityStatus.Active,
                                ExpirationDate = expDate
                            };
             repPass.Insert(pass);
+
+            //Create native passes
+            foreach (PassTemplateNative ptn in passTemplate.NativeTemplates)
+            {
+                PassNative pn = CreateNativePasseByNativeTemplate(ptn);
+                pn.PassId = pass.PassId;
+
+                var pnApple = pn as PassApple;
+                if (pnApple != null)
+                    repPassApple.Insert(pnApple);
+            }
 
             //Create values for pass fields
             IList<PassField> passFields = repPassField.Query().Filter(x => x.PassTemplateId == passTemplateId).Get().ToList();
@@ -100,6 +114,22 @@ namespace Pass.Container.BL
             _pcUnitOfWork.Save();
             return pass.PassId;
         }
+
+        private PassNative CreateNativePasseByNativeTemplate(PassTemplateNative ptn)
+        {
+            var ptApple = ptn as PassTemplateApple;
+            if (ptApple != null)
+            {
+                return new PassApple()
+                       {
+                           PassTypeId = ptApple.PassTypeId,
+                           PassTemplateNativeId = ptApple.PassTemplateNativeId
+                       };
+            }
+
+            throw new PassContainerException(string.Format("{0} is not supported", ptn.GetType().Name));
+        }
+
         public IList<PassFieldInfo> GetPassFields(int passId)
         {
             IRepository<PassFieldValue> repPassFieldVal = _pcUnitOfWork.GetRepository<PassFieldValue>();
@@ -164,26 +194,57 @@ namespace Pass.Container.BL
                 .Include(x => x.Template.NativeTemplates)
                 .Include(x => x.Template.PassFields)
                 .Include(x => x.FieldValues)
+                .Include(x => x.NativePasses)
                 .Get()
                 .FirstOrDefault();
+
             if (pass == null)
                 throw new PassContainerException(string.Format("Pass ID:{0} not found", passId));
 
-            string templateFolder = GetTemporaryTemplateFolder(pass.Template.PassTemplateId, clientType);
-            if (Directory.Exists(templateFolder))
+            PassNative pn = pass.NativePasses.FirstOrDefault(x => x.DeviceType == clientType);
+            if (pn == null)
+                throw new PassContainerException(string.Format("Native pass: '{0}' of Pass ID:{1} not found", clientType, passId));
+
+            string dstPassFolder = GetTemporaryPassFolder(pass.Template, clientType);
+            Directory.CreateDirectory(dstPassFolder);
+
+            //Try to get pass file from file storage or temporary folder (cache)
+            if (pn.PassFileStorageId.HasValue && pass.UpdatedDate <= pn.UpdatedDate && pass.UpdatedDate > pass.Template.UpdatedDate)
+            {
+                string filePath = Path.Combine(dstPassFolder, GetTemporaryPassFileName(pn));
+                if (File.Exists(filePath))
+                    return filePath;
+
+                using (StorageFileInfo fileInfo = _fileStorageService.GetFile(pn.PassFileStorageId.Value))
+                {
+                    fileInfo.FileStream.SaveToFile(filePath);
+                    return filePath;
+                }
+            }
+
+            //Copy template files
+            string templateFolder = GetTemporaryTemplateFolder(pass.Template, clientType);
+            var di = new DirectoryInfo(templateFolder);
+            bool copyTemplate = !di.Exists;
+            if (di.Exists && di.CreationTime <= pass.Template.UpdatedDate)
+            {
                 Directory.Delete(templateFolder, true);
+                copyTemplate = true;
+            }
+            if (copyTemplate)
+            {
+                Directory.CreateDirectory(templateFolder);
+                _templateStorageService.GetNativeTemplateFiles(pass.Template.PackageId, clientType, templateFolder);
+            }
 
-            Directory.CreateDirectory(templateFolder);
-            _templateStorageService.GetNativeTemplateFiles(pass.Template.PackageId, clientType, templateFolder);
-
-            string passFolder = GetTemporaryPassFolder(pass.Template.PassTemplateId, passId, clientType);
-            if (Directory.Exists(passFolder))
-                Directory.Delete(passFolder, true);
-            Directory.CreateDirectory(passFolder);
-
+            //Generate pass file
             IPassGenerator pg = GetPassGenerator(pass.Template, clientType, templateFolder);
             IEnumerable<PassFieldInfo> fields = pass.FieldValues.Select(x => EntityConverter.RepositoryFieldValueToPassFieldInfo(x, true));
-            return pg.GeneratePass(pass.AuthToken, pass.SerialNumber, fields, passFolder);
+            string passFile = pg.GeneratePass(pass.AuthToken, pass.SerialNumber, fields, dstPassFolder);
+
+            SavePassToFileStorage(pn, passFile);
+
+            return FileHelper.Rename(passFile, GetTemporaryPassFileName(pn));
         }
 
         public SearchResult<RegistrationInfo> GetPassRegistrations(SearchContext searchContext, PassRegistrationFilter filter)
@@ -233,13 +294,32 @@ namespace Pass.Container.BL
                    };
         }
 
-        private string GetTemporaryTemplateFolder(int templateId, ClientType clientType)
+        private void SavePassToFileStorage(PassNative pn, string filePath)
         {
-            return Path.Combine(_config.PassWorkingFolder, "T" + templateId, clientType.ToString());
+            //TODO Old file should be removed or versioned
+            if (pn.PassFileStorageId.HasValue)
+                _fileStorageService.DeleteStorageItem(pn.PassFileStorageId.Value);
+
+            pn.PassFileStorageId = _fileStorageService.Put(filePath);
+
+            _pcUnitOfWork.GetRepository<PassNative>().Update(pn);
+            _pcUnitOfWork.Save();
         }
-        private string GetTemporaryPassFolder(int templateId, int passId, ClientType clientType)
+
+        private string GetTemporaryTemplateFolder(PassTemplate pt, ClientType clientType)
         {
-            return Path.Combine(_config.PassWorkingFolder, "T" + templateId, clientType.ToString(), "Passes", passId.ToString());
+            return Path.Combine(_config.PassWorkingFolder, string.Format("T{0}-{1}", pt.PassTemplateId, pt.PackageId), clientType.ToString(), "Template");
+        }
+        private string GetTemporaryPassFolder(PassTemplate pt, ClientType clientType)
+        {
+            return Path.Combine(_config.PassWorkingFolder, string.Format("T{0}-{1}", pt.PassTemplateId, pt.PackageId), clientType.ToString(), "Passes");
+        }
+        private string GetTemporaryPassFileName(PassNative pn)
+        {
+            if (pn.DeviceType == ClientType.Apple)
+                return string.Format("p{0}-{1}.pkpass", pn.PassId, pn.PassFileStorageId);
+
+            throw new PassContainerException(string.Format("Native pass '{0}' is not supported", pn.DeviceType));
         }
 
         private IPassGenerator GetPassGenerator(PassTemplate passTemplate, ClientType clientType, string srcTemplateFolder)

@@ -11,5 +11,7 @@ namespace Pass.Container.Core
 
         void GetBaseTemplateFiles(int templateStorageId, string dstFolderPath);
         void GetNativeTemplateFiles(int templateStorageId, ClientType clientType, string dstFolderPath);
+
+        void DeleteTemplate(int templateStorageId);
     }
 }

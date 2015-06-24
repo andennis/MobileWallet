@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Web.Http;
+using Common.Extensions;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
 using Pass.Container.Core.Entities.Enums;
@@ -107,28 +110,15 @@ namespace Pass.Processing.Web.Controllers
         {
             try
             {
-                /*
-                //Temporary solution to get passTypeIdentifier
-                if (passTypeIdentifier == null)
-                {
-                    const string regStr = "/registrations/";
-                    string uri = Request.RequestUri.AbsoluteUri;
-                    string passTypeIdentifierStr = uri.Remove(0, uri.LastIndexOf(regStr, StringComparison.InvariantCulture) + regStr.Length);
-                    bool isPassesUpdatedSince = passTypeIdentifierStr.IndexOf("/", StringComparison.InvariantCulture) > 0;
-                    passTypeIdentifier = isPassesUpdatedSince 
-                        ? passTypeIdentifierStr.Remove(passTypeIdentifierStr.IndexOf("/", StringComparison.InvariantCulture))
-                        : passTypeIdentifierStr;
-                }
-                */
-
                 //If the passesUpdatedSince parameter is present, return only the passes that have been updated since
                 //the time indicated by tag. Otherwise, return all passes for specified PassTypeId.
                 DateTime? passesUpdatedSinceTime = null;
                 if (!string.IsNullOrEmpty(passesUpdatedSince))
                 {
-                    DateTime dt;
-                    if (DateTime.TryParse(passesUpdatedSince, out dt)) //TODO check date format
-                        passesUpdatedSinceTime = dt;
+                    passesUpdatedSinceTime = new DateTime(Convert.ToInt64(passesUpdatedSince));
+                    //DateTime dt;
+                    //if (DateTime.TryParse(passesUpdatedSince, out dt)) //TODO check date format
+                    //    passesUpdatedSinceTime = dt;
                 }
 
                 ChangedPassesInfo changedPassesInfo;
@@ -145,10 +135,10 @@ namespace Pass.Processing.Web.Controllers
                     var obj = new 
                         {
                             serialNumbers = changedPassesInfo.SerialNumbers.ToArray(),
-                            lastUpdated = changedPassesInfo.LastUpdated
+                            lastUpdated = changedPassesInfo.LastUpdated.ToUnixTimeSeconds().ToString(CultureInfo.InvariantCulture)
                         };
 
-                    return Request.CreateResponse(HttpStatusCode.OK, obj);
+                    return Request.CreateResponse(HttpStatusCode.OK, obj, new JsonMediaTypeFormatter());
                 }
 
                 //If there are no matching passes, return HTTP status 204.
@@ -195,10 +185,15 @@ namespace Pass.Processing.Web.Controllers
                     case PassProcessingStatus.Succeed:
                         //If request is authorized, return HTTP status 200 with a payload of the pass data.
                         var stream = new FileStream(packageInfo.PackageFilePath, FileMode.Open);
+                        //var stream = new FileStream(@"d:\Temp\PassBook\sdx2uusd.pkpass", FileMode.Open);
+                        
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
                         response.Content = new StreamContent(stream);
-                        response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
-                        response.Content.Headers.LastModified = packageInfo.UpdatedDate;
+                        response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/vnd.apple.pkpass");
+                        response.Content.Headers.LastModified = packageInfo.UpdatedDate.ToUniversalTime();
+                        response.Content.Headers.ContentLength = stream.Length;
+                        //response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment"){FileName = "pass.pkpass"};
+                        
                         return response;
 
                     case PassProcessingStatus.NotModified:

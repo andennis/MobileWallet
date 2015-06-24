@@ -50,5 +50,13 @@ namespace Common.Utils
             return name.Remove(name.Length - 4, 1);
         }
 
+        public static string Rename(string filePath, string newFileName)
+        {
+            string newFilePath = Path.GetDirectoryName(filePath);
+            newFilePath = Path.Combine(newFilePath, newFileName);
+            File.Move(filePath, newFilePath);
+            return newFilePath;
+        }
+
     }
 }

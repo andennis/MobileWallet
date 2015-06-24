@@ -18,6 +18,8 @@ namespace Pass.Container.Repository.EF
             _allowedRepositoryEntities = new HashSet<Type>()
                                              {
                                                  typeof(Core.Entities.Pass),
+                                                 typeof(PassNative),
+                                                 typeof(PassApple),
                                                  typeof(PassField),
                                                  typeof(PassFieldValue),
                                                  typeof(PassTemplate), 

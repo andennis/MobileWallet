@@ -131,6 +131,7 @@ namespace FileStorage.BL
         public string GetStorageItemPath(int itemId)
         {
             string path = _fsUnitOfWork.FileStorageRepository.GetStorageItemPath(itemId);
+            //TODO throw exception if not found
             if (path == null)
                 return null;
 

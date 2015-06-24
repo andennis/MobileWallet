@@ -61,5 +61,17 @@ namespace Common.Utils.Tests
             Assert.AreNotEqual(name1, name3);
             Assert.AreNotEqual(name2, name3);
         }
+
+        [Test]
+        public void RenameTest()
+        {
+            string filePath = Path.Combine(TestTempFolder, "FileToReaname.txt");
+            FileStream fs = File.Create(filePath);
+            fs.Close();
+
+            string filePath2 = FileHelper.Rename(filePath, "RenamedFile.txt");
+            Assert.False(File.Exists(filePath));
+            Assert.True(File.Exists(filePath2));
+        }
     }
 }

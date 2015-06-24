@@ -58,12 +58,20 @@ namespace Pass.Container.BL
             GetTemplateFiles(templateStorageId, _nativeTemplateFolders[clientType], dstFolderPath);
         }
 
+        public void DeleteTemplate(int templateStorageId)
+        {
+            _fsService.DeleteStorageItem(templateStorageId);
+        }
+
         private void PutTemplateFiles(int templateStorageId, string srcTemplateFolderPath, string dstTemplateFolderName)
         {
             if (string.IsNullOrEmpty(srcTemplateFolderPath))
                 throw new ArgumentNullException("srcTemplateFolderPath");
 
             string siPath = _fsService.GetStorageItemPath(templateStorageId);
+            if (siPath == null) //TODO GetStorageItemPath should throw exception
+                throw new PassTemplateException(string.Format("Template ID:{0} does not exist", templateStorageId));
+
             string dstTemplatePath = Path.Combine(siPath, dstTemplateFolderName);
             if (Directory.Exists(dstTemplatePath))
                 Directory.Delete(dstTemplatePath, true);
@@ -77,6 +85,9 @@ namespace Pass.Container.BL
                 throw new ArgumentNullException("dstTemplateFolderPath");
 
             string siPath = _fsService.GetStorageItemPath(templateStorageId);
+            if (siPath == null) //TODO GetStorageItemPath should throw exception
+                throw new PassTemplateException(string.Format("Template ID:{0} does not exist", templateStorageId));
+
             string srcTemplatePath = Path.Combine(siPath, srcTemplateFolderName);
             if (!Directory.Exists(srcTemplatePath))
                 throw new PassTemplateException(string.Format("Directory '{0}' not found", srcTemplatePath));

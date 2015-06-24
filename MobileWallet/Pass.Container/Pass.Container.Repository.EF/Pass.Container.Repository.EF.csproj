@@ -111,6 +111,18 @@
     <Compile Include="Migrations\201506141523015_M15.Designer.cs">
       <DependentUpon>201506141523015_M15.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506212052599_M16.cs" />
+    <Compile Include="Migrations\201506212052599_M16.Designer.cs">
+      <DependentUpon>201506212052599_M16.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506232044194_M17.cs" />
+    <Compile Include="Migrations\201506232044194_M17.Designer.cs">
+      <DependentUpon>201506232044194_M17.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506242348142_M18.cs" />
+    <Compile Include="Migrations\201506242348142_M18.Designer.cs">
+      <DependentUpon>201506242348142_M18.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PassContainerDbContext.cs" />
     <Compile Include="PassContainerUnitOfWork.cs" />
@@ -180,6 +192,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506141523015_M15.resx">
       <DependentUpon>201506141523015_M15.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506212052599_M16.resx">
+      <DependentUpon>201506212052599_M16.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506232044194_M17.resx">
+      <DependentUpon>201506232044194_M17.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506242348142_M18.resx">
+      <DependentUpon>201506242348142_M18.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

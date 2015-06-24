@@ -13,21 +13,21 @@ namespace Pass.Container.BL.PassProcessing
 {
     public class PassProcessingAppleService : PassProcessingBase, IPassProcessingAppleService
     {
-        private readonly IRepository<Repository.Core.Entities.Pass> _repPass;
+        private readonly IPassRepository _repPass;
         private readonly IRepository<ClientDeviceApple> _repClientDeviceApple;
         private readonly IPassService _passService;
 
         public PassProcessingAppleService(IPassContainerUnitOfWork pcUnitOfWork, IPassService passService)
             :base(pcUnitOfWork)
         {
-            _repPass = _pcUnitOfWork.GetRepository<Repository.Core.Entities.Pass>();
+            _repPass = _pcUnitOfWork.PassRepository;
             _repClientDeviceApple = _pcUnitOfWork.GetRepository<ClientDeviceApple>();
             _passService = passService;
         }
 
         public PassProcessingStatus RegisterDevice(string deviceLibraryIdentifier, string passTypeId, string serialNumber, string pushToken, string authToken)
         {
-            Repository.Core.Entities.Pass pass = ReadPass(serialNumber, passTypeId);
+            Repository.Core.Entities.Pass pass = _repPass.GetPassApple(serialNumber, passTypeId);
             if (pass == null)
                 return PassProcessingStatus.NotFound;
             if (!Authenticate(authToken, pass))
@@ -46,7 +46,7 @@ namespace Pass.Container.BL.PassProcessing
         }
         public PassProcessingStatus UnregisterDevice(string deviceLibraryIdentifier, string passTypeId, string serialNumber, string authToken)
         {
-            Repository.Core.Entities.Pass pass = ReadPass(serialNumber, passTypeId);
+            Repository.Core.Entities.Pass pass = _repPass.GetPassApple(serialNumber, passTypeId);
             if (pass == null)
                 return PassProcessingStatus.NotFound;
             if (!Authenticate(authToken, pass))
@@ -75,7 +75,7 @@ namespace Pass.Container.BL.PassProcessing
             changedPassesInfo = new ChangedPassesInfo()
                                     {
                                         SerialNumbers = changedPasses.Select(x => x.SerialNumber).ToList(),
-                                        LastUpdated = changedPasses.Any() ? changedPasses.Max(x => x.UpdatedDate) : (DateTime?)null
+                                        LastUpdated = changedPasses.Max(x => x.UpdatedDate)
                                     };
 
             return PassProcessingStatus.Succeed;
@@ -84,7 +84,7 @@ namespace Pass.Container.BL.PassProcessing
         public PassProcessingStatus GetPassPackage(string passTypeId, string serialNumber, string authToken, DateTime? lastUpdatedDate, out PassPackageInfo packageInfo)
         {
             packageInfo = null;
-            Repository.Core.Entities.Pass pass = ReadPass(serialNumber, passTypeId);
+            Repository.Core.Entities.Pass pass = _repPass.GetPassApple(serialNumber, passTypeId);
             if (pass == null)
                 return PassProcessingStatus.NotFound;
             if (!Authenticate(authToken, pass))
@@ -102,14 +102,6 @@ namespace Pass.Container.BL.PassProcessing
                           };
 
             return PassProcessingStatus.Succeed;
-        }
-
-        private Repository.Core.Entities.Pass ReadPass(string serialNumber, string passTypeId)
-        {
-            return _repPass.Query()
-                .Filter(x => x.SerialNumber == serialNumber && x.PassTypeId == passTypeId)
-                .Get()
-                .FirstOrDefault();
         }
 
         public void Log(string logMessage)

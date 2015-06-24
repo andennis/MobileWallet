@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner" dslVersion="1.0.0.0" Id="37424e87-0f3e-4682-95da-1a3b03249531" name="Pass.Container.Entities" linkedPackageId="fd556ddf-3216-4410-b5d2-e9fc37bd6e1a" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="37424e87-0f3e-4682-95da-1a3b03249531" name="Pass.Container.Entities" linkedPackageId="fd556ddf-3216-4410-b5d2-e9fc37bd6e1a" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <ownedCommentsInternal>
+    <comment Id="d6ed8ce9-de05-4ac1-af49-73b47d32958e">
+      <elementDefinition Id="271ae0e4-a3fc-406b-a27a-1ff674e31b66" />
+      <body>PassTypeID is here because of performance reason</body>
+      <annotatedElements>
+        <classMoniker Id="66b55614-de38-4b84-a7c5-f3a5bdab2e6b" LastKnownName="PassApple" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <class Id="955e340f-5557-450e-8433-ed26bdba68d7" name="PassTemplate" isAbstract="false" isLeaf="false" isActiveClass="false">
@@ -124,7 +133,7 @@
           </association>
         </targetEnds>
         <ownedAttributesInternal>
-          <property Id="9a91e2b6-6ca8-4cce-9dd0-4a3781dce3d0" name="TemplateStorageId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+          <property Id="9a91e2b6-6ca8-4cce-9dd0-4a3781dce3d0" name="PackageId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="d4bdb5c8-7509-42c8-b720-798f15484fbc" />
           </property>
           <property Id="b5310c50-a2cb-42d5-8655-b9233692d45c" name="Name" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
@@ -195,6 +204,9 @@
           </property>
           <property Id="9085e1da-2aab-45e7-b8b1-c552f8903d4b" name="Status" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="c03194d0-0aaa-4996-9e8f-7ea3c3323630" />
+          </property>
+          <property Id="a7e6d8c2-4b34-41df-9a8d-fa0d81cea2c1" name="SerialNumber" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="c54c8fdd-7fa9-4c7c-95da-643128450d81" />
           </property>
         </ownedAttributesInternal>
       </class>
@@ -381,27 +393,42 @@
     <logicalClassDesignerModelHasTypes>
       <class Id="5838a26d-98c5-402b-ac46-ed606e487a14" name="PassNative" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="8c785a7e-0a61-4196-9539-b2d72fac57ae" />
+        <targetEnds>
+          <association Id="a9e3db0d-4052-41d1-8925-8af815e0abe6" isDerived="false" sourceEndRoleName="PassNative" targetEndRoleName="PassTemplateNative" isLeaf="false" isAbstract="false">
+            <classMoniker Id="8fa6b521-e01f-4bb5-baf9-d67b01b6c9c4" LastKnownName="PassTemplateNative" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4a8bc534-1e6b-4d43-913c-5112934fc078" name="PassNative" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="40db0c66-68b3-4e52-ab2a-fd3f697af652" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8e0ae85e-4417-47cd-8f98-08f0de9751e7" name="PassTemplateNative" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="0746c410-7f05-428c-8a6e-e7756168ad8c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="8be950ca-a98d-4f3b-98a3-abdbda4d4403" />
+          </association>
+        </targetEnds>
         <ownedAttributesInternal>
-          <property Id="af74b716-f9b3-4939-9101-f932910e0395" name="SerialNumber" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="d40a1c02-f29e-49b3-b732-c4c821564064" />
-          </property>
-          <property Id="a3695121-b8e6-4e75-88d4-49a4afd79b28" name="DeviceType" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="4e298277-3ccf-4c53-ac37-f438ce2f374d" />
+          <property Id="d76eb5fe-dee2-4f6a-a3ce-a27ebbd48b7d" name="PassFileStorageId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="2c1621f1-d8b4-49a3-a0ef-f70bf842aa38" />
           </property>
         </ownedAttributesInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="4b456a18-4a03-4472-9de2-33d93df3fb21" name="PassApple" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="66b55614-de38-4b84-a7c5-f3a5bdab2e6b" name="PassApple" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="18029313-7cda-470a-99e1-ee51307ceb93" />
         <generalsInternal>
-          <generalization Id="52671906-35b7-4a79-9285-57b36ede4f9e" isSubstitutable="false">
+          <generalization Id="0995609a-4766-4666-ae4e-eddd254b6adc" isSubstitutable="false">
             <classMoniker Id="5838a26d-98c5-402b-ac46-ed606e487a14" LastKnownName="PassNative" />
             <elementDefinition Id="01cede08-3008-491f-8f80-7502cc1f08e3" />
           </generalization>
         </generalsInternal>
         <ownedAttributesInternal>
-          <property Id="49dfa66c-aa08-4d74-87ba-498c7e3bba51" name="PassTypeId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+          <property Id="807230e0-353c-4d53-bd2f-c0711faec32c" name="PassTypeId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="fb6142bc-20e5-4756-9b6b-c817646ff350" />
           </property>
         </ownedAttributesInternal>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner"
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="30622e7a-96f1-41b7-83af-6de6f2c37861"
   name="Pass.Container" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -994,7 +994,7 @@
         <ownedAttributesInternal>
           <property
             Id="d4bdb5c8-7509-42c8-b720-798f15484fbc"
-            name="TemplateStorageId"
+            name="PackageId"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -1165,6 +1165,17 @@
           <property
             Id="c03194d0-0aaa-4996-9e8f-7ea3c3323630"
             name="Status"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="c54c8fdd-7fa9-4c7c-95da-643128450d81"
+            name="SerialNumber"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -2161,21 +2172,51 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="8be950ca-a98d-4f3b-98a3-abdbda4d4403"
+            isDerived="false"
+            sourceEndRoleName="PassNative"
+            targetEndRoleName="PassTemplateNative"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="c7fd8b4d-4e1d-46ea-a96c-bcc81f584eea"
+              LastKnownName="PassTemplateNative"
+              LastKnownLocation="PassContainer.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="40db0c66-68b3-4e52-ab2a-fd3f697af652"
+                  name="PassNative"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0746c410-7f05-428c-8a6e-e7756168ad8c"
+                  name="PassTemplateNative"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
         <ownedAttributesInternal>
           <property
-            Id="d40a1c02-f29e-49b3-b732-c4c821564064"
-            name="SerialNumber"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false" />
-          <property
-            Id="4e298277-3ccf-4c53-ac37-f438ce2f374d"
-            name="DeviceType"
+            Id="2c1621f1-d8b4-49a3-a0ef-f70bf842aa38"
+            name="PassFileStorageId"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"

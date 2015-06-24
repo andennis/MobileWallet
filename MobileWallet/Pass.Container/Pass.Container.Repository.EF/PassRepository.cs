@@ -20,7 +20,14 @@ namespace Pass.Container.Repository.EF
             return SqlQueryStoredProc<ChangedPass>(DbScheme + ".GetChangedPassesApple",
                                           new SqlParameter("DeviceId", deviceId),
                                           new SqlParameter("PassTypeId", passTypeId),
-                                          new SqlParameter("UpdateTag", /*(object)*/updateTag/* ?? DBNull.Value*/)).ToList();
+                                          new SqlParameter("UpdateTag", updateTag)).ToList();
+        }
+
+        public Core.Entities.Pass GetPassApple(string serialNumber, string passTypeId)
+        {
+            return SqlQueryStoredProc<Core.Entities.Pass>(DbScheme + ".GetPassApple",
+                                          new SqlParameter("SerialNumber", serialNumber),
+                                          new SqlParameter("PassTypeId", passTypeId)).FirstOrDefault();
         }
 
     }

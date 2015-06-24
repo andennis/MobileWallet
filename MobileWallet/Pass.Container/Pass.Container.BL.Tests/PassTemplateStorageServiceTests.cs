@@ -4,6 +4,7 @@ using System.Linq;
 using NUnit.Framework;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities.Enums;
+using Pass.Container.Core.Exceptions;
 using Pass.Container.Factory;
 
 namespace Pass.Container.BL.Tests
@@ -62,6 +63,14 @@ namespace Pass.Container.BL.Tests
             CollectionAssert.Contains(files, "AppleFile2.txt");
             Assert.True(Directory.Exists(Path.Combine(TemplateStorageData, "Apple", "F1")));
             Assert.True(File.Exists(Path.Combine(TemplateStorageData, "Apple", "F1", "AppleFile11.txt")));
+        }
+
+        [Test]
+        public void DeleteTemplateTest()
+        {
+            int templateStorageId = _tsService.CreateTemplateStorage();
+            Assert.DoesNotThrow(() => _tsService.DeleteTemplate(templateStorageId));
+            Assert.Throws<PassTemplateException>(() => _tsService.GetBaseTemplateFiles(templateStorageId, "111"));
         }
 
     }
