@@ -415,6 +415,9 @@
           <property Id="d76eb5fe-dee2-4f6a-a3ce-a27ebbd48b7d" name="PassFileStorageId" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="2c1621f1-d8b4-49a3-a0ef-f70bf842aa38" />
           </property>
+          <property Id="f9db4fbb-7a76-4861-a2e3-bdd1108ca4c4" name="DeviceType" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="d6125eaa-16ad-4d74-9cb0-a988791c26dc" />
+          </property>
         </ownedAttributesInternal>
       </class>
     </logicalClassDesignerModelHasTypes>

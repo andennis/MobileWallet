@@ -81,6 +81,8 @@ namespace Pass.Container.BL
                 var pnApple = pn as PassApple;
                 if (pnApple != null)
                     repPassApple.Insert(pnApple);
+
+                //TODO add native passes for other client types
             }
 
             //Create values for pass fields
@@ -123,9 +125,12 @@ namespace Pass.Container.BL
                 return new PassApple()
                        {
                            PassTypeId = ptApple.PassTypeId,
+                           DeviceType = ptApple.DeviceType,
                            PassTemplateNativeId = ptApple.PassTemplateNativeId
                        };
             }
+
+            //TODO create template for other client types
 
             throw new PassContainerException(string.Format("{0} is not supported", ptn.GetType().Name));
         }
@@ -188,11 +193,12 @@ namespace Pass.Container.BL
         }
         public string GetPassPackage(int passId, ClientType clientType)
         {
+            //TODO it should be replaced by SP call (GetPassDetails)
             IRepository<RepEntities.Pass> repPass = _pcUnitOfWork.GetRepository<RepEntities.Pass>();
             RepEntities.Pass pass = repPass.Query()
                 .Filter(x => x.PassId == passId)
                 .Include(x => x.Template.NativeTemplates)
-                .Include(x => x.Template.PassFields)
+                .Include(x => x.Template.PassFields)//TODO it may be removed
                 .Include(x => x.FieldValues)
                 .Include(x => x.NativePasses)
                 .Get()
@@ -208,21 +214,23 @@ namespace Pass.Container.BL
             string dstPassFolder = GetTemporaryPassFolder(pass.Template, clientType);
             Directory.CreateDirectory(dstPassFolder);
 
-            //Try to get pass file from file storage or temporary folder (cache)
+            //If the pass or its template was not updated then try to get pass file from file storage or temporary folder (cache)
             if (pn.PassFileStorageId.HasValue && pass.UpdatedDate <= pn.UpdatedDate && pass.UpdatedDate > pass.Template.UpdatedDate)
             {
+                //Try to get pass file from temporary folder (cache)
                 string filePath = Path.Combine(dstPassFolder, GetTemporaryPassFileName(pn));
                 if (File.Exists(filePath))
                     return filePath;
 
-                using (StorageFileInfo fileInfo = _fileStorageService.GetFile(pn.PassFileStorageId.Value))
+                //Try to get pass file from file storage
+                using (StorageFileInfo fileInfo = _fileStorageService.GetFile(pn.PassFileStorageId.Value, true))
                 {
                     fileInfo.FileStream.SaveToFile(filePath);
                     return filePath;
                 }
             }
 
-            //Copy template files
+            //Copy template files for specified client type
             string templateFolder = GetTemporaryTemplateFolder(pass.Template, clientType);
             var di = new DirectoryInfo(templateFolder);
             bool copyTemplate = !di.Exists;

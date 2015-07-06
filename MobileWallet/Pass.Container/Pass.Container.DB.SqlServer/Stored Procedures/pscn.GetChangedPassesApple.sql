@@ -17,7 +17,9 @@ BEGIN
     INNER JOIN pscn.ClientDeviceApple cda ON cd.ClientDeviceId = cda.ClientDeviceId
     INNER JOIN pscn.Registration rg ON rg.ClientDeviceId = cd.ClientDeviceId AND rg.[Status] = 1/*Active*/
     INNER JOIN pscn.Pass p ON p.PassId = rg.PassId AND p.[Status] = 1/*Active*/
+	INNER JOIN pscn.PassNative pn ON p.PassId = pn.PassId
+	INNER JOIN pscn.PassApple pa ON pn.PassNativeId = pa.PassNativeId
     WHERE cd.DeviceId = @DeviceId 
-        AND p.PassTypeId = @PassTypeId 
+        AND pa.PassTypeId = @PassTypeId 
         AND (@UpdateTag IS NULL OR p.UpdatedDate > @UpdateTag)
 END
