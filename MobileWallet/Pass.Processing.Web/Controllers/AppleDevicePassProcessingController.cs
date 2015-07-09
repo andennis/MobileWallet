@@ -115,10 +115,8 @@ namespace Pass.Processing.Web.Controllers
                 DateTime? passesUpdatedSinceTime = null;
                 if (!string.IsNullOrEmpty(passesUpdatedSince))
                 {
-                    passesUpdatedSinceTime = new DateTime(Convert.ToInt64(passesUpdatedSince));
-                    //DateTime dt;
-                    //if (DateTime.TryParse(passesUpdatedSince, out dt)) //TODO check date format
-                    //    passesUpdatedSinceTime = dt;
+                    long unixSeconds = Convert.ToInt64(passesUpdatedSince) + 1;//add one second to "truncate" miliseconds in Pass.UpdatedDate
+                    passesUpdatedSinceTime = unixSeconds.UnixTimeSecondsToDateTime().ToLocalTime();
                 }
 
                 ChangedPassesInfo changedPassesInfo;
@@ -192,6 +190,7 @@ namespace Pass.Processing.Web.Controllers
                         response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/vnd.apple.pkpass");
                         response.Content.Headers.LastModified = packageInfo.UpdatedDate.ToUniversalTime();
                         response.Content.Headers.ContentLength = stream.Length;
+                        response.Headers.Date = packageInfo.UpdatedDate.ToUniversalTime();
                         //response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment"){FileName = "pass.pkpass"};
                         
                         return response;

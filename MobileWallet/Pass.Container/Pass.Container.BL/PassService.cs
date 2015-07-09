@@ -65,7 +65,6 @@ namespace Pass.Container.BL
                            {
                                PassTemplateId = passTemplateId,
                                SerialNumber = GenerateSerialNumber(),
-                               //PassTypeId = ptApple.PassTypeId,
                                AuthToken = GenerateAuthToken(),
                                Status = EntityStatus.Active,
                                ExpirationDate = expDate

@@ -15,5 +15,10 @@ namespace Common.Extensions
         {
             return Convert.ToInt64((dt.TruncateMiliseconds().ToUniversalTime() - UnixEpoch).TotalSeconds);
         }
+
+        public static DateTime UnixTimeSecondsToDateTime(this long seconds)
+        {
+            return UnixEpoch.AddSeconds(seconds);
+        }
     }
 }
