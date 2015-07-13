@@ -32,9 +32,6 @@ namespace Pass.Processing.Web.Controllers
             try
             {
                 string authToken = GetAuthTokenFromRequestHeader();
-                //if (authToken == null)
-                //    return Request.CreateResponse(HttpStatusCode.Unauthorized);
-
                 PassProcessingStatus status = _passProcessingService.RegisterDevice(deviceLibraryIdentifier, passTypeIdentifier, serialNumber, devicePushToken.PushToken, authToken);
 
                 switch (status)
@@ -47,17 +44,6 @@ namespace Pass.Processing.Web.Controllers
                         return Request.CreateResponse(HttpStatusCode.Created);
                     default:
                         return GetStandardResponse(status, "Device registration failed");
-                        /*
-                    case PassProcessingStatus.Unauthorized:
-                        response = Request.CreateResponse(HttpStatusCode.Unauthorized);
-                        break;
-                    case PassProcessingStatus.NotFound:
-                        response = Request.CreateResponse(HttpStatusCode.NotFound);
-                        break;
-                    case PassProcessingStatus.Error:
-                        response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Device were not registered.");
-                        break;
-                        */
                 }
             }
             catch
@@ -74,27 +60,12 @@ namespace Pass.Processing.Web.Controllers
             try
             {
                 string authToken = GetAuthTokenFromRequestHeader();
-                //if (authToken == null)
-                //    return Request.CreateResponse(HttpStatusCode.Unauthorized);
-
                 PassProcessingStatus status = _passProcessingService.UnregisterDevice(deviceLibraryIdentifier, passTypeIdentifier, serialNumber, authToken);
 
                 if (status == PassProcessingStatus.Succeed)
                     return Request.CreateResponse(HttpStatusCode.OK);
 
                 return GetStandardResponse(status, "Device unregistration failed");
-
-                /*
-                if (status == PassProcessingStatus.Unauthorized)
-                    response = Request.CreateResponse(HttpStatusCode.Unauthorized);
-
-                if (status == PassProcessingStatus.NotFound)
-                    response = Request.CreateResponse(HttpStatusCode.NotFound);
-
-                if (status == PassProcessingStatus.Error)
-                    response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError,
-                        "Device were not unregistered.");
-                */
             }
             catch
             {
@@ -121,11 +92,6 @@ namespace Pass.Processing.Web.Controllers
 
                 ChangedPassesInfo changedPassesInfo;
                 PassProcessingStatus status = _passProcessingService.GetChangedPasses(deviceLibraryIdentifier, passTypeIdentifier, passesUpdatedSinceTime, out changedPassesInfo);
-                //Return:
-                //{ 
-                    //“serialNumbers” : [ <serialNo.>, <serialNo.>, ... ],
-                    //“lastUpdated” : <tag>
-                //}
 
                 //If there are matching passes, return HTTP status 200 with a JSON dictionary
                 if (status == PassProcessingStatus.Succeed)
@@ -141,16 +107,6 @@ namespace Pass.Processing.Web.Controllers
 
                 //If there are no matching passes, return HTTP status 204.
                 return GetStandardResponse(status, "Retrieving of serial numbers failed");
-                /*
-                if (status == PassProcessingStatus.NoContent)
-                    response = Request.CreateResponse(HttpStatusCode.NoContent);
-
-                if (status == PassProcessingStatus.NotFound)
-                    response = Request.CreateResponse(HttpStatusCode.NotFound);
-
-                if (status == PassProcessingStatus.Error)
-                    response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Server error.");
-                */
             }
             catch
             {
@@ -166,8 +122,6 @@ namespace Pass.Processing.Web.Controllers
             try
             {
                 string authToken = GetAuthTokenFromRequestHeader();
-                //if (authToken == null)
-                //    return Request.CreateResponse(HttpStatusCode.Unauthorized);
 
                 //Support standard HTTP caching on this endpoint: check for the If-Modified-Since header and return HTTP
                 //status code 304 if the pass has not changed.
@@ -190,8 +144,6 @@ namespace Pass.Processing.Web.Controllers
                         response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/vnd.apple.pkpass");
                         response.Content.Headers.LastModified = packageInfo.UpdatedDate.ToUniversalTime();
                         response.Content.Headers.ContentLength = stream.Length;
-                        response.Headers.Date = packageInfo.UpdatedDate.ToUniversalTime();
-                        //response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment"){FileName = "pass.pkpass"};
                         
                         return response;
 
@@ -201,16 +153,6 @@ namespace Pass.Processing.Web.Controllers
                         return GetStandardResponse(status, "Getting pass failed");
                 }
                 
-                /*
-                if (status == PassProcessingStatus.Unauthorized)
-                    response = Request.CreateResponse(HttpStatusCode.Unauthorized);
-
-                if (status == PassProcessingStatus.NotFound)
-                    response = Request.CreateResponse(HttpStatusCode.NotFound);
-
-                if (status == PassProcessingStatus.Error)
-                    response = Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Server Error.");
-                */
             }
             catch
             {
@@ -232,7 +174,7 @@ namespace Pass.Processing.Web.Controllers
             }
             catch (Exception)
             {
-                //Todo write to log
+                //TODO write to log
             }
             return Request.CreateResponse(HttpStatusCode.OK);
         }

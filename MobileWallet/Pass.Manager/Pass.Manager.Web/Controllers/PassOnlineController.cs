@@ -53,7 +53,7 @@ namespace Pass.Manager.Web.Controllers
         }
 
         [AjaxOnly]
-        public ActionResult NotifyClientDevice(int passContentId, [Bind(Prefix = "id")]int clientDeviceId)
+        public ActionResult NotifyClientDevice(int passContentId, int clientDeviceId)
         {
             _notificationService.NotifyClientDevice(passContentId, clientDeviceId);
             return JsonEx(true, Resources.Resources.PushClientDeviceSuccess);

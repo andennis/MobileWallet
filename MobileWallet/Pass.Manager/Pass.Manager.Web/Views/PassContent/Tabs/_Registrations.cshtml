@@ -1,4 +1,5 @@
-﻿@using Pass.Container.Core.Entities
+﻿@using Common.Repository
+@using Pass.Container.Core.Entities
 @model int
 
 <script type="text/javascript">
@@ -34,14 +35,13 @@
     .DataSource(ds => ds.Read(Url.Action<PassOnlineController>(a => a.Registrations(null, null))).Data("PassRegistrationFilter"))
     .Columns(c =>
             {
-                c.Bound(p => p.DeviceId).Title(Resources.DeviceId).ClientTemplateId("CropDeviceId");
+                c.Bound(p => p.DeviceId).Title(Resources.DeviceId).ClientTemplateId("DeviceIdTemplate");
                 c.BoundEnum(p => p.DeviceType).Title(Resources.DeviceType);
                 c.BoundEnum(p => p.Status).Title(Resources.Status);
-                c.Bound(p => p.PushToken).Title(Resources.PushToken).ClientTemplateId("CropPushToken");
+                c.Bound(p => p.PushToken).Title(Resources.PushToken).ClientTemplateId("PushTokenTemplate");
                 c.Bound(p => p.CreatedDate).Title(Resources.CreatedDate).Format("g");
                 c.Bound(p => p.UpdatedDate).Title(Resources.UpdatedDate).Format("g");
-                c.Bound(p => p.ClientDeviceId).Title(Resources.ColumnActions)
-                    .GridAjaxAction("Push", Url.Action<PassOnlineController>(a => a.NotifyClientDevice(0, 0), new { passContentId = Model }), confirmMessage: Resources.PushDeviceConfirmation);
+                c.Bound(p => p.ClientDeviceId).Title(Resources.ColumnActions).ClientTemplateId("RegActionTemplate");
             }))
 
 
@@ -52,14 +52,22 @@
     });
 </script>
 
-<script id="CropDeviceId" type="text/x-kendo-template">
+<script id="DeviceIdTemplate" type="text/x-kendo-template">
     <div class="crop" style="width:200px" title="#=DeviceId#">
         #=DeviceId#
     </div>
 </script>
 
-<script id="CropPushToken" type="text/x-kendo-template">
+<script id="PushTokenTemplate" type="text/x-kendo-template">
     <div class="crop" style="width:200px" title="#=PushToken#">
         #=PushToken#
     </div>
+</script>
+
+<script id="RegActionTemplate" type="text/x-kendo-template">
+    #if(Status == @((int)EntityStatus.Active)) {# 
+        <a href="javascript:void(0)"
+           data-grid-action="@(HttpUtility.UrlDecode(Url.Action<PassOnlineController>(a => a.NotifyClientDevice(0, 0), new { passContentId = Model, clientDeviceId = "#=ClientDeviceId#" })))"
+           confirmmessage="@Resources.PushDeviceConfirmation">Push</a>
+    #}#
 </script>
