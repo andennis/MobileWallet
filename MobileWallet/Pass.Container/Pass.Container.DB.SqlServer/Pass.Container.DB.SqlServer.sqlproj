@@ -79,5 +79,7 @@
     <Build Include="Stored Procedures\pscn.Registration_Search.sql" />
     <Build Include="Views\pscn.RegistrationView.sql" />
     <Build Include="Stored Procedures\pscn.GetPassApple.sql" />
+    <Build Include="Tables\pscn.PassNative.sql" />
+    <Build Include="Tables\pscn.PassApple.sql" />
   </ItemGroup>
 </Project>
