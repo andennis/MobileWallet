@@ -45,15 +45,19 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
         [XmlEnum(Name = "air")]
         [EnumMember(Value = "air")]
         Air = 0,
+
         [XmlEnum(Name = "boat")]
         [EnumMember(Value = "boat")]
         Boat = 1,
+
         [XmlEnum(Name = "bus")]
         [EnumMember(Value = "bus")]
         Bus = 2,
+
         [XmlEnum(Name = "generic")]
         [EnumMember(Value = "generic")]
         Generic = 3,
+
         [XmlEnum(Name = "train")]
         [EnumMember(Value = "train")]
         Train = 4
@@ -104,7 +108,7 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
 
         [XmlElement(ElementName = "type")]
         [JsonProperty(PropertyName = "type", Required = Required.Always)]
-        public DataType? Type { get; set; }
+        public DataType? FieldType { get; set; }
 
         #endregion
 
@@ -135,6 +139,10 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
         [JsonProperty(PropertyName = "timeStyle", NullValueHandling = NullValueHandling.Ignore)]
         public DateStyleType? TimeStyle { get; set; }
 
+        [XmlElement(ElementName = "ignoresTimeZone")]
+        [JsonProperty(PropertyName = "ignoresTimeZone", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? IgnoresTimeZone { get; set; }
+
         #endregion
 
         [JsonConverter(typeof(StringEnumConverter))]
@@ -143,15 +151,19 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
             [XmlEnum(Name = "text")]
             [EnumMember(Value = "text")]
             Text = 0,
+
             [XmlEnum(Name = "number")]
             [EnumMember(Value = "number")]
             Number = 1,
+
             [XmlEnum(Name = "currency")]
             [EnumMember(Value = "currency")]
             Currency = 2,
+
             [XmlEnum(Name = "date")]
             [EnumMember(Value = "date")]
             Date = 3,
+
             [XmlEnum(Name = "dateTime")]
             [EnumMember(Value = "dateTime")]
             DateTime = 3
@@ -163,12 +175,15 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
             [XmlEnum(Name = "phoneNumber")]
             [EnumMember(Value = "phoneNumber")]
             PhoneNumber = 0,
+
             [XmlEnum(Name = "link")]
             [EnumMember(Value = "link")]
             Link = 1,
+
             [XmlEnum(Name = "address")]
             [EnumMember(Value = "address")]
             Address = 2,
+
             [XmlEnum(Name = "calendarEvent")]
             [EnumMember(Value = "calendarEvent")]
             CalendarEvent = 3
@@ -180,12 +195,15 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
             [XmlEnum(Name = "left")]
             [EnumMember(Value = "left")]
             Left = 0,
+
             [XmlEnum(Name = "center")]
             [EnumMember(Value = "center")]
             Center = 1,
+
             [XmlEnum(Name = "right")]
             [EnumMember(Value = "right")]
             Right = 2,
+
             [XmlEnum(Name = "natural")]
             [EnumMember(Value = "natural")]
             Natural = 3
@@ -197,12 +215,15 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
             [XmlEnum(Name = "decimal")]
             [EnumMember(Value = "decimal")]
             Decimal = 0,
+
             [XmlEnum(Name = "percent")]
             [EnumMember(Value = "percent")]
             Percent = 1,
+
             [XmlEnum(Name = "scientific")]
             [EnumMember(Value = "scientific")]
             Scientific = 2,
+
             [XmlEnum(Name = "spellOut")]
             [EnumMember(Value = "spellOut")]
             SpellOut = 3
@@ -214,15 +235,19 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
             [XmlEnum(Name = "none")]
             [EnumMember(Value = "none")]
             None = 0,
+
             [XmlEnum(Name = "short")]
             [EnumMember(Value = "short")]
             Short = 1,
+
             [XmlEnum(Name = "medium")]
             [EnumMember(Value = "medium")]
             Medium = 2,
+
             [XmlEnum(Name = "long")]
             [EnumMember(Value = "long")]
             Long = 3,
+
             [XmlEnum(Name = "full")]
             [EnumMember(Value = "full")]
             Full = 4

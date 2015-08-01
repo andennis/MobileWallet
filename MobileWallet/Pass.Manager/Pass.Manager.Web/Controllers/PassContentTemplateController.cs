@@ -26,11 +26,11 @@ namespace Pass.Manager.Web.Controllers
             return base.Create(model);
         }
 
-        protected override void SetDefaultReturnUrl(IViewModel model)
+        protected override void SetDefaultReturnUrl(PassContentTemplateViewModel model)
         {
             base.SetDefaultReturnUrl(model);
             if (string.IsNullOrEmpty(model.RedirectUrl))
-                model.RedirectUrl = Url.Action("Edit", "PassProject", new { id = ((PassContentTemplateViewModel)model).PassProjectId });
+                model.RedirectUrl = Url.Action("Edit", "PassProject", new { id = model.PassProjectId });
         }
 
         [AjaxOnly]

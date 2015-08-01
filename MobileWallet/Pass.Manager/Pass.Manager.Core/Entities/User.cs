@@ -3,10 +3,8 @@ using Common.Repository;
 
 namespace Pass.Manager.Core.Entities
 {
-    public class User : EntityVersionable, IEntityWithId
+    public class User : EntityVersionable
     {
-        public int EntityId { get { return UserId; } }
-
         public int UserId { get; set; }
         public string UserName { get; set; }
         public string FirstName { get; set; }

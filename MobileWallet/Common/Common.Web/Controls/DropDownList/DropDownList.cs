@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using System.Web.UI;
@@ -79,10 +80,13 @@ namespace Common.Web.Controls.DropDownList
         private string GetDataSource()
         {
             var sb = new StringBuilder();
-            sb.AppendFormat("{{Text: '{0}', Value: {1}}}", Items[0].Text, Items[0].Value);
-            for (int i = 1; i < Items.Count; i++)
+            if (Items.Any())
             {
-                sb.AppendFormat(",{{Text: '{0}', Value: {1}}}", Items[i].Text, Items[i].Value);
+                sb.AppendFormat("{{Text: '{0}', Value: {1}}}", Items[0].Text, Items[0].Value);
+                for (int i = 1; i < Items.Count; i++)
+                {
+                    sb.AppendFormat(",{{Text: '{0}', Value: {1}}}", Items[i].Text, Items[i].Value);
+                }
             }
             return string.Format("[{0}]", sb);
         }

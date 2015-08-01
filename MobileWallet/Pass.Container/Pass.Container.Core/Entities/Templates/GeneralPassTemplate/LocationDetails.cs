@@ -6,7 +6,6 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
 {
     public class LocationDetails
     {
-        //IOS 7
         [XmlElement(ElementName = "maxDistance")]
         [JsonProperty(PropertyName = "maxDistance", NullValueHandling = NullValueHandling.Ignore)]
         public int? MaxDistance { get; set; }

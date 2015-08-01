@@ -36,11 +36,11 @@ namespace Pass.Manager.Web.Controllers
             return base.Create(model);
         }
 
-        protected override void SetDefaultReturnUrl(IViewModel model)
+        protected override void SetDefaultReturnUrl(PassProjectViewModel model)
         {
             base.SetDefaultReturnUrl(model);
             if (string.IsNullOrEmpty(model.RedirectUrl))
-                model.RedirectUrl = Url.Action("Edit", "PassSite", new {id = ((PassProjectViewModel) model).PassSiteId});
+                model.RedirectUrl = Url.Action("Edit", "PassSite", new {id = model.PassSiteId});
         }
 
         protected override void PrepareModelToEditView(PassProjectViewModel model)

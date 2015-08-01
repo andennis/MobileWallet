@@ -172,5 +172,19 @@ namespace Pass.Manager.Web.Common
             ViewBag.HtmlFormAttributes = htmlAttributes;
         }
 
+        protected virtual void SetDefaultReturnUrl(TEntityViewModel model)
+        {
+            if (model.RedirectUrl == null && Request.UrlReferrer != null)
+                model.RedirectUrl = Request.UrlReferrer.ToString();
+        }
+
+        protected virtual ActionResult RedirectTo(TEntityViewModel model)
+        {
+            if (model.RedirectUrl == null)
+                return RedirectToAction("Index");
+
+            return Redirect(model.RedirectUrl);
+        }
+
     }
 }

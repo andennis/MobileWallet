@@ -20,11 +20,11 @@ namespace Pass.Manager.Web.Controllers
         [HttpGet]
         public ActionResult CreateField(int contentTemplateId)
         {
-            IEnumerable<PassProjectField> projectFields = _service.GetUnmappedFields(contentTemplateId);
+            //IEnumerable<PassProjectField> projectFields = _service.GetUnmappedFields(contentTemplateId);
             return Create(m =>
                     {
                         m.PassContentTemplateId = contentTemplateId;
-                        m.PassProjectFields = new SelectListTyped<PassProjectField, int, string>(projectFields, d => d.PassProjectFieldId, t => t.Name);
+                        //m.PassProjectFields = new SelectListTyped<PassProjectField, int, string>(projectFields, d => d.PassProjectFieldId, t => t.Name);
                     });
 
         }
@@ -38,6 +38,17 @@ namespace Pass.Manager.Web.Controllers
         protected override void PrepareModelToEditView(PassContentTemplateFieldViewModel model)
         {
             base.PrepareModelToEditView(model);
+            PrepareModel(model);
+        }
+
+        protected override void PrepareModelToCreateView(PassContentTemplateFieldViewModel model)
+        {
+            base.PrepareModelToCreateView(model);
+            PrepareModel(model);
+        }
+
+        private void PrepareModel(PassContentTemplateFieldViewModel model)
+        {
             IEnumerable<PassProjectField> projectFields = _service.GetUnmappedFields(model.PassContentTemplateId, model.PassProjectFieldId);
             model.PassProjectFields = new SelectListTyped<PassProjectField, int, string>(projectFields, d => d.PassProjectFieldId, t => t.Name);
         }

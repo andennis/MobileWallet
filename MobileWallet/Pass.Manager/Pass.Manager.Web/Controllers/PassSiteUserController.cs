@@ -47,11 +47,11 @@ namespace Pass.Manager.Web.Controllers
             return View(model);
         }
 
-        protected override void SetDefaultReturnUrl(IViewModel model)
+        protected override void SetDefaultReturnUrl(PassSiteUserViewModel model)
         {
             base.SetDefaultReturnUrl(model);
             if (string.IsNullOrEmpty(model.RedirectUrl))
-                model.RedirectUrl = Url.Action("Edit", "PassSite", new { id = ((PassSiteUserViewModel)model).PassSiteId });
+                model.RedirectUrl = Url.Action("Edit", "PassSite", new { id = model.PassSiteId });
         }
 
         public override ActionResult Edit(PassSiteUserViewModel model)

@@ -3,12 +3,8 @@ using Common.Repository;
 
 namespace Pass.Manager.Core.Entities
 {
-    public class PassProject : EntityVersionable, IEntityWithId
+    public class PassProject : EntityVersionable
     {
-        #region IEntityWithId
-        public int EntityId { get { return PassProjectId; } }
-        #endregion
-
         public int PassProjectId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

@@ -34,7 +34,7 @@ namespace Pass.Container.BL.Tests
                                                                      Key = "Key01",
                                                                      Label = "DynamicField",
                                                                      Value = "Test",
-                                                                     Type = GeneralField.DataType.Text,
+                                                                     FieldType = GeneralField.DataType.Text,
                                                                      IsDynamicValue = true
                                                                  });
 

@@ -167,7 +167,7 @@ namespace Pass.Container.BL.Tests
                                                                     Label = "LKey02",
                                                                     Value = "VKey02",
                                                                     IsDynamicValue = true,
-                                                                    Type = GeneralField.DataType.Text
+                                                                    FieldType = GeneralField.DataType.Text
                                                                 });
 
                 generalPassTemplate.SaveToXml(newTemplateFile);

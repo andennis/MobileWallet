@@ -129,6 +129,7 @@ namespace Pass.Container.BL.PassTemplateGenerators
                 applePassTemplate.Barcode = barcode;
             }
 
+            /*
             //Associated App Keys
             //Companion App Keys
             if (passTemplate.IntegrationDetails != null && passTemplate.IntegrationDetails.AppOptions != null)
@@ -137,7 +138,9 @@ namespace Pass.Container.BL.PassTemplateGenerators
                 applePassTemplate.AssociatedStoreIdentifiers = passTemplate.IntegrationDetails.AppOptions.AppIdentifier;
                 applePassTemplate.UserInfo = passTemplate.IntegrationDetails.AppOptions.CustomJsonData;
             }
+            */
 
+            /*
             //Expiration Keys
             if (passTemplate.DistributionDetails != null)
             {
@@ -147,6 +150,7 @@ namespace Pass.Container.BL.PassTemplateGenerators
                 if (passTemplate.DistributionDetails.AllPassesAsExpired != null)
                     applePassTemplate.Voided = passTemplate.DistributionDetails.AllPassesAsExpired;
             }
+            */
 
             //Relevance Keys
             //1.Beacon Dictionary
@@ -162,10 +166,7 @@ namespace Pass.Container.BL.PassTemplateGenerators
                     if (beacon.Minor.HasValue)
                         appleBeacon.Minor = Convert.ToInt16(beacon.Minor.Value);
 
-                    /*
-                    if (beacon.RelevantText != null)
-                        appleBeacon.RelevantText = beacon.RelevantText;
-                    */
+                    appleBeacon.RelevantText = beacon.RelevantText;
 
                     beacons.Add(appleBeacon);
                 }
@@ -188,8 +189,6 @@ namespace Pass.Container.BL.PassTemplateGenerators
                 if (passTemplate.LocationDetails.MaxDistance != null)
                     applePassTemplate.MaxDistance = passTemplate.LocationDetails.MaxDistance;
             }
-
-            applePassTemplate.IgnoresTimeZone = passTemplate.IgnoresTimeZone;
 
             //Style Keys
             switch (passTemplate.PassStyle)
@@ -259,7 +258,9 @@ namespace Pass.Container.BL.PassTemplateGenerators
             var field = new Field();
             if (!string.IsNullOrEmpty(templatefield.ChangeMessage))
                 if (templatefield.ChangeMessage.Contains("%@"))
+                {
                     field.ChangeMessage = templatefield.ChangeMessage;
+                }
                 else
                 {
                     //TODO log 
@@ -271,12 +272,12 @@ namespace Pass.Container.BL.PassTemplateGenerators
 
             field.Key = templatefield.Key;
             if (templatefield.IsDynamicLabel != null && templatefield.IsDynamicLabel == true)
-                field.Label = string.Format(ApplePass.FieldLabelFormat, templatefield.Key);  //"Label$$" + templatefield.Key + "$$";
+                field.Label = string.Format(ApplePass.FieldLabelFormat, templatefield.Key);  //"LB" + templatefield.Key + "$$";
             else if (!string.IsNullOrEmpty(templatefield.Label))
                 field.Label = templatefield.Label;
 
             if (templatefield.IsDynamicValue != null && templatefield.IsDynamicValue == true)
-                field.Value = string.Format(ApplePass.FieldValueFormat, templatefield.Key); //"Value$$" + templatefield.Key + "$$";
+                field.Value = string.Format(ApplePass.FieldValueFormat, templatefield.Key); //"VL$$" + templatefield.Key + "$$";
             else
                 field.Value = templatefield.Value;
 
@@ -287,29 +288,31 @@ namespace Pass.Container.BL.PassTemplateGenerators
             if (!string.IsNullOrEmpty(templatefield.AttributedValue))
             {
                 if (templatefield.AttributedValue.Contains("href"))
+                {
                     field.AttributedValue = templatefield.AttributedValue;
+                }
                 else
                 {
                     //TODO log 
                 }
             }
 
-            if (templatefield.Type == GeneralField.DataType.Number)
+            if (templatefield.FieldType == GeneralField.DataType.Number)
                 field.NumberStyle = GetAppleNumberStyle(templatefield.NumberStyle);
 
-            if (templatefield.Type == GeneralField.DataType.Date)
+            if (templatefield.FieldType == GeneralField.DataType.Date)
             {
                 field.DateStyle = GetAppleDateStyle(templatefield.DateStyle);
                 field.IsRelative = templatefield.IsRelative;
                 field.Value = DateTime.Parse(templatefield.Value).ToString(@"yyyy-MM-ddTHH\:mmzzz");
             }
-            if (templatefield.Type == GeneralField.DataType.DateTime)
+            if (templatefield.FieldType == GeneralField.DataType.DateTime)
             {
                 field.TimeStyle = GetAppleDateStyle(templatefield.TimeStyle);
                 field.IsRelative = templatefield.IsRelative;
                 field.Value = DateTime.Parse(templatefield.Value).ToString(@"yyyy-MM-ddTHH\:mmzzz");
             }
-            if (templatefield.Type == GeneralField.DataType.Currency)
+            if (templatefield.FieldType == GeneralField.DataType.Currency)
             {
                 field.CurrencyCode = templatefield.CurrencyCode;
                 field.Value = Int32.Parse(templatefield.Value);

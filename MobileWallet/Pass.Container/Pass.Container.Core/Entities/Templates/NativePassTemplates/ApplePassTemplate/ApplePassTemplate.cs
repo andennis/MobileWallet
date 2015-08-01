@@ -44,7 +44,6 @@ namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTe
         //Custom information about a pass provided for a companion app to use
         #region Companion App Keys
 
-        //Available in iOS 7.0
         [JsonProperty(PropertyName = "userInfo", NullValueHandling = NullValueHandling.Ignore)]
         public object UserInfo { get; set; }
 
@@ -52,32 +51,22 @@ namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTe
 
         //Information about when a pass expires and whether it is still valid
         #region Expiration Keys
-
-        //Available in iOS 7.0
         [JsonProperty(PropertyName = "expirationDate", NullValueHandling = NullValueHandling.Ignore)]
         public string ExpirationDate { get; set; }
 
-        //Available in iOS 7.0
         [JsonProperty(PropertyName = "voided", NullValueHandling = NullValueHandling.Ignore)]
         public bool? Voided { get; set; }
-
         #endregion
 
         //Information about where and when a pass is relevant
         #region Relevance Keys
 
-        //Available in iOS 7.0
         [JsonProperty(PropertyName = "beacons", NullValueHandling = NullValueHandling.Ignore)]
         public List<Beacon> Beacons { get; set; }
 
-        //Available in iOS 7.0
-        [JsonProperty(PropertyName = "ignoresTimeZone", NullValueHandling = NullValueHandling.Ignore)]
-        public bool? IgnoresTimeZone { get; set; }
-        
         [JsonProperty(PropertyName = "locations", NullValueHandling = NullValueHandling.Ignore)]
         public List<Location> Locations { get; set; }
 
-        //Available in iOS 7.0
         [JsonProperty(PropertyName = "maxDistance", NullValueHandling = NullValueHandling.Ignore)]
         public int? MaxDistance { get; set; }
 
@@ -119,7 +108,6 @@ namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTe
         [JsonProperty(PropertyName = "foregroundColor", NullValueHandling = NullValueHandling.Ignore)]
         public string ForegroundColor { get; set; }
 
-        //Available in iOS 7.0
         //WARNING! Optional for event tickets and boarding passes; otherwise not allowed
         [JsonProperty(PropertyName = "groupingIdentifier", NullValueHandling = NullValueHandling.Ignore)]
         public string GroupingIdentifier { get; set; }
@@ -131,8 +119,7 @@ namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTe
         public string LogoText { get; set; }
 
         //The default value prior to iOS 7.0 is false.
-        //In iOS 7.0, a shine effect is never applied, and this key is
-        //deprecated.
+        //In iOS 7.0, a shine effect is never applied, and this key is deprecated.
         [JsonProperty(PropertyName = "suppressStripShine", NullValueHandling = NullValueHandling.Ignore)]
         public bool? SuppressStripShine { get; set; }
 
@@ -153,8 +140,6 @@ namespace Pass.Container.Core.Entities.Templates.NativePassTemplates.ApplePassTe
         public ApplePassTemplate()
         {
             this.FormatVersion = 1;
-            //this.Voided = false;
-            this.IgnoresTimeZone = false; //TODO it should be moved to date field structure
         }
     }
 }

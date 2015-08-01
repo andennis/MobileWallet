@@ -4,10 +4,8 @@ using Common.Repository;
 
 namespace Pass.Manager.Core.Entities
 {
-    public class PassCertificate : EntityVersionable, IEntityWithId
+    public class PassCertificate : EntityVersionable
     {
-        public int EntityId { get { return PassCertificateId; } }
-
         public int PassCertificateId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

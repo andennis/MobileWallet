@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 
 namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
 {
+    /*
     public class IntegrationDetails
     {
         [XmlElement(ElementName = "appOptions")]
@@ -51,4 +52,5 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
         [JsonProperty(PropertyName = "customJsonData", NullValueHandling = NullValueHandling.Ignore)]
         public string CustomJsonData { get; set; }
     }
+    */
 }

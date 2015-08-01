@@ -28,6 +28,8 @@ namespace Common.Web.Controls.DropDownList
             _component.AutoBind = autoBind;
             return this;
         }
+
+        /*
         public DropDownListBuilder BindTo(IEnumerable<DropDownListItem> dataSource)
         {
             var itemFactory = ItemFactory;
@@ -39,8 +41,13 @@ namespace Common.Web.Controls.DropDownList
             }
             return this;
         }
+        */
+
         public DropDownListBuilder  BindTo(IEnumerable<SelectListItem> dataSource)
         {
+            if (dataSource == null)
+                throw new ArgumentNullException("dataSource");
+
             var itemFactory = ItemFactory;
             foreach (var dataItem in dataSource)
             {

@@ -34,6 +34,7 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
         [JsonProperty(PropertyName = "passDescription", Required = Required.Always)]
         public string PassDescription { get; set; }
 
+        /*
         [XmlElement(ElementName = "passSerialNumberType")]
         [JsonProperty(PropertyName = "passSerialNumberType", Required = Required.Always)]
         public PassSerialNumberType PassSerialNumberType { get; set; }
@@ -41,16 +42,11 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
         [XmlElement(ElementName = "providedSerialNumber")]
         [JsonProperty(PropertyName = "providedSerialNumber")]
         public string ProvidedSerialNumber { get; set; }
+        */
 
         [XmlElement(ElementName = "passTypeIdentifier")]
         [JsonProperty(PropertyName = "passTypeIdentifier", Required = Required.Always)]
         public string PassTypeIdentifier { get; set; }
-
-        /*
-        [XmlElement(ElementName = "certificateId")]
-        [JsonProperty(PropertyName = "certificateId", Required = Required.Always)]
-        public int CertificateId { get; set; }
-        */
 
         [XmlElement(ElementName = "teamIdentifier")]
         [JsonProperty(PropertyName = "teamIdentifier", Required = Required.Always)]
@@ -107,13 +103,11 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
         [JsonProperty(PropertyName = "groupingIdentifier")]
         public string GroupingIdentifier { get; set; }
 
+        /*
         [XmlElement(ElementName = "passTimezone")]
         [JsonProperty(PropertyName = "passTimezone")]
         public TimeZone PassTimezone { get; set; }
-
-        [XmlElement(ElementName = "ignoresTimeZone")]
-        [JsonProperty(PropertyName = "ignoresTimeZone", NullValueHandling = NullValueHandling.Ignore)]
-        public bool? IgnoresTimeZone { get; set; }
+        */
 
         [XmlElement(ElementName = "logoText")]
         [JsonProperty(PropertyName = "logoText", NullValueHandling = NullValueHandling.Ignore)]
@@ -121,13 +115,13 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
 
         #endregion
 
+        /*
         #region Integration Details
-
         [XmlElement(ElementName = "integrationDetails")]
         [JsonProperty(PropertyName = "integrationDetails")]
         public IntegrationDetails IntegrationDetails { get; set; }
-
         #endregion
+        */
 
         #region Location Details
 
@@ -145,13 +139,13 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
 
         #endregion
 
+        /*
         #region Distribution Details
-
         [XmlElement(ElementName = "distributionDetails")]
         [JsonProperty(PropertyName = "distributionDetails", Required = Required.Always)]
         public DistributionDetails DistributionDetails { get; set; }
-
         #endregion
+        */
 
         #region Barcode Details
 
@@ -193,6 +187,8 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
         [XmlEnum(Name = "storeCard")]
         StoreCard = 4
     }
+
+    /*
     [JsonConverter(typeof(StringEnumConverter))]
     public enum PassSerialNumberType
     {
@@ -203,4 +199,5 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
         [XmlEnum(Name = "sameForEachPass")]
         SameForEachPass = 2
     }
+    */
 }
