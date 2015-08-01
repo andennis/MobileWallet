@@ -119,6 +119,9 @@ namespace Common.Web.Controls.DropDownList
         {
             writer.AddAttribute(HtmlTextWriterAttribute.Id, Name);
             writer.AddAttribute(HtmlTextWriterAttribute.Name, Name);
+            if (!string.IsNullOrEmpty(Value))
+                writer.AddAttribute(HtmlTextWriterAttribute.Value, Value);
+
             foreach (KeyValuePair<string, object> attr in HtmlAttributes)
             {
                 writer.AddAttribute(attr.Key, Convert.ToString(attr.Value));

@@ -46,8 +46,8 @@ namespace Pass.Notification.BL
         public void SendPushNotificationFromQueue()
         {
             List<PushNotificationItem> allPushNotifications = _pnUnitOfWork.PushNotificationRepository.Query().Filter(x => x.Status == PushStatus.Pending).Get().ToList();
-            if (allPushNotifications == null)
-                return;
+            //if (allPushNotifications == null)
+            //    return;
 
             _pnUnitOfWork.PushNotificationRepository.SetPushNotificationStatus(allPushNotifications.Select(x => x.PushNotificationItemId).ToList(), PushStatus.InProcess);
             IEnumerable<IGrouping<int, PushNotificationItem>> pushNotificationsByCertificates = allPushNotifications.GroupBy(x => x.CertificateStorageId);

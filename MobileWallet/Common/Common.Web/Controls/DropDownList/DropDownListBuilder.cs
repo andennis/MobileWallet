@@ -39,7 +39,7 @@ namespace Common.Web.Controls.DropDownList
             }
             return this;
         }
-        public DropDownListBuilder BindTo(IEnumerable<SelectListItem> dataSource)
+        public DropDownListBuilder  BindTo(IEnumerable<SelectListItem> dataSource)
         {
             var itemFactory = ItemFactory;
             foreach (var dataItem in dataSource)
@@ -88,6 +88,11 @@ namespace Common.Web.Controls.DropDownList
         public DropDownListBuilder SelectedIndex(int index)
         {
             _component.SelectedIndex = index;
+            return this;
+        }
+        public DropDownListBuilder SelectedValue(object value)
+        {
+            _component.Value = Convert.ToString(value);
             return this;
         }
         public DropDownListBuilder CascadeFrom(string cascadeFrom)

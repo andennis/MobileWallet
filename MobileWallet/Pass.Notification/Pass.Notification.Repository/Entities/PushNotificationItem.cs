@@ -11,7 +11,6 @@ namespace Pass.Notification.Repository.Core.Entities
         public string PushTockenId { get; set; }
         public PushStatus Status { get; set; }
         public PushNotificationServiceType PushNotificationServiceType { get; set; }
-
         
     }
 }
