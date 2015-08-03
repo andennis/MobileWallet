@@ -44,5 +44,10 @@ namespace Pass.Manager.BL.Services
                 .FirstOrDefault();
         }
 
+        public void SyncToTemplate(int entityId)
+        {
+            
+        }
+
     }
 }

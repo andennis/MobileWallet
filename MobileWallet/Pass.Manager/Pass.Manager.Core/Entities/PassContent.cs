@@ -15,6 +15,7 @@ namespace Pass.Manager.Core.Entities
 
         public int PassContentTemplateId { get; set; }
         public PassContentTemplate PassContentTemplate { get; set; }
+        public int PassContentTemplateVersion { get; set; }
 
         public ICollection<PassContentField> Fields { get; set; }
 

@@ -80,14 +80,13 @@ namespace Common.Web.Controls.DropDownList
         private string GetDataSource()
         {
             var sb = new StringBuilder();
-            if (Items.Any())
+            foreach (DropDownListItem item in Items)
             {
-                sb.AppendFormat("{{Text: '{0}', Value: {1}}}", Items[0].Text, Items[0].Value);
-                for (int i = 1; i < Items.Count; i++)
-                {
-                    sb.AppendFormat(",{{Text: '{0}', Value: {1}}}", Items[i].Text, Items[i].Value);
-                }
+                sb.AppendFormat("{{Text: '{0}', Value: {1}}},", item.Text, item.Value);
             }
+            if (sb.Length > 0)
+                sb.Remove(sb.Length - 1, 1);
+            
             return string.Format("[{0}]", sb);
         }
         protected override void WriteInitializationScript(TextWriter writer)
@@ -112,6 +111,10 @@ namespace Common.Web.Controls.DropDownList
                 close = GetEvent(EventClose),
                 cascade = GetEvent(EventCascade)
             };
+
+            DropDownListItem selectedItem = Items.FirstOrDefault(x => x.Selected);
+            if (selectedItem != null && string.IsNullOrEmpty(Value))
+                settings.value = selectedItem.Value;
 
             string jsonSettings = settings.ObjectToJson();
             string widgetScript = string.Format("$(\"#{0}\").kendoDropDownList({1})", Name, jsonSettings);

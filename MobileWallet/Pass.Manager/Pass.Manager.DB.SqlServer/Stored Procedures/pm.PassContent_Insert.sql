@@ -7,6 +7,14 @@
 AS
 BEGIN
 	DECLARE @dt DATETIME = GETDATE()
+	DECLARE @PassProjectId INT
+	DECLARE @PassContentTemplateVersion INT
+    
+	SELECT 
+		@PassProjectId = PassProjectId,
+		@PassContentTemplateVersion = [Version]
+	FROM pm.PassContentTemplate 
+	WHERE PassContentTemplateId = @PassContentTemplateId
 
 	INSERT INTO pm.PassContent
 	( 
@@ -15,6 +23,7 @@ BEGIN
 		ExpDate,
 		IsVoided,
 	    PassContentTemplateId,
+		PassContentTemplateVersion,
 	    [Status],
 	    [Version],
 	    CreatedDate,
@@ -27,6 +36,7 @@ BEGIN
 		@ExpDate,
 		0,
 	    @PassContentTemplateId,
+		@PassContentTemplateVersion,
 	    1/*Active*/,
 	    1,
 	    @dt,
@@ -34,7 +44,7 @@ BEGIN
 	)
 
 	SET @PassContentId = SCOPE_IDENTITY()
-	DECLARE @PassProjectId INT = (SELECT PassProjectId FROM pm.PassContentTemplate WHERE PassContentTemplateId = @PassContentTemplateId)
+	
 
 	INSERT INTO pm.PassContentField
 	( 

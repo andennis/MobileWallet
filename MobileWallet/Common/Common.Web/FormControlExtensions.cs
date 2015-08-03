@@ -199,43 +199,6 @@ namespace Common.Web
         #endregion
 
         #region DropDownList
-        //public static MvcHtmlString DropDownListForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems,
-        //    string optionLabel = null, object htmlAttributes = null)
-        //{
-        //    return html.DropDownListFor(expression, listItems, optionLabel, HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
-        //}
-
-        //public static MvcHtmlString DropDownListForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems,
-        //    string optionLabel = null, IDictionary<string, object> htmlAttributes = null)
-        //{
-        //    return html.DropDownListFor(expression, listItems, optionLabel, htmlAttributes);
-        //}
-        //public static MvcHtmlString DropDownListFormForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems,
-        //    string labelText = null, string optionLabel = null)
-        //{
-        //    return html.LabelWithControl(expression, labelText, null, () => html.DropDownListForExt(expression, listItems, optionLabel, _initControlAttributes));
-        //}
-        //public static MvcHtmlString DropDownListExt(this HtmlHelper html, string name, IEnumerable<SelectListItem> listItems, string optionLabel = null, object htmlAttributes = null)
-        //{
-        //    return html.DropDownList(name, listItems, optionLabel, htmlAttributes);
-        //}
-
-
-        //public static MvcHtmlString DropDownListFormForExt<TModel, TEnumProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TEnumProperty>> expression,
-        //    string labelText = null, string optionLabel = null)
-        //    where TEnumProperty : struct  
-        //{
-        //    SelectList listItems = EnumHelper.ToSelectList<TEnumProperty>();
-        //    return html.DropDownListFormForExt(expression, listItems, labelText, optionLabel);
-        //}
-        //public static MvcHtmlString DropDownListFormForExt<TModel, TEnumProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TEnumProperty?>> expression,
-        //    string labelText = null, string optionLabel = null)
-        //    where TEnumProperty : struct 
-        //{
-        //    SelectList listItems = EnumHelper.ToSelectList<TEnumProperty>();
-        //    return html.DropDownListFormForExt(expression, listItems, labelText, optionLabel);
-        //}
-
         public static MvcHtmlString DropDownListFormForExt<TModel, TEnumProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TEnumProperty>> expression,
             string labelText = null, string optionLabel = null)
             where TEnumProperty : struct
@@ -261,21 +224,16 @@ namespace Common.Web
         public static MvcHtmlString DropDownListForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems,
             string optionLabel = null, object htmlAttributes = null)
         {
-            object selectedValue = expression.GetPropertyValue(html.ViewData.Model);
-            if (selectedValue is Enum)
-                selectedValue = Convert.ToInt32(selectedValue);
-
-            return html.DropDownListExt(expression.GetPropertyName(), listItems, selectedValue, optionLabel, htmlAttributes);
+            return html.DropDownListExt(expression.GetPropertyName(), listItems, optionLabel, htmlAttributes);
         }
 
-        public static MvcHtmlString DropDownListExt<TModel>(this HtmlHelper<TModel> html, string name, IEnumerable<SelectListItem> listItems, object selectedValue = null,
-            string optionLabel = null, object htmlAttributes = null, string changeHandler = null)
+        public static MvcHtmlString DropDownListExt<TModel>(this HtmlHelper<TModel> html, string name, IEnumerable<SelectListItem> listItems, string optionLabel = null, 
+            object htmlAttributes = null, string changeHandler = null)
         {
             DropDownListBuilder builder = html.Widget().DropDownList()
                 .Name(name)
                 .DataTextField("Text")
                 .DataValueField("Value")
-                .SelectedValue(selectedValue)
                 .BindTo(listItems)
                 .HtmlAttributes(_initControlAttributes.MergeHtmlAttributes(htmlAttributes));
 

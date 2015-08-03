@@ -4,6 +4,7 @@ using Pass.Manager.Core.SearchFilters;
 using Pass.Manager.Core.Services;
 using Pass.Manager.Web.Common;
 using Pass.Manager.Web.Models;
+using Common.Web;
 
 namespace Pass.Manager.Web.Controllers
 {
@@ -30,7 +31,7 @@ namespace Pass.Manager.Web.Controllers
         {
             base.SetDefaultReturnUrl(model);
             if (string.IsNullOrEmpty(model.RedirectUrl))
-                model.RedirectUrl = Url.Action("Edit", "PassProject", new { id = model.PassProjectId });
+                model.RedirectUrl = Url.Action<PassProjectController>(a => a.Edit(null), new { id = model.PassProjectId });
         }
 
         [AjaxOnly]

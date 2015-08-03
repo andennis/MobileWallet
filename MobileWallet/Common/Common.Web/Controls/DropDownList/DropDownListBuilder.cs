@@ -29,29 +29,15 @@ namespace Common.Web.Controls.DropDownList
             return this;
         }
 
-        /*
-        public DropDownListBuilder BindTo(IEnumerable<DropDownListItem> dataSource)
-        {
-            var itemFactory = ItemFactory;
-            foreach (var dataItem in dataSource)
-            {
-                itemFactory.Add().Text(dataItem.Text)
-                    .Value(dataItem.Value)
-                    .Selected(dataItem.Selected);
-            }
-            return this;
-        }
-        */
-
         public DropDownListBuilder  BindTo(IEnumerable<SelectListItem> dataSource)
         {
             if (dataSource == null)
                 throw new ArgumentNullException("dataSource");
 
-            var itemFactory = ItemFactory;
             foreach (var dataItem in dataSource)
             {
-                itemFactory.Add().Text(dataItem.Text)
+                ItemFactory.Add()
+                    .Text(dataItem.Text)
                     .Value(dataItem.Value)
                     .Selected(dataItem.Selected);
             }

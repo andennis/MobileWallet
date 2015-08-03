@@ -207,4 +207,7 @@
   <data name="PushClientDevicesSuccess" xml:space="preserve">
     <value>Push notifications have been queued successfully and will be sent in nearest time by notification service</value>
   </data>
+  <data name="SyncToTemplateSuccess" xml:space="preserve">
+    <value>Pass has been synchronized with template sucessfully</value>
+  </data>
 </root>

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Common.BL;
 using Common.Repository;
 using Common.Web;
-using Microsoft.Ajax.Utilities;
 using Pass.Distribution.Core.Entities;
 using Pass.Distribution.Core.Services;
 using Pass.Manager.Core;
@@ -95,6 +92,13 @@ namespace Pass.Manager.Web.Controllers
 
             ViewBag.RegStatses = new SelectList(statuses, "Value", "Text", ((int)EntityStatus.Active).ToString());
             return PartialView(@"Tabs\_Registrations", id);
+        }
+
+        [AjaxOnly]
+        public ActionResult SyncToTemplate(int id)
+        {
+            _service.SyncToTemplate(id);
+            return JsonEx(true, Resources.Resources.SyncToTemplateSuccess);
         }
 
     }

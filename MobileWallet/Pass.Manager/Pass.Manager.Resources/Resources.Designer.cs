@@ -277,6 +277,15 @@ namespace Pass.Manager.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pass has been synchronized with template sucessfully.
+        /// </summary>
+        public static string SyncToTemplateSuccess {
+            get {
+                return ResourceManager.GetString("SyncToTemplateSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update.
         /// </summary>
         public static string Update {
