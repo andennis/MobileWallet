@@ -1,12 +1,18 @@
 ﻿CREATE VIEW [pm].[PassContentFieldView]
 AS
 SELECT 
-	pcf.*, 
+	pct.PassContentId,
+	ppf.PassProjectFieldId,
 	ppf.Name AS FieldName, 
-	pctf.FieldKind 
-FROM pm.PassContentField pcf
-INNER JOIN pm.PassProjectField ppf ON ppf.PassProjectFieldId = pcf.PassProjectFieldId
-INNER JOIN pm.PassContent pc ON pcf.PassContentId = pc.PassContentId
-INNER JOIN pm.PassContentTemplate pct ON pct.PassContentTemplateId = pc.PassContentTemplateId
-LEFT JOIN pm.PassContentTemplateField pctf ON pctf.PassContentTemplateId = pct.PassContentTemplateId
-										AND pctf.PassProjectFieldId = pcf.PassProjectFieldId
+	pctf.FieldKind,
+	pcf.PassContentFieldId,
+	ISNULL(pcf.FieldLabel, ppf.DefaultLabel) AS FieldLabel,
+	ISNULL(pcf.FieldValue, ppf.DefaultValue) AS FieldValue,
+	pcf.CreatedDate,
+	pcf.UpdatedDate
+FROM pm.PassContentTemplateField pctf
+INNER JOIN pm.PassContent pct ON pctf.PassContentTemplateId = pct.PassContentTemplateId
+INNER JOIN pm.PassProjectField ppf ON pctf.PassProjectFieldId = ppf.PassProjectFieldId
+LEFT JOIN pm.PassContentField pcf ON ppf.PassProjectFieldId = pcf.PassProjectFieldId AND pct.PassContentId = pcf.PassContentId
+
+

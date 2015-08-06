@@ -16,7 +16,7 @@
                        {
                            c.Bound(p => p.PassContentFieldId).Title("ID").Width("100px");
                            c.BoundEnum(p => p.FieldKind).Title("Location");
-                           c.BoundLink(p => p.FieldName, Url.Action<PassContentFieldController>(a => a.Edit(null)), id => id.PassContentFieldId, 
+                           c.BoundLink(p => p.FieldName, Url.Action<PassContentFieldController>(a => a.CreateOrEdit(0,null,null)), id => id.EntityId, 
                                new { data_popup_window = "wndPassField" }, "Name");
                            c.Bound(p => p.FieldLabel).Title("Label");
                            c.Bound(p => p.FieldValue).Title("Value");

@@ -113,6 +113,7 @@ namespace Pass.Manager.Web.Common
 
                 if (Request.IsAjaxRequest())
                     return JsonEx();
+
                 return RedirectTo(model);
             }
 

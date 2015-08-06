@@ -64,13 +64,14 @@ namespace Pass.Distribution.BL.Services
             SearchResult<PassContentFieldView> result = _passContentFieldService.SearchView<PassContentFieldView>(new SearchContext(), 
                 new PassContentFieldFilter() { PassContentId = passContentId });
 
-            return result.Data.Select(x => new DistribField()
-                                           {
-                                               DistribFieldId = x.PassContentFieldId, 
-                                               Name = x.FieldName,
-                                               Label = x.FieldLabel ?? x.FieldName,
-                                               Value = x.FieldValue
-                                           });
+            return result.Data.Where(x => x.PassContentFieldId.HasValue)
+                .Select(x => new DistribField()
+                            {
+                                DistribFieldId = x.PassContentFieldId.Value, 
+                                Name = x.FieldName,
+                                Label = x.FieldLabel ?? x.FieldName,
+                                Value = x.FieldValue
+                            });
         }
 
         public void UpdatePassFields(int passContentId, IEnumerable<DistribField> passFields)
