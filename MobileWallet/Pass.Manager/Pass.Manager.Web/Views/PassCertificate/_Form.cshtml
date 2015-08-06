@@ -1,5 +1,5 @@
 ﻿@model PassCertificateAppleViewModel
-           
+
 @Html.HiddenForExt(m => m.PassCertificateId)
 @if (!Model.IsNew)
 {
@@ -24,4 +24,14 @@
 }
 
 @Html.FileUploadFormForEx(m => m.CertificateFile, "Certificate File")
-    
+
+<script>
+    @if (!Model.IsNew) {
+        @:$(document).ready(function () {
+            @:$('.form-group:has(div > input#Password)').css('display', 'none');
+            @:$('#CertificateFile').change(function () {
+                @:$('.form-group:has(div > input#Password)').css('display', 'block');
+            @:});
+        @:});
+    }
+</script>
