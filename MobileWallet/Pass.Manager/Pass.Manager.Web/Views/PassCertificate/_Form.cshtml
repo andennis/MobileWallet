@@ -18,12 +18,8 @@
 @Html.PasswordFormForExt(m => m.Password)
 @Html.HiddenForExt(m => m.CertificateStorageId)
 
-@if (Model.CertificateFileName != null)
-{
-    @Html.TextBlockFormForExt(m => m.CertificateFileName, "Certificate File");
-}
+@(Model.CertificateFileName != null ? Html.FileUploadFormForEx(m => m.CertificateFile, "Certificate File", null, Model.CertificateFileName) : Html.FileUploadFormForEx(m => m.CertificateFile, "Certificate File"))
 
-@Html.FileUploadFormForEx(m => m.CertificateFile, "Certificate File")
 
 <script>
     @if (!Model.IsNew) {

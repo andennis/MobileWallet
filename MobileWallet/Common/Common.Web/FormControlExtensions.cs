@@ -310,18 +310,18 @@ namespace Common.Web
         //}
 
 
-        public static MvcHtmlString FileUploadFormForEx<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string labelText = null, string fileExts = null)
+        public static MvcHtmlString FileUploadFormForEx<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string labelText = null, string fileExts = null, string inputText = null)
         {
-            return html.LabelWithControl(expression, labelText, null, () => html.FileUploadForEx(expression, fileExts, _initControlAttributes));
+            return html.LabelWithControl(expression, labelText, null, () => html.FileUploadForEx(expression, fileExts, _initControlAttributes, inputText));
         }
 
-        public static MvcHtmlString FileUploadForEx<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string fileExts = null, object htmlAttributes = null)
+        public static MvcHtmlString FileUploadForEx<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string fileExts = null, object htmlAttributes = null, string inputText = null)
         {
             string propName = expression.GetPropertyName();
-            return html.FileUploadEx(propName, fileExts, htmlAttributes);
+            return html.FileUploadEx(propName, fileExts, htmlAttributes, inputText);
         }
 
-        public static MvcHtmlString FileUploadEx(this HtmlHelper html, string name, string fileExts = null, object htmlAttributes = null)
+        public static MvcHtmlString FileUploadEx(this HtmlHelper html, string name, string fileExts = null, object htmlAttributes = null, string inputText = null)
         {
             var inputTag = new TagBuilder("input");
             inputTag.GenerateId(name + "Text");
@@ -329,6 +329,7 @@ namespace Common.Web
             inputTag.Attributes.Add("type", "text");
             inputTag.Attributes.Add("readonly", "true");
             inputTag.AddCssClass("form-control fileUploadText");
+            inputTag.Attributes.Add("value", inputText);
             var spanTag = new TagBuilder("span");
             spanTag.AddCssClass("btn btn-file");
             var inputFileTag = new TagBuilder("input");
