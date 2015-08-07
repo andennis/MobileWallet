@@ -453,3 +453,4 @@
 /// <reference path="kendo/2014.2.716/cultures/kendo.culture.zh.min.js" />
 /// <reference path="kendo/2014.2.716/cultures/kendo.culture.zu-za.min.js" />
 /// <reference path="kendo/2014.2.716/cultures/kendo.culture.zu.min.js" />
+/// <reference path="fileuploadhelper.js" />

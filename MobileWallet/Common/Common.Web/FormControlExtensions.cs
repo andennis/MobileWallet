@@ -285,6 +285,31 @@ namespace Common.Web
 
         #region FileUpload
 
+        //public static MvcHtmlString FileUploadFormForEx<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string labelText = null, string fileExts = null)
+        //{
+        //    return html.LabelWithControl(expression, labelText, null, () => html.FileUploadForEx(expression, fileExts, _initControlAttributes));
+        //}
+
+        //public static MvcHtmlString FileUploadForEx<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string fileExts = null, object htmlAttributes = null)
+        //{
+        //    string propName = expression.GetPropertyName();
+        //    return html.FileUploadEx(propName, fileExts, htmlAttributes);
+        //}
+
+        //public static MvcHtmlString FileUploadEx(this HtmlHelper html, string name, string fileExts = null, object htmlAttributes = null)
+        //{
+        //    var inputTag = new TagBuilder("input");
+        //    inputTag.GenerateId(name);
+        //    inputTag.Attributes.Add("name", name);
+        //    inputTag.Attributes.Add("type", "file");
+        //    if (!string.IsNullOrEmpty(fileExts))
+        //        inputTag.Attributes.Add("accept", fileExts);
+
+        //    inputTag.Attributes.AddHtmlAttributes(htmlAttributes);
+        //    return new MvcHtmlString(inputTag.ToString());
+        //}
+
+
         public static MvcHtmlString FileUploadFormForEx<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string labelText = null, string fileExts = null)
         {
             return html.LabelWithControl(expression, labelText, null, () => html.FileUploadForEx(expression, fileExts, _initControlAttributes));
@@ -299,14 +324,23 @@ namespace Common.Web
         public static MvcHtmlString FileUploadEx(this HtmlHelper html, string name, string fileExts = null, object htmlAttributes = null)
         {
             var inputTag = new TagBuilder("input");
-            inputTag.GenerateId(name);
+            inputTag.GenerateId(name + "Text");
             inputTag.Attributes.Add("name", name);
-            inputTag.Attributes.Add("type", "file");
+            inputTag.Attributes.Add("type", "text");
+            inputTag.Attributes.Add("readonly", "true");
+            inputTag.AddCssClass("form-control fileUploadText");
+            var spanTag = new TagBuilder("span");
+            spanTag.AddCssClass("btn btn-file");
+            var inputFileTag = new TagBuilder("input");
+            inputFileTag.GenerateId(name);
+            inputFileTag.Attributes.Add("name", name);
+            inputFileTag.Attributes.Add("type", "file");
+            spanTag.InnerHtml = inputFileTag.ToString();
             if (!string.IsNullOrEmpty(fileExts))
                 inputTag.Attributes.Add("accept", fileExts);
 
             inputTag.Attributes.AddHtmlAttributes(htmlAttributes);
-            return new MvcHtmlString(inputTag.ToString());
+            return new MvcHtmlString(inputTag + spanTag.ToString());
         }
         #endregion
 

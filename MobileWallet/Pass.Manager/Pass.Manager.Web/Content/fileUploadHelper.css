@@ -1,0 +1,49 @@
+﻿.btn-file {
+    position: absolute;
+    overflow: hidden;
+    background: url(../Views/../Images/uploadIcon.png);
+    -moz-min-width: 37px;
+    -ms-min-width: 37px;
+    -o-min-width: 37px;
+    -webkit-min-width: 37px;
+    min-width: 37px;
+    height: 34px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-left: 0;
+    -ms-border-radius: 0 4px 4px 0;
+    border-radius: 0 4px 4px 0;
+    line-height: 2;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+    .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 37px;
+        height: 34px;
+        text-align: right;
+        -webkit-filter: alpha(opacity=0);
+        -moz-filter: alpha(opacity=0);
+        -o-filter: alpha(opacity=0);
+        filter: alpha(opacity=0);
+        -ms-opacity: 0;
+        opacity: 0;
+        cursor: inherit;
+        font-size: 100px;
+    }
+
+input[readonly] {
+    background-color: white !important;
+    cursor: text !important;
+}
+
+.fileUploadText {
+    width: 313px;
+    float: left;
+    -ms-border-radius: 4px 0 0 4px;
+    border-radius: 4px 0 0 4px;
+}

@@ -291,6 +291,7 @@
     <Content Include="Content\DataTables-1.10.2\images\xls_hover.png" />
     <Content Include="Content\DataTables-1.10.2\swf\copy_csv_xls.swf" />
     <Content Include="Content\DataTables-1.10.2\swf\copy_csv_xls_pdf.swf" />
+    <Content Include="Content\fileUploadHelper.css" />
     <Content Include="Content\kendo\2014.2.716\Black\editor.png" />
     <Content Include="Content\kendo\2014.2.716\Black\imagebrowser.png" />
     <Content Include="Content\kendo\2014.2.716\Black\indeterminate.gif" />
@@ -502,6 +503,7 @@
     <Content Include="Images\logo&amp;strip\Tulips.jpg" />
     <Content Include="Images\passLightWhiteLogo.png" />
     <Content Include="Images\Grid\true.png" />
+    <Content Include="Images\uploadIcon.png" />
     <Content Include="Scripts\Action.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -534,6 +536,7 @@
     <Content Include="Scripts\DataTables-1.10.2\dataTables.tableTools.min.js" />
     <Content Include="Scripts\DataTables-1.10.2\jquery.dataTables.js" />
     <Content Include="Scripts\DataTables-1.10.2\jquery.dataTables.min.js" />
+    <Content Include="Scripts\fileUploadHelper.js" />
     <Content Include="Scripts\FormAutoFill\jquery.formautofill.js" />
     <Content Include="Scripts\FormAutoFill\jquery.formautofill.min.js" />
     <Content Include="Scripts\FormHelpers\PassSiteHelper.js" />

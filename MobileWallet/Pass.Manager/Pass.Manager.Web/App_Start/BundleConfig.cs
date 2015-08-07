@@ -95,6 +95,14 @@ namespace Pass.Manager.Web
                       "~/Content/createCard/jquery.simple-dtpicker.css",
                       "~/Content/createCard/createCard.css"));
 
+
+            //Control extensions
+            bundles.Add(new StyleBundle("~/content/ctrlext").Include(
+                "~/Content/fileUploadHelper.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/ctrlext").Include(
+                "~/Scripts/fileUploadHelper.js"));
+
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862
             //BundleTable.EnableOptimizations = true;
