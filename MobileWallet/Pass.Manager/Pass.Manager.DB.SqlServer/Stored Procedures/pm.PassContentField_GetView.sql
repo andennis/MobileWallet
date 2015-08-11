@@ -1,7 +1,11 @@
 ﻿CREATE PROCEDURE pm.PassContentField_GetView
-	@ID INT
+	@PassContentFieldId INT,
+	@PassContentId INT,
+	@PassProjectFieldId INT
 AS
 BEGIN
     SELECT * FROM pm.PassContentFieldView
-    WHERE PassContentFieldId = @ID
+    WHERE (@PassContentFieldId IS NULL OR PassContentFieldId = @PassContentFieldId)
+		AND	(@PassContentId IS NULL OR PassContentId = @PassContentId)
+		AND (@PassProjectFieldId IS NULL OR PassProjectFieldId = @PassProjectFieldId)
 END

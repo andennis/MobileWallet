@@ -1,5 +1,9 @@
-﻿using System.Web;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using AutoMapper;
+using Common.Extensions;
 using Common.Utils;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Web.Models;
@@ -72,14 +76,15 @@ namespace Pass.Manager.Web
             Mapper.CreateMap<PassContentViewModel, PassContent>()
                 .ForMember(dst => dst.ContainerPassId, x => x.Ignore());
 
-            Mapper.CreateMap<PassContentFieldView, PassContentFieldViewModel>();
-            //Mapper.CreateMap<PassContentField, PassContentFieldViewModel>();
-            Mapper.CreateMap<PassContentFieldViewModel, PassContentField>()
-                .ForMember(dst => dst.PassProjectFieldId, x => x.Ignore())
-                .ForMember(dst => dst.PassContentId, x => x.Ignore())
-                .ForMember(dst => dst.PassContentFieldId, x => x.Ignore());
+            Mapper.CreateMap<PassContentFieldView, PassContentFieldViewModel>()
+                .ForMember(dst => dst.FieldKinds, x => x.MapFrom(src => StringIdsToPassContentFieldKinds(src.FieldKindIds)));
+            Mapper.CreateMap<PassContentFieldViewModel, PassContentField>();
         }
 
+        private static IEnumerable<PassContentFieldKind> StringIdsToPassContentFieldKinds(string cpmmaSeparatedIds)
+        {
+            return cpmmaSeparatedIds.ConvertToInts().Select(src2 => (PassContentFieldKind)src2);
+        }
 
         private static FileContentInfo HttpPostedFileToFileContentInfo(HttpPostedFileBase file)
         {

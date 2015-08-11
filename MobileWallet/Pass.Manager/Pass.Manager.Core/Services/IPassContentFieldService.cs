@@ -6,5 +6,6 @@ namespace Pass.Manager.Core.Services
 {
     public interface IPassContentFieldService : IBaseService<PassContentField, PassContentFieldFilter>
     {
+        PassContentFieldView GetView(int passContentId, int passProjectFieldId);
     }
 }

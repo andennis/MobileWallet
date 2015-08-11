@@ -62,7 +62,7 @@ namespace Common.BL
 
         }
 
-        public virtual TEntityView GetView<TEntityView>(int entityId)
+        public virtual TEntityView GetView<TEntityView>(int entityId) where TEntityView : class
         {
             return _repository.GetView<TEntityView>(entityId);
         }

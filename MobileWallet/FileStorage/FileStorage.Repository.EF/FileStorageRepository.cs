@@ -15,20 +15,20 @@ namespace FileStorage.Repository.EF
 
         public FolderItem GetFreeFolderItem(int folderLevel, int maxItemsNumber)
         {
-            return SqlQuery(DbScheme + ".GetFreeFolder @FolderLevel, @MaxItemsNumber",
+            return SqlQueryStoredProc(DbScheme + ".GetFreeFolder",
                                           new SqlParameter("FolderLevel", folderLevel),
                                           new SqlParameter("MaxItemsNumber", maxItemsNumber)).FirstOrDefault();
         }
 
         public string GetFolderItemPath(int folderItemId)
         {
-            return SqlQueryScalar<string>(DbScheme + ".GetFolderPath @FolderItemId",
+            return SqlQueryScalarStoredProc<string>(DbScheme + ".GetFolderPath",
                                           new SqlParameter("FolderItemId", folderItemId));
         }
 
         public string GetStorageItemPath(int storageItemId)
         {
-            return SqlQueryScalar<string>(DbScheme + ".GetStorageItemPath @StorageItemId",
+            return SqlQueryScalarStoredProc<string>(DbScheme + ".GetStorageItemPath",
                                           new SqlParameter("StorageItemId", storageItemId));
         }
 

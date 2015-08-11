@@ -69,6 +69,7 @@
     <Compile Include="Entities\TextAlignment.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Exceptions\PassManagerGeneralException.cs" />
+    <Compile Include="Repositories\IPassContentFieldRepository.cs" />
     <Compile Include="Repositories\IPassContentTemplateFieldRepository.cs" />
     <Compile Include="SearchFilters\PassBeaconFilter.cs" />
     <Compile Include="SearchFilters\PassContentFieldFilter.cs" />

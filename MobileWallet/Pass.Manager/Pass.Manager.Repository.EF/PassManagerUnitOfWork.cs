@@ -16,6 +16,7 @@ namespace Pass.Manager.Repository.EF
         private IPassSiteCertificateRepository _passSiteCertificateRepository;
         private IPassContentTemplateFieldRepository _passContentTemplateFieldRepository;
         private IRepository<PassContent> _passContentRepository;
+        private IPassContentFieldRepository _passContentFieldRepository;
 
         public PassManagerUnitOfWork(IDbConfig dbConfig)
             : base(new PassManagerDbContext(dbConfig.ConnectionString))
@@ -45,6 +46,7 @@ namespace Pass.Manager.Repository.EF
             RegisterCustomRepository(PassSiteCertificateRepository);
             RegisterCustomRepository(PassContentTemplateFieldRepository);
             RegisterCustomRepository(PassContentRepository);
+            RegisterCustomRepository(PassContentFieldRepository);
         }
 
         protected override HashSet<Type> AllowedRepositoryEntities
@@ -90,6 +92,14 @@ namespace Pass.Manager.Repository.EF
                 return _passContentRepository ?? (_passContentRepository = new PassContentRepository(_dbContext));
             }
         }
+        public IPassContentFieldRepository PassContentFieldRepository
+        {
+            get
+            {
+                return _passContentFieldRepository ?? (_passContentFieldRepository = new PassContentFieldRepository(_dbContext));
+            }
+        }
+        
 
     }
 }

@@ -14,12 +14,12 @@
               .DataSource(ds => ds.Read(Url.Action<PassContentFieldController>(a => a.GridSearchView(null,null), new { PassContentId = Model })))
               .Columns(c =>
                        {
-                           c.Bound(p => p.PassContentFieldId).Title("ID").Width("100px");
-                           c.BoundEnum(p => p.FieldKind).Title("Location");
-                           c.BoundLink(p => p.FieldName, Url.Action<PassContentFieldController>(a => a.CreateOrEdit(0,null,null)), id => id.EntityId, 
-                               new { data_popup_window = "wndPassField" }, "Name");
-                           c.Bound(p => p.FieldLabel).Title("Label");
-                           c.Bound(p => p.FieldValue).Title("Value");
+                           c.Bound(p => p.PassProjectFieldId).Title("ID").Width("100px");
+                           c.Bound(p => p.FieldName).Title(Resources.Name).ClientTemplateId("FieldNameTemplate");
+                           c.Bound(p => p.FieldKindsAsString).Title(Resources.Location);
+                           c.Bound(p => p.FieldLabel).Title(Resources.Label);
+                           c.Bound(p => p.FieldValue).Title(Resources.Value);
+                           c.Bound(p => p.UpdatedDate).Title(Resources.UpdatedDate).Format("g"); ;
                        }))
 
 <script>
@@ -30,6 +30,14 @@
     function OnEditPassFieldSuccess() {
         window.grid.Reload($("#grdPassFields"));
     }
+</script>
+
+<script id="FieldNameTemplate" type="text/x-kendo-template">
+    # if (PassContentFieldId) {#
+        <a href="@HttpUtility.UrlDecode(Url.Action<PassContentFieldController>(a => a.Edit(0), new { id = "#=PassContentFieldId#" }))" data-popup-window="wndPassField">#=FieldName#</a>
+    #} else {#
+        <a href="@HttpUtility.UrlDecode(Url.Action<PassContentFieldController>(a => a.CreateContentField(null, null), new { passContentId = Model, passProjectFieldId = "#=PassProjectFieldId#" }))" data-popup-window="wndPassField">#=FieldName#</a>
+    #}#
 </script>
 
 

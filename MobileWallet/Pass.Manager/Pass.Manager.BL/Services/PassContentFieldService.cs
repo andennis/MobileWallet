@@ -1,6 +1,5 @@
 ﻿using System;
 using Common.BL;
-using Common.Repository;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.SearchFilters;
@@ -23,5 +22,9 @@ namespace Pass.Manager.BL.Services
             return Search(searchContext, x => x.PassContentId == searchFilter.PassContentId);
         }
 
+        public PassContentFieldView GetView(int passContentId, int passProjectFieldId)
+        {
+            return _unitOfWork.PassContentFieldRepository.GetView(passContentId, passProjectFieldId);
+        }
     }
 }

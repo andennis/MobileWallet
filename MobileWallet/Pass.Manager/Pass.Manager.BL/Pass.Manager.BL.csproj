@@ -50,7 +50,6 @@
     <Compile Include="Services\PassBeaconService.cs" />
     <Compile Include="Services\PassCertificateService.cs" />
     <Compile Include="PassManagerConfig.cs" />
-    <Compile Include="PassManagerException.cs" />
     <Compile Include="Services\PassContentFieldService.cs" />
     <Compile Include="Services\PassContentService.cs" />
     <Compile Include="Services\PassContentTemplateFieldService.cs" />

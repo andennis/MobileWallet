@@ -32,5 +32,17 @@ namespace Common.Web
                 .ToDictionary(k => k.ToString(), v => Convert.ToInt32(v));
         }
 
+        /*
+        public static IEnumerable<TEnum> ToEmunArray<TEnum>(string commaSeparatedIds) where TEnum : struct
+        {
+            IEnumerable<int> enumIds = commaSeparatedIds.Split(',').Select(x => Convert.ToInt32(x));
+            return ToEmunArray<TEnum>(enumIds);
+        }
+        public static IEnumerable<TEnum> ToEmunArray<TEnum>(IEnumerable<int> enumIds) where TEnum : struct
+        {
+            return enumIds.Select(x => (TEnum)(object)x);
+        }
+        */
+
     }
 }

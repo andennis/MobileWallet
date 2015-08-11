@@ -16,31 +16,27 @@ namespace Pass.Manager.Web.Controllers
         {
         }
 
-        public ActionResult CreateOrEdit(int id, int? passContentId, int? passProjectFieldId)
+        public ActionResult CreateContentField(int? passContentId, int? passProjectFieldId)
         {
-            if (id == 0)
-            {
-                if (!passContentId.HasValue)
-                    throw new ArgumentNullException("passContentId");
-                if (!passProjectFieldId.HasValue)
-                    throw new ArgumentNullException("passProjectFieldId");
+            if (!passContentId.HasValue)
+                throw new ArgumentNullException("passContentId");
+            if (!passProjectFieldId.HasValue)
+                throw new ArgumentNullException("passProjectFieldId");
 
-                return Create(x => {
-                    x.PassContentId = passContentId.Value;
-                    x.PassProjectFieldId = passProjectFieldId.Value;
-                });
+            PassContentFieldView entityView = _service.GetView(passContentId.Value, passProjectFieldId.Value);
+
+            if (!entityView.PassContentFieldId.HasValue)
+            {
+                return Create(x => Mapper.Map(entityView, x));
             }
 
-            return Edit(id);
+            return Edit(entityView.PassContentFieldId.Value);
         }
 
-        [HttpPost]
-        public ActionResult CreateOrEdit(PassContentFieldViewModel model)
+        [ActionName("CreateContentField")]
+        public override ActionResult Create(PassContentFieldViewModel model)
         {
-            if (model.EntityId == 0)
-                return Create(model);
-
-            return Edit(model);
+            return base.Create(model);
         }
 
         protected override PassContentFieldViewModel GetViewModel(int entityId)

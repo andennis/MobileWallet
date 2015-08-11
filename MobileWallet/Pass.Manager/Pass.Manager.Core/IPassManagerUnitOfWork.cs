@@ -1,4 +1,5 @@
 ﻿using Common.Repository;
+using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.Repositories;
 
 namespace Pass.Manager.Core
@@ -9,5 +10,7 @@ namespace Pass.Manager.Core
         IPassSiteUserRepository PassSiteUserRepository { get; }
         IPassSiteCertificateRepository PassSiteCertificateRepository { get; }
         IPassContentTemplateFieldRepository PassContentTemplateFieldRepository { get; }
+        IRepository<PassContent> PassContentRepository { get; }
+        IPassContentFieldRepository PassContentFieldRepository { get; }
     }
 }

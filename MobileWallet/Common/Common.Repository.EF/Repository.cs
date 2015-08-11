@@ -150,7 +150,7 @@ namespace Common.Repository.EF
         /// <typeparam name="TEntityView"></typeparam>
         /// <param name="entityId"></param>
         /// <returns></returns>
-        public virtual TEntityView GetView<TEntityView>(int entityId)
+        public virtual TEntityView GetView<TEntityView>(int entityId) where TEntityView : class
         {
             string spName = string.Format("{0}.{1}_GetView", DbScheme, typeof(TEntity).Name);
             return SqlQueryStoredProc<TEntityView>(spName, new SqlParameter("ID", entityId)).FirstOrDefault();

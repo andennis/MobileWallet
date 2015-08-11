@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using NUnit.Framework;
 
 namespace Common.Extensions.Tests
 {
@@ -38,6 +41,24 @@ namespace Common.Extensions.Tests
             Assert.AreEqual(0, data[3]);
             Assert.AreEqual(51, data[4]);
             Assert.AreEqual(0, data[5]);
+        }
+
+        [Test]
+        public void ConvertToIntsTest()
+        {
+            string strIds = " ,1 , 2 , 3, ";
+            IEnumerable<int> intIds = strIds.ConvertToInts();
+            Assert.NotNull(intIds);
+            Assert.AreEqual(3, intIds.Count());
+
+            int[] intIdsArr = intIds.ToArray();
+            Assert.AreEqual(1, intIdsArr[0]);
+            Assert.AreEqual(2, intIdsArr[1]);
+            Assert.AreEqual(3, intIdsArr[2]);
+
+            Assert.Throws<ArgumentNullException>(() => strIds.ConvertToInts(null));
+            strIds = null;
+            Assert.Throws<ArgumentNullException>(() => strIds.ConvertToInts());
         }
     }
 }

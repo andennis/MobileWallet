@@ -188,6 +188,7 @@
       <DependentUpon>201508021643463_M33.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="PassContentFieldRepository.cs" />
     <Compile Include="PassContentRepository.cs" />
     <Compile Include="PassContentTemplateFieldRepository.cs" />
     <Compile Include="PassManagerDbContext.cs" />
