@@ -5,10 +5,12 @@
     helper.ajaxOnSuccess = function (data) {
         if (data.Success) {
             var fncSuccess = $popupWindowDiv.data("popup-success");
-            if (fncSuccess)
+            if (fncSuccess) {
                 eval(fncSuccess + "(data)");
-
+            }
             close();
+        } else {
+            initCloseBtn($popupWindowDiv);
         }
     }
 
@@ -25,23 +27,27 @@
             $ambientDivCopy.html(data);
             popupWindow.content($ambientDivCopy[0].outerHTML);
 
-            var $form = $("#popupWindowForm", $wndDiv);
-            $("#btnCancel", $form).click(function () {
-                close();
-            });
-
+            initCloseBtn($wndDiv);
             popupWindow.bind("close", windowClose);
             popupWindow.center().open();
         });
     }
 
+    function initCloseBtn($wndDiv) {
+        var $form = $("#popupWindowForm", $wndDiv);
+        $("#btnCancel", $form).click(function () {
+            close();
+        });
+    }
+
     function close() {
         popupWindow.close();
-        popupWindow = null;
-        $popupWindowDiv = null;
     }
 
     function windowClose(e) {
+        popupWindow = null;
+        $popupWindowDiv = null;
+
         e.sender.unbind("close", windowClose);
         e.sender.content(null);
     }

@@ -36,7 +36,7 @@
     # if (PassContentFieldId) {#
         <a href="@HttpUtility.UrlDecode(Url.Action<PassContentFieldController>(a => a.Edit(0), new { id = "#=PassContentFieldId#" }))" data-popup-window="wndPassField">#=FieldName#</a>
     #} else {#
-        <a href="@HttpUtility.UrlDecode(Url.Action<PassContentFieldController>(a => a.CreateContentField(null, null), new { passContentId = Model, passProjectFieldId = "#=PassProjectFieldId#" }))" data-popup-window="wndPassField">#=FieldName#</a>
+        <a href="@HttpUtility.UrlDecode(Url.Action<PassContentFieldController>(a => a.CreateContentField(0, 0), new { passContentId = Model, passProjectFieldId = "#=PassProjectFieldId#" }))" data-popup-window="wndPassField">#=FieldName#</a>
     #}#
 </script>
 
