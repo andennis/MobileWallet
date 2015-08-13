@@ -65,7 +65,6 @@
     <Compile Include="Entities\Templates\GeneralPassTemplate\LocationDetails.cs" />
     <Compile Include="Entities\Templates\GeneralPassTemplate\GeneralPassTemplate.cs" />
     <Compile Include="Exceptions\PassContainerException.cs" />
-    <Compile Include="Exceptions\PassGenerationException.cs" />
     <Compile Include="Exceptions\PassTemplateException.cs" />
     <Compile Include="IApplePassGeneratorConfig.cs" />
     <Compile Include="IPassProcessingAppleService.cs" />

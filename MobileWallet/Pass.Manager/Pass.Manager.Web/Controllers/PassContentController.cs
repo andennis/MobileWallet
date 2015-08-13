@@ -94,12 +94,5 @@ namespace Pass.Manager.Web.Controllers
             return PartialView(@"Tabs\_Registrations", id);
         }
 
-        [AjaxOnly]
-        public ActionResult SyncToTemplate(int id)
-        {
-            _service.SyncToTemplate(id);
-            return JsonEx(true, Resources.Resources.SyncToTemplateSuccess);
-        }
-
     }
 }

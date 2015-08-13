@@ -97,5 +97,6 @@
     <Build Include="Stored Procedures\pm.PassContent_Insert.sql" />
     <Build Include="Stored Procedures\pm.PassContentField_GetView.sql" />
     <None Include="Scripts\Post-Deployment\01. AddAdminUser.sql" />
+    <Build Include="Stored Procedures\pm.PassContentField_ListView.sql" />
   </ItemGroup>
 </Project>

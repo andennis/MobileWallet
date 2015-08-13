@@ -43,7 +43,7 @@ namespace Pass.Container.BL
             _fileStorageService = fileStorageService;
         }
 
-        public int CreatePass(int passTemplateId, IList<PassFieldInfo> fieldValues, DateTime? expDate = null)
+        public int CreatePass(int passTemplateId, IEnumerable<PassFieldInfo> fieldValues, DateTime? expDate = null)
         {
             IRepository<PassFieldValue> repPassFieldVal = _pcUnitOfWork.GetRepository<PassFieldValue>();
             IRepository<PassField> repPassField = _pcUnitOfWork.GetRepository<PassField>();
@@ -154,7 +154,7 @@ namespace Pass.Container.BL
 
             return fields;
         }
-        public void UpdatePassFields(int passId, IList<PassFieldInfo> newFieldValues)
+        public void UpdatePassFields(int passId, IEnumerable<PassFieldInfo> newFieldValues)
         {
             if (newFieldValues == null)
                 throw new ArgumentNullException("newFieldValues");
@@ -169,6 +169,12 @@ namespace Pass.Container.BL
             pass.UpdatedDate = DateTime.Now;
             repPass.Update(pass);
 
+            IRepository<PassField> repPassField = _pcUnitOfWork.GetRepository<PassField>();
+            IList<PassField> fields = repPassField.Query()
+                .Filter(x => x.PassTemplateId == pass.PassTemplateId)
+                .Get()
+                .ToList();
+
             IRepository<PassFieldValue> repPassFieldVal = _pcUnitOfWork.GetRepository<PassFieldValue>();
             IList<PassFieldValue> oldFieldValues = repPassFieldVal.Query()
                 .Filter(x => x.PassId == passId)
@@ -180,12 +186,27 @@ namespace Pass.Container.BL
             {
                 PassFieldValue pfv = oldFieldValues.FirstOrDefault(x => x.PassField.Name == newFieldValue.Name);
                 if (pfv == null)
-                    throw new PassContainerException(string.Format("Field '{0}' does not exist in pass ID: {1}", newFieldValue.Name, passId));
+                {
+                    PassField pf = fields.FirstOrDefault(x => x.Name == newFieldValue.Name);
+                    if (pf == null)
+                        throw new PassContainerException(string.Format("Field '{0}' does not exist in pass ID: {1}; pass template ID: {2}",
+                            newFieldValue.Name, passId, pass.PassTemplateId));
 
-                pfv.Label = newFieldValue.Label;
-                pfv.Value = newFieldValue.Value;
-
-                repPassFieldVal.Update(pfv);
+                    pfv = new PassFieldValue()
+                          {
+                              PassId = passId, 
+                              PassFieldId = pf.PassFieldId,
+                              Label = newFieldValue.Label,
+                              Value = newFieldValue.Value
+                          };
+                    repPassFieldVal.Insert(pfv);
+                }
+                else
+                {
+                    pfv.Label = newFieldValue.Label;
+                    pfv.Value = newFieldValue.Value;
+                    repPassFieldVal.Update(pfv);
+                }
             }
 
             _pcUnitOfWork.Save();

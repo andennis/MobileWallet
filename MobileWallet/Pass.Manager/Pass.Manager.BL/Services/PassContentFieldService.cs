@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Common.BL;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
@@ -25,6 +26,11 @@ namespace Pass.Manager.BL.Services
         public PassContentFieldView GetView(int passContentId, int passProjectFieldId)
         {
             return _unitOfWork.PassContentFieldRepository.GetView(passContentId, passProjectFieldId);
+        }
+
+        public IEnumerable<PassContentFieldView> GetListView(int passContentId)
+        {
+            return _unitOfWork.PassContentFieldRepository.GetListView(passContentId);
         }
     }
 }

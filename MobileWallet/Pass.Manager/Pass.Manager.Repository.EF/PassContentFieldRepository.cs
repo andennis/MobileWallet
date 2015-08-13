@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using System.Collections.Generic;
+using System.Data.SqlClient;
 using Pass.Manager.Core.Entities;
 using Common.Repository.EF;
 using Pass.Manager.Core.Exceptions;
@@ -11,6 +12,11 @@ namespace Pass.Manager.Repository.EF
         public PassContentFieldRepository(DbContextBase dbContext)
             : base(dbContext)
         {
+        }
+
+        public IEnumerable<PassContentFieldView> GetListView(int passContentId)
+        {
+            return SqlQueryStoredProc<PassContentFieldView>(DbScheme + ".PassContentField_ListView", new SqlParameter("PassContentId", passContentId));
         }
 
         public PassContentFieldView GetView(int passContentId, int passProjectFieldId)

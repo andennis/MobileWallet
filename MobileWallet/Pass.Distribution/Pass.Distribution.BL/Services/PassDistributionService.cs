@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using Common.BL;
 using Common.Extensions;
-using Common.Repository;
 using Common.Utils;
-using Newtonsoft.Json;
-using Pass.Container.Core;
-using Pass.Container.Core.Entities;
 using Pass.Container.Core.Entities.Enums;
 using Pass.Distribution.Core;
 using Pass.Distribution.Core.Entities;
@@ -77,12 +72,31 @@ namespace Pass.Distribution.BL.Services
         public void UpdatePassFields(int passContentId, IEnumerable<DistribField> passFields)
         {
             PassContent pc = _passContentService.GetDetails(passContentId);
+            IEnumerable<PassContentFieldView> fields = _passContentFieldService.GetListView(passContentId);
 
             foreach (DistribField distribField in passFields)
             {
                 PassContentField pcf = pc.Fields.FirstOrDefault(x => x.PassContentFieldId == distribField.DistribFieldId);
                 if (pcf != null)
+                {
                     pcf.FieldValue = distribField.Value;
+                }
+                else
+                {
+                    PassContentFieldView pcfv = fields.FirstOrDefault(x => x.FieldName == distribField.Name);
+                    if (pcfv == null)
+                        throw new PassManagerGeneralException(string.Format("Field '{0}' does not exist", distribField.Name));
+
+                    pcf = new PassContentField()
+                              {
+                                  PassContentId = passContentId,
+                                  PassProjectFieldId = pcfv.PassProjectFieldId,
+                                  FieldLabel = pcfv.FieldLabel,
+                                  FieldValue = pcfv.FieldValue
+                              };
+                    pc.Fields.Add(pcf);
+                }
+
             }
             _passContentService.Update(pc);
 
