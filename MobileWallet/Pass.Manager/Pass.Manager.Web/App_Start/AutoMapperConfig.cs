@@ -76,14 +76,8 @@ namespace Pass.Manager.Web
             Mapper.CreateMap<PassContentViewModel, PassContent>()
                 .ForMember(dst => dst.ContainerPassId, x => x.Ignore());
 
-            Mapper.CreateMap<PassContentFieldView, PassContentFieldViewModel>()
-                .ForMember(dst => dst.FieldKinds, x => x.MapFrom(src => StringIdsToPassContentFieldKinds(src.FieldKindIds)));
+            Mapper.CreateMap<PassContentFieldView, PassContentFieldViewModel>();
             Mapper.CreateMap<PassContentFieldViewModel, PassContentField>();
-        }
-
-        private static IEnumerable<PassContentFieldKind> StringIdsToPassContentFieldKinds(string cpmmaSeparatedIds)
-        {
-            return cpmmaSeparatedIds.ConvertToInts().Select(src2 => (PassContentFieldKind)src2);
         }
 
         private static FileContentInfo HttpPostedFileToFileContentInfo(HttpPostedFileBase file)

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using Common.Extensions;
 using FluentValidation.Attributes;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Web.Common;
@@ -20,15 +22,17 @@ namespace Pass.Manager.Web.Models
         public int PassProjectFieldId { get; set; }
         public string FieldName { get; set; }
 
-        public IEnumerable<PassContentFieldKind> FieldKinds { get; set; }
+        public string FieldKindIds { get; set; }
+        //public IEnumerable<PassContentFieldKind> FieldKinds { get; set; }
         public string FieldKindsAsString
         {
             get
             {
-                if (FieldKinds == null)
+                if (FieldKindIds == null)
                     return null;
 
-                return string.Join(", ", FieldKinds);
+                IEnumerable<PassContentFieldKind> fieldKinds = FieldKindIds.ConvertToInts().Select(x => (PassContentFieldKind)x);
+                return string.Join(", ", fieldKinds);
             }
         }
 
