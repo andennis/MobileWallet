@@ -14,7 +14,7 @@ namespace Common.Web
 {
     public static class FormControlExtensions
     {
-        private static readonly IDictionary<string, object> _initControlAttributes  = new Dictionary<string, object>()
+        private static readonly IDictionary<string, object> _initControlAttributes = new Dictionary<string, object>()
                                                                                   {
                                                                                       {"class", "form-control"}
                                                                                   };
@@ -52,7 +52,7 @@ namespace Common.Web
         {
             IDictionary<string, object> attributes = _initFormAttributes.MergeHtmlAttributes(htmlAttributes)
                 .MergeHtmlAttributes((object)ajaxHelper.ViewBag.HtmlFormAttributes);
-            var ajaxOptions = new AjaxOptions() {UpdateTargetId = updateTargetId, OnSuccess = onSuccess};
+            var ajaxOptions = new AjaxOptions() { UpdateTargetId = updateTargetId, OnSuccess = onSuccess };
             return ajaxHelper.BeginForm(actionName, controllerName, new RouteValueDictionary(routeValues), ajaxOptions, attributes);
         }
         #endregion
@@ -96,14 +96,14 @@ namespace Common.Web
         }
         public static MvcHtmlString ActionLinkExt(this HtmlHelper html, string linkText, string actionName, string controllerName = null, object routeValues = null, object htmlAttributes = null)
         {
-            var attrs = new Dictionary<string, object>() {{"class", "action"}};
+            var attrs = new Dictionary<string, object>() { { "class", "action" } };
             attrs.AddHtmlAttributes(htmlAttributes);
             return html.ActionLink(linkText, actionName, controllerName, new RouteValueDictionary(routeValues), attrs);
         }
         #endregion
 
         #region ActionLinkAjax
-        public static MvcHtmlString ActionLinkAjaxExt<TController>(this HtmlHelper html, Expression<Action<TController>> action, string linkText, string confirmMessage, 
+        public static MvcHtmlString ActionLinkAjaxExt<TController>(this HtmlHelper html, Expression<Action<TController>> action, string linkText, string confirmMessage,
             object routeValues = null, object htmlAttributes = null, AjaxActionOptions ajaxOptions = null)
             where TController : Controller
         {
@@ -111,7 +111,7 @@ namespace Common.Web
             return html.ActionLinkAjaxExt(linkText, confirmMessage, actionInfo.Action, actionInfo.Controller, routeValues, htmlAttributes, ajaxOptions);
         }
 
-        public static MvcHtmlString ActionLinkAjaxExt(this HtmlHelper html, string linkText, string confirmMessage, 
+        public static MvcHtmlString ActionLinkAjaxExt(this HtmlHelper html, string linkText, string confirmMessage,
             string actionName, string controllerName = null, object routeValues = null, object htmlAttributes = null, AjaxActionOptions ajaxOptions = null)
         {
             var tb = new TagBuilder("a");
@@ -143,6 +143,22 @@ namespace Common.Web
         }
         #endregion
 
+        #region ActionLinkForm
+        public static MvcHtmlString ActionLinkFormForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string actionName,
+            string controllerName, object routeValues = null, string labelText = null, object htmlAttributes = null)
+        {
+            string linkText = Convert.ToString(expression.Compile().Invoke(html.ViewData.Model));
+            return html.ActionLinkFormForExt(expression, linkText, actionName, controllerName, routeValues, labelText, htmlAttributes);
+        }
+        public static MvcHtmlString ActionLinkFormForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string linkText, string actionName,
+            string controllerName, object routeValues = null, string labelText = null, object htmlAttributes = null)
+        {
+            var attrs = new Dictionary<string, object> { { "class", "linkForm" } };
+            attrs.AddHtmlAttributes(htmlAttributes);
+            return html.LabelWithControl(expression, labelText, null, () => html.ActionLink(linkText, actionName, controllerName, new RouteValueDictionary(routeValues), attrs));
+        }
+        #endregion
+
         #region Partial
 
         public static MvcHtmlString PartialEx(this HtmlHelper html, string partialViewName, object model = null, ViewDataDictionary viewData = null)
@@ -157,7 +173,7 @@ namespace Common.Web
         {
             return html.TextBlockFor(expression, format, htmlAttributes);
         }
-        public static MvcHtmlString TextBlockFormForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string labelText = null, string format = null, 
+        public static MvcHtmlString TextBlockFormForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string labelText = null, string format = null,
             object htmlAttributes = null)
         {
             return html.LabelWithControl(expression, labelText, null, () => html.TextBlockFor(expression, format, htmlAttributes));
@@ -165,14 +181,14 @@ namespace Common.Web
 
         private static MvcHtmlString TextBlockFor<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string format = null, object htmlAttributes = null)
         {
-            if (typeof (TProperty) == typeof (DateTime))
+            if (typeof(TProperty) == typeof(DateTime))
             {
                 if (string.IsNullOrEmpty(format))
                     format = "d";
             }
 
             string dataFmt = (!string.IsNullOrEmpty(format) ? string.Format("{{0:{0}}}", format) : null);
-            IDictionary<string,object> attributes = _initControlAttributes
+            IDictionary<string, object> attributes = _initControlAttributes
                 .Union(new Dictionary<string, object>()
                 {
                     { "readonly", "readonly" }, 
@@ -227,7 +243,7 @@ namespace Common.Web
             return html.DropDownListExt(expression.GetPropertyName(), listItems, optionLabel, htmlAttributes);
         }
 
-        public static MvcHtmlString DropDownListExt<TModel>(this HtmlHelper<TModel> html, string name, IEnumerable<SelectListItem> listItems, string optionLabel = null, 
+        public static MvcHtmlString DropDownListExt<TModel>(this HtmlHelper<TModel> html, string name, IEnumerable<SelectListItem> listItems, string optionLabel = null,
             object htmlAttributes = null, string changeHandler = null)
         {
             DropDownListBuilder builder = html.Widget().DropDownList()
@@ -239,7 +255,7 @@ namespace Common.Web
 
             if (!string.IsNullOrEmpty(optionLabel))
                 builder.OptionLabel(optionLabel);
-            
+
             if (!string.IsNullOrEmpty(changeHandler))
                 builder.Events(x => x.Change(changeHandler));
 
@@ -279,7 +295,7 @@ namespace Common.Web
 
         public static MvcHtmlString CheckBoxFormForEx<TModel>(this HtmlHelper<TModel> html, Expression<Func<TModel, bool>> expression, string labelText = null)
         {
-            return html.LabelWithControl(expression, labelText, null, () => html.CheckBoxFor(expression, new {@class = "checkbox"}));
+            return html.LabelWithControl(expression, labelText, null, () => html.CheckBoxFor(expression, new { @class = "checkbox" }));
         }
         #endregion
 
@@ -359,7 +375,7 @@ namespace Common.Web
             return html.LabelWithControl(expression, labelText, null, () => html.DatePickerForEx(expression, value, minValue, maxValue, dateFormat, htmlAttributes));
         }
 
-        public static MvcHtmlString DatePickerEx(this HtmlHelper html, string name, DateTime? value = null, DateTime? minValue = null, DateTime? maxValue = null, 
+        public static MvcHtmlString DatePickerEx(this HtmlHelper html, string name, DateTime? value = null, DateTime? minValue = null, DateTime? maxValue = null,
             string dateFormat = null, object htmlAttributes = null)
         {
             DatePickerBuilder builder = html.Widget().DatePicker()
@@ -446,7 +462,7 @@ namespace Common.Web
                    };
         }
 
-        private static MvcHtmlString LabelWithControl<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, 
+        private static MvcHtmlString LabelWithControl<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression,
             string labelText, object labelHtmlAttributes, Func<MvcHtmlString> funcControl)
         {
             IDictionary<string, object> labelAttrs = new Dictionary<string, object>()
@@ -462,7 +478,7 @@ namespace Common.Web
                     else
                         labelAttrs.Add(attr);
                 }
-                
+
             }
 
             var formGroupDiv = new TagBuilder("div");

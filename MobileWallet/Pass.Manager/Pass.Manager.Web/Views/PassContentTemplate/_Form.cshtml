@@ -28,10 +28,6 @@
     <legend></legend>
     <div class="row">
         <div class="col-md-6">
-            @if (!Model.IsNew)
-            {
-                @Html.TextBlockFormForExt(m => m.PassContentTemplateId, "ID");
-            }
             @Html.TextBoxFormForExt(m => m.Name)
             @Html.TextAreaFormForExt(m => m.Description)
             @Html.TextBoxFormForExt(m => m.OrganizationName, "Organization Name")

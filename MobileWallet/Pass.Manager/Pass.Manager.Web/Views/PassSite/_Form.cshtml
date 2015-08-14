@@ -1,10 +1,6 @@
 ﻿@model PassSiteViewModel
            
 @Html.HiddenForExt(m => m.PassSiteId)
-@if (!Model.IsNew)
-{
-    @Html.TextBlockFormForExt(m => m.PassSiteId, "ID")
-}
 @Html.TextBoxFormForExt(m => m.Name)
 @Html.TextAreaFormForExt(m => m.Description)
 

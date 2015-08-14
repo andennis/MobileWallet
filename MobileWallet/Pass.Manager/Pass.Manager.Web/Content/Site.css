@@ -377,7 +377,7 @@ textarea {
     }
 
 /*For Kendo datepicker extention*/
-.k-widget.k-datepicker.k-header.form-control,.k-widget.k-dropdown.k-header.form-control, .k-picker-wrap.k-state-default {
+.k-widget.k-datepicker.k-header.form-control, .k-widget.k-dropdown.k-header.form-control, .k-picker-wrap.k-state-default {
     padding: 0;
     border: none;
 }
@@ -444,5 +444,18 @@ img[src=""].boundBoolImg {
 }
 
 .grid-filter {
-    margin-bottom: 5px
+    margin-bottom: 5px;
+}
+
+.flexCaption {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/*For ActionLinkFormForExt control*/
+.linkForm {
+    margin-top: 7px;
+    position: absolute;
 }

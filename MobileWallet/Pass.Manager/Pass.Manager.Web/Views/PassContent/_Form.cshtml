@@ -34,8 +34,7 @@
             }
             else
             {
-                @Html.TextBlockFormForExt(m => m.PassContentId, "ID");
-                @Html.TextBlockFormForExt(m => m.PassContentTemplateName, "Pass Template")
+                @Html.ActionLinkFormForExt(m => m.PassContentTemplateName, "Edit", "PassContentTemplate", new { id = Model.PassContentTemplateId }, "Pass Template")
             }
 
             @Html.TextBoxFormForExt(m => m.SerialNumber)
