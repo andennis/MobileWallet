@@ -78,4 +78,7 @@
     <Build Include="Scripts\GenerateTestData.sql" />
     <Build Include="Scripts\DbSchemeScript.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="FileStorage.DB.SqlServer.local.publish.xml" />
+  </ItemGroup>
 </Project>

@@ -99,4 +99,7 @@
     <None Include="Scripts\Post-Deployment\01. AddAdminUser.sql" />
     <Build Include="Stored Procedures\pm.PassContentField_ListView.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Pass.Manager.DB.SqlServer.local-publish.publish.xml" />
+  </ItemGroup>
 </Project>

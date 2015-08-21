@@ -82,4 +82,7 @@
     <Build Include="Tables\pscn.PassNative.sql" />
     <Build Include="Tables\pscn.PassApple.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Pass.Container.DB.SqlServer.local-publish.publish.xml" />
+  </ItemGroup>
 </Project>

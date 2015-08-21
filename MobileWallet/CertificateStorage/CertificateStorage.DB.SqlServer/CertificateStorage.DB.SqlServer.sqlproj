@@ -67,4 +67,7 @@
     <Build Include="Tables\cer.Certificate.sql" />
     <Build Include="Security\cer.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="CertificateStorage.DB.SqlServer.publish.xml" />
+  </ItemGroup>
 </Project>
