@@ -67,9 +67,15 @@ namespace Pass.Manager.Web
                 "~/Scripts/kendo/2014.2.716/kendo.list.min.js",
                 "~/Scripts/kendo/2014.2.716/kendo.fx.min.js",
                 "~/Scripts/kendo/2014.2.716/kendo.userevents.min.js",
-                "~/Scripts/kendo/2014.2.716/kendo.draganddrop.min.js",
+                //"~/Scripts/kendo/2014.2.716/kendo.draganddrop.min.js",
                 "~/Scripts/kendo/2014.2.716/kendo.mobile.scroller.min.js",
-                "~/Scripts/kendo/2014.2.716/kendo.dropdownlist.min.js"));
+                "~/Scripts/kendo/2014.2.716/kendo.dropdownlist.min.js",
+                
+                //ColorPicker
+                //"~/Scripts/kendo/2014.2.716/kendo.color.min.js", ???
+                "~/Scripts/kendo/2014.2.716/kendo.slider.min.js",
+                "~/Scripts/kendo/2014.2.716/kendo.colorpicker.min.js"
+                ));
 
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
