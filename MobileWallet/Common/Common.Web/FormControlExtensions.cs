@@ -7,6 +7,7 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using Common.Extensions;
+using Common.Web.Controls.ColorPicker;
 using Common.Web.Controls.DatePicker;
 using Common.Web.Controls.DropDownList;
 
@@ -390,6 +391,32 @@ namespace Common.Web
                 builder.Value(value.Value);
             if (!string.IsNullOrEmpty(dateFormat))
                 builder.Format(dateFormat);
+
+            return new MvcHtmlString(builder.ToHtmlString());
+        }
+        #endregion
+
+        #region ColorPicker
+        public static MvcHtmlString ColorPickerForEx<TModel>(this HtmlHelper<TModel> html, Expression<Func<TModel, string>> expression, string value = null, object htmlAttributes = null)
+        {
+            string propName = expression.GetPropertyName();
+            return html.ColorPickerEx(propName, value, htmlAttributes);
+        }
+
+        public static MvcHtmlString ColorPickerFormForExt<TModel>(this HtmlHelper<TModel> html, Expression<Func<TModel, string>> expression, string labelText = null,
+            string value = null, object htmlAttributes = null)
+        {
+            return html.LabelWithControl(expression, labelText, null, () => html.ColorPickerForEx(expression, value, htmlAttributes));
+        }
+
+        public static MvcHtmlString ColorPickerEx(this HtmlHelper html, string name, string value = null, object htmlAttributes = null)
+        {
+            ColorPickerBuilder builder = html.Widget().ColorPicker()
+                .Name(name)
+                .HtmlAttributes(_initControlAttributes.MergeHtmlAttributes(htmlAttributes));
+
+            if (value != null)
+                builder.Value(value);
 
             return new MvcHtmlString(builder.ToHtmlString());
         }

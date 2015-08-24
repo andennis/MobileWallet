@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Common.Web.Controls.ColorPicker;
 using Common.Web.Controls.DatePicker;
 using Common.Web.Controls.DropDownList;
 using Common.Web.Controls.Popup;
@@ -28,5 +29,11 @@ namespace Common.Web.Controls
         {
             return new DropDownListBuilder(new DropDownList.DropDownList(_htmlHelper.ViewContext));
         }
+
+        public virtual ColorPickerBuilder ColorPicker()
+        {
+            return new ColorPickerBuilder(new ColorPicker.ColorPicker(_htmlHelper.ViewContext));
+        }
+
     }
 }

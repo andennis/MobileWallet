@@ -78,6 +78,12 @@
     <Compile Include="AjaxActionOptions.cs" />
     <Compile Include="Controls\CalendarView.cs" />
     <Compile Include="Controls\AnimationDuration.cs" />
+    <Compile Include="Controls\ColorPicker\ColorPaletteTileSize.cs" />
+    <Compile Include="Controls\ColorPicker\ColorPicker.cs" />
+    <Compile Include="Controls\ColorPicker\ColorPickerBuilder.cs" />
+    <Compile Include="Controls\ColorPicker\ColorPickerEventBuilder.cs" />
+    <Compile Include="Controls\ColorPicker\ColorPickerPalette.cs" />
+    <Compile Include="Controls\ColorPicker\PaletteSizeBuilder.cs" />
     <Compile Include="Controls\DropDownList\DropDownList.cs" />
     <Compile Include="Controls\DropDownList\DropDownListBuilder.cs" />
     <Compile Include="Controls\DropDownList\DropDownListEventBuilder.cs" />
