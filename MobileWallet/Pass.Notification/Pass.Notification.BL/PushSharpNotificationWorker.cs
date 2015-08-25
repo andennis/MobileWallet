@@ -55,12 +55,20 @@ namespace Pass.Notification.BL
             push.StopAllServices();
         }
 
-        static void NotificationSent(object sender, INotification notification)
+        // Notification has been sent successfully.
+        private void NotificationSent(object sender, INotification notification)
         {
-           
+            var appleNotification = (AppleNotification)notification;
+            var deviceTocken = appleNotification.DeviceToken;
+
+            List<PushNotificationItem> failPushNotificationItems = _repPushNotificationItem.Query()
+                .Filter(x => x.PushTockenId == deviceTocken && x.Status == PushStatus.InProcess)
+                .Get().ToList();
+            _pnUnitOfWork.PushNotificationRepository.SetPushNotificationStatus(failPushNotificationItems.Select(x => x.PushNotificationItemId).ToList(), PushStatus.Processed);
+            _pnUnitOfWork.Save();
         }
 
-         void NotificationFailed(object sender, INotification notification, Exception notificationFailureException)
+         private void NotificationFailed(object sender, INotification notification, Exception notificationFailureException)
         {
             var appleNotification = (AppleNotification) notification;
             var deviceTocken = appleNotification.DeviceToken;
