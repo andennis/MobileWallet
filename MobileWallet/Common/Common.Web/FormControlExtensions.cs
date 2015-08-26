@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
@@ -220,7 +221,7 @@ namespace Common.Web
             string labelText = null, string optionLabel = null)
             where TEnumProperty : struct
         {
-            SelectList listItems = EnumHelper.ToSelectList<TEnumProperty>();
+            SelectList listItems = EnumHelper.ToSelectList<TEnumProperty>(/*(TEnumProperty)selectedValue*/);
             return html.DropDownListFormForExt(expression, listItems, labelText, optionLabel);
         }
 
@@ -228,7 +229,7 @@ namespace Common.Web
             string labelText = null, string optionLabel = null)
             where TEnumProperty : struct
         {
-            SelectList listItems = EnumHelper.ToSelectList<TEnumProperty>();
+            SelectList listItems = EnumHelper.ToSelectList<TEnumProperty>(/*(TEnumProperty?) selectedValue*/);
             return html.DropDownListFormForExt(expression, listItems, labelText, optionLabel);
         }
 
@@ -241,10 +242,14 @@ namespace Common.Web
         public static MvcHtmlString DropDownListForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems,
             string optionLabel = null, object htmlAttributes = null)
         {
-            return html.DropDownListExt(expression.GetPropertyName(), listItems, optionLabel, htmlAttributes);
+            object selectedValue = expression.GetPropertyValue(html.ViewData.Model);
+            if (selectedValue is Enum)
+                selectedValue = Convert.ToInt32(selectedValue);
+
+            return html.DropDownListExt(expression.GetPropertyName(), listItems, selectedValue, optionLabel, htmlAttributes);
         }
 
-        public static MvcHtmlString DropDownListExt<TModel>(this HtmlHelper<TModel> html, string name, IEnumerable<SelectListItem> listItems, string optionLabel = null,
+        public static MvcHtmlString DropDownListExt<TModel>(this HtmlHelper<TModel> html, string name, IEnumerable<SelectListItem> listItems, object selectedValue = null, string optionLabel = null,
             object htmlAttributes = null, string changeHandler = null)
         {
             DropDownListBuilder builder = html.Widget().DropDownList()
@@ -253,6 +258,9 @@ namespace Common.Web
                 .DataValueField("Value")
                 .BindTo(listItems)
                 .HtmlAttributes(_initControlAttributes.MergeHtmlAttributes(htmlAttributes));
+
+            if (selectedValue != null)
+                builder.SelectedValue(selectedValue);
 
             if (!string.IsNullOrEmpty(optionLabel))
                 builder.OptionLabel(optionLabel);
@@ -397,26 +405,29 @@ namespace Common.Web
         #endregion
 
         #region ColorPicker
-        public static MvcHtmlString ColorPickerForEx<TModel>(this HtmlHelper<TModel> html, Expression<Func<TModel, string>> expression, string value = null, object htmlAttributes = null)
+        public static MvcHtmlString ColorPickerForEx<TModel>(this HtmlHelper<TModel> html, Expression<Func<TModel, int?>> expression, int? value = null, object htmlAttributes = null)
         {
             string propName = expression.GetPropertyName();
             return html.ColorPickerEx(propName, value, htmlAttributes);
         }
 
-        public static MvcHtmlString ColorPickerFormForExt<TModel>(this HtmlHelper<TModel> html, Expression<Func<TModel, string>> expression, string labelText = null,
-            string value = null, object htmlAttributes = null)
+        public static MvcHtmlString ColorPickerFormForExt<TModel>(this HtmlHelper<TModel> html, Expression<Func<TModel, int?>> expression, string labelText = null,
+            int? value = null, object htmlAttributes = null)
         {
             return html.LabelWithControl(expression, labelText, null, () => html.ColorPickerForEx(expression, value, htmlAttributes));
         }
 
-        public static MvcHtmlString ColorPickerEx(this HtmlHelper html, string name, string value = null, object htmlAttributes = null)
+        public static MvcHtmlString ColorPickerEx(this HtmlHelper html, string name, int? value = null, object htmlAttributes = null)
         {
             ColorPickerBuilder builder = html.Widget().ColorPicker()
                 .Name(name)
                 .HtmlAttributes(_initControlAttributes.MergeHtmlAttributes(htmlAttributes));
 
-            if (value != null)
-                builder.Value(value);
+            if (value.HasValue)
+            {
+                Color color = Color.FromArgb(value.Value);
+                builder.Value(string.Format("#{0:X2}{1:X2}{2:X2}", color.R, color.G, color.B));
+            }
 
             return new MvcHtmlString(builder.ToHtmlString());
         }

@@ -27,11 +27,16 @@ namespace Common.Web.Tests
         [Test]
         public void ToSelectListTest()
         {
-            SelectList sl = EnumHelper.ToSelectList<MyEnum>();
+            SelectList sl = EnumHelper.ToSelectList<MyEnum>(MyEnum.V2);
             Assert.AreEqual(2, sl.Count());
             SelectListItem[] arr = sl.ToArray();
             Assert.AreEqual("V1", arr[0].Text);
             Assert.AreEqual("1", arr[0].Value);
+            Assert.NotNull(sl.SelectedValue);
+            Assert.AreEqual(sl.SelectedValue.ToString(), ((int)MyEnum.V2).ToString());
+
+            sl = EnumHelper.ToSelectList<MyEnum>();
+            Assert.Null(sl.SelectedValue);
         }
 
         [Test]

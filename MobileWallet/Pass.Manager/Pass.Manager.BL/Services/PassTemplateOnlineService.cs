@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -178,9 +179,9 @@ namespace Pass.Manager.BL.Services
                 PassDescription = template.Description,
                 OrganizationName = template.OrganizationName,
                 PassStyle = ConvertTo(template.PassStyle),
-                BackgroundColor = template.BackgroundColor,
-                ValueTextColor = template.ForegroundColor,
-                LabelTextColor = template.LabelColor,
+                BackgroundColor = template.BackgroundColor.HasValue ? Color.FromArgb(template.BackgroundColor.Value) : (Color?)null,
+                ValueTextColor = template.ForegroundColor.HasValue ? Color.FromArgb(template.ForegroundColor.Value) : (Color?)null,
+                LabelTextColor = template.LabelColor.HasValue ? Color.FromArgb(template.LabelColor.Value) : (Color?)null,
                 SuppressStripShine = template.SuppressStripShine,
                 LogoText = template.LogoText,
                 GroupingIdentifier = template.GroupingIdentifier,

@@ -19,10 +19,11 @@ namespace Common.Web
                 });
         }
 
-        public static SelectList ToSelectList<TEnum>() where TEnum : struct
+        public static SelectList ToSelectList<TEnum>(TEnum? selectedValue = null) where TEnum : struct
         {
             IEnumerable<SelectListItem> items = ToSelectListItems<TEnum>();
-            return new SelectList(items, "Value", "Text");
+            string selectedValueStr = selectedValue.HasValue ? Convert.ToInt32(selectedValue).ToString() : null;
+            return new SelectList(items, "Value", "Text", selectedValueStr);
         }
 
         public static IDictionary<string, int> ToDictionary<TEnum>() where TEnum : struct

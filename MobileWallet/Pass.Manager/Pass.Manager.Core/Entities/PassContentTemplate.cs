@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using Common.Repository;
 
 namespace Pass.Manager.Core.Entities
@@ -26,10 +25,10 @@ namespace Pass.Manager.Core.Entities
         public ICollection<PassLocation> Locations { get; set; }
         public ICollection<PassImage> PassImages { get; set; }
 
-        public Color? BackgroundColor { get; set; }
-        public Color? ForegroundColor { get; set; }
+        public int? BackgroundColor { get; set; }
+        public int? ForegroundColor { get; set; }
         public string GroupingIdentifier { get; set; }
-        public Color? LabelColor { get; set; }
+        public int? LabelColor { get; set; }
         public string LogoText { get; set; }
         public bool SuppressStripShine { get; set; }
 
