@@ -64,7 +64,8 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="Security\pn.sql" />
-    <Build Include="Tables\PushNotificationQueue.sql" />
+    <Build Include="Tables\pn.PushNotificationQueue.sql" />
+    <Build Include="Tables\pn.PushNotificationItem.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\Quartz.NET\DbSchemeScript.sql" />
