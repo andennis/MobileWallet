@@ -124,6 +124,10 @@
     <Compile Include="Migrations\201506242348142_M18.Designer.cs">
       <DependentUpon>201506242348142_M18.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508301615577_M19.cs" />
+    <Compile Include="Migrations\201508301615577_M19.Designer.cs">
+      <DependentUpon>201508301615577_M19.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PassContainerDbContext.cs" />
     <Compile Include="PassContainerUnitOfWork.cs" />
@@ -202,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506242348142_M18.resx">
       <DependentUpon>201506242348142_M18.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508301615577_M19.resx">
+      <DependentUpon>201508301615577_M19.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

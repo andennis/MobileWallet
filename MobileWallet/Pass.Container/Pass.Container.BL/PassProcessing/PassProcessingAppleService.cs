@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using Common.Extensions;
 using Common.Repository;
@@ -91,7 +90,9 @@ namespace Pass.Container.BL.PassProcessing
             if (!Authenticate(authToken, pass))
                 return PassProcessingStatus.Unauthorized;
 
-            DateTime updatedDate = pass.UpdatedDate.TruncateMiliseconds();
+            var pt = _pcUnitOfWork.GetRepository<PassTemplate>().Find(pass.PassTemplateId);
+            DateTime updatedDate = pass.UpdatedDate >= pt.UpdatedDate ? pass.UpdatedDate : pt.UpdatedDate;
+            updatedDate = updatedDate.TruncateMiliseconds();
             if (lastUpdatedDate.HasValue && lastUpdatedDate.Value >= updatedDate)
                 return PassProcessingStatus.NotModified;
 

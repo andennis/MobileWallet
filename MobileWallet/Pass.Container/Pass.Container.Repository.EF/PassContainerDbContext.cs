@@ -18,14 +18,6 @@ namespace Pass.Container.Repository.EF
 
         public override string DbScheme { get { return "pscn"; } }
 
-        //public DbSet<Core.Entities.Pass> Passes { get; set; }
-        //public DbSet<PassTemplate> PassTemplates { get; set; }
-        //public DbSet<PassTemplateNative> PassTemplateNatives { get; set; }
-        //public DbSet<PassField> PassFields { get; set; }
-        //public DbSet<PassFieldValue> PassFieldValues { get; set; }
-        //public DbSet<ClientDevice> ClientDevices { get; set; }
-        //public DbSet<Registration> Registrations { get; set; }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //Pass
@@ -36,15 +28,14 @@ namespace Pass.Container.Repository.EF
             modelBuilder.Entity<PassField>().ToTable("PassField", DbScheme);
             modelBuilder.Entity<PassField>().HasRequired(x => x.Template).WithMany(x => x.PassFields).HasForeignKey(x => x.PassTemplateId);
             modelBuilder.Entity<PassField>().Property(x => x.Name).IsRequired().HasMaxLength(FieldLenName);
-            modelBuilder.Entity<PassField>().Property(x => x.DefaultValue).HasMaxLength(512);
-            modelBuilder.Entity<PassField>().Property(x => x.DefaultLabel).HasMaxLength(512);
+            //modelBuilder.Entity<PassField>().Property(x => x.DefaultValue).HasMaxLength(512);
+            //modelBuilder.Entity<PassField>().Property(x => x.DefaultLabel).HasMaxLength(512);
             modelBuilder.Entity<PassField>().Property(x => x.Version).IsConcurrencyToken();
 
             modelBuilder.Entity<Core.Entities.Pass>().ToTable("Pass", DbScheme);
             modelBuilder.Entity<Core.Entities.Pass>().HasRequired(x => x.Template).WithMany(x => x.Passes).HasForeignKey(x => x.PassTemplateId).WillCascadeOnDelete(false);
             modelBuilder.Entity<Core.Entities.Pass>().Property(x => x.AuthToken).IsRequired().HasMaxLength(64).IsUnicode(false);
             modelBuilder.Entity<Core.Entities.Pass>().Property(x => x.SerialNumber).IsRequired().HasMaxLength(64).IsUnicode(false);
-            //modelBuilder.Entity<Core.Entities.Pass>().Property(x => x.PassTypeId).IsRequired().HasMaxLength(FieldLenPassTypeId).IsUnicode(false);
             modelBuilder.Entity<Core.Entities.Pass>().Property(x => x.Version).IsConcurrencyToken();
 
             modelBuilder.Entity<PassNative>().ToTable("PassNative", DbScheme);

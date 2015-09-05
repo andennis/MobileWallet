@@ -93,11 +93,11 @@ namespace Pass.Container.BL.PassGenerators
             {
                 //Replace label
                 string labelFieldName = string.Format(ApplePass.FieldLabelFormat, pfInfo.Name);
-                passContent = passContent.ReplaceFirst(labelFieldName, pfInfo.Label);
+                passContent = passContent.Replace(labelFieldName, pfInfo.Label);
 
                 //Replace value
                 string valueFieldName = string.Format(ApplePass.FieldValueFormat, pfInfo.Name);
-                passContent = passContent.ReplaceFirst(valueFieldName, pfInfo.Value);
+                passContent = passContent.Replace(valueFieldName, pfInfo.Value);
             }
 
             return passContent;

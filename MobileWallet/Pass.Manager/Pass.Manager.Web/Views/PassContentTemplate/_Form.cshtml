@@ -35,6 +35,7 @@
             <div id="divContainerTemplateId" style="display:@(Model.PassContainerTemplateId.HasValue ? "block" : "none")">
                 @Html.TextBlockFormForExt(m => m.PassContainerTemplateId, "Online Template ID")
             </div>
+            @Html.ColorPickerFormForExt(m => m.BackgroundColor, "Background Color")
             @Html.ColorPickerFormForExt(m => m.ForegroundColor, "Foreground Color")
             @Html.ColorPickerFormForExt(m => m.LabelColor, "Label Color")
         </div>
@@ -46,7 +47,8 @@
 
             @Html.TextBoxFormForExt(m => m.LogoText, "Logo Text")
             @Html.CheckBoxFormForEx(m => m.SuppressStripShine, "Suppress Strip Shine")
-            @Html.ColorPickerFormForExt(m => m.BackgroundColor, "Background Color")
+            @Html.TextBlockFormForExt(m => m.CreatedDate, labelText: Resources.CreatedDate, format: "g")
+            @Html.TextBlockFormForExt(m => m.UpdatedDate, labelText: Resources.UpdatedDate, format: "g")
         </div>
     </div>
 </fieldset>

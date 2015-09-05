@@ -16,6 +16,8 @@ namespace Pass.Manager.Core.Entities
         public string PassContentTemplateName { get; set; }
         public int? ContainerPassId { get; set; }
         public int PassProjectId { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public DateTime UpdatedDate { get; set; }
 
     }
 }

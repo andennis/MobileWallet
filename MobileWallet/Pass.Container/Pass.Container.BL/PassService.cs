@@ -98,15 +98,10 @@ namespace Pass.Container.BL
                                   PassFieldId = passField.PassFieldId,
                               };
 
-                if (fieldInfo == null)
+                if (fieldInfo != null)
                 {
-                    pfv.Label = passField.DefaultLabel;
-                    pfv.Value = passField.DefaultValue;
-                }
-                else
-                {
-                    pfv.Label = fieldInfo.Label ?? passField.DefaultLabel;
-                    pfv.Value = fieldInfo.Value ?? passField.DefaultValue;
+                    pfv.Label = fieldInfo.Label;
+                    pfv.Value = fieldInfo.Value;
                 }
 
                 repPassFieldVal.Insert(pfv);
@@ -142,7 +137,7 @@ namespace Pass.Container.BL
                 .Include(x => x.PassField)
                 .Get()
                 .AsEnumerable()
-                .Select(x => EntityConverter.RepositoryFieldValueToPassFieldInfo(x, true))
+                .Select(EntityConverter.RepositoryFieldValueToPassFieldInfo)
                 .ToList();
 
             if (!fields.Any())
@@ -239,7 +234,8 @@ namespace Pass.Container.BL
             {
                 //Try to get pass file from temporary folder (cache)
                 string filePath = Path.Combine(dstPassFolder, GetTemporaryPassFileName(pn));
-                if (File.Exists(filePath))
+                var fi = new FileInfo(filePath);
+                if (fi.Exists && fi.CreationTime >= pn.UpdatedDate)
                     return filePath;
 
                 //Try to get pass file from file storage
@@ -256,6 +252,7 @@ namespace Pass.Container.BL
             bool copyTemplate = !di.Exists;
             if (di.Exists && di.CreationTime <= pass.Template.UpdatedDate)
             {
+                //Remove old template
                 Directory.Delete(templateFolder, true);
                 copyTemplate = true;
             }
@@ -267,7 +264,7 @@ namespace Pass.Container.BL
 
             //Generate pass file
             IPassGenerator pg = GetPassGenerator(pass.Template, clientType, templateFolder);
-            IEnumerable<PassFieldInfo> fields = pass.FieldValues.Select(x => EntityConverter.RepositoryFieldValueToPassFieldInfo(x, true));
+            IEnumerable<PassFieldInfo> fields = pass.FieldValues.Select(EntityConverter.RepositoryFieldValueToPassFieldInfo);
             string passFile = pg.GeneratePass(pass.AuthToken, pass.SerialNumber, fields, dstPassFolder);
 
             SavePassToFileStorage(pn, passFile);

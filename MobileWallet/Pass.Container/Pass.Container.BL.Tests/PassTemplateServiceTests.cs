@@ -91,8 +91,8 @@ namespace Pass.Container.BL.Tests
                 PassField[] passFields = passTemplate.PassFields.ToArray();
                 Assert.AreEqual(1, passFields.Length);
                 Assert.AreEqual("Key01", passFields[0].Name);
-                Assert.AreEqual("LKey01", passFields[0].DefaultLabel);
-                Assert.AreEqual("VKey01", passFields[0].DefaultValue);
+                //Assert.AreEqual("LKey01", passFields[0].DefaultLabel);
+                //Assert.AreEqual("VKey01", passFields[0].DefaultValue);
                 Assert.AreEqual(EntityStatus.Active, passFields[0].Status);
 
                 //Check template storage
@@ -129,8 +129,8 @@ namespace Pass.Container.BL.Tests
                 Assert.IsNotNull(passFields);
                 Assert.AreEqual(1, passFields.Count);
                 Assert.AreEqual("Key01", passFields[0].Name);
-                Assert.AreEqual("LKey01", passFields[0].Label);
-                Assert.AreEqual("VKey01", passFields[0].Value);
+                //Assert.AreEqual("LKey01", passFields[0].Label);
+                //Assert.AreEqual("VKey01", passFields[0].Value);
             }
         }
 
@@ -205,14 +205,14 @@ namespace Pass.Container.BL.Tests
 
                 PassField pf = passFields.FirstOrDefault(x => x.Name == "Key01");
                 Assert.IsNotNull(pf);
-                Assert.AreEqual("LKey01_new", pf.DefaultLabel);
-                Assert.AreEqual("VKey01_new", pf.DefaultValue);
+                //Assert.AreEqual("LKey01_new", pf.DefaultLabel);
+                //Assert.AreEqual("VKey01_new", pf.DefaultValue);
                 Assert.AreEqual(EntityStatus.Active, pf.Status);
 
                 pf = passFields.FirstOrDefault(x => x.Name == "Key02");
                 Assert.IsNotNull(pf);
-                Assert.AreEqual("LKey02", pf.DefaultLabel);
-                Assert.AreEqual("VKey02", pf.DefaultValue);
+                //Assert.AreEqual("LKey02", pf.DefaultLabel);
+                //Assert.AreEqual("VKey02", pf.DefaultValue);
                 Assert.AreEqual(EntityStatus.Active, pf.Status);
             }
         }

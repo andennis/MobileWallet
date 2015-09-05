@@ -7,7 +7,6 @@ using CertificateStorage.Core.Entities;
 using Common.Extensions;
 using Common.Repository;
 using Common.Utils;
-using Pass.Container.BL.Helpers;
 using Pass.Container.BL.PassTemplateGenerators;
 using Pass.Container.Core;
 using Pass.Container.Core.Entities;
@@ -91,8 +90,6 @@ namespace Pass.Container.BL
                 _repPassField.Insert(new PassField
                                      {
                                          Name = dynamicField.Key,
-                                         DefaultLabel = dynamicField.Label,
-                                         DefaultValue = dynamicField.Value,
                                          PassTemplateId = passTemplate.PassTemplateId,
                                          Status = EntityStatus.Active
                                      });
@@ -128,6 +125,7 @@ namespace Pass.Container.BL
             string srcImageFilesPath = Path.Combine(passTemplatePath, TemplateImagesFolderName);
             BuildNativeTemplates(generalPassTemplate, templateStorageId, srcImageFilesPath);
 
+            //TODO It should be improved with using dictionary
             IEnumerable<GeneralField> newFields = GetDynamicFields(generalPassTemplate);
             //Update existing and add new fields
             foreach (var newFiled in newFields)
@@ -138,17 +136,17 @@ namespace Pass.Container.BL
                     _repPassField.Insert(new PassField
                                              {
                                                  Name = newFiled.Key,
-                                                 DefaultLabel = newFiled.Label,
-                                                 DefaultValue = newFiled.Value,
                                                  PassTemplateId = passTemplate.PassTemplateId,
                                                  Status = EntityStatus.Active
                                              });
                 }
                 else
                 {
-                    pf.DefaultLabel = newFiled.Label;
-                    pf.DefaultValue = newFiled.Value;
-                    pf.Status = EntityStatus.Active;
+                    if (pf.Status != EntityStatus.Active)
+                    {
+                        pf.Status = EntityStatus.Active;
+                        _repPassField.Update(pf);
+                    }
                 }
             }
 
@@ -216,8 +214,6 @@ namespace Pass.Container.BL
                                  {
                                      PassFieldId = x.PassFieldId,
                                      Name = x.Name,
-                                     Label = x.DefaultLabel ?? x.Name,
-                                     Value = x.DefaultValue
                                  })
                 .ToList();
         }
@@ -234,15 +230,6 @@ namespace Pass.Container.BL
             _ptsService.GetNativeTemplateFiles(passTemplate.PackageId, ClientType.Apple, Path.Combine(dstPath, "Apple"));
             //_ptsService.GetNativeTemplateFiles(passTemplate.PackageId, ClientType.Browser, dstPath);
         }
-
-        /*
-        private bool ValidatePassTemplate(string passTemplateFilePath)
-        {
-            //TODO Pass template validation
-            //check different key in field
-            return true;
-        }
-        */
 
         private IEnumerable<GeneralField> GetDynamicFields(GeneralPassTemplate generalPassTemplate)
         {

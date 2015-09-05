@@ -137,8 +137,6 @@ namespace Pass.Processing.Web.Controllers
                     case PassProcessingStatus.Succeed:
                         //If request is authorized, return HTTP status 200 with a payload of the pass data.
                         var stream = new FileStream(packageInfo.PackageFilePath, FileMode.Open);
-                        //var stream = new FileStream(@"d:\Temp\PassBook\sdx2uusd.pkpass", FileMode.Open);
-                        
                         HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
                         response.Content = new StreamContent(stream);
                         response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/vnd.apple.pkpass");

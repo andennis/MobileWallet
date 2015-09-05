@@ -53,10 +53,6 @@ namespace Pass.Container.BL.Tests
         public void RegisterDeviceTest()
         {
             throw new NotImplementedException();
-            using (var appleDevicePassProcessingService = GetAppleDevicePassProcessingService())
-            {
-                //appleDevicePassProcessingService.RegisterDevice();
-            }
         }
         [Test]
         public void UnregisterDeviceTest()

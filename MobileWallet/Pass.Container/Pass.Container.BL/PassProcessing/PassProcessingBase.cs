@@ -26,7 +26,6 @@ namespace Pass.Container.BL.PassProcessing
                 
                 reg.Status = EntityStatus.Active;
                 regRep.Update(reg);
-                //_pcUnitOfWork.Save();
                 return PassProcessingStatus.Succeed;
             }
 
@@ -38,7 +37,6 @@ namespace Pass.Container.BL.PassProcessing
                       };
 
             regRep.Insert(reg);
-            //_pcUnitOfWork.Save();
             return PassProcessingStatus.Succeed;
         }
         protected PassProcessingStatus RemovePassFromClientDevice(int passId, ClientDevice clientDevice)
@@ -50,7 +48,6 @@ namespace Pass.Container.BL.PassProcessing
 
             reg.Status = EntityStatus.Inactive;
             regRep.Update(reg);
-            //_pcUnitOfWork.Save();
             return PassProcessingStatus.Succeed;
         }
 

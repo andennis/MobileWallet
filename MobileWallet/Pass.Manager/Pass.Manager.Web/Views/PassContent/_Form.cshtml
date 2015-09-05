@@ -28,6 +28,7 @@
         <legend></legend>
         
         <div class="col-md-6">
+            @Html.HiddenForExt(m => m.PassContentTemplateId)
             @if (Model.IsNew)
             {
                 @Html.DropDownListFormForExt(m => m.PassContentTemplateId, Model.PassContentTemplates, "Pass Template", "- Select Pass Template -")
@@ -35,6 +36,7 @@
             else
             {
                 @Html.ActionLinkFormForExt(m => m.PassContentTemplateName, "Edit", "PassContentTemplate", new { id = Model.PassContentTemplateId }, "Pass Template")
+                @Html.HiddenForExt(m => m.PassContentTemplateName)
             }
 
             @Html.TextBoxFormForExt(m => m.SerialNumber)
@@ -55,6 +57,8 @@
             {
                 @Html.DropDownListFormForExt(m => m.Status)
             }
+            @Html.TextBlockFormForExt(m => m.CreatedDate, labelText: Resources.CreatedDate, format:"g")
+            @Html.TextBlockFormForExt(m => m.UpdatedDate, labelText: Resources.UpdatedDate, format: "g")
         </div>
 
     </fieldset>

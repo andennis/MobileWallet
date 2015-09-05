@@ -47,6 +47,7 @@ namespace Pass.Manager.Web.Models
         public int? PassContainerTemplateId { get; set; }
 
         public bool IsOnline { get { return PassContainerTemplateId.HasValue; } }
-
+        public DateTime CreatedDate { get; set; }
+        public DateTime UpdatedDate { get; set; }
     }
 }

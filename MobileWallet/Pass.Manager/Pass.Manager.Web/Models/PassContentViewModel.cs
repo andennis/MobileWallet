@@ -32,5 +32,7 @@ namespace Pass.Manager.Web.Models
         public bool IsOnline { get { return ContainerPassId.HasValue; } }
         public string DistributionLink { get; set; }
         public IEnumerable<SelectListItem> PassContentTemplates { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public DateTime UpdatedDate { get; set; }
     }
 }

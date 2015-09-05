@@ -114,19 +114,8 @@
             aggregation="None"
             isComposite="false" />
           <property
-            Id="ac6e8322-58a4-4f48-ba09-daf9e9951276"
-            name="DefaultValue"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false" />
-          <property
-            Id="1c65595b-ca35-42fd-8533-c176e0937209"
-            name="DefaultLabal"
+            Id="77d44d57-dbdf-4a56-a9c0-31b0ab700a1f"
+            name="Status"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"

@@ -218,11 +218,8 @@
           <property Id="c281a37f-c603-4bcc-ba94-32f56493c8ac" name="Name" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="998c5a8d-9d79-420c-8230-1a9b865787e8" />
           </property>
-          <property Id="81c9f91a-d16d-424f-a59d-f7ef87157e1b" name="DefaultValue" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="ac6e8322-58a4-4f48-ba09-daf9e9951276" />
-          </property>
-          <property Id="32ef6015-2638-4065-95ee-b96121433e9d" name="DefaultLabal" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="1c65595b-ca35-42fd-8533-c176e0937209" />
+          <property Id="97c6b7e9-2161-4581-ab1a-392953b5e615" name="Status" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="77d44d57-dbdf-4a56-a9c0-31b0ab700a1f" />
           </property>
         </ownedAttributesInternal>
       </class>

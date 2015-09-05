@@ -8,8 +8,8 @@ namespace Pass.Container.Repository.Core.Entities
         public int PassFieldId { get; set; }
         public int PassTemplateId { get; set; }
         public string Name { get; set; }
-        public string DefaultValue { get; set; }
-        public string DefaultLabel { get; set; }
+        //public string DefaultValue { get; set; }
+        //public string DefaultLabel { get; set; }
         public EntityStatus Status { get; set; } //TODO it may be removed
 
         public PassTemplate Template { get; set; }

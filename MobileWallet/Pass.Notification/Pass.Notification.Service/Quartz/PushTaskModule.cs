@@ -13,11 +13,11 @@ using Pass.Notification.Repository.EF;
 using Quartz;
 using Quartz.Impl;
 using Quartz.Spi;
-using Module = Autofac.Module;
+using AutofacModule = Autofac.Module;
 
 namespace Pass.Notification.Service.Quartz
 {
-    public class PushTaskModule : Module
+    public class PushTaskModule : AutofacModule
     {
         protected override void Load(ContainerBuilder builder)
         {
