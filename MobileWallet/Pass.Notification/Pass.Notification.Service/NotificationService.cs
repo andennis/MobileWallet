@@ -7,7 +7,7 @@ namespace Pass.Notification.Service
 {
     [ServiceContract]
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
-    public class NotificationService
+    public class NotificationService : INotificationService
     {
         private readonly IPushNotificationService _passNotificationService;
 
