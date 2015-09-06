@@ -17,6 +17,8 @@ namespace Pass.Notification.Repository.EF
 
         public void SetPushNotificationStatus(List<int> pushNatificationIds, PushStatus status)
         {
+            if (pushNatificationIds == null || pushNatificationIds.Count == 0)
+                return;
             string strPushNatificationIds = String.Join(",", pushNatificationIds);
             string command = string.Format("UPDATE {0}.PushNotificationItem " +
                                            "SET Status = {1} " +
