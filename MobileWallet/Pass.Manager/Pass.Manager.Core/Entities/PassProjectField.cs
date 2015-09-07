@@ -2,13 +2,8 @@
 
 namespace Pass.Manager.Core.Entities
 {
-    public class PassProjectField : EntityVersionable//, IEntityWithId
+    public class PassProjectField : EntityVersionable
     {
-        /*
-        #region IEntityWithId
-        public int EntityId { get { return PassFieldId; } }
-        #endregion
-        */
         public int PassProjectFieldId { get; set; }
         public string Name { get; set; }
         public string DefaultValue { get; set; }

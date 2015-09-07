@@ -3,9 +3,31 @@
 @Html.HiddenForExt(m => m.PassContentTemplateId)
 @Html.HiddenForExt(m => m.PassContentTemplateFieldId)
 
+<script type="text/javascript">
+    function OnPassProjectFieldChange(e) {
+        var fieldId = e.sender.value();
+        if (fieldId) {
+            $.get("@(Url.Action<PassProjectFieldController>(a => a.Get(0)))/" + fieldId, function (data) {
+                if (data.Success != null) {
+                    if (data.Success) {
+                        $("#Label").val(data.Data.DefaultLabel);
+                    } else
+                        alert(data.Message);
+                }
+            })
+            .fail(function () {
+                alert("An error occurred");
+            });
+        }
+        else
+            $("#Label").val(null);
+    }
+</script>
+
+
 @if (Model.IsNew)
 {
-    @Html.DropDownListFormForExt(m => m.PassProjectFieldId, Model.PassProjectFields, Resources.FieldName, "- Select Field -")
+    @Html.DropDownListFormForExt(m => m.PassProjectFieldId, Model.PassProjectFields, Resources.FieldName, "- Select Field -", changeHandler: "OnPassProjectFieldChange")
 }
 else
 {

@@ -6,7 +6,7 @@
 
 @if (Model.IsNew)
 {
-    @Html.DropDownListFormForExt(x => x.PassCertificateId, Model.Certificates, "PassCertificate", "- Select Certificate -")
+    @Html.DropDownListFormForExt(x => x.PassCertificateId, Model.Certificates, "Certificate", "- Select Certificate -", changeHandler: "OnCertificateChanged")
 }
 
 @Html.TextBlockFormForExt(m => m.PassCertificateId, "Certificate ID")
@@ -20,18 +20,12 @@ else
     @Html.TextBoxFormForExt(m => m.Name, "Name")
 }
 
- @Html.TextBoxFormForExt(m => m.Description, "Description")
- @Html.TextBlockFormForExt(m => m.ExpDate, "Expiration Date", "dd/MM/yyyy")
+ @Html.TextBoxFormForExt(m => m.Description, Resources.Description)
+ @Html.TextBlockFormForExt(m => m.ExpDate, Resources.ExpirationDate, "dd/MM/yyyy")
  
 <script type="text/javascript">
-    $(document).ready(function() {
-        $("#PassCertificateId").change(function() {
-            OnCertificateChanged();
-        });
-    });
-
     function OnCertificateChanged() {
-        $.get("@Url.Action("Get", "PassCertificate")/" + $("#PassCertificateId").val(), function(data) {
+        $.get("@(Url.Action<PassCertificateController>(a => a.Get(0)))/" + $("#PassCertificateId").val(), function(data) {
                 if (data.Success != null) {
                     if (data.Success) {
                         delete data.Data.RedirectUrl;
