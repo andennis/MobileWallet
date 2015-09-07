@@ -106,6 +106,15 @@ namespace Pass.Manager.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Device ID.
         /// </summary>
         public static string DeviceId {
@@ -165,6 +174,15 @@ namespace Pass.Manager.Resources {
         public static string EntityStatusInactive {
             get {
                 return ResourceManager.GetString("EntityStatusInactive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Field Name.
+        /// </summary>
+        public static string FieldName {
+            get {
+                return ResourceManager.GetString("FieldName", resourceCulture);
             }
         }
         

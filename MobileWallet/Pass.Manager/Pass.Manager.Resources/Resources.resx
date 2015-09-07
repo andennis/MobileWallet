@@ -222,4 +222,10 @@
   <data name="Label" xml:space="preserve">
     <value>Label</value>
   </data>
+  <data name="FieldName" xml:space="preserve">
+    <value>Field Name</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
 </root>

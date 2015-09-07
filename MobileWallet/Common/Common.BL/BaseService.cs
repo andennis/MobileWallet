@@ -23,11 +23,13 @@ namespace Common.BL
 
         public virtual void Create(TEntity entity)
         {
+            Validate(entity);
             _repository.Insert(entity);
             _unitOfWork.Save();
         }
         public virtual void Update(TEntity entity)
         {
+            Validate(entity);
             _repository.Update(entity);
             _unitOfWork.Save();
         }
@@ -81,6 +83,9 @@ namespace Common.BL
             };
         }
 
+        protected virtual void Validate(TEntity entity)
+        {
+        }
 
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using AutoMapper;
 using Common.Web;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.SearchFilters;
@@ -20,13 +21,10 @@ namespace Pass.Manager.Web.Controllers
         [HttpGet]
         public ActionResult CreateField(int contentTemplateId)
         {
-            //IEnumerable<PassProjectField> projectFields = _service.GetUnmappedFields(contentTemplateId);
             return Create(m =>
                     {
                         m.PassContentTemplateId = contentTemplateId;
-                        //m.PassProjectFields = new SelectListTyped<PassProjectField, int, string>(projectFields, d => d.PassProjectFieldId, t => t.Name);
                     });
-
         }
 
         [ActionName("CreateField")]
@@ -35,22 +33,17 @@ namespace Pass.Manager.Web.Controllers
             return base.Create(model);
         }
 
-        protected override void PrepareModelToEditView(PassContentTemplateFieldViewModel model)
-        {
-            base.PrepareModelToEditView(model);
-            PrepareModel(model);
-        }
-
         protected override void PrepareModelToCreateView(PassContentTemplateFieldViewModel model)
         {
             base.PrepareModelToCreateView(model);
-            PrepareModel(model);
+            IEnumerable<PassProjectField> projectFields = _service.GetUnmappedFields(model.PassContentTemplateId);
+            model.PassProjectFields = new SelectListTyped<PassProjectField, int, string>(projectFields, d => d.PassProjectFieldId, t => t.Name);
         }
 
-        private void PrepareModel(PassContentTemplateFieldViewModel model)
+        protected override PassContentTemplateFieldViewModel GetViewModel(int entityId)
         {
-            IEnumerable<PassProjectField> projectFields = _service.GetUnmappedFields(model.PassContentTemplateId, model.PassProjectFieldId);
-            model.PassProjectFields = new SelectListTyped<PassProjectField, int, string>(projectFields, d => d.PassProjectFieldId, t => t.Name);
+            var entity = _service.GetView<PassContentTemplateFieldView>(entityId);
+            return Mapper.Map<PassContentTemplateFieldView, PassContentTemplateFieldViewModel>(entity);
         }
     }
 }

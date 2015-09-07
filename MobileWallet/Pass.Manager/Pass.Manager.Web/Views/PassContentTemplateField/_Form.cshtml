@@ -3,7 +3,16 @@
 @Html.HiddenForExt(m => m.PassContentTemplateId)
 @Html.HiddenForExt(m => m.PassContentTemplateFieldId)
 
-@Html.DropDownListFormForExt(m => m.PassProjectFieldId, Model.PassProjectFields, "Field Name", "- Select Field -")
+@if (Model.IsNew)
+{
+    @Html.DropDownListFormForExt(m => m.PassProjectFieldId, Model.PassProjectFields, Resources.FieldName, "- Select Field -")
+}
+else
+{
+    @Html.TextBlockFormForExt(m => m.FieldName, Resources.FieldName)
+    @Html.HiddenForExt(m => m.PassProjectFieldId)
+}
+
 @Html.TextBoxFormForExt(m => m.Label)
 @Html.DropDownListFormForExt(m => m.FieldKind, "Field Location", "- Select Field Location -")
 @Html.TextBoxFormForExt(m => m.AttributedValue, "Attributed Value")
