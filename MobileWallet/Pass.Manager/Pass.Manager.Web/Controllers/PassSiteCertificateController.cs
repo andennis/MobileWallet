@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using AutoMapper;
 using Common.Web;
 using Pass.Manager.Core.Entities;
@@ -22,12 +21,7 @@ namespace Pass.Manager.Web.Controllers
 
         public ActionResult AddCertificate(int passSiteId)
         {
-            IEnumerable<PassCertificate> certificates = _service.GetUnassignedCertificates(passSiteId);
-            return Create(m =>
-                          {
-                              m.PassSiteId = passSiteId;
-                              m.Certificates = new SelectListTyped<PassCertificate, int, string>(certificates, x => x.PassCertificateId, x => x.Name);
-                          });
+            return Create(m => { m.PassSiteId = passSiteId; });
         }
 
         [ActionName("AddCertificate")]
@@ -52,7 +46,7 @@ namespace Pass.Manager.Web.Controllers
         {
             base.SetDefaultReturnUrl(model);
             if (string.IsNullOrEmpty(model.RedirectUrl))
-                model.RedirectUrl = Url.Action("Edit", "PassSite", new { id = model.PassSiteId });
+                model.RedirectUrl = Url.Action<PassSiteController>(a => a.Edit(0), new { id = model.PassSiteId });
         }
 
 
@@ -73,13 +67,15 @@ namespace Pass.Manager.Web.Controllers
         public ActionResult Download(int id)
         {
             PassSiteCertificate passSiteCertificate = _service.Get(id);
+            //TODO RedirectToAction should be a generic method
             return RedirectToAction("Download", "PassCertificate", new {id = passSiteCertificate.PassCertificateId});
         }
-
+        
         protected override void PrepareModelToCreateView(PassSiteCertificateViewModel model)
         {
             model.Certificates = new SelectListTyped<PassCertificate, int, string>(_service.GetUnassignedCertificates(model.PassSiteId), x => x.PassCertificateId, x => x.Name);
             base.PrepareModelToCreateView(model);
         }
+        
     }
 }

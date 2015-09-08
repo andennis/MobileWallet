@@ -2,7 +2,7 @@
     .Name("grdPassSites")
     .CssClass("pm-grid")
     .Pageable()
-    .DataSource(ds => ds.Read(@Url.Action("GridSearch")))
+    .DataSource(ds => ds.Read(@Url.Action<PassCertificateController>(a => a.GridSearch(null,null))))
     .Columns(c =>
                 {
                     c.Bound(p => p.PassCertificateId).Title("ID").Width("100px");
@@ -13,15 +13,5 @@
                     c.Bound(p => p.ExpDate);
                     c.Bound(p => p.PassCertificateId).Title("Action")
                         .GridAction("Download", Url.Action("Download"))
-                        .GridAction("Edit", Url.Action("Edit"))
                         .GridAjaxAction("Delete", Url.Action("Delete"));
-                    //c.Bound().Title("Test").ClientTemplateId("myTemp");
                 }))
-
-<!--
-<script id="myTemp" type="text/x-kendo-template">
-    # var date = eval(ExpDate.replace(/\/Date\((\d+)\)\//gi, "new Date($1)")); #
-    <a id="cert#=PassCertificateId#" href="\\#">#=kendo.toString(date, 'd')#</a>
-
-</script>
--->

@@ -11,32 +11,34 @@
 
 @Html.TextBlockFormForExt(m => m.PassCertificateId, "Certificate ID")
 
-@if (Model.IsNew)
-{
-    @Html.HiddenForExt(m => m.Name)
-}
-else
-{
-    @Html.TextBoxFormForExt(m => m.Name, "Name")
-}
+@(Model.IsNew 
+    ? Html.HiddenForExt(m => m.Name)
+    : Html.TextBlockFormForExt(m => m.Name, "Name"))
 
- @Html.TextBoxFormForExt(m => m.Description, Resources.Description)
- @Html.TextBlockFormForExt(m => m.ExpDate, Resources.ExpirationDate, "dd/MM/yyyy")
- 
+@Html.TextBlockFormForExt(m => m.Description, Resources.Description)
+@Html.TextBlockFormForExt(m => m.ExpDate, Resources.ExpirationDate, "dd/MM/yyyy")
+
 <script type="text/javascript">
     function OnCertificateChanged() {
-        $.get("@(Url.Action<PassCertificateController>(a => a.Get(0)))/" + $("#PassCertificateId").val(), function(data) {
-                if (data.Success != null) {
-                    if (data.Success) {
-                        delete data.Data.RedirectUrl;
-                        data.Data.ExpDate = kendo.toString(kendo.parseDate(data.Data.ExpDate), $("#ExpDate").data("format"));
-                        $("form").autofill(data.Data);
-                    } else
-                        alert(data.Message);
-                }
-            })
-            .fail(function() {
-                alert("An error occurred");
-            });
+        var certId = $("#PassCertificateId").val();
+        if (certId) {
+            $.get("@(Url.Action<PassCertificateController>(a => a.Get(0)))/" + certId, function(data) {
+                    if (data.Success != null) {
+                        if (data.Success) {
+                            delete data.Data.RedirectUrl;
+                            data.Data.ExpDate = kendo.toString(kendo.parseDate(data.Data.ExpDate), $("#ExpDate").data("format"));
+                            $("form").autofill(data.Data);
+                        } else
+                            alert(data.Message);
+                    }
+                })
+                .fail(function() {
+                    alert("An error occurred");
+                });
+        } else {
+            $("#PassCertificateId").val(null);
+            $("#Description").val(null);
+            $("#ExpDate").val(null);
+        }
     }
 </script>

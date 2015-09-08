@@ -3,24 +3,35 @@
 <script type="text/javascript" src="@Url.Content("~/Scripts/FormHelpers/PassCertificateHelper.js")"></script>
 
 @Html.HiddenForExt(m => m.PassCertificateId)
-@if (!Model.IsNew)
-{
-    Html.TextBlockFormForExt(m => m.PassCertificateId, "ID");
-}
-@Html.TextBoxFormForExt(m => m.Name)
-@Html.TextBoxFormForExt(m => m.TeamId)
-@Html.TextBoxFormForExt(m => m.PassTypeId)
-@Html.TextAreaFormForExt(m => m.Description)
 
-@if (!Model.IsNew)
-{
-    @Html.TextBlockFormForExt(m => m.ExpDate, "Expiration Date")
-}
+<fieldset>
+    <legend></legend>
+    <div class="row">
+        <div class="col-md-6">
+            @if (!Model.IsNew)
+            {
+                Html.TextBlockFormForExt(m => m.PassCertificateId, "ID");
+            }
+            @Html.TextBoxFormForExt(m => m.Name)
+            @Html.TextBoxFormForExt(m => m.TeamId)
+            @Html.TextBoxFormForExt(m => m.PassTypeId)
+            @Html.TextAreaFormForExt(m => m.Description)
+        </div>
+        <div class="col-md-6">
+            @if (!Model.IsNew)
+            {
+                @Html.TextBlockFormForExt(m => m.ExpDate, Resources.ExpirationDate)
+            }
 
-@Html.PasswordFormForExt(m => m.Password)
-@Html.HiddenForExt(m => m.CertificateStorageId)
+            @Html.PasswordFormForExt(m => m.Password)
+            @Html.HiddenForExt(m => m.CertificateStorageId)
 
-@(Model.CertificateFileName != null ? Html.FileUploadFormForEx(m => m.CertificateFile, "Certificate File", null, Model.CertificateFileName) : Html.FileUploadFormForEx(m => m.CertificateFile, "Certificate File"))
+            @(Model.CertificateFileName != null
+                ? Html.FileUploadFormForEx(m => m.CertificateFile, "Certificate File", null, Model.CertificateFileName)
+                : Html.FileUploadFormForEx(m => m.CertificateFile, "Certificate File"))
+        </div>
+    </div>
+</fieldset>
 
 @(Html.Grid<PassSiteCertificateViewModel>()
     .Name("grdPassSites")
