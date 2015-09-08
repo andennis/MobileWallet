@@ -539,6 +539,7 @@
     <Content Include="Scripts\fileUploadHelper.js" />
     <Content Include="Scripts\FormAutoFill\jquery.formautofill.js" />
     <Content Include="Scripts\FormAutoFill\jquery.formautofill.min.js" />
+    <Content Include="Scripts\FormHelpers\PassCertificateHelper.js" />
     <Content Include="Scripts\FormHelpers\PassSiteHelper.js" />
     <Content Include="Scripts\Grid.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />

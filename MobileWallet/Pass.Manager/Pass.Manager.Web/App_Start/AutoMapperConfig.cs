@@ -44,6 +44,11 @@ namespace Pass.Manager.Web
                 .ForMember(dst => dst.Name, x => x.MapFrom(src => src.PassCertificate.Name))
                 .ForMember(dst => dst.Description, x => x.MapFrom(src => src.PassCertificate.Description))
                 .ForMember(dst => dst.ExpDate, x => x.MapFrom(src => src.PassCertificate.ExpDate));
+            Mapper.CreateMap<PassSiteCertificateView, PassSiteCertificateViewModel>()
+                .ForMember(dst => dst.PassCertificateId, x => x.MapFrom(src => src.PassCertificateId))
+                .ForMember(dst => dst.Name, x => x.MapFrom(src => src.Name))
+                .ForMember(dst => dst.Description, x => x.MapFrom(src => src.Description))
+                .ForMember(dst => dst.ExpDate, x => x.MapFrom(src => src.ExpDate)); ;
             Mapper.CreateMap<PassSiteCertificateViewModel, PassSiteCertificate>();
             Mapper.CreateMap<PassSiteCertificateViewModel, PassCertificate>();
             Mapper.CreateMap<PassSiteCertificateViewModel, PassCertificateApple>();

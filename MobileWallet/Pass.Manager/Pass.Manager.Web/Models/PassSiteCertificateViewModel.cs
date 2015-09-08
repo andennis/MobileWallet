@@ -5,7 +5,7 @@ using Pass.Manager.Web.Validators;
 
 namespace Pass.Manager.Web.Models
 {
-     [Validator(typeof(PassSiteCertificateViewModelValidator))]
+    [Validator(typeof(PassSiteCertificateViewModelValidator))]
     public class PassSiteCertificateViewModel : PassCertificateViewModel
     {
         public override int EntityId
@@ -15,6 +15,8 @@ namespace Pass.Manager.Web.Models
 
         public int PassSiteCertificateId { get; set; }
         public int PassSiteId { get; set; }
+        public string PassSiteName { get; set; }
+        public string PassSiteDescription { get; set; }
         public IEnumerable<SelectListItem> Certificates { get; set; }
     }
 }

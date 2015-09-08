@@ -63,6 +63,7 @@
     <Compile Include="Entities\PassProjectType.cs" />
     <Compile Include="Entities\PassSite.cs" />
     <Compile Include="Entities\PassSiteCertificate.cs" />
+    <Compile Include="Entities\PassSiteCertificateView.cs" />
     <Compile Include="Entities\PassSiteUser.cs" />
     <Compile Include="Entities\PassSiteUserState.cs" />
     <Compile Include="Entities\PassContentStyle.cs" />

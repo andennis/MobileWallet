@@ -1,5 +1,7 @@
 ﻿@model PassCertificateAppleViewModel
 
+<script type="text/javascript" src="@Url.Content("~/Scripts/FormHelpers/PassCertificateHelper.js")"></script>
+
 @Html.HiddenForExt(m => m.PassCertificateId)
 @if (!Model.IsNew)
 {
@@ -20,6 +22,17 @@
 
 @(Model.CertificateFileName != null ? Html.FileUploadFormForEx(m => m.CertificateFile, "Certificate File", null, Model.CertificateFileName) : Html.FileUploadFormForEx(m => m.CertificateFile, "Certificate File"))
 
+@(Html.Grid<PassSiteCertificateViewModel>()
+    .Name("grdPassSites")
+    .CssClass("pm-grid")
+    .Pageable()
+                    .DataSource(ds => ds.Read(@Url.Action("GridSearchView", "PassSiteCertificate")).Data("window.PassCertificate.PassSiteDataHandler"))
+    .Columns(c =>
+                {
+                    c.Bound(p => p.PassSiteId).Title("ID").Width("100px");
+                    c.BoundLink(p => p.PassSiteName, Url.Action("Edit", "PassSite"), id => id.PassSiteId).Title("Name");
+                    c.Bound(p => p.PassSiteDescription).Title("Description");
+                }))
 
 <script>
     @if (!Model.IsNew) {

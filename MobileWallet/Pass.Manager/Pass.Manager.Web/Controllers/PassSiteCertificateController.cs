@@ -10,7 +10,7 @@ using Pass.Manager.Web.Models;
 
 namespace Pass.Manager.Web.Controllers
 {
-    public class PassSiteCertificateController : BaseEntityController<PassSiteCertificateViewModel, PassSiteCertificate, IPassSiteCertificateService, PassSiteCertificateFilter>
+    public class PassSiteCertificateController : BaseEntityController<PassSiteCertificateViewModel, PassSiteCertificate, PassSiteCertificateView, IPassSiteCertificateService, PassSiteCertificateFilter>
     {
         private readonly IPassCertificateService _certificateService;
 

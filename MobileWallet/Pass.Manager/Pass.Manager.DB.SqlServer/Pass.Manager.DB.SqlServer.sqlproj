@@ -99,6 +99,8 @@
     <None Include="Scripts\Post-Deployment\01. AddAdminUser.sql" />
     <Build Include="Stored Procedures\pm.PassContentField_ListView.sql" />
     <Build Include="Stored Procedures\pm.PassContentTemplateField_GetView.sql" />
+    <Build Include="Stored Procedures\dbo.PassSiteCertificate_Search.sql" />
+    <Build Include="Views\pm.PassSiteCertificateView.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Pass.Manager.DB.SqlServer.local-publish.publish.xml" />

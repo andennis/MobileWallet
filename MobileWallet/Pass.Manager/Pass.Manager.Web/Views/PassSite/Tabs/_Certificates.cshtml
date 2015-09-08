@@ -5,7 +5,7 @@
     .CssClass("pm-grid")
     .Pageable()
     .AutoBind(false)
-    .DataSource(ds => ds.Read(@Url.Action("GridSearch", "PassSiteCertificate")).Data("window.PassSite.CertificateDataHandler"))
+    .DataSource(ds => ds.Read(@Url.Action("GridSearchView", "PassSiteCertificate")).Data("window.PassSite.CertificateDataHandler"))
     .Columns(c =>
     {
         c.Bound(m => m.PassCertificateId).Title("ID").Width("100px");
