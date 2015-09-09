@@ -16,8 +16,7 @@ CREATE PROCEDURE [pm].[PassSiteCertificate_Search]
 AS
 BEGIN
     SELECT * FROM pm.PassSiteCertificateView
-    WHERE PassSiteId = @PassSiteId
-	OR PassCertificateId = @PassCertificateId
+	WHERE (@PassSiteId is null or PassSiteId=@PassSiteId) AND (@PassCertificateId is null or PassCertificateId=@PassCertificateId)
 
     SET @TotalRecords = @@ROWCOUNT
 END

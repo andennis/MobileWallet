@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Web.Mvc;
 using System.Web.UI;
+using Common.Extensions;
 
 namespace Common.Web.Controls.ColorPicker
 {
@@ -19,11 +22,31 @@ namespace Common.Web.Controls.ColorPicker
 
         protected override void WriteInitializationScript(TextWriter writer)
         {
-            
+            var settings = new ColorPickerSettings
+                           {
+                               toolIcon = ToolIcon,
+                               value = Value,
+                               enabled = Enabled,
+                               opacity = Opacity,
+                               button = Buttons,
+                               tileSize = TileSize
+                           };
+            string jsonSettings = settings.ObjectToJson();
+            string widgetScript = string.Format("$(\"#{0}\").kendoColorPicker({1})", Name, jsonSettings);
+            string script = GetDocumentReadyScript(widgetScript).Replace("\"[", "[").Replace("]\"", "]");
+            writer.WriteLine(script);
         }
         protected override void WriteHtml(HtmlTextWriter writer)
         {
-            
+            writer.AddAttribute(HtmlTextWriterAttribute.Id, Name);
+            writer.AddAttribute(HtmlTextWriterAttribute.Name, Name);
+        
+            foreach (KeyValuePair<string, object> attr in HtmlAttributes)
+            {
+                writer.AddAttribute(attr.Key, Convert.ToString(attr.Value));
+            }
+            writer.RenderBeginTag(HtmlTextWriterTag.Input);
+            writer.RenderEndTag();
         }
 
         public ColorPickerPalette Palette { get; set; }
@@ -35,5 +58,14 @@ namespace Common.Web.Controls.ColorPicker
         public bool Buttons { get; set; }
         public object TileSize { get; set; }
 
+        public class ColorPickerSettings
+        {
+            public string toolIcon;
+            public string value;
+            public bool enabled;
+            public bool opacity;
+            public bool button;
+            public object tileSize;
+        }
     }
 }
