@@ -405,22 +405,28 @@ namespace Common.Web
         #endregion
 
         #region ColorPicker
-        public static MvcHtmlString ColorPickerForEx<TModel>(this HtmlHelper<TModel> html, Expression<Func<TModel, int?>> expression, int? value = null, object htmlAttributes = null)
+        public static MvcHtmlString ColorPickerForEx<TModel>(this HtmlHelper<TModel> html, Expression<Func<TModel, int?>> expression, int? value = null, string toolIcon = null,
+            bool enabled = false, bool opacity = false, bool buttons = false, object htmlAttributes = null)
         {
             string propName = expression.GetPropertyName();
-            return html.ColorPickerEx(propName, value, htmlAttributes);
+            return html.ColorPickerEx(propName, value, toolIcon, enabled, opacity, buttons, htmlAttributes);
         }
 
         public static MvcHtmlString ColorPickerFormForExt<TModel>(this HtmlHelper<TModel> html, Expression<Func<TModel, int?>> expression, string labelText = null,
-            int? value = null, object htmlAttributes = null)
+            int? value = null, string toolIcon = null, bool enabled = false, bool opacity = false, bool buttons = false, object htmlAttributes = null)
         {
-            return html.LabelWithControl(expression, labelText, null, () => html.ColorPickerForEx(expression, value, htmlAttributes));
+            return html.LabelWithControl(expression, labelText, null, () => html.ColorPickerForEx(expression, value, toolIcon, enabled, opacity, buttons, htmlAttributes));
         }
 
-        public static MvcHtmlString ColorPickerEx(this HtmlHelper html, string name, int? value = null, object htmlAttributes = null)
+        public static MvcHtmlString ColorPickerEx(this HtmlHelper html, string name, int? value = null, string toolIcon = null, bool enabled = false,
+            bool opacity = false, bool buttons = false, object htmlAttributes = null)
         {
             ColorPickerBuilder builder = html.Widget().ColorPicker()
                 .Name(name)
+                .ToolIcon(toolIcon)
+                .Enable(enabled)
+                .Opacity(opacity)
+                .Buttons(buttons)
                 .HtmlAttributes(_initControlAttributes.MergeHtmlAttributes(htmlAttributes));
 
             if (value.HasValue)

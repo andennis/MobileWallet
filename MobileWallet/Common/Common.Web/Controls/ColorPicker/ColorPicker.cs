@@ -16,7 +16,7 @@ namespace Common.Web.Controls.ColorPicker
         public const string EventClose = "close";
 
         public ColorPicker(ViewContext viewContext)
-            :base(viewContext)
+            : base(viewContext)
         {
         }
 
@@ -28,7 +28,7 @@ namespace Common.Web.Controls.ColorPicker
                                value = Value,
                                enabled = Enabled,
                                opacity = Opacity,
-                               button = Buttons,
+                               buttons = Buttons,
                                tileSize = TileSize
                            };
             string jsonSettings = settings.ObjectToJson();
@@ -40,7 +40,16 @@ namespace Common.Web.Controls.ColorPicker
         {
             writer.AddAttribute(HtmlTextWriterAttribute.Id, Name);
             writer.AddAttribute(HtmlTextWriterAttribute.Name, Name);
-        
+            if (string.IsNullOrEmpty(Value))
+            {
+
+                var val = GetModelValue();
+                if (val != null)
+                {
+                    Color color = Color.FromArgb(Int32.Parse(val.ToString()));
+                    writer.AddAttribute(HtmlTextWriterAttribute.Value, string.Format("#{0:X2}{1:X2}{2:X2}", color.R, color.G, color.B));
+                }
+            }
             foreach (KeyValuePair<string, object> attr in HtmlAttributes)
             {
                 writer.AddAttribute(attr.Key, Convert.ToString(attr.Value));
@@ -64,7 +73,7 @@ namespace Common.Web.Controls.ColorPicker
             public string value;
             public bool enabled;
             public bool opacity;
-            public bool button;
+            public bool buttons;
             public object tileSize;
         }
     }

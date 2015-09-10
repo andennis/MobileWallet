@@ -376,8 +376,18 @@ textarea {
         cursor: pointer;
     }
 
+/*For Kendo color picker extention*/
+.k-colorpicker .k-selected-color {
+    height: 34px;
+    width: 320px;
+}
+
+.k-picker-wrap.k-state-default {
+    height: 34px;
+}
+
 /*For Kendo datepicker extention*/
-.k-widget.k-datepicker.k-header.form-control, .k-widget.k-dropdown.k-header.form-control, .k-picker-wrap.k-state-default {
+.k-widget.k-datepicker.k-header.form-control, .k-widget.k-dropdown.k-header.form-control {
     padding: 0;
     border: none;
 }
