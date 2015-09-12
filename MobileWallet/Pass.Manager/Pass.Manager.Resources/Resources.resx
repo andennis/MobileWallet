@@ -222,9 +222,6 @@
   <data name="Label" xml:space="preserve">
     <value>Label</value>
   </data>
-  <data name="FieldName" xml:space="preserve">
-    <value>Field Name</value>
-  </data>
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
@@ -233,5 +230,17 @@
   </data>
   <data name="ExpirationDate" xml:space="preserve">
     <value>Expiration Date</value>
+  </data>
+  <data name="FieldLocation" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="PassContentTemplateField" xml:space="preserve">
+    <value>Pass Content Template Field</value>
+  </data>
+  <data name="DefaultLable" xml:space="preserve">
+    <value>Default Lable</value>
+  </data>
+  <data name="DefaultValue" xml:space="preserve">
+    <value>Default Value</value>
   </data>
 </root>

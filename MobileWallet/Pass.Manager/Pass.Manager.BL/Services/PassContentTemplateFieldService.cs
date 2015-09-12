@@ -31,13 +31,35 @@ namespace Pass.Manager.BL.Services
             return _unitOfWork.PassContentTemplateFieldRepository.GetUnmappedFields(passContentTemplateId, curPassProjectFieldId);
         }
 
+        public override void Create(PassContentTemplateField entity)
+        {
+            if (entity.PassProjectFieldId.HasValue)
+            {
+                entity.Label = null;
+                entity.Value = null;
+            }
+            base.Create(entity);
+        }
+
+        public override void Update(PassContentTemplateField entity)
+        {
+            if (entity.PassProjectFieldId.HasValue)
+            {
+                entity.Label = null;
+                entity.Value = null;
+            }
+            base.Update(entity);
+        }
+
         protected override void Validate(PassContentTemplateField entity)
         {
-            base.Validate(entity);
-            IEnumerable<PassProjectField> fields = _unitOfWork.PassContentTemplateFieldRepository.GetUnmappedFields(entity.PassContentTemplateId, entity.PassProjectFieldId);
-            if (fields.All(x => x.PassProjectFieldId != entity.PassProjectFieldId))
-                throw new PassManagerGeneralException(string.Format("PassProjectFieldId: {0} cannot be mapped twice to PassContentTemplateId: {1}", 
-                    entity.PassProjectFieldId, entity.PassContentTemplateId));
+            if (entity.PassProjectFieldId.HasValue)
+            {
+                IEnumerable<PassProjectField> fields = _unitOfWork.PassContentTemplateFieldRepository.GetUnmappedFields(entity.PassContentTemplateId, entity.PassProjectFieldId);
+                if (fields.All(x => x.PassProjectFieldId != entity.PassProjectFieldId))
+                    throw new PassManagerGeneralException(string.Format("PassProjectFieldId: {0} cannot be mapped twice to PassContentTemplateId: {1}",
+                        entity.PassProjectFieldId, entity.PassContentTemplateId));
+            }
         }
     }
 }

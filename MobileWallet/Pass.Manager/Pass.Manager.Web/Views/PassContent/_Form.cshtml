@@ -57,8 +57,12 @@
             {
                 @Html.DropDownListFormForExt(m => m.Status)
             }
-            @Html.TextBlockFormForExt(m => m.CreatedDate, labelText: Resources.CreatedDate, format: "g")
-            @Html.TextBlockFormForExt(m => m.UpdatedDate, labelText: Resources.UpdatedDate, format: "g")
+            
+            @if (!Model.IsNew)
+            {
+                @Html.TextBlockFormForExt(m => m.CreatedDate, labelText: Resources.CreatedDate, format: "g")
+                @Html.TextBlockFormForExt(m => m.UpdatedDate, labelText: Resources.UpdatedDate, format: "g")
+            }
         </div>
 
     </fieldset>

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Text.RegularExpressions;
 using Common.Extensions;
 using Common.Utils;
 using Pass.Container.BL.Helpers;
@@ -92,12 +93,25 @@ namespace Pass.Container.BL.PassGenerators
             foreach (PassFieldInfo pfInfo in fields)
             {
                 //Replace label
-                string labelFieldName = string.Format(ApplePass.FieldLabelFormat, pfInfo.Name);
-                passContent = passContent.Replace(labelFieldName, pfInfo.Label);
+                string fieldName = string.Format(ApplePass.FieldLabelFormat, pfInfo.Name);
+                passContent = passContent.ReplaceFirst(fieldName, pfInfo.Label);
 
                 //Replace value
-                string valueFieldName = string.Format(ApplePass.FieldValueFormat, pfInfo.Name);
-                passContent = passContent.Replace(valueFieldName, pfInfo.Value);
+                fieldName = string.Format(ApplePass.FieldValueFormat, pfInfo.Name);
+                passContent = passContent.ReplaceFirst(fieldName, pfInfo.Value);
+            }
+
+            //Clear missed fields (labels and values)
+            MatchCollection missedFields = Regex.Matches(passContent, @"(LB|VL)\$\$.+?\$\$");
+            int len = 0;
+            int prevInd = 0;
+            foreach (Match missedField in missedFields)
+            {
+                int nextInd = (missedField.Index > prevInd) ? missedField.Index - len : missedField.Index;
+                passContent = passContent.ReplaceFirst(missedField.Value, string.Empty, nextInd);
+                len += missedField.Length;
+                prevInd = nextInd;
+                //TODO log a warning regarding missed key
             }
 
             return passContent;

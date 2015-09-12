@@ -7,7 +7,7 @@ namespace Pass.Manager.Web.Validators
     {
         public PassContentFieldViewModelValidator()
         {
-            RuleFor(x => x.FieldLabel).NotEmpty();//.When(x => x.FieldKind.HasValue);
+            RuleFor(x => x.FieldValue).NotEmpty().WithLocalizedName(() => Resources.Resources.Value);
         }
         
     }

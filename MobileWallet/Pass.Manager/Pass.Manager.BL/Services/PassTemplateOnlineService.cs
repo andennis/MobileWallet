@@ -230,17 +230,28 @@ namespace Pass.Manager.BL.Services
         }
         private GeneralField ConvertTo(PassContentTemplateField passField)
         {
-            return new GeneralField()
+            bool isStatic = !passField.PassProjectFieldId.HasValue;
+            var genField = new GeneralField()
             {
-                Key = passField.PassProjectField.Name,
-                Label = passField.Label,
-                Value = passField.PassProjectField.DefaultValue,
                 TextAlignment = passField.TextAlignment.HasValue ? ConvertTo(passField.TextAlignment.Value) : (GeneralField.TextAlignmentType?)null,
                 AttributedValue = passField.AttributedValue,
                 ChangeMessage = passField.ChangeMessage,
-                IsDynamicValue = true,
-                IsDynamicLabel = true
+                IsDynamicValue = !isStatic,
+                IsDynamicLabel = !isStatic
             };
+
+            if (isStatic)
+            {
+                genField.Key = PassContentTemplateField.StaticFieldPrefix + passField.PassContentTemplateFieldId;
+                genField.Label = passField.Label;
+                genField.Value = passField.Value;
+            }
+            else
+            {
+                genField.Key = passField.PassProjectField.Name;
+            }
+
+            return genField;
         }
         private GeneralField.TextAlignmentType ConvertTo(TextAlignment txtAlign)
         {

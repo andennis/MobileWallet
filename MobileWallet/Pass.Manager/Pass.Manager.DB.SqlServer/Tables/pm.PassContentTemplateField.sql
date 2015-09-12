@@ -5,15 +5,18 @@
     [ChangeMessage]              NVARCHAR (128) NULL,
     [Label]                      NVARCHAR (128) NULL,
     [TextAlignment]              INT            NULL,
-    [PassProjectFieldId]         INT            NOT NULL,
+    [PassProjectFieldId]         INT            NULL,
     [PassContentTemplateId]      INT            NOT NULL,
     [Version]                    INT            NOT NULL,
     [CreatedDate]                DATETIME       NOT NULL,
     [UpdatedDate]                DATETIME       NOT NULL,
+    [Value]                      NVARCHAR (MAX) NULL,
     CONSTRAINT [PK_pm.PassContentTemplateField] PRIMARY KEY CLUSTERED ([PassContentTemplateFieldId] ASC),
     CONSTRAINT [FK_pm.PassContentTemplateField_pm.PassContentTemplate_PassContentTemplateId] FOREIGN KEY ([PassContentTemplateId]) REFERENCES [pm].[PassContentTemplate] ([PassContentTemplateId]) ON DELETE CASCADE,
-    CONSTRAINT [FK_pm.PassContentTemplateField_pm.PassProjectField_PassProjectFieldId] FOREIGN KEY ([PassProjectFieldId]) REFERENCES [pm].[PassProjectField] ([PassProjectFieldId]) ON DELETE CASCADE
+    CONSTRAINT [FK_pm.PassContentTemplateField_pm.PassProjectField_PassProjectFieldId] FOREIGN KEY ([PassProjectFieldId]) REFERENCES [pm].[PassProjectField] ([PassProjectFieldId])
 );
+
+
 
 
 GO

@@ -166,7 +166,7 @@ namespace Pass.Container.Core.Entities.Templates.GeneralPassTemplate
 
             [XmlEnum(Name = "dateTime")]
             [EnumMember(Value = "dateTime")]
-            DateTime = 3
+            DateTime = 4
         }
 
         [JsonConverter(typeof(StringEnumConverter))]

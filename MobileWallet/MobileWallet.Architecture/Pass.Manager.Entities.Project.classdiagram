@@ -358,11 +358,31 @@
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="feb19020-8337-44ca-b934-47142f510f93" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="248f17c2-98c2-4bb0-a69d-7ac6e198790f" name="Lower" value="0">
+                      <elementDefinition Id="096504c2-4752-4cee-9492-59d37c24e7d1" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="c1365121-86a3-4d3a-bca0-102c4d486bd4" name="Upper" value="1">
+                      <elementDefinition Id="d4b87fb8-587f-4a79-a652-64a127f36e83" />
+                    </literalString>
+                  </upperValueInternal>
                   <elementDefinition Id="12714f76-9414-48af-b209-5b4f02153c42" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd Id="023c09a0-b54c-4218-b651-f157627da681" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="cb28a118-a30c-468b-b494-32237dcb3490" name="Lower" value="1">
+                      <elementDefinition Id="08456146-c244-4a2c-b280-1a634f8b24f3" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="955fd3f7-10e7-40fd-a941-110e8ccf3f8a" name="Upper" value="1">
+                      <elementDefinition Id="0ea8dd7a-a60a-47f4-8fa6-9e03fb82e036" />
+                    </literalString>
+                  </upperValueInternal>
                   <elementDefinition Id="6cf137f9-6f81-4f8b-a89e-0eba9f16c2fd" />
                 </memberEnd>
               </associationHasOwnedEnds>

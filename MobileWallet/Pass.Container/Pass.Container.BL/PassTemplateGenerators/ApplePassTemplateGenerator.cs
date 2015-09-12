@@ -98,7 +98,6 @@ namespace Pass.Container.BL.PassTemplateGenerators
             applePassTemplate.AuthenticationToken = ApplePass.FieldAuthToken;
             
             //Visual Appearance Keys
-
             if (passTemplate.BackgroundColor.HasValue)
                 applePassTemplate.BackgroundColor = "rgb(" + passTemplate.BackgroundColor.Value.R + ", " + passTemplate.BackgroundColor.Value.G + ", " + passTemplate.BackgroundColor.Value.B + ")";
 
@@ -271,15 +270,13 @@ namespace Pass.Container.BL.PassTemplateGenerators
                 field.DataDetectorTypes = GetAppleDataDetectorTypes(templatefield.DataDetectorTypes);
 
             field.Key = templatefield.Key;
-            if (templatefield.IsDynamicLabel != null && templatefield.IsDynamicLabel == true)
-                field.Label = string.Format(ApplePass.FieldLabelFormat, templatefield.Key);  //"LB" + templatefield.Key + "$$";
-            else if (!string.IsNullOrEmpty(templatefield.Label))
-                field.Label = templatefield.Label;
+            field.Label = (templatefield.IsDynamicLabel == true)
+                ? string.Format(ApplePass.FieldLabelFormat, templatefield.Key) //"LB" + templatefield.Key + "$$";
+                : templatefield.Label;
 
-            if (templatefield.IsDynamicValue != null && templatefield.IsDynamicValue == true)
-                field.Value = string.Format(ApplePass.FieldValueFormat, templatefield.Key); //"VL$$" + templatefield.Key + "$$";
-            else
-                field.Value = templatefield.Value;
+            field.Value = (templatefield.IsDynamicValue == true)
+                ? string.Format(ApplePass.FieldValueFormat, templatefield.Key) //"VL$$" + templatefield.Key + "$$";
+                : templatefield.Value;
 
             //This key is not allowed for primary fields
             if (templatefield.TextAlignment != null)
@@ -293,10 +290,36 @@ namespace Pass.Container.BL.PassTemplateGenerators
                 }
                 else
                 {
+                    //Only the <a> tag and its href attribute are supported
                     //TODO log 
                 }
             }
 
+            switch (templatefield.FieldType)
+            {
+                case GeneralField.DataType.Number:
+                    field.NumberStyle = GetAppleNumberStyle(templatefield.NumberStyle);
+                    break;
+
+                case GeneralField.DataType.Date:
+                    field.DateStyle = GetAppleDateStyle(templatefield.DateStyle);
+                    field.IsRelative = templatefield.IsRelative;
+                    field.Value = DateTime.Parse(templatefield.Value).ToString(@"yyyy-MM-ddTHH\:mmzzz");
+                    break;
+
+                case GeneralField.DataType.DateTime:
+                    field.TimeStyle = GetAppleDateStyle(templatefield.TimeStyle);
+                    field.IsRelative = templatefield.IsRelative;
+                    field.Value = DateTime.Parse(templatefield.Value).ToString(@"yyyy-MM-ddTHH\:mmzzz");
+                    break;
+
+                case GeneralField.DataType.Currency:
+                    field.CurrencyCode = templatefield.CurrencyCode;
+                    field.Value = Int32.Parse(templatefield.Value);
+                    break;
+            }
+
+            /*
             if (templatefield.FieldType == GeneralField.DataType.Number)
                 field.NumberStyle = GetAppleNumberStyle(templatefield.NumberStyle);
 
@@ -317,6 +340,7 @@ namespace Pass.Container.BL.PassTemplateGenerators
                 field.CurrencyCode = templatefield.CurrencyCode;
                 field.Value = Int32.Parse(templatefield.Value);
             }
+            */
             return field;
         }
         #endregion

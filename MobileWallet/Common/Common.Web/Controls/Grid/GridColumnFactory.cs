@@ -93,23 +93,23 @@ namespace Common.Web.Controls.Grid
         {
             var builder = new GridBoundColumnBuilder<TModel>(_htmlHelper, colName);
             var sb = new StringBuilder();
-            sb.AppendFormat("if(IsDefault) {{#{0}#}} else {{#{1}#}}", textTrue, textFalse);
+            sb.AppendFormat("if({0}) {{#{1}#}} else {{#{2}#}}", colName, textTrue, textFalse);
             builder.ClientTemplate(string.Format("# {0} #", sb));
             Columns.Add(builder);
             return builder;
         }
 
-        public GridBoundColumnBuilder<TModel> BoundBoolImg<TValue>(Expression<Func<TModel, TValue>> expression, string urlTrue = "/Pass.Manager.Web/Images/Grid/true.png", string urlFalse = null)
+        public GridBoundColumnBuilder<TModel> BoundBoolImg<TValue>(Expression<Func<TModel, TValue>> expression, string urlTrue = "../../Images/Grid/true.png", string urlFalse = null)
         {
             return BoundBoolImg(expression.GetPropertyName(), urlTrue, urlFalse);
         }
 
-        private GridBoundColumnBuilder<TModel> BoundBoolImg(string colName, string urlTrue = "/Pass.Manager.Web/Images/Grid/true.png", string urlFalse = null)
+        private GridBoundColumnBuilder<TModel> BoundBoolImg(string colName, string urlTrue = null, string urlFalse = null)
         {
             var builder = new GridBoundColumnBuilder<TModel>(_htmlHelper, colName);
             var tb = new TagBuilder("img");
             var sb = new StringBuilder();
-            sb.AppendFormat("if(IsDefault) {{#{0}#}} else {{#{1}#}}", urlTrue, urlFalse);
+            sb.AppendFormat("if({0}) {{#{1}#}} else {{#{2}#}}", colName, urlTrue, urlFalse);
             tb.Attributes.Add("src", string.Format("# {0} #", sb));
             tb.Attributes.Add("class", "boundBoolImg");
             builder.ClientTemplate(tb.ToString());

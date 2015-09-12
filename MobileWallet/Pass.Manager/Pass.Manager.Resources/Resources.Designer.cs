@@ -106,6 +106,24 @@ namespace Pass.Manager.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Default Lable.
+        /// </summary>
+        public static string DefaultLable {
+            get {
+                return ResourceManager.GetString("DefaultLable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default Value.
+        /// </summary>
+        public static string DefaultValue {
+            get {
+                return ResourceManager.GetString("DefaultValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
         public static string Delete {
@@ -196,11 +214,11 @@ namespace Pass.Manager.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Field Name.
+        ///   Looks up a localized string similar to Location.
         /// </summary>
-        public static string FieldName {
+        public static string FieldLocation {
             get {
-                return ResourceManager.GetString("FieldName", resourceCulture);
+                return ResourceManager.GetString("FieldLocation", resourceCulture);
             }
         }
         
@@ -228,6 +246,15 @@ namespace Pass.Manager.Resources {
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pass Content Template Field.
+        /// </summary>
+        public static string PassContentTemplateField {
+            get {
+                return ResourceManager.GetString("PassContentTemplateField", resourceCulture);
             }
         }
         

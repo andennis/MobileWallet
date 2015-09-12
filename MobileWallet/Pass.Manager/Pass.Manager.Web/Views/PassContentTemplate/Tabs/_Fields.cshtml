@@ -1,10 +1,10 @@
 ﻿@model int
 
-@(Html.ActionLinkExt<PassContentTemplateFieldController>(a => a.CreateField(0), "Map Field", new { contentTemplateId = Model }, new { @class = "btn btn-default btn-primary", data_popup_window = "wndTemplateField" }))
+@(Html.ActionLinkExt<PassContentTemplateFieldController>(a => a.CreateField(0), "Add/Map Field", new { contentTemplateId = Model }, new { @class = "btn btn-default btn-primary", data_popup_window = "wndTemplateField" }))
 @(Html.PopupDialog()
               .Name("wndTemplateField")
               .Width(650)
-              .Title("Pass Content Template Field")
+              .Title(Resources.PassContentTemplateField)
               .Events(e => e.Success("OnEditFieldSuccess"))
 )
 
@@ -16,10 +16,12 @@
               .Columns(c =>
                        {
                            c.Bound(p => p.PassContentTemplateFieldId).Title("ID").Width("100px");
-                           c.BoundEnum(p => p.FieldKind).Title("Field Location");
-                           c.BoundLink(p => p.FieldName, Url.Action<PassContentTemplateFieldController>(a => a.Edit(0)), id => id.PassContentTemplateFieldId, 
-                               new { data_popup_window = "wndTemplateField" }, Resources.FieldName);
+                           c.BoundBoolImg(m => m.IsStatic).Title("Is Static");
+                           c.BoundEnum(p => p.FieldKind).Title(Resources.FieldLocation);
+                           c.BoundLink(p => p.Name, Url.Action<PassContentTemplateFieldController>(a => a.Edit(0)), id => id.PassContentTemplateFieldId, 
+                               new { data_popup_window = "wndTemplateField" }, Resources.Name);
                            c.Bound(p => p.Label);
+                           c.Bound(p => p.Value);
                            c.Bound(p => p.PassContentTemplateFieldId).Title(Resources.ColumnActions).GridAjaxAction(Resources.Delete, Url.Action<PassContentTemplateFieldController>(a => a.Delete(0)));
                        }))
 
