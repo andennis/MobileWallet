@@ -5,7 +5,7 @@
 }
 
 <h2>Login</h2>
-@using (Html.BeginFormExt(null, null, null, new { ReturnUrl = ViewBag.ReturnUrl }))
+@using (Html.BeginFormExt(routeValues: new { Model.RedirectUrl }))
 {
     @Html.ValidationSummary()
     @Html.AntiForgeryToken()

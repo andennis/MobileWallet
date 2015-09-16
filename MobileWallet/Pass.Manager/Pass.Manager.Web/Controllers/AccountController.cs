@@ -1,8 +1,5 @@
 ﻿using System.Web.Mvc;
 using System.Web.Security;
-using Common.Utils;
-using Pass.Manager.Core;
-using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.Services;
 using Pass.Manager.Web.Models;
 
@@ -21,21 +18,20 @@ namespace Pass.Manager.Web.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            ViewBag.ReturnUrl = returnUrl;
-            return View(new LoginViewModel() { UserName = "" });
+            return View(new LoginViewModel() { UserName = "", RedirectUrl = returnUrl});
         }
 
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginViewModel loginViewModel, string returnUrl)
+        public ActionResult Login(LoginViewModel loginViewModel)
         {
             if (ModelState.IsValid)
             {
                 if (_userService.IsAuthenticated(loginViewModel.UserName, loginViewModel.Password))
                 {
                     FormsAuthentication.SetAuthCookie(loginViewModel.UserName, false);
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToLocal(loginViewModel.RedirectUrl);
                 }
 
                 ModelState.AddModelError("", Resources.Resources.AuthenticationFailed);
