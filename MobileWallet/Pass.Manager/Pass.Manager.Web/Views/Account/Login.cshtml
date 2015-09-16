@@ -5,7 +5,7 @@
 }
 
 <h2>Login</h2>
-@using (Html.BeginFormExt())
+@using (Html.BeginFormExt(null, null, null, new { ReturnUrl = ViewBag.ReturnUrl }))
 {
     @Html.ValidationSummary()
     @Html.AntiForgeryToken()

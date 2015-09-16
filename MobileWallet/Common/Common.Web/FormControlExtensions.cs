@@ -42,11 +42,11 @@ namespace Common.Web
             ActionInfo actionInfo = GetActionInfo(action);
             return html.BeginFormExt(actionInfo.Action, actionInfo.Controller, htmlAttributes);
         }
-        public static MvcForm BeginFormExt(this HtmlHelper html, string actionName = null, string controllerName = null, object htmlAttributes = null)
+        public static MvcForm BeginFormExt(this HtmlHelper html, string actionName = null, string controllerName = null, object htmlAttributes = null, object routeValues = null)
         {
             IDictionary<string, object> attributes = _initFormAttributes.MergeHtmlAttributes(htmlAttributes)
                 .MergeHtmlAttributes((object)html.ViewBag.HtmlFormAttributes);
-            return html.BeginForm(actionName, controllerName, FormMethod.Post, attributes);
+            return html.BeginForm(actionName, controllerName, new RouteValueDictionary(routeValues), FormMethod.Post, attributes);
         }
 
         public static MvcForm BeginFormExt(this AjaxHelper ajaxHelper, string actionName = null, string controllerName = null, object routeValues = null,
