@@ -197,7 +197,7 @@ namespace Common.Web
 
             var bilder = new TagBuilder("p");
             var propValue = expression.GetPropertyValue(html.ViewData.Model);
-            var value = dataFmt != null ? String.Format(dataFmt, propValue) : propValue.ToString();
+            var value = (dataFmt != null) ? string.Format(dataFmt, propValue) : Convert.ToString(propValue);
 
             foreach (var attr in HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes))
             {

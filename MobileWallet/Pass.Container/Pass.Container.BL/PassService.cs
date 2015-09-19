@@ -29,18 +29,21 @@ namespace Pass.Container.BL
         private readonly IPassCertificateService _certService;
         private readonly IPassTemplateStorageService _templateStorageService;
         private readonly IFileStorageService _fileStorageService;
+        private readonly ISerialNumberGenerator _serialNumberGenerator;
 
         public PassService(IPassContainerConfig config, 
             IPassContainerUnitOfWork pcUnitOfWork, 
             IPassCertificateService certService,
             IPassTemplateStorageService templateStorageService,
-            IFileStorageService fileStorageService)
+            IFileStorageService fileStorageService,
+            ISerialNumberGenerator serialNumberGenerator)
         {
             _config = config;
             _pcUnitOfWork = pcUnitOfWork;
             _certService = certService;
             _templateStorageService = templateStorageService;
             _fileStorageService = fileStorageService;
+            _serialNumberGenerator = serialNumberGenerator;
         }
 
         public int CreatePass(int passTemplateId, IEnumerable<PassFieldInfo> fieldValues, DateTime? expDate = null)
@@ -64,7 +67,6 @@ namespace Pass.Container.BL
             var pass = new RepEntities.Pass()
                            {
                                PassTemplateId = passTemplateId,
-                               SerialNumber = GenerateSerialNumber(),
                                AuthToken = GenerateAuthToken(),
                                Status = EntityStatus.Active,
                                ExpirationDate = expDate
@@ -119,6 +121,7 @@ namespace Pass.Container.BL
                 return new PassApple()
                        {
                            PassTypeId = ptApple.PassTypeId,
+                           SerialNumber = _serialNumberGenerator.GetNextSerialNumber(ptApple.PassTypeId),
                            DeviceType = ptApple.DeviceType,
                            PassTemplateNativeId = ptApple.PassTemplateNativeId
                        };
@@ -127,6 +130,30 @@ namespace Pass.Container.BL
             //TODO create template for other client types
 
             throw new PassContainerException(string.Format("{0} is not supported", ptn.GetType().Name));
+        }
+
+        public PassInfo GetPass(int passId)
+        {
+            IRepository<RepEntities.Pass> repPass = _pcUnitOfWork.GetRepository<RepEntities.Pass>();
+            RepEntities.Pass pass = repPass.Query()
+                .Filter(x => x.PassId == passId)
+                .Include(x => x.NativePasses)
+                .Get().FirstOrDefault();
+            if (pass == null)
+                throw new PassContainerException(string.Format("Pass ID:{0} not found", passId));
+
+            return ConvertTo(pass);
+        }
+
+        private PassInfo ConvertTo(RepEntities.Pass pass)
+        {
+            return new PassInfo()
+            {
+                PassId = pass.PassId,
+                AuthToken = pass.AuthToken,
+                //TODO it returns Apple serial number at the moment
+                SerialNumber = pass.NativePasses.First().SerialNumber 
+            };
         }
 
         public IList<PassFieldInfo> GetPassFields(int passId)
@@ -265,7 +292,7 @@ namespace Pass.Container.BL
             //Generate pass file
             IPassGenerator pg = GetPassGenerator(pass.Template, clientType, templateFolder);
             IEnumerable<PassFieldInfo> fields = pass.FieldValues.Select(EntityConverter.RepositoryFieldValueToPassFieldInfo);
-            string passFile = pg.GeneratePass(pass.AuthToken, pass.SerialNumber, fields, dstPassFolder);
+            string passFile = pg.GeneratePass(pass.AuthToken, pn.SerialNumber, fields, dstPassFolder);
 
             SavePassToFileStorage(pn, passFile);
 
@@ -369,10 +396,6 @@ namespace Pass.Container.BL
             return new ApplePassGenerator(_config, srcTemplateFolder, cert);
         }
 
-        private string GenerateSerialNumber()
-        {
-            return Guid.NewGuid().ToString();
-        }
         private string GenerateAuthToken()
         {
             return Guid.NewGuid().ToString().ToUpper();

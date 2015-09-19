@@ -133,8 +133,8 @@ namespace Pass.Manager.Repository.EF
             //PassContent
             modelBuilder.Entity<PassContent>().ToTable("PassContent", DbScheme);
             modelBuilder.Entity<PassContent>().Property(x => x.Version).IsConcurrencyToken();
-            modelBuilder.Entity<PassContent>().Property(x => x.AuthToken).IsRequired().HasMaxLength(64).IsUnicode(false);
-            modelBuilder.Entity<PassContent>().Property(x => x.SerialNumber).IsRequired().HasMaxLength(64).IsUnicode(false);
+            //modelBuilder.Entity<PassContent>().Property(x => x.AuthToken).IsRequired().HasMaxLength(64).IsUnicode(false);
+            //modelBuilder.Entity<PassContent>().Property(x => x.SerialNumber).IsRequired().HasMaxLength(64).IsUnicode(false);
             modelBuilder.Entity<PassContent>().HasRequired(x => x.PassContentTemplate).WithMany().HasForeignKey(x => x.PassContentTemplateId).WillCascadeOnDelete(false);
 
             //PassContentFieldValue

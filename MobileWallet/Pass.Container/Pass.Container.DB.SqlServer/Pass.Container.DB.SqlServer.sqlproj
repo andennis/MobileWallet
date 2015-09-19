@@ -81,8 +81,13 @@
     <Build Include="Stored Procedures\pscn.GetPassApple.sql" />
     <Build Include="Tables\pscn.PassNative.sql" />
     <Build Include="Tables\pscn.PassApple.sql" />
+    <Build Include="Tables\pscn.SequenceCounter.sql" />
+    <Build Include="Stored Procedures\pscn.SequenceCounter_NextValue.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Pass.Container.DB.SqlServer.local-publish.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="Pass.Container.DB.SqlServer.refactorlog" />
   </ItemGroup>
 </Project>

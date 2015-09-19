@@ -50,8 +50,10 @@
     <Compile Include="Entities\PassTemplateNative.cs" />
     <Compile Include="Entities\Registration.cs" />
     <Compile Include="Entities\RegistrationView.cs" />
+    <Compile Include="Entities\SequenceCounter.cs" />
     <Compile Include="IPassContainerUnitOfWork.cs" />
     <Compile Include="IPassRepository.cs" />
+    <Compile Include="ISequenceCounterRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

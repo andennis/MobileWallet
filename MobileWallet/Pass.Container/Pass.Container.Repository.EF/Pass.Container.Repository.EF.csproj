@@ -51,88 +51,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MigrationsContextFactory.cs" />
-    <Compile Include="Migrations\201404221335571_InitialCreate.cs" />
-    <Compile Include="Migrations\201404221335571_InitialCreate.Designer.cs">
-      <DependentUpon>201404221335571_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405031306065_M1.cs" />
-    <Compile Include="Migrations\201405031306065_M1.Designer.cs">
-      <DependentUpon>201405031306065_M1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405031653558_M2.cs" />
-    <Compile Include="Migrations\201405031653558_M2.Designer.cs">
-      <DependentUpon>201405031653558_M2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405061716368_M3.cs" />
-    <Compile Include="Migrations\201405061716368_M3.Designer.cs">
-      <DependentUpon>201405061716368_M3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405120705580_M4.cs" />
-    <Compile Include="Migrations\201405120705580_M4.Designer.cs">
-      <DependentUpon>201405120705580_M4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405120710089_M5.cs" />
-    <Compile Include="Migrations\201405120710089_M5.Designer.cs">
-      <DependentUpon>201405120710089_M5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405121214537_M6.cs" />
-    <Compile Include="Migrations\201405121214537_M6.Designer.cs">
-      <DependentUpon>201405121214537_M6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405191322088_M7.cs" />
-    <Compile Include="Migrations\201405191322088_M7.Designer.cs">
-      <DependentUpon>201405191322088_M7.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405191325310_M8.cs" />
-    <Compile Include="Migrations\201405191325310_M8.Designer.cs">
-      <DependentUpon>201405191325310_M8.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405211741297_M9.cs" />
-    <Compile Include="Migrations\201405211741297_M9.Designer.cs">
-      <DependentUpon>201405211741297_M9.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201405231724157_M10.cs" />
-    <Compile Include="Migrations\201405231724157_M10.Designer.cs">
-      <DependentUpon>201405231724157_M10.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505112255407_M12.cs" />
-    <Compile Include="Migrations\201505112255407_M12.Designer.cs">
-      <DependentUpon>201505112255407_M12.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505132241076_M13.cs" />
-    <Compile Include="Migrations\201505132241076_M13.Designer.cs">
-      <DependentUpon>201505132241076_M13.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505132300338_M14.cs" />
-    <Compile Include="Migrations\201505132300338_M14.Designer.cs">
-      <DependentUpon>201505132300338_M14.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506141523015_M15.cs" />
-    <Compile Include="Migrations\201506141523015_M15.Designer.cs">
-      <DependentUpon>201506141523015_M15.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506212052599_M16.cs" />
-    <Compile Include="Migrations\201506212052599_M16.Designer.cs">
-      <DependentUpon>201506212052599_M16.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506232044194_M17.cs" />
-    <Compile Include="Migrations\201506232044194_M17.Designer.cs">
-      <DependentUpon>201506232044194_M17.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201506242348142_M18.cs" />
-    <Compile Include="Migrations\201506242348142_M18.Designer.cs">
-      <DependentUpon>201506242348142_M18.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201508301615577_M19.cs" />
-    <Compile Include="Migrations\201508301615577_M19.Designer.cs">
-      <DependentUpon>201508301615577_M19.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PassContainerDbContext.cs" />
     <Compile Include="PassContainerUnitOfWork.cs" />
     <Compile Include="PassRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SequenceCounterRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common.Repository.EF\Common.Repository.EF.csproj">
@@ -149,67 +72,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201404221335571_InitialCreate.resx">
-      <DependentUpon>201404221335571_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405031306065_M1.resx">
-      <DependentUpon>201405031306065_M1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405031653558_M2.resx">
-      <DependentUpon>201405031653558_M2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405061716368_M3.resx">
-      <DependentUpon>201405061716368_M3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405120705580_M4.resx">
-      <DependentUpon>201405120705580_M4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405120710089_M5.resx">
-      <DependentUpon>201405120710089_M5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405121214537_M6.resx">
-      <DependentUpon>201405121214537_M6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405191322088_M7.resx">
-      <DependentUpon>201405191322088_M7.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405191325310_M8.resx">
-      <DependentUpon>201405191325310_M8.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405211741297_M9.resx">
-      <DependentUpon>201405211741297_M9.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405231724157_M10.resx">
-      <DependentUpon>201405231724157_M10.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505112255407_M12.resx">
-      <DependentUpon>201505112255407_M12.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505132241076_M13.resx">
-      <DependentUpon>201505132241076_M13.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505132300338_M14.resx">
-      <DependentUpon>201505132300338_M14.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506141523015_M15.resx">
-      <DependentUpon>201506141523015_M15.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506212052599_M16.resx">
-      <DependentUpon>201506212052599_M16.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506232044194_M17.resx">
-      <DependentUpon>201506232044194_M17.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201506242348142_M18.resx">
-      <DependentUpon>201506242348142_M18.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201508301615577_M19.resx">
-      <DependentUpon>201508301615577_M19.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

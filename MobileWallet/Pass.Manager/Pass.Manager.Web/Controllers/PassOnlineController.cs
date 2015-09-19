@@ -5,6 +5,7 @@ using Common.Utils;
 using Common.Web.Controls.Grid;
 using Pass.Container.Core.SearchFilters;
 using Pass.Container.Core.Entities;
+using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.Services;
 using Pass.Manager.Web.Common;
 
@@ -15,18 +16,29 @@ namespace Pass.Manager.Web.Controllers
     {
         private readonly IPassOnlineService _passOnlineService;
         private readonly IPassNotificationService _notificationService;
+        private readonly IPassContentService _passContentService;
 
-        public PassOnlineController(IPassOnlineService passOnlineService, IPassNotificationService notificationService)
+        public PassOnlineController(IPassOnlineService passOnlineService, 
+            IPassNotificationService notificationService,
+            IPassContentService passContentService)
         {
             _passOnlineService = passOnlineService;
             _notificationService = notificationService;
+            _passContentService = passContentService;
         }
 
         [AjaxOnly]
         public ActionResult Register(int id)
         {
-            int containerPassId = _passOnlineService.Register(id);
-            return JsonEx(new {containerPassId}, true, Resources.Resources.RegisterPassOnlineSuccess);
+            _passOnlineService.Register(id);
+            PassContent pc = _passContentService.Get(id);
+            var data = new
+            {
+                pc.ContainerPassId,
+                pc.SerialNumber,
+                pc.AuthToken
+            };
+            return JsonEx(data, true, Resources.Resources.RegisterPassOnlineSuccess);
         }
 
         [AjaxOnly]

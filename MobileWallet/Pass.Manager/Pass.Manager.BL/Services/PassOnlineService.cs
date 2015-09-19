@@ -38,6 +38,9 @@ namespace Pass.Manager.BL.Services
 
             IEnumerable<PassContentFieldView> fields = _passContentFieldService.GetListView(passContentId);
             pc.ContainerPassId = _passService.CreatePass(pc.PassContentTemplate.PassContainerTemplateId.Value, fields.Select(ConvertTo), pc.ExpDate);
+            PassInfo passInfo = _passService.GetPass(pc.ContainerPassId.Value);
+            pc.AuthToken = passInfo.AuthToken;
+            pc.SerialNumber = passInfo.SerialNumber;
             //TODO the pass should be removed from pass container if the update operation failed
             _passContentService.Update(pc);
 

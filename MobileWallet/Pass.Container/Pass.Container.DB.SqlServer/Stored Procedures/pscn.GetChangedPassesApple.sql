@@ -13,7 +13,7 @@ CREATE PROCEDURE [pscn].[GetChangedPassesApple]
     @UpdateTag DATETIME = NULL
 AS
 BEGIN
-    SELECT p.SerialNumber, p.UpdatedDate FROM pscn.ClientDevice cd
+    SELECT pn.SerialNumber, p.UpdatedDate FROM pscn.ClientDevice cd
     INNER JOIN pscn.ClientDeviceApple cda ON cd.ClientDeviceId = cda.ClientDeviceId
     INNER JOIN pscn.Registration rg ON rg.ClientDeviceId = cd.ClientDeviceId AND rg.[Status] = 1/*Active*/
     INNER JOIN pscn.Pass p ON p.PassId = rg.PassId AND p.[Status] = 1/*Active*/

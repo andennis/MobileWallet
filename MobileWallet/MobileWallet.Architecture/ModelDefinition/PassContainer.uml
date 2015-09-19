@@ -1162,17 +1162,6 @@
             isDerivedUnion="false"
             aggregation="None"
             isComposite="false" />
-          <property
-            Id="c54c8fdd-7fa9-4c7c-95da-643128450d81"
-            name="SerialNumber"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false" />
         </ownedAttributesInternal>
       </class>
     </packageHasNamedElement>
@@ -2217,6 +2206,17 @@
           <property
             Id="d6125eaa-16ad-4d74-9cb0-a988791c26dc"
             name="DeviceType"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="d4c5c557-f028-427f-94e1-35000e84dd0b"
+            name="SerialNumber"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"

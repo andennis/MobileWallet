@@ -39,10 +39,9 @@
                 @Html.HiddenForExt(m => m.PassContentTemplateName)
             }
 
-            @Html.TextBoxFormForExt(m => m.SerialNumber)
-            @Html.TextBoxFormForExt(m => m.AuthToken)
-
             <div id="divContainerPassId" style="display:@(Model.ContainerPassId.HasValue ? "block" : "none")">
+                @Html.TextBlockFormForExt(m => m.SerialNumber)
+                @Html.TextBlockFormForExt(m => m.AuthToken)
                 @Html.TextBlockFormForExt(m => m.ContainerPassId, "Online Pass ID")
                 <div class="col-sm-offset-4 col-md-offset-3 col-sm-8, col-md-9">
                     <a href="@Model.DistributionLink" target="_blank">@Resources.DistributionLink</a>
@@ -91,7 +90,9 @@
         $("#lnkUpdate").show();
         $("#lnkDownload").show();
 
-        $("#ContainerPassId").val(data.containerPassId);
+        $("#ContainerPassId").val(data.ContainerPassId);
+        $("#SerialNumber").val(data.SerialNumber);
+        $("#AuthToken").val(data.AuthToken);
         $("#divContainerPassId").show();
 
         //var passTabs = $("#passTabs").kendoTabStrip();

@@ -61,6 +61,8 @@
     <Compile Include="PassTemplateService.cs" />
     <Compile Include="PassTemplateStorageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SequenceGenerator.cs" />
+    <Compile Include="SerialNumberGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Common.BL\Common.BL.csproj">

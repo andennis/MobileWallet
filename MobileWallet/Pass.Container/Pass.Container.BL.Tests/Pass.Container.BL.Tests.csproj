@@ -69,9 +69,15 @@
     <Compile Include="PassTemplateServiceTests.cs" />
     <Compile Include="PassTemplateStorageServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SequenceGeneratorTests.cs" />
+    <Compile Include="SerialNumberGeneratorTests.cs" />
     <Compile Include="TestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.BL\Common.BL.csproj">
+      <Project>{7542D78D-E82E-4953-B917-E3DB9AD0FDB5}</Project>
+      <Name>Common.BL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Common\Common.Configuration\Common.Configuration.csproj">
       <Project>{DFABDFCC-3B69-434A-BD2A-6838CD7608A8}</Project>
       <Name>Common.Configuration</Name>

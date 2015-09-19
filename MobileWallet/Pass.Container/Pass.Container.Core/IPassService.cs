@@ -10,6 +10,7 @@ namespace Pass.Container.Core
     public interface IPassService : IDisposable
     {
         int CreatePass(int passTemplateId, IEnumerable<PassFieldInfo> passFieldValues, DateTime? expDate = null);
+        PassInfo GetPass(int passId);
         IList<PassFieldInfo> GetPassFields(int passId);
         void UpdatePassFields(int passId, IEnumerable<PassFieldInfo> newFieldValues);
         string GetPassPackage(int passId, ClientType deviceType);

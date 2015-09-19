@@ -7,6 +7,7 @@
     [CreatedDate]          DATETIME NOT NULL,
     [UpdatedDate]          DATETIME NOT NULL,
     [PassTemplateNativeId] INT      DEFAULT ((0)) NOT NULL,
+	[SerialNumber]		   VARCHAR (64) NOT NULL,
     CONSTRAINT [PK_pscn.PassNative] PRIMARY KEY CLUSTERED ([PassNativeId] ASC),
     CONSTRAINT [FK_pscn.PassNative_pscn.Pass_PassId] FOREIGN KEY ([PassId]) REFERENCES [pscn].[Pass] ([PassId]) ON DELETE CASCADE,
     CONSTRAINT [FK_pscn.PassNative_pscn.PassTemplateNative_PassTemplateNativeId] FOREIGN KEY ([PassTemplateNativeId]) REFERENCES [pscn].[PassTemplateNative] ([PassTemplateNativeId]) ON DELETE CASCADE

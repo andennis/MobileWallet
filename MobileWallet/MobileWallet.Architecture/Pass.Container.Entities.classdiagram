@@ -205,9 +205,6 @@
           <property Id="9085e1da-2aab-45e7-b8b1-c552f8903d4b" name="Status" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="c03194d0-0aaa-4996-9e8f-7ea3c3323630" />
           </property>
-          <property Id="a7e6d8c2-4b34-41df-9a8d-fa0d81cea2c1" name="SerialNumber" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-            <elementDefinition Id="c54c8fdd-7fa9-4c7c-95da-643128450d81" />
-          </property>
         </ownedAttributesInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
@@ -414,6 +411,9 @@
           </property>
           <property Id="f9db4fbb-7a76-4861-a2e3-bdd1108ca4c4" name="DeviceType" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="d6125eaa-16ad-4d74-9cb0-a988791c26dc" />
+          </property>
+          <property Id="f0f6b0fc-f2b9-4242-9e1d-c121efd16e8b" name="SerialNumber" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="d4c5c557-f028-427f-94e1-35000e84dd0b" />
           </property>
         </ownedAttributesInternal>
       </class>

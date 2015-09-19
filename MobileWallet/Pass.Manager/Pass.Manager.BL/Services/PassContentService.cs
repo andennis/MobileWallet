@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Common.BL;
 using Pass.Manager.Core;
 using Pass.Manager.Core.Entities;
@@ -13,16 +12,6 @@ namespace Pass.Manager.BL.Services
         public PassContentService(IPassManagerUnitOfWork unitOfWork)
             : base(unitOfWork)
         {
-        }
-
-        public override void Create(PassContent entity)
-        {
-            if (string.IsNullOrEmpty(entity.SerialNumber))
-                entity.SerialNumber = Guid.NewGuid().ToString();
-            if (string.IsNullOrEmpty(entity.AuthToken))
-                entity.AuthToken = Guid.NewGuid().ToString();
-
-            base.Create(entity);
         }
 
         public override PassContent Get(int entityId)

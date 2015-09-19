@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="58cac581-9fa8-4dbe-ad57-72c83cb90f72" ChangeDateTime="09/18/2015 06:56:01">
+    <Property Name="ElementName" Value="[pscn].[SequenceCounter].[SequenceCounterId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[pscn].[SequenceCounter]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[SerialNumberCounterId]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="622e66a6-525e-441b-ae1c-82ae6433aee7" ChangeDateTime="09/18/2015 06:56:31">
+    <Property Name="ElementName" Value="[pscn].[SequenceCounter]" />
+    <Property Name="ElementType" Value="SqlTable" />
+    <Property Name="ParentElementName" Value="[pscn]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="[SerialNumberCounter]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a24b263e-ffca-467c-b1ff-9816f02020cd" ChangeDateTime="09/18/2015 06:59:40">
+    <Property Name="ElementName" Value="[pscn].[SequenceCounterNextValue]" />
+    <Property Name="ElementType" Value="SqlProcedure" />
+    <Property Name="ParentElementName" Value="[pscn]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="[SerialNumberCounter_NextValue]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ba014747-701b-47fd-8a65-b25c1b1a90ce" ChangeDateTime="09/18/2015 21:27:22">
+    <Property Name="ElementName" Value="[pscn].[SerialNumberCounter]" />
+    <Property Name="ElementType" Value="SqlTable" />
+    <Property Name="ParentElementName" Value="[pscn]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="[SequenceCounter]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4a1b1bbf-f060-441e-a6ed-7d0b5f1bc5a5" ChangeDateTime="09/18/2015 21:27:43">
+    <Property Name="ElementName" Value="[pscn].[SequenceCounter].[SerialNumberCounterId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[pscn].[SequenceCounter]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[SequenceCounterId]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0e33f0ea-bb7e-4754-a8f4-a8e806eeb8b3" ChangeDateTime="09/18/2015 21:31:15">
+    <Property Name="ElementName" Value="[pscn].[SerialNumberCounter_NextValue]" />
+    <Property Name="ElementType" Value="SqlProcedure" />
+    <Property Name="ParentElementName" Value="[pscn]" />
+    <Property Name="ParentElementType" Value="SqlSchema" />
+    <Property Name="NewName" Value="[SequenceCounter_NextValue]" />
+  </Operation>
+</Operations>

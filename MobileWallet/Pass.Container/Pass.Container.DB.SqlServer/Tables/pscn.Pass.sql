@@ -1,7 +1,6 @@
 ﻿CREATE TABLE [pscn].[Pass] (
     [PassId]         INT          IDENTITY (1, 1) NOT NULL,
     [AuthToken]      VARCHAR (64) NOT NULL,
-    [SerialNumber]   VARCHAR (64) NOT NULL,
     [ExpirationDate] DATETIME     NULL,
     [Status]         INT          NOT NULL,
     [PassTemplateId] INT          NOT NULL,

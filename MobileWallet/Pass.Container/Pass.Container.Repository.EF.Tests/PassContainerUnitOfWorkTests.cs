@@ -29,12 +29,17 @@ namespace Pass.Container.Repository.EF.Tests
             using (var unitOfWork = TestHelper.GetPassContainerUnitOfWork())
             {
                 Assert.IsNotNull(unitOfWork.GetRepository<Core.Entities.Pass>());
+                Assert.IsNotNull(unitOfWork.GetRepository<PassNative>());
+                Assert.IsNotNull(unitOfWork.GetRepository<PassApple>());
                 Assert.IsNotNull(unitOfWork.GetRepository<PassField>());
                 Assert.IsNotNull(unitOfWork.GetRepository<PassFieldValue>());
                 Assert.IsNotNull(unitOfWork.GetRepository<PassTemplate>());
+                Assert.IsNotNull(unitOfWork.GetRepository<PassTemplateNative>());
                 Assert.IsNotNull(unitOfWork.GetRepository<PassTemplateApple>());
+                Assert.IsNotNull(unitOfWork.GetRepository<ClientDevice>());
                 Assert.IsNotNull(unitOfWork.GetRepository<ClientDeviceApple>());
                 Assert.IsNotNull(unitOfWork.GetRepository<Registration>());
+                Assert.IsNotNull(unitOfWork.GetRepository<SequenceCounter>());
 
                 Assert.Throws<Exception>(() => unitOfWork.GetRepository<UnknownEntity>());
             }

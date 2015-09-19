@@ -10,6 +10,7 @@ namespace Pass.Container.Repository.EF
     public class PassContainerUnitOfWork : UnitOfWork, IPassContainerUnitOfWork
     {
         private IPassRepository _passRepository;
+        private ISequenceCounterRepository _sequenceCounterRepository;
         private readonly HashSet<Type> _allowedRepositoryEntities;
 
         public PassContainerUnitOfWork(IDbConfig dbConfig)
@@ -27,10 +28,12 @@ namespace Pass.Container.Repository.EF
                                                  typeof(PassTemplateApple), 
                                                  typeof(ClientDevice), 
                                                  typeof(ClientDeviceApple), 
-                                                 typeof(Registration)
+                                                 typeof(Registration),
+                                                 typeof(SequenceCounter)
                                              };
 
             RegisterCustomRepository(PassRepository);
+            RegisterCustomRepository(SequenceCounterRepository);
         }
 
         protected override HashSet<Type> AllowedRepositoryEntities
@@ -43,6 +46,14 @@ namespace Pass.Container.Repository.EF
             get
             {
                 return _passRepository ?? (_passRepository = new PassRepository(_dbContext));
+            }
+        }
+
+        public ISequenceCounterRepository SequenceCounterRepository
+        {
+            get
+            {
+                return _sequenceCounterRepository ?? (_sequenceCounterRepository = new SequenceCounterRepository(_dbContext));
             }
         }
 
