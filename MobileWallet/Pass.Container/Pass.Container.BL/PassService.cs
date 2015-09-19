@@ -398,7 +398,7 @@ namespace Pass.Container.BL
 
         private string GenerateAuthToken()
         {
-            return Guid.NewGuid().ToString().ToUpper();
+            return Guid.NewGuid().ToString("N").ToLower();
         }
 
         #region IDisposable
