@@ -50,6 +50,8 @@ namespace Pass.Manager.Web.Controllers
 
         public ActionResult Edit(int passProjectId)
         {
+            throw new NotImplementedException();
+            /*
             PassProject prj = _passProjectService.Get(passProjectId);
 
             PassTemplateViewModel model;
@@ -65,11 +67,14 @@ namespace Pass.Manager.Web.Controllers
             }
 
             return View("_PassDesigner", model);
+            */
         }
 
         [HttpPost]
         public ActionResult Edit(PassTemplateViewModel model)
         {
+            throw new NotImplementedException();
+            /*
             if (ModelState.IsValid)
             {
                 PassProject prj = _passProjectService.Get(model.PassProjectId);
@@ -142,6 +147,7 @@ namespace Pass.Manager.Web.Controllers
                 return RedirectToAction("Edit", "PassProject", new { id = model.PassProjectId });
             }
             return View("_PassDesigner", model);
+            */
         }
 
         public ActionResult GetImage(string path, string imageName)

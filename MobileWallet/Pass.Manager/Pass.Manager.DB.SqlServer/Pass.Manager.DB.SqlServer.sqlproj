@@ -94,7 +94,6 @@
     <Build Include="Tables\pm.PassContent.sql" />
     <Build Include="Views\pm.PassContentFieldView.sql" />
     <Build Include="Stored Procedures\pm.PassContentField_Search.sql" />
-    <Build Include="Stored Procedures\pm.PassContent_Insert.sql" />
     <Build Include="Stored Procedures\pm.PassContentField_GetView.sql" />
     <None Include="Scripts\Post-Deployment\01. AddAdminUser.sql" />
     <Build Include="Stored Procedures\pm.PassContentField_ListView.sql" />

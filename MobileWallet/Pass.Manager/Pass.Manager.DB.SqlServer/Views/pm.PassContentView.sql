@@ -1,8 +1,11 @@
 ﻿CREATE VIEW pm.PassContentView
 AS 
 SELECT 
-    pc.*, 
-    pct.PassProjectId,
-	pct.Name AS PassContentTemplateName 
-FROM pm.PassContent pc
-INNER JOIN pm.PassContentTemplate pct ON pct.PassContentTemplateId = pc.PassContentTemplateId
+    pp.PassSiteId,
+    pp.PassProjectId,
+    pp.Name AS ProjectName,
+	pct.Name AS PassContentTemplateName,
+    pc.* 
+FROM pm.PassProject pp
+INNER JOIN pm.PassContentTemplate pct ON pct.PassProjectId = pp.PassProjectId
+INNER JOIN pm.PassContent pc ON pc.PassContentTemplateId = pct.PassContentTemplateId

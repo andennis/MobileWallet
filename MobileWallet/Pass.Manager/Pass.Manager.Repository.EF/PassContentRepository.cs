@@ -1,7 +1,4 @@
-﻿using System;
-using System.Data;
-using System.Data.SqlClient;
-using Common.Repository.EF;
+﻿using Common.Repository.EF;
 using Pass.Manager.Core.Entities;
 
 namespace Pass.Manager.Repository.EF
@@ -13,6 +10,7 @@ namespace Pass.Manager.Repository.EF
         {
         }
 
+        /*
         public override void Insert(PassContent entity)
         {
             var prmPassContentId = new SqlParameter("PassContentId", SqlDbType.Int)
@@ -30,5 +28,6 @@ namespace Pass.Manager.Repository.EF
 
             entity.ContainerPassId = Convert.ToInt32(prmPassContentId.Value);
         }
+        */
     }
 }

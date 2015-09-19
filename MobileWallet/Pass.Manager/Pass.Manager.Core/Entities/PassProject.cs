@@ -8,9 +8,6 @@ namespace Pass.Manager.Core.Entities
         public int PassProjectId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public int? PassContentId { get; set; }//TODO it should be removed
-        public PassProjectType ProjectType { get; set; }//TODO it should be removed
-
         public int PassSiteId { get; set; }
         public PassSite PassSite { get; set; }
 

@@ -10,7 +10,6 @@
     [AuthToken]             VARCHAR (64)  NULL,
     [IsVoided]              BIT          DEFAULT ((0)) NOT NULL,
     [ContainerPassId]       INT          NULL,
-	[PassContentTemplateVersion] INT NOT NULL,
     CONSTRAINT [PK_pm.PassContent] PRIMARY KEY CLUSTERED ([PassContentId] ASC),
     CONSTRAINT [FK_pm.PassContent_pm.PassContentTemplate_PassContentTemplateId] FOREIGN KEY ([PassContentTemplateId]) REFERENCES [pm].[PassContentTemplate] ([PassContentTemplateId])
 );
