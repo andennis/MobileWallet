@@ -191,30 +191,57 @@ namespace Common.Web
             string dataFmt = (!string.IsNullOrEmpty(format) ? string.Format("{{0:{0}}}", format) : null);
             IDictionary<string, object> attributes = new Dictionary<string, object>
                 {
-                    { "class", "form-control-static" }
+                    {"class", "form-control textBlockForm"},
+                    { "readonly", "readonly" }, 
+                    { "data-format", format }
                 }
                 .ToDictionary(key => key.Key, val => val.Value);
 
-            var bilder = new TagBuilder("p");
-            var propValue = expression.GetPropertyValue(html.ViewData.Model);
-            var value = (dataFmt != null) ? string.Format(dataFmt, propValue) : Convert.ToString(propValue);
+            attributes.AddHtmlAttributes(htmlAttributes);
 
-            foreach (var attr in HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes))
-            {
-                if (!attr.Key.Equals("class", StringComparison.InvariantCultureIgnoreCase))
-                    attributes["class"] += " " + attr.Value;
-                else
-                    attributes.Add(attr);
-            }
-            
-            bilder.InnerHtml = value;
-            foreach (var attr in attributes)
-            {
-                bilder.Attributes.Add(attr.Key, attr.Value.ToString());
-            }
-
-            return new MvcHtmlString(bilder.ToString());
+            return html.TextBoxFor(expression, dataFmt, attributes);
         }
+    
+        //private static MvcHtmlString TextBlockFor<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string format = null, object htmlAttributes = null)
+        //{
+        //    if (typeof(TProperty) == typeof(DateTime))
+        //    {
+        //        if (string.IsNullOrEmpty(format))
+        //            format = "d";
+        //    }
+        //    var propName = expression.GetPropertyName();
+        //    string dataFmt = (!string.IsNullOrEmpty(format) ? string.Format("{{0:{0}}}", format) : null);
+        //    IDictionary<string, object> attributes = new Dictionary<string, object>
+        //        {
+        //            { "id", propName },
+        //            { "class", "form-control-static" }
+        //        }
+        //        .ToDictionary(key => key.Key, val => val.Value);
+
+        //    var bilder = new TagBuilder("p");
+        //    var propValue = expression.GetPropertyValue(html.ViewData.Model);
+        //    string value = null;
+        //    if (propValue != null)
+        //    {
+        //        value = dataFmt != null ? String.Format(dataFmt, propValue) : propValue.ToString();
+        //    }
+
+        //    foreach (var attr in HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes))
+        //    {
+        //        if (!attr.Key.Equals("class", StringComparison.InvariantCultureIgnoreCase))
+        //            attributes["class"] += " " + attr.Value;
+        //        else
+        //            attributes.Add(attr);
+        //    }
+            
+        //    bilder.InnerHtml = value;
+        //    foreach (var attr in attributes)
+        //    {
+        //        bilder.Attributes.Add(attr.Key, attr.Value.ToString());
+        //    }
+
+        //    return new MvcHtmlString(bilder.ToString());
+        //}
 
         //private static MvcHtmlString TextBlockFor<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string format = null, object htmlAttributes = null)
         //{

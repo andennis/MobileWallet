@@ -35,9 +35,9 @@
             <div id="divContainerTemplateId" style="display:@(Model.PassContainerTemplateId.HasValue ? "block" : "none")">
                 @Html.TextBlockFormForExt(m => m.PassContainerTemplateId, "Online Template ID")
             </div>
-            @Html.ColorPickerFormForExt(m => m.BackgroundColor, "Background Color")
-            @Html.ColorPickerFormForExt(m => m.ForegroundColor, "Foreground Color")
-            @Html.ColorPickerFormForExt(m => m.LabelColor, "Label Color")
+            @Html.ColorPickerFormForExt(m => m.BackgroundColor, "Background Color", null, null, false, false, true)
+            @Html.ColorPickerFormForExt(m => m.ForegroundColor, "Foreground Color", null, null, false, false, true)
+            @Html.ColorPickerFormForExt(m => m.LabelColor, "Label Color", null, null, false, false, true)
         </div>
         <div class="col-md-6">
             @Html.DropDownListFormForExt(m => m.PassStyle, "Pass Style", "- Select Pass Style -")
