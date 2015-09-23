@@ -4,7 +4,7 @@
     [DefaultValue]       NVARCHAR (MAX) NULL,
     [DefaultLabel]       NVARCHAR (128) NULL,
     [PassProjectId]      INT            NOT NULL,
-    [Version]            INT            NOT NULL,
+    [Version]            ROWVERSION     NOT NULL,
     [CreatedDate]        DATETIME       NOT NULL,
     [UpdatedDate]        DATETIME       NOT NULL,
     [Description]        NVARCHAR (MAX) NULL,

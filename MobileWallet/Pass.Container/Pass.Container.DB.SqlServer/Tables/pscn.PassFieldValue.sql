@@ -4,7 +4,7 @@
     [PassId]           INT            NOT NULL,
     [Label]            NVARCHAR (512) NULL,
     [Value]            NVARCHAR (512) NULL,
-    [Version]          INT            NOT NULL,
+    [Version]          ROWVERSION     NOT NULL,
     [CreatedDate]      DATETIME       NOT NULL,
     [UpdatedDate]      DATETIME       NOT NULL,
     CONSTRAINT [PK_pscn.PassFieldValue] PRIMARY KEY CLUSTERED ([PassFieldValueId] ASC),

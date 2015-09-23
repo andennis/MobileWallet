@@ -22,6 +22,7 @@ namespace Pass.Notification.Repository.EF
             modelBuilder.Entity<PushNotificationItem>().ToTable("PushNotificationItem", DbScheme);
             modelBuilder.Entity<PushNotificationItem>().Property(x => x.CertificateStorageId).IsRequired();
             modelBuilder.Entity<PushNotificationItem>().Property(x => x.PushTockenId).IsRequired();
+            modelBuilder.Entity<PushNotificationItem>().Property(x => x.Version).IsConcurrencyToken();
            
             base.OnModelCreating(modelBuilder);
         }

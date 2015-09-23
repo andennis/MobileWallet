@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [pm].[PassSiteCertificate] (
     [PassSiteId]            INT      NOT NULL,
     [PassCertificateId]     INT      NOT NULL,
-    [Version]               INT      NOT NULL,
+    [Version]               ROWVERSION      NOT NULL,
     [CreatedDate]           DATETIME NOT NULL,
     [UpdatedDate]           DATETIME NOT NULL,
     [PassSiteCertificateId] INT      IDENTITY (1, 1) NOT NULL,

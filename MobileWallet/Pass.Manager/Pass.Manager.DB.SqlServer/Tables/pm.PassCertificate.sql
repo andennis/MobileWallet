@@ -4,7 +4,7 @@
     [Description]          NVARCHAR (MAX) NULL,
     [ExpDate]              DATETIME       NOT NULL,
     [CertificateStorageId] INT            NOT NULL,
-    [Version]              INT            NOT NULL,
+    [Version]              ROWVERSION     NOT NULL,
     [CreatedDate]          DATETIME       NOT NULL,
     [UpdatedDate]          DATETIME       NOT NULL,
     [CertificateFileName]  NVARCHAR (MAX) NULL,

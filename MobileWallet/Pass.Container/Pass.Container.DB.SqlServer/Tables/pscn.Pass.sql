@@ -4,7 +4,7 @@
     [ExpirationDate] DATETIME     NULL,
     [Status]         INT          NOT NULL,
     [PassTemplateId] INT          NOT NULL,
-    [Version]        INT          NOT NULL,
+    [Version]        ROWVERSION   NOT NULL,
     [CreatedDate]    DATETIME     NOT NULL,
     [UpdatedDate]    DATETIME     NOT NULL,
     CONSTRAINT [PK_pscn.Pass] PRIMARY KEY CLUSTERED ([PassId] ASC),

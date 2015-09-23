@@ -4,7 +4,7 @@
 	[PushTockenId] [nvarchar](max) NOT NULL,
 	[Status] [int] NOT NULL,
 	[PushNotificationServiceType] [int] NOT NULL,
-	[Version] [int] NOT NULL,
+	[Version] [ROWVERSION] NOT NULL,
 	[CreatedDate] [datetime] NOT NULL,
 	[UpdatedDate] [datetime] NOT NULL,
  CONSTRAINT [PK_pn.PushNotificationItem] PRIMARY KEY CLUSTERED ([PushNotificationItemId] ASC)

@@ -4,7 +4,7 @@
     [FirstName]   NVARCHAR (512) NULL,
     [LastName]    NVARCHAR (512) NULL,
     [Password]    NVARCHAR (512) NULL,
-    [Version]     INT            NOT NULL,
+    [Version]     ROWVERSION     NOT NULL,
     [CreatedDate] DATETIME       NOT NULL,
     [UpdatedDate] DATETIME       NOT NULL,
     CONSTRAINT [PK_pm.User] PRIMARY KEY CLUSTERED ([UserId] ASC)

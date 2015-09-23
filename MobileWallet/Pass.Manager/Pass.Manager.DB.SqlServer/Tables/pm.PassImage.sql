@@ -4,7 +4,7 @@
     [FileStorageId]         INT      NULL,
     [FileStorage2xId]       INT      NULL,
     [PassContentTemplateId] INT      NOT NULL,
-    [Version]               INT      NOT NULL,
+    [Version]               ROWVERSION      NOT NULL,
     [CreatedDate]           DATETIME NOT NULL,
     [UpdatedDate]           DATETIME NOT NULL,
     CONSTRAINT [PK_pm.PassImage] PRIMARY KEY CLUSTERED ([PassImageId] ASC),

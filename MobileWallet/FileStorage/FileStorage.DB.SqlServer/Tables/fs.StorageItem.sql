@@ -5,7 +5,7 @@
     [Size]          BIGINT         NULL,
     [Status]        INT            NOT NULL,
     [ItemType]      INT            NOT NULL,
-    [Version]       INT            NOT NULL,
+    [Version]       ROWVERSION     NOT NULL,
     [CreatedDate]   DATETIME       NOT NULL,
     [UpdatedDate]   DATETIME       NOT NULL,
     [ParentId]      INT            NOT NULL,

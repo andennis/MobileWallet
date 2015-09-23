@@ -7,7 +7,7 @@
     [TextAlignment]              INT            NULL,
     [PassProjectFieldId]         INT            NULL,
     [PassContentTemplateId]      INT            NOT NULL,
-    [Version]                    INT            NOT NULL,
+    [Version]                    ROWVERSION     NOT NULL,
     [CreatedDate]                DATETIME       NOT NULL,
     [UpdatedDate]                DATETIME       NOT NULL,
     [Value]                      NVARCHAR (MAX) NULL,

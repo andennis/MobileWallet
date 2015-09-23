@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure.Annotations;
+using System.Runtime.ConstrainedExecution;
 using CertificateStorage.Repository.Core.Entities;
 using Common.Repository.EF;
 
@@ -26,6 +27,7 @@ namespace CertificateStorage.Repository.EF
                 .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("IX_Certificate_Name"){IsUnique = true}));
             modelBuilder.Entity<Certificate>().Property(x => x.Password).HasMaxLength(512);
             modelBuilder.Entity<Certificate>().Property(x => x.FileId).IsRequired();
+            modelBuilder.Entity<Certificate>().Property(x => x.Version).IsConcurrencyToken();
         }
     }
 }

@@ -5,7 +5,7 @@
     [Longitude]             FLOAT (53)     NOT NULL,
     [RelevantText]          NVARCHAR (MAX) NULL,
     [PassContentTemplateId] INT            NOT NULL,
-    [Version]               INT            NOT NULL,
+    [Version]               ROWVERSION   NOT NULL,
     [CreatedDate]           DATETIME       NOT NULL,
     [UpdatedDate]           DATETIME       NOT NULL,
     [Name]                  NVARCHAR (512) DEFAULT ('') NOT NULL,

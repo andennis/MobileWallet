@@ -86,7 +86,6 @@ namespace Common.Repository.EF
                 var entityVersionable = dbEntityEntry.Entity as IEntityVersionable;
                 if (entityVersionable != null)
                 {
-                    entityVersionable.Version = 1;
                     entityVersionable.CreatedDate = DateTime.Now;
                     entityVersionable.UpdatedDate = entityVersionable.CreatedDate;
                 }
@@ -96,7 +95,6 @@ namespace Common.Repository.EF
                 var entityVersionable = dbEntityEntry.Entity as IEntityVersionable;
                 if (entityVersionable != null)
                 {
-                    entityVersionable.Version++;
                     entityVersionable.UpdatedDate = DateTime.Now;
                 }
             }
