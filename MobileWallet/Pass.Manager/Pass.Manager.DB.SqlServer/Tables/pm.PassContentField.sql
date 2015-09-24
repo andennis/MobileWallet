@@ -3,7 +3,7 @@
     [PassProjectFieldId] INT            NOT NULL,
     [FieldLabel]         NVARCHAR (512) NULL,
     [FieldValue]         NVARCHAR (512) NULL,
-    [Version]            ROWVERSION     NOT NULL,
+    [Version]            INT            NOT NULL,
     [CreatedDate]        DATETIME       NOT NULL,
     [UpdatedDate]        DATETIME       NOT NULL,
     [PassContentId]      INT            DEFAULT ((0)) NOT NULL,

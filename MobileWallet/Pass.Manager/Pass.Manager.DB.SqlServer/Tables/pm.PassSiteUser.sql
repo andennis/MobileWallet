@@ -2,7 +2,7 @@
     [PassSiteId]     INT      NOT NULL,
     [UserId]         INT      NOT NULL,
     [Status]         INT      NOT NULL,
-    [Version]        ROWVERSION      NOT NULL,
+    [Version]        INT      NOT NULL,
     [CreatedDate]    DATETIME NOT NULL,
     [UpdatedDate]    DATETIME NOT NULL,
     [UserState]      INT      DEFAULT ((0)) NOT NULL,

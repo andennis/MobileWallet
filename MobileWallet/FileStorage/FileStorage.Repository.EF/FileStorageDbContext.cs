@@ -23,14 +23,12 @@ namespace FileStorage.Repository.EF
             modelBuilder.Entity<FolderItem>().ToTable("FolderItem", DbScheme);
             modelBuilder.Entity<FolderItem>().HasOptional(x => x.Parent).WithMany(x => x.ChildFolders).Map(x => x.MapKey("ParentId"));
             modelBuilder.Entity<FolderItem>().Property(x => x.Name).IsRequired().HasMaxLength(512);
-            modelBuilder.Entity<FolderItem>().Property(x => x.Version).IsConcurrencyToken();
 
             modelBuilder.Entity<StorageItem>().ToTable("StorageItem", DbScheme);
             modelBuilder.Entity<StorageItem>().HasRequired(x => x.Parent).WithMany(x => x.ChildStorageItems).Map(x => x.MapKey("ParentId"));
             modelBuilder.Entity<StorageItem>().Property(x => x.Name).IsRequired().HasMaxLength(512);
             modelBuilder.Entity<StorageItem>().Property(x => x.OriginalName).IsOptional().HasMaxLength(512);
             modelBuilder.Entity<StorageItem>().Property(x => x.Size).IsOptional();
-            modelBuilder.Entity<StorageItem>().Property(x => x.Version).IsConcurrencyToken();
 
             base.OnModelCreating(modelBuilder);
         }

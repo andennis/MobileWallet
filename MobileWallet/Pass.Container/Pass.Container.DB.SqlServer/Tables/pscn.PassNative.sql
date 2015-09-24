@@ -3,7 +3,7 @@
     [PassId]               INT      NOT NULL,
     [PassFileStorageId]    INT      NULL,
     [DeviceType]           INT      NOT NULL,
-    [Version]              ROWVERSION      NOT NULL,
+    [Version]              INT      NOT NULL,
     [CreatedDate]          DATETIME NOT NULL,
     [UpdatedDate]          DATETIME NOT NULL,
     [PassTemplateNativeId] INT      DEFAULT ((0)) NOT NULL,

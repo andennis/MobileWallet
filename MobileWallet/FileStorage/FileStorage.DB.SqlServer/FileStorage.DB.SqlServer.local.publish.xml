@@ -5,8 +5,8 @@
     <TargetDatabaseName>MobileWallet</TargetDatabaseName>
     <DeployScriptFileName>FileStorage.DB.SqlServer.sql</DeployScriptFileName>
     <TargetConnectionString>Data Source=localhost;Integrated Security=True;Pooling=False</TargetConnectionString>
-    <BlockWhenDriftDetected>False</BlockWhenDriftDetected>
-    <RegisterDataTierApplication>False</RegisterDataTierApplication>
+    <BlockWhenDriftDetected>True</BlockWhenDriftDetected>
+    <RegisterDataTierApplication>True</RegisterDataTierApplication>
     <ProfileVersionNumber>1</ProfileVersionNumber>
   </PropertyGroup>
 </Project>

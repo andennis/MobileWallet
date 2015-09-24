@@ -3,7 +3,7 @@
     [ProximityUuid]         NVARCHAR (128) NOT NULL,
     [RelevantText]          NVARCHAR (MAX) NULL,
     [PassContentTemplateId] INT            NOT NULL,
-    [Version]               ROWVERSION   NOT NULL,
+    [Version]               INT            NOT NULL,
     [CreatedDate]           DATETIME       NOT NULL,
     [UpdatedDate]           DATETIME       NOT NULL,
     [Major]                 INT            NULL,

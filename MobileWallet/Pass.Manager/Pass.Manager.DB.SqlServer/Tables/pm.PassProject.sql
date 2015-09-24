@@ -3,7 +3,7 @@ CREATE TABLE [pm].[PassProject] (
     [Name]              NVARCHAR (512) NOT NULL,
     [Description]       NVARCHAR (MAX) NULL,
     [PassSiteId]        INT            NOT NULL,
-    [Version]           ROWVERSION     NOT NULL,
+    [Version]           INT            NOT NULL,
     [CreatedDate]       DATETIME       NOT NULL,
     [UpdatedDate]       DATETIME       NOT NULL,
     [PassCertificateId] INT             NOT NULL,

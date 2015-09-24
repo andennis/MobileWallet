@@ -4,7 +4,7 @@
     [Format]                INT            NOT NULL,
     [Message]               NVARCHAR (64)  NOT NULL,
     [MessageEncoding]       NVARCHAR (32)  NULL,
-    [Version]               ROWVERSION   NOT NULL,
+    [Version]               INT            NOT NULL,
     [CreatedDate]           DATETIME       NOT NULL,
     [UpdatedDate]           DATETIME       NOT NULL,
     CONSTRAINT [PK_pm.PassBarcode] PRIMARY KEY CLUSTERED ([PassContentTemplateId] ASC),

@@ -8,7 +8,7 @@
     [GroupingIdentifier]      NVARCHAR (MAX) NULL,
     [LogoText]                NVARCHAR (MAX) NULL,
     [SuppressStripShine]      BIT            NOT NULL,
-    [Version]                 ROWVERSION     NOT NULL,
+    [Version]                 INT            NOT NULL,
     [CreatedDate]             DATETIME       NOT NULL,
     [UpdatedDate]             DATETIME       NOT NULL,
     [PassProjectId]           INT            NOT NULL,

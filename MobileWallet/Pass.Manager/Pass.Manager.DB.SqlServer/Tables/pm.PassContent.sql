@@ -3,7 +3,7 @@
     [SerialNumber]          VARCHAR (64) NULL,
     [Status]                INT          NOT NULL,
     [PassContentTemplateId] INT          NOT NULL,
-    [Version]               ROWVERSION   NOT NULL,
+    [Version]               INT          NOT NULL,
     [CreatedDate]           DATETIME     NOT NULL,
     [UpdatedDate]           DATETIME     NOT NULL,
     [ExpDate]               DATETIME     NULL,

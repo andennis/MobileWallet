@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [fs].[FolderItem] (
     [FolderItemId] INT            IDENTITY (1, 1) NOT NULL,
     [Name]         NVARCHAR (512) NOT NULL,
-    [Version]      ROWVERSION     NOT NULL,
+    [Version]      INT            NOT NULL,
     [CreatedDate]  DATETIME       NOT NULL,
     [UpdatedDate]  DATETIME       NOT NULL,
     [ParentId]     INT            NULL,

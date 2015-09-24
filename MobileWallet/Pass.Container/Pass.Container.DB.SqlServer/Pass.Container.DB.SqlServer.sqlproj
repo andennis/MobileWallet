@@ -7,7 +7,6 @@
     <DefaultCollation>Cyrillic_General_CI_AS</DefaultCollation>
     <DefaultFilegroup>PRIMARY</DefaultFilegroup>
     <IncludeSchemaNameInFileName>True</IncludeSchemaNameInFileName>
-    <GenerateCreateScript>False</GenerateCreateScript>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>

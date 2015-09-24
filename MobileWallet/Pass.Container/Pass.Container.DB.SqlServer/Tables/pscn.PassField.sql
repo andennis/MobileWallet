@@ -2,7 +2,7 @@
     [PassFieldId]    INT            IDENTITY (1, 1) NOT NULL,
     [PassTemplateId] INT            NOT NULL,
     [Name]           NVARCHAR (512) NOT NULL,
-    [Version]        ROWVERSION     NOT NULL,
+    [Version]        INT            NOT NULL,
     [CreatedDate]    DATETIME       NOT NULL,
     [UpdatedDate]    DATETIME       NOT NULL,
     [Status]         INT            DEFAULT ((0)) NOT NULL,
