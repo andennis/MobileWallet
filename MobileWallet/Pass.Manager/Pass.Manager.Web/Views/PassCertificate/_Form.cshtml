@@ -28,7 +28,9 @@
 
             @(Model.CertificateFileName != null
                 ? Html.FileUploadFormForEx(m => m.CertificateFile, "Certificate File", null, Model.CertificateFileName)
-                : Html.FileUploadFormForEx(m => m.CertificateFile, "Certificate File"))
+                  : Html.FileUploadFormForEx(m => m.CertificateFile, "Certificate File"))
+            
+            @Html.ActionLinkExt("Download certificate", "Download", "PassCertificate", new {id = Model.PassCertificateId}, new{@class = "downloadLink"})
         </div>
     </div>
 </fieldset>

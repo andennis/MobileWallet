@@ -463,6 +463,10 @@ img[src=""].boundBoolImg {
     align-items: center;
 }
 
+.downloadLink {
+    margin-left: 9px;
+}
+
 
 /*For ActionLinkFormForExt control*/
 .linkForm {
