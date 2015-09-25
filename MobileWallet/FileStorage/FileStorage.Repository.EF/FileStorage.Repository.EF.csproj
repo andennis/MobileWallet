@@ -55,6 +55,8 @@
     <Compile Include="FileStorageDbContext.cs" />
     <Compile Include="FileStorageRepository.cs" />
     <Compile Include="FileStorageUnitOfWork.cs" />
+    <Compile Include="Mapping\FolderItemConfiguration.cs" />
+    <Compile Include="Mapping\StorageItemConfiguration.cs" />
     <Compile Include="MigrationsContextFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

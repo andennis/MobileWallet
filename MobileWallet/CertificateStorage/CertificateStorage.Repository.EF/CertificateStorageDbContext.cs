@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure.Annotations;
 using CertificateStorage.Repository.Core.Entities;
+using CertificateStorage.Repository.EF.Mapping;
 using Common.Repository.EF;
 
 namespace CertificateStorage.Repository.EF
@@ -21,11 +22,7 @@ namespace CertificateStorage.Repository.EF
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Certificate>().ToTable("Certificate", DbScheme);
-            modelBuilder.Entity<Certificate>().Property(x => x.Name).HasMaxLength(256)
-                .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("IX_Certificate_Name"){IsUnique = true}));
-            modelBuilder.Entity<Certificate>().Property(x => x.Password).HasMaxLength(512);
-            modelBuilder.Entity<Certificate>().Property(x => x.FileId).IsRequired();
+            modelBuilder.Configurations.Add<Certificate>(new CertificateConfiguration(DbScheme));
         }
     }
 }

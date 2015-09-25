@@ -51,6 +51,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mapping\ClientDeviceAppleConfiguration.cs" />
+    <Compile Include="Mapping\ClientDeviceConfiguration.cs" />
+    <Compile Include="Mapping\PassAppleConfiguration.cs" />
+    <Compile Include="Mapping\PassConfiguration.cs" />
+    <Compile Include="Mapping\PassFieldConfiguraion.cs" />
+    <Compile Include="Mapping\PassFieldValueConfiguration.cs" />
+    <Compile Include="Mapping\PassNativeConfiguration.cs" />
+    <Compile Include="Mapping\PassTemplateAppleConfiguration.cs" />
+    <Compile Include="Mapping\PassTemplateConfiguration.cs" />
+    <Compile Include="Mapping\PassTemplateNativeConfiguration.cs" />
+    <Compile Include="Mapping\RegistrationConfiguration.cs" />
+    <Compile Include="Mapping\SequenceCounterConfiguration.cs" />
     <Compile Include="PassContainerDbContext.cs" />
     <Compile Include="PassContainerUnitOfWork.cs" />
     <Compile Include="PassRepository.cs" />

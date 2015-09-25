@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mapping\CertificateConfiguration.cs" />
     <Compile Include="MigrationsContextFactory.cs" />
     <Compile Include="CertificateStorageDbContext.cs" />
     <Compile Include="CertificateStorageUnitOfWork.cs" />

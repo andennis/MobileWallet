@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using Common.Repository.EF;
 using FileStorage.Repository.Core.Entities;
+using FileStorage.Repository.EF.Mapping;
 
 namespace FileStorage.Repository.EF
 {
@@ -20,15 +21,8 @@ namespace FileStorage.Repository.EF
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<FolderItem>().ToTable("FolderItem", DbScheme);
-            modelBuilder.Entity<FolderItem>().HasOptional(x => x.Parent).WithMany(x => x.ChildFolders).Map(x => x.MapKey("ParentId"));
-            modelBuilder.Entity<FolderItem>().Property(x => x.Name).IsRequired().HasMaxLength(512);
-
-            modelBuilder.Entity<StorageItem>().ToTable("StorageItem", DbScheme);
-            modelBuilder.Entity<StorageItem>().HasRequired(x => x.Parent).WithMany(x => x.ChildStorageItems).Map(x => x.MapKey("ParentId"));
-            modelBuilder.Entity<StorageItem>().Property(x => x.Name).IsRequired().HasMaxLength(512);
-            modelBuilder.Entity<StorageItem>().Property(x => x.OriginalName).IsOptional().HasMaxLength(512);
-            modelBuilder.Entity<StorageItem>().Property(x => x.Size).IsOptional();
+            modelBuilder.Configurations.Add<FolderItem>(new FolderItemConfiguration(DbScheme));
+            modelBuilder.Configurations.Add<StorageItem>(new StorageItemConfiguration(DbScheme));
 
             base.OnModelCreating(modelBuilder);
         }

@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using Common.Repository.EF;
 using Pass.Notification.Repository.Core.Entities;
+using Pass.Notification.Repository.EF.Mapping;
 
 namespace Pass.Notification.Repository.EF
 {
@@ -19,10 +20,7 @@ namespace Pass.Notification.Repository.EF
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<PushNotificationItem>().ToTable("PushNotificationItem", DbScheme);
-            modelBuilder.Entity<PushNotificationItem>().Property(x => x.CertificateStorageId).IsRequired();
-            modelBuilder.Entity<PushNotificationItem>().Property(x => x.PushTockenId).IsRequired();
-           
+            modelBuilder.Configurations.Add<PushNotificationItem>(new PushNotificationItemConfiguration(DbScheme));
             base.OnModelCreating(modelBuilder);
         }
     }
