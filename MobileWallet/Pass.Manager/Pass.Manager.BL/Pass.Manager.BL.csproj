@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\PassBarcodeSevice.cs" />
     <Compile Include="Services\PassBeaconService.cs" />
     <Compile Include="Services\PassCertificateService.cs" />
     <Compile Include="PassManagerConfig.cs" />

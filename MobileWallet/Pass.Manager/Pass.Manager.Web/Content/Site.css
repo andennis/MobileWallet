@@ -142,6 +142,10 @@ textarea {
     color: #737C86;
 }
 
+.k-tabstrip .k-content.k-state-active {
+    color: #2d586f;
+}
+
 .btn-default {
     background: rgba(45, 88, 111, 0.5);
     color: white;
@@ -465,6 +469,10 @@ img[src=""].boundBoolImg {
 
 .downloadLink {
     margin-left: 9px;
+}
+
+.barcodeChangeButton {
+    display: none;
 }
 
 

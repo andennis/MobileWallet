@@ -159,6 +159,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Common\BaseEntityController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PassBarcodeController.cs" />
     <Compile Include="Controllers\PassBeaconController.cs" />
     <Compile Include="Controllers\PassCertificateController.cs" />
     <Compile Include="Controllers\PassContentFieldController.cs" />
@@ -988,6 +989,7 @@
     <Content Include="Views\PassContent\Tabs\_Fields.cshtml" />
     <Content Include="Views\PassContent\_Passes.cshtml" />
     <Content Include="Views\PassContent\Tabs\_Registrations.cshtml" />
+    <Content Include="Views\PassContentTemplate\Tabs\_Barcode.cshtml" />
     <None Include="Web.Base.config">
       <SubType>Designer</SubType>
     </None>
@@ -1232,6 +1234,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\TemplateImages\" />
+    <Folder Include="Views\PassBarcode\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

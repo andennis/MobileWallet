@@ -276,23 +276,29 @@ namespace Common.Web
         {
             return html.LabelWithControl(expression, labelText, null, () => html.TextBoxFor(expression, _initControlAttributes));
         }
+        public static MvcHtmlString TextBoxFormForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string labelText, object htmlAttributes)
+        {
+            var attr = new Dictionary<string, object>(_initControlAttributes);
+            attr.AddHtmlAttributes(htmlAttributes);
+            return html.LabelWithControl(expression, labelText, null, () => html.TextBoxFor(expression, attr));
+        }
         #endregion
 
         #region DropDownList
         public static MvcHtmlString DropDownListFormForExt<TModel, TEnumProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TEnumProperty>> expression,
-            string labelText = null, string optionLabel = null)
+            string labelText = null, string optionLabel = null, object htmlAttributes = null)
             where TEnumProperty : struct
         {
             SelectList listItems = EnumHelper.ToSelectList<TEnumProperty>(/*(TEnumProperty)selectedValue*/);
-            return html.DropDownListFormForExt(expression, listItems, labelText, optionLabel);
+            return html.DropDownListFormForExt(expression, listItems, labelText, optionLabel, htmlAttributes);
         }
 
         public static MvcHtmlString DropDownListFormForExt<TModel, TEnumProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TEnumProperty?>> expression,
-            string labelText = null, string optionLabel = null)
+            string labelText = null, string optionLabel = null, object htmlAttributes = null)
             where TEnumProperty : struct
         {
             SelectList listItems = EnumHelper.ToSelectList<TEnumProperty>(/*(TEnumProperty?) selectedValue*/);
-            return html.DropDownListFormForExt(expression, listItems, labelText, optionLabel);
+            return html.DropDownListFormForExt(expression, listItems, labelText, optionLabel, htmlAttributes);
         }
 
         public static MvcHtmlString DropDownListFormForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> listItems,
@@ -314,12 +320,14 @@ namespace Common.Web
         public static MvcHtmlString DropDownListExt<TModel>(this HtmlHelper<TModel> html, string name, IEnumerable<SelectListItem> listItems, object selectedValue = null, string optionLabel = null,
             object htmlAttributes = null, string changeHandler = null)
         {
+            var attr = new Dictionary<string, object>(_initControlAttributes);
+            attr.AddHtmlAttributes(htmlAttributes);
             DropDownListBuilder builder = html.Widget().DropDownList()
                 .Name(name)
                 .DataTextField("Text")
                 .DataValueField("Value")
                 .BindTo(listItems)
-                .HtmlAttributes(_initControlAttributes.MergeHtmlAttributes(htmlAttributes));
+                .HtmlAttributes(attr);
 
             if (selectedValue != null)
                 builder.SelectedValue(selectedValue);

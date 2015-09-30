@@ -65,6 +65,7 @@
                          tab.Add().Text("Images").LoadContentFrom(Url.Action("TabImages", new { id = Model.PassContentTemplateId }));
                          tab.Add().Text("Beacons").LoadContentFrom(Url.Action("TabBeacons", new { id = Model.PassContentTemplateId }));
                          tab.Add().Text("Locations").LoadContentFrom(Url.Action("TabLocations", new {id = Model.PassContentTemplateId}));
+                         tab.Add().Text("Barcode").LoadContentFrom(Url.Action("TabBarcode", "PassBarcode", new { id = Model.PassContentTemplateId }));
                      }
               ))
     </div>

@@ -36,6 +36,7 @@ namespace Pass.Manager.Repository.EF
                                             typeof(PassContentTemplateField),
                                             typeof(PassImage),
                                             typeof(PassBeacon),
+                                            typeof(PassBarcode),
                                             typeof(PassLocation),
                                             typeof(PassContent),
                                             typeof(PassContentField)

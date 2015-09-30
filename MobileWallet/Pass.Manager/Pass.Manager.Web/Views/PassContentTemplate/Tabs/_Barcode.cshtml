@@ -1,0 +1,86 @@
+﻿@model PassBarcodeViewModel
+
+<br />
+@Html.TextBoxFormForExt(m => m.AltText, null, new { @class = "barcodeFormControls" })
+@Html.DropDownListFormForExt(m => m.Format, "Barcode Format", null, new { @class = "barcodeFormControls" })
+@Html.TextBoxFormForExt(m => m.Message, null, new { @class = "barcodeFormControls" })
+@Html.TextBoxFormForExt(m => m.MessageEncoding, null, new { @class = "barcodeFormControls" })
+
+<div class="form-group">
+    <div class="col-sm-8 col-md-9 col-sm-offset-3">
+        @if (Model.PassContentTemplateId == 0)
+        {
+            <input id="saveBarcodeButton" class="btn btn-default barcodeChangeButton" type="button" value="SaveBarcode" />
+        }
+        else
+        {
+            <input id="editBarcodeButton" class="btn btn-default barcodeChangeButton col-sm-offset-3" type="button" value="SaveBarcode" />
+        }
+    </div>
+</div>
+
+
+
+
+
+<script type="text/javascript">
+    $('.barcodeFormControls').change(function () {
+        $('.barcodeChangeButton').css('display', 'block');
+    });
+
+    $('.barcodeChangeButton').click(function () {
+        var passContentTemplateId = $('#PassContentTemplateId').val();
+        var altText = $('#AltText').val();
+        var format = $('#Format').val();
+        var message = $('#Message').val();
+        var messageEncoding = $('#MessageEncoding').val();
+        var jsonData = JSON.stringify({
+            model: {
+                PassContentTemplateId: passContentTemplateId,
+                AltText: altText,
+                Format: format,
+                Message: message,
+                MessageEncoding: messageEncoding
+            }
+        });
+        if ($(this).attr('id') == 'saveBarcodeButton') {
+            $.ajax({
+                url: '/Pass.Manager.Web/PassBarcode/CreateBarcode',
+                dataType: "json",
+                type: "POST",
+                contentType: 'application/json; charset=utf-8',
+                data: jsonData,
+                async: true,
+                success: function (data) {
+                    if (data.Success) {
+                        $('.barcodeChangeButton').attr('id', 'editBarcodeButton');
+                        $('.barcodeChangeButton').css('display', 'none');
+                        alert('barcode successfully added');
+                    }
+                },
+                error: function (xhr) {
+                    alert('error');
+                }
+            });
+        }
+        else if ($(this).attr('id') == 'editBarcodeButton') {
+            $.ajax({
+                url: '/Pass.Manager.Web/PassBarcode/EditBarcode',
+                dataType: "json",
+                type: "POST",
+                contentType: 'application/json; charset=utf-8',
+                data: jsonData,
+                async: true,
+                success: function (data) {
+                    if (data.Success) {
+                        $('.barcodeChangeButton').css('display', 'none');
+                        alert('barcode successfully changed');
+                    }
+                },
+                error: function (xhr) {
+                    alert('error');
+                }
+            });
+        }
+    });
+</script>
