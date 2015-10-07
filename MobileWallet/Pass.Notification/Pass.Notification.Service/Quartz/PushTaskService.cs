@@ -23,13 +23,19 @@ namespace Pass.Notification.Service.Quartz
         public void Start()
         {
             Logger.Info("PushTaskService starting");
+            bool isDebugMode = false;
+            Boolean.TryParse(ConfigurationManager.AppSettings["IsDebugMode"], out isDebugMode);
+            if (isDebugMode)
+                Logger.Info("PushTaskService starting in Debug Mode");
+
             PushNotificationServiceHost.StartPushNotificationServiceHosts(_passNotificationService);
 
             Logger.Info("Push Notification sheduler starting");
             IJobDetail job = JobBuilder.Create<PushJob>()
                                 .WithIdentity("PushJob", "PushTaskService")
                                 .Build();
-            job.JobDataMap.Add("PassNotificationService", _passNotificationService);    
+            job.JobDataMap.Add("PassNotificationService", _passNotificationService);
+            job.JobDataMap.Add("IsDebugMode", isDebugMode); 
 
             ITrigger trigger = TriggerBuilder.Create()
                                         .WithIdentity("PushTrigger", "PushTaskService")

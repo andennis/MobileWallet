@@ -51,6 +51,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mapping\PassBarcodeConfiguration.cs" />
+    <Compile Include="Mapping\PassBeaconConfiguration.cs" />
+    <Compile Include="Mapping\PassCertificateAppleConfiguration.cs" />
+    <Compile Include="Mapping\PassCertificateConfiguration.cs" />
+    <Compile Include="Mapping\PassContentConfiguration.cs" />
+    <Compile Include="Mapping\PassContentFieldConfiguration.cs" />
+    <Compile Include="Mapping\PassContentTemplateConfiguration.cs" />
+    <Compile Include="Mapping\PassContentTemplateFieldConfiguration.cs" />
+    <Compile Include="Mapping\PassImageConfiguration.cs" />
+    <Compile Include="Mapping\PassLocationConfiguration.cs" />
+    <Compile Include="Mapping\PassProjectConfiguration.cs" />
+    <Compile Include="Mapping\PassProjectFieldConfiguration.cs" />
+    <Compile Include="Mapping\PassSiteCertificateConfiguration.cs" />
+    <Compile Include="Mapping\PassSiteConfiguration.cs" />
+    <Compile Include="Mapping\PassSiteUserConfiguration.cs" />
+    <Compile Include="Mapping\UserConfiguration.cs" />
     <Compile Include="MigrationsContextFactory.cs" />
     <Compile Include="Migrations\201409160944449_InitialCreate.cs" />
     <Compile Include="Migrations\201409160944449_InitialCreate.Designer.cs">
@@ -357,9 +373,7 @@
       <DependentUpon>201509121641046_M37.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Mapping\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

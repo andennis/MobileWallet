@@ -1,5 +1,6 @@
 ﻿using System;
 using Atlas;
+using Pass.Notification.BL.Utils;
 using Quartz;
 
 namespace Pass.Notification.Service.Quartz
@@ -31,7 +32,8 @@ namespace Pass.Notification.Service.Quartz
         }
     
         public void JobWasExecuted(IJobExecutionContext context, JobExecutionException jobException)
-        {
+        { 
+            Logger.Error(jobException.ToString());
             this._container.Dispose();
         }
     }
