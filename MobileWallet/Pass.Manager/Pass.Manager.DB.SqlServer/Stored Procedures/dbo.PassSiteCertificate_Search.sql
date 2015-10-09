@@ -17,6 +17,8 @@ AS
 BEGIN
     SELECT * FROM pm.PassSiteCertificateView
 	WHERE (@PassSiteId is null or PassSiteId=@PassSiteId) AND (@PassCertificateId is null or PassCertificateId=@PassCertificateId)
-
-    SET @TotalRecords = @@ROWCOUNT
+	ORDER BY PassCertificateId
+	OFFSET @PageIndex ROWS
+    FETCH NEXT @PageSize ROWS ONLY;
+    SET @TotalRecords = (SELECT COUNT(*) FROM pm.PassSiteCertificateView WHERE (@PassSiteId is null or PassSiteId=@PassSiteId) AND (@PassCertificateId is null or PassCertificateId=@PassCertificateId))
 END

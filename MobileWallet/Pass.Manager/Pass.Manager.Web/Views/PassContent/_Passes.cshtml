@@ -10,9 +10,12 @@
 </div>
 
 <script type="text/javascript">
-    function PassContentFilter() {
-        return { PassContentTemplateId: $("#PassContentTemplateId").val() };
-    }
+    function PassContentFilter(d) {
+        return $.extend({}, d, {
+            "PassContentTemplateId": $('#PassContentTemplateId').val()
+        });
+    };
+
 </script>
 
 @(Html.Grid<PassContentViewModel>()
@@ -32,7 +35,7 @@
                 }))
 
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
         var grid = $("#grdPassContent");
         window.grid.Init(grid);
         window.grid.Reload(grid);
@@ -50,5 +53,3 @@
     </div>
 </script>
 -->
-
-

@@ -39,7 +39,7 @@
     .Name("grdPassSites")
     .CssClass("pm-grid")
     .Pageable()
-                    .DataSource(ds => ds.Read(@Url.Action("GridSearchView", "PassSiteCertificate")).Data("window.PassCertificate.PassSiteDataHandler"))
+    .DataSource(ds => ds.Read(@Url.Action("GridSearchView", "PassSiteCertificate")).Data("window.PassCertificate.PassSiteDataHandler"))
     .Columns(c =>
                 {
                     c.Bound(p => p.PassSiteId).Title("ID").Width("100px");

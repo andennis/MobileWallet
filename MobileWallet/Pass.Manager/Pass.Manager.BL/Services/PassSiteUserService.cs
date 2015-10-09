@@ -28,15 +28,16 @@ namespace Pass.Manager.BL.Services
 
         public override SearchResult<PassSiteUser> Search(SearchContext searchContext, PassSiteUserFilter searchFilter = null)
         {
+            int totalCount;
             IEnumerable<PassSiteUser> data = _repository.Query()
                 .Filter(x => x.PassSiteId == searchFilter.PassSiteId)
                 .Include(x => x.User)
-                .Get();
+                .GetPage(searchContext.PageIndex, searchContext.PageSize, out totalCount);
 
             return new SearchResult<PassSiteUser>()
                     {
                         Data = data,
-                        TotalCount = data.Count()
+                        TotalCount = totalCount
                     };
         }
     }

@@ -13,11 +13,14 @@ AS
 BEGIN
     SELECT * FROM pm.PassContentView
     WHERE PassContentTemplateId = @PassContentTemplateId
+	ORDER BY PassContentTemplateId
+		OFFSET @PageIndex ROWS
+		FETCH NEXT @PageSize ROWS ONLY;
     /*
     WHERE PassSiteID = @PassSiteId
         AND (@PassProjectId IS NULL OR PassProjectId = @PassProjectId)
         AND (@PassContentTemplateId IS NULL OR PassContentTemplateId = @PassContentTemplateId)
         */
 
-    SET @TotalRecords = @@ROWCOUNT
+    SET @TotalRecords = (SELECT COUNT(*) FROM pm.PassContentView WHERE PassContentTemplateId = @PassContentTemplateId)
 END

@@ -132,12 +132,17 @@ namespace Common.Repository.EF
 
             if (orderBy != null)
                 query = orderBy(query);
+            else
+                query = query.OrderBy(x => true);
 
             if (page != null && pageSize != null)
             {
                 query = query
-                    .Skip((page.Value - 1)*pageSize.Value)
+                    .Skip(page.Value)
                     .Take(pageSize.Value);
+                //query = query
+                //    .Skip((page.Value - 1)*pageSize.Value)
+                //    .Take(pageSize.Value);
             }
             return query;
         }

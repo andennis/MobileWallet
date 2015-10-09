@@ -9,8 +9,11 @@
     @PassContentTemplateId INT
 AS
 BEGIN
-    SELECT * FROM pm.PassContentTemplateFieldView
-    WHERE PassContentTemplateId = @PassContentTemplateId
-
-    SET @TotalRecords = @@ROWCOUNT
+    SELECT *, ROW_NUMBER() over (ORDER BY @PassContentTemplateId) AS RowNumber 
+		FROM pm.PassContentTemplateFieldView 
+		WHERE PassContentTemplateId = @PassContentTemplateId 
+		ORDER BY PassContentTemplateId
+		OFFSET @PageIndex ROWS
+		FETCH NEXT @PageSize ROWS ONLY;
+    SET @TotalRecords = (SELECT COUNT(*) FROM pm.PassContentTemplateFieldView WHERE PassContentTemplateId = @PassContentTemplateId)
 END

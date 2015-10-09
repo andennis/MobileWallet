@@ -16,6 +16,8 @@ AS
 BEGIN
     SELECT * FROM pm.PassContentFieldView
     WHERE PassContentId = @PassContentId
-
-    SET @TotalRecords = @@ROWCOUNT
+	ORDER BY PassContentId
+	OFFSET @PageIndex ROWS
+	FETCH NEXT @PageSize ROWS ONLY;
+    SET @TotalRecords = (SELECT COUNT(*) FROM pm.PassContentFieldView WHERE PassContentId = @PassContentId)
 END

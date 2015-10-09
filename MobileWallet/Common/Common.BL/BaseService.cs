@@ -51,15 +51,28 @@ namespace Common.BL
         protected SearchResult<TEntity> Search(SearchContext searchContext, Expression<Func<TEntity, bool>> searchExpression)
         {
             //TODO paging
-            //int totalCount;
-            IEnumerable<TEntity> data = _repository.Query()
+            int totalCount;
+            IEnumerable<TEntity> data;
+            if (searchContext.PageSize == 0)
+            {
+                data = _repository.Query()
                 .Filter(searchExpression)
                 .Get();
+                totalCount = data.Count();
+            }
+            else
+            {
+                data = _repository.Query()
+                .Filter(searchExpression)
+                .GetPage(searchContext.PageIndex, searchContext.PageSize, out totalCount);
+            }
+            
 
             return new SearchResult<TEntity>()
             {
                 Data = data,
-                TotalCount = data.Count()
+                TotalCount = totalCount
+                //TotalCount = data.Count()
             };
 
         }

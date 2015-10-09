@@ -1,15 +1,21 @@
 ﻿(function (helper, $) {
 
-    helper.PassProjectDataHandler = function () {
-        return { PassSiteId: $("#PassSiteId").val() };
-    }
+    helper.PassProjectDataHandler = function(d) {
+        return $.extend({}, d, {
+            "PassSiteId": $('#PassSiteId').val()
+        });
+    };
 
-    helper.UserDataHandler = function () {
-        return { PassSiteId: $("#PassSiteId").val() };
-    }
+    helper.UserDataHandler = function(d) {
+        return $.extend({}, d, {
+            "PassSiteId": $('#PassSiteId').val()
+        });
+    };
 
-    helper.CertificateDataHandler = function () {
-        return { PassSiteId: $("#PassSiteId").val() };
-    }
+    helper.CertificateDataHandler = function(d) {
+        return $.extend({}, d, {
+            "PassSiteId": $('#PassSiteId').val()
+        });
+    };
 
 }(window.PassSite = window.PassSite || {}, jQuery));
