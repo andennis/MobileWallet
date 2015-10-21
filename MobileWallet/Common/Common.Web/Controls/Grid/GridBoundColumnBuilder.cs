@@ -19,6 +19,7 @@ namespace Common.Web.Controls.Grid
             ColType = colType;
             ColTitle = colName;
             IsVisible = true;
+            IsOrderable = true;
 
             if (colType == typeof (DateTime) || colType == typeof(DateTime?))
                 ColFormat = "d";
@@ -29,6 +30,7 @@ namespace Common.Web.Controls.Grid
         internal Type ColType { get; set; }
         internal string ColTitle { get; set; }
         internal bool IsVisible { get; set; }
+        internal bool IsOrderable { get; set; }
         internal string ColFormat { get; set; }
         internal string ColClientTemplate { get; set; }
         internal string ColClientTemplateId { get; set; }
@@ -47,6 +49,12 @@ namespace Common.Web.Controls.Grid
         public GridBoundColumnBuilder<TModel> Visible(bool isVisible)
         {
             IsVisible = isVisible;
+            return this;
+        }
+
+        public GridBoundColumnBuilder<TModel> Orderable(bool isOrderable)
+        {
+            IsOrderable = isOrderable;
             return this;
         }
 

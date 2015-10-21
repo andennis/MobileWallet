@@ -5,6 +5,7 @@
     .Name("grdPassProjects")
     .CssClass("pm-grid")
     .Pageable()
+    .Sortable()
     .AutoBind(false)
     .DataSource(ds => ds.Read(@Url.Action("GridSearch", "PassProject")).Data("window.PassSite.PassProjectDataHandler"))
     .Columns(c =>
@@ -12,7 +13,7 @@
         c.Bound(p => p.PassProjectId).Title("ID").Width("100px");
         c.BoundLink(p => p.Name, Url.Action("Edit", "PassProject"), id => id.PassProjectId);
         c.Bound(p => p.Description);
-        c.BoundEnum(p => p.ProjectType);
+        c.BoundEnum(p => p.ProjectType).Orderable(false);
         c.Bound(p => p.PassProjectId).Title("Action").GridAjaxAction("Delete", Url.Action("Delete", "PassProject"));
     }))
 

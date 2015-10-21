@@ -32,6 +32,7 @@
     .Name("grdRegistrations")
     .CssClass("pm-grid")
     .Pageable()
+    .Sortable()
     .DataSource(ds => ds.Read(Url.Action<PassOnlineController>(a => a.Registrations(null, null))).Data("PassRegistrationFilter"))
     .Columns(c =>
             {

@@ -12,6 +12,7 @@
               .Name("grdPassProjectFields")
               .CssClass("pm-grid")
               .Pageable()
+              .Sortable()
               .DataSource(ds => ds.Read(@Url.Action("GridSearch", "PassProjectField", new { PassProjectId = Model })))
               .Columns(c =>
                        {

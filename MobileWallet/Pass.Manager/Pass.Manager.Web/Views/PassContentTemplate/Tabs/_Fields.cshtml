@@ -12,6 +12,7 @@
               .Name("grdTemplateFields")
               .CssClass("pm-grid")
               .Pageable()
+              .Sortable()
               .DataSource(ds => ds.Read(Url.Action<PassContentTemplateFieldController>(a => a.GridSearchView(null,null), new { PassContentTemplateId = Model })))
               .Columns(c =>
                        {

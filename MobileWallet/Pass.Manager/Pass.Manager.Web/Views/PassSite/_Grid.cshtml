@@ -2,6 +2,7 @@
     .Name("grdPassSites")
     .CssClass("pm-grid")
     .Pageable()
+    .Sortable()
     .DataSource(ds => ds.Read(@Url.Action("GridSearch")))
     .Columns(c =>
                 {

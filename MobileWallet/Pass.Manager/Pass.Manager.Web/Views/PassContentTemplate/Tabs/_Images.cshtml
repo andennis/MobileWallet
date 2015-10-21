@@ -12,6 +12,7 @@
               .Name("grdImages")
               .CssClass("pm-grid")
               .Pageable()
+              .Sortable()
               .DataSource(ds => ds.Read(@Url.Action("GridSearch", "PassImage", new { PassContentTemplateId = Model })))
               .Columns(c =>
                        {

@@ -13,6 +13,7 @@
               .Name("grdLocations")
               .CssClass("pm-grid")
               .Pageable()
+              .Sortable()
                   .DataSource(ds => ds.Read(@Url.Action("GridSearch", "PassLocation", new { PassContentTemplateId = Model })))
               .Columns(c =>
                        {

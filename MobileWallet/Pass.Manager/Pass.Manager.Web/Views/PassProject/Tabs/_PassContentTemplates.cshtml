@@ -5,13 +5,14 @@
     .Name("grdContents")
     .CssClass("pm-grid")
     .Pageable()
+    .Sortable()
     .AutoBind(false)
     .DataSource(ds => ds.Read(@Url.Action("GridSearch", "PassContentTemplate", new { PassProjectId = Model })))
     .Columns(c =>
     {
         c.Bound(m => m.PassContentTemplateId).Title("ID").Width("100px");
         c.BoundBoolImg(m => m.IsDefault, @Url.Content("~/Images/Grid/true.png")).Width("100px").Title("Default");
-        c.Bound(m => m.IsOnline).Title("Online");
+        c.Bound(m => m.IsOnline).Title("Online").Orderable(false);
         c.BoundLink(m => m.Name, Url.Action("Edit", "PassContentTemplate"), m => m.PassContentTemplateId);
         c.Bound(m => m.Description);
         c.BoundEnum(m => m.Status);

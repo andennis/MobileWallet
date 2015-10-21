@@ -11,12 +11,13 @@
               .Name("grdPassFields")
               .CssClass("pm-grid")
               .Pageable()
+              .Sortable()
               .DataSource(ds => ds.Read(Url.Action<PassContentFieldController>(a => a.GridSearchView(null,null), new { PassContentId = Model })))
               .Columns(c =>
                        {
                            c.Bound(p => p.PassProjectFieldId).Title("ID").Width("100px");
                            c.Bound(p => p.FieldName).Title(Resources.Name).ClientTemplateId("FieldNameTemplate");
-                           c.Bound(p => p.FieldKindsAsString).Title(Resources.Location);
+                           c.Bound(p => p.FieldKindsAsString).Title(Resources.Location).Orderable(false);
                            c.Bound(p => p.FieldLabel).Title(Resources.Label);
                            c.Bound(p => p.FieldValue).Title(Resources.Value);
                            c.Bound(p => p.CreatedDate).Title(Resources.CreatedDate).Format("g"); ;

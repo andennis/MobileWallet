@@ -4,6 +4,7 @@
     .Name("grdCertificates")
     .CssClass("pm-grid")
     .Pageable()
+    .Sortable()
     .AutoBind(false)
     .DataSource(ds => ds.Read(@Url.Action("GridSearchView", "PassSiteCertificate")).Data("window.PassSite.CertificateDataHandler"))
     .Columns(c =>

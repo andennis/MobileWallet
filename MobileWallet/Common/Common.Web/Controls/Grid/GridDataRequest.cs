@@ -1,4 +1,6 @@
-﻿namespace Common.Web.Controls.Grid
+﻿using System.Collections.Generic;
+
+namespace Common.Web.Controls.Grid
 {
     public class GridDataRequest
     {
@@ -10,5 +12,9 @@
 
         //[JsonProperty(PropertyName = "length")]
         public int length { get; set; }
+
+        public string sortColumn { get; set; }
+
+        public string sortDirection { get; set; }
     }
 }

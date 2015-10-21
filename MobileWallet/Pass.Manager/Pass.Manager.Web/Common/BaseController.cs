@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using Common.BL;
 using Common.Web.Controls.Grid;
 
@@ -27,10 +28,12 @@ namespace Pass.Manager.Web.Common
 
         protected SearchContext GridRequestToSearchContext(GridDataRequest request)
         {
-            return new SearchContext()
+            return new SearchContext
             {
                 PageIndex = request.start,
-                PageSize = request.length
+                PageSize = request.length,
+                SortBy = request.sortColumn,
+                SortDirection = request.sortDirection
             };
         }
 

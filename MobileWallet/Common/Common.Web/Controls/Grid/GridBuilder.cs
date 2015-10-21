@@ -122,6 +122,7 @@ namespace Common.Web.Controls.Grid
                                  Name = x.ColName, 
                                  Title = x.ColTitle, 
                                  Visible = x.IsVisible,
+                                 Orderable = x.IsOrderable,
                                  Width = x.ColWidth,
                                  //Type = GetColumnTypeName(x.ColType),
                                  Render = GetRenderJsFunc(x)

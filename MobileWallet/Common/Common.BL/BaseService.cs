@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
+using System.Reflection.Emit;
 using Common.Extensions;
 using Common.Repository;
 
@@ -50,15 +52,32 @@ namespace Common.BL
 
         protected SearchResult<TEntity> Search(SearchContext searchContext, Expression<Func<TEntity, bool>> searchExpression)
         {
-            //TODO paging
             int totalCount;
             IEnumerable<TEntity> data;
+            
             if (searchContext.PageSize == 0)
             {
                 data = _repository.Query()
                 .Filter(searchExpression)
                 .Get();
                 totalCount = data.Count();
+            }
+            else if (searchContext.SortBy != null)
+            {
+                //For grid sorting
+                var param = Expression.Parameter(typeof(TEntity), "p");
+                var prop = Expression.Property(param, searchContext.SortBy);
+                var exp = Expression.Lambda(prop, param);
+                var paramExpr = Expression.Parameter(typeof(IQueryable<TEntity>));
+                MethodInfo orderByMethodInfo = typeof(Queryable).GetMethods().First(method => method.Name == "OrderBy" && method.GetParameters().Count() == 2).MakeGenericMethod(typeof(TEntity), prop.Type);
+                MethodInfo orderByDescMethodInfo = typeof(Queryable).GetMethods().First(method => method.Name == "OrderByDescending" && method.GetParameters().Count() == 2).MakeGenericMethod(typeof(TEntity), prop.Type);
+                var orderByExpr = Expression.Call(searchContext.SortDirection == "asc" ? orderByMethodInfo : orderByDescMethodInfo, paramExpr, exp);
+                var expr = Expression.Lambda<Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>>(orderByExpr, paramExpr).Compile();
+
+                data = _repository.Query()
+                .Filter(searchExpression)
+                .OrderBy(expr)
+                .GetPage(searchContext.PageIndex, searchContext.PageSize, out totalCount);
             }
             else
             {

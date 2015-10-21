@@ -14,6 +14,9 @@ namespace Common.Web.Controls.Grid
         [JsonProperty(PropertyName = "visible")]
         public bool Visible { get; set; }
 
+        [JsonProperty(PropertyName = "orderable")]
+        public bool Orderable { get; set; }
+
         [JsonProperty(PropertyName = "width")]
         public string Width { get; set; }
 

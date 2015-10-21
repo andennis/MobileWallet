@@ -4,13 +4,14 @@
     .Name("grdUsers")
     .CssClass("pm-grid")
     .Pageable()
+    .Sortable()
     .AutoBind(false)
     .DataSource(ds => ds.Read(@Url.Action("GridSearch", "PassSiteUser")).Data("window.PassSite.UserDataHandler"))
     .Columns(c =>
     {
         c.Bound(m => m.UserId).Title("ID").Width("100px");
-        c.BoundLink(m => m.UserName, Url.Action("Edit", "PassSiteUser"), m => m.PassSiteUserId, null, "Login");
-        c.Bound(m => m.FullName).Title("Name");
+        c.BoundLink(m => m.UserName, Url.Action("Edit", "PassSiteUser"), m => m.PassSiteUserId, null, "Login").Orderable(false);
+        c.Bound(m => m.FullName).Title("Name").Orderable(false);
         c.BoundEnum(m => m.UserState).Title("State");
         c.Bound(m => m.PassSiteUserId).Title("Action").GridAjaxAction("Remove", Url.Action("Delete", "PassSiteUser"));
     }))
