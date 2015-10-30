@@ -285,6 +285,8 @@ namespace Common.Web
         #endregion
 
         #region DropDownList
+
+        //Basic binding
         public static MvcHtmlString DropDownListFormForExt<TModel, TEnumProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TEnumProperty>> expression,
             string labelText = null, string optionLabel = null, object htmlAttributes = null)
             where TEnumProperty : struct
@@ -327,6 +329,47 @@ namespace Common.Web
                 .DataTextField("Text")
                 .DataValueField("Value")
                 .BindTo(listItems)
+                .HtmlAttributes(attr);
+
+            if (selectedValue != null)
+                builder.SelectedValue(selectedValue);
+
+            if (!string.IsNullOrEmpty(optionLabel))
+                builder.OptionLabel(optionLabel);
+
+            if (!string.IsNullOrEmpty(changeHandler))
+                builder.Events(x => x.Change(changeHandler));
+
+            return new MvcHtmlString(builder.ToHtmlString());
+        }
+
+        //Binding to remote data
+        public static MvcHtmlString DropDownListFormForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string actionName, string controllerName,
+            string labelText = null, string optionLabel = null, object htmlAttributes = null, string changeHandler = null)
+        {
+            return html.LabelWithControl(expression, labelText, null, () => html.DropDownListForExt(expression, actionName, controllerName, optionLabel, htmlAttributes, changeHandler));
+        }
+
+        public static MvcHtmlString DropDownListForExt<TModel, TProperty>(this HtmlHelper<TModel> html, Expression<Func<TModel, TProperty>> expression, string actionName, string controllerName,
+            string optionLabel = null, object htmlAttributes = null, string changeHandler = null)
+        {
+            object selectedValue = expression.GetPropertyValue(html.ViewData.Model);
+            if (selectedValue is Enum)
+                selectedValue = Convert.ToInt32(selectedValue);
+
+            return html.DropDownListExt(expression.GetPropertyName(), actionName, controllerName, selectedValue, optionLabel, htmlAttributes, changeHandler);
+        }
+
+        public static MvcHtmlString DropDownListExt<TModel>(this HtmlHelper<TModel> html, string name, string actionName, string controllerName, object selectedValue = null, string optionLabel = null,
+            object htmlAttributes = null, string changeHandler = null)
+        {
+            var attr = new Dictionary<string, object>(_initControlAttributes);
+            attr.AddHtmlAttributes(htmlAttributes);
+            DropDownListBuilder builder = html.Widget().DropDownList()
+                .Name(name)
+                .DataTextField("Text")
+                .DataValueField("Value")
+                .DataSource(source => source.Read(read => read.Action(actionName, controllerName)))
                 .HtmlAttributes(attr);
 
             if (selectedValue != null)

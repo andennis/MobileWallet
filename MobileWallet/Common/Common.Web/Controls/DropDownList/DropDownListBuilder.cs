@@ -43,6 +43,15 @@ namespace Common.Web.Controls.DropDownList
             }
             return this;
         }
+
+        public DropDownListBuilder DataSource(Action<ReadOnlyDataSourceBuilder> configurator)
+        {
+            var dataSource = new DataSource();
+            configurator(new ReadOnlyDataSourceBuilder(dataSource));
+            _component.DataSource = dataSource;
+           return this;
+        }
+
         public DropDownListBuilder DataValueField(string field)
         {
             _component.DataValueField = field;

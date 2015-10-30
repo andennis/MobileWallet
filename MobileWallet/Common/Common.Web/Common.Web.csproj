@@ -85,6 +85,10 @@
     <Compile Include="Controls\ColorPicker\ColorPickerEventBuilder.cs" />
     <Compile Include="Controls\ColorPicker\ColorPickerPalette.cs" />
     <Compile Include="Controls\ColorPicker\PaletteSizeBuilder.cs" />
+    <Compile Include="Controls\DropDownList\CrudOperation.cs" />
+    <Compile Include="Controls\DropDownList\CrudOperationBuilder.cs" />
+    <Compile Include="Controls\DropDownList\CrudOperationBuilderBase.cs" />
+    <Compile Include="Controls\DropDownList\DataSource.cs" />
     <Compile Include="Controls\DropDownList\DropDownList.cs" />
     <Compile Include="Controls\DropDownList\DropDownListBuilder.cs" />
     <Compile Include="Controls\DropDownList\DropDownListEventBuilder.cs" />
@@ -92,6 +96,7 @@
     <Compile Include="Controls\DropDownList\DropDownListItemBuilder.cs" />
     <Compile Include="Controls\DropDownList\DropDownListItemFactory.cs" />
     <Compile Include="Controls\DropDownList\ReadOnlyDataSourceBuilder.cs" />
+    <Compile Include="Controls\DropDownList\Transport.cs" />
     <Compile Include="Controls\ExpandDirection.cs" />
     <Compile Include="Controls\FadeDirection.cs" />
     <Compile Include="Controls\FilterType.cs" />

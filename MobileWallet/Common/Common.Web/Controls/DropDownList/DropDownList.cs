@@ -42,11 +42,12 @@ namespace Common.Web.Controls.DropDownList
         public string Text { get; set; }
         public string ValueTemplate { get; set; }
         public string ValueTemplateId { get; set; }
+        public DataSource DataSource { get; set; }
 
         public class DropDownListSettings
         {
             public bool? autoBind;
-            public string dataSource;
+            public object dataSource;
             public string cascadeFrom;
             public string cascadeFromField;
             public string dataTextField;
@@ -94,7 +95,7 @@ namespace Common.Web.Controls.DropDownList
             var settings = new DropDownListSettings
             {
                 autoBind = AutoBind,
-                dataSource = GetDataSource(),
+                dataSource = (object)DataSource ?? GetDataSource(),
                 cascadeFrom = CascadeFrom,
                 cascadeFromField = CascadeFromField,
                 dataTextField = DataTextField,
