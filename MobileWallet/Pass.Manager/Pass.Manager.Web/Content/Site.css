@@ -27,106 +27,10 @@ h3 {
     font-size: 32px;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
-
+/*Overlap Kendo classes*/
 .k-state-active {
     border-color: inherit !important;
-}
-
-/*
-*,
-:before,
-:after
-{
-    -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
-    box-sizing: content-box;
-}
-*/
-
-
-/* set a border-box model only to elements that need it */
-.form-control, /* if this class is applied to a Kendo UI widget, its layout may change */
-.container,
-.container-fluid,
-.row,
-.col-xs-1,
-.col-sm-1,
-.col-md-1,
-.col-lg-1,
-.col-xs-2,
-.col-sm-2,
-.col-md-2,
-.col-lg-2,
-.col-xs-3,
-.col-sm-3,
-.col-md-3,
-.col-lg-3,
-.col-xs-4,
-.col-sm-4,
-.col-md-4,
-.col-lg-4,
-.col-xs-5,
-.col-sm-5,
-.col-md-5,
-.col-lg-5,
-.col-xs-6,
-.col-sm-6,
-.col-md-6,
-.col-lg-6,
-.col-xs-7,
-.col-sm-7,
-.col-md-7,
-.col-lg-7,
-.col-xs-8,
-.col-sm-8,
-.col-md-8,
-.col-lg-8,
-.col-xs-9,
-.col-sm-9,
-.col-md-9,
-.col-lg-9,
-.col-xs-10,
-.col-sm-10,
-.col-md-10,
-.col-lg-10,
-.col-xs-11,
-.col-sm-11,
-.col-md-11,
-.col-lg-11,
-.col-xs-12,
-.col-sm-12,
-.col-md-12,
-.col-lg-12 {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-.btnApply {
-    margin-right: 6px !important;
-    margin-left: 20px !important;
-    -moz-min-width: 41px !important;
-    -ms-min-width: 41px !important;
-    -o-min-width: 41px !important;
-    -webkit-min-width: 41px !important;
-    min-width: 41px !important;
-}
-
-.btnCreate {
-    margin-right: 2px !important;
-    margin-left: 20px !important;
 }
 
 .k-window-titlebar.k-header {
@@ -146,6 +50,71 @@ textarea {
     color: #2d586f;
 }
 
+.k-tabstrip {
+    color: #737C86;
+}
+
+/*For Kendo color picker extention*/
+.k-colorpicker .k-selected-color {
+    height: 34px;
+    width: 80px;
+}
+
+.k-picker-wrap.k-state-default {
+    height: 34px;
+}
+
+/*For Kendo datepicker extention*/
+.k-widget.k-datepicker.k-header.form-control, .k-widget.k-dropdown.k-header.form-control {
+    padding: 0;
+    border: none;
+}
+
+.form-control.k-input {
+    height: 34px;
+    border: 1px solid #ccc;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+}
+
+    .form-control.k-input:focus {
+        border: 1px solid #2979FF;
+        -webkit-box-shadow: inset 0 1px 1px rgba(41,121,255,.075), 0 0 8px rgba(41,121,255, .6);
+        -ms-box-shadow: inset 0 1px 1px rgba(41,121,255,.075), 0 0 8px rgba(41,121,255, .6);
+        box-shadow: inset 0 1px 1px rgba(41,121,255,.075), 0 0 8px rgba(41,121,255, .6);
+    }
+
+.k-state-selected, .k-state-selected:link, .k-state-selected:visited, .k-list > .k-state-selected, .k-list > .k-state-highlight,
+.k-panel > .k-state-selected, .k-ghost-splitbar-vertical, .k-ghost-splitbar-horizontal, .k-draghandle.k-state-selected:hover,
+.k-scheduler .k-scheduler-toolbar .k-state-selected, .k-scheduler .k-today.k-state-selected, .k-marquee-color {
+    background-color: #02d5ac;
+    border-color: #02d5ac;
+}
+
+.k-state-focused.k-state-selected, .k-list > .k-state-focused.k-state-selected, .k-listview > .k-state-focused.k-state-selected, td.k-state-focused.k-state-selected {
+    -webkit-box-shadow: inset 0 0 3px 4px #02d5ac;
+    -ms-box-shadow: inset 0 0 3px 4px #02d5ac;
+    box-shadow: inset 0 0 3px 4px #02d5ac;
+}
+
+/*For ActionLinkFormForExt control*/
+.linkForm {
+    margin-top: 7px;
+    position: absolute;
+}
+
+/*For TextBlockFormForExt control*/
+input[readonly].textBlockForm {
+    border: none;
+    background-color: inherit !important;
+    -webkit-box-shadow: none;
+    -ms-box-shadow: none;
+    box-shadow: none;
+}
+
+
+
+/*Overlap bootstrap classes*/
 .btn-default {
     background: rgba(45, 88, 111, 0.5);
     color: white;
@@ -199,51 +168,6 @@ textarea {
     margin-top: 60px;
 }
 
-.k-tabstrip {
-    color: #737C86;
-}
-
-.dataTables_length, .sorting_disabled {
-    color: #2d586f !important;
-}
-
-.table.dataTable thead th, .table.dataTable tbody td {
-    border: 1px solid #ccc;
-}
-
-.dataTables_wrapper .dataTables_paginate .paginate_button.current {
-    background: #AABBC4;
-    color: white !important;
-    border: none;
-    padding: 0.3em 0.5em;
-}
-
-    .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
-        background: #02d5ac;
-        color: white !important;
-        border: none;
-        -webkit-transition: background 0.2s ease,color 0.2s ease;
-        -moz-transition: background 0.2s ease,color 0.2s ease;
-        -ms-transition: background 0.2s ease,color 0.2s ease;
-        -o-transition: background 0.2s ease,color 0.2s ease;
-        transition: background 0.2s ease,color 0.2s ease;
-    }
-
-.dataTables_wrapper .dataTables_paginate .paginate_button {
-    border: none;
-    padding: 0.3em 0.5em;
-}
-
-    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-        background: #2fe2bf;
-        border: none;
-        -webkit-transition: background 0.2s ease,color 0.2s ease;
-        -moz-transition: background 0.2s ease,color 0.2s ease;
-        -ms-transition: background 0.2s ease,color 0.2s ease;
-        -o-transition: background 0.2s ease,color 0.2s ease;
-        transition: background 0.2s ease,color 0.2s ease;
-    }
-
 .dropdown-menu {
     -webkit-box-shadow: none;
     -ms-box-shadow: none;
@@ -267,6 +191,9 @@ textarea {
             transition: background 0.3s ease,color 0.2s ease;
         }
 
+
+
+/*Main menu*/
 .navbar {
     margin-bottom: 0;
 }
@@ -358,6 +285,140 @@ textarea {
         transition: background-color 0.5s ease !important;
     }
 
+
+
+/*DataTables*/
+.dataTables_length, .sorting_disabled {
+    color: #2d586f !important;
+}
+
+.table.dataTable thead th, .table.dataTable tbody td {
+    border: 1px solid #ccc;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: #AABBC4;
+    color: white !important;
+    border: none;
+    padding: 0.3em 0.5em;
+}
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+        background: #02d5ac;
+        color: white !important;
+        border: none;
+        -webkit-transition: background 0.2s ease,color 0.2s ease;
+        -moz-transition: background 0.2s ease,color 0.2s ease;
+        -ms-transition: background 0.2s ease,color 0.2s ease;
+        -o-transition: background 0.2s ease,color 0.2s ease;
+        transition: background 0.2s ease,color 0.2s ease;
+    }
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    border: none;
+    padding: 0.3em 0.5em;
+}
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        background: #2fe2bf;
+        border: none;
+        -webkit-transition: background 0.2s ease,color 0.2s ease;
+        -moz-transition: background 0.2s ease,color 0.2s ease;
+        -ms-transition: background 0.2s ease,color 0.2s ease;
+        -o-transition: background 0.2s ease,color 0.2s ease;
+        transition: background 0.2s ease,color 0.2s ease;
+    }
+
+
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+/* set a border-box model only to elements that need it */
+.form-control, /* if this class is applied to a Kendo UI widget, its layout may change */
+.container,
+.container-fluid,
+.row,
+.col-xs-1,
+.col-sm-1,
+.col-md-1,
+.col-lg-1,
+.col-xs-2,
+.col-sm-2,
+.col-md-2,
+.col-lg-2,
+.col-xs-3,
+.col-sm-3,
+.col-md-3,
+.col-lg-3,
+.col-xs-4,
+.col-sm-4,
+.col-md-4,
+.col-lg-4,
+.col-xs-5,
+.col-sm-5,
+.col-md-5,
+.col-lg-5,
+.col-xs-6,
+.col-sm-6,
+.col-md-6,
+.col-lg-6,
+.col-xs-7,
+.col-sm-7,
+.col-md-7,
+.col-lg-7,
+.col-xs-8,
+.col-sm-8,
+.col-md-8,
+.col-lg-8,
+.col-xs-9,
+.col-sm-9,
+.col-md-9,
+.col-lg-9,
+.col-xs-10,
+.col-sm-10,
+.col-md-10,
+.col-lg-10,
+.col-xs-11,
+.col-sm-11,
+.col-md-11,
+.col-lg-11,
+.col-xs-12,
+.col-sm-12,
+.col-md-12,
+.col-lg-12 {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/*Other styles*/
+.btnApply {
+    margin-right: 6px !important;
+    margin-left: 20px !important;
+    -moz-min-width: 41px !important;
+    -ms-min-width: 41px !important;
+    -o-min-width: 41px !important;
+    -webkit-min-width: 41px !important;
+    min-width: 41px !important;
+}
+
+.btnCreate {
+    margin-right: 2px !important;
+    margin-left: 20px !important;
+}
+
 .imgImageFile {
     max-width: 300px;
     max-height: 150px;
@@ -379,54 +440,6 @@ textarea {
         color: #2d586f;
         cursor: pointer;
     }
-
-/*For Kendo color picker extention*/
-.k-colorpicker .k-selected-color {
-    height: 34px;
-    width: 80px;
-}
-
-.k-picker-wrap.k-state-default {
-    height: 34px;
-}
-
-/*For Kendo datepicker extention*/
-.k-widget.k-datepicker.k-header.form-control, .k-widget.k-dropdown.k-header.form-control {
-    padding: 0;
-    border: none;
-}
-
-/*.k-widget.k-dropdown.k-header.form-control, .k-picker-wrap.k-state-default {
-    padding: 0;
-    border: none;
-}*/
-
-.form-control.k-input {
-    height: 34px;
-    border: 1px solid #ccc;
-    -ms-border-radius: 4px;
-    border-radius: 4px;
-}
-
-    .form-control.k-input:focus {
-        border: 1px solid #2979FF;
-        -webkit-box-shadow: inset 0 1px 1px rgba(41,121,255,.075), 0 0 8px rgba(41,121,255, .6);
-        -ms-box-shadow: inset 0 1px 1px rgba(41,121,255,.075), 0 0 8px rgba(41,121,255, .6);
-        box-shadow: inset 0 1px 1px rgba(41,121,255,.075), 0 0 8px rgba(41,121,255, .6);
-    }
-
-.k-state-selected, .k-state-selected:link, .k-state-selected:visited, .k-list > .k-state-selected, .k-list > .k-state-highlight,
-.k-panel > .k-state-selected, .k-ghost-splitbar-vertical, .k-ghost-splitbar-horizontal, .k-draghandle.k-state-selected:hover,
-.k-scheduler .k-scheduler-toolbar .k-state-selected, .k-scheduler .k-today.k-state-selected, .k-marquee-color {
-    background-color: #02d5ac;
-    border-color: #02d5ac;
-}
-
-.k-state-focused.k-state-selected, .k-list > .k-state-focused.k-state-selected, .k-listview > .k-state-focused.k-state-selected, td.k-state-focused.k-state-selected {
-    -webkit-box-shadow: inset 0 0 3px 4px #02d5ac;
-    -ms-box-shadow: inset 0 0 3px 4px #02d5ac;
-    box-shadow: inset 0 0 3px 4px #02d5ac;
-}
 
 .action-block {
     padding-top: 10px;
@@ -476,17 +489,4 @@ img[src=""].boundBoolImg {
 }
 
 
-/*For ActionLinkFormForExt control*/
-.linkForm {
-    margin-top: 7px;
-    position: absolute;
-}
 
-/*For TextBlockFormForExt control*/
-input[readonly].textBlockForm {
-    border: none;
-    background-color: inherit !important;
-    -webkit-box-shadow: none;
-    -ms-box-shadow: none;
-    box-shadow: none;
-}
