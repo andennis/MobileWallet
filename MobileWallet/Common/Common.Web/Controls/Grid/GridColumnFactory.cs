@@ -101,6 +101,7 @@ namespace Common.Web.Controls.Grid
 
         public GridBoundColumnBuilder<TModel> BoundBoolImg<TValue>(Expression<Func<TModel, TValue>> expression, string urlTrue = "../../Images/Grid/true.png", string urlFalse = null)
         {
+            //TODO the default value of the parameter urlTrue should be specified by CSS
             return BoundBoolImg(expression.GetPropertyName(), urlTrue, urlFalse);
         }
 

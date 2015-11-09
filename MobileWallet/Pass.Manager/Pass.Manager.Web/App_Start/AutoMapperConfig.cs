@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Web;
 using AutoMapper;
-using Common.Extensions;
 using Common.Utils;
+using Pass.Container.Core.Entities.Templates.GeneralPassTemplate;
 using Pass.Manager.Core.Entities;
+using Pass.Manager.Web.Areas.Site.Models;
 using Pass.Manager.Web.Models;
-using Pass.Manager.Web.Models.GeneralPassTemplate;
 
 namespace Pass.Manager.Web
 {

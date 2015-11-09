@@ -1,0 +1,25 @@
+﻿@model Pass.Manager.Web.Common.BaseViewModel
+
+@{
+    Layout = "~/Areas/Site/Views/Shared/_LayoutDetails.cshtml";
+}
+
+@section Title
+{
+    @if (IsSectionDefined("Title"))
+    {
+        @RenderSection("Title")
+    }
+    else
+    {
+        <text><span class="flexCaption">@Model.DisplayName &nbsp;<span style="font-size: 24px;">[#@Model.EntityId]</span></span>  </text>
+    }
+}
+
+@RenderBody()
+
+@section Actions
+{
+    @Html.FormActionSubmit("buttonSave", "Save")
+    @Html.FormActionButton("buttonCancel", "Close", !string.IsNullOrEmpty(Model.RedirectUrl) ? Model.RedirectUrl : Url.Action("Index"))
+}

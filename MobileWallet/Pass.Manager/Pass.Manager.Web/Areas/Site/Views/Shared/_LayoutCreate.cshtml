@@ -1,0 +1,32 @@
+﻿@model Pass.Manager.Web.Common.BaseViewModel
+
+@{
+    Layout = "~/Areas/Site/Views/Shared/_LayoutDetails.cshtml";
+}
+
+@section Title
+{
+    @if (IsSectionDefined("Title"))
+    {
+        @RenderSection("Title")
+    }
+    else
+    {
+        <text>Create </text>@Model.DisplayName
+    }
+}
+
+@RenderBody()
+
+@section Actions
+{
+    @if (IsSectionDefined("Actions"))
+    {
+        @RenderSection("Actions")
+    }
+    else
+    {
+        @Html.FormActionSubmit("buttonCreate", "Create")
+        @Html.FormActionButton("buttonCancel", "Cancel", !string.IsNullOrEmpty(Model.RedirectUrl) ? Model.RedirectUrl : Url.Action("Index"))
+    }
+}

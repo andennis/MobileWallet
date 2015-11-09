@@ -1,0 +1,14 @@
+﻿@(Html.Grid<PassSiteUserViewModel>()
+    .Name("grdUsers")
+    .CssClass("pm-grid")
+    .Pageable()
+    .Sortable()
+    .DataSource(ds => ds.Read(Url.Action<PassSiteUserController>(a => a.GridSearch(null, null))))
+    .Columns(c =>
+    {
+        c.Bound(m => m.UserId).Title("ID").Width("100px");
+        c.BoundLink(m => m.UserName, Url.Action<PassSiteUserController>(a => a.Edit(0)), m => m.PassSiteUserId, null, "Login").Orderable(false);
+        c.Bound(m => m.FullName).Title(Resources.Name).Orderable(false);
+        c.BoundEnum(m => m.UserState).Title("State");
+        c.Bound(m => m.PassSiteUserId).Title("Action").GridAjaxAction(Resources.Remove, Url.Action<PassSiteUserController>(a => a.Delete(0)));
+    }))

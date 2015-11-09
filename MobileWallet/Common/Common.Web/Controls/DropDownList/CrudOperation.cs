@@ -4,11 +4,6 @@ namespace Common.Web.Controls.DropDownList
 {
     public class CrudOperation
     {
-        public CrudOperation()
-        {
-            
-        }
-
         public string ActionName { get; set; }
         public bool Cache { get; set; }
         public string ContentType { get; set; }

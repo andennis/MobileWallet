@@ -19,22 +19,22 @@ DECLARE @ParmDefinition NVARCHAR(200);
 -- variable @SQLStatement
 SET @SQLStatement =	   'BEGIN ' +
 					   'SELECT * FROM pm.PassContentView ' +
-					   'WHERE PassContentTemplateId = @PassContentTemplateId ' +
+					   'WHERE PassSiteId = @PassSiteId ' +
                        'ORDER BY ' + @SortBy + ' ' + @SortDirection + ' ' +
 					   'OFFSET @PageIndex ROWS ' +
 					   'FETCH NEXT @PageSize  ROWS ONLY; ' +
-					   'SET @TotalRecords = (SELECT COUNT(*) FROM pm.PassContentView WHERE PassContentTemplateId = @PassContentTemplateId) ' +
+					   'SET @TotalRecords = (SELECT COUNT(*) FROM pm.PassContentView WHERE PassSiteId = @PassSiteId) ' +
 					   'END';
 
 SET @ParmDefinition = '@PageIndex INT,
 					   @PageSize INT,
 					   @TotalRecords INT OUTPUT,
 
-					   @PassContentTemplateId INT';
+					   @PassSiteId INT';
 
 -- Execute the SQL statement
 EXECUTE sp_executesql @SQLStatement, @ParmDefinition, 
-					  @PassContentTemplateId = @PassContentTemplateId, 
+					  @PassSiteId = @PassSiteId,
 				      @PageIndex = @PageIndex, 
 					  @PageSize = @PageSize, 
 					  @TotalRecords = @TotalRecords OUTPUT;

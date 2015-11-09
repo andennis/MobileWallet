@@ -1,0 +1,27 @@
+﻿@model PassProjectViewModel
+
+@Html.HiddenForExt(m => m.PassSiteId)       
+@Html.HiddenForExt(m => m.PassProjectId)
+
+@if (!Model.IsNew)
+{
+    Html.TextBlockFormForExt(m => m.PassProjectId, "ID");
+}
+@Html.TextBoxFormForExt(m => m.Name)
+@Html.DropDownListFormForExt(m => m.PassCertificateId, Model.PassCertificates, "Certificate", "- Select Certificate -")
+@Html.TextAreaFormForExt(m => m.Description)
+
+@if (!Model.IsNew)
+{
+    <div class="row">
+        @(Html.TabStrip()
+            .Name("projectTabs")
+            .Items(tab => 
+                {
+                    tab.Add().Text("Fields").LoadContentFrom(Url.Action<PassProjectController>(a => a.TabFields(0), new { id = Model.PassProjectId })).Selected(true);
+                    tab.Add().Text("Pass Templates").LoadContentFrom(Url.Action<PassProjectController>(a => a.TabPassContentTemplates(0), new { id = Model.PassProjectId }));
+                    //tab.Add().Text("Passes").LoadContentFrom(Url.Action<PassContentController>(a => a.Passes(0), new { passProjectId = Model.PassProjectId }));
+                }
+            ))
+    </div>
+}

@@ -30,7 +30,9 @@ namespace Common.Utils
 
         public void Add(TKey key, TValue val)
         {
-            _cache.Add(key.ToString(), val, _cacheItemPolicy);
+            string kv = key.ToString();
+            if (!_cache.Add(kv, val, _cacheItemPolicy))
+                _cache[kv] = val;
         }
 
         public TValue this[TKey key]

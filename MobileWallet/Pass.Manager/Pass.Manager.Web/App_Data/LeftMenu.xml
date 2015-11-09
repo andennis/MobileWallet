@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MenuConfiguration>
+  <menus>
+    <menu id="Sites">
+      <items>
+        <item title="Prjects" controller="PassProject" action="Index">
+          <DependencyActions>
+            <action controller="PassProject" action="Edit"/>
+            <action controller="PassProject" action="Create"/>
+          </DependencyActions>
+        </item>
+        <item title="Passes" controller="PassContent" action="Index">
+          <DependencyActions>
+            <action controller="PassContent" action="Edit"/>
+          </DependencyActions>
+        </item>
+        <item title="Configuration">
+          <items>
+            <item title="Users" controller="PassSiteUser" action="Index">
+              <DependencyActions>
+                <action controller="PassSiteUser" action="Create"/>
+                <action controller="PassSiteUser" action="Edit"/>
+              </DependencyActions>
+            </item>
+            <item title="Certificates" controller="PassSiteCertificate" action="Index">
+              <DependencyActions>
+                <action controller="PassSiteCertificate" action="Create"/>
+                <action controller="PassSiteCertificate" action="Edit"/>
+              </DependencyActions>
+            </item>
+          </items>
+        </item>
+      </items>
+    </menu>
+    <menu id="Configuration">
+      <items>
+        <item title="Users" controller="User" action="Index">
+          <DependencyActions>
+            <action controller="User" action="Create"/>
+            <action controller="User" action="Edit"/>
+          </DependencyActions>
+        </item>
+        <item title="Certificates" controller="PassCertificate" action="Index">
+          <DependencyActions>
+            <action controller="PassCertificate" action="Create"/>
+            <action controller="PassCertificate" action="Edit"/>
+          </DependencyActions>
+        </item>
+      </items>
+    </menu>
+  </menus>
+</MenuConfiguration>

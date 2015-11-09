@@ -4,10 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
+
     @Styles.Render("~/content/kendo")
     @Styles.Render("~/content/css")
     @Styles.Render("~/content/ctrlext")
-    @RenderSection("CssLinks", false)
 
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
@@ -24,10 +24,10 @@
     <header id="navbar" role="banner" class="container-fluid mainMenuBlock">
         <div class="container">
             <div class="navbar-header passlightLogoBlock">
-                <a class="navbar-btn pull-left" href="@Url.Action("Index", "Home")" title="Главная">
-                    <img src="@Url.Content("~/Images/passLightWhiteLogo.png")" class="passlightLogoImg" alt="Главная">
+                <a class="navbar-btn pull-left" href="@(Url.Action<HomeController>(a => a.Index(), new { area = "" }))" title="@Resources.Home">
+                    <img src="@Url.Content("~/Images/passLightWhiteLogo.png")" class="passlightLogoImg" alt="@Resources.Home">
                 </a>
-
+                
                 <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -40,32 +40,24 @@
             <div class="navbar-collapse collapse menu">
                 <nav class="navbar navbar-default" role="navigation">
                     <ul class="nav navbar-nav menuPanel1">
-                        <li>@(Html.ActionLinkExt<PassSiteController>(c => c.Index(), "Сайты"))</li>
-                        <li>@(Html.ActionLinkExt<UserController>(c => c.Index(), "Пользователи"))</li>
-                        <li>@(Html.ActionLinkExt<PassCertificateController>(c => c.Index(), "Сертификаты"))</li>
+                        <li>@(Html.ActionLinkExt<PassSiteController>(c => c.Index(), Resources.Sites, new {area = ""}))</li>
+                        <li>@(Html.ActionLinkExt<UserController>(c => c.Index(), Resources.Configuration, new { area = "" }))</li>
                     </ul>
 
-                    @if (User.Identity.IsAuthenticated)
+                    @if (AuthUserContext.IsAuthenticated)
                     {
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    Добро пожаловать, @User.Identity.Name!
+                                    @AuthUserContext.UserName
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li>@Html.ActionLinkExt("Мой аккаунт", "EditProfile", "User", new { userName = User.Identity.Name })</li>
-                                    <li>@Html.ActionLinkExt("Выйти", "LogOff", "Account")</li>
+                                    <li>@(Html.ActionLinkExt<UserController>(a => a.EditProfile(""), Resources.MyProfile, new { area = "", userName = User.Identity.Name }))</li>
+                                    <li>@(Html.ActionLinkExt<AccountController>(a => a.LogOff(), Resources.LogOff, new { area = "" }))</li>
                                 </ul>
                             </li>
-                        </ul>
-                    }
-                    else
-                    {
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="logInButton">@Html.ActionLinkExt("Войти", "Login", "Account")</li>
-                            <li class="registrationButton">@Html.ActionLinkExt("Регистрация", "Login", "Account")</li>
                         </ul>
                     }
                 </nav>
@@ -81,13 +73,54 @@
         </script>
     }
     
-    <div class="container body-content">
-        <div class="well">
-            @RenderBody()
-        </div>
-    </div>
     
+    @if (AuthUserContext.UserData.SiteId.HasValue)
+    {
+        <div class="body-content">
+            <div class="well">
+                @RenderBody()
+            </div>
+            
+        </div>
+    }
+    else
+    {
+        <div class="container body-content">
+            <div class="well">
+                @RenderBody()
+            </div>
+        </div>
+    }
+
+    @*
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="well">
+                        @Html.LeftMenu("leftMenu", Server.MapPath(@"~\App_Data\LeftMenu.xml"))
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="body-content">
+                        <div class="well">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="container body-content">
+                <div class="well">
+                    @RenderBody()
+                </div>
+            </div>
+        }
+    *@
     @Scripts.Render("~/bundles/app")
     @RenderSection("Scripts", false)
+
 </body>
 </html>

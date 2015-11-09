@@ -1,0 +1,9 @@
+﻿@model PassProjectFieldViewModel
+
+@Html.HiddenForExt(m => m.PassProjectId)
+@Html.HiddenForExt(m => m.PassProjectFieldId)
+
+@Html.TextBoxFormForExt(m => m.Name)
+@Html.TextBoxFormForExt(m => m.DefaultLabel, Resources.DefaultLable)
+@Html.TextBoxFormForExt(m => m.DefaultValue, Resources.DefaultValue)
+@Html.TextAreaFormForExt(m => m.Description)

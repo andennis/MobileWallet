@@ -13,8 +13,21 @@ namespace Common.Utils.Tests
             var mc = new MemCache<string, string>("MC1", DateTimeOffset.Now.AddHours(1));
             mc.Add("key1", "val1");
             Assert.AreEqual("val1", mc["key1"]);
+            Assert.DoesNotThrow(() => mc.Add("key1", "val2"));
+            Assert.AreEqual("val2", mc["key1"]);
+
             mc.Remove("key1");
             Assert.Null(mc["key1"]);
+        }
+
+        [Test]
+        public void ItemTest()
+        {
+            var mc = new MemCache<string, string>("MC1", DateTimeOffset.Now.AddHours(1));
+            mc["key1"] = "val1";
+            Assert.AreEqual("val1", mc["key1"]);
+            mc["key1"] = "val2";
+            Assert.AreEqual("val2", mc["key1"]);
         }
 
         [Test]

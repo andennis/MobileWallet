@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace Common.Web.Controls.DropDownList
 {
@@ -10,27 +11,22 @@ namespace Common.Web.Controls.DropDownList
         protected readonly ViewContext _viewContext;
 
         //public CrudOperationBuilderBase(CrudOperation operation, ViewContext viewContext, IUrlGenerator urlGenerator)
-        public CrudOperationBuilderBase(CrudOperation operation, ViewContext viewContext)
+        protected CrudOperationBuilderBase(CrudOperation operation, ViewContext viewContext)
         {
             _operation = operation;
             _viewContext = viewContext;
         }
 
-        //public TCrudOperationBuilder Action<TController>(Expression<Action<TController>> controllerAction) where TController : Controller;
-        //
-        // Summary:
-        //     Sets the action and contoller values for the operation.
-        //
-        // Parameters:
-        //   actionName:
-        //     Action name
-        //
-        //   controllerName:
-        //     Controller name
         public TCrudOperationBuilder Action(string actionName, string controllerName)
+        {
+            return Action(actionName, controllerName, null);
+        }
+
+        public TCrudOperationBuilder Action(string actionName, string controllerName, object routeValues)
         {
             _operation.ControllerName = controllerName;
             _operation.ActionName = actionName;
+            _operation.RouteValues = new RouteValueDictionary(routeValues);
             return (TCrudOperationBuilder)Convert.ChangeType(this, typeof(TCrudOperationBuilder));
         }
 

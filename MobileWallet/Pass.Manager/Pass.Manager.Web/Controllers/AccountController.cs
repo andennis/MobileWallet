@@ -1,12 +1,11 @@
-﻿using System.Web.Mvc;
-using System.Web.Security;
+﻿using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.Services;
+using Pass.Manager.Web.Common;
 using Pass.Manager.Web.Models;
 
 namespace Pass.Manager.Web.Controllers
 {
-    [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseFormAuthenticationController<LoginViewModel>
     {
         private readonly IUserService _userService;
 
@@ -15,47 +14,15 @@ namespace Pass.Manager.Web.Controllers
             _userService = userService;
         }
 
-        [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
+        protected override bool IsAuthenticated(string userName, string password)
         {
-            return View(new LoginViewModel() { UserName = "", RedirectUrl = returnUrl});
+            return _userService.IsAuthenticated(userName, password);
         }
 
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginViewModel loginViewModel)
+        protected override UserInfo GetUserInfo(string userName)
         {
-            if (ModelState.IsValid)
-            {
-                if (_userService.IsAuthenticated(loginViewModel.UserName, loginViewModel.Password))
-                {
-                    FormsAuthentication.SetAuthCookie(loginViewModel.UserName, false);
-                    return RedirectToLocal(loginViewModel.RedirectUrl);
-                }
-
-                ModelState.AddModelError("", Resources.Resources.AuthenticationFailed);
-            }
-            
-            return View(loginViewModel);
+            User user = _userService.Get(userName);
+            return new UserInfo() {UserId = user.UserId, UserName = user.UserName};
         }
-
-        public ActionResult LogOff()
-        {
-            FormsAuthentication.SignOut();
-            return RedirectToAction("Index", "Home");
-        }
-
-
-        private ActionResult RedirectToLocal(string returnUrl)
-        {
-            if (Url.IsLocalUrl(returnUrl))
-            {
-                return Redirect(returnUrl);
-            }
-
-            return RedirectToAction("Index", "Home");
-        }
-
     }
 }

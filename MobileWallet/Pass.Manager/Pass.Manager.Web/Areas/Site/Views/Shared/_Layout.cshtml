@@ -1,0 +1,25 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-2">
+        <div class="well">
+            @Html.LeftMenu("leftMenu", Server.MapPath(@"~\App_Data\LeftMenu.xml"))
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="body-content">
+            <div class="well">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/FormHelpers/PassSiteHelper.js")"></script>
+    @RenderSection("Scripts", false)
+}
+

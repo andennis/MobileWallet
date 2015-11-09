@@ -17,6 +17,11 @@ namespace Pass.Manager.Web.Controllers
         {
         }
 
+        protected override string Layout
+        {
+            get { return "~/Views/Shared/_LayoutConfig.cshtml"; }
+        }
+
         public override ActionResult Create()
         {
             SetFormAttributes(new {enctype = "multipart/form-data"});

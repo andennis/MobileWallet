@@ -32,8 +32,8 @@ namespace Common.Web.Controls
 
         public TDropDownBuilder BindTo(IEnumerable data)
         {
-            //_component.
-            return (TDropDownBuilder)this;
+            throw new NotImplementedException();
+            //return (TDropDownBuilder)this;
         }
 
         public TDropDownBuilder DataTextField(string field)

@@ -7,12 +7,12 @@
     .Columns(c =>
                 {
                     c.Bound(p => p.PassCertificateId).Title("ID").Width("100px");
-                    c.BoundLink(p => p.Name, Url.Action("Edit"), id => id.PassCertificateId);
+                    c.BoundLink(p => p.Name, Url.Action<PassCertificateController>(a => a.Edit(0)), id => id.PassCertificateId);
                     c.Bound(p => p.TeamId);
                     c.Bound(p => p.PassTypeId);
                     c.Bound(p => p.Description);
                     c.Bound(p => p.ExpDate);
                     c.Bound(p => p.PassCertificateId).Title("Action")
-                        .GridAction("Download", Url.Action("Download"))
-                        .GridAjaxAction("Delete", Url.Action("Delete"));
+                        .GridAction(Resources.Download, Url.Action<PassCertificateController>(a => a.Download(0)))
+                        .GridAjaxAction(Resources.Delete, Url.Action<PassCertificateController>(a => a.Delete(0)));
                 }))

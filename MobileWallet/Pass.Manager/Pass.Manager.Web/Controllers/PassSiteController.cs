@@ -14,17 +14,16 @@ namespace Pass.Manager.Web.Controllers
         {
         }
 
-        public ActionResult TabProjects(int id)
+        public override ActionResult Index()
         {
-            return PartialView("Tabs/_Projects", id);
+            AuthUserContext.UserData.SiteId = null;
+            return base.Index();
         }
-        public ActionResult TabCertificates(int id)
+
+        public ActionResult Enter(int id)
         {
-            return PartialView("Tabs/_Certificates", id);
-        }
-        public ActionResult TabUsers(int id)
-        {
-            return PartialView("Tabs/_Users", id);
+            AuthUserContext.UserData.SiteId = id;
+            return RedirectToAction("Index", "PassProject", new { area = "Site", PassSiteId = id });
         }
 
     }

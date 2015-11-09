@@ -74,7 +74,10 @@ namespace Pass.Manager.Web
                 //ColorPicker
                 //"~/Scripts/kendo/2014.2.716/kendo.color.min.js", ???
                 "~/Scripts/kendo/2014.2.716/kendo.slider.min.js",
-                "~/Scripts/kendo/2014.2.716/kendo.colorpicker.min.js"
+                "~/Scripts/kendo/2014.2.716/kendo.colorpicker.min.js",
+
+                //panelbar
+                "~/Scripts/kendo/2014.2.716/kendo.panelbar.min.js"
                 ));
 
 
@@ -84,22 +87,6 @@ namespace Pass.Manager.Web
                 "~/Scripts/Grid.js",
                 "~/Scripts/Action.js",
                 "~/Scripts/PopupWindow.js"));
-
-
-            bundles.Add(new ScriptBundle("~/bundles/passDesigner").Include(
-                       "~/Scripts/createCard/jquery-2.1.1.js",
-                       "~/Scripts/createCard/bootstrap.js",
-                       "~/Scripts/createCard/jquery.flippy.js",
-                       "~/Scripts/createCard/mColorPicker.js",
-                       "~/Scripts/createCard/jquery.simple-dtpicker.js"
-                       ));
-            bundles.Add(new StyleBundle("~/bundles/passDesignerCss").Include(
-                      "~/Content/createCard/bootstrap-theme.css",
-                      "~/Content/bootstrap.css",
-                      "~/Content/createCard/skeleton.css",
-                      "~/Content/createCard/style.css",
-                      "~/Content/createCard/jquery.simple-dtpicker.css",
-                      "~/Content/createCard/createCard.css"));
 
 
             //Control extensions

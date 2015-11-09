@@ -43,9 +43,17 @@
   <ItemGroup>
     <Compile Include="AppConfigBase.cs" />
     <Compile Include="AppDbConfig.cs" />
+    <Compile Include="Menu\Menu.cs" />
+    <Compile Include="Menu\MenuConfiguration.cs" />
+    <Compile Include="Menu\MenuItem.cs" />
+    <Compile Include="Menu\MenuItemDependencyAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common.Extensions\Common.Extensions.csproj">
+      <Project>{1628e173-1be9-4dfc-bcbe-93334de8ee46}</Project>
+      <Name>Common.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Common.Repository\Common.Repository.csproj">
       <Project>{f36371d6-812f-49f5-9e9b-043265660647}</Project>
       <Name>Common.Repository</Name>

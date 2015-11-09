@@ -1,0 +1,12 @@
+﻿@(Html.Grid<PassProjectViewModel>()
+      .Name("grdPassProjects")
+      .CssClass("pm-grid")
+      .Pageable()
+      .DataSource(ds => ds.Read(Url.Action<PassProjectController>(a => a.GridSearch(null, null))))
+      .Columns(c =>
+      {
+          c.Bound(p => p.PassProjectId).Title("ID").Width("100px");
+          c.BoundLink(p => p.Name, Url.Action<PassProjectController>(a => a.Edit(0)), id => id.PassProjectId);
+          c.Bound(p => p.Description);
+          c.Bound(p => p.PassProjectId).Title("Action").GridAjaxAction(Resources.Delete, Url.Action<PassProjectController>(a => a.Delete(0)));
+      }))

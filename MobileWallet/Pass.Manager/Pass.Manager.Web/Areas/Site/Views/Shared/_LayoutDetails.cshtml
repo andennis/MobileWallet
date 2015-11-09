@@ -1,0 +1,35 @@
+﻿@model Pass.Manager.Web.Common.BaseViewModel
+
+@{
+    Layout = "~/Areas/Site/Views/Shared/_Layout.cshtml";
+}
+
+<h3>
+    @RenderSection("Title")
+</h3>
+
+@using (Html.BeginFormExt())
+{
+    @Html.ValidationSummary()
+    @Html.AntiForgeryToken()
+    @Html.HiddenForExt(m => m.RedirectUrl)
+    <div class="container-fluid">
+        @RenderBody()
+        <div class="form-group">
+            <!--<div class="col-sm-offset-2 col-sm-10">-->
+                @RenderSection("Actions")
+            <!--</div>-->
+        </div>
+    </div>
+}
+
+@section Scripts
+{
+    @RenderSection("Scripts", false)
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            window.action.InitForm($("form"));
+        })
+    </script>    
+}

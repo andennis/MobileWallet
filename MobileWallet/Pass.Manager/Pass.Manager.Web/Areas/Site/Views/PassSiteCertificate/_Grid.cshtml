@@ -1,0 +1,18 @@
+﻿@using Pass.Manager.Web.Controllers
+@(Html.Grid<PassSiteCertificateViewModel>()
+    .Name("grdCertificates")
+    .CssClass("pm-grid")
+    .Pageable()
+    .Sortable()
+    .DataSource(ds => ds.Read(Url.Action<PassSiteCertificateController>(a => a.GridSearchView(null,null))))
+    .Columns(c =>
+    {
+        c.Bound(m => m.PassCertificateId).Title("ID").Width("100px");
+        c.BoundLink(m => m.Name, Url.Action<PassCertificateController>(a => a.Edit(0), new {area = ""}), m => m.PassCertificateId, null, Resources.Name);
+        c.Bound(m => m.Description);
+        c.Bound(m => m.ExpDate);
+        c.Bound(m => m.PassSiteCertificateId)
+            .Title("Action")
+            .GridAction(Resources.Download, Url.Action<PassSiteCertificateController>(a => a.Download(0)))
+            .GridAjaxAction(Resources.Remove, Url.Action<PassSiteCertificateController>(a => a.Delete(0)));
+    }))

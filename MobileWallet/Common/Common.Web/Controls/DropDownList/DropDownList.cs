@@ -44,7 +44,7 @@ namespace Common.Web.Controls.DropDownList
         public string ValueTemplateId { get; set; }
         public DataSource DataSource { get; set; }
 
-        public class DropDownListSettings
+        private class DropDownListSettings
         {
             public bool? autoBind;
             public object dataSource;

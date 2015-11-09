@@ -1,11 +1,17 @@
 ﻿using System.Web.Mvc;
+using Pass.Manager.Web.Common;
 
 namespace Pass.Manager.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        [Authorize]
+        [FormAuthentication]
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult Test()
         {
             return View();
         }

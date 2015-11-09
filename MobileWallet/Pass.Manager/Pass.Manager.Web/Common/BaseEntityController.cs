@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using Common.BL;
-using Common.Repository;
 using Common.Web.Controls.Grid;
 using AutoMapper;
 
@@ -21,7 +20,7 @@ namespace Pass.Manager.Web.Common
         }
     }
 
-    [Authorize]
+    [FormAuthentication]
     public abstract class BaseEntityController<TEntityViewModel, TEntity, TEntityView, TService, TSearchFilter> : BaseController
         where TEntityViewModel : class, IViewModel, new() 
         where TEntity : class, new()

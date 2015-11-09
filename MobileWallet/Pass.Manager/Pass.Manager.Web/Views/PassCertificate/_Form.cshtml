@@ -1,4 +1,5 @@
-﻿@model PassCertificateAppleViewModel
+﻿@using Pass.Manager.Web.Areas.Site.Models
+@model PassCertificateAppleViewModel
 
 <script type="text/javascript" src="@Url.Content("~/Scripts/FormHelpers/PassCertificateHelper.js")"></script>
 
@@ -40,12 +41,12 @@
     .CssClass("pm-grid")
     .Pageable()
     .Sortable()
-    .DataSource(ds => ds.Read(@Url.Action("GridSearchView", "PassSiteCertificate")).Data("window.PassCertificate.PassSiteDataHandler"))
+        .DataSource(ds => ds.Read(Url.Action<Pass.Manager.Web.Controllers.PassSiteCertificateController>(a => a.GridSearchView(null, null), new { Model.PassCertificateId }))/*.Data("window.PassCertificate.PassSiteDataHandler")*/)
     .Columns(c =>
                 {
                     c.Bound(p => p.PassSiteId).Title("ID").Width("100px");
-                    c.BoundLink(p => p.PassSiteName, Url.Action("Edit", "PassSite"), id => id.PassSiteId).Title("Name");
-                    c.Bound(p => p.PassSiteDescription).Title("Description");
+                    c.BoundLink(p => p.PassSiteName, Url.Action<PassSiteController>(a => a.Enter(0)), id => id.PassSiteId).Title(Resources.Name);
+                    c.Bound(p => p.PassSiteDescription).Title(Resources.Description);
                 }))
 
 <script>

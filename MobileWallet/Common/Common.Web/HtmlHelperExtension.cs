@@ -9,5 +9,14 @@ namespace Common.Web
         {
             return new WidgetFactory(helper);
         }
+
+        public static ActionInfo GetCurrentAction(this HtmlHelper helper)
+        {
+            return new ActionInfo()
+            {
+                Controller = helper.ViewContext.RouteData.Values["controller"] as string,
+                Action = helper.ViewContext.RouteData.Values["action"] as string
+            };
+        }
     }
 }

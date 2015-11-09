@@ -12,6 +12,11 @@ namespace Pass.Manager.Web.Controllers
     {
         private readonly IUserService _userService;
 
+        protected override string Layout
+        {
+            get { return "~/Views/Shared/_LayoutConfig.cshtml"; }
+        }
+
         public UserController(IUserService userService)
             : base(userService)
         {
