@@ -1,5 +1,4 @@
-﻿@using Pass.Manager.Web.Controllers
-@(Html.Grid<PassSiteCertificateViewModel>()
+﻿@(Html.Grid<PassSiteCertificateViewModel>()
     .Name("grdCertificates")
     .CssClass("pm-grid")
     .Pageable()
@@ -8,7 +7,7 @@
     .Columns(c =>
     {
         c.Bound(m => m.PassCertificateId).Title("ID").Width("100px");
-        c.BoundLink(m => m.Name, Url.Action<PassCertificateController>(a => a.Edit(0), new {area = ""}), m => m.PassCertificateId, null, Resources.Name);
+        c.BoundLink(m => m.Name, Url.Action<Pass.Manager.Web.Controllers.PassCertificateController>(a => a.Edit(0), new { area = "" }), m => m.PassCertificateId, null, Resources.Name);
         c.Bound(m => m.Description);
         c.Bound(m => m.ExpDate);
         c.Bound(m => m.PassSiteCertificateId)

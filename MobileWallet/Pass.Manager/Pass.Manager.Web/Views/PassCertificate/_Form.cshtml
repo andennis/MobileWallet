@@ -14,8 +14,8 @@
                 Html.TextBlockFormForExt(m => m.PassCertificateId, "ID");
             }
             @Html.TextBoxFormForExt(m => m.Name)
-            @Html.TextBoxFormForExt(m => m.TeamId)
-            @Html.TextBoxFormForExt(m => m.PassTypeId)
+            @Html.TextBoxFormForExt(m => m.TeamId, "Team Id")
+            @Html.TextBoxFormForExt(m => m.PassTypeId, "Pass Type Id")
             @Html.TextAreaFormForExt(m => m.Description)
         </div>
         <div class="col-md-6">
@@ -29,25 +29,31 @@
 
             @(Model.CertificateFileName != null
                 ? Html.FileUploadFormForEx(m => m.CertificateFile, "Certificate File", null, Model.CertificateFileName)
-                  : Html.FileUploadFormForEx(m => m.CertificateFile, "Certificate File"))
+                : Html.FileUploadFormForEx(m => m.CertificateFile, "Certificate File"))
             
-            @Html.ActionLinkExt("Download certificate", "Download", "PassCertificate", new {id = Model.PassCertificateId}, new{@class = "downloadLink"})
+            @if (!Model.IsNew)
+            {
+                @Html.ActionLinkExt("Download certificate", "Download", "PassCertificate", new {id = Model.PassCertificateId}, new {@class = "downloadLink"})
+            }
         </div>
     </div>
 </fieldset>
 
-@(Html.Grid<PassSiteCertificateViewModel>()
-    .Name("grdPassSites")
-    .CssClass("pm-grid")
-    .Pageable()
-    .Sortable()
-        .DataSource(ds => ds.Read(Url.Action<Pass.Manager.Web.Controllers.PassSiteCertificateController>(a => a.GridSearchView(null, null), new { Model.PassCertificateId }))/*.Data("window.PassCertificate.PassSiteDataHandler")*/)
-    .Columns(c =>
-                {
-                    c.Bound(p => p.PassSiteId).Title("ID").Width("100px");
-                    c.BoundLink(p => p.PassSiteName, Url.Action<PassSiteController>(a => a.Enter(0)), id => id.PassSiteId).Title(Resources.Name);
-                    c.Bound(p => p.PassSiteDescription).Title(Resources.Description);
-                }))
+@if (!Model.IsNew)
+{
+    @(Html.Grid<PassSiteCertificateViewModel>()
+          .Name("grdPassSites")
+          .CssClass("pm-grid")
+          .Pageable()
+          .Sortable()
+          .DataSource(ds => ds.Read(Url.Action<PassSiteCertificateController>(a => a.GridSearchView(null, null), new {Model.PassCertificateId})) /*.Data("window.PassCertificate.PassSiteDataHandler")*/)
+          .Columns(c =>
+          {
+              c.Bound(p => p.PassSiteId).Title("ID").Width("100px");
+              c.BoundLink(p => p.PassSiteName, Url.Action<PassSiteController>(a => a.Enter(0)), id => id.PassSiteId).Title(Resources.Name);
+              c.Bound(p => p.PassSiteDescription).Title(Resources.Description);
+          }))
+}
 
 <script>
     @if (!Model.IsNew) {

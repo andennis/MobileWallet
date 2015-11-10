@@ -74,7 +74,7 @@
     }
     
     
-    @if (AuthUserContext.UserData.SiteId.HasValue)
+    @if (Html.IsLeftMenu(Server.MapPath(@"~\App_Data\LeftMenu.xml")))
     {
         <div class="body-content">
             <div class="well">
@@ -92,33 +92,6 @@
         </div>
     }
 
-    @*
-        @if (User.Identity.IsAuthenticated)
-        {
-            <div class="row">
-                <div class="col-md-2">
-                    <div class="well">
-                        @Html.LeftMenu("leftMenu", Server.MapPath(@"~\App_Data\LeftMenu.xml"))
-                    </div>
-                </div>
-                <div class="col-md-9">
-                    <div class="body-content">
-                        <div class="well">
-                            @RenderBody()
-                        </div>
-                    </div>
-                </div>
-            </div>
-        }
-        else
-        {
-            <div class="container body-content">
-                <div class="well">
-                    @RenderBody()
-                </div>
-            </div>
-        }
-    *@
     @Scripts.Render("~/bundles/app")
     @RenderSection("Scripts", false)
 

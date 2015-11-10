@@ -3,18 +3,8 @@ using Common.Web;
 
 namespace Pass.Manager.Web.Common
 {
-    
-    /*
-    public abstract class PmWebViewPage : WebViewPage
-    {
-        [Dependency]
-        public UserContext UserContext { get; set; }
-    }
-    */
-
     public abstract class PmWebViewPage<TModel> : WebViewPage<TModel>
     {
-        //[Dependency]
         public UserContext<UserContextData> AuthUserContext { get; set; }
 
         public override void InitHelpers()

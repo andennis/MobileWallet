@@ -21,6 +21,19 @@ namespace Pass.Manager.BL.Services
             _certificateStorageService = certificateStorageService;
         }
 
+        public override void Update(PassCertificateApple entity)
+        {
+            //TODO It should be run in transaction
+            CertificateInfo certInfo = _certificateStorageService.Read(entity.CertificateStorageId);
+            string certName = GetCertificateName(entity);
+            if (certInfo.Name != certName)
+            {
+                certInfo.Name = certName;
+                _certificateStorageService.Update(certInfo);
+            }
+            base.Update(entity);
+        }
+
         public void UploadCertificate(PassCertificateApple passCert, string certPassword, FileContentInfo fileContent)
         {
             var memStream = new MemoryStream();
@@ -31,7 +44,7 @@ namespace Pass.Manager.BL.Services
             var certInfo = new CertificateInfo
                            {
                                CertificateId = passCert.CertificateStorageId,
-                               Name = string.Format("TID#{0}/PTID#{1}", passCert.TeamId, passCert.PassTypeId),
+                               Name = GetCertificateName(passCert),
                                Password = certPassword.ConvertToSecureString(),
                                CertificateFile = fileContent
                            };
@@ -50,6 +63,11 @@ namespace Pass.Manager.BL.Services
         {
             CertificateInfo certInfo = _certificateStorageService.Read(certificateStorageId);
             return certInfo.CertificateFile.ContentStream;
+        }
+
+        private static string GetCertificateName(PassCertificateApple passCert)
+        {
+            return string.Format("TID#{0}/PTID#{1}", passCert.TeamId, passCert.PassTypeId);
         }
     }
 }

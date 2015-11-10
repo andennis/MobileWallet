@@ -4,15 +4,12 @@ using System.IO;
 using System.Linq;
 using System.Web.Mvc;
 using Common.Configuration.Menu;
-using Common.Utils;
 using Common.Web.Controls.PanelBar;
 
 namespace Common.Web
 {
     public static class NavigationControlExtensions
     {
-        //private const string CacheLeftMenu = "LeftMenu";
-        //private readonly static MemCache<string, LeftMenuConfiguration> _menuCache = new MemCache<string, LeftMenuConfiguration>("Menu", new TimeSpan(0, 10, 0));
         private static DateTime _leftMenuLastUpdateDate = DateTime.MinValue;
         private static LeftMenuConfiguration _leftMenuConfiguration;
 
@@ -31,6 +28,13 @@ namespace Common.Web
         public static PanelBarBuilder PanelBar(this HtmlHelper htmlHelper)
         {
             return htmlHelper.Widget().PanelBar();
+        }
+
+        public static bool IsLeftMenu(this HtmlHelper htmlHelper, string menuConfigFile)
+        {
+            LeftMenuConfiguration menuConfig = GetLeftMenuConfiguration(menuConfigFile);
+            Menu menu = GetActiveMenu(htmlHelper, menuConfig);
+            return (menu != null);
         }
 
         public static PanelBarBuilder LeftMenu(this HtmlHelper htmlHelper, string name, string menuConfigFile)

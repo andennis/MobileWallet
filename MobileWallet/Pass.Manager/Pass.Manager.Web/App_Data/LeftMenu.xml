@@ -38,6 +38,7 @@
           <DependencyActions>
             <action controller="User" action="Create"/>
             <action controller="User" action="Edit"/>
+            <action controller="User" action="ChangePassword"/>
           </DependencyActions>
         </item>
         <item title="Certificates" controller="PassCertificate" action="Index">
