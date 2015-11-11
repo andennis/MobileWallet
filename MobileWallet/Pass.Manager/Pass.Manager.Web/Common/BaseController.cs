@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Web.Mvc;
+using System.Web.Routing;
 using Common.BL;
+using Common.Logging;
 using Common.Web;
 using Common.Web.Controls.Grid;
 using Microsoft.Practices.Unity;
@@ -11,6 +13,27 @@ namespace Pass.Manager.Web.Common
 {
     public abstract class BaseController : Controller
     {
+        
+        [Dependency]
+        public ILogger Logger { get; set; }
+        protected override void Initialize(RequestContext context)
+        {
+            Logger.Debug(String.Format("Invoke action '{0}' from controller '{1}'.",
+                context.HttpContext.Request.RequestContext.RouteData.GetRequiredString("action"),
+                context.HttpContext.Request.RequestContext.RouteData.GetRequiredString("controller")));
+
+            base.Initialize(context);
+        }
+
+        protected override void OnException(ExceptionContext filterContext)
+        {
+            Logger.Error(filterContext.Exception, "Action '{0}' from controller '{1}' threw exception: '{2}'",
+                filterContext.RouteData.Values["action"].ToString(),
+                filterContext.RouteData.Values["controller"].ToString(),
+                filterContext.Exception.Message);
+
+            base.OnException(filterContext);
+        }
         [Dependency]
         public UserContext<UserContextData> AuthUserContext { get; set; }
 
