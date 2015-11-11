@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using Common.BL;
+using Common.Web;
 using Common.Web.Controls.Grid;
 using AutoMapper;
 
@@ -154,6 +156,14 @@ namespace Pass.Manager.Web.Common
             SearchResult<TEntityView> result = _service.SearchView<TEntityView>(GridRequestToSearchContext(request), searchFilter);
             IEnumerable<TEntityViewModel> resultView = Mapper.Map<IEnumerable<TEntityView>, IEnumerable<TEntityViewModel>>(result.Data);
             return Json(GridDataResponse.Create(request, resultView, result.TotalCount), JsonRequestBehavior.AllowGet);
+        }
+
+        [AjaxOnly]
+        public virtual ActionResult GetItems(TSearchFilter searchFilter)
+        {
+            SearchResult<TEntity> result = _service.Search(new SearchContext(), searchFilter);
+            IEnumerable<EntityItem> items = Mapper.Map<IEnumerable<TEntity>, IEnumerable<EntityItem>>(result.Data).OrderBy(x => x.Name);
+            return Json(new SelectListTyped<EntityItem, int, string>(items, v => v.ID, t => t.Name), JsonRequestBehavior.AllowGet);
         }
 
         [AjaxOnly]

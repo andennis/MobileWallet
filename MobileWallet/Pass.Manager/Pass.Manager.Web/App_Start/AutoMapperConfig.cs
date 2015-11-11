@@ -4,6 +4,7 @@ using Common.Utils;
 using Pass.Container.Core.Entities.Templates.GeneralPassTemplate;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Web.Areas.Site.Models;
+using Pass.Manager.Web.Common;
 using Pass.Manager.Web.Models;
 
 namespace Pass.Manager.Web
@@ -18,6 +19,9 @@ namespace Pass.Manager.Web
             Mapper.CreateMap<User, UserPasswordViewModel>();
 
             Mapper.CreateMap<PassProject, PassProjectViewModel>().ReverseMap();
+            Mapper.CreateMap<PassProject, EntityItem>()
+                .ForMember(dst => dst.ID, x => x.MapFrom(src => src.PassProjectId));
+
             Mapper.CreateMap<PassCertificateApple, PassCertificateAppleViewModel>().ReverseMap();
 
             Mapper.CreateMap<PassSiteUser, PassSiteUserViewModel>()

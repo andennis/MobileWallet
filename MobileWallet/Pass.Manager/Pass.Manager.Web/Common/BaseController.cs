@@ -13,9 +13,12 @@ namespace Pass.Manager.Web.Common
 {
     public abstract class BaseController : Controller
     {
+        [Dependency]
+        public UserContext<UserContextData> AuthUserContext { get; set; }
         
         [Dependency]
         public ILogger Logger { get; set; }
+
         protected override void Initialize(RequestContext context)
         {
             Logger.Debug(String.Format("Invoke action '{0}' from controller '{1}'.",
@@ -34,8 +37,6 @@ namespace Pass.Manager.Web.Common
 
             base.OnException(filterContext);
         }
-        [Dependency]
-        public UserContext<UserContextData> AuthUserContext { get; set; }
 
         protected int SiteId
         {

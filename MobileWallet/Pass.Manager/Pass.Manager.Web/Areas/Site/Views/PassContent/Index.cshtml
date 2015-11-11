@@ -1,26 +1,26 @@
-﻿@model PassContentListViewModel
-
-@{
+﻿@{
     Layout = "~/Areas/Site/Views/Shared/_Layout.cshtml";
 }
 
-@*
 <div class="row vertical-align">
+    @*
     <div class="col-md-2">
         @(Html.ActionLinkExt<PassContentController>(a => a.CreatePass(0), "Add New", new { passProjectId = Model.PassProjectId }, new { @class = "btn btn-default" }))
     </div>
+    *@
     <div class="col-md-10">
-        @Html.DropDownListForExt(m => m.PassProjectId, "Items", "PassProject", new {passSiteId = SiteId}, "- Select Pass Project -", new { @class = "form-control" })
-        @Html.DropDownListForExt(m => m.PassContentTemplateId, "Items", "PassContentTemplate", "- Select Pass Templete -", new { @class = "form-control" })
+        @Html.DropDownListExt("PassProjectId", "GetItems", "PassProject", new { passSiteId = SiteId },
+                         optionLabel: "- Select Pass Project -", htmlAttributes: new { @class = "form-control" }, changeHandler: "OnPassProjectChange")
+        @*Html.DropDownListForExt(m => m.PassContentTemplateId, "Items", "PassContentTemplate", "- Select Pass Templete -", new { @class = "form-control" })"*@
     </div>
 </div>
-*@
+
 
 <script type="text/javascript">
     function PassContentFilter(d) {
         return $.extend({}, d, {
-            "PassProjectId": $('#PassProjectId').val(),
-            "PassContentTemplateId": $('#PassContentTemplateId').val()
+            "PassProjectId": $('#PassProjectId').val()
+            //"PassContentTemplateId": $('#PassContentTemplateId').val()
         });
     };
 </script>
@@ -30,7 +30,7 @@
         .CssClass("pm-grid")
         .Pageable()
         .Sortable()
-        .DataSource(ds => ds.Read(Url.Action<PassContentController>(a => a.GridSearchView(null, null)))/*.Data("PassContentFilter")*/)
+        .DataSource(ds => ds.Read(Url.Action<PassContentController>(a => a.GridSearchView(null, null))).Data("PassContentFilter"))
         .Columns(c =>
                 {
                     c.BoundLink(m => m.PassContentId, Url.Action<PassContentController>(a => a.Edit(0)), x => x.PassContentId).Title("ID").Width("100px");
@@ -48,10 +48,16 @@
         window.grid.Init(grid);
         //window.grid.Reload(grid);
 
+        /*
         $("#PassContentTemplateId").change(function () {
             window.grid.Reload($("#grdPassContent"));
         });
+        */
     });
+
+    function OnPassProjectChange() {
+        window.grid.Reload($("#grdPassContent"));
+    }
 </script>
 
 <!--
