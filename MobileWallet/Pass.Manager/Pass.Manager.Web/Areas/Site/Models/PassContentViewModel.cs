@@ -27,9 +27,10 @@ namespace Pass.Manager.Web.Areas.Site.Models
         public string PassContentTemplateName { get; set; }
         public int PassContentTemplateVersion { get; set; }
         public int PassProjectId { get; set; }
+        public string ProjectName { get; set; }
 
         public int? ContainerPassId { get; set; }
-        public bool IsOnline { get { return ContainerPassId.HasValue; } }
+        public bool IsOnline { get; set; }
         public string DistributionLink { get; set; }
         public IEnumerable<SelectListItem> PassContentTemplates { get; set; }
         public DateTime CreatedDate { get; set; }

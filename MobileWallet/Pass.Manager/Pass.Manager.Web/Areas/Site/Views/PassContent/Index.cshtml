@@ -34,7 +34,9 @@
         .Columns(c =>
                 {
                     c.BoundLink(m => m.PassContentId, Url.Action<PassContentController>(a => a.Edit(0)), x => x.PassContentId).Title("ID").Width("100px");
-                    c.BoundBool(m => m.IsOnline).Title("Online").Orderable(false);
+                    c.BoundBool(m => m.IsOnline).Title("Online");
+                    c.BoundLink(m => m.ProjectName, Url.Action<PassProjectController>(a => a.Edit(0)), x => x.PassProjectId).Title("Project");
+                    //c.BoundLink(m => m.PassContentTemplateName, Url.Action<PassContentTemplateController>(a => a.Edit(0)), x => x.PassContentTemplateId).Title("Template");
                     c.Bound(m => m.SerialNumber).Title("Serial Number");//.ClientTemplateId("CropSerNum");
                     c.Bound(m => m.ExpDate).Title(Resources.ExpirationDate);
                     c.Bound(m => m.IsVoided).Title("Voided");
@@ -46,13 +48,6 @@
     $(document).ready(function () {
         var grid = $("#grdPassContent");
         window.grid.Init(grid);
-        //window.grid.Reload(grid);
-
-        /*
-        $("#PassContentTemplateId").change(function () {
-            window.grid.Reload($("#grdPassContent"));
-        });
-        */
     });
 
     function OnPassProjectChange() {

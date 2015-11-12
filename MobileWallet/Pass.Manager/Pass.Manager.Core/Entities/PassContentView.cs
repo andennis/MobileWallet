@@ -11,11 +11,12 @@ namespace Pass.Manager.Core.Entities
         public DateTime? ExpDate { get; set; }
         public bool IsValid { get; set; }
         public EntityStatus Status { get; set; }
-
         public int PassContentTemplateId { get; set; }
         public string PassContentTemplateName { get; set; }
         public int? ContainerPassId { get; set; }
         public int PassProjectId { get; set; }
+        public string ProjectName { get; set; }
+        public bool IsOnline { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
 
