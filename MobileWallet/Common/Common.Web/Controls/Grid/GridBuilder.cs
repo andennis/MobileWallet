@@ -135,7 +135,8 @@ namespace Common.Web.Controls.Grid
                                     ajax = new GridAjaxRequest()
                                            {
                                                Url = _gridModel.DataSourceFactory.Action, 
-                                               Data = _gridModel.DataSourceFactory.DataHandler
+                                               Data = _gridModel.DataSourceFactory.DataHandler,
+                                               Type = "POST"
                                            },
                                     processing = true,
                                     searching = false,
