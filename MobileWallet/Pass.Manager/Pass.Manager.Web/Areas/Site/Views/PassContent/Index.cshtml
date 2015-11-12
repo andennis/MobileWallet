@@ -3,11 +3,10 @@
 }
 
 <div class="row vertical-align">
-    @*
     <div class="col-md-2">
-        @(Html.ActionLinkExt<PassContentController>(a => a.CreatePass(0), "Add New", new { passProjectId = Model.PassProjectId }, new { @class = "btn btn-default" }))
+        @(Html.ActionLinkExt<PassContentController>(a => a.CreatePass(0), "Add New", htmlAttributes: new { @class = "btn btn-default", id="lnkAddNew" }))
     </div>
-    *@
+    
     <div class="col-md-10">
         @Html.DropDownListExt("PassProjectId", "GetItems", "PassProject", new { passSiteId = SiteId },
                          optionLabel: "- Select Pass Project -", htmlAttributes: new { @class = "form-control" }, changeHandler: "OnPassProjectChange")
@@ -46,8 +45,16 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        var grid = $("#grdPassContent");
-        window.grid.Init(grid);
+        window.grid.Init($("#grdPassContent"));
+
+        $("#lnkAddNew").click(function (e) {
+            e.preventDefault();
+            var passProjectId = $('#PassProjectId').val();
+            if (passProjectId)
+                window.location = this.href + "/?passProjectId=" + passProjectId;
+            else
+                alert("Choose project please");
+        });
     });
 
     function OnPassProjectChange() {

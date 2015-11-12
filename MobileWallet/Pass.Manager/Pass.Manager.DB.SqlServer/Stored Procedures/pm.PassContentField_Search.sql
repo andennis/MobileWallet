@@ -13,31 +13,22 @@ CREATE PROCEDURE [pm].[PassContentField_Search]
 
     @PassContentId INT
 AS
+BEGIN
+    SET @TotalRecords = (SELECT COUNT(*) FROM pm.PassContentFieldView WHERE PassContentId = @PassContentId)
 
--- Create a variable @SQLStatement
-DECLARE @SQLStatement NVARCHAR(500);
-DECLARE @ParmDefinition NVARCHAR(200);
-    
--- Enter the dynamic SQL statement into the
--- variable @SQLStatement
-SET @SQLStatement =	   'BEGIN ' +
-					   'SELECT * FROM pm.PassContentFieldView ' +
-					   'WHERE PassContentId = @PassContentId ' +
-                       'ORDER BY ' + @SortBy + ' ' + @SortDirection + ' ' +
-					   'OFFSET @PageIndex ROWS ' +
-					   'FETCH NEXT @PageSize  ROWS ONLY; ' +
-					   'SET @TotalRecords = (SELECT COUNT(*) FROM pm.PassContentFieldView WHERE PassContentId = @PassContentId) ' +
-					   'END';
-
-SET @ParmDefinition = '@PageIndex INT,
-					   @PageSize INT,
-					   @TotalRecords INT OUTPUT,
-
-					   @PassContentId INT';
-
--- Execute the SQL statement
-EXECUTE sp_executesql @SQLStatement, @ParmDefinition, 
-					  @PassContentId = @PassContentId, 
-				      @PageIndex = @PageIndex, 
-					  @PageSize = @PageSize, 
-					  @TotalRecords = @TotalRecords OUTPUT;
+    SELECT * FROM pm.PassContentFieldView WHERE PassContentId = @PassContentId
+    ORDER BY 
+        CASE WHEN @SortBy = 'PassProjectFieldId'AND @SortDirection = 'asc' THEN PassProjectFieldId END ASC,
+        CASE WHEN @SortBy = 'PassProjectFieldId'AND @SortDirection = 'desc' THEN PassProjectFieldId END DESC,
+        CASE WHEN @SortBy = 'FieldName'AND @SortDirection = 'asc' THEN FieldName END ASC,
+        CASE WHEN @SortBy = 'FieldName'AND @SortDirection = 'desc' THEN FieldName END DESC,
+        CASE WHEN @SortBy = 'FieldLabel'AND @SortDirection = 'asc' THEN FieldLabel END ASC,
+        CASE WHEN @SortBy = 'FieldLabel'AND @SortDirection = 'desc' THEN FieldLabel END DESC,
+        CASE WHEN @SortBy = 'FieldValue'AND @SortDirection = 'asc' THEN FieldValue END ASC,
+        CASE WHEN @SortBy = 'FieldValue'AND @SortDirection = 'desc' THEN FieldValue END DESC,
+        CASE WHEN @SortBy = 'CreatedDate'AND @SortDirection = 'asc' THEN CreatedDate END ASC,
+        CASE WHEN @SortBy = 'CreatedDate'AND @SortDirection = 'desc' THEN CreatedDate END DESC,
+        CASE WHEN @SortBy = 'UpdatedDate'AND @SortDirection = 'asc' THEN UpdatedDate END ASC,
+        CASE WHEN @SortBy = 'UpdatedDate'AND @SortDirection = 'desc' THEN UpdatedDate END DESC
+    OFFSET @PageIndex ROWS FETCH NEXT @PageSize  ROWS ONLY; 
+END

@@ -11,7 +11,9 @@
         </item>
         <item title="Passes" controller="PassContent" action="Index">
           <DependencyActions>
+            <action controller="PassContent" action="CreatePass"/>
             <action controller="PassContent" action="Edit"/>
+            <action controller="PassContentTemplate" action="Edit"/>
           </DependencyActions>
         </item>
         <item title="Configuration">

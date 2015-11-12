@@ -32,20 +32,6 @@ namespace Pass.Manager.Web.Areas.Site.Controllers
             _distributionService = distributionService;
         }
 
-        /*
-        public ActionResult Passes(int passProjectId)
-        {
-            SearchResult<PassContentTemplate> contentTemplates = _contentTemplateService.Search(new SearchContext(), new PassContentTemplateFilter() {PassProjectId = passProjectId});
-            var model = new PassContentListViewModel()
-            {
-                PassProjectId = passProjectId,
-                PassContentTemplateId = contentTemplates.Data.Any(x => x.IsDefault) ? contentTemplates.Data.First(x => x.IsDefault).PassContentTemplateId : (int?)null,
-                PassContentTemplates = new SelectListTyped<PassContentTemplate, int, string>(contentTemplates.Data, d => d.PassContentTemplateId, t => t.Name)
-            };
-            return View("_Passes", model);
-        }
-        */
-
         [HttpGet]
         public ActionResult CreatePass(int passProjectId)
         {
@@ -62,15 +48,6 @@ namespace Pass.Manager.Web.Areas.Site.Controllers
         {
             return base.Create(model);
         }
-
-        /*
-        protected override void SetDefaultReturnUrl(PassContentViewModel model)
-        {
-            base.SetDefaultReturnUrl(model);
-            if (string.IsNullOrEmpty(model.RedirectUrl))
-                model.RedirectUrl = Url.Action<PassProjectController>(a => a.Edit(0), new { id = model.PassProjectId });
-        }
-        */
 
         protected override void PrepareModelToEditView(PassContentViewModel model)
         {
