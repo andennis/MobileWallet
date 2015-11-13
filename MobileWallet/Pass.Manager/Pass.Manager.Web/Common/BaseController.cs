@@ -81,10 +81,10 @@ namespace Pass.Manager.Web.Common
         {
             return new SearchContext
             {
-                PageIndex = request.start,
-                PageSize = request.length,
-                SortBy = request.sortColumn,
-                SortDirection = request.sortDirection
+                PageIndex = request.Start,
+                PageSize = request.Length,
+                SortBy = request.Order != null ? request.Columns[request.Order[0].Column].Data : null,
+                SortDirection = request.Order != null ? request.Order[0].Dir : null
             };
         }
 

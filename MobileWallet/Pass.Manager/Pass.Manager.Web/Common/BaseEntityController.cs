@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -141,8 +140,6 @@ namespace Pass.Manager.Web.Common
         [AjaxOnly]
         public virtual ActionResult GridSearch(GridDataRequest request, TSearchFilter searchFilter)
         {
-            request.sortColumn = Request.QueryString["order[0][column]"] != null ? Request.QueryString["columns[" + Request.QueryString["order[0][column]"] + "][data]"] : null;
-            request.sortDirection = Request.QueryString["order[0][dir]"];
             SearchResult<TEntity> result = _service.Search(GridRequestToSearchContext(request), searchFilter);
             IEnumerable<TEntityViewModel> resultView = Mapper.Map<IEnumerable<TEntity>, IEnumerable<TEntityViewModel>>(result.Data);
             return Json(GridDataResponse.Create(request, resultView, result.TotalCount), JsonRequestBehavior.AllowGet);
@@ -151,8 +148,6 @@ namespace Pass.Manager.Web.Common
         [AjaxOnly]
         public virtual ActionResult GridSearchView(GridDataRequest request, TSearchFilter searchFilter)
         {
-            request.sortColumn = Request.QueryString["order[0][column]"] != null ? Request.QueryString["columns[" + Request.QueryString["order[0][column]"] + "][data]"] : null;
-            request.sortDirection = Request.QueryString["order[0][dir]"];
             SearchResult<TEntityView> result = _service.SearchView<TEntityView>(GridRequestToSearchContext(request), searchFilter);
             IEnumerable<TEntityViewModel> resultView = Mapper.Map<IEnumerable<TEntityView>, IEnumerable<TEntityViewModel>>(result.Data);
             return Json(GridDataResponse.Create(request, resultView, result.TotalCount), JsonRequestBehavior.AllowGet);

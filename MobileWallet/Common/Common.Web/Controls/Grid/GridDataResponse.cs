@@ -25,7 +25,7 @@ namespace Common.Web.Controls.Grid
 
             var resp = new GridDataResponse()
                        {
-                           draw = request.draw,
+                           draw = request.Draw,
                            data = data,
                            recordsTotal = recordsCount,
                            recordsFiltered = recordsCount
