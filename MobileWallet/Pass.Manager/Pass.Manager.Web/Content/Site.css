@@ -458,16 +458,24 @@ textarea {
     text-overflow: ellipsis;
 }
 
-img.boundBoolImg {
+.boundBoolImg {
     width: 28px;
     height: 28px;
-    margin-top: -8px;
-    margin-bottom: -5px;
+    margin-top: -4px;
+    margin-bottom: -3px;
     margin-left: 39%;
 }
 
-img[src=""].boundBoolImg {
-    display: none;
+.trueImg {
+    background: url("../Images/Grid/true.png") no-repeat;
+    -ms-background-size: contain;
+    background-size: contain;
+}
+
+.falseImg {
+    /*background: url("../Images/Grid/false.png") no-repeat;*/
+    -ms-background-size: contain;
+    background-size: contain;
 }
 
 .grid-filter {
@@ -487,6 +495,3 @@ img[src=""].boundBoolImg {
 .barcodeChangeButton {
     display: none;
 }
-
-
-

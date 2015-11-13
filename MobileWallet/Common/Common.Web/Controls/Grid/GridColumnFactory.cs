@@ -99,20 +99,18 @@ namespace Common.Web.Controls.Grid
             return builder;
         }
 
-        public GridBoundColumnBuilder<TModel> BoundBoolImg<TValue>(Expression<Func<TModel, TValue>> expression, string urlTrue = "../../Images/Grid/true.png", string urlFalse = null)
+        public GridBoundColumnBuilder<TModel> BoundBoolImg<TValue>(Expression<Func<TModel, TValue>> expression, string trueCssClass = "trueImg", string falseCssClass = "falseImg")
         {
-            //TODO the default value of the parameter urlTrue should be specified by CSS
-            return BoundBoolImg(expression.GetPropertyName(), urlTrue, urlFalse);
+            return BoundBoolImg(expression.GetPropertyName(), trueCssClass, falseCssClass);
         }
 
-        private GridBoundColumnBuilder<TModel> BoundBoolImg(string colName, string urlTrue = null, string urlFalse = null)
+        private GridBoundColumnBuilder<TModel> BoundBoolImg(string colName, string trueCssClass = "trueImg", string falseCssClass = "falseImg")
         {
             var builder = new GridBoundColumnBuilder<TModel>(_htmlHelper, colName);
-            var tb = new TagBuilder("img");
+            var tb = new TagBuilder("div");
             var sb = new StringBuilder();
-            sb.AppendFormat("if({0}) {{#{1}#}} else {{#{2}#}}", colName, urlTrue, urlFalse);
-            tb.Attributes.Add("src", string.Format("# {0} #", sb));
-            tb.Attributes.Add("class", "boundBoolImg");
+            sb.AppendFormat("if({0}) {{#{1}#}} else {{#{2}#}}", colName, trueCssClass, falseCssClass);
+            tb.Attributes.Add("class", string.Format("# {0} # boundBoolImg", sb));
             builder.ClientTemplate(tb.ToString());
             Columns.Add(builder);
             return builder;

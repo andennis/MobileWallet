@@ -17,7 +17,7 @@
               .Columns(c =>
                        {
                            c.Bound(p => p.PassContentTemplateFieldId).Title("ID").Width("100px");
-                           c.BoundBoolImg(m => m.IsStatic, Url.Content("~/Images/Grid/true.png")).Title("Is Static");
+                           c.BoundBoolImg(m => m.IsStatic).Title("Is Static");
                            c.BoundEnum(p => p.FieldKind).Title(Resources.FieldLocation);
                            c.BoundLink(p => p.Name, Url.Action<PassContentTemplateFieldController>(a => a.Edit(0)), id => id.PassContentTemplateFieldId, 
                                new { data_popup_window = "wndTemplateField" }, Resources.Name);
