@@ -14,6 +14,7 @@
             <action controller="PassContent" action="CreatePass"/>
             <action controller="PassContent" action="Edit"/>
             <action controller="PassContentTemplate" action="Edit"/>
+            <action controller="PassContentTemplate" action="CreateTemplate"/>
           </DependencyActions>
         </item>
         <item title="Configuration">

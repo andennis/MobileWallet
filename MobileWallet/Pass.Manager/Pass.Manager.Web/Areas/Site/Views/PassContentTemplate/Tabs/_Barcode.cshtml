@@ -8,7 +8,7 @@
 
 <div class="form-group">
     <div class="col-sm-8 col-md-9 col-sm-offset-3">
-        @if (Model.PassContentTemplateId == 0)
+        @if (Model.IsNew)
         {
             <input id="saveBarcodeButton" class="btn btn-default barcodeChangeButton" type="button" value="SaveBarcode" />
         }

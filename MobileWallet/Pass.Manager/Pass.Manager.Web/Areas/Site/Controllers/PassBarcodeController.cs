@@ -18,7 +18,7 @@ namespace Pass.Manager.Web.Areas.Site.Controllers
         public ActionResult TabBarcode(int id)
         {
             var barcode = GetViewModel(id) ?? new PassBarcodeViewModel();
-            return PartialView("~/Views/PassContentTemplate/Tabs/_Barcode.cshtml", barcode);
+            return PartialView("~/Areas/Site/Views/PassContentTemplate/Tabs/_Barcode.cshtml", barcode);
         }
 
         [HttpPost]

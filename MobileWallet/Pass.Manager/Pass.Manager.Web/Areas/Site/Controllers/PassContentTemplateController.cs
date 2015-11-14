@@ -16,12 +16,12 @@ namespace Pass.Manager.Web.Areas.Site.Controllers
         }
 
         [HttpGet]
-        public ActionResult CreateContent(int passProjectId)
+        public ActionResult CreateTemplate(int passProjectId)
         {
             return Create(m => m.PassProjectId = passProjectId);
         }
 
-        [ActionName("CreateContent")]
+        [ActionName("CreateTemplate")]
         public override ActionResult Create(PassContentTemplateViewModel model)
         {
             return base.Create(model);
