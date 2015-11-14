@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -64,6 +65,7 @@ namespace Pass.Manager.Web.Common
         {
             this.AuthUserContext.Clear();
             FormsAuthentication.SignOut();
+            HttpContext.User = new GenericPrincipal(new GenericIdentity(string.Empty), null);
             Session.Abandon();
             Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
         }
