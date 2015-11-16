@@ -79,6 +79,6 @@
     <Build Include="Scripts\DbSchemeScript.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="FileStorage.DB.SqlServer.local.publish.xml" />
+    <None Include="FileStorage.DB.publish.xml" />
   </ItemGroup>
 </Project>

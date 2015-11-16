@@ -85,7 +85,7 @@
     <Build Include="Stored Procedures\pscn.SequenceCounter_NextValue.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Pass.Container.DB.SqlServer.local-publish.publish.xml" />
+    <None Include="Pass.Container.DB.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Pass.Container.DB.SqlServer.refactorlog" />

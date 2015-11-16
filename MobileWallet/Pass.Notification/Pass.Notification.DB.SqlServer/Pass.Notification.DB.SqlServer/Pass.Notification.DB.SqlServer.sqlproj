@@ -69,6 +69,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\Quartz.NET\DbSchemeScript.sql" />
-    <None Include="Pass.Notification.DB.SqlServer.local-publish.publish.xml" />
+    <None Include="Pass.Notification.DB.publish.xml" />
   </ItemGroup>
 </Project>

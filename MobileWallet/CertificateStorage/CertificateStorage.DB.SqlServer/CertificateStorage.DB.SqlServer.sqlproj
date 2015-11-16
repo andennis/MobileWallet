@@ -68,6 +68,6 @@
     <Build Include="Security\cer.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CertificateStorage.DB.SqlServer.publish.xml" />
+    <None Include="CertificateStorage.DB.publish.xml" />
   </ItemGroup>
 </Project>

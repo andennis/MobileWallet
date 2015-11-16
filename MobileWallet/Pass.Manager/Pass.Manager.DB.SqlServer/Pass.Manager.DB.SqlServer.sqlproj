@@ -102,6 +102,6 @@
     <Build Include="Views\pm.PassSiteCertificateView.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Pass.Manager.DB.SqlServer.local-publish.publish.xml" />
+    <None Include="Pass.Manager.DB.publish.xml" />
   </ItemGroup>
 </Project>
