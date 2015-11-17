@@ -14,33 +14,19 @@ CREATE PROCEDURE [pm].[PassSiteCertificate_Search]
 	@PassSiteId INT,
 	@PassCertificateId INT
 AS
-
--- Create a variable @SQLStatement
-DECLARE @SQLStatement NVARCHAR(500);
-DECLARE @ParmDefinition NVARCHAR(200);
-    
--- Enter the dynamic SQL statement into the
--- variable @SQLStatement
-SET @SQLStatement =	   'BEGIN ' +
-					   'SELECT * FROM pm.PassSiteCertificateView ' +
-					   'WHERE (@PassSiteId is null or PassSiteId=@PassSiteId) AND (@PassCertificateId is null or PassCertificateId=@PassCertificateId) ' +
-                       'ORDER BY ' + @SortBy + ' ' + @SortDirection + ' ' +
-					   'OFFSET @PageIndex ROWS ' +
-					   'FETCH NEXT @PageSize  ROWS ONLY; ' +
-					   'SET @TotalRecords = (SELECT COUNT(*) FROM pm.PassSiteCertificateView WHERE (@PassSiteId is null or PassSiteId=@PassSiteId) AND (@PassCertificateId is null or PassCertificateId=@PassCertificateId)) ' +
-					   'END';
-
-SET @ParmDefinition = '@PageIndex INT,
-					   @PageSize INT,
-					   @TotalRecords INT OUTPUT,
-
-					   @PassSiteId INT,
-					   @PassCertificateId INT';
-
--- Execute the SQL statement
-EXECUTE sp_executesql @SQLStatement, @ParmDefinition, 
-					  @PassSiteId = @PassSiteId, 
-					  @PassCertificateId = @PassCertificateId, 
-				      @PageIndex = @PageIndex, 
-					  @PageSize = @PageSize, 
-					  @TotalRecords = @TotalRecords OUTPUT;
+BEGIN 
+	SELECT * FROM pm.PassSiteCertificateView 
+	WHERE (@PassSiteId is null or PassSiteId=@PassSiteId) AND (@PassCertificateId is null or PassCertificateId=@PassCertificateId) 
+	ORDER BY  
+			CASE WHEN @SortBy = 'PassCertificateId'AND @SortDirection = 'asc' THEN PassCertificateId END ASC,
+			CASE WHEN @SortBy = 'PassCertificateId'AND @SortDirection = 'desc' THEN PassCertificateId END DESC,
+			CASE WHEN @SortBy = 'Name'AND @SortDirection = 'asc' THEN Name END ASC,
+			CASE WHEN @SortBy = 'Name'AND @SortDirection = 'desc' THEN Name END DESC,
+			CASE WHEN @SortBy = 'Description'AND @SortDirection = 'asc' THEN Description END ASC,
+			CASE WHEN @SortBy = 'Description'AND @SortDirection = 'desc' THEN Description END DESC,
+			CASE WHEN @SortBy = 'ExpDate'AND @SortDirection = 'asc' THEN ExpDate END ASC,
+			CASE WHEN @SortBy = 'ExpDate'AND @SortDirection = 'desc' THEN ExpDate END DESC
+	OFFSET @PageIndex ROWS 
+	FETCH NEXT @PageSize  ROWS ONLY;
+	SET @TotalRecords = (SELECT COUNT(*) FROM pm.PassSiteCertificateView WHERE (@PassSiteId is null or PassSiteId=@PassSiteId) AND (@PassCertificateId is null or PassCertificateId=@PassCertificateId))
+END
