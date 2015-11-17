@@ -1,0 +1,17 @@
+﻿@model Exception
+@{
+    ViewBag.Title = "Exception";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="color: Red;">
+    Server Error in '/@Model.Source' Application.
+</h2>
+<p style="font-weight: bold;">@Model.Message</p>
+
+<p>
+    <label>Stack Trace: </label>
+    @Model.StackTrace
+</p>
+
+

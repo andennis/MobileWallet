@@ -86,7 +86,9 @@ namespace Pass.Manager.Web
                 "~/Scripts/FormAutoFill/jquery.formautofill.js",
                 "~/Scripts/Grid.js",
                 "~/Scripts/Action.js",
-                "~/Scripts/PopupWindow.js"));
+                "~/Scripts/PopupWindow.js",
+                "~/Scripts/errorProcessing.js"
+                ));
 
 
             //Control extensions

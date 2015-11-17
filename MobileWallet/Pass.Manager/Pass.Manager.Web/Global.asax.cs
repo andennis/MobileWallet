@@ -1,8 +1,11 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.Script.Serialization;
 using FluentValidation.Mvc;
+using Pass.Manager.Web.Controllers;
 
 namespace Pass.Manager.Web
 {
@@ -18,5 +21,47 @@ namespace Pass.Manager.Web
             FluentValidationModelValidatorProvider.Configure();
         }
 
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            var exception = Server.GetLastError();
+            bool isAjaxCall = new HttpRequestWrapper(HttpContext.Current.Request).IsAjaxRequest();
+            Response.Clear();
+            Server.ClearError();
+            if (isAjaxCall)
+            {
+                Context.Response.ContentType = "application/json";
+                Context.Response.StatusCode = 500;
+                Context.Response.Write(
+                    new JavaScriptSerializer().Serialize(
+                        new
+                        {
+                            #if (DEBUG)
+                                error = "Server Error in '/" + exception.Source + " Application.",
+                                message = exception.Message,
+                                stackTrace = "Stack Trace: " + exception.StackTrace
+                            #elif (!DEBUG)
+                                error = "Site error. The error message is already sent to developers."
+                            #endif
+                        })
+                    );
+            }
+            else
+            {
+                var routeData = new RouteData();
+                routeData.Values["controller"] = "Error";
+                #if (DEBUG)
+                    routeData.Values["action"] = "DebugGeneral";
+                #elif (!DEBUG)
+                    routeData.Values["action"] = "General";
+                #endif
+                routeData.Values["exception"] = exception;
+                Response.StatusCode = 500;
+                Response.TrySkipIisCustomErrors = true;
+                IController errorsController = new ErrorController();
+                var wrapper = new HttpContextWrapper(Context);
+                var rc = new RequestContext(wrapper, routeData);
+                errorsController.Execute(rc);
+            }
+        }
     }
 }

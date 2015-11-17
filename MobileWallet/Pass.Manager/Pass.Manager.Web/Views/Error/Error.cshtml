@@ -1,0 +1,19 @@
+﻿@model Exception
+@{
+    ViewBag.Title = "Exception";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>
+    Site error
+</h2>
+<p style="font-size: 1.2em; color: Red; font-weight: bold;">
+    The error message is already sent to developers.
+</p>
+@*<p style="font-weight: bold;">@Model.Message</p>*@
+<p>
+    You can pass to the main @Html.ActionLink("page", "Index", "PassSite").
+</p>
+@*<fieldset style="font-size: .85em;">
+    <legend>Информация для разработчиков</legend>
+    @Html.Raw(@Model.StackTrace)
+</fieldset>*@
