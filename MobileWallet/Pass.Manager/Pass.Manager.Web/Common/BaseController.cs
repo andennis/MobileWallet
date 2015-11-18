@@ -38,6 +38,7 @@ namespace Pass.Manager.Web.Common
             base.OnException(filterContext);
         }
 
+        //TODO it should be moved to the base site controiller
         protected int SiteId
         {
             get

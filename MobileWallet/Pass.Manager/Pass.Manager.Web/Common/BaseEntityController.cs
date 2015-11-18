@@ -6,6 +6,7 @@ using Common.BL;
 using Common.Web;
 using Common.Web.Controls.Grid;
 using AutoMapper;
+using Common.Web.Navigation;
 
 namespace Pass.Manager.Web.Common
 {
@@ -30,14 +31,22 @@ namespace Pass.Manager.Web.Common
         where TSearchFilter : SearchFilterBase
     {
         protected readonly TService _service;
+        protected ActionHistory _actionHistory;
 
         protected BaseEntityController(TService service)
         {
             _service = service;
         }
 
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            _actionHistory = new ActionHistory(this.ControllerContext);
+            base.OnActionExecuting(filterContext);
+        }
+
         public virtual ActionResult Index()
         {
+            _actionHistory.ResetHistory();
             return View();
         }
 
@@ -183,7 +192,13 @@ namespace Pass.Manager.Web.Common
 
         protected virtual void SetDefaultReturnUrl(TEntityViewModel model)
         {
-            if (model.RedirectUrl == null && Request.UrlReferrer != null)
+            if (model.RedirectUrl != null)
+                return;
+
+            ActionHistoryItem ahi = _actionHistory.GoToCurrentAction();
+            if (ahi != null && ahi.PreviousUrl != null)
+                model.RedirectUrl = ahi.PreviousUrl;
+            else if (Request.UrlReferrer != null)
                 model.RedirectUrl = Request.UrlReferrer.ToString();
         }
 
