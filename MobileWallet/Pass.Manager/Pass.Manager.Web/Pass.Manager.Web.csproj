@@ -167,8 +167,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="Areas\Site\Controllers\PassSiteConfigurationController.cs" />
+    <Compile Include="Areas\Site\Models\PassSiteConfigurationViewModel.cs" />
     <Compile Include="Areas\Site\PmSiteWebViewPage.cs" />
     <Compile Include="Areas\Site\SiteAreaRegistration.cs" />
+    <Compile Include="Areas\Site\Validators\PassSiteConfigurationViewModelValidator.cs" />
     <Compile Include="Common\AjaxActionResponse.cs" />
     <Compile Include="Common\AjaxOnlyAttribute.cs" />
     <Compile Include="Common\BaseFormAuthenticationController.cs" />
@@ -497,6 +500,7 @@
     <Content Include="Areas\Site\Views\Shared\_LayoutEdit.cshtml" />
     <Content Include="Areas\Site\Views\Shared\_LayoutCreate.cshtml" />
     <Content Include="Areas\Site\Views\Shared\_LayoutDetails.cshtml" />
+    <Content Include="Areas\Site\Views\PassSiteConfiguration\_Form.cshtml" />
     <None Include="Properties\PublishProfiles\Local.pubxml">
       <SubType>Designer</SubType>
     </None>
@@ -993,6 +997,7 @@
     <Content Include="Views\Shared\_LayoutConfig.cshtml" />
     <Content Include="Views\Error\Error.cshtml" />
     <Content Include="Views\Error\DebugError.cshtml" />
+    <Content Include="Views\PassSite\_Form.cshtml" />
     <None Include="Web.Base.config">
       <SubType>Designer</SubType>
     </None>

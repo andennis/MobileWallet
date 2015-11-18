@@ -19,6 +19,7 @@
         </item>
         <item title="Configuration">
           <items>
+            <!--<item title="Site Configuration" controller="PassSiteConfiguration" action="Edit"/>-->
             <item title="Users" controller="PassSiteUser" action="Index">
               <DependencyActions>
                 <action controller="PassSiteUser" action="Create"/>
@@ -42,6 +43,7 @@
             <action controller="User" action="Create"/>
             <action controller="User" action="Edit"/>
             <action controller="User" action="ChangePassword"/>
+            <action controller="User" action="EditProfile"/>
           </DependencyActions>
         </item>
         <item title="Certificates" controller="PassCertificate" action="Index">

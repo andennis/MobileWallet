@@ -38,7 +38,7 @@
                     c.BoundLink(m => m.PassContentTemplateName, Url.Action<PassContentTemplateController>(a => a.Edit(0)), x => x.PassContentTemplateId).Title("Template");
                     c.Bound(m => m.SerialNumber).Title("Serial Number");//.ClientTemplateId("CropSerNum");
                     c.Bound(m => m.ExpDate).Title(Resources.ExpirationDate);
-                    c.Bound(m => m.IsVoided).Title("Voided");
+                    c.BoundBool(m => m.IsVoided).Title("Voided");
                     c.BoundEnum(m => m.Status);
                     c.Bound(p => p.PassContentId).Title("Action").GridAjaxAction(Resources.Delete, Url.Action<PassContentController>(a => a.Delete(0)));
                 }))

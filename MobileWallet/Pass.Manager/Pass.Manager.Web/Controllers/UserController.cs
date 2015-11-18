@@ -53,6 +53,7 @@ namespace Pass.Manager.Web.Controllers
         {
             User user = _userService.Get(userName);
             UserViewModel model = Mapper.Map<User, UserViewModel>(user);
+            SetDefaultReturnUrl(model);
             return View(model);
         }
         

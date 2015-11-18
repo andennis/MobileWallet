@@ -9,5 +9,7 @@
                     c.Bound(p => p.PassSiteId).Title("ID").Width("100px");
                     c.BoundLink(p => p.Name, Url.Action<PassSiteController>(a => a.Enter(0)), id => id.PassSiteId);
                     c.Bound(p => p.Description);
-                    c.Bound(p => p.PassSiteId).Title("Action").GridAjaxAction(Resources.Delete, Url.Action<PassSiteController>(a => a.Delete(0)));
+                    c.Bound(p => p.PassSiteId).Title("Action")
+                        .GridAction(Resources.Edit, Url.Action<PassSiteController>(a => a.Edit(0)))
+                        .GridAjaxAction(Resources.Delete, Url.Action<PassSiteController>(a => a.Delete(0)));
                 }))

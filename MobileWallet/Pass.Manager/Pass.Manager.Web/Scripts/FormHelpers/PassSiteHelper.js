@@ -1,5 +1,6 @@
 ﻿(function (helper, $) {
 
+    /*
     helper.PassProjectDataHandler = function(d) {
         return $.extend({}, d, {
             "PassSiteId": $('#PassSiteId').val()
@@ -17,5 +18,6 @@
             "PassSiteId": $('#PassSiteId').val()
         });
     };
+    */
 
 }(window.PassSite = window.PassSite || {}, jQuery));
