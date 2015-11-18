@@ -6,5 +6,6 @@ namespace Pass.Manager.Web.Common
     public class UserContextData
     {
         public int? SiteId { get; set; }
+        public string SiteName { get; set; }
     }
 }

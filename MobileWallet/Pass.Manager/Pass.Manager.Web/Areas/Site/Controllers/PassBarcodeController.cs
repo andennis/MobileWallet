@@ -24,13 +24,21 @@ namespace Pass.Manager.Web.Areas.Site.Controllers
         [HttpPost]
         public ActionResult CreateBarcode(PassBarcodeViewModel model)
         {
-            return base.Create(model);
+            if (ModelState.IsValid)
+            {
+                return base.Create(model);
+            }
+            return Content("Not all requared fields are filled");
         }
 
         [HttpPost]
         public ActionResult EditBarcode(PassBarcodeViewModel model)
         {
-            return base.Edit(model);
+            if (ModelState.IsValid)
+            {
+                return base.Edit(model);
+            }
+            return Content("Not all requared fields are filled");
         }
 	}
 }

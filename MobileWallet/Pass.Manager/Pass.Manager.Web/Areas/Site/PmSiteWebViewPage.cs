@@ -17,5 +17,13 @@ namespace Pass.Manager.Web.Areas.Site
             }
         }
 
+        public string SiteName
+        {
+            get
+            {
+                return AuthUserContext.UserData.SiteName;
+            }
+        }
+
     }
 }
