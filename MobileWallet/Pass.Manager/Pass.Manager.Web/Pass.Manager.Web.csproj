@@ -995,6 +995,7 @@
     <Content Include="Areas\Site\Views\PassContentTemplate\Tabs\_Barcode.cshtml" />
     <Content Include="Areas\Site\Views\PassProject\_Grid.cshtml" />
     <Content Include="Views\Shared\_LayoutConfig.cshtml" />
+    <Content Include="unity.config" />
     <Content Include="Views\Error\Error.cshtml" />
     <Content Include="Views\Error\DebugError.cshtml" />
     <Content Include="Views\PassSite\_Form.cshtml" />
