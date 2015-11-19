@@ -7,19 +7,19 @@
           <DependencyActions>
             <action controller="PassProject" action="Edit"/>
             <action controller="PassProject" action="Create"/>
+            <action controller="PassContentTemplate" action="Edit"/>
+            <action controller="PassContentTemplate" action="CreateTemplate"/>
           </DependencyActions>
         </item>
         <item title="Passes" controller="PassContent" action="Index">
           <DependencyActions>
             <action controller="PassContent" action="CreatePass"/>
             <action controller="PassContent" action="Edit"/>
-            <action controller="PassContentTemplate" action="Edit"/>
-            <action controller="PassContentTemplate" action="CreateTemplate"/>
           </DependencyActions>
         </item>
         <item title="Configuration">
           <items>
-            <!--<item title="Site Configuration" controller="PassSiteConfiguration" action="Edit"/>-->
+            <!--<item title="Site" controller="PassSiteConfiguration" action="Edit"/>-->
             <item title="Users" controller="PassSiteUser" action="Index">
               <DependencyActions>
                 <action controller="PassSiteUser" action="Create"/>

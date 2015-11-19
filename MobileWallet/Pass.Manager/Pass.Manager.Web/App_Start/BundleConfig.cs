@@ -87,7 +87,7 @@ namespace Pass.Manager.Web
                 "~/Scripts/Grid.js",
                 "~/Scripts/Action.js",
                 "~/Scripts/PopupWindow.js",
-                "~/Scripts/errorProcessing.js"
+                "~/Scripts/AjaxSetup.js"
                 ));
 
 

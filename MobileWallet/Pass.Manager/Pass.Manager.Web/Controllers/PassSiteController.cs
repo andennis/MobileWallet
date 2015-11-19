@@ -2,7 +2,6 @@
 using Common.BL;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Core.Services;
-using Pass.Manager.Web.Areas.Site.Models;
 using Pass.Manager.Web.Common;
 using Pass.Manager.Web.Models;
 
@@ -23,9 +22,9 @@ namespace Pass.Manager.Web.Controllers
 
         public ActionResult Enter(int id)
         {
+            PassSite ps = _service.Get(id);
             AuthUserContext.UserData.SiteId = id;
-            PassSiteViewModel model = GetViewModel(id);
-            AuthUserContext.UserData.SiteName = model.Name;
+            AuthUserContext.UserData.SiteName = ps.Name;
             return RedirectToAction("Index", "PassProject", new { area = "Site", PassSiteId = id });
         }
 

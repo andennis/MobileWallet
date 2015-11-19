@@ -539,7 +539,7 @@
     <Content Include="Scripts\DataTables-1.10.2\dataTables.tableTools.min.js" />
     <Content Include="Scripts\DataTables-1.10.2\jquery.dataTables.js" />
     <Content Include="Scripts\DataTables-1.10.2\jquery.dataTables.min.js" />
-    <Content Include="Scripts\errorProcessing.js" />
+    <Content Include="Scripts\AjaxSetup.js" />
     <Content Include="Scripts\fileUploadHelper.js" />
     <Content Include="Scripts\FormAutoFill\jquery.formautofill.js" />
     <Content Include="Scripts\FormAutoFill\jquery.formautofill.min.js" />

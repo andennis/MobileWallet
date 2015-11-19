@@ -2,7 +2,7 @@
 using System.Web;
 using Moq;
 
-namespace Common.Web.Tests
+namespace Common.Web.Tests.Mock
 {
     public class MockHttpContextContainer
     {

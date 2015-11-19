@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web;
 
-namespace Common.Web.Tests
+namespace Common.Web.Tests.Fake
 {
     public class FakeHttpSession : HttpSessionStateBase
     {

@@ -16,8 +16,13 @@ namespace Pass.Manager.Web.Common
             if (baseController == null)
                 throw new Exception("Controller should be inherited from BaseController");
 
-            if (!baseController.AuthUserContext.IsAuthenticated)
-                filterContext.Result = new HttpUnauthorizedResult();
+            if (baseController.AuthUserContext.IsAuthenticated)
+                return;
+            
+            if (filterContext.HttpContext.Request.IsAjaxRequest())
+                filterContext.HttpContext.Response.SuppressFormsAuthenticationRedirect = true;
+
+             filterContext.Result = new HttpUnauthorizedResult();
         }
     }
 }

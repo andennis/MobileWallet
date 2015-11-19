@@ -3,13 +3,15 @@
 @Html.HiddenForExt(m => m.PassSiteId)       
 @Html.HiddenForExt(m => m.PassProjectId)
 
-@if (!Model.IsNew)
-{
-    Html.TextBlockFormForExt(m => m.PassProjectId, "ID");
-}
-@Html.TextBoxFormForExt(m => m.Name)
-@Html.DropDownListFormForExt(m => m.PassCertificateId, Model.PassCertificates, "Certificate", "- Select Certificate -")
-@Html.TextAreaFormForExt(m => m.Description)
+<div class="row">
+    <div class="col-md-6">
+        @Html.TextBoxFormForExt(m => m.Name)
+        @Html.TextAreaFormForExt(m => m.Description)
+    </div>
+    <div class="col-md-6">
+        @Html.DropDownListFormForExt(m => m.PassCertificateId, Model.PassCertificates, "Certificate", "- Select Certificate -")
+    </div>
+</div>
 
 @if (!Model.IsNew)
 {
@@ -20,7 +22,6 @@
                 {
                     tab.Add().Text("Fields").LoadContentFrom(Url.Action<PassProjectController>(a => a.TabFields(0), new { id = Model.PassProjectId })).Selected(true);
                     tab.Add().Text("Pass Templates").LoadContentFrom(Url.Action<PassProjectController>(a => a.TabPassContentTemplates(0), new { id = Model.PassProjectId }));
-                    //tab.Add().Text("Passes").LoadContentFrom(Url.Action<PassContentController>(a => a.Passes(0), new { passProjectId = Model.PassProjectId }));
                 }
             ))
     </div>

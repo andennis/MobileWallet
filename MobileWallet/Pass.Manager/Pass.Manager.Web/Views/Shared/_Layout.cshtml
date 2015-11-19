@@ -94,6 +94,11 @@
 
     @Scripts.Render("~/bundles/app")
     @RenderSection("Scripts", false)
+    <script type="text/javascript">
+        $(document).ready(function () {
+            window.AjaxSetup.Init("@(Url.Action<AccountController>(a => a.Login((string)null), new {area=""}))");
+        });
+    </script>
 
 </body>
 </html>
