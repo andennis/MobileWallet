@@ -14,12 +14,6 @@ namespace Pass.Manager.Web.Controllers
         {
         }
 
-        public override ActionResult Index()
-        {
-            AuthUserContext.UserData.SiteId = null;
-            return base.Index();
-        }
-
         public ActionResult Enter(int id)
         {
             //PassSite ps = _service.Get(id);
