@@ -22,7 +22,6 @@ namespace Pass.Manager.Web.Areas.Site
                 new { passSiteId = @"\d+" },
                 new[] { "Pass.Manager.Web.Areas.Site.Controllers" }
             );
-
         }
     }
 }

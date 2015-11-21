@@ -7,7 +7,7 @@ using Pass.Manager.Web.Models;
 
 namespace Pass.Manager.Web.Common
 {
-    [FormAuthentication]
+    [FormAuthenticationFilter]
     public abstract class BaseFormAuthenticationController<TViewModel> : BaseController where TViewModel : BaseLoginViewModel
     {
         protected class UserInfo

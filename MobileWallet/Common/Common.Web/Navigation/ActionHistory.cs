@@ -83,9 +83,9 @@ namespace Common.Web.Navigation
         {
             return new ActionInfo()
             {
-                Area = _controllerContext.RouteData.Values["area"] as string,
-                Controller = _controllerContext.RouteData.Values["controller"] as string,
-                Action = _controllerContext.RouteData.Values["action"] as string,
+                Area = _controllerContext.RouteData.GetArea(),
+                Controller = _controllerContext.RouteData.GetController(),
+                Action = _controllerContext.RouteData.GetAction(),
             };
 
         }

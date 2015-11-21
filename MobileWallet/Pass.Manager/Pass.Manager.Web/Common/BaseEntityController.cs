@@ -22,7 +22,7 @@ namespace Pass.Manager.Web.Common
         }
     }
 
-    [FormAuthentication]
+    [FormAuthenticationFilter]
     public abstract class BaseEntityController<TEntityViewModel, TEntity, TEntityView, TService, TSearchFilter> : BaseController
         where TEntityViewModel : class, IViewModel, new() 
         where TEntity : class, new()

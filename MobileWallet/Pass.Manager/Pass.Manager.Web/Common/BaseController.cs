@@ -22,8 +22,8 @@ namespace Pass.Manager.Web.Common
         protected override void Initialize(RequestContext context)
         {
             Logger.Debug(String.Format("Invoke action '{0}' from controller '{1}'.",
-                context.HttpContext.Request.RequestContext.RouteData.GetRequiredString("action"),
-                context.HttpContext.Request.RequestContext.RouteData.GetRequiredString("controller")));
+                context.HttpContext.Request.RequestContext.RouteData.GetAction(),
+                context.HttpContext.Request.RequestContext.RouteData.GetController()));
 
             base.Initialize(context);
         }
@@ -31,8 +31,8 @@ namespace Pass.Manager.Web.Common
         protected override void OnException(ExceptionContext filterContext)
         {
             Logger.Error(filterContext.Exception, "Action '{0}' from controller '{1}' threw exception: '{2}'",
-                filterContext.RouteData.Values["action"].ToString(),
-                filterContext.RouteData.Values["controller"].ToString(),
+                filterContext.RouteData.GetAction(),
+                filterContext.RouteData.GetController(),
                 filterContext.Exception.Message);
 
             base.OnException(filterContext);
@@ -44,7 +44,7 @@ namespace Pass.Manager.Web.Common
             get
             {
                 int siteId;
-                if (!int.TryParse(RouteData.Values[SiteAreaRegistration.UrlPrmPassSiteId] as string, out siteId))
+                if (!int.TryParse(RouteData.GetRouteValue<string>(SiteAreaRegistration.UrlPrmPassSiteId), out siteId))
                     throw new PassManagerGeneralException(string.Format("URL does not contain the section '{0}'", SiteAreaRegistration.UrlPrmPassSiteId));
 
                 return siteId;

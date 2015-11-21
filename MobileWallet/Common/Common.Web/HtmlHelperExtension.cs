@@ -14,8 +14,8 @@ namespace Common.Web
         {
             return new ActionInfo()
             {
-                Controller = helper.ViewContext.RouteData.Values["controller"] as string,
-                Action = helper.ViewContext.RouteData.Values["action"] as string
+                Controller = helper.ViewContext.RouteData.GetController(),
+                Action = helper.ViewContext.RouteData.GetAction()
             };
         }
     }

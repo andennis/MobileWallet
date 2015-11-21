@@ -179,8 +179,10 @@
     <Compile Include="Common\BaseViewModel.cs" />
     <Compile Include="Common\EntityItem.cs" />
     <Compile Include="Common\IViewModel.cs" />
-    <Compile Include="Common\FormAuthenticationAttribute.cs" />
+    <Compile Include="Common\FormAuthenticationFilterAttribute.cs" />
     <Compile Include="Common\PmWebViewPage.cs" />
+    <Compile Include="Common\SiteFilterAttribute.cs" />
+    <Compile Include="Common\SiteFilterProvider .cs" />
     <Compile Include="Common\UserContextData.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Common\BaseEntityController.cs" />
@@ -1237,7 +1239,9 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Areas\Site\Views\BaseSite\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

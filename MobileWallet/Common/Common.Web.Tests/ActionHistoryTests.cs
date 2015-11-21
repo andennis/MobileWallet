@@ -31,9 +31,9 @@ namespace Common.Web.Tests
             _httpContextContainer.Context.Setup(x => x.Session).Returns(fakeSession);
             _httpContextContainer.Request.Setup(x => x.UrlReferrer).Returns(new Uri("http://localhost/home"));
 
-            _controllerContext.RouteData.Values.Add("area", "Area1");
-            _controllerContext.RouteData.Values.Add("controller", "controller1");
-            _controllerContext.RouteData.Values.Add("action", "action1");
+            _controllerContext.RouteData.SetArea("Area1");
+            _controllerContext.RouteData.SetController("controller1");
+            _controllerContext.RouteData.SetAction("action1");
 
             var actionHistory = new ActionHistory(_controllerContext);
             ActionHistoryItem ahi = actionHistory.GoToCurrentAction();
@@ -61,8 +61,8 @@ namespace Common.Web.Tests
             _httpContextContainer.SessionState.Setup(x => x[ActionHistoryKey]).Returns(historyItems);
             _httpContextContainer.Request.Setup(x => x.UrlReferrer).Returns(new Uri("http://localhost/user/edit"));
 
-            _controllerContext.RouteData.Values.Add("controller", "Profile");
-            _controllerContext.RouteData.Values.Add("action", "Edit");
+            _controllerContext.RouteData.SetController("Profile");
+            _controllerContext.RouteData.SetAction("Edit");
 
             var actionHistory = new ActionHistory(_controllerContext);
             ActionHistoryItem ahi = actionHistory.GoToCurrentAction();
@@ -83,8 +83,8 @@ namespace Common.Web.Tests
             _httpContextContainer.SessionState.Setup(x => x[ActionHistoryKey]).Returns(historyItems);
             _httpContextContainer.Request.Setup(x => x.UrlReferrer).Returns(new Uri("http://localhost/profile/edit"));
 
-            _controllerContext.RouteData.Values.Add("controller", "User");
-            _controllerContext.RouteData.Values.Add("action", "Edit");
+            _controllerContext.RouteData.SetController("User");
+            _controllerContext.RouteData.SetAction("Edit");
 
             var actionHistory = new ActionHistory(_controllerContext);
             ActionHistoryItem ahi = actionHistory.GoToCurrentAction();

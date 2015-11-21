@@ -85,6 +85,7 @@
     <Compile Include="Mock\MockHttpContextContainer.cs" />
     <Compile Include="Fake\FakeHttpSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RouteDataExtensionsTests.cs" />
     <Compile Include="UrlHelperExtensionsTests.cs" />
     <Compile Include="UserContextTests.cs" />
   </ItemGroup>

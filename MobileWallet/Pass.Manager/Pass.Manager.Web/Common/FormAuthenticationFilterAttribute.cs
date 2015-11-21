@@ -4,7 +4,7 @@ using System.Web.Mvc.Filters;
 
 namespace Pass.Manager.Web.Common
 {
-    public class FormAuthenticationAttribute : ActionFilterAttribute, IAuthenticationFilter
+    public class FormAuthenticationFilterAttribute : ActionFilterAttribute, IAuthenticationFilter
     {
         public void OnAuthentication(AuthenticationContext filterContext)
         {

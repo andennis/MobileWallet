@@ -1,4 +1,5 @@
-﻿using Pass.Manager.Core.Exceptions;
+﻿using Common.Web;
+using Pass.Manager.Core.Exceptions;
 using Pass.Manager.Web.Common;
 
 namespace Pass.Manager.Web.Areas.Site
@@ -10,7 +11,7 @@ namespace Pass.Manager.Web.Areas.Site
             get
             {
                 int siteId;
-                if (!int.TryParse(ViewContext.RouteData.Values[SiteAreaRegistration.UrlPrmPassSiteId] as string, out siteId))
+                if (!int.TryParse(ViewContext.RouteData.GetRouteValue<string>(SiteAreaRegistration.UrlPrmPassSiteId), out siteId))
                     throw new PassManagerGeneralException(string.Format("URL does not contain the section '{0}'", SiteAreaRegistration.UrlPrmPassSiteId));
 
                 return siteId;

@@ -23,6 +23,7 @@ namespace Pass.Manager.Web
         private static void RegisterTypes(IUnityContainer container)
         {
             container.RegisterInstance<ILogger>(NLogLogger.GetLoggingService());
+
             container.LoadConfiguration("FileStorage");
             container.LoadConfiguration("CertificateStorage");
             container.LoadConfiguration("PassContainer");

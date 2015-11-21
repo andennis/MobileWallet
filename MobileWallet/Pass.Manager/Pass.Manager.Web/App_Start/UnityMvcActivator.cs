@@ -2,6 +2,7 @@ using System.Linq;
 using System.Web.Mvc;
 using Microsoft.Practices.Unity.Mvc;
 using Pass.Manager.Web;
+using Pass.Manager.Web.Common;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(UnityWebActivator), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethod(typeof(UnityWebActivator), "Shutdown")]
@@ -18,6 +19,7 @@ namespace Pass.Manager.Web
 
             FilterProviders.Providers.Remove(FilterProviders.Providers.OfType<FilterAttributeFilterProvider>().First());
             FilterProviders.Providers.Add(new UnityFilterAttributeFilterProvider(container));
+            FilterProviders.Providers.Add(new SiteFilterProvider(container));
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
 

@@ -5,7 +5,7 @@ namespace Pass.Manager.Web.Controllers
 {
     public class HomeController : BaseController
     {
-        [FormAuthentication]
+        [FormAuthenticationFilter]
         public ActionResult Index()
         {
             return View();

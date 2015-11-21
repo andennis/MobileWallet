@@ -22,9 +22,9 @@ namespace Pass.Manager.Web.Controllers
 
         public ActionResult Enter(int id)
         {
-            PassSite ps = _service.Get(id);
-            AuthUserContext.UserData.SiteId = id;
-            AuthUserContext.UserData.SiteName = ps.Name;
+            //PassSite ps = _service.Get(id);
+            //AuthUserContext.UserData.SiteId = id;
+            //AuthUserContext.UserData.SiteName = ps.Name;
             return RedirectToAction("Index", "PassProject", new { area = "Site", PassSiteId = id });
         }
 

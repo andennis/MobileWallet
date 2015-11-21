@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Script.Serialization;
+using Common.Web;
 using FluentValidation.Mvc;
 using Pass.Manager.Web.Controllers;
 
@@ -48,13 +49,14 @@ namespace Pass.Manager.Web
             else
             {
                 var routeData = new RouteData();
-                routeData.Values["controller"] = "Error";
+                routeData.SetController("Error");
                 #if (DEBUG)
-                    routeData.Values["action"] = "DebugGeneral";
+                    routeData.SetAction("DebugGeneral");
                 #elif (!DEBUG)
-                    routeData.Values["action"] = "General";
+                    routeData.SetAction("General");
                 #endif
-                routeData.Values["exception"] = exception;
+                    routeData.SetRouteValue("exception", exception);
+
                 Response.StatusCode = 500;
                 Response.TrySkipIisCustomErrors = true;
                 IController errorsController = new ErrorController();
