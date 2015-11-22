@@ -28,92 +28,6 @@ h3 {
 }
 
 
-/*Overlap Kendo classes*/
-.k-state-active {
-    border-color: inherit !important;
-}
-
-.k-window-titlebar.k-header {
-    background-image: none;
-    background-color: #eceff1;
-    color: #384A5C;
-    font-weight: bold;
-    border: none;
-    font-size: 1.3em;
-}
-
-.k-content {
-    color: #737C86;
-}
-
-.k-tabstrip .k-content.k-state-active {
-    color: #2d586f;
-}
-
-.k-tabstrip {
-    color: #737C86;
-}
-
-/*For Kendo color picker extention*/
-.k-colorpicker .k-selected-color {
-    height: 34px;
-    width: 80px;
-}
-
-.k-picker-wrap.k-state-default {
-    height: 34px;
-}
-
-/*For Kendo datepicker extention*/
-.k-widget.k-datepicker.k-header.form-control, .k-widget.k-dropdown.k-header.form-control {
-    padding: 0;
-    border: none;
-}
-
-.form-control.k-input {
-    height: 34px;
-    border: 1px solid #ccc;
-    -ms-border-radius: 4px;
-    border-radius: 4px;
-}
-
-    .form-control.k-input:focus {
-        border: 1px solid #2979FF;
-        -webkit-box-shadow: inset 0 1px 1px rgba(41,121,255,.075), 0 0 8px rgba(41,121,255, .6);
-        -ms-box-shadow: inset 0 1px 1px rgba(41,121,255,.075), 0 0 8px rgba(41,121,255, .6);
-        box-shadow: inset 0 1px 1px rgba(41,121,255,.075), 0 0 8px rgba(41,121,255, .6);
-    }
-
-.k-state-selected, .k-state-selected:link, .k-state-selected:visited, .k-list > .k-state-selected, .k-list > .k-state-highlight,
-.k-panel > .k-state-selected, .k-ghost-splitbar-vertical, .k-ghost-splitbar-horizontal, .k-draghandle.k-state-selected:hover,
-.k-scheduler .k-scheduler-toolbar .k-state-selected, .k-scheduler .k-today.k-state-selected, .k-marquee-color {
-    background-color: #02d5ac;
-    border-color: #02d5ac;
-}
-
-.k-state-focused.k-state-selected, .k-list > .k-state-focused.k-state-selected, .k-listview > .k-state-focused.k-state-selected, td.k-state-focused.k-state-selected {
-    -webkit-box-shadow: inset 0 0 3px 4px #02d5ac;
-    -ms-box-shadow: inset 0 0 3px 4px #02d5ac;
-    box-shadow: inset 0 0 3px 4px #02d5ac;
-}
-
-/*For ActionLinkFormForExt control*/
-.linkForm {
-    margin-top: 7px;
-    position: absolute;
-}
-
-/*For TextBlockFormForExt control*/
-input[readonly].textBlockForm {
-    border: none;
-    background-color: inherit !important;
-    -webkit-box-shadow: none;
-    -ms-box-shadow: none;
-    box-shadow: none;
-}
-
-
-
 /*Overlap bootstrap classes*/
 .btn-default {
     background: rgba(45, 88, 111, 0.5);
@@ -490,6 +404,12 @@ textarea {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.siteNameInLeftMenu {
+    word-wrap: break-word;
+    text-align: center;
+    display: block;
 }
 
 .downloadLink {
