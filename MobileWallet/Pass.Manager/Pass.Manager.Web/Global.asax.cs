@@ -4,14 +4,18 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Script.Serialization;
+using Common.Logging;
 using Common.Web;
 using FluentValidation.Mvc;
+using Microsoft.Practices.Unity;
 using Pass.Manager.Web.Controllers;
 
 namespace Pass.Manager.Web
 {
     public class MvcApplication : HttpApplication
     {
+        [Dependency]
+        public ILogger Logger { get; set; }
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -26,6 +30,14 @@ namespace Pass.Manager.Web
         {
             var exception = Server.GetLastError();
             bool isAjaxCall = new HttpRequestWrapper(HttpContext.Current.Request).IsAjaxRequest();
+            var container =  UnityConfig.GetConfiguredContainer();
+            Logger = container.Resolve<ILogger>();
+            RequestContext requestContext = ((MvcHandler)HttpContext.Current.CurrentHandler).RequestContext;
+            Logger.Error(exception, "Action '{0}' from controller '{1}' threw exception: '{2}'", 
+                requestContext.RouteData.Values["action"],
+                requestContext.RouteData.Values["controller"],
+                exception.Message
+                );
             Response.Clear();
             Server.ClearError();
             if (isAjaxCall)
