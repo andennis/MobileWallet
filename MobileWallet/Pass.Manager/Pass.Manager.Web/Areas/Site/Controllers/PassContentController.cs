@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using Common.BL;
 using Common.Repository;
@@ -53,7 +54,7 @@ namespace Pass.Manager.Web.Areas.Site.Controllers
         {
             base.PrepareModelToEditView(model);
             string token = _distributionService.EncryptPassToken(new PassTokenInfo() {PassContentId = model.PassContentId});
-            model.DistributionLink = _pmConfig.WebDistributionUrl.TrimEnd('/') + "/pass/e-t?token=" + token;
+            model.DistributionLink = _pmConfig.WebDistributionUrl.TrimEnd('/') + "/pass/e-t?token=" + HttpUtility.UrlEncode(token);
         }
 
         [AjaxOnly]

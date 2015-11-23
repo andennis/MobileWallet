@@ -15,6 +15,8 @@ CREATE PROCEDURE [pm].[PassContentField_Search]
 AS
 BEGIN
     SET @TotalRecords = (SELECT COUNT(*) FROM pm.PassContentFieldView WHERE PassContentId = @PassContentId)
+    IF ISNULL(@PageSize, 0) = 0
+        SET @PageSize = @TotalRecords
 
     SELECT * FROM pm.PassContentFieldView WHERE PassContentId = @PassContentId
     ORDER BY 
