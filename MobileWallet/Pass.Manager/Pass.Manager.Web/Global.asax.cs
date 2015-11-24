@@ -14,8 +14,6 @@ namespace Pass.Manager.Web
 {
     public class MvcApplication : HttpApplication
     {
-        [Dependency]
-        public ILogger Logger { get; set; }
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -31,9 +29,9 @@ namespace Pass.Manager.Web
             var exception = Server.GetLastError();
             bool isAjaxCall = new HttpRequestWrapper(HttpContext.Current.Request).IsAjaxRequest();
             var container =  UnityConfig.GetConfiguredContainer();
-            Logger = container.Resolve<ILogger>();
+            var logger = container.Resolve<ILogger>();
             RequestContext requestContext = ((MvcHandler)HttpContext.Current.CurrentHandler).RequestContext;
-            Logger.Error(exception, "Action '{0}' from controller '{1}' threw exception: '{2}'", 
+            logger.Error(exception, "Action '{0}' from controller '{1}' threw exception: '{2}'", 
                 requestContext.RouteData.Values["action"],
                 requestContext.RouteData.Values["controller"],
                 exception.Message
