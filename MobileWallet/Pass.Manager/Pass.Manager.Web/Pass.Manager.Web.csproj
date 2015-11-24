@@ -503,7 +503,7 @@
     <Content Include="Areas\Site\Views\Shared\_LayoutCreate.cshtml" />
     <Content Include="Areas\Site\Views\Shared\_LayoutDetails.cshtml" />
     <Content Include="Areas\Site\Views\PassSiteConfiguration\_Form.cshtml" />
-    <None Include="Properties\PublishProfiles\Local.pubxml">
+    <None Include="Properties\PublishProfiles\Production.pubxml">
       <SubType>Designer</SubType>
     </None>
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
