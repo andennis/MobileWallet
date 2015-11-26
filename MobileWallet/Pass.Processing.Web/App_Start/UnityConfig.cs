@@ -1,21 +1,33 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web;
+using System.Web.Http;
+using Common.Logging;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
-using Unity.WebApi;
 
 namespace Pass.Processing.Web
 {
-    public static class UnityConfig
+    public class UnityConfig
     {
-        public static void RegisterComponents()
+        private static readonly Lazy<IUnityContainer> _container = new Lazy<IUnityContainer>(() =>
         {
-			var container = new UnityContainer();
+            var container = new UnityContainer();
+            RegisterTypes(container);
+            return container;
+        });
 
-            container.LoadConfiguration("FileStorage");
-            container.LoadConfiguration("CertificateStorage");
-            container.LoadConfiguration("PassContainer");
-            
-            GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
+        public static IUnityContainer GetConfiguredContainer()
+        {
+            return _container.Value;
+        }
+
+        private static void RegisterTypes(IUnityContainer container)
+        {
+            container.RegisterInstance<ILogger>(NLogLogger.GetLoggingService());
+            //container.LoadConfiguration("FileStorage");
+            //container.LoadConfiguration("CertificateStorage");
+            //container.LoadConfiguration("PassContainer");
+            container.RegisterType<HttpContextBase>(new InjectionFactory(_ => new HttpContextWrapper(HttpContext.Current)));
         }
     }
 }
