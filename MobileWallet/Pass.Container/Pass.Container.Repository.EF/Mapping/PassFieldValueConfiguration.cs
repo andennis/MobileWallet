@@ -10,7 +10,7 @@ namespace Pass.Container.Repository.EF.Mapping
             ToTable("PassFieldValue", dbScheme);
             HasRequired(x => x.Pass).WithMany(x => x.FieldValues).HasForeignKey(x => x.PassId);
             HasRequired(x => x.PassField).WithMany(x => x.FieldValues).HasForeignKey(x => x.PassFieldId).WillCascadeOnDelete(false);
-            Property(x => x.Label).HasMaxLength(512);
+            Property(x => x.Label).HasMaxLength(DbFieldSettings.FieldLenName);
             Property(x => x.Value).HasMaxLength(512);
             Property(x => x.Version).IsConcurrencyToken();
         }

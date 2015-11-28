@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure.Annotations;
+﻿using System.Data.Entity;
 using Common.Repository.EF;
 using Pass.Manager.Core.Entities;
 using Pass.Manager.Repository.EF.Mapping;
@@ -9,8 +7,6 @@ namespace Pass.Manager.Repository.EF
 {
     public class PassManagerDbContext : DbContextBase
     {
-        private const int FieldLenName = 512;
-
         public PassManagerDbContext(string nameOrConnectionString)
             :base(nameOrConnectionString)
         {
@@ -21,7 +17,7 @@ namespace Pass.Manager.Repository.EF
         public override string DbScheme { get { return "pm"; } }
 
 
-        //TODO it might be removed
+        /*
         public DbSet<PassSite> PassSites { get; set; }
         public DbSet<PassProject> PassProjects { get; set; }
         public DbSet<User> Users { get; set; }
@@ -29,11 +25,10 @@ namespace Pass.Manager.Repository.EF
         public DbSet<PassCertificate> PassCertificates { get; set; }
         public DbSet<PassSiteCertificate> PassSiteCertificates { get; set; }
         public DbSet<PassProjectField> PassFields { get; set; }
-
+        */
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //PassSite
             modelBuilder.Configurations.Add<PassSite>(new PassSiteConfiguration(DbScheme));
             modelBuilder.Configurations.Add<PassProject>(new PassProjectConfiguration(DbScheme)); 
             modelBuilder.Configurations.Add<User>(new UserConfiguration(DbScheme));

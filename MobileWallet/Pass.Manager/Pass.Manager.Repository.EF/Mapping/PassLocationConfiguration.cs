@@ -9,7 +9,7 @@ namespace Pass.Manager.Repository.EF.Mapping
         {
             ToTable("PassLocation", dbScheme);
             Property(x => x.Version).IsConcurrencyToken();
-            Property(x => x.Name).IsRequired().HasMaxLength(512);
+            Property(x => x.Name).IsRequired().HasMaxLength(DbFieldSettings.FieldLenName);
             Property(x => x.Latitude).IsRequired();
             Property(x => x.Longitude).IsRequired();
             HasRequired(x => x.PassContentTemplate).WithMany(x => x.Locations).HasForeignKey(x => x.PassContentTemplateId);

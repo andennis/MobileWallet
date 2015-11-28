@@ -9,7 +9,7 @@ namespace Pass.Manager.Repository.EF.Mapping
         {
             ToTable("PassBeacon", dbScheme);
             Property(x => x.Version).IsConcurrencyToken();
-            Property(x => x.Name).IsRequired().HasMaxLength(512);
+            Property(x => x.Name).IsRequired().HasMaxLength(DbFieldSettings.FieldLenName);
             Property(x => x.ProximityUuid).IsRequired().HasMaxLength(128);
             HasRequired(x => x.PassContentTemplate).WithMany(x => x.Beacons).HasForeignKey(x => x.PassContentTemplateId);
         }

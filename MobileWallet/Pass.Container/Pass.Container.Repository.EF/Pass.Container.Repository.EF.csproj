@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Mapping\ClientDeviceAppleConfiguration.cs" />
     <Compile Include="Mapping\ClientDeviceConfiguration.cs" />
+    <Compile Include="Mapping\DbFieldSettings.cs" />
     <Compile Include="Mapping\PassAppleConfiguration.cs" />
     <Compile Include="Mapping\PassConfiguration.cs" />
     <Compile Include="Mapping\PassFieldConfiguraion.cs" />

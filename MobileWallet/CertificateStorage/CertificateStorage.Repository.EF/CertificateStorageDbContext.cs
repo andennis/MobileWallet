@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure.Annotations;
+﻿using System.Data.Entity;
 using CertificateStorage.Repository.Core.Entities;
 using CertificateStorage.Repository.EF.Mapping;
 using Common.Repository.EF;
@@ -18,7 +16,7 @@ namespace CertificateStorage.Repository.EF
 
         public override string DbScheme { get { return "cer"; } } 
 
-        public DbSet<Certificate> FolderItems { get; set; }
+        //public DbSet<Certificate> FolderItems { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

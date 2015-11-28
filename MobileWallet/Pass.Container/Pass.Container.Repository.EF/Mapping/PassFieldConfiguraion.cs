@@ -9,7 +9,7 @@ namespace Pass.Container.Repository.EF.Mapping
         {
             ToTable("PassField", dbScheme);
             HasRequired(x => x.Template).WithMany(x => x.PassFields).HasForeignKey(x => x.PassTemplateId);
-            Property(x => x.Name).IsRequired().HasMaxLength(512);
+            Property(x => x.Name).IsRequired().HasMaxLength(DbFieldSettings.FieldLenName);
             Property(x => x.Version).IsConcurrencyToken();
         }
     }

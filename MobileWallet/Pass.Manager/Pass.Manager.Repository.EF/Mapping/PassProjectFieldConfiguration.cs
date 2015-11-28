@@ -9,7 +9,7 @@ namespace Pass.Manager.Repository.EF.Mapping
         {
             ToTable("PassProjectField", dbScheme);
             Property(x => x.Version).IsConcurrencyToken();
-            Property(x => x.Name).IsRequired().HasMaxLength(512);
+            Property(x => x.Name).IsRequired().HasMaxLength(DbFieldSettings.FieldLenName);
             Property(x => x.DefaultLabel).HasMaxLength(128);
             HasRequired(x => x.PassProject).WithMany(x => x.PassFields).HasForeignKey(x => x.PassProjectId).WillCascadeOnDelete(false);
         }

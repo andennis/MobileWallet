@@ -8,7 +8,7 @@ namespace Pass.Container.Repository.EF.Mapping
         public PassTemplateAppleConfiguration(string dbScheme)
         {
             ToTable("PassTemplateApple", dbScheme);
-            Property(x => x.PassTypeId).IsRequired().HasMaxLength(128).IsUnicode(false);
+            Property(x => x.PassTypeId).IsRequired().HasMaxLength(DbFieldSettings.FieldLenPassTypeId).IsUnicode(false);
         }
     }
 }

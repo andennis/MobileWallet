@@ -1,18 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure.Annotations;
+﻿using System.Data.Entity;
 using Common.Repository.EF;
 using Pass.Container.Repository.Core.Entities;
 using Pass.Container.Repository.EF.Mapping;
-using Pass = Pass.Container.Repository.Core.Entities.Pass;
 
 namespace Pass.Container.Repository.EF
 {
     public class PassContainerDbContext : DbContextBase
     {
-        private const int FieldLenPassTypeId = 128;
-        private const int FieldLenName = 512;
-
         public PassContainerDbContext(string nameOrConnectionString)
             :base(nameOrConnectionString)
         {

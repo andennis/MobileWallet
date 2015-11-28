@@ -8,7 +8,7 @@ namespace Pass.Container.Repository.EF.Mapping
         public PassTemplateConfiguration(string dbScheme)
         {
             ToTable("PassTemplate", dbScheme);
-            Property(x => x.Name).IsRequired().HasMaxLength(512);
+            Property(x => x.Name).IsRequired().HasMaxLength(DbFieldSettings.FieldLenName);
             Property(x => x.Version).IsConcurrencyToken();
         }
     }

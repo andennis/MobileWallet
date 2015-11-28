@@ -9,9 +9,9 @@ namespace Pass.Manager.Repository.EF.Mapping
         {
             ToTable("PassContentTemplate", dbScheme);
             Property(x => x.Version).IsConcurrencyToken();
-            Property(x => x.Name).IsRequired().HasMaxLength(512);
+            Property(x => x.Name).IsRequired().HasMaxLength(DbFieldSettings.FieldLenName);
             Property(x => x.Description).IsRequired();
-            Property(x => x.OrganizationName).IsRequired().HasMaxLength(512);
+            Property(x => x.OrganizationName).IsRequired().HasMaxLength(DbFieldSettings.FieldLenName);
             HasRequired(x => x.PassProject).WithMany(x => x.PassContentTemplates).HasForeignKey(x => x.PassProjectId).WillCascadeOnDelete(false);
         }
     }

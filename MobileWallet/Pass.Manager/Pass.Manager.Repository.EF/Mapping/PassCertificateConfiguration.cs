@@ -9,7 +9,7 @@ namespace Pass.Manager.Repository.EF.Mapping
         {
             ToTable("PassCertificate", dbScheme);
             Property(x => x.Version).IsConcurrencyToken();
-            Property(x => x.Name).IsRequired().HasMaxLength(512);
+            Property(x => x.Name).IsRequired().HasMaxLength(DbFieldSettings.FieldLenName);
         }
     }
 }

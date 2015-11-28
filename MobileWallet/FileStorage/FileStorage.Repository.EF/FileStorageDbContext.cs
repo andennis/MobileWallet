@@ -16,7 +16,7 @@ namespace FileStorage.Repository.EF
 
         public override string DbScheme { get { return "fs"; } }
 
-        public DbSet<FolderItem> FolderItems { get; set; }
+        //public DbSet<FolderItem> FolderItems { get; set; }
         public DbSet<StorageItem> StorageItems { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
