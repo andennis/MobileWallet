@@ -45,13 +45,13 @@ namespace Common.Logging
                 if (result.Exception != null)
                 {
                     WriteLog(className,
-                        String.Format("Method {0}.{1} threw exception: {2}", className, input.MethodBase.Name, result.Exception.Message),
+                        string.Format("Method {0}.{1} threw exception: {2}", className, input.MethodBase.Name, result.Exception.Message),
                         LogLevel.Error);
                 }
                 else
                 {
                     WriteLog(className,
-                        String.Format("Method {0}.{1} has successfully executed.", className, input.MethodBase.Name, result.ReturnValue),
+                        string.Format("Method {0}.{1} has successfully executed.", className, input.MethodBase.Name, result.ReturnValue),
                         LogLevel.Trace);
                 }
             }

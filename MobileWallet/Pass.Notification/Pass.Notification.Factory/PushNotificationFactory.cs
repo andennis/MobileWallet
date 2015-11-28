@@ -1,8 +1,6 @@
-﻿using Common.Repository;
-using Microsoft.Practices.Unity;
+﻿using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 using Pass.Notification.Core;
-using Pass.Notification.Repository.Core;
 
 namespace Pass.Notification.Factory
 {

@@ -55,7 +55,8 @@ namespace Common.Extensions.Tests
                        };
 
             string json = dict.DictionaryToJsonAsObject();
-            Assert.IsNotNullOrEmpty(json);
+            Assert.NotNull(json);
+            Assert.IsNotEmpty(json);
 
             Assert.True(json.Contains("\"Name\":\"Name1\""));
             Assert.True(json.Contains("\"Value\":5"));

@@ -13,8 +13,11 @@ namespace Pass.Container.BL.Tests
         {
             var pcConfig = new PassContainerConfig();
 
-            Assert.IsNotNullOrEmpty(pcConfig.ConnectionString);
-            Assert.IsNotNullOrEmpty(pcConfig.PassWorkingFolder);
+            Assert.NotNull(pcConfig.ConnectionString);
+            Assert.IsNotEmpty(pcConfig.ConnectionString);
+
+            Assert.NotNull(pcConfig.PassWorkingFolder);
+            Assert.IsNotEmpty(pcConfig.PassWorkingFolder);
 
             //TODO check all other config parametes
             throw new NotImplementedException();

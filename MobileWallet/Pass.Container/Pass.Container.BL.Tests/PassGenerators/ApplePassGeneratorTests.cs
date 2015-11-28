@@ -26,7 +26,8 @@ namespace Pass.Container.BL.Tests.PassGenerators
             Directory.CreateDirectory(dstPackagePath);
 
             string fileName = passGenerator.GeneratePass("AT123", "SN0123", fields, dstPackagePath);
-            Assert.IsNotNullOrEmpty(fileName);
+            Assert.NotNull(fileName);
+            Assert.IsNotEmpty(fileName);
             Assert.AreEqual(".pkpass", Path.GetExtension(fileName));
             Assert.True(File.Exists(fileName));
 

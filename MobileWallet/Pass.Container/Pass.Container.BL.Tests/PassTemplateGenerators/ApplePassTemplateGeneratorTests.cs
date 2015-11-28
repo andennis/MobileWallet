@@ -55,7 +55,8 @@ namespace Pass.Container.BL.Tests.PassTemplateGenerators
             var manifest = manifestContent.JsonToObject<Dictionary<string, string>>();
             Assert.AreEqual(1, manifest.Count);
             Assert.True(manifest.ContainsKey("icon.png"));
-            Assert.IsNotNullOrEmpty(manifest["icon.png"]);
+            Assert.NotNull(manifest["icon.png"]);
+            Assert.IsNotEmpty(manifest["icon.png"]);
 
             Assert.Throws<ArgumentNullException>(() => generator.Generate(null, new string[0], "123"));
             Assert.Throws<ArgumentNullException>(() => generator.Generate(genPassTemplate, new string[0], null));

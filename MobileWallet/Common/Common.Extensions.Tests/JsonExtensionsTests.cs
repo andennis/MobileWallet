@@ -48,7 +48,8 @@ namespace Common.Extensions.Tests
             const string json1 = "{\"Name\":\"Name1\"}";
             const string json2 = "{\"Value\":5}";
             string json3 = json1.MergeJson(json2);
-            Assert.IsNotNullOrEmpty(json3);
+            Assert.NotNull(json3);
+            Assert. IsNotEmpty(json3);
 
             var obj = json3.JsonToObject<TestClass>();
             Assert.AreEqual("Name1", obj.Name);
@@ -62,7 +63,8 @@ namespace Common.Extensions.Tests
             var obj2 = new { Value = 5 };
             var obj3 = new { P1 = "123" };
             string json = obj1.ObjectToJsonMerge(obj2, obj3);
-            Assert.IsNotNullOrEmpty(json);
+            Assert.NotNull(json);
+            Assert.IsNotEmpty(json);
 
             var obj = json.JsonToObject<TestClass>();
             Assert.AreEqual("Name1", obj.Name);

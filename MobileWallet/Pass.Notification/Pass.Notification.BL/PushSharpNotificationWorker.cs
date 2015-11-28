@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 using Common.Repository;
 using Pass.Notification.Core;
 using Pass.Notification.Repository.Core;
 using Pass.Notification.Repository.Core.Entities;
 using Pass.Notification.Repository.Core.Enums;
 using PushSharp;
-using PushSharp.Android;
 using PushSharp.Apple;
 using PushSharp.Core;
 

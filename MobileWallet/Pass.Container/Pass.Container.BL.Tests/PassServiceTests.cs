@@ -214,7 +214,8 @@ namespace Pass.Container.BL.Tests
             using (IPassService pcs = GetPassContainerService())
             {
                 string fileName = pcs.GetPassPackage(passId, ClientType.Apple);
-                Assert.IsNotNullOrEmpty(fileName);
+                Assert.NotNull(fileName);
+                Assert.IsNotEmpty(fileName);
                 Assert.True(File.Exists(fileName));
             }
         }

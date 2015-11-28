@@ -13,11 +13,13 @@ namespace Common.Utils.Tests
             const string textToEncrypt = "Hello Aes!!!123678";
 
             string encrypted = Crypto.EncryptString(textToEncrypt, key, iv);
-            Assert.IsNotNullOrEmpty(encrypted);
+            Assert.NotNull(encrypted);
+            Assert.IsNotEmpty(encrypted);
             Assert.AreNotEqual(textToEncrypt, encrypted);
 
             string decrypted = Crypto.DecryptString(encrypted, key, iv);
-            Assert.IsNotNullOrEmpty(decrypted);
+            Assert.NotNull(decrypted);
+            Assert.IsNotEmpty(decrypted);
             Assert.AreEqual(textToEncrypt, decrypted);
 
             key = "1111111111111111"; //wrong key
